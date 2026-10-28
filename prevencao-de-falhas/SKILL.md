@@ -1,6 +1,6 @@
 ---
 name: prevencao-de-falhas
-description: Catálogo prático de 86 falhas reais de software (código gerado por IA, front-end, back-end/APIs, pagamentos e sistemas financeiros, agentes de IA/LLMs, infraestrutura e operação), com como detectar, corrigir, testar e evitar cada uma, em qualquer linguagem. Use esta skill sempre que for criar, revisar, auditar, refatorar, corrigir ou preparar para deploy qualquer sistema, API, site com login, app, automação, integração de pagamento ou agente de IA — inclusive quando o usuário não falar em "segurança", pedir só uma "revisão", disser que o código foi feito com IA/vibe coding, mencionar Supabase, Firebase, JWT, webhooks, Pix, Stripe, saldo, MCP ou prompt injection, ou perguntar se o sistema está "pronto para produção". Antes de aplicar a verificação completa, pergunte ao usuário a profundidade desejada, porque scripts simples e testes descartáveis não precisam do processo inteiro.
+description: Catálogo prático de 92 falhas reais de software (código gerado por IA, front-end, back-end/APIs, pagamentos e sistemas financeiros, agentes de IA/LLMs, infraestrutura e operação, LGPD e privacidade), com como detectar, corrigir, testar e evitar cada uma, em qualquer linguagem. Use esta skill sempre que for criar, revisar, auditar, refatorar, corrigir ou preparar para deploy qualquer sistema, API, site com login, app, automação, integração de pagamento ou agente de IA — inclusive quando o usuário não falar em "segurança", pedir só uma "revisão", disser que o código foi feito com IA/vibe coding, mencionar Supabase, Firebase, JWT, webhooks, Pix, Stripe, saldo, MCP ou prompt injection, ou perguntar se o sistema está "pronto para produção". Antes de aplicar a verificação completa, pergunte ao usuário a profundidade desejada, porque scripts simples e testes descartáveis não precisam do processo inteiro.
 ---
 
 # Prevenção de Falhas
@@ -11,7 +11,7 @@ Ninguém consegue garantir "zero erros". O objetivo é: **impedir as falhas conh
 
 ## 1. Primeiro passo: perguntar a profundidade
 
-Muita coisa que um usuário pede é simples (um script de uma vez, um teste, um protótipo local). Aplicar 86 verificações num script de 20 linhas desperdiça tempo e irrita. Então, antes de começar, a menos que o usuário já tenha dito, pergunte em uma frase qual nível aplicar, sugerindo um:
+Muita coisa que um usuário pede é simples (um script de uma vez, um teste, um protótipo local). Aplicar 92 verificações num script de 20 linhas desperdiça tempo e irrita. Então, antes de começar, a menos que o usuário já tenha dito, pergunte em uma frase qual nível aplicar, sugerindo um:
 
 | Nível | Quando | O que fazer |
 |---|---|---|
@@ -59,6 +59,7 @@ Carregue `references/casos-reais.md` para comparar com padrões conhecidos, depo
 | Automação / integração / webhooks | `03-back-end-e-apis.md` (API-12, API-13, API-18), `04-pagamentos-e-financeiro.md` (FIN-04) |
 | Qualquer projeto feito com ajuda de IA | some `01-codigo-gerado-por-ia.md` ao que já foi escolhido |
 | Deploy, CI/CD, banco em produção | `06-infra-e-operacao.md` |
+| Qualquer sistema com cadastro, login, formulário, chatbot ou dados de pessoas no Brasil | `07-lgpd-e-privacidade.md` (LGP-01 a LGP-06) |
 
 Exemplos de código por linguagem ficam em `references/linguagens/`. Carregue **só** o arquivo da stack do projeto:
 `javascript-typescript.md` · `python.md` · `java-kotlin.md` · `csharp-dotnet.md` · `go.md` · `php.md` · `sql-e-bancos.md` (sempre útil quando há banco).
@@ -76,6 +77,7 @@ Cada referência usa IDs estáveis para que relatórios e conversas possam citar
 | FIN-01 a FIN-13 | `references/04-pagamentos-e-financeiro.md` | float, double spend, idempotência, webhook duplicado, ledger, conciliação, arredondamento, estados de pagamento, credenciais internas, limites e anomalias, auditoria, datas de corte, LGPD |
 | AGT-01 a AGT-12 | `references/05-agentes-e-llms.md` | prompt injection, permissões excessivas, MCP malicioso, saída executada sem validar, custo e loops, alucinação com efeito legal, vazamento entre usuários, ações não realizadas, falhas silenciosas, saída malformada, evals, memória envenenada |
 | OPS-01 a OPS-14 | `references/06-infra-e-operacao.md` | backups, ambiente errado, deploy de uma vez, migrations, cadeia de dependências, rotação de segredos, monitoramento, config divergente, storage público, dev/prod juntos, DDoS, dependência sem plano B, retenção, plano de rollback (em OPS-03), log de segurança |
+| LGP-01 a LGP-06 | `references/07-lgpd-e-privacidade.md` | finalidade e base legal, consentimento, direitos do titular, dados sensíveis e de menores, incidente (ANPD), terceiros e IA. Não é aconselhamento jurídico |
 
 Também disponíveis: `references/checklist-pre-deploy.md` (checklist por nível) e `references/casos-reais.md` (15 incidentes públicos e a lição de cada um).
 

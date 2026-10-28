@@ -98,3 +98,12 @@ Para cada item, registre: **OK** (com evidência), **Falha** (com ID e local), *
 - [ ] CDN/WAF/rate limit contra abuso — OPS-11
 - [ ] Plano para indisponibilidade de terceiros críticos — OPS-12
 - [ ] Política de retenção e exclusão de dados (LGPD) — OPS-13, FIN-13
+
+## 8. LGPD e privacidade (pule se o sistema não trata dados pessoais)
+- [ ] **[Básico]** Cada dado pessoal coletado tem finalidade, base legal e prazo de guarda; o que não é necessário foi removido — LGP-01
+- [ ] **[Básico]** Política de privacidade acessível, em linguagem simples, com canal de contato do responsável — LGP-02
+- [ ] Consentimento desmarcado por padrão, por finalidade, registrado e revogável; cookies não essenciais só após o aceite — LGP-02
+- [ ] "Exportar meus dados" e "Excluir minha conta" funcionam, inclusive em logs, caches, backups (no prazo) e bases vetoriais — LGP-03
+- [ ] Dados sensíveis e de menores identificados, com acesso restrito, criptografia e sem aparecer em notificações — LGP-04
+- [ ] Plano de resposta a incidente de uma página, com responsável e prazo de comunicação à ANPD conferido — LGP-05
+- [ ] Lista de terceiros que recebem dados (inclusive provedores de IA), com dados mascarados quando possível — LGP-06

@@ -158,6 +158,84 @@ Vale para APIs REST, GraphQL, gRPC, server actions, funções serverless, worker
 
 **Como testar:** `curl -I` para conferir headers; `curl -H "Origin: https://evil.example"` e conferir que o CORS não libera; securityheaders.com; OWASP ZAP baseline.
 
+### Headers de segurança: o que cada um faz e como configurar
+
+| Header | Protege contra | Valor de partida |
+|---|---|---|
+| `Strict-Transport-Security` (HSTS) | acesso por HTTP e downgrade para conexão sem criptografia | `max-age=63072000; includeSubDomains` |
+| `Content-Security-Policy` (CSP) | XSS e carregamento de scripts de origens não previstas | comece restritivo (`default-src 'self'`) e libere só o necessário; evite `unsafe-inline` em scripts |
+| `X-Content-Type-Options` | o navegador "adivinhar" o tipo de um arquivo e executá-lo | `nosniff` |
+| `frame-ancestors` (dentro da CSP) | clickjacking (sua página dentro de um iframe alheio) | `frame-ancestors 'none'` (ou liste quem pode embutir); `X-Frame-Options: DENY` é o equivalente antigo |
+| `Referrer-Policy` | vazar URLs com tokens ou IDs para outros sites | `strict-origin-when-cross-origin` |
+| `Permissions-Policy` | uso de câmera, microfone e localização por scripts de terceiros | `camera=(), microphone=(), geolocation=()` |
+
+Avisos importantes:
+- **HSTS só vale sobre HTTPS** e é difícil de desfazer: teste com `max-age` curto antes. `includeSubDomains` obriga todos os subdomínios a ter HTTPS; não use `preload` sem entender que entrar na lista dos navegadores é lento de reverter.
+- **CSP quebra páginas se for rígida demais.** Publique primeiro como `Content-Security-Policy-Report-Only`, leia os relatórios e só depois imponha. Scripts inline e de terceiros (analytics, chat) precisam de `nonce` ou de liberação explícita.
+- Headers **não substituem** correção de XSS (FE-02); são a segunda camada.
+
+**Express (pacote `helmet`):**
+
+```js
+import express from "express";
+import helmet from "helmet";
+
+const app = express();
+
+app.use(
+  helmet({
+    contentSecurityPolicy: {
+      directives: {
+        defaultSrc: ["'self'"],
+        scriptSrc: ["'self'"],
+        imgSrc: ["'self'", "data:"],
+        frameAncestors: ["'none'"],
+      },
+    },
+    strictTransportSecurity: { maxAge: 63072000, includeSubDomains: true },
+    referrerPolicy: { policy: "strict-origin-when-cross-origin" },
+  })
+);
+
+app.use((req, res, next) => {
+  res.setHeader("Permissions-Policy", "camera=(), microphone=(), geolocation=()");
+  next();
+});
+```
+
+**Next.js (`next.config.mjs`):**
+
+```js
+const headersDeSeguranca = [
+  { key: "Strict-Transport-Security", value: "max-age=63072000; includeSubDomains" },
+  { key: "X-Content-Type-Options", value: "nosniff" },
+  { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+  { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=()" },
+  { key: "Content-Security-Policy", value: "default-src 'self'; frame-ancestors 'none'" },
+];
+
+const nextConfig = {
+  async headers() {
+    return [{ source: "/(.*)", headers: headersDeSeguranca }];
+  },
+};
+
+export default nextConfig;
+```
+
+(A CSP tão simples assim quebra páginas que usam estilos ou scripts inline do Next.js; ajuste com `nonce` ou publique antes em modo Report-Only.)
+
+**Nginx:**
+
+```nginx
+add_header Strict-Transport-Security "max-age=63072000; includeSubDomains" always;
+add_header X-Content-Type-Options "nosniff" always;
+add_header Referrer-Policy "strict-origin-when-cross-origin" always;
+add_header Permissions-Policy "camera=(), microphone=(), geolocation=()" always;
+```
+
+**Como testar os headers:** `curl -I https://seu-site` e confira cada um; faça também a varredura em securityheaders.com e confirme no navegador (aba Console) que a CSP não bloqueou nada legítimo.
+
 ---
 
 ## API-10 · Endpoints esquecidos ou não documentados

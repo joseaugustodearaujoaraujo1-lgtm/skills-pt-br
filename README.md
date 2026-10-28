@@ -18,15 +18,15 @@ Agentes de código escrevem rápido, mas repetem erros previsíveis: falhas de s
 
 | Skill | Para quê | Tamanho |
 |---|---|---|
-| [`prevencao-de-falhas`](prevencao-de-falhas/SKILL.md) | Evitar, detectar e corrigir falhas de software: código gerado por IA, front-end, APIs, pagamentos, agentes/LLMs e infraestrutura | 86 falhas catalogadas |
+| [`prevencao-de-falhas`](prevencao-de-falhas/SKILL.md) | Evitar, detectar e corrigir falhas de software: código gerado por IA, front-end, APIs, pagamentos, agentes/LLMs e infraestrutura | 92 falhas catalogadas |
 | [`melhoria-de-design`](melhoria-de-design/SKILL.md) | Melhorar o design de sites existentes: tipografia, cor, layout, componentes, motion e conversão | 3 níveis (ajuste fino, repaginação, redesign) |
 | [`criatividade-aplicada`](criatividade-aplicada/SKILL.md) | Gerar ideias fora da caixa com método e entregar soluções viáveis | 5 fases, 3 intensidades |
 
 ## 🛡️ prevencao-de-falhas
 
-Um atlas de **86 falhas reais** com identificador estável (`IA-01`, `FE-05`, `API-07`, `FIN-03`, `AGT-02`, `OPS-04`…), cada uma com sintoma, causa, como corrigir e como evitar.
+Um atlas de **92 falhas reais** com identificador estável (`IA-01`, `FE-05`, `API-07`, `FIN-03`, `AGT-02`, `OPS-04`…), cada uma com sintoma, causa, como corrigir e como evitar.
 
-- **Áreas:** código gerado por IA, front-end, back-end e APIs (alinhado ao OWASP API Top 10 2023), pagamentos e dinheiro, agentes e LLMs (OWASP LLM 2025, "lethal trifecta") e infraestrutura.
+- **Áreas:** código gerado por IA, front-end, back-end e APIs (alinhado ao OWASP API Top 10 2023), pagamentos e dinheiro, agentes e LLMs (OWASP LLM 2025, "lethal trifecta"), infraestrutura e **LGPD e privacidade**.
 - **Linguagens:** guias para JavaScript/TypeScript, Python, Java/Kotlin, C#/.NET, Go, PHP e SQL.
 - **Modos de uso:** de uma checagem rápida até uma auditoria completa, com relatório e plano de correção.
 - Inclui `checklist-pre-deploy.md` e `casos-reais.md`.
