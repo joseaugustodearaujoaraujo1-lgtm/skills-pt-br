@@ -16,6 +16,7 @@ Vale para deploy, CI/CD, bancos em produção, nuvem, containers, dependências,
 - OPS-11 Sem proteção contra abuso ou DDoS
 - OPS-12 Dependência de terceiro sem plano B
 - OPS-13 Guardar dados além do necessário
+- OPS-14 Sem log de segurança
 
 ---
 
@@ -50,6 +51,19 @@ Vale para deploy, CI/CD, bancos em produção, nuvem, containers, dependências,
 **Por que importa:** em 19 de julho de 2024, uma atualização de configuração da CrowdStrike (Channel File 291), com um número de campos diferente do esperado, foi liberada para todos os clientes de uma vez e derrubou cerca de 8,5 milhões de máquinas Windows. Configuração é código e pode quebrar tudo.
 
 **Como corrigir:** rollout gradual (canary: 1% → 10% → 50% → 100%, com observação entre as etapas); feature flags para ligar funcionalidades sem deploy; rollback rápido e testado (um comando ou um clique); validação de arquivos de configuração com schema no CI e no carregamento; health checks que barram o avanço do rollout; evitar deploys em sextas à noite e vésperas de feriado sem plantão.
+
+**Plano de rollback (escreva antes do deploy, não durante o incidente):** um rollback que ninguém ensaiou costuma falhar justamente quando é preciso. Mantenha um arquivo curto (`ROLLBACK.md` no repositório) com:
+
+| Item | O que registrar |
+|---|---|
+| **Gatilho** | o que obriga a reverter (ex.: taxa de erro acima de X% por Y minutos, pagamento falhando, login fora do ar) |
+| **Quem decide** | uma pessoa nomeada e quem a substitui; sem comitê no meio do incidente |
+| **Como reverter o código** | o comando ou clique exato (redeploy da versão anterior, desligar a feature flag), testado em staging |
+| **Como reverter o banco** | migration reversível (OPS-04) ou, se for destrutiva, o backup a restaurar e o que se perde entre o backup e agora |
+| **Tempo esperado** | quanto leva de verdade, medido no ensaio |
+| **Depois** | como avisar usuários, registrar a causa e só tentar de novo com a correção testada |
+
+Regras: nunca publique uma migration que impeça voltar à versão anterior do código sem uma estratégia em duas etapas (adicionar, migrar, só depois remover); guarde as últimas versões publicáveis; ensaie o rollback em staging pelo menos uma vez por trimestre; confira que o rollback do código não reativa dados ou configurações já alteradas.
 
 ---
 
@@ -158,3 +172,48 @@ Vale para deploy, CI/CD, bancos em produção, nuvem, containers, dependências,
 **Por que importa:** dados antigos esquecidos (backups de sistemas legados, logs de anos, exportações em buckets) aumentam o estrago de qualquer vazamento e as obrigações da LGPD.
 
 **Como corrigir:** política de retenção por tipo de dado; exclusão automática (TTL, jobs de limpeza, lifecycle rules nos buckets); inventário de onde há dados pessoais; desativação completa de sistemas antigos, incluindo seus backups e buckets.
+
+---
+
+## OPS-14 · Sem log de segurança
+**Gravidade:** Alto
+
+**Por que importa:** sem registro de quem fez o quê, uma tentativa de invasão (força bruta, credential stuffing, uso de uma conta roubada, acesso indevido a dados de outro cliente) não é percebida na hora nem pode ser investigada depois. Também é o oposto de logar demais: logs que guardam senha, token ou documento completo viram eles mesmos um vazamento. O log de segurança é diferente do log de erros (OPS-07): responde a "quem tentou entrar, quem mudou permissão, quem leu dado sensível". Para dinheiro, veja a trilha de auditoria append-only em FIN-11.
+
+**O que registrar (um evento por linha, estruturado):**
+
+| Evento | Campos úteis |
+|---|---|
+| Login com sucesso e com falha | usuário (ou hash do e-mail), IP, user agent, motivo da falha |
+| Troca de senha, e-mail, MFA; reset solicitado/concluído | usuário, IP, horário em UTC |
+| Mudança de papel ou permissão | quem mudou, quem foi afetado, antes/depois |
+| Acesso negado (401/403) em rota protegida | rota, usuário, IP |
+| Leitura ou exportação de dado sensível | quem, qual recurso, quantos registros |
+| Uso de chave de API/token administrativo | identificador do token (nunca o valor) |
+
+**Como corrigir:**
+1. Logger estruturado (JSON) com **ID de correlação** por requisição e horário em UTC.
+2. **Redação automática** de campos sensíveis: senha, token, cookie, cabeçalho `Authorization`, número de documento e cartão. Nunca registre o corpo inteiro de requisições de login.
+3. Envie os logs para um local **fora do servidor da aplicação**, com acesso restrito e imutável quando possível; quem opera a aplicação não deve poder apagar o próprio rastro.
+4. Defina **retenção** (OPS-13): tempo suficiente para investigar (e para obrigações legais aplicáveis, como a guarda de registros de acesso do Marco Civil da Internet, art. 15, que deve ser confirmada com assessoria jurídica) e exclusão automática depois.
+5. Crie **alertas** sobre os padrões: muitas falhas de login do mesmo IP ou para a mesma conta, login de país incomum, aumento de 403, pico de exportações (OPS-07).
+
+```js
+import pino from "pino";
+
+export const log = pino({
+  redact: {
+    paths: ["req.headers.authorization", "req.headers.cookie", "*.password", "*.senha", "*.token"],
+    censor: "[REDIGIDO]",
+  },
+});
+
+export function logLoginFalhou(req, motivo) {
+  log.warn(
+    { evento: "login_falhou", ip: req.ip, requestId: req.id, motivo },
+    "Falha de login"
+  );
+}
+```
+
+**Como testar:** faça 10 logins errados e confira que há 10 eventos com IP e horário; confira que nenhuma linha de log contém a senha digitada; apague o log local e confirme que a cópia remota continua.

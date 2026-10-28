@@ -87,6 +87,8 @@ Para cada item, registre: **OK** (com evidência), **Falha** (com ID e local), *
 - [ ] Restauração de backup testada recentemente (ex.: últimos 30 dias) — OPS-01
 - [ ] Ambientes separados (contas, bancos, chaves); identificação visual do ambiente — OPS-02, OPS-10
 - [ ] Rollout gradual ou rollback testado; configuração validada no CI — OPS-03
+- [ ] **[Básico]** Plano de rollback escrito (gatilho, responsável, comando, banco, tempo) e ensaiado em staging — OPS-03
+- [ ] Log de segurança (logins, falhas, mudanças de permissão, acessos negados) sem dados sensíveis, fora do servidor da aplicação e com alertas — OPS-14
 - [ ] Migrations testadas em cópia com volume real, reversíveis ou em expand/contract — OPS-04
 - [ ] Lockfile, instalação reprodutível, scripts de instalação controlados, Actions por SHA, 2FA — OPS-05
 - [ ] Segredos inventariados e com rotação definida — OPS-06
