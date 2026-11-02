@@ -2,9 +2,9 @@
 
 # 🧰 Skills em português para agentes de código
 
-**Três skills para Claude Code (e agentes compatíveis) que transformam o assistente em um parceiro mais cuidadoso, mais criativo e com melhor senso de design.**
+**Cinco skills para Claude Code (e agentes compatíveis) que transformam o assistente em um parceiro mais cuidadoso, mais criativo, com melhor senso de design e capaz de levar um MVP do requisito à produção com atenção à lei.**
 
-![Skills](https://img.shields.io/badge/skills-3-6366F1?style=for-the-badge)
+![Skills](https://img.shields.io/badge/skills-5-6366F1?style=for-the-badge)
 ![Idioma](https://img.shields.io/badge/idioma-pt--BR-009C3B?style=for-the-badge)
 ![Licença](https://img.shields.io/badge/licen%C3%A7a-MIT-black?style=for-the-badge)
 
@@ -14,13 +14,15 @@
 
 ## Por que existem
 
-Agentes de código escrevem rápido, mas repetem erros previsíveis: falhas de segurança, interfaces com "cara de IA" e soluções óbvias para problemas que pedem outro olhar. Cada skill abaixo guia o agente por um método com **checklists, exemplos de código e IDs estáveis**, em vez de depender de sorte.
+Agentes de código escrevem rápido, mas repetem erros previsíveis: falhas de segurança, interfaces com "cara de IA", soluções óbvias para problemas que pedem outro olhar, projetos lançados sem escopo, sem documentação, sem teste de carga e sem olhar para a lei. Cada skill abaixo guia o agente por um método com **checklists, exemplos de código e IDs estáveis**, em vez de depender de sorte.
 
 | Skill | Para quê | Tamanho |
 |---|---|---|
 | [`prevencao-de-falhas`](prevencao-de-falhas/SKILL.md) | Evitar, detectar e corrigir falhas de software: código gerado por IA, front-end, APIs, pagamentos, agentes/LLMs e infraestrutura | 92 falhas catalogadas |
 | [`melhoria-de-design`](melhoria-de-design/SKILL.md) | Melhorar o design de sites existentes: tipografia, cor, layout, componentes, motion e conversão | 3 níveis (ajuste fino, repaginação, redesign) |
 | [`criatividade-aplicada`](criatividade-aplicada/SKILL.md) | Gerar ideias fora da caixa com método e entregar soluções viáveis | 5 fases, 3 intensidades |
+| [`mvp-end-to-end-delivery`](mvp-end-to-end-delivery/SKILL.md) | Conduzir qualquer MVP do requisito ao teste de carga, com portões de aprovação entre as etapas | 6 etapas, 7 referências |
+| [`dev-legal-compliance-br`](dev-legal-compliance-br/SKILL.md) | Transformar a lei brasileira em requisitos e documentos para reduzir o risco de processos e multas | 8 áreas jurídicas, 10 referências |
 
 ## 🛡️ prevencao-de-falhas
 
@@ -53,6 +55,40 @@ Separa **gerar ideias** (com liberdade) de **julgar** (com critério).
 
 Veja o [exemplo completo](criatividade-aplicada/references/exemplo-completo.md), um caso resolvido do começo ao fim.
 
+## 🚀 mvp-end-to-end-delivery
+
+Conduz **qualquer MVP** (loja virtual, SaaS, API, site com painel) em **seis etapas**, cada uma com entradas, atividades, entregáveis, critério de pronto e **portão de aprovação**: o agente só avança com a confirmação do usuário, e ações externas (deploy, DNS, tráfego de teste) exigem confirmação específica.
+
+| # | Etapa | Entregável principal |
+|---|---|---|
+| 1 | Requisitos, segurança e questões jurídicas | Escopo MoSCoW, RF/RNF com números, inventário de dados, modelagem de ameaças (STRIDE) e matriz jurídica |
+| 2 | Design do sistema | Arquitetura, modelo de dados, design system claro/escuro com contraste AA, storyboard de scrollytelling com GSAP e briefs de mídia |
+| 3 | API segura | Estrutura MVC + Service Layer, mapa OWASP API Top 10 (2023) com testes, bcrypt, JWT, validação, rate limit e endpoints da LGPD |
+| 4 | Documentação da API | OpenAPI 3.1, guia de uso, catálogo de erros, lint da spec e testes de contrato |
+| 5 | Deploy e DNS no Cloudflare | Pré-voo, CI/CD, troca segura de DNS (TTL, exportação, rollback), SSL Full (strict), DNSSEC, WAF, rate limit e headers de segurança |
+| 6 | Teste de carga com k6 | Cenários smoke, load, stress, spike e soak, thresholds, script-base e relatório de capacidade |
+
+- **Prompts de mídia com IA** (`media-prompts.md`): estrutura de prompt para imagens e vídeos ultrarrealistas, com comandos de realismo, exemplo completo e **compressão com ffmpeg para vídeos abaixo de ~1,4 MB**.
+- **Credenciais:** nunca pede nem aceita senhas, tokens ou chaves no chat; o usuário cria tokens com escopo mínimo e os guarda em variáveis de ambiente.
+- Diferencia sempre o que foi *planejado*, *aprovado*, *implementado*, *testado* e *publicado*.
+- Funciona sozinha e se integra com `dev-legal-compliance-br` (Etapas 1 e 5) e `prevencao-de-falhas` (Etapa 3).
+
+## ⚖️ dev-legal-compliance-br
+
+Traduz a **legislação brasileira** em requisitos técnicos, documentos e checklists, para construir sistemas que reduzam o risco de processos, multas e danos a usuários.
+
+- **Áreas cobertas:**
+  - **LGPD:** bases legais, direitos do titular, incidentes, dados de crianças, sanções.
+  - **CDC e e-commerce:** informações obrigatórias, arrependimento de 7 dias, garantia, SAC.
+  - **Marco Civil:** guarda de registros por 6 meses e responsabilidade por conteúdo de terceiros.
+  - **Propriedade intelectual:** licenças open source, fontes, imagens, marcas e conteúdo de IA.
+  - **Pagamentos e fiscal:** PCI DSS, Pix, nota fiscal e antifraude.
+  - **Crimes cibernéticos e testes autorizados:** inclui k6 e testes de segurança.
+  - **Contratos do desenvolvedor:** cessão de código, DPA, SLA e limites de responsabilidade.
+  - **Acessibilidade, cookies, marketing, ECA Digital e IA.**
+- **Entregas:** matriz jurídica, relatório de conformidade com severidade, `checklist-pre-lancamento.md` com itens críticos que bloqueiam o lançamento e `templates-documentos.md` (política de privacidade, termos, cookies, ROPA, RIPD, plano de incidentes e DPA).
+- **Honestidade:** não é aconselhamento jurídico e não garante ausência de processos; indica quando procurar advogado(a) ou contador(a) e manda confirmar a vigência de normas recentes.
+
 ## Como instalar
 
 Copie a pasta da skill desejada para o diretório de skills do seu agente. No Claude Code:
@@ -62,6 +98,8 @@ git clone https://github.com/joseaugustodearaujoaraujo1-lgtm/skills-pt-br.git
 cp -r skills-pt-br/prevencao-de-falhas ~/.claude/skills/
 cp -r skills-pt-br/melhoria-de-design ~/.claude/skills/
 cp -r skills-pt-br/criatividade-aplicada ~/.claude/skills/
+cp -r skills-pt-br/mvp-end-to-end-delivery ~/.claude/skills/
+cp -r skills-pt-br/dev-legal-compliance-br ~/.claude/skills/
 ```
 
 No Windows (PowerShell), o destino é `$HOME\.claude\skills\`. Reinicie a sessão do agente e a skill passa a ser sugerida quando a tarefa combinar com a descrição dela.
@@ -70,9 +108,11 @@ No Windows (PowerShell), o destino é `$HOME\.claude\skills\`. Reinicie a sessã
 
 ```text
 skills-pt-br/
-├── prevencao-de-falhas/    # SKILL.md + references/ (por área e por linguagem)
-├── melhoria-de-design/     # SKILL.md + references/ (incl. implementacao/)
-└── criatividade-aplicada/  # SKILL.md + references/ (técnicas, exemplo, modelos)
+├── prevencao-de-falhas/       # SKILL.md + references/ (por área e por linguagem)
+├── melhoria-de-design/        # SKILL.md + references/ (incl. implementacao/)
+├── criatividade-aplicada/     # SKILL.md + references/ (técnicas, exemplo, modelos)
+├── mvp-end-to-end-delivery/   # SKILL.md + references/ (uma por etapa + media-prompts)
+└── dev-legal-compliance-br/   # SKILL.md + references/ (por área jurídica + checklist + templates)
 ```
 
 Cada skill segue o mesmo formato: `SKILL.md` curto com o essencial e a pasta `references/` carregada **sob demanda**, para gastar poucos tokens.
@@ -81,6 +121,8 @@ Cada skill segue o mesmo formato: `SKILL.md` curto com o essencial e a pasta `re
 
 - Os exemplos de código em JavaScript e Python tiveram a **sintaxe validada**; os exemplos em Java, C#, Go e PHP **não foram compilados**.
 - Os exemplos de Tailwind e React não foram executados em um projeto real.
+- Os exemplos de `mvp-end-to-end-delivery` (Express, GSAP, OpenAPI, k6, ffmpeg e Cloudflare) **não foram executados nem testados em um projeto real**; confira versões e flags antes de usar.
+- Em `dev-legal-compliance-br`, os textos legais são resumos educativos escritos de memória, **sem verificação linha a linha nas fontes oficiais**, e **não substituem assessoria jurídica**. Confirme a vigência de normas recentes (ECA Digital, regulação de IA, responsabilidade de plataformas no art. 19 do Marco Civil, prazos da ANPD).
 - As skills ainda **não passaram por avaliação formal de comportamento** (evals).
 - Links de galerias de referência não foram abertos individualmente.
 
