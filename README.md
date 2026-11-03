@@ -2,9 +2,9 @@
 
 # 🧰 Skills em português para agentes de código
 
-**Cinco skills para Claude Code (e agentes compatíveis) que transformam o assistente em um parceiro mais cuidadoso, mais criativo, com melhor senso de design e capaz de levar um MVP do requisito à produção com atenção à lei.**
+**Seis skills para Claude Code (e agentes compatíveis) que transformam o assistente em um parceiro mais cuidadoso, mais criativo, com melhor senso de design e um catálogo de 10 estilos visuais, e capaz de levar um MVP do requisito à produção com atenção à lei.**
 
-![Skills](https://img.shields.io/badge/skills-5-6366F1?style=for-the-badge)
+![Skills](https://img.shields.io/badge/skills-6-6366F1?style=for-the-badge)
 ![Idioma](https://img.shields.io/badge/idioma-pt--BR-009C3B?style=for-the-badge)
 ![Licença](https://img.shields.io/badge/licen%C3%A7a-MIT-black?style=for-the-badge)
 
@@ -23,6 +23,7 @@ Agentes de código escrevem rápido, mas repetem erros previsíveis: falhas de s
 | [`criatividade-aplicada`](criatividade-aplicada/SKILL.md) | Gerar ideias fora da caixa com método e entregar soluções viáveis | 5 fases, 3 intensidades |
 | [`mvp-end-to-end-delivery`](mvp-end-to-end-delivery/SKILL.md) | Conduzir qualquer MVP do requisito ao teste de carga, com portões de aprovação entre as etapas | 6 etapas, 7 referências |
 | [`dev-legal-compliance-br`](dev-legal-compliance-br/SKILL.md) | Transformar a lei brasileira em requisitos e documentos para reduzir o risco de processos e multas | 8 áreas jurídicas, 10 referências |
+| [`estilos-de-design`](estilos-de-design/SKILL.md) | Escolher, descrever e aplicar estilos visuais de interface com paleta, tipografia, componentes, tokens CSS e acessibilidade | 10 estilos, 1 guia por estilo |
 
 ## 🛡️ prevencao-de-falhas
 
@@ -89,6 +90,28 @@ Traduz a **legislação brasileira** em requisitos técnicos, documentos e check
 - **Entregas:** matriz jurídica, relatório de conformidade com severidade, `checklist-pre-lancamento.md` com itens críticos que bloqueiam o lançamento e `templates-documentos.md` (política de privacidade, termos, cookies, ROPA, RIPD, plano de incidentes e DPA).
 - **Honestidade:** não é aconselhamento jurídico e não garante ausência de processos; indica quando procurar advogado(a) ou contador(a) e manda confirmar a vigência de normas recentes.
 
+## 🎭 estilos-de-design
+
+Um catálogo de **10 estilos de interface**, cada um descrito em um arquivo próprio e carregado **sob demanda** (a skill só lê o estilo escolhido, para gastar poucos tokens).
+
+| Estilo | Em uma frase |
+|---|---|
+| **Neomorphism** | Material único cinza-azulado com relevo e rebaixo por duas sombras opostas |
+| **Minimalism** | Marfim quente, verde-sálvia, tipografia fina e muito respiro |
+| **Brutalism** | Papel, tinta e verde-lima ácido, raio 0, bordas pretas e sombra dura |
+| **Glassmorphism** | Vidro fosco translúcido sobre fundo colorido, com glow azul |
+| **Claymorphism** | Argila inflada em creme, preto e dourado, com raios enormes |
+| **Bento Grid** | Mosaico modular de cards de tamanhos variados com um acento laranja |
+| **Pixel Art** | Interface 8-bit: grade de pixels, bevel, cantos em degrau e dither |
+| **Typography Luxury** | Preto profundo, dourado metálico e serifa Playfair |
+| **Dark Mode** | Tema escuro premium com elevação por luminosidade |
+| **Cyberpunk** | Neon ciano e magenta, cantos chanfrados, HUD e glitch |
+
+- **Cada guia tem 12 ou 13 seções:** essência, quando usar e evitar, paleta com hex, tipografia, grade e raios, sombras e profundidade, ícones, **todos os componentes** (botões, formulários, navegação, cards, tabelas, gráficos, feedback), motion, tokens e receitas em CSS, acessibilidade, erros comuns e compatibilidade com os outros estilos.
+- **No `SKILL.md`:** tabela de escolha rápida por necessidade, comparativo de tokens, matriz de compatibilidade e o passo a passo para montar um **seletor de temas** com vários estilos no mesmo site (tokens por `data-style`, overrides estruturais, fallbacks e `prefers-reduced-motion`).
+- **Origem:** 8 estilos foram descritos a partir de pranchas de referência (3 por estilo, geradas por IA). **Dark mode e cyberpunk não tinham pranchas**: seus guias foram escritos por boas práticas e convenções do gênero e devem ser tratados como propostas.
+- Combina com `melhoria-de-design` (diagnóstico e níveis de intervenção).
+
 ## Como instalar
 
 Copie a pasta da skill desejada para o diretório de skills do seu agente. No Claude Code:
@@ -100,6 +123,7 @@ cp -r skills-pt-br/melhoria-de-design ~/.claude/skills/
 cp -r skills-pt-br/criatividade-aplicada ~/.claude/skills/
 cp -r skills-pt-br/mvp-end-to-end-delivery ~/.claude/skills/
 cp -r skills-pt-br/dev-legal-compliance-br ~/.claude/skills/
+cp -r skills-pt-br/estilos-de-design ~/.claude/skills/
 ```
 
 No Windows (PowerShell), o destino é `$HOME\.claude\skills\`. Reinicie a sessão do agente e a skill passa a ser sugerida quando a tarefa combinar com a descrição dela.
@@ -112,7 +136,8 @@ skills-pt-br/
 ├── melhoria-de-design/        # SKILL.md + references/ (incl. implementacao/)
 ├── criatividade-aplicada/     # SKILL.md + references/ (técnicas, exemplo, modelos)
 ├── mvp-end-to-end-delivery/   # SKILL.md + references/ (uma por etapa + media-prompts)
-└── dev-legal-compliance-br/   # SKILL.md + references/ (por área jurídica + checklist + templates)
+├── dev-legal-compliance-br/   # SKILL.md + references/ (por área jurídica + checklist + templates)
+└── estilos-de-design/         # SKILL.md + references/ (um guia por estilo de interface)
 ```
 
 Cada skill segue o mesmo formato: `SKILL.md` curto com o essencial e a pasta `references/` carregada **sob demanda**, para gastar poucos tokens.
@@ -123,6 +148,7 @@ Cada skill segue o mesmo formato: `SKILL.md` curto com o essencial e a pasta `re
 - Os exemplos de Tailwind e React não foram executados em um projeto real.
 - Os exemplos de `mvp-end-to-end-delivery` (Express, GSAP, OpenAPI, k6, ffmpeg e Cloudflare) **não foram executados nem testados em um projeto real**; confira versões e flags antes de usar.
 - Em `dev-legal-compliance-br`, os textos legais são resumos educativos escritos de memória, **sem verificação linha a linha nas fontes oficiais**, e **não substituem assessoria jurídica**. Confirme a vigência de normas recentes (ECA Digital, regulação de IA, responsabilidade de plataformas no art. 19 do Marco Civil, prazos da ANPD).
+- Em `estilos-de-design`, as cores marcadas como *(aprox.)* ou *(derivado)* foram estimadas das pranchas ou deduzidas, e os contrastes citados são **estimativas, não medições**; confirme com a marca e com uma ferramenta de contraste antes de usar em produção. Os trechos de CSS não foram executados em um projeto real.
 - As skills ainda **não passaram por avaliação formal de comportamento** (evals).
 - Links de galerias de referência não foram abertos individualmente.
 
