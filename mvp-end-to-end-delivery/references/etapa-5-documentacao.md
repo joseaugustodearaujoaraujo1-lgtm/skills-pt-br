@@ -1,10 +1,10 @@
-# Etapa 4 — Documentação da API
+# Etapa 5 — Documentação da API
 
 **Objetivo:** permitir que outra pessoa (front-end, parceiro, auditor, você daqui a 6 meses) use e opere a API sem ler o código.
 
-**Entrada:** API implementada e testada. **Saída:** `docs/04-api/` e interface navegável.
+**Entrada:** API implementada e testada. **Saída:** `docs/05-api/` e interface navegável.
 
-## 4.1 Fonte única da verdade: OpenAPI 3.1
+## 5.1 Fonte única da verdade: OpenAPI 3.1
 
 - Escreva `openapi.yaml` (ou gere a partir do código com cuidado: spec gerada não revisada costuma ficar incompleta).
 - Estrutura mínima: `info`, `servers` (local, staging, produção), `tags`, `paths`, `components` (`schemas`, `securitySchemes`, `responses`, `parameters`, `examples`).
@@ -69,7 +69,7 @@ components:
             requestId: { type: string }
 ```
 
-## 4.2 Guia de uso (`guia.md`)
+## 5.2 Guia de uso (`guia.md`)
 
 Escreva como tutorial, com comandos executáveis:
 
@@ -83,21 +83,21 @@ Escreva como tutorial, com comandos executáveis:
 8. **Privacidade:** endpoints de direitos do titular e retenção.
 9. **Boas práticas de segurança para consumidores** (guardar tokens, não registrar dados sensíveis).
 
-## 4.3 Catálogo de erros (`erros.md`)
+## 5.3 Catálogo de erros (`erros.md`)
 
 Tabela com `code`, HTTP status, significado, ação recomendada ao cliente e se é reintentável. Exemplo: `VALIDATION_ERROR (422)`, `UNAUTHENTICATED (401)`, `FORBIDDEN (403)`, `NOT_FOUND (404)`, `CONFLICT (409)`, `RATE_LIMITED (429)`, `INTERNAL (500)`.
 
-## 4.4 Interface navegável
+## 5.4 Interface navegável
 
 - **Swagger UI** ou **Redoc** servidos a partir do `openapi.yaml`.
 - Em produção, proteja ou limite a documentação se ela expuser rotas administrativas; **nunca** publique chaves ou exemplos com dados reais.
 - Opcional: coleção Postman/Insomnia gerada da spec e SDK mínimo para o front.
 
-## 4.5 Qualidade da documentação
+## 5.5 Qualidade da documentação
 
 ```bash
-npx @stoplight/spectral-cli lint docs/04-api/openapi.yaml    # lint da spec
-npx @redocly/cli lint docs/04-api/openapi.yaml               # alternativa
+npx @stoplight/spectral-cli lint docs/05-api/openapi.yaml    # lint da spec
+npx @redocly/cli lint docs/05-api/openapi.yaml               # alternativa
 ```
 
 - **Teste de contrato:** valide respostas reais contra o schema (ex.: `jest-openapi`, `schemathesis`, `dredd`).
@@ -105,15 +105,15 @@ npx @redocly/cli lint docs/04-api/openapi.yaml               # alternativa
 - **Revisão cruzada:** compare rotas reais com a spec (rotas fantasmas ou não documentadas são risco de segurança — API9).
 - **Changelog** (`CHANGELOG.md`, formato *Keep a Changelog*) a cada versão.
 
-## 4.6 README do repositório
+## 5.6 README do repositório
 
 Inclua: propósito, requisitos, como instalar, variáveis de ambiente (referência ao `.env.example`), como rodar, testar, migrar banco, estrutura de pastas, como contribuir, como reportar vulnerabilidades (`SECURITY.md`), licença.
 
-## 4.7 Runbook operacional curto (`05-deploy.md` começa aqui)
+## 5.7 Runbook operacional curto (`06-deploy.md` começa aqui)
 
 Como subir, reverter (*rollback*), rotacionar segredos, restaurar backup, contato de incidentes, onde ficam logs e métricas.
 
-## 4.8 Critério de pronto e portão
+## 5.8 Critério de pronto e portão
 
 - [ ] `openapi.yaml` válida (lint sem erros) e cobrindo 100 % das rotas públicas do MVP.
 - [ ] Exemplos de requisição/resposta testados em staging.
@@ -121,4 +121,4 @@ Como subir, reverter (*rollback*), rotacionar segredos, restaurar backup, contat
 - [ ] Interface navegável publicada (com proteção adequada).
 - [ ] README, `.env.example`, `SECURITY.md` e CHANGELOG presentes.
 
-Peça aprovação antes da Etapa 5 (que envolve publicação e alterações externas).
+Peça aprovação antes da Etapa 6 (que envolve publicação e alterações externas).

@@ -39,7 +39,7 @@ Sem critério de aceite testável, o requisito não está pronto.
 
 - **Desempenho:** ex.: p95 < 500 ms nas rotas de leitura; LCP < 2,5 s em 4G.
 - **Disponibilidade:** ex.: 99,5 % (aceita ~3,6 h de indisponibilidade/mês).
-- **Capacidade:** ex.: 200 usuários simultâneos, 50 req/s sustentados (será validado na Etapa 6).
+- **Capacidade:** ex.: 200 usuários simultâneos, 50 req/s sustentados (será validado na Etapa 7).
 - **Segurança:** autenticação, autorização, criptografia em trânsito e em repouso, auditoria.
 - **Privacidade:** minimização, retenção, direitos do titular.
 - **Acessibilidade:** WCAG 2.2 AA (obrigação legal prática no Brasil, ver skill jurídica).

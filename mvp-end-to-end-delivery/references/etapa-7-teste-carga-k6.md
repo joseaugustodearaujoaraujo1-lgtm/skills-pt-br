@@ -1,10 +1,10 @@
-# Etapa 6 — Teste de carga com k6
+# Etapa 7 — Teste de carga com k6
 
 **Objetivo:** descobrir até onde o sistema escala, onde ele quebra primeiro e se cumpre as metas dos requisitos (RNF), com números.
 
 **Esta etapa gera tráfego em servidores. Exija confirmação explícita, ambiente e janela definidos.**
 
-## 6.0 Regras legais e éticas
+## 7.0 Regras legais e éticas
 
 - Teste **somente sistemas seus ou com autorização escrita** do responsável. Gerar carga em terceiros pode configurar infração contratual e, conforme o caso, crime (ver skill `dev-legal-compliance-br`).
 - Prefira **staging** equivalente à produção. Se for produção, combine janela, tenha plano de parada e comunique a equipe.
@@ -13,7 +13,7 @@
 - Nunca teste o gateway de pagamento real; use sandbox. Nunca dispare e-mails/SMS reais em massa.
 - Defina um **botão de parada** (abortar com `Ctrl+C` ou `thresholds` com `abortOnFail`).
 
-## 6.1 Instalação
+## 7.1 Instalação
 
 ```bash
 # Windows (winget)    winget install k6 --source winget
@@ -22,7 +22,7 @@
 k6 version
 ```
 
-## 6.2 Tipos de teste (execute nesta ordem)
+## 7.2 Tipos de teste (execute nesta ordem)
 
 | Tipo | Objetivo | Perfil | Duração típica |
 |------|----------|--------|----------------|
@@ -33,7 +33,7 @@ k6 version
 | **Soak** | Vazamento de memória/conexões | Carga moderada por horas | 2–8 h |
 | **Breakpoint** | Capacidade máxima | Taxa crescente até falhar | até quebrar |
 
-## 6.3 Definição das metas (vem da Etapa 1)
+## 7.3 Definição das metas (vem da Etapa 1)
 
 Converta RNF em *thresholds*:
 
@@ -47,7 +47,7 @@ Throughput alvo: 50 req/s sustentados
 
 Estime a carga com a Lei de Little: `VUs ≈ chegadas/s × tempo médio por sessão (s)`. Prefira **executores por taxa de chegada** (`ramping-arrival-rate`) a "N usuários", porque refletem melhor o tráfego real e não escondem lentidão (modelo aberto).
 
-## 6.4 Script base (`load-tests/loja.js`)
+## 7.4 Script base (`load-tests/loja.js`)
 
 ```js
 import http from 'k6/http';
@@ -129,21 +129,21 @@ Boas práticas do script:
 - Dados de teste únicos por VU/iteração (e-mails, chaves de idempotência); limpeza posterior no staging.
 - Simule também **erros esperados** (404, validação) em pequena proporção.
 
-## 6.5 Execução
+## 7.5 Execução
 
 ```bash
 # Fumaça
 k6 run -e BASE_URL=https://staging-api.exemplo.com/api/v1 -e TEST_USER=... -e TEST_PASS=... --vus 2 --duration 1m load-tests/loja.js
 
 # Carga completa com resumo em JSON e métricas brutas
-k6 run -e BASE_URL=... --summary-export=docs/06-carga/resumo.json --out json=docs/06-carga/bruto.json load-tests/loja.js
+k6 run -e BASE_URL=... --summary-export=docs/07-carga/resumo.json --out json=docs/07-carga/bruto.json load-tests/loja.js
 
 # Visualização opcional: Grafana + InfluxDB/Prometheus, ou k6 Cloud/Grafana Cloud (pode haver custo: pergunte antes)
 ```
 
 Defina `TEST_USER`/`TEST_PASS` no terminal do usuário (não cole no chat). Observe o servidor durante o teste (CPU, memória, conexões do banco, filas, 5xx).
 
-## 6.6 Interpretação dos resultados
+## 7.6 Interpretação dos resultados
 
 Métricas-chave: `http_req_duration` (p50/p95/p99), `http_req_failed`, `http_reqs` (RPS), `iterations`, `dropped_iterations` (indica que o sistema não acompanhou a taxa — saturação), `vus_max`.
 
@@ -161,7 +161,7 @@ Diagnóstico por sintoma:
 
 Regra: **mude uma variável por vez** e repita o teste; registre cada rodada.
 
-## 6.7 Relatório de capacidade (`docs/06-carga/relatorio.md`)
+## 7.7 Relatório de capacidade (`docs/07-carga/relatorio.md`)
 
 ```
 # Relatório de carga — <Sistema> — <data>
@@ -178,7 +178,7 @@ Regra: **mude uma variável por vez** e repita o teste; registre cada rodada.
 
 Seja honesto: se não houve ambiente equivalente à produção, diga que o resultado é **indicativo**, não garantia.
 
-## 6.8 Critério de pronto
+## 7.8 Critério de pronto
 
 - [ ] Smoke, load e stress executados (spike/soak conforme o risco).
 - [ ] Thresholds atingidos ou gargalos documentados com plano.

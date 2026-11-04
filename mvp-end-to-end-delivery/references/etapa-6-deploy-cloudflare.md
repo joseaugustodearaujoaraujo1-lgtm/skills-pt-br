@@ -1,17 +1,17 @@
-# Etapa 5 — Deploy e DNS no Cloudflare
+# Etapa 6 — Deploy e DNS no Cloudflare
 
 **Objetivo:** publicar o MVP com segurança, configurar o domínio no Cloudflare e garantir que dê para reverter.
 
 **Esta etapa tem efeitos externos, possíveis custos e risco de indisponibilidade. Exija confirmação explícita antes de cada ação externa.**
 
-## 5.0 Regras de credenciais
+## 6.0 Regras de credenciais
 
 - **Nunca** peça, receba ou digite senhas, códigos 2FA, chaves de API ou tokens no chat.
 - O usuário faz login nos painéis (registrador, Cloudflare, hospedagem) e cria **API tokens com escopo mínimo** (ex.: apenas `Zone → DNS → Edit` e `Zone → Zone → Read` na zona do domínio), guardando-os em variáveis de ambiente locais ou no gerenciador de segredos do CI.
 - Se o fluxo exigir clicar em painéis, oriente o usuário passo a passo; ele executa e confirma o resultado.
 - Tokens nunca vão para o Git, para logs ou para o front-end.
 
-## 5.1 Pré-voo (checklist antes de publicar)
+## 6.1 Pré-voo (checklist antes de publicar)
 
 - [ ] Etapas 1 a 4 aprovadas; testes passando.
 - [ ] Segredos de produção separados dos de staging; nenhum valor padrão ou de teste.
@@ -24,7 +24,7 @@
 - [ ] Plano de resposta a incidentes e responsável definidos.
 - [ ] Custos conhecidos e aprovados.
 
-## 5.2 Escolha da hospedagem (compare e recomende)
+## 6.2 Escolha da hospedagem (compare e recomende)
 
 | Opção | Bom para | Atenção |
 |-------|----------|---------|
@@ -36,13 +36,13 @@
 
 Verifique preços e limites **atuais** nas páginas oficiais antes de recomendar. Prefira provedores com região próxima aos usuários (latência) e com *backup* gerenciado.
 
-## 5.3 CI/CD mínimo
+## 6.3 CI/CD mínimo
 
 1. Pipeline: instalar → *lint* → testes → *audit* → *build* → deploy em **staging** → testes de fumaça → promoção manual para produção.
 2. Segredos no cofre do CI (não no repositório). Proteja a branch principal (revisão obrigatória).
 3. Versionamento por tag; *rollback* = reimplantar a tag anterior.
 
-## 5.4 DNS no Cloudflare — procedimento seguro
+## 6.4 DNS no Cloudflare — procedimento seguro
 
 ### Conceitos
 
@@ -96,7 +96,7 @@ curl -s -X POST -H "Authorization: Bearer $CF_API_TOKEN" -H "Content-Type: appli
 
 Mostre ao usuário o **diff** (o que será criado/alterado/removido) e peça confirmação antes de aplicar. Nunca apague registros que você não criou sem confirmar.
 
-## 5.5 Configurações de segurança no Cloudflare
+## 6.5 Configurações de segurança no Cloudflare
 
 - **SSL/TLS:** modo **Full (strict)** com certificado válido na origem (ou *Origin CA*); **Always Use HTTPS**; **Minimum TLS 1.2**; **Automatic HTTPS Rewrites**.
 - **HSTS:** ative só depois de confirmar que todo o site funciona em HTTPS (começar com `max-age` curto; `includeSubDomains`/`preload` apenas com certeza).
@@ -111,27 +111,27 @@ Mostre ao usuário o **diff** (o que será criado/alterado/removido) e peça con
 - **CAA** limitando as autoridades certificadoras.
 - **Contas:** 2FA na conta do Cloudflare e do registrador; papéis mínimos para colaboradores; alertas de mudança de DNS.
 
-## 5.6 Headers de segurança (na aplicação ou em *Transform Rules*)
+## 6.6 Headers de segurança (na aplicação ou em *Transform Rules*)
 
 `Strict-Transport-Security`, `Content-Security-Policy` (comece em modo *report-only*), `X-Content-Type-Options: nosniff`, `Referrer-Policy: strict-origin-when-cross-origin`, `Permissions-Policy`, `Cross-Origin-Opener-Policy`. Teste com `securityheaders.com` ou equivalente.
 
-## 5.7 Lançamento (go-live)
+## 6.7 Lançamento (go-live)
 
 1. Janela combinada com o usuário, fora do horário de pico.
 2. Deploy em staging → **testes de fumaça** (login, fluxo principal, pagamento em modo sandbox).
 3. Promoção para produção → repetir fumaça com dados controlados.
 4. Pagamento real de baixo valor (se aplicável) e estorno de teste, com autorização do usuário.
 5. Monitorar erros e latência por 24–48 h; manter TTL baixo até estabilizar.
-6. Registrar tudo em `docs/05-deploy.md`: versão, data, URLs, mudanças de DNS, responsáveis, plano de rollback.
+6. Registrar tudo em `docs/06-deploy.md`: versão, data, URLs, mudanças de DNS, responsáveis, plano de rollback.
 
-## 5.8 Pós-deploy
+## 6.8 Pós-deploy
 
 - Alertas de uptime, erro 5xx, latência p95, uso de CPU/memória, falhas de pagamento, expiração de certificado.
 - Rotina de patches e atualização de dependências.
 - Revisão de logs de segurança e de acesso (e retenção mínima legal de 6 meses para registros de acesso a aplicações).
 - Teste periódico de restauração de backup.
 
-## 5.9 Critério de pronto e portão
+## 6.9 Critério de pronto e portão
 
 - [ ] URL pública abre com HTTPS válido; redirecionamento HTTP→HTTPS ok.
 - [ ] Nameservers e registros conferidos com `dig`; e-mail do domínio funcionando.
@@ -139,6 +139,6 @@ Mostre ao usuário o **diff** (o que será criado/alterado/removido) e peça con
 - [ ] Origem não acessível diretamente (ou protegida).
 - [ ] Rollback ensaiado ou documentado com passos exatos.
 - [ ] Monitoramento e alertas ativos.
-- [ ] `docs/05-deploy.md` preenchido. Diferencie: *configurado*, *verificado*, *pendente*.
+- [ ] `docs/06-deploy.md` preenchido. Diferencie: *configurado*, *verificado*, *pendente*.
 
-Peça confirmação antes da Etapa 6 (gera tráfego de teste).
+Peça confirmação antes da Etapa 7 (gera tráfego de teste).

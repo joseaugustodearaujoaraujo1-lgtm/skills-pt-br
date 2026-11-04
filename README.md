@@ -21,7 +21,7 @@ Agentes de código escrevem rápido, mas repetem erros previsíveis: falhas de s
 | [`prevencao-de-falhas`](prevencao-de-falhas/SKILL.md) | Evitar, detectar e corrigir falhas de software: código gerado por IA, front-end, APIs, pagamentos, agentes/LLMs e infraestrutura | 92 falhas catalogadas |
 | [`melhoria-de-design`](melhoria-de-design/SKILL.md) | Melhorar o design de sites existentes: tipografia, cor, layout, componentes, motion e conversão | 3 níveis (ajuste fino, repaginação, redesign) |
 | [`criatividade-aplicada`](criatividade-aplicada/SKILL.md) | Gerar ideias fora da caixa com método e entregar soluções viáveis | 5 fases, 3 intensidades |
-| [`mvp-end-to-end-delivery`](mvp-end-to-end-delivery/SKILL.md) | Conduzir qualquer MVP do requisito ao teste de carga, com portões de aprovação entre as etapas | 6 etapas, 7 referências |
+| [`mvp-end-to-end-delivery`](mvp-end-to-end-delivery/SKILL.md) | Conduzir qualquer MVP do requisito ao teste de carga, com portões de aprovação entre as etapas | 7 etapas, 8 referências |
 | [`dev-legal-compliance-br`](dev-legal-compliance-br/SKILL.md) | Transformar a lei brasileira em requisitos e documentos para reduzir o risco de processos e multas | 8 áreas jurídicas, 10 referências |
 | [`estilos-de-design`](estilos-de-design/SKILL.md) | Escolher, descrever e aplicar estilos visuais de interface com paleta, tipografia, componentes, tokens CSS e acessibilidade | 10 estilos, 1 guia por estilo |
 | [`omelhorar-otmizacao-site`](omelhorar-otmizacao-site/SKILL.md) | Auditar e otimizar a velocidade de sites e apps web (front-end, API, banco, infra) com um checklist priorizado | 31 técnicas, 4 áreas + medição |
@@ -59,21 +59,22 @@ Veja o [exemplo completo](criatividade-aplicada/references/exemplo-completo.md),
 
 ## 🚀 mvp-end-to-end-delivery
 
-Conduz **qualquer MVP** (loja virtual, SaaS, API, site com painel) em **seis etapas**, cada uma com entradas, atividades, entregáveis, critério de pronto e **portão de aprovação**: o agente só avança com a confirmação do usuário, e ações externas (deploy, DNS, tráfego de teste) exigem confirmação específica.
+Conduz **qualquer MVP** (loja virtual, SaaS, API, site com painel) em **sete etapas**, cada uma com entradas, atividades, entregáveis, critério de pronto e **portão de aprovação**: o agente só avança com a confirmação do usuário, e ações externas (deploy, DNS, tráfego de teste) exigem confirmação específica.
 
 | # | Etapa | Entregável principal |
 |---|---|---|
 | 1 | Requisitos, segurança e questões jurídicas | Escopo MoSCoW, RF/RNF com números, inventário de dados, modelagem de ameaças (STRIDE) e matriz jurídica |
 | 2 | Design do sistema | Arquitetura, modelo de dados, design system claro/escuro com contraste AA, storyboard de scrollytelling com GSAP e briefs de mídia |
 | 3 | API segura | Estrutura MVC + Service Layer, mapa OWASP API Top 10 (2023) com testes, bcrypt, JWT, validação, rate limit e endpoints da LGPD |
-| 4 | Documentação da API | OpenAPI 3.1, guia de uso, catálogo de erros, lint da spec e testes de contrato |
-| 5 | Deploy e DNS no Cloudflare | Pré-voo, CI/CD, troca segura de DNS (TTL, exportação, rollback), SSL Full (strict), DNSSEC, WAF, rate limit e headers de segurança |
-| 6 | Teste de carga com k6 | Cenários smoke, load, stress, spike e soak, thresholds, script-base e relatório de capacidade |
+| 4 | Otimização de velocidade | `docs/04-performance.md` com métricas antes/depois e o checklist de 31 técnicas da skill `omelhorar-otmizacao-site` |
+| 5 | Documentação da API | OpenAPI 3.1, guia de uso, catálogo de erros, lint da spec e testes de contrato |
+| 6 | Deploy e DNS no Cloudflare | Pré-voo, CI/CD, troca segura de DNS (TTL, exportação, rollback), SSL Full (strict), DNSSEC, WAF, rate limit e headers de segurança |
+| 7 | Teste de carga com k6 | Cenários smoke, load, stress, spike e soak, thresholds, script-base e relatório de capacidade |
 
 - **Prompts de mídia com IA** (`media-prompts.md`): estrutura de prompt para imagens e vídeos ultrarrealistas, com comandos de realismo, exemplo completo e **compressão com ffmpeg para vídeos abaixo de ~1,4 MB**.
 - **Credenciais:** nunca pede nem aceita senhas, tokens ou chaves no chat; o usuário cria tokens com escopo mínimo e os guarda em variáveis de ambiente.
 - Diferencia sempre o que foi *planejado*, *aprovado*, *implementado*, *testado* e *publicado*.
-- Funciona sozinha e se integra com `dev-legal-compliance-br` (Etapas 1 e 5) e `prevencao-de-falhas` (Etapa 3).
+- Funciona sozinha e se integra com `dev-legal-compliance-br` (Etapas 1 e 6), `prevencao-de-falhas` (Etapa 3) e `omelhorar-otmizacao-site` (Etapa 4).
 
 ## ⚖️ dev-legal-compliance-br
 

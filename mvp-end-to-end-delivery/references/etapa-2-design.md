@@ -9,7 +9,7 @@
 1. **Escolha o menor desenho que atende os RNF.** Monólito modular costuma bastar para MVP; microsserviços só com justificativa concreta.
 2. **Compare até 3 opções** (ex.: Next.js + API Express; Next.js com rotas de API; backend gerenciado) em simplicidade, custo, segurança, manutenção e desempenho. Recomende uma e registre o ADR.
 3. **Diagrama de contexto e de containers** (texto/Mermaid): front, API, banco, cache, fila, provedores externos, CDN/WAF.
-4. **Ambientes:** local, staging e produção, com variáveis separadas. Staging é onde o teste de carga (Etapa 6) acontecerá.
+4. **Ambientes:** local, staging e produção, com variáveis separadas. Staging é onde o teste de carga (Etapa 7) acontecerá.
 
 ## 2.2 Modelo de dados
 

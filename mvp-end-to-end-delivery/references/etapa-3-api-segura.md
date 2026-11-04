@@ -61,7 +61,7 @@ Observações: valide `env` na inicialização (falhe cedo se faltar segredo); `
 | API1 BOLA (autorização por objeto) | Toda consulta filtra por `userId` do token (`WHERE id = $1 AND user_id = $2`); nunca confie em IDs do cliente | Teste: usuário A tenta ler/alterar recurso do B → 403/404 |
 | API2 Autenticação quebrada | Hash de senha com bcrypt (custo ≥ 12) ou Argon2id; `compare`; JWT curto (10–15 min) + *refresh* rotativo; bloqueio progressivo; MFA para admin; mensagens genéricas | Força bruta bloqueada; token expirado/forjado rejeitado |
 | API3 Autorização de propriedade (BOPLA) / exposição excessiva e *mass assignment* | Schemas de **resposta** explícitos (lista de campos permitidos); nunca `Model.create(req.body)`; não devolver `passwordHash`, flags internas | Enviar `role: "admin"` no cadastro → ignorado |
-| API4 Consumo irrestrito de recursos | Rate limit global e por rota sensível (login, recuperação), limite de payload, paginação máxima, timeouts, limite de upload | Exceder limites → 429/413; k6 na Etapa 6 |
+| API4 Consumo irrestrito de recursos | Rate limit global e por rota sensível (login, recuperação), limite de payload, paginação máxima, timeouts, limite de upload | Exceder limites → 429/413; k6 na Etapa 7 |
 | API5 Autorização de função (BFLA) | Middleware de papéis (RBAC) por rota; admin separado; negar por padrão | Usuário comum chama rota admin → 403 |
 | API6 Fluxos de negócio sensíveis | Idempotência em pagamento/pedido, limites por conta, antifraude simples, confirmação de e-mail | Repetir `POST /orders` com mesma chave → 1 pedido |
 | API7 SSRF | Se a API busca URLs: *allowlist* de hosts, bloquear IPs privados/metadata (169.254.169.254) | Tentar apontar para `http://127.0.0.1` → bloqueado |

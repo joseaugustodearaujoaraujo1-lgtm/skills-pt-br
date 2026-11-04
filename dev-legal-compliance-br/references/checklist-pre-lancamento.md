@@ -1,6 +1,6 @@
 # Checklist jurídico pré-lançamento
 
-Use na véspera do deploy (Etapa 5 da skill `mvp-end-to-end-delivery`). Para cada item, registre **evidência** (link, print, arquivo, commit) e **status**: ✅ verificado · 🟡 parcial · ❌ pendente · N/A. **Itens ❌ marcados como Crítico impedem o lançamento.**
+Use na véspera do deploy (Etapa 6 da skill `mvp-end-to-end-delivery`). Para cada item, registre **evidência** (link, print, arquivo, commit) e **status**: ✅ verificado · 🟡 parcial · ❌ pendente · N/A. **Itens ❌ marcados como Crítico impedem o lançamento.**
 
 ## A. Dados pessoais (LGPD)
 
