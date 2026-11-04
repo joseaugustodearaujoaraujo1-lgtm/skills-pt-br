@@ -64,7 +64,7 @@ Conduz **qualquer MVP** (loja virtual, SaaS, API, site com painel) em **sete eta
 | # | Etapa | Entregável principal |
 |---|---|---|
 | 1 | Requisitos, segurança e questões jurídicas | Escopo MoSCoW, RF/RNF com números, inventário de dados, modelagem de ameaças (STRIDE) e matriz jurídica |
-| 2 | Design do sistema | Arquitetura, modelo de dados, design system claro/escuro com contraste AA, storyboard de scrollytelling com GSAP e briefs de mídia |
+| 2 | Design do sistema | Arquitetura, modelo de dados, **logo futurista e ativos-chave (ícones, 3D, motions) aprovados antes do layout**, design system claro/escuro com contraste AA, storyboard de scrollytelling com GSAP e briefs de mídia |
 | 3 | API segura | Estrutura MVC + Service Layer, mapa OWASP API Top 10 (2023) com testes, bcrypt, JWT, validação, rate limit e endpoints da LGPD |
 | 4 | Otimização de velocidade | `docs/04-performance.md` com métricas antes/depois e o checklist de 31 técnicas da skill `omelhorar-otmizacao-site` |
 | 5 | Documentação da API | OpenAPI 3.1, guia de uso, catálogo de erros, lint da spec e testes de contrato |
