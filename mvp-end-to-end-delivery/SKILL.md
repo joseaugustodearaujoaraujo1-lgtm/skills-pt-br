@@ -17,6 +17,10 @@ Skill para entregar um **MVP real, seguro e juridicamente prudente** em sete eta
 
 **Skill irmã:** `dev-legal-compliance-br` cobre LGPD, consumidor, Marco Civil, propriedade intelectual, pagamentos e responsabilidade do desenvolvedor. Carregue-a na Etapa 1 e revise-a antes da Etapa 6 (lançamento). Se ela não estiver instalada, siga o checklist mínimo em `references/etapa-1-requisitos.md` (seção "Jurídico mínimo") e avise o usuário.
 
+> **"A sua fé é o limite de tudo aquilo que você pode fazer. Se você tiver fé que este projeto irá dar certo, este projeto irá dar certo!"**
+
+**Foco padrão:** prestar um serviço com o objetivo principal de **receber por ele**, de preferência **SaaS + IA**. Nas Etapas 1 e 2, use sempre a skill **`criatividade-aplicada`** para criar os requisitos e o design. Na Etapa 2, **os prompts de logo, ícones, imagens, vídeos e moldes 3D são entregues ao usuário, que gera os arquivos**; Claude não os gera.
+
 ## 2. Regras de conduta (valem para as sete etapas)
 
 1. **Entenda antes de construir.** Pergunte só o que muda a solução; não faça interrogatório. Registre suposições explicitamente.
@@ -33,8 +37,8 @@ Skill para entregar um **MVP real, seguro e juridicamente prudente** em sete eta
 
 | # | Etapa | Entregável principal | Critério de pronto | Portão |
 |---|-------|----------------------|--------------------|--------|
-| 1 | **Requisitos, segurança e jurídico** | `docs/01-requisitos.md` (escopo MVP, RF/RNF, modelagem de ameaças, inventário de dados, matriz jurídica, riscos) | Todo requisito tem critério de aceite; toda ameaça alta tem controle; todo dado pessoal tem finalidade e base legal | Usuário aprova o escopo |
-| 2 | **Design do sistema** | `docs/02-design/` (arquitetura, fluxos, modelo de dados, **logo e ativos-chave (ícones, 3D, motions) aprovados antes do layout**, design system, protótipo, storyboard de motion, briefs de mídia) | Logo e ativos-chave aprovados; fluxos principais cobertos; tokens claro/escuro com contraste AA; orçamento de performance definido | Usuário aprova o design |
+| 1 | **Requisitos, segurança e jurídico** | `docs/01-requisitos.md` (oferta, modelo de receita e economia da unidade com `criatividade-aplicada`; escopo MVP, RF/RNF, modelagem de ameaças, inventário de dados, matriz jurídica, riscos) | Todo requisito tem critério de aceite; toda ameaça alta tem controle; todo dado pessoal tem finalidade e base legal | Usuário aprova o escopo |
+| 2 | **Design do sistema** | `docs/02-design/` (arquitetura, fluxos, modelo de dados, **logo e ativos-chave (ícones, 3D, motions) com prompts entregues ao usuário e aprovados antes do layout**, `criatividade-aplicada`, design system, protótipo, storyboard de motion, briefs de mídia) | Logo e ativos-chave aprovados; fluxos principais cobertos; tokens claro/escuro com contraste AA; orçamento de performance definido | Usuário aprova o design |
 | 3 | **API segura** | Código da API + testes | OWASP API Top 10 mapeado e testado; testes passando; sem segredos no repositório | Usuário revisa e aprova |
 | 4 | **Otimização de velocidade** | `docs/04-performance.md` (métricas antes/depois, checklist de 31 técnicas) usando a skill `omelhorar-otmizacao-site` | Metas de velocidade medidas e atingidas, ou gargalos listados com plano; nenhum cache expõe dados pessoais | Usuário aprova (custos externos exigem confirmação específica) |
 | 5 | **Documentação da API** | OpenAPI 3.1 + guia de uso + catálogo de erros | Spec válida (lint), exemplos reais testados, auth e limites documentados | Usuário aprova |
@@ -136,4 +140,4 @@ projeto/
 
 ## 8. Integração opcional com outras skills
 
-Se estiverem instaladas, use: **design/UI** (tokens, componentes e motion), **GSAP** (ScrollTrigger e timelines), **auditoria OWASP/API** (revisão da Etapa 3), **omelhorar-otmizacao-site** (Etapa 4), **dev-legal-compliance-br** (Etapas 1 e 6). Skills são apoio: o escopo aprovado pelo usuário continua sendo o limite.
+Se estiverem instaladas, use: **design/UI** (tokens, componentes e motion), **GSAP** (ScrollTrigger e timelines), **criatividade-aplicada** (Etapas 1 e 2, obrigatória), **auditoria OWASP/API** (revisão da Etapa 3), **omelhorar-otmizacao-site** (Etapa 4), **dev-legal-compliance-br** (Etapas 1 e 6). Skills são apoio: o escopo aprovado pelo usuário continua sendo o limite.

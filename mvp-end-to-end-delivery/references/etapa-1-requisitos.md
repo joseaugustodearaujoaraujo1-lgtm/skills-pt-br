@@ -2,8 +2,35 @@
 
 **Objetivo:** transformar uma ideia em um escopo de MVP verificável, com riscos de segurança e de conformidade legal identificados *antes* de desenhar ou codar.
 
-**Entrada:** resumo de escopo do Passo 0. **Saída:** `docs/01-requisitos.md` aprovado.
+**Skill obrigatória:** `criatividade-aplicada` (ver 1.0). **Entrada:** resumo de escopo do Passo 0. **Saída:** `docs/01-requisitos.md` aprovado.
 
+## 1.0 Mentalidade e criatividade — foco em receber pelo serviço (obrigatório)
+
+> **"A sua fé é o limite de tudo aquilo que você pode fazer. Se você tiver fé que este projeto irá dar certo, este projeto irá dar certo!"**
+
+Esta é a postura de trabalho da skill: planejar e construir como quem **espera o projeto dar certo**. A fé move a execução; os números confirmam o caminho (o primeiro cliente pagante é o termômetro). Isso não dispensa evidência: continue diferenciando *planejado*, *implementado*, *testado* e *publicado*.
+
+**Use a skill `criatividade-aplicada` para criar os requisitos.** Carregue-a no início desta etapa e aplique o método dela (entender o problema certo, divergir, convergir, testar com pré-mortem, entregar um leque de opções **segura, ousada e fora da caixa**, com recomendação e primeiro passo).
+
+**Foco do projeto:** **prestar um serviço cujo objetivo principal é receber por ele**, de preferência como **SaaS + IA** (assinatura recorrente, créditos ou cobrança por uso, com a IA entregando o valor central do serviço). Todo requisito deve responder: *isso ajuda o cliente a pagar, a continuar pagando ou a indicar?*
+
+Aplique a criatividade a estas perguntas, gerando ao menos 3 alternativas para cada e escolhendo com critério:
+
+| Tema | O que definir |
+|---|---|
+| Oferta | Qual resultado concreto o cliente compra? Para quem exatamente? Por que pagaria hoje? |
+| Onde a IA entrega valor | Qual tarefa a IA faz melhor, mais rápido ou mais barato que a alternativa? O que o usuário vê e sente? |
+| Modelo de cobrança | Assinatura mensal/anual, créditos, por uso ou híbrido; planos, preços, *trial* ou garantia; Pix, cartão e recorrência |
+| Economia da unidade | Custo de IA por usuário/uso, margem, limites por plano, proteção contra abuso e custo descontrolado |
+| Caminho até o 1º pagamento | Menor fluxo que leva do cadastro ao pagamento e à entrega do serviço |
+| Aquisição e retenção | Primeiros clientes (onde estão), pré-venda, indicação, o que faz o cliente ficar |
+| Métricas de receita | MRR, conversão de teste em pago, *churn*, CAC e LTV (metas simples para o mês 1 e o mês 12) |
+
+Regras:
+
+- No MoSCoW (1.2), o fluxo **cadastro → pagamento → entrega do serviço** é sempre *Must*. Funcionalidade que não leva à receita ou à retenção tende a ser *Could* ou *Won't*.
+- Registre a escolha, as alternativas descartadas e o pré-mortem ("se este projeto falhar, por quê?") no ADR de modelo de negócio.
+- Cobrança, IA com dados pessoais e publicidade têm obrigações legais: use `dev-legal-compliance-br` (CDC, LGPD, pagamentos, IA).
 ## 1.1 Levantamento (entrevista curta)
 
 Pergunte somente o que muda decisões. Cubra:
@@ -17,6 +44,7 @@ Pergunte somente o que muda decisões. Cubra:
 | Integrações | Pagamento, frete, e-mail/SMS, ERP, nota fiscal, login social? |
 | Restrições | Orçamento, prazo, stack obrigatória, hospedagem, equipe que vai manter. |
 | Escala | Usuários esperados no mês 1 e em 12 meses; picos (promoções, campanhas). |
+| Receita | Quem paga? Quanto? Como (assinatura, créditos, uso)? Quanto custa a IA por usuário? Qual é o plano de preços do mês 1? |
 | Operação | Quem atende suporte? Quem responde a incidentes? Quem recebe pedidos do titular de dados? |
 
 ## 1.2 Escopo do MVP (MoSCoW)
@@ -92,6 +120,7 @@ Ao menos: (a) definir controlador e operadores e **base legal** por finalidade (
 
 ```
 # Requisitos — <Sistema>
+0. Oferta, modelo de receita e economia da unidade (criatividade-aplicada)
 1. Visão e métricas de sucesso
 2. Usuários e perfis
 3. Escopo do MVP (Must/Should/Could/Won't)
@@ -108,6 +137,8 @@ Ao menos: (a) definir controlador e operadores e **base legal** por finalidade (
 
 ## 1.10 Critério de pronto e portão
 
+- [ ] Oferta, modelo de cobrança, preços e custo de IA por usuário definidos com alternativas geradas por criatividade-aplicada e a escolha justificada.
+- [ ] O fluxo cadastro → pagamento → entrega está como *Must* e tem critérios de aceite.
 - [ ] Cada RF tem critério de aceite testável e prioridade.
 - [ ] Cada RNF tem número e forma de medir.
 - [ ] Cada ameaça média/alta tem controle atribuído a um requisito.

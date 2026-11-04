@@ -2,8 +2,15 @@
 
 **Objetivo:** definir *como* o sistema funciona e *como* ele se apresenta, antes de programar. Cobre arquitetura, dados, experiência do usuário, identidade visual (logo e ativos-chave), motion e mídia.
 
-**Entrada:** `docs/01-requisitos.md` aprovado. **Saída:** `docs/02-design/` aprovado.
+**Skill obrigatória:** `criatividade-aplicada` (ver 2.0). **Entrada:** `docs/01-requisitos.md` aprovado. **Saída:** `docs/02-design/` aprovado.
 
+## 2.0 Mentalidade, criatividade e prompts para o usuário (obrigatório)
+
+> **"A sua fé é o limite de tudo aquilo que você pode fazer. Se você tiver fé que este projeto irá dar certo, este projeto irá dar certo!"**
+
+1. **Use `criatividade-aplicada` também no design.** Gere alternativas (segura, ousada, fora da caixa) para a identidade, a experiência de contratação e os momentos de valor da IA, sempre servindo ao objetivo do projeto: **prestar um serviço e receber por ele (SaaS + IA)**. Priorize telas e componentes que levam ao pagamento: página de oferta, planos e preços, checkout/assinatura, *onboarding* até o primeiro resultado da IA, painel de uso e créditos, e tela de renovação ou upgrade.
+2. **Quem gera os ativos visuais é o usuário.** Claude **não gera** logo, ícones, imagens, vídeos nem moldes de componentes 3D. Claude **entrega os prompts prontos** (um bloco copiável por ativo, ver 2.4.6) e o usuário os gera em suas ferramentas e devolve os arquivos. Só depois disso Claude vetoriza, integra e revisa.
+3. Não avance para o layout de alta fidelidade antes de o usuário devolver e aprovar a logo e os ativos-chave.
 ## 2.1 Arquitetura proporcional
 
 1. **Escolha o menor desenho que atende os RNF.** Monólito modular costuma bastar para MVP; microsserviços só com justificativa concreta.
@@ -40,8 +47,8 @@ Processo:
 
 1. **Brief:** nome, o que o sistema faz em uma frase, 3 adjetivos de marca, cores proibidas, onde a logo aparece (header, favicon, app, redes, documentos).
 2. **Três conceitos** distintos (ex.: monograma, símbolo abstrato, letra reinventada) com a justificativa de cada um e recomendação de um.
-3. **Gere as explorações** com IA usando o prompt estruturado abaixo (e os comandos de realismo e a estrutura de `references/media-prompts.md`).
-4. **Refine e vetorize:** logo gerada por IA é só exploração. Redesenhe em **SVG limpo** (poucas formas, curvas suaves, sem texto rasterizado), em grade, e valide em 16, 32 e 64 px.
+3. **Entregue os prompts ao usuário** (estrutura de `references/media-prompts.md` e o prompt de exemplo abaixo). É o usuário quem gera as explorações e devolve as imagens; Claude não gera a logo.
+4. **Refine e vetorize** (com as imagens devolvidas pelo usuário): logo gerada por IA é só exploração. Redesenhe em **SVG limpo** (poucas formas, curvas suaves, sem texto rasterizado), em grade, e valide em 16, 32 e 64 px.
 5. **Entregue as variações:** ícone (squircle), símbolo sozinho, versão horizontal com nome, monocromática (clara e escura), favicon (16/32/48), ícone *maskable* com margem de segurança e versão para fundo claro e escuro.
 6. **Regras de uso:** área de respiro, tamanho mínimo, o que não fazer (distorcer, trocar cor, aplicar sombra).
 
@@ -66,13 +73,13 @@ stock-icon look, existing brand logos, watermark, mockup, hands, photo backgroun
 - Escolha **uma biblioteca** coerente (ex.: Lucide ou Phosphor) para todo o sistema e liste os ícones de navegação, ações, estados e status que serão usados.
 - Desenhe **de 3 a 6 ícones próprios** só onde a marca precisa de identidade (ex.: categoria principal, empty state, conquista), no mesmo traço da biblioteca.
 - Especificação única: grade 24 px, traço 1,5–2 px, cantos e pontas padronizados, tamanhos 16/20/24, cor por token (`currentColor`).
-- Entregue como SVG (sprite ou componentes). Ícone sozinho precisa de `aria-label`; decorativo leva `aria-hidden="true"`.
+- Entregue **prompts** para o usuário gerar os ícones próprios (uma folha por categoria, rótulos únicos e proporção definida fora do prompt) e, depois, Claude os converte em SVG (sprite ou componentes). Ícone sozinho precisa de `aria-label`; decorativo leva `aria-hidden="true"`.
 
 ### 2.4.3 Componentes 3D (só se o site tiver)
 
 Decida se o 3D **justifica o peso**: ele deve explicar ou vender algo (produto, hero, visualização de dados), não só enfeitar. Para cada peça 3D, especifique:
 
-- **Objeto, ângulos, iluminação, materiais e paleta** (coerentes com o acento da logo) e a **interação** (rotação no hover ou no scroll, zoom, estados).
+- **Prompts para o usuário gerar o molde 3D** (texto-para-3D ou imagem-para-3D) e vistas de referência (frente, lado, três-quartos), sem Claude gerar o modelo; depois Claude otimiza e integra o `.glb` devolvido. (coerentes com o acento da logo) e a **interação** (rotação no hover ou no scroll, zoom, estados).
 - **Formato e orçamento:** glTF/GLB com compressão (Draco ou Meshopt, texturas KTX2/WebP), alvo de **≤ 1–2 MB** por modelo.
 - **Tecnologia proporcional:** `<model-viewer>` para um objeto simples; Three.js/React Three Fiber para cenas interativas; alternativa leve: **renders pré-gerados** (WebP/AVIF ou vídeo curto) ou CSS 3D.
 - **Carregamento e fallback:** *poster* estático imediato, carregamento tardio (nunca bloquear o LCP), pausa fora da viewport, limite de *pixel ratio*, fallback sem WebGL e versão estática com `prefers-reduced-motion`. Texto essencial permanece no HTML e a imagem tem `alt`.
@@ -91,6 +98,17 @@ Liste cada animação do sistema numa tabela em `docs/02-design/motion.md`:
 
 Regras: anime só `transform` e `opacity`; uma ideia por movimento; nada piscando mais de 3 vezes por segundo; respeite `prefers-reduced-motion`. O scrollytelling detalhado segue a seção 2.6.
 
+### 2.4.6 Pacote de prompts para o usuário gerar
+
+Entregue em `docs/02-design/prompts-ativos.md` (e mostre no chat) **um bloco copiável por ativo**: logo e variações, folhas de ícones, imagens de hero e de seções, vídeos e moldes 3D. Cada bloco deve ter:
+
+- **Nome do ativo**, uso no site, nome do arquivo final, formato e **peso máximo** (vídeo de fundo ≤ ~1,4 MB; imagem em WebP/AVIF, tipicamente ≤ 150 KB; modelo 3D ≤ 1–2 MB).
+- **Linha de comandos** no início (ex.: `/8k /ultrarealist /real /ultra-detailed /sharp-focus`, ajustada ao estilo; para pixel art troque os tags de realismo por tags de pixel).
+- **Prompt em inglês**, com cena, estilo, paleta do acento, composição e vista; **proporção e duração só no campo de parâmetros**, nunca dentro da descrição (evita o texto vazar para a imagem).
+- **Negative prompt** (texto embaralhado, marcas registradas, pessoas reais, marca d'água) e, em cenas com texto, rótulos curtos e únicos.
+- **Dica de ferramenta** (imagem, vídeo, texto-para-3D) e **como devolver**: arquivo, pasta (`assets/brand/`, `assets/img/`, `assets/3d/`) e o que Claude fará depois (vetorizar, comprimir com ffmpeg, otimizar o GLB, integrar).
+
+Peça ao usuário que devolva os arquivos e confirme os escolhidos; só então siga para o layout.
 ### 2.4.5 Ficha dos ativos-chave e portão
 
 Entregue em `docs/02-design/identidade.md` uma ficha com: logo (conceito escolhido e variações), paleta derivada, ícones (biblioteca e customizados), peças 3D (se houver), tabela de motions e o que **ficou de fora do MVP**. **Peça aprovação do usuário** antes de partir para o layout de alta fidelidade e para os briefs de mídia.
@@ -172,7 +190,7 @@ Documente em `docs/02-design/motion.md`: capítulos, mensagem de cada um, gatilh
 
 ## 2.7 Briefs de mídia (imagens e vídeos gerados por IA)
 
-Use `references/media-prompts.md`. Entregue: lista de ativos (nome, uso, proporção, peso máximo), prompt estruturado, descrição da cena, e comandos de compressão. **Meta de peso:** vídeos curtos de fundo ≤ ~1,4 MB; imagens em WebP/AVIF, tipicamente ≤ 150 KB.
+Use `references/media-prompts.md`. **Os prompts são entregues ao usuário, que gera os arquivos** (ver 2.4.6). Entregue: lista de ativos (nome, uso, proporção, peso máximo), prompt estruturado, descrição da cena, e comandos de compressão. **Meta de peso:** vídeos curtos de fundo ≤ ~1,4 MB; imagens em WebP/AVIF, tipicamente ≤ 150 KB.
 
 ## 2.8 Orçamento de performance e SEO
 
@@ -195,6 +213,7 @@ arquitetura.md   (diagramas, ADRs, ambientes)
 dados.md         (ER, índices, retenção, colunas pessoais)
 fluxos.md        (jornadas, estados de tela, wireframes)
 identidade.md    (logo, ícones, peças 3D, tabela de motions; SVGs em assets/brand/)
+prompts-ativos.md (prompts prontos para o usuário gerar logo, ícones, imagens, vídeos e moldes 3D)
 design-system.md (tokens claro/escuro, componentes, contrastes medidos)
 motion.md        (storyboard do scrollytelling, GSAP, fallback)
 midia.md         (briefs e prompts de imagem/vídeo)
@@ -209,6 +228,8 @@ performance.md   (orçamento e plano de medição)
 - [ ] Logo com variações em SVG, ícones principais, peças 3D (se houver) e motions principais definidos e aprovados antes do layout completo.
 - [ ] Tokens para dois temas com contraste AA medido.
 - [ ] Storyboard de motion com fallback para `prefers-reduced-motion`.
+- [ ] Prompts de todos os ativos entregues ao usuário (um bloco por ativo) e os arquivos devolvidos e aprovados.
+- [ ] Telas de oferta, planos, checkout e uso da IA previstas no design (foco em receita).
 - [ ] Briefs de mídia com limite de peso.
 - [ ] Usuário aprovou o design (pode ser por protótipo clicável).
 
