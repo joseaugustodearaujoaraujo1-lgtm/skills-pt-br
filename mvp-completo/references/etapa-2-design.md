@@ -2,15 +2,16 @@
 
 **Objetivo:** definir *como* o sistema funciona e *como* ele se apresenta, antes de programar. Cobre arquitetura, dados, experiência do usuário, identidade visual (logo e ativos-chave), motion e mídia.
 
-**Skill obrigatória:** `criatividade-aplicada` (ver 2.0). **Entrada:** `docs/01-requisitos.md` aprovado. **Saída:** `docs/02-design/` aprovado.
+**Skills:** `criatividade` (obrigatória, ver 2.0), `design-completo` e `estilos-paletas-design`. **Entrada:** `docs/01-requisitos.md` aprovado. **Saída:** `docs/02-design/` aprovado.
 
 ## 2.0 Mentalidade, criatividade e prompts para o usuário (obrigatório)
 
 > **"A sua fé é o limite de tudo aquilo que você pode fazer. Se você tiver fé que este projeto irá dar certo, este projeto irá dar certo!"**
 
-1. **Use `criatividade-aplicada` também no design.** Gere alternativas (segura, ousada, fora da caixa) para a identidade, a experiência de contratação e os momentos de valor da IA, sempre servindo ao objetivo do projeto: **prestar um serviço e receber por ele (SaaS + IA)**. Priorize telas e componentes que levam ao pagamento: página de oferta, planos e preços, checkout/assinatura, *onboarding* até o primeiro resultado da IA, painel de uso e créditos, e tela de renovação ou upgrade.
+1. **Use `criatividade` também no design.** Gere alternativas (segura, ousada, fora da caixa) para a identidade, a experiência de contratação e os momentos de valor da IA, sempre servindo ao objetivo do projeto: **prestar um serviço e receber por ele (SaaS + IA)**. Priorize telas e componentes que levam ao pagamento: página de oferta, planos e preços, checkout/assinatura, *onboarding* até o primeiro resultado da IA, painel de uso e créditos, e tela de renovação ou upgrade.
 2. **Quem gera os ativos visuais é o usuário.** Claude **não gera** logo, ícones, imagens, vídeos nem moldes de componentes 3D. Claude **entrega os prompts prontos** (um bloco copiável por ativo, ver 2.4.6) e o usuário os gera em suas ferramentas e devolve os arquivos. Só depois disso Claude vetoriza, integra e revisa.
-3. Não avance para o layout de alta fidelidade antes de o usuário devolver e aprovar a logo e os ativos-chave.
+3. **Use as skills de design:** `design-completo` (modo A, do zero) conduz o design; `estilos-paletas-design` fornece estilos, paletas e tokens. **Ordem obrigatória:** (1) primeiro a **logo** e os **componentes 3D** (se houver), com os prompts entregues ao usuário (2.4); (2) **depois** monte o **estilo e a paleta** do sistema com `estilos-paletas-design` (2.5), derivados da logo aprovada; (3) só então o layout.
+4. Não avance para o layout de alta fidelidade antes de o usuário devolver e aprovar a logo e os ativos-chave.
 ## 2.1 Arquitetura proporcional
 
 1. **Escolha o menor desenho que atende os RNF.** Monólito modular costuma bastar para MVP; microsserviços só com justificativa concreta.
@@ -66,7 +67,7 @@ Negative: extra text, tiny details, gradients with many colors, 3D bevel,
 stock-icon look, existing brand logos, watermark, mockup, hands, photo background.
 ```
 
-**Direito e marca:** verifique semelhança com marcas existentes e busque o nome no INPI antes de adotar a logo; não use imagens de referência como base direta. Consulte `dev-legal-compliance-br` (propriedade intelectual e conteúdo de IA). Se a logo vier de IA, registre que ela precisa de desenho próprio para ser vetorizada e protegida.
+**Direito e marca:** verifique semelhança com marcas existentes e busque o nome no INPI antes de adotar a logo; não use imagens de referência como base direta. Consulte `judicial-sistema` (propriedade intelectual e conteúdo de IA). Se a logo vier de IA, registre que ela precisa de desenho próprio para ser vetorizada e protegida.
 
 ### 2.4.2 Ícones importantes
 
@@ -114,7 +115,7 @@ Peça ao usuário que devolva os arquivos e confirme os escolhidos; só então s
 Entregue em `docs/02-design/identidade.md` uma ficha com: logo (conceito escolhido e variações), paleta derivada, ícones (biblioteca e customizados), peças 3D (se houver), tabela de motions e o que **ficou de fora do MVP**. **Peça aprovação do usuário** antes de partir para o layout de alta fidelidade e para os briefs de mídia.
 ## 2.5 Design system com tokens (tema claro e escuro)
 
-Parta da paleta e do acento da logo (2.4). Defina tokens como variáveis CSS no `:root` e redefina para o escuro com `[data-theme="dark"]` e `@media (prefers-color-scheme: dark)`.
+Parta da paleta e do acento da logo (2.4). **Escolha o estilo e a paleta com a skill `estilos-paletas-design`** (e conduza o design com `design-completo`, modo A), garantindo que combinem com a logo aprovada. Defina tokens como variáveis CSS no `:root` e redefina para o escuro com `[data-theme="dark"]` e `@media (prefers-color-scheme: dark)`.
 
 Conjunto mínimo:
 

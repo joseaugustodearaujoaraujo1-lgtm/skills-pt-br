@@ -2,7 +2,7 @@
 
 **Objetivo:** transformar uma ideia em um escopo de MVP verificável, com riscos de segurança e de conformidade legal identificados *antes* de desenhar ou codar.
 
-**Skill obrigatória:** `criatividade-aplicada` (ver 1.0). **Entrada:** resumo de escopo do Passo 0. **Saída:** `docs/01-requisitos.md` aprovado.
+**Skill obrigatória:** `criatividade` (ver 1.0). **Entrada:** resumo de escopo do Passo 0. **Saída:** `docs/01-requisitos.md` aprovado.
 
 ## 1.0 Mentalidade e criatividade — foco em receber pelo serviço (obrigatório)
 
@@ -10,7 +10,7 @@
 
 Esta é a postura de trabalho da skill: planejar e construir como quem **espera o projeto dar certo**. A fé move a execução; os números confirmam o caminho (o primeiro cliente pagante é o termômetro). Isso não dispensa evidência: continue diferenciando *planejado*, *implementado*, *testado* e *publicado*.
 
-**Use a skill `criatividade-aplicada` para criar os requisitos.** Carregue-a no início desta etapa e aplique o método dela (entender o problema certo, divergir, convergir, testar com pré-mortem, entregar um leque de opções **segura, ousada e fora da caixa**, com recomendação e primeiro passo).
+**Use a skill `criatividade` para criar os requisitos.** Carregue-a no início desta etapa e aplique o método dela (entender o problema certo, divergir, convergir, testar com pré-mortem, entregar um leque de opções **segura, ousada e fora da caixa**, com recomendação e primeiro passo).
 
 **Foco do projeto:** **prestar um serviço cujo objetivo principal é receber por ele**, de preferência como **SaaS + IA** (assinatura recorrente, créditos ou cobrança por uso, com a IA entregando o valor central do serviço). Todo requisito deve responder: *isso ajuda o cliente a pagar, a continuar pagando ou a indicar?*
 
@@ -30,7 +30,7 @@ Regras:
 
 - No MoSCoW (1.2), o fluxo **cadastro → pagamento → entrega do serviço** é sempre *Must*. Funcionalidade que não leva à receita ou à retenção tende a ser *Could* ou *Won't*.
 - Registre a escolha, as alternativas descartadas e o pré-mortem ("se este projeto falhar, por quê?") no ADR de modelo de negócio.
-- Cobrança, IA com dados pessoais e publicidade têm obrigações legais: use `dev-legal-compliance-br` (CDC, LGPD, pagamentos, IA).
+- Cobrança, IA com dados pessoais e publicidade têm obrigações legais: use `judicial-sistema` (CDC, LGPD, pagamentos, IA).
 ## 1.1 Levantamento (entrevista curta)
 
 Pergunte somente o que muda decisões. Cubra:
@@ -106,7 +106,7 @@ Ameaças que quase todo MVP precisa tratar:
 
 Referências para consulta: OWASP Top 10 (web), OWASP API Security Top 10 (2023), OWASP ASVS (nível 1 para MVP, nível 2 se houver dados sensíveis ou dinheiro).
 
-## 1.7 Jurídico mínimo (se a skill `dev-legal-compliance-br` não estiver disponível)
+## 1.7 Jurídico mínimo (se a skill `judicial-sistema` não estiver disponível)
 
 Ao menos: (a) definir controlador e operadores e **base legal** por finalidade (LGPD); (b) política de privacidade e termos de uso claros; (c) canal para o titular exercer direitos; (d) aviso e preferências de cookies (recusar não essencial); (e) se vender a consumidor: dados do fornecedor (razão social, CNPJ, endereço, contato) visíveis, preço total claro, **direito de arrependimento de 7 dias** em compras online, política de troca/garantia e SAC; (f) guarda de **registros de acesso por 6 meses** (Marco Civil); (g) não armazenar dados de cartão; (h) licenças de bibliotecas, fontes e imagens conferidas; (i) acessibilidade básica. **Isto não substitui revisão de advogado**; indique ao usuário que contratos e documentos finais devem ser revisados por profissional habilitado.
 
@@ -120,7 +120,7 @@ Ao menos: (a) definir controlador e operadores e **base legal** por finalidade (
 
 ```
 # Requisitos — <Sistema>
-0. Oferta, modelo de receita e economia da unidade (criatividade-aplicada)
+0. Oferta, modelo de receita e economia da unidade (criatividade)
 1. Visão e métricas de sucesso
 2. Usuários e perfis
 3. Escopo do MVP (Must/Should/Could/Won't)
@@ -137,7 +137,7 @@ Ao menos: (a) definir controlador e operadores e **base legal** por finalidade (
 
 ## 1.10 Critério de pronto e portão
 
-- [ ] Oferta, modelo de cobrança, preços e custo de IA por usuário definidos com alternativas geradas por criatividade-aplicada e a escolha justificada.
+- [ ] Oferta, modelo de cobrança, preços e custo de IA por usuário definidos com alternativas geradas por criatividade e a escolha justificada.
 - [ ] O fluxo cadastro → pagamento → entrega está como *Must* e tem critérios de aceite.
 - [ ] Cada RF tem critério de aceite testável e prioridade.
 - [ ] Cada RNF tem número e forma de medir.

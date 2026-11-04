@@ -1,5 +1,5 @@
 ---
-name: estilos-de-design
+name: estilos-paletas-design
 description: >-
   Catálogo detalhado de 10 estilos de design de interface (neomorphism, minimalism, brutalism, glassmorphism, claymorphism, bento grid, pixel art, typography luxury, dark mode, cyberpunk), com paleta, tipografia, grade, raios, sombras, ícones, todos os componentes (botões, formulários, navegação, cards, tabelas, gráficos, feedback), motion, tokens CSS, receitas de código, acessibilidade, erros comuns e compatibilidade entre estilos. Use sempre que o usuário pedir para criar, escolher, comparar, aplicar, trocar ou misturar um estilo visual ou tema de UI (site, landing page, dashboard, app, componente), citar qualquer um desses estilos pelo nome (ex.: "glass", "neumorfismo", "brutalista", "bento", "retrô pixel", "luxo preto e dourado", "modo escuro", "neon"), pedir "um visual diferente", "mudar o estilo do site", "tema com vários estilos" ou "seletor de temas", mesmo que ele não diga "estilo de design".
 ---
@@ -16,7 +16,7 @@ Catálogo de referência de **10 estilos visuais** para interfaces web. Cada est
 2. **Se não houver estilo definido**, use a tabela "Escolha rápida" abaixo, recomende **um** (no máximo dois) com o motivo e pergunte qual prefere.
 3. **Carregue apenas o(s) arquivo(s) do estilo escolhido** (`references/<estilo>.md`). Não leia os dez: economiza contexto.
 4. **Implemente com tokens** (variáveis CSS) para que o estilo seja trocável, e siga as seções "Componentes", "Motion", "Acessibilidade" e "Erros comuns" do arquivo.
-5. **Combine com outras skills** quando existirem: `referencias-ui` (motion/componentes prontos), `melhoria-de-design` (diagnóstico e níveis de intervenção) e `frontend-design`/`ui-ux-pro-max` para acabamento.
+5. **Combine com outras skills** quando existirem: `referencias-ui` (motion/componentes prontos), `design-completo` (diagnóstico e níveis de intervenção) e `frontend-design`/`ui-ux-pro-max` para acabamento.
 6. **Verifique:** contraste (WCAG AA), foco visível, `prefers-reduced-motion`, responsivo (360px, 768px, 1280px) e estados (hover, focus, active, disabled, error, loading).
 
 ## Os 10 estilos

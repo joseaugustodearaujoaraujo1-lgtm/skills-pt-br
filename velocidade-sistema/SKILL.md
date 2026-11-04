@@ -1,5 +1,5 @@
 ---
-name: "omelhorar-otmizacao-site"
+name: "velocidade-sistema"
 description: "Use ao auditar ou otimizar a velocidade de um site/app web (front-end, API, banco, infra): aplica o checklist de 31 técnicas de performance."
 ---
 

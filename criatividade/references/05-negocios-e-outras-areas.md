@@ -65,7 +65,7 @@ Perguntas e padrões para produto, marketing, vendas, atendimento, processos, co
 
 - **Aprender fazendo:** projeto real em vez de aula expositiva.
 - **Desafio antes da explicação:** tentar primeiro, entender depois, o que fixa mais.
-- **Erro como material:** analisar falhas reais (como os casos da skill `prevencao-de-falhas`).
+- **Erro como material:** analisar falhas reais (como os casos da skill `seguranca-completa`).
 - **Ensinar para aprender:** o aluno explica para outro.
 - **Ritmo e recompensa:** etapas curtas, progresso visível, desafios que crescem aos poucos.
 

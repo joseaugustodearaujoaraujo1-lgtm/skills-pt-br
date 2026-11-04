@@ -1,5 +1,5 @@
 ---
-name: dev-legal-compliance-br
+name: judicial-sistema
 description: Guia jurídico prático para desenvolvedores e sistemas no Brasil, para construir software seguro e reduzir o risco de processos, multas e responsabilização - LGPD, Código de Defesa do Consumidor e e-commerce, Marco Civil da Internet e guarda de logs, propriedade intelectual e licenças open source, pagamentos e nota fiscal, crimes cibernéticos e testes de segurança, contratos e responsabilidade do desenvolvedor, acessibilidade, cookies, IA e dados de crianças. Use sempre que o usuário criar, revisar ou lançar site, loja virtual, app, API, SaaS ou automação que colete dados, venda a consumidores, aceite pagamentos, use conteúdo de terceiros ou rode testes de carga/segurança; e quando perguntar "preciso de política de privacidade?", "posso guardar esse dado?", "isso dá processo?", "LGPD", "direito de arrependimento", "posso usar essa imagem/biblioteca?", "contrato de freelancer" ou "quanto tempo guardo os logs", mesmo sem citar a lei.
 ---
 
@@ -72,7 +72,7 @@ Use `references/templates-documentos.md`: Política de Privacidade, Termos de Us
 
 ### D) Implementação técnica
 
-Traduza em tarefas: banners de cookies com recusa, páginas legais, endpoints de direitos do titular, consentimentos versionados, retenção/expurgo, logs de acesso, headers de segurança, botão de arrependimento, avisos de preço/frete, emissão de nota, etc. Integre ao backlog da skill `mvp-end-to-end-delivery` quando houver.
+Traduza em tarefas: banners de cookies com recusa, páginas legais, endpoints de direitos do titular, consentimentos versionados, retenção/expurgo, logs de acesso, headers de segurança, botão de arrependimento, avisos de preço/frete, emissão de nota, etc. Integre ao backlog da skill `mvp-completo` quando houver.
 
 ### E) Revisão pré-lançamento
 

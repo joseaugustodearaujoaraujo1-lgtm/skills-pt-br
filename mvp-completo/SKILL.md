@@ -1,6 +1,6 @@
 ---
-name: mvp-end-to-end-delivery
-description: Conduz qualquer MVP (site, loja virtual, SaaS, API, painel, app web) do zero à produção em 7 etapas com portões de aprovação - 1) requisitos, segurança e questões jurídicas, 2) design do sistema, 3) API segura, 4) otimização de velocidade (skill omelhorar-otmizacao-site), 5) documentação da API, 6) deploy com DNS no Cloudflare, 7) teste de carga com k6. Use sempre que alguém pedir para criar, planejar, lançar ou "colocar no ar" um sistema, MVP, protótipo funcional, e-commerce, landing page com backend, ou perguntar "por onde começo", "como lanço meu sistema", "como escalar", "como documentar a API", "como deixar o sistema mais rápido", "como configurar o domínio no Cloudflare" ou "como fazer teste de carga", mesmo que a pessoa não cite as 7 etapas nem a palavra MVP.
+name: mvp-completo
+description: Conduz qualquer MVP (site, loja virtual, SaaS, API, painel, app web) do zero à produção em 7 etapas com portões de aprovação - 1) requisitos, segurança e questões jurídicas, 2) design do sistema, 3) API segura, 4) otimização de velocidade (skill velocidade-sistema), 5) documentação da API, 6) deploy com DNS no Cloudflare, 7) teste de carga com k6. Use sempre que alguém pedir para criar, planejar, lançar ou "colocar no ar" um sistema, MVP, protótipo funcional, e-commerce, landing page com backend, ou perguntar "por onde começo", "como lanço meu sistema", "como escalar", "como documentar a API", "como deixar o sistema mais rápido", "como configurar o domínio no Cloudflare" ou "como fazer teste de carga", mesmo que a pessoa não cite as 7 etapas nem a palavra MVP.
 ---
 
 # MVP de Ponta a Ponta — do requisito ao teste de carga
@@ -15,11 +15,11 @@ Skill para entregar um **MVP real, seguro e juridicamente prudente** em sete eta
 
 **Não use** (ou use só as etapas pertinentes) para: script descartável, ajuste pontual de código, protótipo visual sem dados, correção de bug isolado.
 
-**Skill irmã:** `dev-legal-compliance-br` cobre LGPD, consumidor, Marco Civil, propriedade intelectual, pagamentos e responsabilidade do desenvolvedor. Carregue-a na Etapa 1 e revise-a antes da Etapa 6 (lançamento). Se ela não estiver instalada, siga o checklist mínimo em `references/etapa-1-requisitos.md` (seção "Jurídico mínimo") e avise o usuário.
+**Skill irmã:** `judicial-sistema` cobre LGPD, consumidor, Marco Civil, propriedade intelectual, pagamentos e responsabilidade do desenvolvedor. Carregue-a na Etapa 1 e revise-a antes da Etapa 6 (lançamento). Se ela não estiver instalada, siga o checklist mínimo em `references/etapa-1-requisitos.md` (seção "Jurídico mínimo") e avise o usuário.
 
 > **"A sua fé é o limite de tudo aquilo que você pode fazer. Se você tiver fé que este projeto irá dar certo, este projeto irá dar certo!"**
 
-**Foco padrão:** prestar um serviço com o objetivo principal de **receber por ele**, de preferência **SaaS + IA**. Nas Etapas 1 e 2, use sempre a skill **`criatividade-aplicada`** para criar os requisitos e o design. Na Etapa 2, **os prompts de logo, ícones, imagens, vídeos e moldes 3D são entregues ao usuário, que gera os arquivos**; Claude não os gera.
+**Foco padrão:** prestar um serviço com o objetivo principal de **receber por ele**, de preferência **SaaS + IA**. Nas Etapas 1 e 2, use sempre a skill **`criatividade`** para criar os requisitos e o design. Na Etapa 2, **os prompts de logo, ícones, imagens, vídeos e moldes 3D são entregues ao usuário, que gera os arquivos**; Claude não os gera.
 
 ## 2. Regras de conduta (valem para as sete etapas)
 
@@ -37,10 +37,10 @@ Skill para entregar um **MVP real, seguro e juridicamente prudente** em sete eta
 
 | # | Etapa | Entregável principal | Critério de pronto | Portão |
 |---|-------|----------------------|--------------------|--------|
-| 1 | **Requisitos, segurança e jurídico** | `docs/01-requisitos.md` (oferta, modelo de receita e economia da unidade com `criatividade-aplicada`; escopo MVP, RF/RNF, modelagem de ameaças, inventário de dados, matriz jurídica, riscos) | Todo requisito tem critério de aceite; toda ameaça alta tem controle; todo dado pessoal tem finalidade e base legal | Usuário aprova o escopo |
-| 2 | **Design do sistema** | `docs/02-design/` (arquitetura, fluxos, modelo de dados, **logo e ativos-chave (ícones, 3D, motions) com prompts entregues ao usuário e aprovados antes do layout**, `criatividade-aplicada`, design system, protótipo, storyboard de motion, briefs de mídia) | Logo e ativos-chave aprovados; fluxos principais cobertos; tokens claro/escuro com contraste AA; orçamento de performance definido | Usuário aprova o design |
+| 1 | **Requisitos, segurança e jurídico** | `docs/01-requisitos.md` (oferta, modelo de receita e economia da unidade com `criatividade`; escopo MVP, RF/RNF, modelagem de ameaças, inventário de dados, matriz jurídica, riscos) | Todo requisito tem critério de aceite; toda ameaça alta tem controle; todo dado pessoal tem finalidade e base legal | Usuário aprova o escopo |
+| 2 | **Design do sistema** | `docs/02-design/` (arquitetura, fluxos, modelo de dados, **logo e ativos-chave (ícones, 3D, motions) com prompts entregues ao usuário e aprovados antes do layout**, estilo e paleta depois da logo (`design-completo` + `estilos-paletas-design`), `criatividade`, design system, protótipo, storyboard de motion, briefs de mídia) | Logo e ativos-chave aprovados; fluxos principais cobertos; tokens claro/escuro com contraste AA; orçamento de performance definido | Usuário aprova o design |
 | 3 | **API segura** | Código da API + testes | OWASP API Top 10 mapeado e testado; testes passando; sem segredos no repositório | Usuário revisa e aprova |
-| 4 | **Otimização de velocidade** | `docs/04-performance.md` (métricas antes/depois, checklist de 31 técnicas) usando a skill `omelhorar-otmizacao-site` | Metas de velocidade medidas e atingidas, ou gargalos listados com plano; nenhum cache expõe dados pessoais | Usuário aprova (custos externos exigem confirmação específica) |
+| 4 | **Otimização de velocidade** | `docs/04-performance.md` (métricas antes/depois, checklist de 31 técnicas) usando a skill `velocidade-sistema` | Metas de velocidade medidas e atingidas, ou gargalos listados com plano; nenhum cache expõe dados pessoais | Usuário aprova (custos externos exigem confirmação específica) |
 | 5 | **Documentação da API** | OpenAPI 3.1 + guia de uso + catálogo de erros | Spec válida (lint), exemplos reais testados, auth e limites documentados | Usuário aprova |
 | 6 | **Deploy + DNS no Cloudflare** | Sistema publicado e domínio configurado | HTTPS válido, headers de segurança, WAF/rate limit ativos, rollback testado, monitoramento ligado | Confirmação explícita antes de publicar |
 | 7 | **Teste de carga com k6** | Scripts k6 + relatório de capacidade | Limiares (p95, taxa de erro) atingidos ou gargalos listados com plano de correção | Confirmação explícita antes de gerar carga |
@@ -50,7 +50,7 @@ Detalhes de cada etapa estão nos arquivos de referência. **Leia apenas o da et
 - Etapa 1 → `references/etapa-1-requisitos.md`
 - Etapa 2 → `references/etapa-2-design.md` (e `references/media-prompts.md` se houver imagens ou vídeos gerados por IA)
 - Etapa 3 → `references/etapa-3-api-segura.md`
-- Etapa 4 → `references/etapa-4-otimizacao-velocidade.md` (usa a skill `omelhorar-otmizacao-site`)
+- Etapa 4 → `references/etapa-4-otimizacao-velocidade.md` (usa a skill `velocidade-sistema`)
 - Etapa 5 → `references/etapa-5-documentacao.md`
 - Etapa 6 → `references/etapa-6-deploy-cloudflare.md`
 - Etapa 7 → `references/etapa-7-teste-carga-k6.md`
@@ -140,4 +140,4 @@ projeto/
 
 ## 8. Integração opcional com outras skills
 
-Se estiverem instaladas, use: **design/UI** (tokens, componentes e motion), **GSAP** (ScrollTrigger e timelines), **criatividade-aplicada** (Etapas 1 e 2, obrigatória), **auditoria OWASP/API** (revisão da Etapa 3), **omelhorar-otmizacao-site** (Etapa 4), **dev-legal-compliance-br** (Etapas 1 e 6). Skills são apoio: o escopo aprovado pelo usuário continua sendo o limite.
+Se estiverem instaladas, use: **design/UI** (tokens, componentes e motion), **GSAP** (ScrollTrigger e timelines), **criatividade** (Etapas 1 e 2, obrigatória), **design-completo** e **estilos-paletas-design** (Etapa 2: primeiro logo e 3D, depois estilos e paletas), **auditoria OWASP/API** (revisão da Etapa 3), **velocidade-sistema** (Etapa 4), **judicial-sistema** (Etapas 1 e 6). Skills são apoio: o escopo aprovado pelo usuário continua sendo o limite.

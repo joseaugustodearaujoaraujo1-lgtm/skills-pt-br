@@ -4,7 +4,7 @@
 
 **Entrada:** API implementada e testada (Etapa 3) e, se houver, o front-end montado conforme o design (Etapa 2). **Saída:** `docs/04-performance.md` com métricas antes/depois, checklist preenchido e pendências.
 
-**Ferramenta principal:** a skill **`omelhorar-otmizacao-site`** (checklist de 31 técnicas). Carregue-a ao iniciar esta etapa e siga o método dela: entender a stack, medir a linha de base, auditar, priorizar por impacto ÷ esforço, implementar em passos pequenos e medir de novo. Se ela não estiver instalada, avise o usuário e use o mínimo da seção 4.6.
+**Ferramenta principal:** a skill **`velocidade-sistema`** (checklist de 31 técnicas). Carregue-a ao iniciar esta etapa e siga o método dela: entender a stack, medir a linha de base, auditar, priorizar por impacto ÷ esforço, implementar em passos pequenos e medir de novo. Se ela não estiver instalada, avise o usuário e use o mínimo da seção 4.6.
 
 ## 4.1 Escopo por tipo de projeto
 
@@ -49,7 +49,7 @@ Registre a meta de cada rota da API (ex.: p95 ≤ 300 ms em leituras simples). E
 
 - Faça mudanças pequenas, agrupadas por tema, e **meça de novo depois de cada grupo**.
 - Preserve a stack e as convenções do projeto; sem dependências "para o futuro".
-- **Segurança e jurídico continuam valendo:** cache nunca guarda dados pessoais ou respostas autenticadas em área pública (CDN/Redis); invalide por usuário; scripts de terceiros (analytics, chat, pixels) só depois do consentimento aplicável (veja `dev-legal-compliance-br`).
+- **Segurança e jurídico continuam valendo:** cache nunca guarda dados pessoais ou respostas autenticadas em área pública (CDN/Redis); invalide por usuário; scripts de terceiros (analytics, chat, pixels) só depois do consentimento aplicável (veja `judicial-sistema`).
 - **Itens que criam custo ou conta externa** exigem confirmação específica antes: Redis gerenciado, CDN, load balancer, mais instâncias, OpenTelemetry/RUM em serviço pago. Descreva o efeito e o custo e só então prossiga.
 - Credenciais e tokens desses serviços nunca vêm pelo chat: o usuário os coloca em variáveis de ambiente.
 

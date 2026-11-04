@@ -54,7 +54,7 @@ Perguntas e padrões que geram soluções diferentes em arquitetura, produto, UX
 - **Mostrar em vez de explicar:** exemplos preenchidos, prévias ao vivo, estados vazios que ensinam.
 - **Desfazer em vez de confirmar:** "Arquivado. Desfazer" é mais rápido e menos irritante que "Tem certeza?" (para ações reversíveis).
 - **Feedback imediato:** atualização otimista da interface, com reversão se falhar.
-- Para o lado visual, use a skill `melhoria-de-design`, se disponível.
+- Para o lado visual, use a skill `design-completo`, se disponível.
 
 ## 5. Dados e desempenho
 
@@ -84,7 +84,7 @@ Ideias híbridas criativas:
 - a IA gera o teste e o humano valida;
 - a IA extrai e o sistema valida com schema.
 
-Ao propor IA, inclua custo por uso, latência, privacidade dos dados e plano para quando ela errar. A skill `prevencao-de-falhas` (AGT-01 a AGT-12) cobre os riscos.
+Ao propor IA, inclua custo por uso, latência, privacidade dos dados e plano para quando ela errar. A skill `seguranca-completa` (AGT-01 a AGT-12) cobre os riscos.
 
 ## 7. Depuração criativa
 

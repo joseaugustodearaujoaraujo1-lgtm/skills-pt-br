@@ -1,5 +1,5 @@
 ---
-name: prevencao-de-falhas
+name: seguranca-completa
 description: Catálogo prático de 92 falhas reais de software (código gerado por IA, front-end, back-end/APIs, pagamentos e sistemas financeiros, agentes de IA/LLMs, infraestrutura e operação, LGPD e privacidade), com como detectar, corrigir, testar e evitar cada uma, em qualquer linguagem. Use esta skill sempre que for criar, revisar, auditar, refatorar, corrigir ou preparar para deploy qualquer sistema, API, site com login, app, automação, integração de pagamento ou agente de IA — inclusive quando o usuário não falar em "segurança", pedir só uma "revisão", disser que o código foi feito com IA/vibe coding, mencionar Supabase, Firebase, JWT, webhooks, Pix, Stripe, saldo, MCP ou prompt injection, ou perguntar se o sistema está "pronto para produção". Antes de aplicar a verificação completa, pergunte ao usuário a profundidade desejada, porque scripts simples e testes descartáveis não precisam do processo inteiro.
 ---
 

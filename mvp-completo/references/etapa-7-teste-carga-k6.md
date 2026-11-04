@@ -6,7 +6,7 @@
 
 ## 7.0 Regras legais e éticas
 
-- Teste **somente sistemas seus ou com autorização escrita** do responsável. Gerar carga em terceiros pode configurar infração contratual e, conforme o caso, crime (ver skill `dev-legal-compliance-br`).
+- Teste **somente sistemas seus ou com autorização escrita** do responsável. Gerar carga em terceiros pode configurar infração contratual e, conforme o caso, crime (ver skill `judicial-sistema`).
 - Prefira **staging** equivalente à produção. Se for produção, combine janela, tenha plano de parada e comunique a equipe.
 - Verifique a política de uso aceitável do provedor e do Cloudflare; testes pesados podem acionar proteções contra DDoS ou gerar custos. Quando necessário, avise o provedor e libere o IP/cabeçalho do teste.
 - Use **dados sintéticos**; não use dados pessoais reais.

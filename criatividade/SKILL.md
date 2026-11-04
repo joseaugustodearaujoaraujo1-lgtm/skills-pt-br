@@ -1,5 +1,5 @@
 ---
-name: criatividade-aplicada
+name: criatividade
 description: Método para gerar ideias muito criativas e, ao mesmo tempo, entregar soluções profissionais, viáveis e bem justificadas, em qualquer área (software, produto, arquitetura, UX, depuração, negócios, marketing, processos, conteúdo, educação). Separa a fase de gerar ideias da fase de julgar, usa técnicas concretas (reformulação do problema, primeiros princípios, SCAMPER, analogias de outras áreas, inversão, restrições artificiais, TRIZ, caixa morfológica, pré-mortem) e entrega um leque de opções (segura, ousada, fora da caixa) com recomendação. Use sempre que alguém estiver travado num problema, pedir ideias, alternativas, brainstorm, "algo diferente", "fora da caixa" ou inovação, quando a solução óbvia não serve ou ficou cara demais, quando houver uma decisão com várias saídas possíveis, ou quando um bug ou desafio técnico resistir às abordagens normais — mesmo que a pessoa não use a palavra "criatividade".
 ---
 

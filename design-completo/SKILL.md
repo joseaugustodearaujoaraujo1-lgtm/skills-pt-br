@@ -1,9 +1,9 @@
 ---
-name: melhoria-de-design
-description: Processo completo para diagnosticar e melhorar o design de sites e interfaces web existentes (landing pages, sites institucionais, portfólios, e-commerce, SaaS, dashboards), com rubrica de avaliação, tipografia, cor e contraste, espaçamento, layout, componentes, motion, conversão, acessibilidade e como evitar a "cara de site feito por IA", além de exemplos prontos em CSS puro, Tailwind e React e referências como naocodei.com (motion) e pinstack.app (componentes). Use sempre que alguém pedir para melhorar, modernizar, repaginar, deixar mais bonito/profissional, revisar o visual, dar identidade, corrigir layout quebrado no celular, avaliar um site ou uma tela, ou quando um site parecer genérico, amador ou "feito por IA" — mesmo que a pessoa não use a palavra "design". Também serve para criar páginas novas com o mesmo padrão de qualidade.
+name: design-completo
+description: Skill completa de design de interfaces web, com três modos - criar um design excelente do zero, refazer o design de um sistema ou reajustar o que já existe. Processo completo para diagnosticar e melhorar o design de sites e interfaces web existentes (landing pages, sites institucionais, portfólios, e-commerce, SaaS, dashboards), com rubrica de avaliação, tipografia, cor e contraste, espaçamento, layout, componentes, motion, conversão, acessibilidade e como evitar a "cara de site feito por IA", além de exemplos prontos em CSS puro, Tailwind e React e referências como naocodei.com (motion) e pinstack.app (componentes). Use sempre que alguém pedir para melhorar, modernizar, repaginar, deixar mais bonito/profissional, revisar o visual, dar identidade, corrigir layout quebrado no celular, avaliar um site ou uma tela, ou quando um site parecer genérico, amador ou "feito por IA" — mesmo que a pessoa não use a palavra "design". Também serve para criar páginas novas com o mesmo padrão de qualidade.
 ---
 
-# Melhoria de Design
+# Design Completo
 
 Esta skill guia a melhoria visual e de experiência de sites e interfaces web. Ela serve para qualquer stack (HTML/CSS puro, Tailwind, React, Vue, Svelte, WordPress, construtores) e qualquer tipo de site.
 
@@ -16,6 +16,25 @@ O que "melhorar" significa aqui:
 
 Enfeite que atrapalha essas coisas é piora, não melhoria.
 
+## 0. Modos de trabalho: do zero, refazer ou reajustar
+
+Esta skill cobre os três cenários. Identifique o modo no começo e diga-o ao usuário:
+
+| Modo | Quando | Como conduzir |
+|---|---|---|
+| **A · Do zero** | Sistema ou site novo, sem design | Siga o roteiro "Do zero" abaixo; use as seções 3 em diante para tokens, componentes e implementação |
+| **B · Refazer** | O design atual não cumpre o objetivo ou a marca mudou | É o **nível 3 · Redesign** (seção 2): nova direção, nova arquitetura de página, com aprovação antes de aplicar |
+| **C · Reajustar** | O design é bom, mas precisa de ajustes | São os **níveis 1 e 2** (seção 2): ajuste fino ou repaginação, preservando identidade e estrutura |
+
+**Roteiro do modo A (do zero), nesta ordem:**
+
+1. **Entender o objetivo, o público e a ação principal** (seção 1). Se o trabalho vem da skill `mvp-completo`, reaproveite o que a Etapa 1 já definiu (inclusive o foco em receita) e o que a Etapa 2 entregou.
+2. **Identidade primeiro:** **logo** e **componentes 3D** (se o projeto tiver) e os demais ativos-chave. Os prompts para gerá-los são entregues ao usuário, que gera os arquivos (ver a Etapa 2 de `mvp-completo`, seção 2.4).
+3. **Depois, estilos e paletas:** escolha o estilo e a paleta com a skill **`estilos-paletas-design`** (e, se quiser mais opções de cor, o catálogo de paletas) de acordo com a identidade aprovada.
+4. **Tokens, tipografia, espaçamento, componentes e páginas** (seções 3 a 6), com o padrão de qualidade e as regras anti "cara de IA" desta skill.
+5. **Conversão, acessibilidade e motion**, e revisão final pela rubrica de 10 dimensões.
+
+Nos modos B e C, o diagnóstico (seção 3, passos 1 e 2) vem antes de qualquer mudança.
 ## 1. Entender o contexto (antes de tocar em qualquer coisa)
 
 Descubra, perguntando só o que não estiver claro:
@@ -83,7 +102,7 @@ Regras de implementação:
 - Prints de antes e depois, lado a lado, em desktop e celular.
 - Modo escuro, se existir; contraste dos textos e botões; navegação por teclado com foco visível; `prefers-reduced-motion`; console sem erros; sem rolagem horizontal em 375px.
 - Refaça a rubrica e mostre a nota antes e depois.
-- Se o projeto tiver a skill `prevencao-de-falhas`, os itens FE-12 (acessibilidade) e FE-13 (performance) complementam esta verificação.
+- Se o projeto tiver a skill `seguranca-completa`, os itens FE-12 (acessibilidade) e FE-13 (performance) complementam esta verificação.
 
 ## 4. Qual referência carregar
 

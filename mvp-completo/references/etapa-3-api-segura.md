@@ -138,7 +138,7 @@ Rodar: `npm test`, `npm run lint`, `npm audit`. **Só relate resultados que voc�
 
 ## 3.11 Auditoria complementar (se disponível)
 
-Se houver skills de auditoria (OWASP, API, segredos, dependências, `prevencao-de-falhas`), ofereça rodá-las ao usuário antes do portão. Pergunte o nível de profundidade; para dinheiro ou dados sensíveis, recomende o rigoroso.
+Se houver skills de auditoria (OWASP, API, segredos, dependências, `seguranca-completa`), ofereça rodá-las ao usuário antes do portão. Pergunte o nível de profundidade; para dinheiro ou dados sensíveis, recomende o rigoroso.
 
 ## 3.12 Critério de pronto e portão
 
