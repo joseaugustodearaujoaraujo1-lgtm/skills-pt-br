@@ -2,9 +2,9 @@
 
 # 🧰 Skills em português para agentes de código
 
-**Seis skills para Claude Code (e agentes compatíveis) que transformam o assistente em um parceiro mais cuidadoso, mais criativo, com melhor senso de design e um catálogo de 10 estilos visuais, e capaz de levar um MVP do requisito à produção com atenção à lei.**
+**Sete skills para Claude Code (e agentes compatíveis) que transformam o assistente em um parceiro mais cuidadoso, mais criativo, com melhor senso de design e um catálogo de 10 estilos visuais, e capaz de levar um MVP do requisito à produção com atenção à lei.**
 
-![Skills](https://img.shields.io/badge/skills-6-6366F1?style=for-the-badge)
+![Skills](https://img.shields.io/badge/skills-7-6366F1?style=for-the-badge)
 ![Idioma](https://img.shields.io/badge/idioma-pt--BR-009C3B?style=for-the-badge)
 ![Licença](https://img.shields.io/badge/licen%C3%A7a-MIT-black?style=for-the-badge)
 
@@ -24,6 +24,7 @@ Agentes de código escrevem rápido, mas repetem erros previsíveis: falhas de s
 | [`mvp-end-to-end-delivery`](mvp-end-to-end-delivery/SKILL.md) | Conduzir qualquer MVP do requisito ao teste de carga, com portões de aprovação entre as etapas | 6 etapas, 7 referências |
 | [`dev-legal-compliance-br`](dev-legal-compliance-br/SKILL.md) | Transformar a lei brasileira em requisitos e documentos para reduzir o risco de processos e multas | 8 áreas jurídicas, 10 referências |
 | [`estilos-de-design`](estilos-de-design/SKILL.md) | Escolher, descrever e aplicar estilos visuais de interface com paleta, tipografia, componentes, tokens CSS e acessibilidade | 10 estilos, 1 guia por estilo |
+| [`omelhorar-otmizacao-site`](omelhorar-otmizacao-site/SKILL.md) | Auditar e otimizar a velocidade de sites e apps web (front-end, API, banco, infra) com um checklist priorizado | 31 técnicas, 4 áreas + medição |
 
 ## 🛡️ prevencao-de-falhas
 
@@ -112,6 +113,14 @@ Um catálogo de **10 estilos de interface**, cada um descrito em um arquivo pró
 - **Origem:** 8 estilos foram descritos a partir de pranchas de referência (3 por estilo, geradas por IA). **Dark mode e cyberpunk não tinham pranchas**: seus guias foram escritos por boas práticas e convenções do gênero e devem ser tratados como propostas.
 - Combina com `melhoria-de-design` (diagnóstico e níveis de intervenção).
 
+## ⚡ omelhorar-otmizacao-site
+
+Audita e otimiza a **performance** de um site ou app web seguindo um checklist de **31 técnicas**, sempre medindo antes e depois.
+
+- **Método:** entender a stack, medir a linha de base (LCP, INP, CLS, TTFB, bundle), auditar com status por item (feito, parcial, falta, não se aplica), priorizar por impacto ÷ esforço, implementar em passos pequenos e entregar um relatório curto.
+- **Áreas do checklist:** interface e carregamento (skeleton, WebP/AVIF, lazy load, SSR/SSG, code splitting, fontes, cache), API e back-end (paginação, paralelismo, timeouts, filas, Brotli/GZIP, Redis), banco de dados (N+1, índices, pool de conexões), infraestrutura (CDN, região, balanceamento) e medição (OpenTelemetry, RUM, testes em redes e celulares lentos).
+- **Honestidade:** não marca um item como feito sem mostrar o arquivo ou trecho onde isso aparece.
+
 ## Como instalar
 
 Copie a pasta da skill desejada para o diretório de skills do seu agente. No Claude Code:
@@ -137,7 +146,8 @@ skills-pt-br/
 ├── criatividade-aplicada/     # SKILL.md + references/ (técnicas, exemplo, modelos)
 ├── mvp-end-to-end-delivery/   # SKILL.md + references/ (uma por etapa + media-prompts)
 ├── dev-legal-compliance-br/   # SKILL.md + references/ (por área jurídica + checklist + templates)
-└── estilos-de-design/         # SKILL.md + references/ (um guia por estilo de interface)
+├── estilos-de-design/         # SKILL.md + references/ (um guia por estilo de interface)
+└── omelhorar-otmizacao-site/  # SKILL.md (checklist de 31 técnicas de performance)
 ```
 
 Cada skill segue o mesmo formato: `SKILL.md` curto com o essencial e a pasta `references/` carregada **sob demanda**, para gastar poucos tokens.
