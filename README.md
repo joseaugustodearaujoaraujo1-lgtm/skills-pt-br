@@ -2,9 +2,9 @@
 
 # 🧰 Skills em português para agentes de código
 
-**Sete skills para Claude Code (e agentes compatíveis) que transformam o assistente em um parceiro mais cuidadoso, mais criativo, com melhor senso de design e um catálogo de 10 estilos visuais, e capaz de levar um MVP do requisito à produção com atenção à lei.**
+**Seis skills para Claude Code (e agentes compatíveis) que transformam o assistente em um parceiro mais cuidadoso, mais criativo, capaz de criar sites com design nível Awwwards (com 10 estilos visuais e paletas para escolher), e capaz de levar um MVP do requisito à produção com atenção à lei.**
 
-![Skills](https://img.shields.io/badge/skills-7-6366F1?style=for-the-badge)
+![Skills](https://img.shields.io/badge/skills-6-6366F1?style=for-the-badge)
 ![Idioma](https://img.shields.io/badge/idioma-pt--BR-009C3B?style=for-the-badge)
 ![Licença](https://img.shields.io/badge/licen%C3%A7a-MIT-black?style=for-the-badge)
 
@@ -19,11 +19,10 @@ Agentes de código escrevem rápido, mas repetem erros previsíveis: falhas de s
 | Skill | Para quê | Tamanho |
 |---|---|---|
 | [`seguranca-completa`](seguranca-completa/SKILL.md) | Evitar, detectar e corrigir falhas de software: código gerado por IA, front-end, APIs, pagamentos, agentes/LLMs e infraestrutura | 92 falhas catalogadas |
-| [`design-completo`](design-completo/SKILL.md) | Criar um design excelente do zero, refazer ou reajustar o design de sites: tipografia, cor, layout, componentes, motion e conversão | 3 níveis (ajuste fino, repaginação, redesign) |
+| [`site-nivel-awwwards`](site-nivel-awwwards/SKILL.md) | Criar, refazer ou reajustar sites com design, identidade visual, componentes e movimento nível Awwwards / One Page Love, com o usuário escolhendo estilo, paleta e site de referência | 10 estilos, 3+3 paletas, 5 opções de referência |
 | [`criatividade`](criatividade/SKILL.md) | Gerar ideias fora da caixa com método e entregar soluções viáveis | 5 fases, 3 intensidades |
 | [`mvp-completo`](mvp-completo/SKILL.md) | Conduzir qualquer MVP do requisito ao teste de carga, com portões de aprovação entre as etapas | 7 etapas, 8 referências |
 | [`judicial-sistema`](judicial-sistema/SKILL.md) | Transformar a lei brasileira em requisitos e documentos para reduzir o risco de processos e multas | 8 áreas jurídicas, 10 referências |
-| [`estilos-paletas-design`](estilos-paletas-design/SKILL.md) | Escolher, descrever e aplicar estilos visuais de interface com paleta, tipografia, componentes, tokens CSS e acessibilidade | 10 estilos, 1 guia por estilo |
 | [`velocidade-sistema`](velocidade-sistema/SKILL.md) | Auditar e otimizar a velocidade de sites e apps web (front-end, API, banco, infra) com um checklist priorizado | 31 técnicas, 4 áreas + medição |
 
 ## 🛡️ seguranca-completa
@@ -35,15 +34,17 @@ Um atlas de **92 falhas reais** com identificador estável (`IA-01`, `FE-05`, `A
 - **Modos de uso:** de uma checagem rápida até uma auditoria completa, com relatório e plano de correção.
 - Inclui `checklist-pre-deploy.md` e `casos-reais.md`.
 
-## 🎨 design-completo
+## 🎨 site-nivel-awwwards
 
-Um processo de seis passos para diagnosticar e melhorar o visual de um site **sem reinventar o que já funciona**.
+Substitui e reúne as antigas `design-completo` e `estilos-paletas-design` em **uma skill só**, que conduz o site do briefing ao portão de qualidade **com o usuário escolhendo** as decisões de gosto.
 
-- **Diagnóstico** com rubrica de 10 dimensões e testes rápidos.
-- **Referências** de tipografia (escala com `clamp()`), cor em OKLCH e contraste WCAG AA, layout, componentes e motion (respeitando `prefers-reduced-motion`).
-- **Implementação** em CSS puro, Tailwind e React.
-- Capítulo dedicado a **evitar a "cara de IA"** e outro a **conversão**.
-- Catálogo de efeitos de movimento baseado no site [naocodei.com](https://naocodei.com) (crédito a Não Codei; o catálogo é um índice de referência, não redistribui o código do site).
+- **Perguntas primeiro:** objetivo, público, 3 adjetivos, o que não quer parecer, material disponível e stack (só **HTML + CSS + JS + GSAP** ou **Next.js + GSAP**).
+- **Escolhas em opções:** 3 estilos entre 10 (+ o recomendado); **3 paletas para o tema escuro e 3 para o claro** (OKLCH, contraste AA/AAA conferido por script); **5 opções de site de referência**: A, B e C (sites nível Awwwards ou One Page Love), **D** campo livre (o usuário sugere e a skill pesquisa de novo) e **E** a recomendada, com justificativa.
+- **Todo o conteúdo das duas skills antigas** em `references/base-design-completo/` (diagnóstico com rubrica de 10 dimensões, tipografia, cor, layout, componentes, motion, conversão, "cara de IA", implementação em CSS puro, Tailwind e React) e `references/base-estilos/` (os 10 estilos com tokens e componentes).
+- **Plataformas** com preço, licença e limites verificados: [tasteskill.dev](https://tasteskill.dev), [transitions.dev](https://transitions.dev), [reactbits.dev](https://reactbits.dev), [naocodei.com](https://naocodei.com) e [pinstack.app](https://pinstack.app) (sem login nem compra pelo agente).
+- **Receitas de construção:** tipografia, scroll (GSAP + ScrollTrigger + SplitText + Lenis), imagem, vídeo e **3D leve** (todo objeto 3D exige imagem detalhada ou vídeo de referência; exemplo de diamante em ray tracing com ~23 KB).
+- **Portão de qualidade:** notas no estilo Awwwards com evidência, Lighthouse, contraste, 1440/768/390 px e `prefers-reduced-motion`.
+- Scripts Node sem dependências: `opcoes.mjs`, `gerar-paleta.mjs`, `escolher-estilo.mjs`, `montar-brief.mjs`, `baixar-fontes.mjs`.
 
 ## 💡 criatividade
 
@@ -92,28 +93,6 @@ Traduz a **legislação brasileira** em requisitos técnicos, documentos e check
 - **Entregas:** matriz jurídica, relatório de conformidade com severidade, `checklist-pre-lancamento.md` com itens críticos que bloqueiam o lançamento e `templates-documentos.md` (política de privacidade, termos, cookies, ROPA, RIPD, plano de incidentes e DPA).
 - **Honestidade:** não é aconselhamento jurídico e não garante ausência de processos; indica quando procurar advogado(a) ou contador(a) e manda confirmar a vigência de normas recentes.
 
-## 🎭 estilos-paletas-design
-
-Um catálogo de **10 estilos de interface**, cada um descrito em um arquivo próprio e carregado **sob demanda** (a skill só lê o estilo escolhido, para gastar poucos tokens).
-
-| Estilo | Em uma frase |
-|---|---|
-| **Neomorphism** | Material único cinza-azulado com relevo e rebaixo por duas sombras opostas |
-| **Minimalism** | Marfim quente, verde-sálvia, tipografia fina e muito respiro |
-| **Brutalism** | Papel, tinta e verde-lima ácido, raio 0, bordas pretas e sombra dura |
-| **Glassmorphism** | Vidro fosco translúcido sobre fundo colorido, com glow azul |
-| **Claymorphism** | Argila inflada em creme, preto e dourado, com raios enormes |
-| **Bento Grid** | Mosaico modular de cards de tamanhos variados com um acento laranja |
-| **Pixel Art** | Interface 8-bit: grade de pixels, bevel, cantos em degrau e dither |
-| **Typography Luxury** | Preto profundo, dourado metálico e serifa Playfair |
-| **Dark Mode** | Tema escuro premium com elevação por luminosidade |
-| **Cyberpunk** | Neon ciano e magenta, cantos chanfrados, HUD e glitch |
-
-- **Cada guia tem 12 ou 13 seções:** essência, quando usar e evitar, paleta com hex, tipografia, grade e raios, sombras e profundidade, ícones, **todos os componentes** (botões, formulários, navegação, cards, tabelas, gráficos, feedback), motion, tokens e receitas em CSS, acessibilidade, erros comuns e compatibilidade com os outros estilos.
-- **No `SKILL.md`:** tabela de escolha rápida por necessidade, comparativo de tokens, matriz de compatibilidade e o passo a passo para montar um **seletor de temas** com vários estilos no mesmo site (tokens por `data-style`, overrides estruturais, fallbacks e `prefers-reduced-motion`).
-- **Origem:** 8 estilos foram descritos a partir de pranchas de referência (3 por estilo, geradas por IA). **Dark mode e cyberpunk não tinham pranchas**: seus guias foram escritos por boas práticas e convenções do gênero e devem ser tratados como propostas.
-- Combina com `design-completo` (diagnóstico e níveis de intervenção).
-
 ## ⚡ velocidade-sistema
 
 Audita e otimiza a **performance** de um site ou app web seguindo um checklist de **31 técnicas**, sempre medindo antes e depois.
@@ -129,11 +108,10 @@ Copie a pasta da skill desejada para o diretório de skills do seu agente. No Cl
 ```bash
 git clone https://github.com/joseaugustodearaujoaraujo1-lgtm/skills-pt-br.git
 cp -r skills-pt-br/seguranca-completa ~/.claude/skills/
-cp -r skills-pt-br/design-completo ~/.claude/skills/
+cp -r skills-pt-br/site-nivel-awwwards ~/.claude/skills/
 cp -r skills-pt-br/criatividade ~/.claude/skills/
 cp -r skills-pt-br/mvp-completo ~/.claude/skills/
 cp -r skills-pt-br/judicial-sistema ~/.claude/skills/
-cp -r skills-pt-br/estilos-paletas-design ~/.claude/skills/
 ```
 
 No Windows (PowerShell), o destino é `$HOME\.claude\skills\`. Reinicie a sessão do agente e a skill passa a ser sugerida quando a tarefa combinar com a descrição dela.
@@ -143,11 +121,10 @@ No Windows (PowerShell), o destino é `$HOME\.claude\skills\`. Reinicie a sessã
 ```text
 skills-pt-br/
 ├── seguranca-completa/       # SKILL.md + references/ (por área e por linguagem)
-├── design-completo/        # SKILL.md + references/ (incl. implementacao/)
+├── site-nivel-awwwards/    # SKILL.md + scripts/ + references/ (incl. base-design-completo/ e base-estilos/)
 ├── criatividade/     # SKILL.md + references/ (técnicas, exemplo, modelos)
 ├── mvp-completo/   # SKILL.md + references/ (uma por etapa + media-prompts)
 ├── judicial-sistema/   # SKILL.md + references/ (por área jurídica + checklist + templates)
-├── estilos-paletas-design/         # SKILL.md + references/ (um guia por estilo de interface)
 └── velocidade-sistema/  # SKILL.md (checklist de 31 técnicas de performance)
 ```
 
@@ -159,7 +136,7 @@ Cada skill segue o mesmo formato: `SKILL.md` curto com o essencial e a pasta `re
 - Os exemplos de Tailwind e React não foram executados em um projeto real.
 - Os exemplos de `mvp-completo` (Express, GSAP, OpenAPI, k6, ffmpeg e Cloudflare) **não foram executados nem testados em um projeto real**; confira versões e flags antes de usar.
 - Em `judicial-sistema`, os textos legais são resumos educativos escritos de memória, **sem verificação linha a linha nas fontes oficiais**, e **não substituem assessoria jurídica**. Confirme a vigência de normas recentes (ECA Digital, regulação de IA, responsabilidade de plataformas no art. 19 do Marco Civil, prazos da ANPD).
-- Em `estilos-paletas-design`, as cores marcadas como *(aprox.)* ou *(derivado)* foram estimadas das pranchas ou deduzidas, e os contrastes citados são **estimativas, não medições**; confirme com a marca e com uma ferramenta de contraste antes de usar em produção. Os trechos de CSS não foram executados em um projeto real.
+- Em `site-nivel-awwwards`, as paletas geradas por script têm contraste **medido**; as cores dos guias de estilo marcadas como *(aprox.)* ou *(derivado)* continuam estimativas. Os scripts de pesquisa (`pesquisar-referencias.mjs`, `opcoes.mjs`, `gerar-padroes.mjs`) dependem de um **acervo local de capturas que não está no repositório** (defina `ACERVO` com a pasta); sem ele, use a pesquisa ao vivo descrita na skill. Preços das plataformas verificados em novembro de 2026.
 - As skills ainda **não passaram por avaliação formal de comportamento** (evals).
 - Links de galerias de referência não foram abertos individualmente.
 
