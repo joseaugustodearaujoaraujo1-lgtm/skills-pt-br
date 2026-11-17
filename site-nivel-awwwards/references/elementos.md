@@ -22,7 +22,7 @@ if (!reduzido) {
 React/Next: faça isso em um `useEffect` (ou `useGSAP`) e devolva a limpeza (`lenis.destroy()`, `ScrollTrigger.getAll().forEach(t => t.kill())`).
 
 ## 1. Tipografia
-- **Título gigante** (quando a tipografia é a protagonista): `font-size: clamp(3rem, 10vw, 10.5rem)`, `line-height: .92–1.05`, `letter-spacing: -.02 a -.04em`. É uma escolha comum, não universal: só ~25% dos heros do Awwwards têm título ≥ 72 px (13% ≥ 120 px); nos outros o protagonista é uma cena WebGL (42%), imagem ou vídeo. Decida **qual é o protagonista da primeira dobra** e deixe o resto em segundo plano.
+- **Título gigante** (quando a tipografia é a protagonista): `font-size: clamp(3rem, 10vw, 10.5rem)`, `line-height: .92–1.05`, `letter-spacing: -.02 a -.04em`. É uma escolha comum, não universal: só ~25% dos heros do Awwwards têm título ≥ 72 px (13% ≥ 120 px); nos outros o protagonista é uma cena WebGL (43%), imagem ou vídeo. Decida **qual é o protagonista da primeira dobra** e deixe o resto em segundo plano.
 - **Contraste de escala**: maior texto ≈ 5× o menor. Corpo contido (16–20 px) para o título respirar.
 - **Hierarquia por escala e peso**, não por cor. 2 famílias + 1 de detalhe (mono para rótulos/números).
 - **Revelação por linhas** (a técnica mais usada em hero):
@@ -125,3 +125,13 @@ Use somente se o conceito pede. Receita completa, orçamento e método testado e
 - Seleção de texto na cor do acento (`::selection`), barra de rolagem estilizada, favicon e imagem de compartilhamento (Open Graph) com identidade.
 - Microcopy com personalidade (botões, erros, 404, rodapé).
 - Teste em 1440, 768 e 390 px, em celular real, com rede lenta.
+
+## 9. Desempenho no celular: o que mais pesou (medido no Grão Raro, Lighthouse móvel)
+Resultado de partida: desktop 98, celular 64–67 (TBT ~2,4–3 s). Depois dos ajustes: celular 67–75 (varia entre rodadas), acessibilidade 100.
+- **Divida o texto só quando a seção se aproxima** (`IntersectionObserver` + `SplitText`): dividir manifesto e títulos no carregamento gera estilo/layout caro. Mantenha o título do hero em CSS puro (linhas já no HTML).
+- **Não use `text-rendering: optimizeLegibility` no `html`** com fonte serifada grande: em teste, tirá-lo reduziu as tarefas longas de ~1,8 s para ~0,2 s.
+- **`content-visibility: auto` + `contain-intrinsic-size`** nas seções abaixo da dobra e sem pin (use a altura real medida, para a rolagem não pular). Não aplique em seção com `pin` do ScrollTrigger.
+- **SVGs grandes decorativos** (grão, placas) pesam em CPU lenta: poucos, simples, sem filtros.
+- **Fonte variável:** peça uma vez só; o Google repete o mesmo arquivo para cada peso (o `baixar-fontes.mjs` agora agrupa: 136 KB → 89 KB).
+- **Opacidade mínima de texto que acende com a rolagem: .5** (com .35 o contraste de texto grande falhou, 3:1).
+- Meça com a CPU 4× mais lenta e tarefas longas (`PerformanceObserver` `longtask`), bloqueando o `app.js` para separar "custo do JS" de "custo de HTML/CSS".

@@ -47,3 +47,17 @@ Depois escolha **1 referência por seção** do site novo (hero, manifesto, cont
 - Cite a fonte de cada decisão ("hero inspirado na técnica de X") no documento de design do projeto.
 - Se achar um padrão que se repete entre 3 ou mais referências, é candidato a regra do projeto; se aparece em um só, é gosto.
 - Pesquisa ao vivo abre páginas externas: use só leitura (sem login, sem formulários).
+
+## Encaixe de layout (novo)
+A sugestão de sites usa **toda a base** de sites válidos (`pesquisar-referencias.mjs --todos`) e soma até **6 pontos de encaixe de layout** (`scripts/layout.mjs`) ao ranking por assunto e recursos. Cada tipo de página tem um perfil de estrutura ideal:
+
+| Perfil | Temas | Estrutura ideal |
+|---|---|---|
+| vitrine de produto | alimentação, beleza, moda, luxo, automotivo, infantil, e-commerce | 4–9 seções, pouco texto, muitas imagens, hero com mídia, seções fixadas |
+| portfólio e galeria | portfólio, arte, arquitetura, agência | 3–9 seções, texto mínimo, 10+ imagens, rolagem horizontal ou fixada |
+| produto digital | tecnologia, IA, fintech, educação | 6–13 seções, texto médio, seções fixadas |
+| institucional | corporativo, saúde, sustentabilidade, imobiliário | 5–11 seções, mais texto |
+| editorial | editorial | 5–16 seções, texto longo, hero de tipografia |
+| evento e experiência | eventos, música, esportes, jogos, viagem | 3–9 seções, hero de mídia, muito movimento |
+
+Use `--tipo vitrine|portfólio|saas|institucional|editorial|evento` para forçar o perfil. Sites ainda sem `estrutura.json` não ganham esses pontos e aparecem marcados "layout ainda não medido". Para medir os que faltam: `CONC=2 node extrair-estrutura.mjs` (retomável) e, ao terminar, `node scripts/gerar-padroes.mjs`.

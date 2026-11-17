@@ -19,7 +19,7 @@ Agentes de código escrevem rápido, mas repetem erros previsíveis: falhas de s
 | Skill | Para quê | Tamanho |
 |---|---|---|
 | [`seguranca-completa`](seguranca-completa/SKILL.md) | Evitar, detectar e corrigir falhas de software: código gerado por IA, front-end, APIs, pagamentos, agentes/LLMs e infraestrutura | 92 falhas catalogadas |
-| [`site-nivel-awwwards`](site-nivel-awwwards/SKILL.md) | Criar, refazer ou reajustar sites com design, identidade visual, componentes e movimento nível Awwwards / One Page Love, com o usuário escolhendo estilo, paleta e site de referência | 10 estilos, 3+3 paletas, 5 opções de referência |
+| [`site-nivel-awwwards`](site-nivel-awwwards/SKILL.md) | Cria sites do zero com design, identidade e movimento nível Awwwards / One Page Love: sugere referências do acervo (884 sites), estilos, paletas, componentes das plataformas, projeto-base HTML+GSAP ou Next.js+GSAP, e um verificador automático | 10 estilos, 6 perguntas, 2 projetos-base, verificador |
 | [`criatividade`](criatividade/SKILL.md) | Gerar ideias fora da caixa com método e entregar soluções viáveis | 5 fases, 3 intensidades |
 | [`mvp-completo`](mvp-completo/SKILL.md) | Conduzir qualquer MVP do requisito ao teste de carga, com portões de aprovação entre as etapas | 7 etapas, 8 referências |
 | [`judicial-sistema`](judicial-sistema/SKILL.md) | Transformar a lei brasileira em requisitos e documentos para reduzir o risco de processos e multas | 8 áreas jurídicas, 10 referências |

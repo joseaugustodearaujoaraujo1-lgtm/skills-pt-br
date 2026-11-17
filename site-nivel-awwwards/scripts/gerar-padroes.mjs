@@ -114,7 +114,7 @@ T.push('## 7. Regras derivadas (Awwwards)', '');
 for (const [, f, nome] of caracteristicas) { const p = pct(A, f); if (p === null) continue; const rotulo = p >= 80 ? 'quase universal' : p >= 50 ? 'padrão forte' : p >= 20 ? 'escolha comum' : p >= 10 ? 'minoria' : 'raro'; regras.push([p, `- **${nome}**: ${p}% (${rotulo}).`]); }
 regras.sort((a, b) => b[0] - a[0]); T.push(...regras.map(r => r[1]), '');
 T.push('## 8. O que isso significa para o design', '',
-  '- **Título gigante é escolha, não regra**: só ~25% (Awwwards) e ~37% (One Page Love) têm título de 72 px ou mais na primeira dobra, e 13–16% passam de 120 px. Nos heros de WebGL (42% no Awwwards) o texto é mínimo e o protagonista é a cena.',
+  '- **Título gigante é escolha, não regra**: só ~25% (Awwwards) e ~39% (One Page Love) têm título de 72 px ou mais na primeira dobra, e 13–16% passam de 120 px. Nos heros de WebGL (43% no Awwwards) o texto é mínimo e o protagonista é a cena.',
   '- O "maior texto da página" (mediana ~70 px no Awwwards, 75% até ~150 px; skill `identidade-visual`) costuma aparecer em **outra seção** (manifesto, rodapé, números), não no hero.',
   '- Quase todo site premiado **escolhe um protagonista** na primeira dobra: tipografia, cena 3D/canvas, imagem ou vídeo. Escolha o seu e deixe o resto em segundo plano.', '',
   '## 9. Como usar', '',

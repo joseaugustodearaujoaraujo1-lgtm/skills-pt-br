@@ -213,3 +213,6 @@ Partindo do diamante por faceta (acima), o resultado final usa **ray tracing den
 - **Propriedade intelectual:** o vídeo usa elementos do Minecraft (marca e texturas da Mojang/Microsoft), e o teste da lata usa a foto e a marca de um produto real. Isso vale **só como estudo local**. Em projeto de cliente, **não use** texturas, logos, nomes ou personagens de terceiros: crie arte própria no mesmo estilo, ou use fotos com autorização da marca.
 - Verifique a licença de qualquer ferramenta, modelo ou textura antes de usar (por exemplo, "img2threejs" ainda não foi verificada).
 - Teste em celular de verdade, em 1440/768/390 px, e meça: LCP, fps e consumo de bateria.
+
+## Referência visual e prompts
+Antes de modelar qualquer objeto: imagem detalhada (várias vistas) ou vídeo. Prompts com comandos de barra (`/8k /ultra-realistic /ray-traced ...`), modelos de imagem e de vídeo e a pergunta "quem gera a referência" estão em [prompts-3d.md](prompts-3d.md). `opcoes.mjs` sempre traz um elemento 3D leve sugerido para o tema.

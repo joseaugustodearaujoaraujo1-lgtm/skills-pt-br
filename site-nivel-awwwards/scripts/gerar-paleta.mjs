@@ -42,7 +42,7 @@ function acharTema(txt) {
   const q = norm(txt); let melhor = null, pontos = 0;
   for (const t of temas) {
     let p = norm(t.id) === q ? 10 : 0;
-    for (const w of t.palavras.filter((w, i, a) => !a.some(o => o !== w && norm(o).includes(norm(w)) && q.includes(norm(o))))) if (w.length > 3 ? q.includes(norm(w)) : new RegExp('(^|[^a-z0-9])' + norm(w) + '([^a-z0-9]|$)').test(q)) p += w.length > 3 ? 3 : 1;
+    for (const w of t.palavras.filter((w, i, a) => !a.some(o => norm(o) !== norm(w) && norm(o).includes(norm(w)) && q.includes(norm(o))))) if (w.length > 3 ? q.includes(norm(w)) : new RegExp('(^|[^a-z0-9])' + norm(w) + '([^a-z0-9]|$)').test(q)) p += w.length > 3 ? 3 : 1;
     if (p > pontos) { pontos = p; melhor = t; }
   }
   return melhor;

@@ -1,4 +1,4 @@
-// Recomenda 1 estilo principal (e 1 secundário compatível) entre os 10 da skill `estilos-paletas-design`.
+// Recomenda 1 estilo principal (e 1 secundário compatível) entre os 10 estilos de `references/base-estilos/` (vindos da antiga skill estilos-paletas-design).
 // Uso: node escolher-estilo.mjs --tema "joalheria" --adjetivos "elegante,sofisticado,raro" [--evitar "infantil,neon"] [--json]
 // Pontua: (1) posição do estilo na lista do tema, (2) adjetivos do briefing, (3) palavras em --uso (ex.: "muitos recursos").
 import fs from 'node:fs';
@@ -42,7 +42,7 @@ const adj = lista(args.adjetivos), evitar = lista(args.evitar), uso = norm(args.
 
 const q = norm(args.tema || '');
 let tema = null, melhorP = 0;
-for (const t of temas) { let p = norm(t.id) === q ? 10 : 0; for (const w of t.palavras.filter((w, i, a) => !a.some(o => o !== w && norm(o).includes(norm(w)) && q.includes(norm(o))))) if (w.length > 3 ? q.includes(norm(w)) : new RegExp('(^|[^a-z0-9])' + norm(w) + '([^a-z0-9]|$)').test(q)) p += w.length > 3 ? 3 : 1; if (p > melhorP) { melhorP = p; tema = t; } }
+for (const t of temas) { let p = norm(t.id) === q ? 10 : 0; for (const w of t.palavras.filter((w, i, a) => !a.some(o => norm(o) !== norm(w) && norm(o).includes(norm(w)) && q.includes(norm(o))))) if (w.length > 3 ? q.includes(norm(w)) : new RegExp('(^|[^a-z0-9])' + norm(w) + '([^a-z0-9]|$)').test(q)) p += w.length > 3 ? 3 : 1; if (p > melhorP) { melhorP = p; tema = t; } }
 
 const pontos = {};
 for (const id of Object.keys(ESTILOS)) pontos[id] = { total: 0, motivos: [] };
@@ -58,8 +58,8 @@ const [principal] = ranking; const secundario = ranking.find(([id]) => id !== pr
 
 const resp = {
   tema: tema?.id || null,
-  principal: { id: principal[0], nome: ESTILOS[principal[0]].nome, pontos: principal[1].total, motivos: principal[1].motivos, arquivo: `~/.claude/skills/estilos-paletas-design/references/${principal[0]}.md` },
-  secundario: secundario ? { id: secundario[0], nome: ESTILOS[secundario[0]].nome, pontos: secundario[1].total, motivos: secundario[1].motivos, arquivo: `~/.claude/skills/estilos-paletas-design/references/${secundario[0]}.md` } : null,
+  principal: { id: principal[0], nome: ESTILOS[principal[0]].nome, pontos: principal[1].total, motivos: principal[1].motivos, arquivo: `~/.claude/skills/site-nivel-awwwards/references/base-estilos/${principal[0]}.md` },
+  secundario: secundario ? { id: secundario[0], nome: ESTILOS[secundario[0]].nome, pontos: secundario[1].total, motivos: secundario[1].motivos, arquivo: `~/.claude/skills/site-nivel-awwwards/references/base-estilos/${secundario[0]}.md` } : null,
   ranking: ranking.slice(0, 5).map(([id, p]) => ({ id, pontos: p.total })),
   aviso: principal[1].total <= 0 ? 'Nenhum sinal forte: o briefing não casou com nenhum estilo. Peça mais adjetivos ou apresente 2 opções.' : (['dark-mode', 'cyberpunk'].includes(principal[0]) ? 'Dark Mode e Cyberpunk não têm imagens de referência na skill de estilos: tratar como proposta e validar com protótipo.' : null),
 };

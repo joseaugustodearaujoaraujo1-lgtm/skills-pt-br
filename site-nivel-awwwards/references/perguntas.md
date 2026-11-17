@@ -1,37 +1,42 @@
-# Perguntas para a identidade visual (antes de construir)
+# Perguntas da skill: três blocos, nesta ordem
 
-Objetivo: entender a marca o suficiente para propor **opções reais** e deixar o usuário **escolher** design e paleta. Pergunte só o que ainda não foi dito. Use a ferramenta de perguntas do ambiente (no Claude Code, `AskUserQuestion`: até 4 perguntas por vez, 2–4 opções cada, e o usuário sempre tem "Outro" para escrever).
+Use a ferramenta de perguntas do ambiente (no Claude Code, `AskUserQuestion`: até 4 perguntas por vez, 2–4 opções cada; o usuário sempre pode escolher "Outro" e **digitar**). Pergunte só o que ainda não foi respondido. **Não mostre sites, estilos nem paletas antes do bloco 1 terminar**: as opções só fazem sentido depois de conhecer o sistema.
 
-## Rodada 1: entender (texto livre ou opções)
-1. **O que é e para quem:** negócio, produto ou pessoa; público principal; aparelho mais usado.
-2. **Objetivo da página e ação principal:** vender, agendar, contato, portfólio, lista de espera.
-3. **Personalidade em 3 adjetivos** (ex.: elegante, raro, silencioso) e **o que não quer parecer** (ex.: infantil, genérico de IA, corporativo frio).
-4. **Material disponível:** logo, fotos, vídeos, textos, objeto 3D (se houver 3D: imagem muito detalhada ou vídeo é obrigatório, ver `3d-leve.md`).
-5. **Stack (só estas opções):** **HTML + CSS + JS + GSAP** (recomendado: mais leve, ideal para landing e portfólio) ou **Next.js + GSAP** (quando precisa de React, rotas, CMS ou componentes do reactbits.dev), e o "Outro" para o usuário escrever. Não ofereça outras stacks como opção.
-6. **Restrições:** prazo, cores ou fontes obrigatórias da marca.
-7. **Modo de trabalho** (de `design-completo`): A · do zero, B · refazer, C · reajustar. Em B e C, faça o diagnóstico antes (`base-design-completo/01-diagnostico.md`).
+## Bloco 1 — Conhecer e entender o sistema (duas rodadas curtas)
+Objetivo: saber o que é, para quem e o que precisa existir, para escolher referências e design certos.
 
-## Rodada 2: escolher a direção de design (estilo)
-Rode `escolher-estilo.mjs` e ofereça 3 estilos dos 10 (`base-estilos/`), cada um com uma linha do porquê, mais a opção recomendada. Exemplo:
-- Typography Luxury · Minimalism · Dark Mode · **Recomendado: Typography Luxury** (porquê).
+**Rodada 1.1**
+1. **O que é e qual o assunto?** (tipo de negócio ou projeto, nome, cidade ou público local). Texto livre; ofereça exemplos como opções.
+2. **Qual o objetivo e a ação principal do visitante?** (vender, agendar, pedir orçamento, ver portfólio, cadastrar na lista de espera).
+3. **Quem é o público e em que aparelho acessa?** (idade, interesse; celular ou computador).
+4. **Que páginas ou seções e funcionalidades precisa?** (uma página só ou várias; formulário, loja, agendamento, login, blog, galeria).
 
-## Rodada 3: escolher a paleta (3 escuras + 3 claras)
-Rode `opcoes.mjs` e mostre as duas tabelas:
-- **Escuro:** E1 Assinatura · E2 Contida · E3 Ousada.
-- **Claro:** C1 Assinatura · C2 Contida · C3 Ousada.
-Pergunte: "Qual paleta para o tema escuro? E para o claro?" (o site pode ter os dois temas; se tiver um só, pergunte qual tom primeiro). Sempre deixe o usuário pedir ajuste (outro acento, mais sóbria, cor da marca) e rode de novo com `gerar-paleta.mjs --acento <graus>`.
-Mostre as cores **visualmente** quando possível (amostras em uma página HTML ou widget), não só os hex.
+**Rodada 1.2**
+5. **Que material já existe?** (logo, fotos, vídeos, textos, objeto 3D). Isso decide imagens reais x geradas e se haverá 3D.
+6. **Personalidade em 3 adjetivos e o que NÃO quer parecer.** Ofereça combinações prontas (ex.: "elegante, raro, silencioso"; "ousado, jovem, irreverente"; "acolhedor, artesanal, natural"; "preciso, técnico, moderno").
+7. **Qual stack?** Só duas opções: **HTML + CSS + JS + GSAP** (recomendada: mais leve, ideal para landing e portfólio) ou **Next.js + GSAP** (rotas, CMS, componentes React do reactbits.dev). "Outro" para texto livre.
 
-## Rodada 4: escolher o site de referência (5 opções, sempre)
-Mostre as 5 opções do `opcoes.mjs`, depois de abrir as capturas e confirmar que cada uma é boa (troque a que estiver no preloader ou quebrada):
+Com as respostas, rode: `node ~/.claude/skills/site-nivel-awwwards/scripts/opcoes.mjs --tema "<assunto>" --adjetivos "a,b,c" --recursos "..." [--tipo vitrine|portfólio|saas|institucional|editorial|evento] [--evitar "x"]`.
 
-| Opção | O que é |
-|---|---|
-| **A, B, C** | Três sites nível Awwwards ou One Page Love, variados entre si (fonte, nicho, abordagem), com o porquê de cada um e a captura |
-| **D** | **Campo livre:** o usuário escreve um site, um estilo ou uma ideia e você **pesquisa de novo** (`opcoes.mjs --sugestao "..."` + busca ao vivo) e volta com 3 novas opções |
-| **E** | **Recomendada por você:** a melhor para o briefing, com justificativa em 2 frases |
+## Bloco 2 — Qual destes sites você mais gosta? (depois de entender o sistema)
+Regras da sugestão:
+- **Base inteira:** o script considera **todos os sites válidos** da base (hoje ~884 únicos; 1.819 coletados no total, o resto é erro, bloqueio ou site fora do ar), não só os mais pontuados.
+- **O layout precisa encaixar no tema e no assunto:** cada site é comparado com o perfil de layout do tipo de página (vitrine de produto, portfólio, produto digital, institucional, editorial, evento): número de seções, quantidade de texto, imagens, tipo de hero e rolagem. Um site de café recebe referências de vitrine, não de painel de SaaS. Cada opção mostra **"por que encaixa"** (assunto + layout).
+- Mostre **4 opções** e "Outro": **A, B, C** (variados) e **E recomendada** (primeira, "(Recomendado)", com justificativa em duas frases). **Outro** = o usuário digita um site, estilo ou ideia; rode `opcoes.mjs --sugestao "..."` e a busca ao vivo.
+- **Links clicáveis:** escreva cada site como `[Nome](https://url)` **na mensagem**, antes da pergunta, e repita a URL na descrição de cada opção. Antes de mostrar, **abra as capturas** (`desktop.jpg`, `mobile.jpg`) e troque as que estiverem no preloader ou fracas. "Mostre outros" → `--excluir <slugs já mostrados>`.
+- Sites sem layout medido aparecem marcados ("layout ainda não medido"): confira a captura com mais cuidado.
 
-Se o usuário pedir "mostre outros", rode com `--excluir <slugs já mostrados>`. Repita até ele escolher. Na ferramenta de perguntas, A, B e C viram opções, E entra marcada "(Recomendado)" como primeira, e D é o "Outro" (texto livre).
+## Bloco 3 — Montagem do design (eu **sempre recomendo**; o usuário aceita, escolhe outra ou digita)
+Em toda pergunta deste bloco a **primeira opção é "(Recomendado)"**, com o motivo em uma frase, ligada às respostas dos blocos 1 e 2.
 
-## Depois da escolha
-Registre no brief (`montar-brief.mjs`): estilo, paleta escura e clara escolhidas (ids e hex), site de referência e o que pegar dele (composição, ritmo, motion; nunca layout, texto ou imagem copiados). Valide o brief com o usuário antes de construir.
+**Estilo.** Base: os 10 estilos de `references/base-estilos/` (antiga skill estilos-paletas-design). Mostre 3 estilos do ranking com a **paleta de origem** de cada um (fundo, acento, texto, fonte). Opções: **estilo recomendado** · outros 2 estilos · **"você escolhe por mim"** · **Outro** (digitar; misturas só pela matriz de compatibilidade de `base-estilos/_SKILL-original.md`). Leia só o guia do estilo escolhido.
+
+**Paleta.** Base: a paleta de origem do estilo escolhido e as geradas para o tema (3 escuras e 3 claras, contraste AA/AAA conferido). Opções: **paleta recomendada** (a do estilo ajustada ao tema) · alternativas (Assinatura, Contida, Ousada) no tom escolhido · **Outro** (o usuário escreve hex ou descreve, ex. "verde-musgo com creme"; rode `gerar-paleta.mjs --acento <graus>` e confira o contraste). Mostre **amostras visuais**, não só hex. Pergunte o tom (escuro, claro ou ambos) se não estiver claro.
+
+**3D (se houver).** Ver `prompts-3d.md`. Opções: **"Você gera e eu passo o prompt"** (com comandos de barra `/8k /ultra-realistic ...`) · **"Faça você a imagem ou o vídeo"**. **Sempre sugira** um elemento 3D leve do tema (`sugestao3d`) usando o método de `3d-leve.md`, mesmo que o usuário não tenha pedido 3D.
+
+## Regra permanente (não é pergunta)
+Todo site usa componentes ou transições das plataformas (reactbits.dev, transitions.dev, naocodei.com; pinstack e tasteskill como referência), com o que veio de onde e a licença no relatório (`plataformas.md`). Nada de login, conta ou compra: itens PRO ficam com o usuário.
+
+## Depois das escolhas
+Registre no brief (`montar-brief.mjs`): resumo do sistema (bloco 1), sites escolhidos, stack, estilo, paleta (ids e hex), decisão de 3D. **Valide o brief com o usuário antes de construir.**

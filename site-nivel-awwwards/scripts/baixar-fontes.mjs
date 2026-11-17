@@ -20,13 +20,19 @@ const blocos = [...css.matchAll(/\/\*\s*([\w-]+)\s*\*\/\s*(@font-face\s*\{[^}]*\
 const latin = blocos.filter(b => b.subconjunto === 'latin');
 let saidaCss = '/* Fontes hospedadas localmente (Google Fonts, licença OFL), subconjunto latin. Gerado por baixar-fontes.mjs */\n', total = 0;
 const arquivos = [];
+// Fonte variável: o Google repete o MESMO arquivo para cada peso pedido. Agrupa por URL: baixa uma vez e declara a faixa de pesos.
+const porSrc = new Map();
 for (const b of latin) {
-  const familia = b.texto.match(/font-family:\s*'([^']+)'/)[1], estilo = b.texto.match(/font-style:\s*(\w+)/)[1], peso = b.texto.match(/font-weight:\s*([\d ]+)/)[1].trim();
-  const src = b.texto.match(/url\(([^)]+)\)/)[1];
+  const src = b.texto.match(/url\(([^)]+)\)/)[1], pesos = b.texto.match(/font-weight:\s*([\d ]+)/)[1].trim().split(/\s+/).map(Number);
+  if (porSrc.has(src)) porSrc.get(src).pesos.push(...pesos); else porSrc.set(src, { texto: b.texto, pesos: [...pesos] });
+}
+for (const [src, g] of porSrc) {
+  const familia = g.texto.match(/font-family:\s*'([^']+)'/)[1], estilo = g.texto.match(/font-style:\s*(\w+)/)[1];
+  const min = Math.min(...g.pesos), max = Math.max(...g.pesos), peso = min === max ? String(min) : `${min} ${max}`;
   const nome = `${familia.toLowerCase().replace(/\s+/g, '-')}-${estilo}-${peso.replace(/\s+/g, '-')}.woff2`;
   const buf = Buffer.from(await (await fetch(src, { headers: { 'User-Agent': UA } })).arrayBuffer());
   fs.writeFileSync(path.join(saida, nome), buf); total += buf.length; arquivos.push({ nome, familia, estilo, kb: +(buf.length / 1024).toFixed(1) });
-  saidaCss += b.texto.replace(/url\([^)]+\)(\s*format\([^)]*\))?/, `url(${nome}) format('woff2')`).replace(/\s+/g, ' ').replace(/ ?\{ ?/, ' { ').replace(/ ?\} ?$/, ' }') + '\n';
+  saidaCss += g.texto.replace(/font-weight:\s*[\d ]+;/, `font-weight: ${peso};`).replace(/url\([^)]+\)(\s*format\([^)]*\))?/, `url(${nome}) format('woff2')`).replace(/\s+/g, ' ').replace(/ ?\{ ?/, ' { ').replace(/ ?\} ?$/, ' }') + '\n';
 }
 fs.writeFileSync(path.join(saida, 'fonts.css'), saidaCss);
 console.log(`${arquivos.length} arquivos, ${(total / 1024).toFixed(1)} KB em ${saida}`);

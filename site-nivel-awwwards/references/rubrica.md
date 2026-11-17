@@ -48,7 +48,15 @@ Passe o site por esta rubrica **antes** de dizer que está pronto. Ela segue os 
 | 1: sem 3D, receitas originais | 86 | não medido | 91 | falhou: contraste do texto esmaecido (1,4:1), `aria-label` em `<p>`, fontes por `@import` |
 | 2: + diamante 3D ligado no carregamento | 62 | falhou (NO_FCP) | 100 | TBT 1.960 ms: `getContext('webgl2')` bloqueou 250–750 ms |
 | 3: pôster + 3D após a entrada | **80** | **61** | 100 | LCP 0,7 s (desktop) / 3,0 s (celular); TBT 380 / 2.480 ms |
+| 4: + otimizações de thread principal | 84 | 61 | 100 | ainda abaixo da meta no celular |
 A versão 3 **não atinge** a meta de desempenho (≥ 90 desktop, ≥ 75 celular). Gargalo restante: thread principal (Estilo e Layout 0,8 s no desktop e 3,2 s no celular; SplitText, ScrollTrigger e Lenis). Ideias ainda não aplicadas: dividir texto (SplitText) só quando a seção se aproxima, `content-visibility: auto` nas seções sem pin, não chamar `ScrollTrigger.refresh()` na carga, fontes hospedadas no próprio site. A máquina de teste é fraca (o Lighthouse avisa CPU mais lenta que o esperado): compare **versões na mesma máquina**, não notas absolutas.
+
+## Exemplo medido (Grão Raro, HTML + GSAP, 2026-11-16, projeto de teste)
+| Etapa | Desempenho desktop | Desempenho celular | Acessibilidade | Observação |
+|---|---|---|---|---|
+| primeira versão | 98 | 64–67 | 96 | contraste do manifesto com opacidade .35 (3:1 falhou); TBT 2,4–3 s no celular |
+| após as correções | 96–98 | 67–75 (oscila) | **100** | opacidade mínima .5; divisão de texto só ao se aproximar; sem `text-rendering` global; `content-visibility` nas seções de baixo |
+Boas práticas 100 e SEO 100 nas duas. A nota de celular varia entre rodadas na mesma máquina: rode 2 ou 3 vezes e relate a faixa. Lições em `elementos.md`, seção 9. O `scripts/verificar-site.mjs` automatiza as checagens de contraste, console, overflow e movimento reduzido.
 
 ## Como relatar
 Responda em uma tabela: critério, nota, evidência, correção feita. Diga também **o que não foi testado** (ex.: celular real, leitor de tela). Não declare "nível Awwwards": declare o que foi medido.
