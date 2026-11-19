@@ -1,6 +1,6 @@
 # Prompts de referência para componentes 3D (imagem e vídeo)
 
-Regra da skill: **todo objeto 3D tem uma referência visual muito detalhada (imagem com várias vistas ou vídeo) antes de ser modelado**, e o render final é comparado com ela. Esta página dá os prompts e o fluxo da pergunta.
+Regra da skill: **todo objeto 3D tem antes um MOLDE ultrarrealista (imagem com 4 vistas e/ou vídeo giratório) aprovado pelo usuário, e o 3D do site é estritamente igual ao molde** (portão de igualdade em `3d-leve.md`, Regra 0: silhueta ≥ 95%, proporções ≤ 2%, mesmo número de partes). Esta página dá os prompts do molde e o fluxo da pergunta. Depois do 3D, sugira sempre o scroll animado ([scroll-avancado.md](scroll-avancado.md)).
 
 ## A pergunta (sempre que o projeto tiver 3D)
 Ofereça duas opções (mais "Outro" para texto livre):

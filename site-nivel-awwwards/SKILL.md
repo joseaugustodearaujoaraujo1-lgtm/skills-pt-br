@@ -14,7 +14,7 @@ Conduz o processo completo, **com o usuário escolhendo** nas decisões de gosto
 2. **Evidência antes de gosto**: as opções vêm do acervo (910 sites), de pesquisa ao vivo e de dados medidos, não do padrão do modelo.
 3. **Referência é qualidade, não molde**: nunca copie layout, texto, imagem, logo, fonte paga ou código de um site.
 4. **Uma ideia, um gesto**: um conceito claro e **um** efeito de assinatura. Menos efeitos, melhor acabamento.
-5. **Todo objeto 3D nasce de uma referência**: imagem muito detalhada (várias vistas) ou vídeo, obtida **antes** de modelar (ver `references/3d-leve.md`).
+5. **Todo objeto 3D nasce de um molde ultrarrealista** (imagem de 4 vistas e/ou vídeo), aprovado **antes** de modelar, e o 3D é estritamente igual a ele (ver `references/3d-leve.md`). **Depois do 3D, sempre se sugere um scroll animado avançado** (`references/scroll-avancado.md`).
 6. **Medir para declarar**: contraste, Lighthouse, peso e viewports vão no relatório; "nível Awwwards" não se declara.
 
 ## Fluxo (siga na ordem)
@@ -26,7 +26,7 @@ Identifique e diga ao usuário: **A · do zero**, **B · refazer** (redesign) ou
 Use `AskUserQuestion` (sempre com "Outro" para o usuário digitar). **Não mostre sites, estilos nem paletas antes de entender o sistema.**
 1. **Conhecer e entender o sistema** (2 rodadas): o que é e o assunto, objetivo e ação principal, público e aparelho, páginas e funcionalidades, material existente, 3 adjetivos e o que evitar, e a **stack** (só HTML + CSS + JS + GSAP ou Next.js + GSAP).
 2. **Qual destes sites você mais gosta?** Sugestão tirada de **toda a base** (~884 sites válidos), escolhendo layouts que **encaixam no tema e no assunto**: **A, B, C** + **E recomendada**, com link clicável `[Nome](url)` e "por que encaixa"; "Outro" = o usuário sugere e você reprocura.
-3. **Montagem do design, com recomendação sempre** (a 1ª opção é "(Recomendado)" com o motivo): **estilo** (3 dos 10 de `references/base-estilos/` com a paleta de origem, "você escolhe por mim" ou digitar), **paleta** (a recomendada, as geradas 3 escuras + 3 claras, ou escrever a sua) e, se houver 3D, quem gera a referência (prompt com **comandos de barra** `/8k /ultra-realistic ...` em `prompts-3d.md`, ou você faz). **Sempre sugira um elemento 3D leve** do tema (`sugestao3d`, método de `3d-leve.md`).
+3. **Montagem do design, com recomendação sempre** (a 1ª opção é "(Recomendado)" com o motivo): **estilo** (3 dos 10 de `references/base-estilos/` com a paleta de origem, "você escolhe por mim" ou digitar), **paleta** (a recomendada, as geradas 3 escuras + 3 claras, ou escrever a sua) e, se houver 3D, quem gera a referência (prompt com **comandos de barra** `/8k /ultra-realistic ...` em `prompts-3d.md`, ou você faz). **Sempre sugira um elemento 3D leve** do tema (`sugestao3d`, método de `3d-leve.md`). **Antes de fazer o 3D, gere o molde ultrarrealista** (4 vistas e/ou vídeo giratório) e faça o elemento **estritamente igual a ele** (`3d-leve.md`, Regra 0, com portão de igualdade). **Logo depois do 3D, sempre sugira um scroll animado extremamente sofisticado e avançado**, no nível de Era Residence, Rectangles FM, Zentry, Tenztan, The Art of Cinema, Diego Liv e Collab Capitolium (`references/scroll-avancado.md`; `sugestaoScroll` no `opcoes.mjs`).
 
 **Regra permanente:** todo site usa componentes ou transições das plataformas (reactbits.dev, transitions.dev, naocodei.com; pinstack e tasteskill como referência), com o que veio de onde e a licença no relatório (`references/plataformas.md`).
 
@@ -84,6 +84,8 @@ Ver [references/padroes.md](references/padroes.md). A primeira dobra tem **um pr
 | `scripts/qualidade.mjs` | filtro de capturas inválidas |
 | `scripts/temas.json` | ~25 temas: palavras, nichos do acervo, cor, estilos |
 | `references/perguntas.md` | os 3 blocos de perguntas (entender, sites, design) e o formato das opções |
+| `references/padroes-ux.md` + `scripts/gerar-padroes-ux.mjs` | padrões de UX/UI medidos em 830 sites da base (scroll, 3D, animação, efeitos, menu, tipografia), com % por fonte |
+| `references/scroll-avancado.md` | 7 sites de referência de scroll, padrões (pin+scrub, pilha sticky, clip-path, vídeo no scroll) e receitas GSAP |
 | `references/prompts-3d.md` | prompts de imagem e vídeo 3D com comandos de barra e a pergunta de quem gera |
 | `references/plataformas.md` | tasteskill, transitions, reactbits, naocodei, pinstack: preço, licença, limites e uso |
 | `references/base-design-completo/` | conteúdo completo da skill design-completo (diagnóstico, tipografia, cor, layout, componentes, motion, conversão, cara de IA, referências, catálogo naocodei, implementação) |

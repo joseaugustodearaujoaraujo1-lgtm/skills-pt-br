@@ -1,5 +1,12 @@
 # 3D leve para sites
 
+## REGRA 0 (vem antes de tudo): molde ultrarrealista, e o 3D é estritamente igual a ele
+Antes de modelar **qualquer** elemento 3D, gere um **molde ultrarrealista** do objeto: uma folha com 4 vistas (frente, lado, topo, base) e, se possível, um vídeo giratório de 10 s (Modelo A e B de `prompts-3d.md`, com `/8k /ultra-realistic /ray-traced ...`). O molde é aprovado pelo usuário **antes** de modelar. O elemento 3D do site é então construído **estritamente igual ao molde**: mesma silhueta, proporções, número de partes (facetas, sulcos, dobras), material e luz.
+
+**Portão de igualdade (obrigatório antes de entregar):** renderize o 3D nos mesmos ângulos do molde e compare lado a lado e numericamente: silhueta (IoU) **≥ 95%**, razão largura/altura/profundidade com diferença **≤ 2%**, contagem de partes **idêntica**, diferença média de cor registrada. Se algum item falhar, corrija o 3D (nunca o molde) e repita. Registre a comparação em `referencias-3d/<objeto>/README.md`. Sem molde aprovado, não há 3D.
+
+Quem gera o molde: o usuário (a skill entrega o prompt) **ou** a skill (com a ferramenta de imagem/vídeo disponível, **só com autorização** por causa do custo). Depois do 3D, a skill sempre sugere o **scroll animado** que o conduz ([scroll-avancado.md](scroll-avancado.md)).
+
 ## REGRA OBRIGATÓRIA: todo objeto 3D tem uma referência visual detalhada
 Antes de modelar **qualquer** objeto 3D (produto, joia, personagem, cena), exija **uma imagem muito detalhada ou um vídeo** de como ele deve ficar. Sem isso, não comece: sem referência a IA inventa forma, proporção e material, e o resultado fica genérico.
 

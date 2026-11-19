@@ -35,6 +35,10 @@ Em toda pergunta deste bloco a **primeira opção é "(Recomendado)"**, com o mo
 
 **3D (se houver).** Ver `prompts-3d.md`. Opções: **"Você gera e eu passo o prompt"** (com comandos de barra `/8k /ultra-realistic ...`) · **"Faça você a imagem ou o vídeo"**. **Sempre sugira** um elemento 3D leve do tema (`sugestao3d`) usando o método de `3d-leve.md`, mesmo que o usuário não tenha pedido 3D.
 
+**Scroll animado (sempre, logo depois do 3D).** Mesmo sem 3D, pergunte. Base: [scroll-avancado.md](scroll-avancado.md), com os 7 sites de referência (Era Residence, Rectangles FM, Zentry, Tenztan, The Art of Cinema, Diego Liv, Collab Capitolium) e os padrões medidos na base. Opções: **scroll recomendado** (ligado ao tema e ao 3D: com objeto 3D, "pin + scrub" que gira o objeto e troca o texto) · 2 alternativas (pilha sticky, revelação por clip-path, vídeo ligado ao scroll, texto que acende, trilho horizontal) · **"você escolhe por mim"** · **Outro** (digitar). Mostre cada padrão com o link do site que o usa. Um scroll de assinatura por página.
+
+**Molde do 3D.** Se houver 3D, antes de modelar: gere (ou o usuário gera) o **molde ultrarrealista**; o usuário aprova; o 3D é **estritamente igual** ao molde (portão de igualdade em `3d-leve.md`, Regra 0).
+
 ## Regra permanente (não é pergunta)
 Todo site usa componentes ou transições das plataformas (reactbits.dev, transitions.dev, naocodei.com; pinstack e tasteskill como referência), com o que veio de onde e a licença no relatório (`plataformas.md`). Nada de login, conta ou compra: itens PRO ficam com o usuário.
 

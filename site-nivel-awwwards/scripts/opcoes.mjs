@@ -114,6 +114,11 @@ const paletaRecomendada = { origem: estilos[0]?.paletaDeOrigem ? `paleta de orig
 const SUGESTAO_3D = { moda: 'tecido ou peça girando com dobras em shader (plano subdividido, sem modelo pesado)', luxo: 'joia ou frasco em ray tracing leve (como o diamante de ~23 KB)', arquitetura: 'maquete isométrica em linhas (geometria em código) que se monta com a rolagem', tecnologia: 'objeto abstrato do produto (cubo ou anel) com reflexo de ambiente procedural', ia: 'malha de pontos que reage ao cursor (instanciamento)', fintech: 'moeda ou cartão girando com brilho metálico (esfera + normal map procedural)', saude: 'forma orgânica suave (blob) respirando', alimentacao: 'o produto em destaque (grão, fruta, lata) girando com o mouse, textura gerada em canvas (método da lata)', educacao: 'livro ou sólido geométrico que se desdobra com a rolagem', arte: 'superfície deformada por ruído que segue o cursor', musica: 'disco ou onda 3D reagindo ao áudio', jogos: 'cena low-poly instanciada com parallax', esportes: 'bola ou objeto com trajetória na rolagem', viagem: 'globo leve com rotas em arco', imobiliario: 'maquete do imóvel em linhas, com corte ao rolar', corporativo: 'forma geométrica sóbria com um único material', sustentabilidade: 'folha ou semente em baixa poligonagem crescendo com a rolagem', infantil: 'objeto arredondado de brinquedo, material fosco, giro suave', beleza: 'frasco ou batom com reflexo de estúdio procedural', automotivo: 'silhueta do veículo em linhas + reflexos, giro de 360° por arraste', portfolio: 'objeto-assinatura do autor, só um, interativo', agencia: 'tipografia 3D extrudada leve reagindo ao cursor', ecommerce: 'o produto principal girando 360° (pôster + WebGL tardio)', eventos: 'forma do evento (ingresso, palco) com luz animada', editorial: 'objeto simbólico da pauta, discreto, sem competir com o texto' };
 const sugestao3d = { elemento: SUGESTAO_3D[tema.id] || 'um único objeto simbólico do negócio, com geometria em código', regra: 'antes de modelar: imagem muito detalhada (várias vistas) ou vídeo de referência; peso-alvo ≤ 150 KB; pôster + WebGL tardio', prompts: 'references/prompts-3d.md', perguntar: 'Você gera a imagem/vídeo (eu passo o prompt com comandos de barra) ou eu mesmo faço a referência?' };
 
+// ---------- 4b) scroll animado avançado (sempre sugerir logo depois do 3D; ver references/scroll-avancado.md) ----------
+const SCROLL_REF = { 'pin+scrub': ['Tenztan https://www.tenztan.in/', 'The Art of Cinema https://www.theartofcinema.xyz/'], 'pilha sticky': ['Diego Liv https://www.diegoliv.works/', 'Collab Capitolium https://www.collabcapitolium.fr/', 'Rectangles FM https://rectangles.fm/'], 'clip-path': ['Zentry https://zentry.com/', 'Era Residence https://www.era-residence.com/'], 'vídeo no scroll': ['Zentry https://zentry.com/', 'Collab Capitolium https://www.collabcapitolium.fr/'] };
+const padraoScroll = (args.recursos || '').includes('3d') || /joia|produto|objeto|3d/i.test(args.tema + ' ' + (args.recursos || '')) ? 'pin+scrub' : (['portfolio', 'agencia', 'moda', 'arte', 'ecommerce'].includes(tema.id) ? 'pilha sticky' : 'clip-path');
+const sugestaoScroll = { recomendado: padraoScroll, referencias: SCROLL_REF[padraoScroll], alternativas: Object.keys(SCROLL_REF).filter(k => k !== padraoScroll).slice(0, 2).map(k => ({ padrao: k, referencias: SCROLL_REF[k] })), regra: 'um scroll de assinatura por página; só transform/opacity/clip-path; celular sem Lenis e pins curtos; movimento reduzido mostra o estado final', guia: 'references/scroll-avancado.md', perguntar: 'Qual scroll animado? (recomendado, 2 alternativas, você escolhe por mim, ou digitar)' };
+
 const perfilLayout = perfilDe(tema.id, args.tipo);
 const componentesSugeridos = { perfil: perfilLayout.nome, itens: perfilLayout.componentes || [], catalogo: 'references/componentes-plataformas.md' };
 
@@ -127,8 +132,8 @@ const plataformas = [
 
 const saida = {
   tema: tema.id, adjetivos: lista(args.adjetivos), nota: tema.nota,
-  ordemDasPerguntas: ['1 sites (A, B, C, recomendada, outro) com links', '2 stack (HTML+CSS+JS+GSAP ou Next.js+GSAP)', '3 estilo (3 opções + você escolhe + digitar)', '4 paleta (do estilo, geradas, você escolhe + digitar)', '5 se houver 3D: quem gera a referência (prompt com comandos de barra ou eu faço)', '6 componentes das plataformas (sempre usar)'],
-  sites, estilos, paletas, paletaRecomendada, sugestao3d, componentesSugeridos, plataformas,
+  ordemDasPerguntas: ['1 sites (A, B, C, recomendada, outro) com links', '2 stack (HTML+CSS+JS+GSAP ou Next.js+GSAP)', '3 estilo (3 opções + você escolhe + digitar)', '4 paleta (do estilo, geradas, você escolhe + digitar)', '5 se houver 3D: molde ultrarrealista primeiro (quem gera: prompt com comandos de barra ou eu faço) e 3D estritamente igual ao molde', '6 scroll animado avançado (sempre, logo depois do 3D)', '7 componentes das plataformas (sempre usar)'],
+  sites, estilos, paletas, paletaRecomendada, sugestao3d, sugestaoScroll, componentesSugeridos, plataformas,
   proximosPassos: 'Mostre os sites com links clicáveis e pergunte qual agrada mais. Em "Outro", rode de novo com --sugestao. Para "mostre outros", repita com --excluir <slugs já mostrados>.',
 };
 if (args.json) { console.log(JSON.stringify(saida, null, 2)); process.exit(0); }
@@ -155,5 +160,12 @@ for (const tom of ['escuro', 'claro']) {
 }
 console.log(`Recomendada: ${paletaRecomendada.origem}. Ou escreva a sua.\n`);
 console.log(`## 4. Elemento 3D leve sugerido\n\n- ${sugestao3d.elemento}\n- Regra: ${sugestao3d.regra}\n- ${sugestao3d.perguntar}\n`);
+console.log(`## 4b. Scroll animado avançado sugerido
+
+- Recomendado: ${sugestaoScroll.recomendado} (${sugestaoScroll.referencias.join(" · ")})
+- Alternativas: ${sugestaoScroll.alternativas.map(a=>a.padrao+" ("+a.referencias.join(" · ")+")").join("; ")}
+- Regra: ${sugestaoScroll.regra}
+- Guia: ${sugestaoScroll.guia}
+`);
 console.log(`## Componentes sugeridos das plataformas (sempre usar; perfil: ${componentesSugeridos.perfil})\n` + componentesSugeridos.itens.map(x => '- ' + x).join('\n') + `\nCatálogo completo: ${componentesSugeridos.catalogo}\n`);
 console.log('## Plataformas (links)\n' + plataformas.map(x => '- ' + x).join('\n'));
