@@ -22,7 +22,7 @@ Passe o site por esta rubrica **antes** de dizer que está pronto. Ela segue os 
 ## 3. Criatividade (peso 20%)
 - [ ] Há **um** gesto de assinatura memorável (transição, hero, interação, 3D leve) que serve ao conceito.
 - [ ] A ideia do site cabe em uma frase.
-- [ ] **Todo objeto 3D tem referência visual detalhada** (imagem com várias vistas ou vídeo) em `referencias-3d/<objeto>/`, e o render foi **comparado** com ela (silhueta, proporção, material, luz). Sem referência = nota 0 neste item.
+- [ ] **Todo 3D é WebGL real e ultrarrealista (PBR, ambiente, sombras); imagem recortada = nota 0.** **Todo objeto 3D tem referência visual detalhada** (imagem com várias vistas ou vídeo) em `referencias-3d/<objeto>/`, e o render foi **comparado** com ela (silhueta, proporção, material, luz). Sem referência = nota 0 neste item.
 - [ ] Teste da logo coberta: reconhece-se a marca/tema pelo visual e pelo texto.
 
 ## 4. Conteúdo (peso 10%)

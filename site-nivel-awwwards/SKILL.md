@@ -12,9 +12,9 @@ Conduz o processo completo, **com o usuário escolhendo** nas decisões de gosto
 ## Princípios
 1. **O usuário escolhe, você recomenda**: estilo, paleta e referência sempre em opções, com uma recomendada e justificada; nunca decida o gosto sozinho.
 2. **Evidência antes de gosto**: as opções vêm do acervo (910 sites), de pesquisa ao vivo e de dados medidos, não do padrão do modelo.
-3. **Referência é qualidade, não molde**: nunca copie layout, texto, imagem, logo, fonte paga ou código de um site.
+3. **Referência Awwwards é o molde do site**: escolha um site premiado do Awwwards (acervo ou pesquisa ao vivo) e reproduza o site **quase igual** em estrutura e experiência: ordem e proporção das seções, grid, hierarquia tipográfica, ritmo e tipo de scroll, transições e motion (medidos quadro a quadro com a skill `reanimate`). Só não copie o que é protegido: texto, imagens, vídeos, logo, marca, fontes pagas e código-fonte; esses são recriados com o conteúdo e a identidade do cliente.
 4. **Uma ideia, um gesto**: um conceito claro e **um** efeito de assinatura. Menos efeitos, melhor acabamento.
-5. **Todo objeto 3D nasce de um molde ultrarrealista** (imagem de 4 vistas e/ou vídeo), aprovado **antes** de modelar, e o 3D é estritamente igual a ele (ver `references/3d-leve.md`). **Depois do 3D, sempre se sugere um scroll animado avançado** (`references/scroll-avancado.md`).
+5. **Todo componente 3D é 3D de verdade e ultrarrealista**: geometria real em WebGL (three.js ou R3F) com material PBR, iluminação por HDRI/ambiente, reflexos e sombras, girável em qualquer ângulo. Imagem recortada, sprite ou flip de PNG **não conta como 3D**. **A skill pede imagens de referência ao usuário sempre que possível**, gera ela mesma a imagem-molde ultrarrealista (4 vistas, com a ferramenta de imagem disponível), **pergunta se o molde ficou bom ou precisa de ajuste**, depois gera um **vídeo-prévia de como o site vai ficar** e pergunta de novo (seção 3b); o 3D é estritamente igual ao molde aprovado (ver `references/3d-leve.md`, Regra −1 e Regra 0). **Depois do 3D, sempre se sugere um scroll animado avançado** (`references/scroll-avancado.md`).
 6. **Medir para declarar**: contraste, Lighthouse, peso e viewports vão no relatório; "nível Awwwards" não se declara.
 
 ## Fluxo (siga na ordem)
@@ -26,7 +26,7 @@ Identifique e diga ao usuário: **A · do zero**, **B · refazer** (redesign) ou
 Use `AskUserQuestion` (sempre com "Outro" para o usuário digitar). **Não mostre sites, estilos nem paletas antes de entender o sistema.**
 1. **Conhecer e entender o sistema** (2 rodadas): o que é e o assunto, objetivo e ação principal, público e aparelho, páginas e funcionalidades, material existente, 3 adjetivos e o que evitar, e a **stack** (só HTML + CSS + JS + GSAP ou Next.js + GSAP).
 2. **Qual destes sites você mais gosta?** Sugestão tirada de **toda a base** (~884 sites válidos), escolhendo layouts que **encaixam no tema e no assunto**: **A, B, C** + **E recomendada**, com link clicável `[Nome](url)` e "por que encaixa"; "Outro" = o usuário sugere e você reprocura.
-3. **Montagem do design, com recomendação sempre** (a 1ª opção é "(Recomendado)" com o motivo): **estilo** (3 dos 10 de `references/base-estilos/` com a paleta de origem, "você escolhe por mim" ou digitar), **paleta** (a recomendada, as geradas 3 escuras + 3 claras, ou escrever a sua) e, se houver 3D, quem gera a referência (prompt com **comandos de barra** `/8k /ultra-realistic ...` em `prompts-3d.md`, ou você faz). **Sempre sugira um elemento 3D leve** do tema (`sugestao3d`, método de `3d-leve.md`). **Antes de fazer o 3D, gere o molde ultrarrealista** (4 vistas e/ou vídeo giratório) e faça o elemento **estritamente igual a ele** (`3d-leve.md`, Regra 0, com portão de igualdade). **Logo depois do 3D, sempre sugira um scroll animado extremamente sofisticado e avançado**, no nível de Era Residence, Rectangles FM, Zentry, Tenztan, The Art of Cinema, Diego Liv e Collab Capitolium (`references/scroll-avancado.md`; `sugestaoScroll` no `opcoes.mjs`).
+3. **Montagem do design, com recomendação sempre** (a 1ª opção é "(Recomendado)" com o motivo): **estilo** (3 dos 10 de `references/base-estilos/` com a paleta de origem, "você escolhe por mim" ou digitar), **paleta** (a recomendada, as geradas 3 escuras + 3 claras, ou escrever a sua) e, se houver 3D, **peça ao usuário imagens de referência do elemento** (fotos, links, prints; dispensável só se o elemento for inventado, como um personagem de história); o molde é gerado pela skill a partir delas (`prompts-3d.md`). **Sempre sugira um elemento 3D leve** do tema (`sugestao3d`, método de `3d-leve.md`). **Antes de fazer o 3D, gere o molde ultrarrealista** (4 vistas e/ou vídeo giratório) e faça o elemento **estritamente igual a ele** (`3d-leve.md`, Regra 0, com portão de igualdade). **Logo depois do 3D, sempre sugira um scroll animado extremamente sofisticado e avançado**, no nível de Era Residence, Rectangles FM, Zentry, Tenztan, The Art of Cinema, Diego Liv e Collab Capitolium (`references/scroll-avancado.md`; `sugestaoScroll` no `opcoes.mjs`).
 
 **Regra permanente:** todo site usa componentes ou transições das plataformas (reactbits.dev, transitions.dev, naocodei.com; pinstack e tasteskill como referência), com o que veio de onde e a licença no relatório (`references/plataformas.md`).
 
@@ -41,6 +41,13 @@ Considera **todos os sites válidos** e pontua o **encaixe de layout** (`scripts
 node ~/.claude/skills/site-nivel-awwwards/scripts/montar-brief.mjs --nome "<Marca>" --tema "<tema>" --adjetivos "a,b,c" --publico "..." --recursos "3d,scroll" [--ref3d "objeto=caminho"] --saida ./design
 ```
 Registre sites escolhidos, stack, estilo, paleta (ids e hex), decisão de 3D e o que pegar de cada referência; preencha `secoes[].referencia`, `componente` e `motion`. **Valide o brief com o usuário antes de construir.**
+
+### 3b. Portões de aprovação do 3D e da prévia (obrigatórios, nesta ordem) → [references/aprovacoes.md](references/aprovacoes.md)
+1. **Pedir imagens de referência do elemento 3D ao usuário, sempre que possível.** Fotos, links ou prints do objeto real (vários ângulos ajudam). Só dispense quando o elemento for **inventado** (personagem ou objeto de uma história, mascote, peça que não existe na internet): aí peça descrição, esboço ou referências de estilo e diga que o molde será criado do zero.
+2. **Gerar o molde** (4 vistas ultrarrealistas) a partir das referências e **perguntar com `AskUserQuestion`**: "Ficou bom ou precisa alterar algo?" (Aprovar · Alterar: descrever). Repita até aprovar. Sem aprovação, não modele.
+3. **Gerar o vídeo-prévia de como o SITE vai ficar** (hero, scroll e o objeto 3D em ação, com a paleta e o estilo escolhidos) e **perguntar de novo**: "Ficou bom ou precisa alterar algo?". Repita até aprovar. Só então construa.
+
+Marcas de terceiros nas referências (logotipo, nome, emblema, desenho registrado): o molde e o site **não** levam a marca, a menos que o usuário seja o dono ou tenha licença; use a referência só para forma, material e luz.
 
 ### 4. Identidade visual própria
 Conceito, elementos de assinatura (forma, tratamento de imagem, cursor, transição), tipografia (`base-design-completo/02-tipografia.md`), cor e modo escuro (`03-cor-e-contraste.md`), e como fugir da "cara de IA" (`08-cara-de-ia.md`, `references/anti-cliches.md`). Skill `identidade-visual` para fechar `docs/IDENTIDADE.md`. Logo e ativos-chave antes de estilo fino.
@@ -85,6 +92,7 @@ Ver [references/padroes.md](references/padroes.md). A primeira dobra tem **um pr
 | `scripts/temas.json` | ~25 temas: palavras, nichos do acervo, cor, estilos |
 | `references/perguntas.md` | os 3 blocos de perguntas (entender, sites, design) e o formato das opções |
 | `references/padroes-ux.md` + `scripts/gerar-padroes-ux.mjs` | padrões de UX/UI medidos em 830 sites da base (scroll, 3D, animação, efeitos, menu, tipografia), com % por fonte |
+| `references/aprovacoes.md` | portões obrigatórios: pedir referências do 3D, aprovar o molde, aprovar o vídeo-prévia do site |
 | `references/scroll-avancado.md` | 7 sites de referência de scroll, padrões (pin+scrub, pilha sticky, clip-path, vídeo no scroll) e receitas GSAP |
 | `references/prompts-3d.md` | prompts de imagem e vídeo 3D com comandos de barra e a pergunta de quem gera |
 | `references/plataformas.md` | tasteskill, transitions, reactbits, naocodei, pinstack: preço, licença, limites e uso |

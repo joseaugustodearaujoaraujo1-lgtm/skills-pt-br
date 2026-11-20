@@ -1,5 +1,14 @@
 # 3D leve para sites
 
+## REGRA −1: 3D real e ultrarrealista, molde feito pela skill (atualizada em 2026-11-19)
+- **Todo componente 3D do site é 3D de verdade**: geometria em WebGL (three.js/R3F), girável em qualquer ângulo, com material PBR (`MeshPhysicalMaterial`: metalness, roughness, clearcoat, transmission para vidro/cristal), iluminação por ambiente (`RoomEnvironment`/HDRI + PMREM), tone mapping ACES/AgX, sombras de contato e antialias. **Proibido** entregar como "3D": PNG recortado, sprite, flip CSS de imagem ou vídeo pré-renderizado sem a cena real.
+- **Ultrarrealista**: biselados e chanfros (nada de arestas retas de primitivo), detalhes finos modelados (sulcos, parafusos, índices, gravações), materiais distintos por peça, reflexo coerente com o ambiente e microdetalhe por textura procedural (escovado, granulado). Compare com o molde e corrija até parecer foto.
+- **Referências do usuário primeiro:** sempre que o objeto existir, peça ao usuário imagens de referência (fotos, links, prints, vários ângulos). Só dispense se o elemento for inventado (personagem ou objeto de uma história); aí peça descrição ou esboço.
+- **A skill gera a imagem-molde ela mesma** a partir dessas referências: use a ferramenta de imagem disponível (ex.: Gemini no navegador do usuário, com a conta dele já logada; anexe as imagens de referência ao prompt), prompt de `prompts-3d.md`, e salve em `referencias-3d/<objeto>/`. Custo, conta nova ou serviço pago continuam pedindo autorização.
+- **Portões de aprovação** (`aprovacoes.md`): mostre o molde e pergunte "ficou bom ou precisa alterar?" até aprovar; depois gere o vídeo-prévia do site e pergunte de novo. Sem as duas aprovações, não construa.
+- **Caminho padrão: modelar no código** a partir do molde (`LatheGeometry`, `ExtrudeGeometry` com bevel, `TubeGeometry`, CSG simples). Serviço de imagem-para-3D (Meshy, Tripo, Rodin) só com autorização do usuário (custo/login).
+- Plano B obrigatório: pôster renderizado da **própria cena** (não outra imagem) para `prefers-reduced-motion`, sem WebGL ou celular fraco.
+
 ## REGRA 0 (vem antes de tudo): molde ultrarrealista, e o 3D é estritamente igual a ele
 Antes de modelar **qualquer** elemento 3D, gere um **molde ultrarrealista** do objeto: uma folha com 4 vistas (frente, lado, topo, base) e, se possível, um vídeo giratório de 10 s (Modelo A e B de `prompts-3d.md`, com `/8k /ultra-realistic /ray-traced ...`). O molde é aprovado pelo usuário **antes** de modelar. O elemento 3D do site é então construído **estritamente igual ao molde**: mesma silhueta, proporções, número de partes (facetas, sulcos, dobras), material e luz.
 
