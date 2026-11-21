@@ -3,8 +3,8 @@
 import * as THREE from 'three';
 import { RoomEnvironment } from 'three/examples/jsm/environments/RoomEnvironment.js';
 
-export function montarXicara(canvas, { aoPronto, progresso } = {}) {
-  const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true, powerPreference: 'high-performance' });
+export function montarXicara(canvas, { aoPronto, progresso, manual = false } = {}) {
+  const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true, powerPreference: 'high-performance', preserveDrawingBuffer: manual });
   const dpr = Math.min(devicePixelRatio, innerWidth < 860 ? 1.5 : 2);
   renderer.setPixelRatio(dpr);
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
@@ -160,6 +160,25 @@ export function montarXicara(canvas, { aoPronto, progresso } = {}) {
     requestAnimationFrame(quadro);
   };
   const ligar = () => { if (!rodando && visivel && !document.hidden) { rodando = true; requestAnimationFrame(quadro); } };
+  // modo manual: um quadro por chamada (gera a sequência de quadros da seção Ritual; ver gerar-quadros.mjs)
+  // angulo: giro da xícara (rad); elevacao: 0 = de lado, 1 = de cima; vapor: 0–1; t: tempo do vapor (s)
+  const quadroFixo = (angulo, elevacao, vapor = 1, t = 0) => {
+    const e = 0.32 + elevacao * 1.2, d = 8.1;
+    camera.position.set(0, Math.sin(e) * d, Math.cos(e) * d);
+    camera.lookAt(0, 0.42 + elevacao * 0.42, 0);
+    conjunto.rotation.set(0, angulo, 0); conjunto.position.y = 0;
+    for (const v of vapores) {
+      const f = (t * 0.22 + v.userData.fase) % 1;
+      v.position.set(v.userData.x + Math.sin(t + f * 6) * 0.05, 1.55 + f * 1.2, 0);
+      v.quaternion.copy(camera.quaternion);
+      v.material.opacity = Math.sin(f * Math.PI) * 0.9 * vapor;
+      v.scale.setScalar(0.7 + f * 0.7);
+    }
+    renderer.render(cena, camera);
+  };
+  if (manual) sombra.material.opacity = 0.4; // sobre fundo escuro a sombra cheia vira uma mancha quadrada
+  if (manual) return { quadroFixo, tamanho, compilar: () => renderer.compileAsync ? renderer.compileAsync(cena, camera) : Promise.resolve() };
+
   new IntersectionObserver(([e]) => { visivel = e.isIntersecting; ligar(); }).observe(canvas);
   document.addEventListener('visibilitychange', ligar);
   // compila os shaders antes do primeiro quadro (evita travar a entrada)

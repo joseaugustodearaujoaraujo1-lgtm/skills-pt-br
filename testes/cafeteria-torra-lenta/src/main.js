@@ -48,7 +48,7 @@ if (!reduzido) {
   }, '100% 0px 100% 0px');
 
   // títulos de seção sobem por linha quando entram
-  $$('.colecao-cab h2, .escura h2, .passos h2, .contato h2').forEach(h => quandoPerto(h, el => {
+  $$('.colecao-cab h2, .escura h2, .passos h2, .ritual h2, .contato h2').forEach(h => quandoPerto(h, el => {
     const s = SplitText.create(el, { type: 'lines', mask: 'lines', linesClass: 'linha-js', aria: 'none' });
     gsap.from(s.lines, { yPercent: 105, duration: 1.1, ease: 'power4.out', stagger: .1 });
   }, '0px 0px -12% 0px'));
@@ -112,6 +112,47 @@ if (!reduzido) {
     };
     const depoisDaEntrada = () => (window.requestIdleCallback || setTimeout)(iniciar, { timeout: 1500 });
     if (document.readyState === 'complete') setTimeout(depoisDaEntrada, 900); else addEventListener('load', () => setTimeout(depoisDaEntrada, 900), { once: true });
+  }
+
+  // RITUAL: pin + scrub de sequência. Os quadros carregam só quando a seção se aproxima; o canvas desenha o quadro mais próximo já carregado.
+  const ritual = $('.ritual');
+  if (ritual) {
+    const N = 60, quadros = new Array(N), canvas = $('.ritual-canvas', ritual), g = canvas.getContext('2d');
+    const passos = $$('.ritual-passo', ritual), barra = $('.ritual-barra span', ritual);
+    let atual = -1, pedido = 0;
+    const desenhar = i => {
+      for (let d = 0; d < N; d++) { const q = quadros[i - d] || quadros[i + d]; if (q?.complete && q.naturalWidth) { g.drawImage(q, 0, 0, canvas.width, canvas.height); return; } }
+    };
+    const carregar = () => {
+      // ordem: 1º, último e o meio primeiro (o scrub já tem algo), depois o resto
+      const ordem = [0, N - 1, N >> 1, ...Array.from({ length: N }, (_, i) => i)];
+      for (const i of ordem) {
+        if (quadros[i]) continue;
+        const img = new Image(); img.decoding = 'async';
+        img.onload = () => { if (Math.abs(i - pedido) < 3) desenhar(pedido); };
+        img.src = `ritual/q-${String(i).padStart(2, '0')}.webp`; quadros[i] = img;
+      }
+    };
+    quandoPerto(ritual, carregar, '150% 0px 150% 0px');
+    ritual.classList.add('scrub');
+    const ativar = p => {
+      const k = Math.min(passos.length - 1, Math.floor(p * passos.length * 0.999));
+      if (k !== atual) { passos.forEach((li, j) => li.classList.toggle('ativo', j === k)); atual = k; }
+      barra.style.transform = `scaleX(${p})`;
+    };
+    ativar(0);
+    ScrollTrigger.matchMedia({
+      '(min-width: 861px)': () => ScrollTrigger.create({ trigger: ritual, start: 'top top', end: '+=320%', pin: true, scrub: true, anticipatePin: 1, onUpdate: s => { pedido = Math.round(s.progress * (N - 1)); desenhar(pedido); ativar(s.progress); } }),
+      '(max-width: 860px)': () => ScrollTrigger.create({ trigger: ritual, start: 'top top', end: '+=200%', pin: true, scrub: true, onUpdate: s => { pedido = Math.round(s.progress * (N - 1)); desenhar(pedido); ativar(s.progress); } }),
+    });
+  }
+
+  // cursor próprio: anel que segue o mouse e cresce sobre links e botões
+  if (fino) {
+    const cur = document.createElement('div'); cur.className = 'cursor'; cur.setAttribute('aria-hidden', 'true'); document.body.append(cur);
+    const cx = gsap.quickTo(cur, 'x', { duration: .25, ease: 'power3' }), cy = gsap.quickTo(cur, 'y', { duration: .25, ease: 'power3' });
+    addEventListener('pointermove', e => { cx(e.clientX); cy(e.clientY); cur.classList.add('visivel'); cur.classList.toggle('sobre', !!e.target.closest('a, button, .item')); }, { passive: true });
+    document.documentElement.addEventListener('pointerleave', () => cur.classList.remove('visivel'));
   }
 
   gsap.from('.rodape-marca', { yPercent: 45, opacity: 0, duration: 1.4, ease: 'power4.out', scrollTrigger: { trigger: '.rodape', start: 'top 90%', once: true } });

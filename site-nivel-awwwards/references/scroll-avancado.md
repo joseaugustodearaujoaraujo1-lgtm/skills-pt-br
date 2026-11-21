@@ -100,7 +100,7 @@ Use a receita do starter (`quandoPerto` + `SplitText type: 'words'`, opacidade d
 - **Celular:** sem Lenis (rolagem nativa), pins mais curtos (`end: '+=200%'`), sem vídeo em scrub (troque por imagem + fade) e `ScrollTrigger.matchMedia` para versões separadas.
 - **Movimento reduzido (`prefers-reduced-motion`)**: sem pin nem scrub; mostre o estado final, tudo legível.
 - **Conteúdo sempre no HTML** (texto real, `alt` nas imagens, 1 `<h1>`); o scroll só o revela.
-- **Desempenho:** crie os `ScrollTrigger` depois de `document.fonts.ready`, chame `ScrollTrigger.refresh()` após carregar imagens, use `invalidateOnRefresh`, e meça com Lighthouse (meta 90 desktop, 75 celular) e CPU 4× mais lenta. Páginas longas pedem `content-visibility: auto` nas seções **sem pin**.
+- **Desempenho:** crie os `ScrollTrigger` depois de `document.fonts.ready`, chame `ScrollTrigger.refresh()` após carregar imagens, use `invalidateOnRefresh`, e meça com Lighthouse (meta 90 desktop, 75 celular) e CPU 4× mais lenta. Páginas longas pedem `content-visibility: auto` nas seções **sem pin e só depois do último pin**: numa seção antes de um pin, a altura estimada (`contain-intrinsic-size`) muda quando ela renderiza e desloca o início e o fim do pin (testado na cafeteria, 2026-11-21: o título seguinte invadia a seção fixa).
 - **Teste de rolagem real:** role a página inteira em 3 larguras (1440, 768, 390) e confirme que nada fica preso, cortado ou sobreposto; o verificador (`verificar-site.mjs`) captura o estado final e o inicial.
 
 ## Direitos

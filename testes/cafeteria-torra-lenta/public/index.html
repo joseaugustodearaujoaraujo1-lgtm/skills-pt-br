@@ -15,8 +15,8 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='12' fill='%23c44323'/%3E%3C/svg%3E">
 <link rel="stylesheet" href="fonts/fonts.css">
 <link rel="stylesheet" href="tokens.css">
-<link rel="stylesheet" href="estilo.css?v=2">
-<script type="module" src="app.js?v=2"></script>
+<link rel="stylesheet" href="estilo.css?v=3">
+<script type="module" src="app.js?v=3"></script>
 </head>
 <body>
 <a class="pular" href="#conteudo">Pular para o conteúdo</a>
@@ -27,6 +27,7 @@
     <ul>
       <li><a href="#colecao">Cafés</a></li>
       <li><a href="#torra">A torra</a></li>
+      <li><a href="#ritual">Ritual</a></li>
       <li><a href="#contato">Visite</a></li>
     </ul>
   </nav>
@@ -95,6 +96,27 @@
       <li><h3>Descansar</h3><p>Dois dias de repouso para o gás sair e o sabor assentar antes de moer.</p></li>
       <li><h3>Servir</h3><p>Moído na hora, pesado na balança e preparado do jeito que cada origem pede.</p></li>
     </ul>
+  </section>
+
+  <!-- RITUAL: pin + scrub de sequência (60 quadros renderizados da própria cena 3D). Sem JS ou com movimento reduzido, vira lista + imagem. -->
+  <section class="ritual" id="ritual" aria-labelledby="ritual-titulo">
+    <div class="ritual-palco">
+      <div class="ritual-texto">
+        <p class="ritual-rotulo">O ritual do espresso</p>
+        <h2 id="ritual-titulo">Trinta segundos <em>que levaram sete dias.</em></h2>
+        <ol class="ritual-passos">
+          <li class="ritual-passo"><span class="ritual-n" aria-hidden="true">01</span><div><h3>Moer na hora</h3><p>18 g de café, moagem fina, só quando o pedido chega. Café moído perde aroma em minutos.</p></div></li>
+          <li class="ritual-passo"><span class="ritual-n" aria-hidden="true">02</span><div><h3>Extrair</h3><p>9 bar de pressão por cerca de 27 segundos, até 36 g na xícara. A balança decide, não o relógio.</p></div></li>
+          <li class="ritual-passo"><span class="ritual-n" aria-hidden="true">03</span><div><h3>Deixar o vapor baixar</h3><p>Espere um minuto. Entre 60 e 65 °C, o doce e a acidez aparecem; quente demais, só se sente o amargo.</p></div></li>
+          <li class="ritual-passo"><span class="ritual-n" aria-hidden="true">04</span><div><h3>Olhar a crema</h3><p>Cor de avelã, com rajadas mais escuras. É o sinal de grão fresco e torra no ponto.</p></div></li>
+        </ol>
+        <div class="ritual-barra" aria-hidden="true"><span></span></div>
+      </div>
+      <figure class="ritual-midia">
+        <img class="ritual-img" src="ritual/q-00.webp" width="640" height="640" loading="lazy" decoding="async" alt="Xícara de espresso girando sobre o pires; a câmera sobe até mostrar a crema de cima">
+        <canvas class="ritual-canvas" width="640" height="640" aria-hidden="true"></canvas>
+      </figure>
+    </div>
   </section>
 
   <section class="contato" id="contato" aria-labelledby="contato-titulo">
