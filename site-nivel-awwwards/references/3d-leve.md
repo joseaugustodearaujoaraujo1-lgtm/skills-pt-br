@@ -7,6 +7,8 @@
 - **A skill gera a imagem-molde ela mesma** a partir dessas referências: use a ferramenta de imagem disponível (ex.: Gemini no navegador do usuário, com a conta dele já logada; anexe as imagens de referência ao prompt), prompt de `prompts-3d.md`, e salve em `referencias-3d/<objeto>/`. Custo, conta nova ou serviço pago continuam pedindo autorização.
 - **Portões de aprovação** (`aprovacoes.md`): mostre o molde e pergunte "ficou bom ou precisa alterar?" até aprovar; depois gere o vídeo-prévia do site e pergunte de novo. Sem as duas aprovações, não construa.
 - **Caminho padrão: modelar no código** a partir do molde (`LatheGeometry`, `ExtrudeGeometry` com bevel, `TubeGeometry`, CSG simples). Serviço de imagem-para-3D (Meshy, Tripo, Rodin) só com autorização do usuário (custo/login).
+- **Pós-processamento sutil** (dá o acabamento de foto): bloom leve nos brilhos, profundidade de campo, grão de filme e aberração cromática mínima (`postprocessing` / `EffectComposer`; desligue tudo no nível de qualidade baixo).
+- **Assets pesados comprimidos:** `.glb` com Draco ou Meshopt, texturas em **KTX2** (Basis) e **LOD** (versão simplificada à distância e no celular).
 - Plano B obrigatório: pôster renderizado da **própria cena** (não outra imagem) para `prefers-reduced-motion`, sem WebGL ou celular fraco.
 
 ## REGRA 0 (vem antes de tudo): molde ultrarrealista, e o 3D é estritamente igual a ele

@@ -21,11 +21,13 @@ Passe o site por esta rubrica **antes** de dizer que está pronto. Ela segue os 
 
 ## 3. Criatividade (peso 20%)
 - [ ] Há **um** gesto de assinatura memorável (transição, hero, interação, 3D leve) que serve ao conceito.
-- [ ] A ideia do site cabe em uma frase.
+- [ ] A ideia do site cabe em uma frase e o conceito é **memorável em 5 segundos**.
+- [ ] Há pelo menos **um momento "uau"** que o visitante lembra depois (normalmente o próprio gesto de assinatura).
 - [ ] **Todo 3D é WebGL real e ultrarrealista (PBR, ambiente, sombras); imagem recortada = nota 0.** **Todo objeto 3D tem referência visual detalhada** (imagem com várias vistas ou vídeo) em `referencias-3d/<objeto>/`, e o render foi **comparado** com ela (silhueta, proporção, material, luz). Sem referência = nota 0 neste item.
 - [ ] Teste da logo coberta: reconhece-se a marca/tema pelo visual e pelo texto.
 
 ## 4. Conteúdo (peso 10%)
+- [ ] O scroll conta uma história com começo, meio e fim (não é uma pilha de seções soltas).
 - [ ] Títulos concretos e específicos; microcopy com personalidade; sem texto de enchimento.
 - [ ] Prova real (números, nomes, casos), não genérica.
 - [ ] Direitos de imagem/fonte/ícone conferidos; créditos quando exigido.
@@ -40,6 +42,7 @@ Passe o site por esta rubrica **antes** de dizer que está pronto. Ela segue os 
 | Acessibilidade | ≥ 95 | Lighthouse + teste de teclado |
 | Peso da primeira dobra | < ~1 MB (3D leve: ≈ 200 KB de cena) | aba Rede, com cache desligado |
 | Console | sem erros | DevTools |
+| Fluidez | 60 fps no scroll e nas animações, inclusive em celular de gama média | aba Desempenho (FPS) + aparelho real |
 | 3D | pôster até o WebGL ligar (depois da entrada), compilação paralela, sem GPU = sem 3D, render sob demanda; A/B de TBT com e sem 3D | [3d-leve.md](3d-leve.md) |
 
 ## Exemplo medido (Atelier Lume, 2026-11-16, Lighthouse 13)

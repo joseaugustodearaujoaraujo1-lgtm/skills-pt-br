@@ -23,7 +23,9 @@ const opt = (k, flag = k) => args[k] !== undefined ? [`--${flag}`, String(args[k
 
 const estilo = rodar('escolher-estilo.mjs', ['--tema', args.tema, ...opt('adjetivos'), ...opt('evitar'), ...opt('uso')]);
 const paleta = rodar('gerar-paleta.mjs', ['--tema', args.tema, ...opt('tom'), ...opt('acento'), ...opt('croma'), ...opt('variante')]);
-const refs = rodar('pesquisar-referencias.mjs', ['--tema', args.tema, ...opt('recursos'), ...opt('libs'), ...opt('desde'), '--limite', '10']);
+let refs;
+try { refs = rodar('pesquisar-referencias.mjs', ['--tema', args.tema, ...opt('recursos'), ...opt('libs'), ...opt('desde'), '--limite', '10']); }
+catch { refs = { referencias: [] }; console.error('  AVISO: acervo não encontrado; brief sem referências (complete com pesquisa ao vivo no Awwwards/One Page Love).'); }
 
 // Fontes livres (Google Fonts) por estilo: título / corpo / detalhe. Substituem as fontes pagas dos sites premiados.
 const FONTES = {

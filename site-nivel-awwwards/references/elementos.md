@@ -70,7 +70,7 @@ gsap.fromTo('.parallax img', { yPercent: -10 }, { yPercent: 10, ease: 'none',
 - Tratamento consistente: mesma temperatura de cor, mesmo recorte e mesma proporção nas galerias. Foto genérica de banco derruba o nível mais rápido que qualquer efeito.
 
 ## 4. Vídeo
-- Hero/fundo: `<video autoplay muted loop playsinline preload="metadata" poster="poster.webp">` com **MP4 (H.264) e WebM**, 720p, ≤ 3 MB, sem áudio.
+- Hero/fundo: `<video autoplay muted loop playsinline preload="metadata" poster="poster.webp">` com **MP4 (H.264) e WebM** (AV1 primeiro, quando houver), 720p, ≤ 3 MB, sem áudio, loop sem emenda e **color grading igual ao da paleta e das fotos** (vídeo cinematográfico, não stock).
 - Desligue em `prefers-reduced-motion`, em `navigator.connection.saveData` e em telas pequenas se pesar (mostre o `poster`).
 - Vídeo é o recurso mais comum no One Page Love e o mais caro em dados: comprima (ffmpeg `-crf 28`, 24 fps) e carregue só quando visível (`IntersectionObserver`).
 - Nunca dependa de player de terceiros (YouTube/Vimeo) na primeira dobra.
@@ -124,7 +124,8 @@ Use somente se o conceito pede. Receita completa, orçamento e método testado e
 - Estados de hover/focus/active em **tudo** que é clicável; foco visível.
 - Seleção de texto na cor do acento (`::selection`), barra de rolagem estilizada, favicon e imagem de compartilhamento (Open Graph) com identidade.
 - Microcopy com personalidade (botões, erros, 404, rodapé).
-- Teste em 1440, 768 e 390 px, em celular real, com rede lenta.
+- Celular **redesenhado**, não encolhido: no toque, troque hover e cursor por toque e, se o gesto pedir, por giroscópio (`deviceorientation`, com pedido de permissão no iOS e plano B parado).
+- Teste em 1440, 768 e 390 px, em celular real **de gama média**, com rede lenta.
 
 ## 9. Desempenho no celular: o que mais pesou (medido no Grão Raro, Lighthouse móvel)
 Resultado de partida: desktop 98, celular 64–67 (TBT ~2,4–3 s). Depois dos ajustes: celular 67–75 (varia entre rodadas), acessibilidade 100.
