@@ -12,7 +12,7 @@
 
 ## Tarefa
 
-Construa a réplica seguindo `replica/PROTOCOLO.md`. Antes de escrever código:
+**Ajuste o que existe, não refaça.** Siga o protocolo e confira com `replica/PROTOCOLO.md` seção 5. Para criar do zero, use `replica/PROTOCOLO.md`. Antes de escrever código:
 
 1. Estude o original inteiro, no desktop e no celular, e salve o mapa em `replica/estudos/terminal-mapa.json`.
 2. Escreva em `galeria/09-terminal/PLANO.md` a lista de seções, com altura, elementos, animações e interações de cada uma, e qual conteúdo nosso entra no lugar de cada elemento (texto, foto, 3D).
