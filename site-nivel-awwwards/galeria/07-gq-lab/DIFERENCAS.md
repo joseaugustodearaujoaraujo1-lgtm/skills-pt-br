@@ -32,3 +32,13 @@ O original foi medido com Playwright em 1440×900. A página dele não rola (a a
 | 36–40 | Tela de raio X | inclinada, com a sala escura em volta | enchia o quadro | corrigido (câmera recuada) |
 
 Fica para quando houver material próprio: o original tem chão espelhado e modelos fotográficos; o nosso usa geometria e materiais feitos em código.
+
+## Ciclo 3
+
+| Passo | Elemento | Original | Antes | Status |
+|---|---|---|---|---|
+| 10–18 | Céu | tela curva (ciclorama) com preto dos lados | céu em volta toda | corrigido |
+| 7–42 | Chão | escuro e espelhado | preto chapado | corrigido (reflexo em meia resolução) |
+| 10–11 | Bloco ao longe | visto em diagonal, de baixo | de frente | corrigido |
+| 16 | Vista de cima | mesa com papéis em volta do pedestal | colada no pedestal | corrigido |
+| celular | Título e enquadramento | cabem na tela | título cortado, objeto cortado | corrigido (fonte menor, câmera recua em telas estreitas) |

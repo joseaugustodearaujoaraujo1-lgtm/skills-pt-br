@@ -2,6 +2,7 @@
 import * as THREE from 'three';
 import { RoomEnvironment } from 'three/examples/jsm/environments/RoomEnvironment.js';
 import { RoundedBoxGeometry } from 'three/examples/jsm/geometries/RoundedBoxGeometry.js';
+import { Reflector } from 'three/examples/jsm/objects/Reflector.js';
 
 const V = (x, y, z) => new THREE.Vector3(x, y, z);
 
@@ -94,6 +95,11 @@ export function criarCena(canvas) {
   // ---------- céu e chão comuns ----------
   const ceuMat = new THREE.ShaderMaterial({ side: THREE.BackSide, depthWrite: false, uniforms: { uAlto: { value: new THREE.Color('#2a3442') }, uMeio: { value: new THREE.Color('#8e9aa8') }, uHorizonte: { value: new THREE.Color('#e48a45') }, uChao: { value: new THREE.Color('#0c0c0d') }, uTempo: { value: 0 }, uNuvem: { value: 1 } }, vertexShader: ceuVert, fragmentShader: ceuFrag });
   const ceu = new THREE.Mesh(new THREE.SphereGeometry(80, 48, 24), ceuMat); scene.add(ceu);
+  const cicloGeo = new THREE.CylinderGeometry(18, 18, 16, 96, 1, true, Math.PI * .62, Math.PI * .76); cicloGeo.translate(0, 6.8, 0);
+  const ciclorama = new THREE.Mesh(cicloGeo, ceuMat); ciclorama.position.z = 2; scene.add(ciclorama);
+  // chão espelhado escuro (reflexo em meia resolução, misturado ao preto)
+  const espelho = new Reflector(new THREE.CircleGeometry(40, 64), { textureWidth: 640, textureHeight: 400, color: '#3a3a3c', clipBias: .003 });
+  espelho.rotation.x = -Math.PI / 2; espelho.position.y = -1.205; scene.add(espelho);
   const chao = new THREE.Mesh(new THREE.CircleGeometry(60, 64), new THREE.MeshBasicMaterial({ color: '#060607' }));
   chao.rotation.x = -Math.PI / 2; chao.position.y = -1.2; scene.add(chao);
 
@@ -199,8 +205,8 @@ export function criarCena(canvas) {
   const C = (p, pos, alvo, fov = 38) => ({ p, pos: V(...pos), alvo: V(...alvo), fov });
   const CHAVES = [
     C(0, [0, 9, 13], [0, 0, 0], 42), C(2, [2.5, 6, 9], [0, 0, 0], 40), C(4, [1.6, 3.8, 5.6], [0, .1, 0], 38), C(6, [2.2, 4.2, 5.2], [-.3, 0, 0], 36),
-    C(6.6, [2.0, 3.9, 4.9], [-.3, 0, 0], 36), C(8, [0, 1.4, 4.2], [0, 2.6, -10], 40), C(9.4, [0, 1.0, 9.5], [0, 1.4, -10], 42), C(10.6, [0, .9, 8.2], [0, .3, 0], 34),
-    C(12, [1.25, .95, 3.4], [0, .38, 0], 30), C(13.5, [-.75, .8, 2.6], [0, .4, 0], 30), C(15, [.6, .72, 2.5], [0, .42, 0], 28), C(16.5, [.05, 2.3, .95], [0, .25, 0], 32), C(18.4, [-1.7, .85, 2.4], [0, .4, 0], 32),
+    C(6.6, [2.0, 3.9, 4.9], [-.3, 0, 0], 36), C(8, [0, 1.4, 4.2], [0, 2.6, -10], 40), C(9.4, [0, 1.0, 9.5], [0, 1.4, -10], 42), C(10.6, [3.4, .45, 6.4], [0, .1, 0], 34),
+    C(12, [1.25, .95, 3.4], [0, .38, 0], 30), C(13.5, [-.75, .8, 2.6], [0, .4, 0], 30), C(15, [.6, .72, 2.5], [0, .42, 0], 28), C(16.5, [.4, 3.4, 1.7], [0, .2, 0], 34), C(18.4, [-1.7, .85, 2.4], [0, .4, 0], 32),
     C(18.6, [-3.2, 1.5, 6.2], [-1, 1.2, 0], 40), C(19.6, [-1.5, 1.1, 4], [0, .45, 0], 34), C(21, [.85, .72, 2.3], [0, .45, 0], 30), C(22.5, [0, .66, 2.0], [0, .45, 0], 28), C(24, [-1.2, .64, 1.8], [0, .42, 0], 28),
     C(25.5, [.95, .78, 1.75], [0, .4, 0], 28), C(27, [0, 1.25, 2.5], [0, .3, 0], 30), C(28.5, [1.9, 1.35, 2.8], [0, .3, 0], 32), C(29.9, [0, .95, 3.4], [0, .4, 0], 34),
     C(30.1, [0, 1.5, 6.4], [0, .8, 0], 40), C(32, [.7, 1.05, 3.4], [0, 1.0, 0], 36), C(34, [0, 1.08, 2.3], [0, 1.08, -.35], 34), C(36, [.55, 1.12, 1.9], [0, 1.12, -.35], 34),
@@ -229,14 +235,17 @@ export function criarCena(canvas) {
     tmpP.lerpVectors(a.pos, b.pos, f); tmpA.lerpVectors(a.alvo, b.alvo, f);
     // leve deriva com o ponteiro, como uma câmera na mão
     tmpP.x += ponteiro.x * .06; tmpP.y += ponteiro.y * .04;
+    const rec = Math.max(1, 1.25 / camera.aspect); if (rec > 1) tmpP.sub(tmpA).multiplyScalar(rec).add(tmpA);
     camera.position.copy(tmpP); camera.fov = a.fov + (b.fov - a.fov) * f; camera.updateProjectionMatrix(); camera.lookAt(tmpA);
 
     const cena = p < 6.4 ? 'esboco' : p < 18.5 ? 'lab' : p < 30 ? 'sala' : p < 42.5 ? 'escuro' : 'fim';
     esboco.visible = cena === 'esboco' || (p > 5.2 && p < 7.2);
     lab.visible = cena === 'lab' || (p > 5.2 && p < 6.4);
     sala.visible = cena === 'sala'; escuro.visible = cena === 'escuro';
-    ceu.visible = cena === 'lab' || cena === 'sala' || cena === 'escuro';
-    chao.visible = cena !== 'esboco' && cena !== 'fim';
+    ceu.visible = cena === 'sala' || cena === 'escuro' || (cena === 'lab' && p < 10.2);
+    ciclorama.visible = cena === 'lab' && p >= 10.2;
+    espelho.visible = cena === 'lab' || cena === 'sala' || cena === 'escuro';
+    chao.visible = false;
     frasco.visible = (cena === 'lab' && p > 11.2) || cena === 'sala' || cena === 'escuro' || cena === 'fim';
     // esboço vira matéria: linhas somem enquanto a mesa aparece
     const mistura = Math.min(1, Math.max(0, (p - 5.2) / 1.2));

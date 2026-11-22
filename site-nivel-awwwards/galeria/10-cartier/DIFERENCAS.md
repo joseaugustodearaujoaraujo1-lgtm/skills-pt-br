@@ -27,3 +27,11 @@ O original foi medido com Playwright em 1440×900: 18 passos de roda, com captur
 | 0 | Arcos do fundo | visíveis | sumiam | corrigido |
 
 Fica para quando houver material próprio: as peças e as salas do original são modelos fotográficos detalhados; as nossas são geometria feita em código.
+
+## Ciclo 3
+
+| Sala | Elemento | Original | Antes | Status |
+|---|---|---|---|---|
+| 0 | Letreiro | letras serifadas brancas com contorno escuro e placas de luz atrás | letras finas e cinzentas | corrigido |
+| 0 | Sala | pêssego quente | bege acinzentado | corrigido |
+| celular | Enquadramento | o letreiro e as peças cabem na tela | letreiro cortado | corrigido (câmera recua em telas estreitas) |

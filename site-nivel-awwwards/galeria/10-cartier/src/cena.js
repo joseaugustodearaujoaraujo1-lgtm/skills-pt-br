@@ -49,8 +49,19 @@ function anel(cor = '#25c6c0') { const g = new THREE.Group(); const aro = new TH
 // texto em relevo a partir de canvas (camadas para dar espessura)
 function letreiro(linhas, w = 6, h = 2.4) {
   const g = new THREE.Group();
-  const tex = (fill, stroke) => tela(1600, 640, (c, W, H) => { c.clearRect(0, 0, W, H); c.font = '400 200px "Jost", sans-serif'; c.textAlign = 'center'; c.textBaseline = 'middle'; linhas.forEach((l, i) => { const y = H / 2 + (i - (linhas.length - 1) / 2) * 220; if (fill) { c.fillStyle = fill; c.fillText(l, W / 2, y); } if (stroke) { c.lineWidth = 5; c.strokeStyle = stroke; c.strokeText(l, W / 2, y); } }); });
-  for (let k = 0; k < 7; k++) { const m = new THREE.Mesh(new THREE.PlaneGeometry(w, h * 1.0), new THREE.MeshBasicMaterial({ map: k === 6 ? tex('#ffffff', '#bfa27a') : tex('#d9c6a6', null), transparent: true, depthWrite: false, toneMapped: false })); m.position.z = k * .012; g.add(m); }
+  // letras em caixa alta, serifadas, brancas com contorno escuro; placas de luz atrás de cada linha; camadas para a espessura
+  const tex = (modo) => tela(1600, 640, (c, W, H) => {
+    c.clearRect(0, 0, W, H); c.font = '500 205px "Cormorant Garamond", Georgia, serif'; c.textAlign = 'center'; c.textBaseline = 'middle';
+    linhas.forEach((l, i) => {
+      const y = H / 2 + (i - (linhas.length - 1) / 2) * 225, lw = c.measureText(l).width;
+      if (modo === 'placa') { c.fillStyle = 'rgba(255,252,246,.55)'; c.fillRect(W / 2 - lw / 2 - 30, y - 95, lw + 60, 190); return; }
+      if (modo === 'frente') { c.fillStyle = '#ffffff'; c.fillText(l, W / 2, y); c.lineWidth = 6; c.strokeStyle = '#5e4d3a'; c.strokeText(l, W / 2, y); }
+      else { c.fillStyle = '#b7a385'; c.fillText(l, W / 2, y); }
+    });
+  });
+  const placa = new THREE.Mesh(new THREE.PlaneGeometry(w, h), new THREE.MeshBasicMaterial({ map: tex('placa'), transparent: true, depthWrite: false, toneMapped: false, fog: false })); placa.position.z = -.25; g.add(placa);
+  const lado = tex('lado'), frente = tex('frente');
+  for (let k = 0; k < 8; k++) { const m = new THREE.Mesh(new THREE.PlaneGeometry(w, h), new THREE.MeshBasicMaterial({ map: k === 7 ? frente : lado, transparent: true, depthWrite: false, toneMapped: false, fog: false })); m.position.set(-k * .004, -k * .004, k * .014); g.add(m); }
   return g;
 }
 
@@ -75,8 +86,8 @@ export function criarCena(canvas) {
   const arco = (w, h) => { const s = new THREE.Shape(); s.moveTo(-w / 2, 0); s.lineTo(-w / 2, h - w / 2); s.absarc(0, h - w / 2, w / 2, Math.PI, 0, true); s.lineTo(w / 2, 0); return new THREE.ShapeGeometry(s, 24); };
 
   // 0. abertura: sala bege com três arcos de luz e o letreiro
-  const g0 = novo(); sala(g0, '#e8dccb', '#d6c6ae');
-  [-3.2, 0, 3.2].forEach(x => { const a = new THREE.Mesh(arco(2.2, 4.2), new THREE.MeshBasicMaterial({ color: '#fbf5ea', toneMapped: false })); a.position.set(x, -1.18, -11.9); g0.add(a); });
+  const g0 = novo(); sala(g0, '#e2c9a8', '#cfb08a');
+  [-3.2, 0, 3.2].forEach(x => { const a = new THREE.Mesh(arco(2.2, 4.2), new THREE.MeshBasicMaterial({ color: '#fff1dc', toneMapped: false })); a.position.set(x, -1.18, -11.9); g0.add(a); });
   [-6.9, 6.9].forEach(x => { for (let z = -2; z > -10; z -= 3) { const a = new THREE.Mesh(arco(1.6, 3.6), new THREE.MeshStandardMaterial({ color: '#dccdb6', roughness: .9 })); a.position.set(x, -1.18, z); a.rotation.y = x > 0 ? -Math.PI / 2 : Math.PI / 2; g0.add(a); } });
   const placa = letreiro(['GEMAS', '& MARAVILHAS'], 5.2, 2.08); placa.position.set(0, .35, -5); g0.add(placa);
 
@@ -146,9 +157,10 @@ export function criarCena(canvas) {
   const tmp = V(0, 0, 0);
   // k: índice do capítulo; u: 0 → câmera chegando (afastada), 1 → no lugar; ponteiro desloca levemente
   function quadro(k, u, t, ptr) {
-    if (k !== atual || !grupos[k].visible) { grupos.forEach((g, i) => { g.visible = i === k; }); atual = k; const nev = ['#d9c9b2', '#e2cfb1', '#dcc7a6', '#1c0f08', '#cdbda4', '#bdb5ab', '#07080c', '#ddd6cb', '#3a2a1c'][k]; scene.background = new THREE.Color(nev); scene.fog = new THREE.Fog(nev, k === 6 ? 20 : 7, k === 6 ? 60 : 30); }
+    if (k !== atual || !grupos[k].visible) { grupos.forEach((g, i) => { g.visible = i === k; }); atual = k; const nev = ['#d6bb97', '#e2cfb1', '#dcc7a6', '#1c0f08', '#cdbda4', '#bdb5ab', '#07080c', '#ddd6cb', '#3a2a1c'][k]; scene.background = new THREE.Color(nev); scene.fog = new THREE.Fog(nev, k === 6 ? 20 : 7, k === 6 ? 60 : 30); }
     const [p, a, fov] = CAM[k], e = 1 - Math.pow(1 - u, 3);
     camera.position.set(p.x + ptr.x * .12, p.y + ptr.y * .08 + (1 - e) * .3, p.z + (1 - e) * 1.6);
+    const rec = Math.max(1, 1.25 / camera.aspect); if (rec > 1) camera.position.sub(a).multiplyScalar(rec).add(a);
     camera.fov = fov; camera.updateProjectionMatrix(); tmp.copy(a); camera.lookAt(tmp);
     const peca = PECAS[k]; if (peca && k !== 0 && k !== 6) { peca.rotation.y = Math.sin(t * .4) * .35 + (k === 7 ? .3 : 0); peca.position.y += (CAM[k][1].y + Math.sin(t * .8) * .02 - peca.position.y) * .1; }
     hemi.intensity = k === 3 ? .35 : k === 6 ? .15 : k === 8 ? .55 : 1.1; sol.intensity = k === 3 ? .6 : k === 6 ? .2 : 2.4;

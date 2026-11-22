@@ -30,3 +30,9 @@ O original foi medido com `estudar3.cjs` (passo de 450 px) e com leitura das cai
 | Copyright do rodapé | y 15 708 | y 15 693 | corrigido |
 
 Conferidos dentro de 8 px: títulos das marcas, dos caminhos e do "por que", cartões, calculadora, perguntas e colunas do rodapé.
+
+## Ciclo 3
+
+| Tela | Elemento | Original | Antes | Status |
+|---|---|---|---|---|
+| 0 | Primeiro quadro do hero | caminhão-baú de lado, em silhueta contra o entardecer, chão preto | foto de porto à noite | corrigido (render 3D próprio: `src/caminhao.js` + `gerar-hero.mjs`) |
