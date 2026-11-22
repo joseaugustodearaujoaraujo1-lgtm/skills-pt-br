@@ -35,6 +35,7 @@ O sabonete 3D já é nosso (`src/sabonete.js`) e continua. Faltam só as fotos c
 | 12 | `img/galeria-legado.webp` | cerca de 2:1 | Objetos antigos (vaso grego, taça romana, vaso egípcio de alabastro), cada um apoiado num sabonete redondo, fundo laranja, estilo museu. |
 | 13 a 16 | `img/review-1..4.webp` | 4:3 | Fotos das avaliações: (1) astronauta com o sabonete, (2) pirata das antigas segurando o sabonete, (3) influenciadora com o sabonete no rosto, (4) minimalista com o sabonete sobre os olhos. |
 | 17 | (opcional) vídeo da intro | 16:9, 5 s | O sabonete redondo sobre uma base de corte verde, com a câmera se aproximando devagar e fundo desfocado. |
+| 18 | `img/review-5.webp` (5ª avaliação, nova) | 4:3 | Mulher cética olhando de lado para o sabonete redondo equilibrado na borda de uma pia de pedra, como se ele fosse cair, luz de banheiro suave. |
 
 ---
 

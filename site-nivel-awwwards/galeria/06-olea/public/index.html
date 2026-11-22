@@ -8,22 +8,34 @@
 <meta name="theme-color" content="#12130c">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='16' fill='%23bdb48a'/%3E%3Ccircle cx='16' cy='16' r='10' fill='none' stroke='%2312130c' stroke-width='2'/%3E%3C/svg%3E">
 <link rel="preload" href="fonts/instrument-sans-normal-400-600.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="img/abertura.webp" as="image" fetchpriority="high">
+<link rel="preload" href="img/mesa-cima.webp" as="image" fetchpriority="high">
 <link rel="stylesheet" href="fonts/fonts.css">
-<link rel="stylesheet" href="estilo.css?v=1">
+<link rel="stylesheet" href="estilo.css?v=2">
 </head>
 <body>
 <a class="pular" href="#conteudo">Pular para o conteúdo</a>
+<div class="carregando" aria-hidden="true">
+  <svg class="alcas" viewBox="0 0 300 300">
+    <path class="anel-fill" d="M150 50a100 100 0 1 1 0 200a100 100 0 1 1 0-200zM150 100a50 50 0 1 0 0 100a50 50 0 1 0 0-100z" fill-rule="evenodd"/>
+    <g fill="none" stroke="currentColor" stroke-width=".8" opacity=".18"><path d="M0 50h300M0 250h300M50 0v300M250 0v300M0 100h300M0 200h300M100 0v300M200 0v300"/></g>
+    <g fill="none" stroke="#fff1d8" stroke-width="1" stroke-dasharray="2 3"><circle cx="150" cy="150" r="100"/><circle cx="150" cy="150" r="50"/></g>
+    <g stroke="currentColor" stroke-width="1.3"><path d="M95 50h110M95 250h110M50 95v110M250 95v110M120 100h60M120 200h60M100 120v60M200 120v60"/></g>
+    <g fill="currentColor"><circle cx="95" cy="50" r="2.6"/><circle cx="150" cy="50" r="2.6"/><circle cx="205" cy="50" r="2.6"/><circle cx="95" cy="250" r="2.6"/><circle cx="150" cy="250" r="2.6"/><circle cx="205" cy="250" r="2.6"/><circle cx="50" cy="95" r="2.6"/><circle cx="50" cy="150" r="2.6"/><circle cx="50" cy="205" r="2.6"/><circle cx="250" cy="95" r="2.6"/><circle cx="250" cy="150" r="2.6"/><circle cx="250" cy="205" r="2.6"/><circle cx="150" cy="100" r="2.2"/><circle cx="150" cy="200" r="2.2"/><circle cx="100" cy="150" r="2.2"/><circle cx="200" cy="150" r="2.2"/></g>
+  </svg>
+</div>
+
 
 <header class="topo">
   <a class="logo" href="#intro" aria-label="OLEA, voltar ao início">OLEA</a>
-  <nav aria-label="Seções"><ul>
+  <button class="menu-bt" type="button" aria-expanded="false" aria-controls="menu-nav">Menu</button>
+  <nav id="menu-nav" aria-label="Seções"><ul>
     <li><a href="#intro" data-sec="intro" aria-current="true">Intro</a></li>
     <li><a href="#recursos" data-sec="recursos">Recursos</a></li>
     <li><a href="#produto" data-sec="produto">Produto</a></li>
     <li><a href="#contato" data-sec="contato">Contato</a></li>
   </ul></nav>
 </header>
+<p class="continuar" aria-hidden="true"><i>⌄</i>Role para continuar</p>
 <div class="trilho-rolagem" aria-hidden="true"><span class="polegar"><span>OLEA-1 modelo</span></span></div>
 
 <main id="conteudo">
@@ -31,16 +43,15 @@
 <!-- 1. INTRO (100vh): bancada desfocada, sabonete em foco com as alças de desenho vetorial -->
 <section class="intro" id="intro" aria-labelledby="t-intro">
   <div class="palco">
-    <img class="intro-fundo" src="img/abertura.webp" width="1920" height="1080" alt="Sabonete OLEA sobre a base de corte verde, com o fundo desfocado">
-    <svg class="alcas" viewBox="0 0 300 300" aria-hidden="true">
-      <circle cx="150" cy="150" r="128" fill="none" stroke="currentColor" stroke-width="1.2" stroke-dasharray="3 4"/>
-      <circle cx="150" cy="150" r="108" fill="none" stroke="currentColor" stroke-width="1" stroke-dasharray="3 4" opacity=".7"/>
-      <path d="M22 50v200M278 50v200M60 22h180M60 278h180" stroke="currentColor" stroke-width="1.2"/>
-      <g fill="currentColor"><circle cx="22" cy="50" r="3.5"/><circle cx="22" cy="250" r="3.5"/><circle cx="278" cy="50" r="3.5"/><circle cx="278" cy="250" r="3.5"/><circle cx="60" cy="22" r="3.5"/><circle cx="240" cy="22" r="3.5"/><circle cx="60" cy="278" r="3.5"/><circle cx="240" cy="278" r="3.5"/><circle cx="150" cy="22" r="3.5"/><circle cx="150" cy="278" r="3.5"/><circle cx="22" cy="150" r="3.5"/><circle cx="278" cy="150" r="3.5"/></g>
-    </svg>
-    <h1 class="intro-titulo" id="t-intro">Desenhado pelo Ateliê Bolha, o estúdio premiado.</h1>
-    <p class="intro-sub">O sabonete mais desnecessariamente sofisticado do mundo.</p>
-    <a class="intro-video" href="#produto" aria-label="Ver o produto"><img src="img/sabonete-tres.webp" width="900" height="900" alt=""><span>Ver o produto</span></a>
+    <img class="intro-fundo" src="img/mesa-cima.webp" width="1920" height="1080" fetchpriority="high" alt="Vista de cima: o sabonete OLEA sobre a base de corte verde, com lápis e folhas de oliveira">
+    <p class="intro-tag">Feito para pias. Pensado para mãos.</p>
+    <p class="intro-marca" aria-hidden="true">OLEA</p>
+    <p class="intro-texto">Feito para espumar, perfumar e firmar do jeito certo. A OLEA torna o gesto mais simples um momento pensado.</p>
+    <div class="intro-vidro">
+      <h1 class="intro-titulo" id="t-intro">Desenhado pelo Ateliê Bolha, o estúdio premiado.</h1>
+      <p class="intro-sub">O sabonete mais desnecessariamente sofisticado do mundo.</p>
+    </div>
+    <a class="intro-video" href="#produto" aria-label="Ver o filme do produto"><img src="img/sabonete-tres.webp" width="900" height="900" alt=""><b>OLEA</b><i aria-hidden="true"></i></a>
   </div>
 </section>
 
@@ -48,15 +59,15 @@
 <section class="giro" aria-labelledby="t-giro">
   <div class="palco">
     <div class="brilho" aria-hidden="true"></div>
-    <h2 class="giro-titulo" id="t-giro">Não é só<br>um sabonete.</h2>
-    <p class="giro-texto">OLEA não é só um sabonete. É o resultado de avanços inéditos em IA*.</p>
+    <h2 class="giro-titulo" id="t-giro">Não é só<br>um sabão.</h2>
+    <p class="giro-texto">OLEA não é só um sabão. É o resultado de avanços inéditos em IA*.</p>
     <canvas class="giro-quadros" width="900" height="900" aria-hidden="true"></canvas>
     <img class="giro-poster" src="img/giro/00.webp" width="900" height="900" alt="Sabonete OLEA redondo, visto de cima, com o carimbo em baixo-relevo">
     <div class="ia">
-      <h2 class="ia-titulo">Feito com IA<sup>*</sup><span class="ia-modelo">OLEA-1</span></h2>
+      <h2 class="ia-titulo"><span class="ia-t">Feito com IA<sup>*</sup><span class="ia-modelo">OLEA-1</span></span></h2>
       <figure class="ia-mao"><img src="img/vida-1.webp" width="800" height="1067" loading="lazy" alt="Mão segurando um sabonete artesanal verde entre flores"></figure>
       <p class="ia-piada">A IA preenche as lacunas.<br>Pedimos um toque de lavanda.<br>Ela ouviu lavanderia.</p>
-      <p class="ia-dica" aria-hidden="true"><svg class="mao-ico" viewBox="0 0 24 24"><path d="M8 13V5.5a1.5 1.5 0 0 1 3 0V11m0-6.5a1.5 1.5 0 0 1 3 0V11m0-5a1.5 1.5 0 0 1 3 0v6m0-3a1.5 1.5 0 0 1 3 0v5.5c0 3.6-2.9 6.5-6.5 6.5h-1.3c-2 0-3.8-1-4.9-2.6L4.6 14a1.6 1.6 0 0 1 2.6-1.8L8 13" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Passe a mão</p>
+      <p class="ia-dica" aria-hidden="true"><svg class="mao-ico" viewBox="0 0 24 24"><path d="M8 13V5.5a1.5 1.5 0 0 1 3 0V11m0-6.5a1.5 1.5 0 0 1 3 0V11m0-5a1.5 1.5 0 0 1 3 0v6m0-3a1.5 1.5 0 0 1 3 0v5.5c0 3.6-2.9 6.5-6.5 6.5h-1.3c-2 0-3.8-1-4.9-2.6L4.6 14a1.6 1.6 0 0 1 2.6-1.8L8 13" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Passe o mouse na mão</p>
     </div>
     <p class="nota">* Inteligência<br>Artesanal</p>
   </div>
@@ -65,10 +76,10 @@
 <!-- 3. TÃO PORTÁTIL (1325vh): moldura com o sabonete, a embalagem, a galeria de estilo de vida e a capa de revista -->
 <section class="portatil" aria-labelledby="t-portatil">
   <div class="palco">
-    <p class="portatil-rotulo" id="t-portatil"><span>Tão portátil,</span><span class="portatil-pequeno">é de bolso</span></p>
-    <p class="portatil-grande" aria-hidden="true">é de bolso</p>
+    <p class="portatil-rotulo" id="t-portatil"><span>Tão portátil,</span><span class="portatil-pequeno">dá pra vestir</span></p>
+    <p class="portatil-grande" aria-hidden="true">dá pra vestir</p>
     <div class="moldura">
-      <svg viewBox="0 0 300 300" aria-hidden="true"><rect x=".5" y=".5" width="299" height="299" fill="none" stroke="currentColor" stroke-dasharray="3 3" opacity=".6"/><circle cx="150" cy="150" r="140" fill="none" stroke="currentColor" opacity=".35"/><path d="M150 8v10M150 282v10M8 150h10M282 150h10" stroke="currentColor"/><circle cx="286" cy="14" r="3" fill="currentColor"/></svg>
+      <span class="moldura-borda" aria-hidden="true"><i></i></span><svg class="moldura-mira" viewBox="0 0 300 300" aria-hidden="true"><circle cx="150" cy="150" r="140" fill="none" stroke="currentColor" opacity=".35"/><path d="M150 8v10M150 282v10M8 150h10M282 150h10" stroke="currentColor"/></svg>
       <div class="embalagem" aria-hidden="true"></div>
       <img class="moldura-sab" src="img/sabonete-inclinado.webp" width="900" height="900" alt="Sabonete OLEA inclinado, mostrando a borda">
     </div>
@@ -107,6 +118,7 @@
   <div class="palco">
     <div class="cena cena-1"><img src="img/mesa-bancada.webp" width="1920" height="1080" loading="lazy" alt="Bancada com o sabonete OLEA, base de corte e painel perfurado"></div>
     <div class="cena cena-2"><img src="img/mesa-termica.webp" width="1920" height="1080" loading="lazy" alt="A mesma bancada vista por câmera térmica, com o sabonete brilhando em amarelo"></div>
+    <div class="cena cena-5"><img src="img/mesa-cima.webp" width="1920" height="1080" loading="lazy" alt="Vista de cima: o sabonete OLEA no centro da base de corte, com lápis, estilete e folhas de oliveira"></div>
     <div class="cena cena-3" aria-hidden="true">
       <svg class="croqui" viewBox="0 0 1100 900">
         <g fill="none" stroke="currentColor" stroke-width="1.4" opacity=".75">
@@ -123,8 +135,8 @@
         <path d="M40 150h220M150 40v220" stroke="currentColor" stroke-dasharray="2 5" opacity=".5"/>
         <g fill="currentColor"><rect x="146" y="36" width="8" height="8"/><rect x="146" y="256" width="8" height="8"/><rect x="36" y="146" width="8" height="8"/><rect x="256" y="146" width="8" height="8"/><circle cx="72" cy="72" r="4"/><circle cx="228" cy="72" r="4"/><circle cx="72" cy="228" r="4"/><circle cx="228" cy="228" r="4"/><circle cx="110" cy="44" r="3"/><circle cx="190" cy="44" r="3"/><circle cx="110" cy="256" r="3"/><circle cx="190" cy="256" r="3"/></g></svg>
     </div>
-    <div class="cena cena-4" aria-hidden="true"><p class="letras">OLEA</p></div>
-    <div class="cena cena-5"><img src="img/mesa-cima.webp" width="1920" height="1080" loading="lazy" alt="Vista de cima: o sabonete OLEA no centro da base de corte, com lápis, estilete e folhas de oliveira"></div>
+    <div class="cena cena-4" aria-hidden="true"><p class="letras"><span class="letra-o">O<svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width=".5" stroke-dasharray="1.2 1.6" vector-effect="non-scaling-stroke"><ellipse cx="50" cy="50" rx="48" ry="48"/><ellipse cx="50" cy="50" rx="25" ry="27"/><path d="M2 2h96v96H2z" opacity=".6"/></g><g fill="currentColor"><circle cx="50" cy="2" r="1.6"/><circle cx="50" cy="98" r="1.6"/><circle cx="2" cy="50" r="1.6"/><circle cx="98" cy="50" r="1.6"/><circle cx="16" cy="16" r="1.2"/><circle cx="84" cy="16" r="1.2"/><circle cx="16" cy="84" r="1.2"/><circle cx="84" cy="84" r="1.2"/><circle cx="50" cy="23" r="1.2"/><circle cx="50" cy="77" r="1.2"/><circle cx="25" cy="50" r="1.2"/><circle cx="75" cy="50" r="1.2"/></g></svg></span>LEA</p></div>
+    
     <aside class="vidro">
       <div class="vidro-item v1"><span class="vidro-ico">↑</span><h3>Espuma acima da média</h3><p>Com uma elevação de precisão (exatamente um sabonete de altura), a OLEA não só segura a sua mão: ela a eleva. Literalmente. Acima de toda pia sem graça que você já conheceu.</p><p class="vidro-grande">Eleve seu<br>banho</p></div>
       <div class="vidro-item v2"><span class="vidro-ico">°</span><h3>Aguenta extremos</h3><p>Do banho pelando à ducha gelada, a OLEA continua perfeitamente estável. Sua saboneteira já desistiu três banhos atrás.</p><p class="vidro-grande">Estabilidade<br>termodinâmica</p></div>
@@ -142,6 +154,7 @@
 <!-- 5. CRIPTOGRAFIA DE ESPUMA + ANTIESCORREGÃO (800vh) -->
 <section class="cripto" aria-labelledby="t-cripto">
   <div class="palco">
+    <div class="cena c-cima"><img src="img/mesa-cima.webp" width="1920" height="1080" loading="lazy" alt=""></div>
     <div class="cena c-flutua"><img src="img/mesa-flutua.webp" width="1920" height="1080" loading="lazy" alt="O sabonete OLEA flutuando acima da base de corte, com a sombra embaixo"></div>
     <div class="cripto-txt">
       <p class="rotulo-c">Comunicação segura, simplificada</p>
@@ -164,14 +177,15 @@
 <section class="sustenta" aria-labelledby="t-sustenta">
   <div class="palco">
     <span class="folhas" aria-hidden="true"></span>
+    <div class="cena c-casca s-casca" aria-hidden="true"><img class="casca-a" src="img/casca.webp" width="768" height="432" loading="lazy" alt=""><img class="casca-b" src="img/casca.webp" width="768" height="432" loading="lazy" alt=""></div>
     <p class="sustenta-topo">100% de origem vegetal</p>
     <p class="sustenta-rot">Vegano</p>
     <h2 class="sustenta-palavra" id="t-sustenta">sustentabilidade</h2>
     <p class="sustenta-texto">Azeite puro, de origem sustentável. Totalmente vegano: nenhuma vaca foi ferida. Mas pode estar cheio de bolha.</p>
     <div class="cartoes">
-      <div class="cartao c-verde"><p>Oliveiras produzem por mais de 25 anos; a colheita respeita o ritmo de cada árvore.</p><span class="c-num">25</span></div>
-      <div class="cartao c-ramo"><svg viewBox="0 0 200 200" aria-hidden="true"><circle cx="100" cy="100" r="96" fill="#5d6c49"/><path d="M60 150C80 110 110 80 150 50" stroke="#efe6d2" stroke-width="5" fill="none"/><g fill="#efe6d2"><ellipse cx="84" cy="118" rx="7" ry="18" transform="rotate(-50 84 118)"/><ellipse cx="102" cy="96" rx="7" ry="18" transform="rotate(40 102 96)"/><ellipse cx="118" cy="80" rx="7" ry="18" transform="rotate(-45 118 80)"/><ellipse cx="136" cy="62" rx="7" ry="18" transform="rotate(35 136 62)"/><ellipse cx="96" cy="128" rx="6" ry="9" fill="#2c3418"/></g></svg><p>Depois de cada colheita, a árvore descansa e floresce de novo: o azeite é um recurso renovável.</p></div>
-      <div class="cartao c-chat"><ul aria-hidden="true"><li>Olá</li><li>Valeu!</li><li>Por favor</li><li>Obrigado</li></ul><p>Sem computação. Sem tokens. Pode dizer “por favor” e “obrigado” à vontade, sem culpa.</p></div>
+      <div class="cartao c-verde"><h3>Idade média da primeira colheita</h3><p>Oliveiras produzem por mais de 25 anos; a colheita respeita o ritmo de cada árvore.</p><span class="c-num">25</span></div>
+      <div class="cartao c-ramo"><h3>Intervalo entre colheitas</h3><svg viewBox="0 0 200 200" aria-hidden="true"><circle cx="100" cy="100" r="96" fill="#5d6c49"/><path d="M60 150C80 110 110 80 150 50" stroke="#efe6d2" stroke-width="5" fill="none"/><g fill="#efe6d2"><ellipse cx="84" cy="118" rx="7" ry="18" transform="rotate(-50 84 118)"/><ellipse cx="102" cy="96" rx="7" ry="18" transform="rotate(40 102 96)"/><ellipse cx="118" cy="80" rx="7" ry="18" transform="rotate(-45 118 80)"/><ellipse cx="136" cy="62" rx="7" ry="18" transform="rotate(35 136 62)"/><ellipse cx="96" cy="128" rx="6" ry="9" fill="#2c3418"/></g></svg><p>Depois de cada colheita, a árvore descansa e floresce de novo: o azeite é um recurso renovável.</p></div>
+      <div class="cartao c-chat"><h3>Consumo de energia em uso</h3><ul aria-hidden="true"><li>Olá</li><li>Valeu!</li><li>Por favor</li><li>Obrigado</li></ul><p>Sem computação. Sem tokens. Pode dizer “por favor” e “obrigado” à vontade, sem culpa.</p></div>
     </div>
   </div>
 </section>
@@ -179,15 +193,17 @@
 <!-- 7. AVALIAÇÕES (255vh) -->
 <section class="amam" aria-labelledby="t-amam">
   <div class="palco">
-    <h2 class="amam-titulo" id="t-amam">Pessoas no mundo todo<br>amam a <span>OLEA</span></h2>
+    <h2 class="amam-titulo" id="t-amam">Pessoas no mundo<br><span>inteiro amam</span><br><span>a OLEA</span></h2>
+    <p class="amam-frase">Não acredite só na nossa palavra.</p>
     <canvas class="amam-sab" width="900" height="900" aria-hidden="true"></canvas>
     <div class="avaliacoes">
-      <div class="aval-cab"><span>Notas e avaliações</span><span>364 avaliações</span><span>Média 4,9/5</span><span>OLEA em uso</span></div>
+      <div class="aval-cab"><span>Notas e avaliações</span><span>364 avaliações</span><span>★★★★★ 4,9/5</span><span>OLEA em uso</span></div>
       <ul>
         <li><p class="estrelas" aria-label="5 de 5">★★★★★ <span>5/5</span></p><blockquote>“Este é o <em>melhor sabonete</em> que já usei. Não vou ao espaço sem ele.”</blockquote><p class="quem">Edan K.<br>Aspirante a astronauta</p><img src="img/review-1.webp" width="800" height="600" loading="lazy" alt="Oliveiras antigas"></li>
         <li><p class="estrelas" aria-label="4,5 de 5">★★★★½ <span>4,5/5</span></p><blockquote>“Meu sabonete? Se quiser, vem buscar. Deixei tudo o que juntei <em>naquela espuma</em>.”</blockquote><p class="quem">Rogério D.<br>Pirata das antigas</p><img src="img/review-2.webp" width="800" height="600" loading="lazy" alt="Banca de sabonetes artesanais"></li>
         <li><p class="estrelas" aria-label="5 de 5">★★★★★ <span>5/5</span></p><blockquote>“<em>Estamos ensaboados.</em> Hollywood não está pronta para um sabonete tão cinematográfico.”</blockquote><p class="quem">Jamile R.<br>Influenciadora de IA, ex-web3</p><img src="img/review-3.webp" width="800" height="600" loading="lazy" alt="Sabonetes embalados em pano"></li>
         <li><p class="estrelas" aria-label="5 de 5">★★★★★ <span>5/5</span></p><blockquote>“Testei o modo de bolso. Alcancei… <em>atenção</em>.”</blockquote><p class="quem">Júlio M.<br>Minimalista</p><img src="img/review-4.webp" width="800" height="600" loading="lazy" alt="Sabonetes verdes de azeite"></li>
+        <li><p class="estrelas" aria-label="5 de 5">★★★★★ <span>5/5</span></p><blockquote>“Minha pia nunca esteve tão protegida desde que <em>parei de confiar na gravidade</em>.”</blockquote><p class="quem">Priscila K.<br>Cética da gravidade</p><img src="img/review-5.webp" width="800" height="600" loading="lazy" alt="Pilhas de sabonete secando num galpão"></li>
       </ul>
     </div>
   </div>
@@ -204,7 +220,7 @@
       <li class="q q-estreita"><img src="img/pilha-cores.webp" width="1000" height="1200" loading="lazy" alt="Pilha de sabonetes OLEA coloridos"></li>
       <li class="q q-larga"><img src="img/galeria-chuveiro.webp" width="1500" height="720" loading="lazy" alt="Pia de banheiro com sabonetes"><p class="q-nota topo">Sem estouro de memória em nenhum chuveiro doméstico</p><p class="q-titulo">Roda no chuveiro 220V</p></li>
       <li class="q q-estreita"><img src="img/sabonete-inclinado.webp" width="900" height="900" loading="lazy" alt="Sabonete OLEA de perto"><p class="q-nota">Perfeito por design</p></li>
-      <li class="q q-larga"><img src="img/galeria-queda.webp" width="1500" height="720" loading="lazy" alt="Pilhas de sabonetes"><p class="q-nota topo"><span>Condições do teste: piso duro</span><span>Data: 29/02/2026</span><span>Dano: o piso ;)</span></p><p class="q-titulo">Testado em queda</p></li>
+      <li class="q q-larga q-98"><img src="img/galeria-queda.webp" width="1500" height="720" loading="lazy" alt="Pilhas de sabonetes"><p class="q-nota topo"><span>Condições do teste: piso duro</span><span>Data: 29/02/2026</span><span>Dano: o piso ;)</span></p><p class="q-titulo">Testado em queda</p></li>
       <li class="q q-estreita"><img src="img/vida-4.webp" width="800" height="1067" loading="lazy" alt="Bloco de sabonete artesanal"></li>
       <li class="q q-larga"><img src="img/galeria-legado.webp" width="1500" height="720" loading="lazy" alt="Foto antiga de saboaria artesanal"><p class="q-nota topo">Compatível com banheiras desde o Império Romano</p><p class="q-titulo">Suporte legado</p></li>
     </ul>
@@ -213,7 +229,7 @@
 
 <!-- 9. ESCOLHA A SUA (324vh): abas, pilhas 1/2/3 e a tabela comparativa -->
 <section class="escolha" aria-labelledby="t-escolha">
-  <div class="escolha-palco">
+  <div class="escolha-trilho"><div class="escolha-palco">
     <p class="rotulo-c">Escolha a sua</p>
     <h2 class="escolha-titulo" id="t-escolha">OLEA</h2>
     <div class="abas" role="tablist" aria-label="Modelos">
@@ -222,6 +238,7 @@
     <img class="escolha-img" src="img/pilha-1.webp" width="900" height="900" alt="Um sabonete OLEA">
     <div class="escolha-desc" aria-live="polite"><h3>OLEA</h3><p>O original. Refinado até parecer inevitável. Espuma na medida, firmeza na medida, e some no seu dia como se nunca tivesse estado ali.</p></div>
     <ul class="escolha-lista"><li>Elevação de uma camada</li><li>Isolamento natural de azeite</li><li>Firme em qualquer saboneteira</li></ul>
+  </div>
   </div>
   <div class="tabela">
     <div class="tab-col"><p class="novo">Novo</p><h3>OLEA</h3><p class="tab-frase">Um sabonete. Um trabalho. Feito com beleza.</p></div>
@@ -267,7 +284,7 @@
   <img class="rodape-fundo" src="img/azeitonas.webp" width="1920" height="1080" loading="lazy" alt="">
   <span class="rodape-l" aria-hidden="true"></span>
   <p class="rodape-frase">Chamamos sua atenção com um produto que não existe.</p>
-  <p class="rodape-frase f2">Se dá pra vender um sabonete assim, imagine o que podemos fazer pela sua marca.</p>
+  <p class="rodape-frase f2">Se vendemos um sabonete assim, imagine o que fazemos pela sua marca.</p>
   <a class="pilula-c rodape-site" href="#intro">atelie-bolha.exemplo</a>
   <div class="rodape-caixa"><p class="acento">Feito pelo Ateliê Bolha<br>com carinho</p><p>Compartilhe com os amigos<br>se gostou</p><button type="button" class="copiar">Copiar link</button></div>
   <form class="news" onsubmit="event.preventDefault(); this.querySelector('output').textContent = 'Obrigado! (é de mentira)';"><label for="email">Assine a newsletter do Ateliê Bolha</label><div><input id="email" type="email" placeholder="Seu e-mail" required><button type="submit" aria-label="Assinar">→</button></div><output aria-live="polite"></output></form>
@@ -277,6 +294,6 @@
   <p class="rodape-aviso">Este site inteiro é um projeto criativo fictício. A OLEA não existe e nada está à venda. Todas as afirmações são satíricas e só para diversão. Fotos provisórias de licença livre: <a href="creditos.json">créditos</a>.</p>
 </footer>
 </main>
-<script type="module" src="app.js?v=1"></script>
+<script type="module" src="app.js?v=2"></script>
 </body>
 </html>

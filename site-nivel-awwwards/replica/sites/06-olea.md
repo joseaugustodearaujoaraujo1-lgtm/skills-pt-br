@@ -7,7 +7,7 @@
 | **Pasta** | `galeria/06-olea/` |
 | **Porta local** | 3006 (`node servir.mjs 3006`) |
 | **Artefato** | https://claude.ai/artifact/4GAh5nPcwj4uK9EidyyUAY, com o slug `1a698b7c-7cee-478c-b41e-33cddf09d075`. Republique **neste** artefato. |
-| **Situação** | Existe, mas **não está estritamente igual**. |
+| **Situação** | Ajustada em 22/11/2026: as alturas batem no desktop (56 691 px) e no celular (51 314 × 51 317 px), cada palco começa e termina onde o original começa e termina, e verificar-site deu 0 FAIL. Veja `galeria/06-olea/DIFERENCAS.md`. Ainda faltam as fotos essenciais (OLEA 1 a 16 e 18). |
 
 ## Tarefa
 
