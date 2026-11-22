@@ -26,7 +26,7 @@ main, .topo { position: relative; z-index: 10; }
 .som[aria-pressed="true"]::after { content: ''; position: absolute; left: 8px; right: 8px; bottom: 8px; height: 1px; background: currentColor; }
 .marca { position: absolute; left: 50%; top: 40px; transform: translateX(-50%); display: grid; justify-items: center; font-weight: 400; white-space: nowrap; }
 .marca-nome { font: italic 400 32px/1 var(--s); letter-spacing: -.01em; }
-.apresenta { margin-top: 18px; font: 600 12px/1 var(--f); letter-spacing: .08em; text-transform: uppercase; opacity: 0; transition: opacity .6s; }
+.apresenta { margin-top: 52px; font: 600 12px/1 var(--f); letter-spacing: .08em; text-transform: uppercase; opacity: 0; transition: opacity .6s; }
 .na-abertura .apresenta { opacity: 1; }
 
 /* ---------- título do capítulo e descobrir ---------- */
@@ -40,10 +40,15 @@ main, .topo { position: relative; z-index: 10; }
 .descobrir::after { content: ''; position: absolute; left: 50%; bottom: 8px; width: 24px; height: 1px; margin-left: -12px; background: currentColor; transition: width .4s var(--ease), margin .4s var(--ease); }
 .descobrir:hover::after { width: 60px; margin-left: -30px; }
 .descobrir[hidden] { display: none; }
-.rolar { position: fixed; left: 50%; top: 745px; transform: translateX(-50%); display: none; justify-items: center; gap: 10px; min-height: 44px; font: 600 12px/1 var(--f); letter-spacing: .08em; text-transform: uppercase; }
+.rolar { position: fixed; left: 50%; top: 757px; transform: translateX(-50%); display: none; justify-items: center; gap: 10px; min-height: 44px; font: 600 12px/1 var(--f); letter-spacing: .08em; text-transform: uppercase; }
 .rolar i { width: 1px; height: 30px; background: linear-gradient(#fff, transparent); animation: desce 1.8s var(--ease) infinite; transform-origin: 50% 0; }
 @keyframes desce { 0% { transform: scaleY(0); } 60% { transform: scaleY(1); } 100% { opacity: 0; } }
 .na-abertura .rolar { display: grid; }
+.rolar2 { position: fixed; left: 1330px; left: calc(100vw - 110px); top: 827px; top: calc(100vh - 73px); display: none; font: 600 12px/1 var(--f); letter-spacing: .02em; text-transform: uppercase; pointer-events: none; }
+.rolar2 span { display: inline-block; animation: pisca 2.4s ease-in-out infinite; animation-delay: calc(var(--i) * 90ms); }
+@keyframes pisca { 0%, 100% { transform: none; } 50% { transform: translateY(-3px); } }
+.na-abertura .rolar2 { display: block; }
+@media (max-width: 760px) { .rolar2 { display: none !important; } }
 .pontos { position: fixed; right: 44px; top: 50%; transform: translateY(-50%); list-style: none; display: grid; gap: 0; }
 .pontos button { display: grid; place-items: center; width: 44px; height: 22px; }
 .pontos i { width: 3px; height: 3px; border-radius: 50%; background: rgb(255 255 255 / .6); transition: transform .4s var(--ease), background .4s; }

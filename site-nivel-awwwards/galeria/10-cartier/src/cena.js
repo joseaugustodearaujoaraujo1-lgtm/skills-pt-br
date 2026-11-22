@@ -12,7 +12,7 @@ const ouro = new THREE.MeshPhysicalMaterial({ color: '#e8c27a', metalness: 1, ro
 const ouroRose = new THREE.MeshPhysicalMaterial({ color: '#e9b49a', metalness: 1, roughness: .18 });
 const aco = new THREE.MeshPhysicalMaterial({ color: '#d7dadf', metalness: 1, roughness: .22 });
 const couro = new THREE.MeshStandardMaterial({ color: '#1c1512', roughness: .55 });
-const gema = (cor, atenua) => new THREE.MeshPhysicalMaterial({ color: cor, metalness: 0, roughness: 0, transmission: 1, thickness: .6, ior: 1.62, attenuationColor: new THREE.Color(atenua || cor), attenuationDistance: .25, iridescence: .3, specularIntensity: 1, envMapIntensity: 2.2, flatShading: true });
+const gema = (cor, atenua) => new THREE.MeshPhysicalMaterial({ color: cor, metalness: 0, roughness: 0, transmission: 1, thickness: .3, ior: 2.1, dispersion: 4, attenuationColor: new THREE.Color(atenua || cor), attenuationDistance: 1.6, iridescence: .3, specularIntensity: 1, envMapIntensity: 4, emissive: new THREE.Color(cor), emissiveIntensity: .12, flatShading: true });
 
 // lapidação brilhante: coroa + pavilhão em torno (faces chapadas)
 function brilhante(r = .3, cor = '#2fb39a') {

@@ -35,3 +35,17 @@ Altura total: original 13 732 px, nosso 13 732 px. As seções começam nas mesm
 |---|---|---|---|---|
 | celular | Início da linha do tempo | sobe 35 px por cima do hero (844) | 879 | corrigido |
 | celular | Altura total | 10 997 | 11 041 | corrigido (10 996) |
+
+## Medição completa (30 telas, de 450 em 450 px, textos lidos pela DOM nas mesmas posições exatas)
+
+Dos 359 textos pareados com o original, **305 estão dentro de 8 px e 1 px de fonte (85%)**. O restante são diferenças de conteúdo: a trilha de marcas está sempre em movimento, a palavra sublinhada é outra e os botões têm texto de outro tamanho.
+
+| Elemento | Original | Antes | Status |
+|---|---|---|---|
+| Itens do menu | x 450, 576, 739, 857, 981 | dois itens 10 a 12 px à esquerda | corrigido (grade com as larguras medidas) |
+| Cartões da linha do tempo | paralaxe: sobem 0,138 px por px de rolagem | parados, com entrada animada | corrigido |
+| Título dos números | começa em y 8 392 | 21 px abaixo | corrigido |
+| Cartões dos números | 60+, 400+ e 50+ nas posições medidas em 5 pontos | fora do tempo (até 125 px) | corrigido (pontos medidos) |
+| Bloco dos números | solta em 9 944 | soltava em 10 113 | corrigido |
+| Título do artigo grande | 30 px | 20 px | corrigido |
+| Texto dos cartões de números | logo abaixo do número | 20 px abaixo | corrigido |

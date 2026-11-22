@@ -35,3 +35,8 @@ Fica para quando houver material próprio: as peças e as salas do original são
 | 0 | Letreiro | letras serifadas brancas com contorno escuro e placas de luz atrás | letras finas e cinzentas | corrigido |
 | 0 | Sala | pêssego quente | bege acinzentado | corrigido |
 | celular | Enquadramento | o letreiro e as peças cabem na tela | letreiro cortado | corrigido (câmera recua em telas estreitas) |
+
+## Medição da interface (textos lidos pela DOM, dentro do shadow DOM no original)
+
+Título nas linhas y 651 e 704 com 48 px, "Descobrir" centrado em y 800 e "Som" ficaram iguais ao original (diferença de até 4 px). Corrigidos: "apresenta" em y 124 (estava em 90), "Rolar" em y 757 (estava em 745) e a segunda dica de rolagem no canto inferior direito, que faltava.
+3D (só código three.js): as gemas ganharam dispersão de luz (o "fogo" de uma pedra lapidada) e menos absorção, para a turmalina aparecer.

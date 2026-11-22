@@ -71,9 +71,10 @@ $$('.frase').forEach(f => {
   f.setAttribute('aria-label', f.textContent);
   f.innerHTML = palavras.map(p => `<span style="white-space:nowrap">${[...p].map(c => `<span class="l" aria-hidden="true">${c}</span>`).join('')}</span>`).join(' ');
 });
-function revelar(frase, u) {
-  const ls = frase.querySelectorAll('.l'), n = Math.round(Math.max(0, Math.min(1, u)) * ls.length);
-  ls.forEach((l, i) => { l.classList.toggle('v', i < n); l.classList.toggle('novo', i < n && i >= n - 3 && n < ls.length); });
+function revelar(frase, u, h = 0) {
+  // u: fração escrita (da primeira letra em diante); h: fração apagada (também da primeira em diante)
+  const ls = frase.querySelectorAll('.l'), n = Math.round(Math.max(0, Math.min(1, u)) * ls.length), a = Math.round(Math.max(0, Math.min(1, h)) * ls.length);
+  ls.forEach((l, i) => { l.classList.toggle('v', i < n && i >= a); l.classList.toggle('novo', i < n && i >= n - 3 && n < ls.length); });
 }
 
 // ---------- pré-carregamento ----------
@@ -106,16 +107,16 @@ if (reduzido) {
       gsap.set('.hq3', { opacity: gsap.utils.clamp(0, 1, (p - .62) / .1) });
       gsap.set(gemeo, { opacity: gsap.utils.clamp(0, 1, (p - .66) / .12) });
       gsap.set('.rolar', { opacity: .75 * (1 - gsap.utils.clamp(0, 1, p / .06)) });
-      revelar($('.f1'), (p - .04) / .22); gsap.set('.f1', { opacity: 1 - gsap.utils.clamp(0, 1, (p - .3) / .05) });
-      revelar($('.f2'), (p - .38) / .22); gsap.set('.f2', { opacity: p < .36 ? 0 : 1 - gsap.utils.clamp(0, 1, (p - .64) / .05) });
-      revelar($('.f3'), (p - .7) / .18); gsap.set('.f3', { opacity: p < .68 ? 0 : 1 });
+      // medido no original: cada frase ocupa 600 px; escreve de +40 a +355 e apaga de +400 a +570
+      const rol = p * 1800;
+      ['.f1', '.f2', '.f3'].forEach((sel, i) => { const s0 = i * 600; revelar($(sel), (rol - s0 - 40) / 315, (rol - s0 - 400) / 170); });
     },
   });
   gsap.ticker.add(t => { if (progHero > .6 && scrollY < $('.hero').offsetHeight) desenharGemeo(gemeo, t); });
 
   // títulos grandes sobem com leve atraso
-  $$('.titulo-g, .titulo-m').forEach(el => gsap.from(el, { y: 50, opacity: 0, duration: 1.1, ease: 'expo.out', scrollTrigger: { trigger: el, start: 'top 88%' } }));
-  gsap.from('.card', { y: 80, opacity: 0, duration: 1, stagger: .12, ease: 'expo.out', scrollTrigger: { trigger: '.cards', start: 'top 85%' } });
+  $$('.titulo-g, .titulo-m').forEach(el => gsap.from(el, { y: 50, opacity: 0, duration: 1.1, ease: 'expo.out', scrollTrigger: { trigger: el, start: 'top bottom' } }));
+  gsap.from('.card', { y: 80, opacity: 0, duration: 1, stagger: .12, ease: 'expo.out', scrollTrigger: { trigger: '.cards', start: 'top bottom' } });
 
   // passos: o item ativo e a mídia mudam conforme a rolagem
   const itens = $$('.passos-lista li'), midias = $$('.passos-midia img');
@@ -123,7 +124,8 @@ if (reduzido) {
     trigger: '.passos', start: 'top top', end: 'bottom bottom',
     onUpdate: s => {
       if (estreito.matches) return;
-      const i = Math.min(itens.length - 1, Math.floor(s.progress * itens.length * .999));
+      // trocas medidas no original: item 2 em ~6 600, item 3 em ~7 500, item 4 em ~8 400
+      const i = Math.max(0, Math.min(itens.length - 1, Math.floor((scrollY - 5700) / 900)));
       itens.forEach((li, k) => { li.classList.toggle('ativo', k === i); li.classList.toggle('saiu', k < i); });
       midias.forEach((m, k) => m.classList.toggle('ativo', k === i));
     },

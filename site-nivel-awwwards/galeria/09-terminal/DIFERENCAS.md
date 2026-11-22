@@ -36,3 +36,18 @@ Conferidos dentro de 8 px: títulos das marcas, dos caminhos e do "por que", car
 | Tela | Elemento | Original | Antes | Status |
 |---|---|---|---|---|
 | 0 | Primeiro quadro do hero | caminhão-baú de lado, em silhueta contra o entardecer, chão preto | foto de porto à noite | corrigido (render 3D próprio: `src/caminhao.js` + `gerar-hero.mjs`) |
+
+## Medição completa (35 telas, de 450 em 450 px, textos lidos pela DOM nas mesmas posições exatas)
+
+Dos 531 textos pareados com o original, **509 estão dentro de 8 px e 1 px de fonte (96%)**. Os não pareados são cópias que o original guarda escondidas (submenus e letras separadas).
+
+| Elemento | Original | Antes | Status |
+|---|---|---|---|
+| Itens do menu | x 405, 494, 587, 687, 798 | 19 a 28 px à esquerda | corrigido |
+| Frases do hero (movimento) | cada frase ocupa 600 px: escreve de +40 a +355 e apaga de +400 a +570, letra por letra | escrevia mais devagar e sumia de uma vez | corrigido (diferença de no máximo 0,07 na fração de letras) |
+| Passos | 4 itens, trocam em ~6 600, ~7 500 e ~8 400 | 5 itens, trocas por fração | corrigido |
+| Botões dos cartões | 58 px de altura, 47 px da base | 14 px mais baixos | corrigido |
+| Campos da calculadora | controle de 1 a 10 em y 5 407 | 67 px abaixo | corrigido |
+| Abas da plataforma e das perguntas | larguras 150/150/150/210 e 190/89/180/190 | pela largura do texto | corrigido |
+| Texto da plataforma, título do slide, botão "Mais", nome na citação, selo do rodapé | posições medidas | de 18 a 55 px fora | corrigido |
+| Título "Resolva hoje…" | visível ao entrar na tela | aparecia só a 88% | corrigido |
