@@ -42,3 +42,8 @@ Fica para quando houver material próprio: o original tem chão espelhado e mode
 | 10–11 | Bloco ao longe | visto em diagonal, de baixo | de frente | corrigido |
 | 16 | Vista de cima | mesa com papéis em volta do pedestal | colada no pedestal | corrigido |
 | celular | Título e enquadramento | cabem na tela | título cortado, objeto cortado | corrigido (fonte menor, câmera recua em telas estreitas) |
+
+## Medição da interface (textos lidos pela DOM)
+
+Abertura (marcas em y 183, título em 3 linhas centradas em 338/434/531, botão centrado em y 742), botão de som, marcadores dos capítulos I e II, capítulo atual (y 855) e "pular introdução" ficaram dentro de 8 px do original. Corrigido: o marcador III desce 28 px para acompanhar a onda, como no original.
+3D (só código three.js): sombra de contato sob o frasco e dispersão de luz no vidro.

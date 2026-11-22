@@ -68,7 +68,9 @@ if (!reduzido) {
   th.to('.hero-texto', { scale: .8 }, 0).to('.hero-sombra', { opacity: .16 }, 0).to('.grupo', { scale: 1.11 }, 0);
 
   // ---------- linha do tempo: cartões entram e objetos com paralaxe ----------
-  $$('.cartao').forEach(c => gsap.from(c, { y: 90, rotate: 2.5, opacity: 0, duration: 1.1, ease: 'expo.out', scrollTrigger: { trigger: c, start: 'top 88%', toggleActions: 'play none none reverse' } }));
+  const cartoesLinha = $$('.cartao');
+  const paralaxe = () => { if (estreito.matches) { cartoesLinha.forEach(c => gsap.set(c, { y: 0 })); return; } cartoesLinha.forEach(c => { const topo = c.offsetTop + c.offsetParent.getBoundingClientRect().top + scrollY; gsap.set(c, { y: -.138 * (scrollY - (topo - 300 * k())) }); }); };
+  ScrollTrigger.create({ trigger: '.linha-trilha', start: 'top bottom', end: 'bottom top', onUpdate: paralaxe, onRefresh: paralaxe });
   $$('.obj, .pers').forEach((o, i) => {
     const d = o.classList.contains('pers') ? 70 : 140 * (i % 2 ? 1 : -1);
     gsap.fromTo(o, { y: d }, { y: -d, rotate: o.classList.contains('obj') ? (i % 2 ? 14 : -14) : 0, ease: 'none', scrollTrigger: { trigger: o, start: 'top bottom', end: 'bottom top', scrub: true } });
@@ -85,9 +87,9 @@ if (!reduzido) {
 
   // ---------- números: cartões sobem e se empilham (posições medidas no original, em px de 1440) ----------
   const PONTOS = [
-    [[7356, 1582], [8100, 838], [8423, 467], [9170, 273], [9900, 89], [10045, 85]],
-    [[8500, 1002], [9170, 332], [9900, 148], [10045, 145]],
-    [[9200, 908], [9900, 208], [10045, 205]],
+    [[7356, 1582], [8103, 835], [8552, 337], [9004, 273], [9452, 273], [9904, 85], [9944, 82]],
+    [[8600, 1004], [9004, 500], [9452, 332], [9904, 144], [9944, 141]],
+    [[9000, 1137], [9452, 685], [9904, 204], [9944, 201]],
   ];
   const interp = (pts, s) => {
     if (s <= pts[0][0]) return pts[0][1] + (pts[0][0] - s);

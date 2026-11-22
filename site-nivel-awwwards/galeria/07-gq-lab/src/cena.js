@@ -105,7 +105,7 @@ export function criarCena(canvas) {
 
   // ---------- o frasco AC-07 ----------
   const frasco = new THREE.Group();
-  const vidro = new THREE.MeshPhysicalMaterial({ color: '#ffffff', metalness: 0, roughness: .03, transmission: 1, thickness: .22, ior: 1.52, attenuationColor: new THREE.Color('#f3efe6'), attenuationDistance: 2, clearcoat: 1, clearcoatRoughness: .05, envMapIntensity: 1.4, specularIntensity: 1 });
+  const vidro = new THREE.MeshPhysicalMaterial({ color: '#ffffff', metalness: 0, roughness: .03, transmission: 1, thickness: .22, ior: 1.52, dispersion: .6, attenuationColor: new THREE.Color('#f3efe6'), attenuationDistance: 2, clearcoat: 1, clearcoatRoughness: .05, envMapIntensity: 1.4, specularIntensity: 1 });
   const liquido = new THREE.MeshPhysicalMaterial({ color: '#c9772a', roughness: .12, clearcoat: 1, clearcoatRoughness: .1, sheen: .3, sheenColor: new THREE.Color('#ffcf8a') });
   const aco = new THREE.MeshStandardMaterial({ color: '#c9ccd1', metalness: 1, roughness: .28 });
   const latao = new THREE.MeshStandardMaterial({ color: '#d4a35a', metalness: 1, roughness: .22 });
@@ -120,6 +120,10 @@ export function criarCena(canvas) {
   const placa = new THREE.Mesh(new THREE.PlaneGeometry(.16, .07), new THREE.MeshStandardMaterial({ map: tela(256, 112, (g, w, h) => { g.fillStyle = '#1b1b1d'; g.fillRect(0, 0, w, h); g.fillStyle = '#e8d7b5'; g.font = '600 46px sans-serif'; g.textAlign = 'center'; g.fillText('AC-07', w / 2, 72); }), metalness: .4, roughness: .4 }));
   placa.position.set(0, .34, .34); frasco.add(placa);
   frasco.scale.setScalar(.5); frasco.position.y = .12; scene.add(frasco);
+  // sombra de contato: um degradê radial sob o frasco (barato e convincente)
+  const sombraTex = tela(128, 128, (g, w, h) => { const rg = g.createRadialGradient(64, 64, 4, 64, 64, 64); rg.addColorStop(0, 'rgba(0,0,0,.75)'); rg.addColorStop(.5, 'rgba(0,0,0,.3)'); rg.addColorStop(1, 'rgba(0,0,0,0)'); g.fillStyle = rg; g.fillRect(0, 0, w, h); });
+  const sombra = new THREE.Mesh(new THREE.PlaneGeometry(.62, .62), new THREE.MeshBasicMaterial({ map: sombraTex, transparent: true, depthWrite: false }));
+  sombra.rotation.x = -Math.PI / 2; sombra.position.y = .1215; scene.add(sombra);
 
   // ---------- 1. esboços em linha (abertura) ----------
   const esboco = new THREE.Group(); scene.add(esboco);
@@ -255,6 +259,7 @@ export function criarCena(canvas) {
     ceuMat.uniforms.uTempo.value = t;
     // frasco: pedestal certo para cada cena
     frasco.position.y = cena === 'escuro' ? .1 : .12;
+    sombra.visible = frasco.visible; sombra.position.y = frasco.position.y + .0015;
     frasco.rotation.y = cena === 'fim' ? 0 : t * .05;
     foco.intensity = cena === 'fim' ? 2 : 18; contra.intensity = cena === 'fim' ? 14 : cena === 'escuro' ? 10 : 6;
     contra.position.set(cena === 'fim' ? -1.2 : -1.5, cena === 'fim' ? 1.1 : 1.4, cena === 'fim' ? -.8 : -1.6);

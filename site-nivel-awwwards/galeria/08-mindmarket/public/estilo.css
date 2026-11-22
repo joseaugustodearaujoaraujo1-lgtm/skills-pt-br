@@ -50,11 +50,11 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .topo-pilula { position: absolute; left: 7.5vw; width: 70.14vw; height: 4.03vw; min-height: 48px; display: flex; align-items: center; padding: 0 .8vw 0 .85vw; background: #fff; border-radius: .7vw; }
 .logo { display: flex; align-items: center; gap: .55vw; font: 600 max(16px, 1.53vw)/1 var(--f); letter-spacing: -.04em; }
 .logo svg { width: 2.4vw; height: 2.4vw; min-width: 26px; min-height: 26px; }
-.topo nav { margin-left: auto; margin-right: 1.9vw; }
-.topo nav ul { display: flex; gap: 2.95vw; }
+.topo nav { position: absolute; left: 23.75vw; }
+.topo nav ul { display: grid; grid-template-columns: 8.75vw 11.32vw 8.19vw 8.61vw auto; }
 .topo nav a { display: flex; align-items: center; gap: .45vw; min-height: 44px; font: 500 max(12px, 1.254vw)/1.25 var(--f); letter-spacing: -.04em; }
 .topo nav i { width: .42vw; height: .42vw; border: solid currentColor; border-width: 0 1.5px 1.5px 0; transform: translateY(-25%) rotate(45deg); }
-.menu-bt { width: 2.99vw; height: 2.99vw; min-width: 44px; min-height: 44px; }
+.menu-bt { margin-left: auto; width: 2.99vw; height: 2.99vw; min-width: 44px; min-height: 44px; }
 .menu-bt svg { width: 100%; height: 100%; }
 .menu-bt circle { fill: var(--caju); }
 .menu-bt path { stroke: var(--tinta); stroke-width: 2.6; stroke-linecap: round; }
@@ -105,6 +105,8 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .c2 { left: 7.57vw; top: 79.79vw; min-height: 31.25vw; }
 .c3 { left: 32.22vw; top: 143.54vw; min-height: 31.25vw; }
 .c4 { left: 56.875vw; top: 223.33vw; min-height: 31.25vw; }
+.c3 .bt { margin-left: 3.54vw; }
+@media (max-width: 860px) { .c3 .bt { margin-left: 0; } }
 .fim { position: absolute; left: 0; right: 0; top: 259.1vw; height: 60vw; }
 .morro { position: absolute; left: 0; width: 100vw; height: auto; }
 .m-tras { top: 37.43vw; }
@@ -135,8 +137,8 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .fita text { font: 500 52px/1 var(--f); fill: var(--caju); letter-spacing: -.03em; dominant-baseline: middle; }
 
 /* ---------- 5. números ---------- */
-.numeros { position: relative; z-index: 2; height: 171.25vw; background: var(--creme); border-radius: var(--raio); padding: 9.44vw 7.57vw 0; display: grid; grid-template-columns: 1fr 28.33vw; }
-.num-esq { position: sticky; top: 10.97vw; align-self: start; height: 31.25vw; margin-top: 1.53vw; }
+.numeros { position: relative; z-index: 2; height: 171.25vw; background: var(--creme); border-radius: var(--raio); padding: 9.44vw 7.57vw 11.8vw; display: grid; grid-template-columns: 1fr 28.33vw; }
+.num-esq { position: sticky; top: 10.97vw; align-self: start; height: 31.25vw; }
 .num-titulo { width: 47.92vw; font: 500 5.6vw/.95 var(--f); letter-spacing: -.06em; }
 .num-titulo strong { position: relative; font-weight: 500; white-space: nowrap; }
 .num-titulo strong svg { position: absolute; left: 0; right: 0; bottom: -.9vw; width: 100%; height: 1.3vw; }
@@ -146,7 +148,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .ncard { position: absolute; left: 0; top: 0; width: 28.33vw; height: 34.65vw; padding: 5.56vw 1.18vw 1.4vw; border-radius: 2.08vw; will-change: transform; }
 .nic { position: absolute; right: 2.43vw; top: 1.11vw; width: 4.44vw; height: 4.44vw; }
 .nn { font: 400 10vw/.95 var(--f); letter-spacing: -.06em; }
-.nt { margin-top: 1.4vw; width: 24.7vw; font: 500 1.402vw/1.25 var(--f); letter-spacing: -.04em; }
+.nt { margin-top: 0; width: 24.7vw; font: 500 1.402vw/1.25 var(--f); letter-spacing: -.04em; }
 .n1 { background: #fff; color: var(--acai); } .n1 .nic circle { fill: var(--acai); }
 .n2 { background: var(--caju); color: var(--tinta); } .n2 .nic circle { fill: #fff; }
 .n3 { background: var(--acai); color: #fff; } .n3 .nic circle { fill: #fff; }
@@ -160,7 +162,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .art-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 1s var(--ease); }
 .art:hover .art-img img, .art-grande a:hover .art-img img { transform: scale(1.04); }
 .art-grande .art-img { height: 59.93vw; }
-.art-grande h3 { margin-top: .76vw; font: 500 2.066vw/1.2 var(--f); letter-spacing: -.06em; }
+.art.art-grande h3 { margin-top: .76vw; font: 500 2.066vw/1.2 var(--f); letter-spacing: -.06em; }
 .art-media .art-img { height: 35.76vw; }
 .art h3 { margin-top: .76vw; font: 500 max(12px, 1.402vw)/1.25 var(--f); letter-spacing: -.04em; }
 .art-duplo { display: grid; grid-template-columns: 1fr 1fr; gap: 1.32vw; margin-top: 4.86vw; }
@@ -258,7 +260,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   .art-lista { grid-template-columns: 1fr; }
   .art-col { display: none; }
   .art-grande .art-img { height: 70vw; }
-  .art-grande h3 { width: auto; font-size: 5.6vw; margin-top: 2vw; }
+  .art.art-grande h3 { width: auto; font-size: 5.6vw; margin-top: 2vw; }
   .marcas { height: 188.5vw; padding-top: 12vw; }
   .marcas-titulo { width: auto; font-size: 9vw; padding: 0 4vw; }
   .trilhos { margin-top: 12vw; gap: 4vw; }
