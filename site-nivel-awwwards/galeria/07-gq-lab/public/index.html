@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>O Laboratório Extraordinário · VÉRTICE × ACORDE</title>
+<meta name="description" content="Uma experiência em 3D narrada: a editora de perfumaria da VÉRTICE e um colecionador percorrem o laboratório da ACORDE e o frasco AC-07, em três capítulos.">
+<meta name="theme-color" content="#000000">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23000'/%3E%3Cpath d='M32 10l18 10v24L32 54 14 44V20z' fill='none' stroke='%23fff' stroke-width='3'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="fonts/fonts.css">
+<link rel="preload" href="fonts/inter-tight-normal-200-600.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="estilo.css?v=1">
+</head>
+<body>
+<a class="pular" href="#transcricao">Pular para a transcrição</a>
+<canvas class="palco" aria-hidden="true"></canvas>
+<div class="vinheta" aria-hidden="true"></div>
+<div class="escuro" aria-hidden="true"></div>
+
+<!-- carregamento: as duas marcas ligadas por uma linha que se preenche -->
+<div class="carregando" aria-hidden="true">
+  <span class="marca-v">VÉRTICE</span><span class="carga"><i></i></span><span class="marca-a">ACORDE</span>
+</div>
+
+<header class="topo">
+  <a class="marcas" href="#intro" aria-label="VÉRTICE e ACORDE, voltar ao início"><b>VÉRTICE</b><span aria-hidden="true">×</span><b>ACORDE</b></a>
+  <button class="som" type="button" aria-pressed="false">Som</button>
+</header>
+
+<main>
+  <section class="intro" id="intro" aria-labelledby="t-intro">
+    <h1 id="t-intro" class="intro-titulo"><span>O</span> <span>Laboratório</span> <span>Extraordinário</span></h1>
+    <p class="intro-linha">Siga uma história contada por Luísa Prado, editora de perfumaria da VÉRTICE, e Tomás Reis</p>
+    <button class="ativar" type="button">Clique em qualquer lugar para ativar o som</button>
+    <svg class="fone" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 15v-3a8 8 0 0 1 16 0v3" fill="none" stroke="currentColor" stroke-width="1.2"/><rect x="3" y="14" width="4" height="7" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.2"/><rect x="17" y="14" width="4" height="7" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.2"/></svg>
+  </section>
+
+  <p class="role-dica" aria-hidden="true"><span>Role para avançar</span><i></i></p>
+  <button class="pular-intro" type="button"><i aria-hidden="true"></i>Pular a introdução</button>
+  <h2 class="cap-titulo" aria-live="polite"></h2>
+
+  <div class="legenda" aria-live="polite">
+    <p class="falante"></p>
+    <p class="fala"></p>
+  </div>
+
+  <nav class="capitulos" aria-label="Capítulos">
+    <ol>
+      <li><button type="button" data-cap="0"><i aria-hidden="true"></i><span class="num">I</span><span class="cap-nome">DNA ACORDE</span></button></li>
+      <li><button type="button" data-cap="1"><i aria-hidden="true"></i><span class="num">II</span><span class="cap-nome">Design e experiência</span></button></li>
+      <li><button type="button" data-cap="2"><i aria-hidden="true"></i><span class="num">III</span><span class="cap-nome">Inovação</span></button></li>
+    </ol>
+    <canvas class="onda" aria-hidden="true"></canvas>
+    <p class="cap-atual"><span class="num">I</span><span class="nome">DNA ACORDE</span></p>
+  </nav>
+
+  <button class="ponto" type="button" data-ponto="0" aria-label="Clique para explorar: a tampa facetada"><b aria-hidden="true">+</b><span>Clique para explorar</span></button>
+  <button class="ponto" type="button" data-ponto="1" aria-label="Clique para explorar: o atomizador"><b aria-hidden="true">+</b><span>Clique para explorar</span></button>
+  <dialog class="detalhe">
+    <p class="detalhe-rotulo"></p>
+    <h3 class="detalhe-titulo"></h3>
+    <p class="detalhe-texto"></p>
+    <button class="fechar" type="button">Fechar</button>
+  </dialog>
+
+  <section class="fim" aria-labelledby="t-fim">
+    <h2 id="t-fim" class="sr">Fim da experiência</h2>
+    <a class="continuar" href="#transcricao"><i aria-hidden="true"></i>Continue a jornada</a>
+  </section>
+
+  <section class="transcricao" id="transcricao" aria-labelledby="t-transcricao" tabindex="-1">
+    <h2 id="t-transcricao">Transcrição</h2>
+    <div class="transcricao-corpo"></div>
+    <button class="voltar" type="button">Voltar à experiência</button>
+  </section>
+</main>
+<script type="module" src="app.js?v=1"></script>
+</body>
+</html>

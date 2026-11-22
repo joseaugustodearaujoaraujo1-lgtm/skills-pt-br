@@ -4,11 +4,11 @@
 |---|---|
 | **Original** | https://www.gq.com/sponsored/story/the-extraordinary-lab |
 | **Tema sugerido** | laboratório de perfumaria autoral |
-| **Nossa marca** | (defina) Laboratório de perfumaria brasileiro. Crie um nome brasileiro curto e memorável que combine com o tema. |
+| **Nossa marca** | ACORDE: casa de perfumaria autoral brasileira, em parceria com a revista fictícia VÉRTICE; o objeto é o frasco AC-07 |
 | **Pasta** | `galeria/07-gq-lab/` (copie a estrutura de `galeria/06-olea/`: `package.json`, `servir.mjs`, `src/`, `public/`) |
 | **Porta local** | 3007 (`node servir.mjs 3007`) |
-| **Artefato** | novo; depois de publicar, anote o link e o slug nesta ficha |
-| **Situação** | Ainda não existe. |
+| **Artefato** | https://claude.ai/artifact/1Q7WGHtT8iBg8fvaGDY5tG, com o slug `033a1d82-e60c-4f53-bb92-0f22b1ccbee5`. Republique **neste** artefato. |
+| **Situação** | Construída (1º ciclo). Experiência 3D em tempo real (three.js) com os mesmos 46 passos de rolagem do original: abertura, esboços, céu, 3 capítulos narrados em legenda e o fecho. verificar-site com 0 FAIL. Falta a rodada final de comparação (o original é mais escuro e tem chão espelhado). Detalhes em `galeria/07-gq-lab/DIFERENCAS.md`. |
 
 ## Tarefa
 

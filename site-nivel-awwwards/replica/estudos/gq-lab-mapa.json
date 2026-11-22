@@ -1,0 +1,25 @@
+{
+ "original": "https://www.gq.com/sponsored/story/the-extraordinary-lab",
+ "viewport": [1440, 900],
+ "H": 900,
+ "tipo": "experiência WebGL em tela cheia; a página não rola: a roda do mouse avança a câmera e as falas (medido em passos de 600 px de roda)",
+ "passos": [
+  {"de": 0, "ate": 0, "cena": "carregamento", "obs": "marcas 'GQ × AP' no centro (y 180) com uma linha de progresso entre elas"},
+  {"de": 0, "ate": 1, "cena": "abertura", "obs": "título fino em 3 linhas (cerca de 106 px, centrado de y 300 a 580), linha 11px/500 em caixa alta em y 650, botão 230×44 com borda em y 720 ('click anywhere to enable sound'), ícone de fone em y 795, botão SOUND 11px em (1345, 57)"},
+  {"de": 1, "ate": 6, "cena": "esboços em linha", "obs": "câmera desce sobre um laboratório desenhado em linhas brancas: bancadas, objetos, folhas manuscritas; o título se apaga entre os passos 1 e 3"},
+  {"de": 6, "ate": 7, "cena": "esboço vira matéria", "obs": "a mesa e o pedestal ganham material; papéis com desenhos técnicos"},
+  {"de": 7, "ate": 10, "cena": "céu", "obs": "a câmera sobe para um céu nublado azul-acinzentado com horizonte laranja sobre um chão escuro"},
+  {"de": 10, "ate": 11, "cena": "bloco ao longe", "obs": "'Let's go.' + 'skip intro'; bloco preto com luz embaixo"},
+  {"de": 11, "ate": 18.5, "cena": "capítulo I", "obs": "título do capítulo no centro; o objeto sobre um pedestal preto numa mesa branca; silhuetas de arcos pretos contra o céu; ponto '+ click to explore' por volta do passo 16"},
+  {"de": 18.5, "ate": 30, "cena": "capítulo II", "obs": "sala escura com janela em arco para um céu claro; pedestal octogonal; ferramentas na mesa; ponto de exploração por volta do passo 28"},
+  {"de": 30, "ate": 42, "cena": "capítulo III", "obs": "sala escura com arcos de luz fina, horizonte azul e telas com o mecanismo em raio X que crescem até encher a tela"},
+  {"de": 42, "ate": 46, "cena": "fecho", "obs": "preto; macro lateral do objeto com luz de recorte; botão 'continue the journey' em y 860"}
+ ],
+ "interface": {
+  "legenda": "rótulo do falante 10px caixa alta a 60% (y ≈ 627) + fala em serifa ≈ 20px (y ≈ 678), centradas",
+  "capitulos": "3 marcadores (I, II, III) ao longo de uma onda de áudio colorida (laranja → branco → azul) no rodapé; capítulo atual 14px/500 no centro em y 853",
+  "dica": "'scroll to navigate' 11px a 50% em y 117",
+  "topo": "marcas pequenas no canto superior esquerdo depois da abertura"
+ },
+ "celular": {"viewport": [390, 844], "obs": "mesma experiência em tela cheia, toque para avançar"}
+}
