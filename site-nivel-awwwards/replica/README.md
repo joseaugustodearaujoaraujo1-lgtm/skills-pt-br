@@ -1,4 +1,10 @@
-# Ferramentas de réplica
+# Réplicas perfeitas
+
+- `PROTOCOLO.md`: prompt-mestre com as regras, o método e as tolerâncias de aceite. Toda sessão lê este primeiro.
+- `sites/NN-nome.md`: ficha de cada site, com o original, a nossa marca, a pasta, a porta, o artefato e o que conferir.
+- `PROMPTS.md`: prompts prontos para colar numa sessão nova, um site por sessão.
+
+## Ferramentas
 
 Ferramentas usadas para estudar um site original e comparar tela por tela com a nossa versão.
 Rodam neste ambiente (Playwright em `/opt/node-tools`, Chromium em `/opt/pw-browsers`).
@@ -12,6 +18,6 @@ Rodam neste ambiente (Playwright em `/opt/node-tools`, Chromium em `/opt/pw-brow
 | `ferramentas/contraste.cjs` | Mede o contraste dos textos | `node contraste.cjs <url>` |
 | `ferramentas/alvos.cjs` | Acha alvos de toque menores que 44 px e textos menores que 12 px | `node alvos.cjs <url>` |
 
-`estudo-oryzo/mapa.json`: alturas medidas das seções do oryzo.ai em 1440×900 (altura total de 56 691 px).
+`estudos/`: alturas medidas das seções dos originais em 1440×900 (oryzo.ai com 56 691 px; sondaven.com com 33 203 px).
 
 Portão de qualidade: `PLAYWRIGHT_CORE=/opt/node-tools/node_modules/playwright-core node scripts/verificar-site.mjs <url> --espera 4000` precisa dar 0 FAIL.
