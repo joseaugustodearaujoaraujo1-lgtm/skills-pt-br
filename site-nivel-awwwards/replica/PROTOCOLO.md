@@ -110,7 +110,7 @@ Precisa existir alternativa estática para quem pede menos movimento (`prefers-r
 
 ## 7. Imagens e vídeos
 
-- **Imagens não essenciais:** use foto livre (Wikimedia via `scripts/buscar-fotos-livres.mjs`, com créditos em `creditos.json`) ou um render 3D nosso.
+- **Imagens não essenciais:** deixe um placeholder do mesmo tamanho e proporção, em cor neutra da paleta (sem texto "lorem" visível), ou use foto livre (Wikimedia via `scripts/buscar-fotos-livres.mjs`, com créditos em `creditos.json`) ou um render 3D nosso.
 - **Imagens e vídeos essenciais** (pessoas, cenário-chave, vídeo do hero): o usuário vai gerar. Acrescente cada uma em `galeria/IMAGENS-PARA-GERAR.md` com número, arquivo, formato e prompt em português (foto ultra-realista, luz cinematográfica, sem texto). Enquanto o arquivo não chega, deixe um provisório do mesmo tamanho e proporção.
 - **3D:** modele em three.js e renderize offline em WebP com transparência, como em `galeria/06-olea/gerar-renders.mjs`. O site só carrega three.js se o original tiver 3D em tempo real.
 
