@@ -6,6 +6,7 @@
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Lenis from 'lenis';
+import { montarFumaca } from './fumaca.js';
 
 gsap.registerPlugin(ScrollTrigger);
 const reduzido = matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -32,12 +33,12 @@ if (!reduzido) {
 
   // ---------- 1. HERO ----------
   gsap.from('.hero-retrato', { yPercent: 10, opacity: 0, duration: 1.4, ease: 'expo.out' });
-  gsap.from('.hero-prancha', { scale: .55, rotate: -40, opacity: 0, duration: 1.6, delay: .3, ease: 'expo.out' });
   gsap.from('.proxima', { y: 30, opacity: 0, duration: 1, delay: .8, ease: 'power3.out' });
   const traco = $('.assinatura path'), comp = traco.getTotalLength();
   gsap.set(traco, { strokeDasharray: comp, strokeDashoffset: comp });
   const th = gsap.timeline({ defaults: { ease: 'none' }, scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom bottom', scrub: true, onUpdate: s => { escuroHero = s.progress > .25; atualizarTopo(); } } });
-  th.to('.hero-prancha', { yPercent: -120, scale: .5, rotate: 40, opacity: 0, duration: .3 }, 0)
+  th.to('.fumaca', { opacity: 0, duration: .2 }, 0)
+    .set('.hero-cartao', { mixBlendMode: 'normal' }, .04)
     .to('.proxima', { opacity: 0, y: 20, duration: .15 }, 0)
     .to('.hero-escuro', { opacity: 1, duration: .35 }, .05)
     .to('.hero-curvas', { opacity: 0, duration: .3 }, .05)
@@ -48,16 +49,8 @@ if (!reduzido) {
     .fromTo('.l2 span', { xPercent: -35 }, { xPercent: -5, duration: 1 }, 0)
     .to(traco, { strokeDashoffset: 0, duration: .4 }, .55);
 
-  // prancha 3D ao vivo (só com GPU de verdade; senão fica o render da própria cena)
-  const temGPU = (() => { try { const gl = document.createElement('canvas').getContext('webgl2'); if (!gl) return false; const i = gl.getExtension('WEBGL_debug_renderer_info'); const n = i ? gl.getParameter(i.UNMASKED_RENDERER_WEBGL) : ''; gl.getExtension('WEBGL_lose_context')?.loseContext(); return !/swiftshader|llvmpipe|software/i.test(n); } catch { return false; } })();
-  if (temGPU && !navigator.connection?.saveData) addEventListener('load', () => setTimeout(async () => {
-    const palco = $('.hero-prancha');
-    const { montarPrancha } = await import(/* sem bundle */ new URL('./prancha.js', import.meta.url).href);
-    await document.fonts.load('800 64px "Mona Sans"');
-    const c = document.createElement('canvas'); c.className = 'hero-canvas'; c.setAttribute('aria-hidden', 'true'); palco.append(c);
-    const x = montarPrancha(c, { distancia: 12.5, aoPronto: () => palco.classList.add('ao-vivo') });
-    if (fino) addEventListener('pointermove', e => x.inclinar(e.clientX / innerWidth * 2 - 1, e.clientY / innerHeight * 2 - 1), { passive: true });
-  }, 900), { once: true });
+  // fumaça meio líquida que sai do cursor sobre o retrato (como no original)
+  montarFumaca($('.fumaca'), { area: $('.hero-palco'), cor: [24, 96, 92] });
 
   // ---------- 2. MANIFESTO ----------
   const pals = $$('.manifesto-texto .pal');
@@ -111,7 +104,7 @@ if (!reduzido) {
   const tr = $('.painel-assinatura path'), c2 = tr.getTotalLength();
   gsap.fromTo(tr, { strokeDasharray: c2, strokeDashoffset: c2 }, { strokeDashoffset: 0, ease: 'none', scrollTrigger: { trigger: '.rodape', start: 'top 70%', end: 'top 20%', scrub: true } });
   gsap.to('.painel-marcas span', { xPercent: -50, duration: 30, ease: 'none', repeat: -1 });
-  gsap.from('.painel-foto, .painel-prancha', { yPercent: 25, opacity: 0, duration: 1.2, ease: 'expo.out', stagger: .1, scrollTrigger: { trigger: '.rodape', start: 'top 50%', once: true } });
+  gsap.from('.painel-foto', { yPercent: 25, opacity: 0, duration: 1.2, ease: 'expo.out', stagger: .1, scrollTrigger: { trigger: '.rodape', start: 'top 50%', once: true } });
 
   document.fonts.ready.then(() => ScrollTrigger.refresh());
 }

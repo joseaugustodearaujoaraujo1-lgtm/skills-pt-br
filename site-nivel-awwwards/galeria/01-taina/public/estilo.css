@@ -44,8 +44,9 @@ em { font-family: var(--f-serif); font-style: normal; font-weight: 400; }
 .l2 { color: var(--musgo); }
 .mini-topo { position: absolute; left: 0; right: 0; top: 13vh; text-align: center; color: var(--musgo); font: 600 .75rem var(--f-sans); letter-spacing: .1em; display: grid; gap: .3rem; justify-items: center; }
 .mini-topo b { color: var(--acento); font-size: 1.2rem; letter-spacing: -.06em; }
-.hero-cartao { position: absolute; left: 50%; top: 50%; width: 100vw; height: 100vh; transform: translate(-50%, -50%); overflow: hidden; background: transparent; }
+.hero-cartao { position: absolute; left: 50%; top: 50%; width: 100vw; height: 100vh; transform: translate(-50%, -50%); overflow: hidden; background: transparent; mix-blend-mode: multiply; }
 .hero-retrato { position: absolute; left: 50%; bottom: 0; height: 100%; width: auto; max-width: none; transform: translateX(-50%); mix-blend-mode: multiply; }
+.fumaca { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 2; pointer-events: none; filter: url(#liquido); opacity: .26; }
 .hero-prancha { position: absolute; left: 50%; top: 4vh; width: min(70vh, 50vw); aspect-ratio: 1; margin-left: calc(min(70vh, 50vw) / -2 + 2vw); z-index: 3; pointer-events: none; }
 .hero-poster, .hero-canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
 .hero-canvas { opacity: 0; transition: opacity 1s; } .hero-prancha.ao-vivo .hero-canvas { opacity: 1; } .hero-prancha.ao-vivo .hero-poster { opacity: 0; transition: opacity 1s; }
