@@ -37,3 +37,7 @@ Rodar a skill em agente limpo, sem contexto, com 3 briefings diferentes, e medir
 
 ## Fase 7: SKILL.md enxuto
 Entrada curta com o fluxo; o detalhe em `references/`, carregado só quando preciso.
+
+## Como executar
+O plano está em `PROMPT-FINALIZAR-SKILL.md` (5 sessões com modelo e esforço por tarefa) e o andamento em `STATUS-SKILL.md`.
+O esqueleto de cada pacote sai de `scripts/gerar-pacote.mjs`.
