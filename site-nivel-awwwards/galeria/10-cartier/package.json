@@ -1,0 +1,10 @@
+{
+  "name": "turmalina",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "esbuild src/main.js --bundle --minify --format=esm --target=es2020 --outfile=public/app.js",
+    "serve": "node servir.mjs 3010"
+  },
+  "dependencies": { "esbuild": "^0.28.2", "three": "^0.187.0" }
+}

@@ -4,11 +4,11 @@
 |---|---|
 | **Original** | https://cartier-waw-0225.dev.60fps.fr/ |
 | **Tema sugerido** | exposição imersiva de uma joalheria fictícia brasileira |
-| **Nossa marca** | (defina). Crie um nome brasileiro curto e memorável que combine com o tema. |
+| **Nossa marca** | TURMALINA: joalheria brasileira fictícia, com a exposição imersiva "Gemas & Maravilhas" |
 | **Pasta** | `galeria/10-cartier/` (copie a estrutura de `galeria/06-olea/`: `package.json`, `servir.mjs`, `src/`, `public/`) |
 | **Porta local** | 3010 (`node servir.mjs 3010`) |
-| **Artefato** | novo; depois de publicar, anote o link e o slug nesta ficha |
-| **Situação** | Ainda não existe. |
+| **Artefato** | https://claude.ai/artifact/GnyuKaA46Xf55bVJQFUwQT, com o slug `7fe49ddf-ea48-4211-a8bb-be6d2525afa0`. Republique **neste** artefato. |
+| **Situação** | Construída (1º ciclo). Nove salas em three.js, com a mesma navegação por gesto da roda, os pontos à direita, o título que entra letra por letra e o painel "Descobrir". verificar-site com 0 FAIL. Falta a rodada final de comparação (as peças e as salas do original são mais detalhadas). Detalhes em `galeria/10-cartier/DIFERENCAS.md`. |
 
 ## Tarefa
 
