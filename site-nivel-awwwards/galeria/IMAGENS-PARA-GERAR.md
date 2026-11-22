@@ -55,6 +55,16 @@ As ilustrações seguem o mesmo estilo: **vetorial chapado, cores vivas (caju, a
 | 10 | `img/artigo-3.webp` | 582×498 | Grupo focal de cinco pessoas sentadas em roda numa sala clara, uma moderadora com prancheta. |
 | 11 | `img/artigo-4.webp` | 582×498 | Pesquisadora fazendo uma entrevista por vídeo no notebook, mesa organizada, luz suave. |
 
+## 09 · CAIS (réplica do Terminal Industries), tecnologia para pátios de carga
+
+| # | Arquivo (substitui) | Formato | Prompt |
+|---|---|---|---|
+| 1 | **Filme do hero** → `img/hero/` (eu extraio os quadros) | vídeo 16:9, 8 a 12 s | Plano contínuo: um caminhão-baú branco atravessa a tela ao entardecer, em silhueta contra um céu laranja; a câmera sobe e revela um pátio de carretas visto do alto ao anoitecer, com luzes acesas; no fim o pátio vira um "gêmeo digital" escuro, com linhas finas azuladas desenhando as vagas e as carretas. Sem texto. |
+| 2 | `img/card-1..3.webp` | 668×416 | (1) portão de um centro de distribuição com caminhão parado, (2) um pátio de carretas visto do alto, (3) uma rede de armazéns vista de avião. |
+| 3 | `img/passo-1..4.webp` | 1000×1194 (em pé) | Vistas aéreas escuras, quase noturnas, de um pátio de carretas: (1) portão, (2) fila de carretas, (3) docas, (4) estacionamento de cavalos mecânicos. Tons frios. |
+| 4 | `img/slide-1..4.webp` | 1400×1140 e 1000×1250 | (1) cabine de portão com leitura automática, (2) pátio à noite com holofotes, (3) fileira de docas com carretas encostadas, (4) torre de controle com telas. |
+| 5 | `img/citacao.webp` | 16:9 | Caminhão subindo uma estrada com neve no meio de um pinheiral, ao amanhecer, faróis acesos. |
+
 ---
 
 **Como mandar:** anexe os arquivos aqui com o número da tabela (por exemplo, "OLEA 1" ou "BRUMA 1"). Basta cada arquivo vir com o número; eu cuido do resto.

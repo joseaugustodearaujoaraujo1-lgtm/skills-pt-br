@@ -4,11 +4,11 @@
 |---|---|
 | **Original** | https://terminal-industries.com/ |
 | **Tema sugerido** | tecnologia para pátios de contêineres e logística portuária |
-| **Nossa marca** | (defina). Crie um nome brasileiro curto e memorável que combine com o tema. |
+| **Nossa marca** | CAIS: tecnologia brasileira para pátios de carga (Sistema Operacional de Pátio) |
 | **Pasta** | `galeria/09-terminal/` (copie a estrutura de `galeria/06-olea/`: `package.json`, `servir.mjs`, `src/`, `public/`) |
 | **Porta local** | 3009 (`node servir.mjs 3009`) |
-| **Artefato** | novo; depois de publicar, anote o link e o slug nesta ficha |
-| **Situação** | Ainda não existe. |
+| **Artefato** | https://claude.ai/artifact/Abeqzkn6ghx2vwovtu25LX, com o slug `4db8dbd8-ead4-4baa-8fff-1d7bb1edab84`. Republique **neste** artefato. |
+| **Situação** | Construída (1º ciclo). Altura total e topo de cada seção iguais ao original no desktop (15 766 px) e no celular (17 237 px); verificar-site com 0 FAIL. Fotos provisórias até chegarem as da lista (CAIS 1 a 5). Detalhes em `galeria/09-terminal/DIFERENCAS.md`. |
 
 ## Tarefa
 
