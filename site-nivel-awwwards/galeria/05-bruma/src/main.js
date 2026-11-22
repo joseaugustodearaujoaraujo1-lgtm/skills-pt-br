@@ -124,6 +124,41 @@ if (largo) {
   trilho.addEventListener('keydown', e => { if (e.key === 'ArrowRight') mover(x - innerWidth * .33); if (e.key === 'ArrowLeft') mover(x + innerWidth * .33); });
 }
 
+// ---------- cookies (como no original) ----------
+const cookies = $('.cookies');
+try { if (!localStorage.getItem('bruma-cookies')) cookies.hidden = false; } catch { cookies.hidden = false; }
+const aceitar = () => { cookies.hidden = true; try { localStorage.setItem('bruma-cookies', '1'); } catch {} };
+$('.cookies-ok').addEventListener('click', aceitar); $('.cookies-fechar').addEventListener('click', aceitar);
+
+// ---------- som ambiente: vento na serra sintetizado (ruído filtrado com sopro lento), sem arquivo de áudio ----------
+const som = $('.som'); let ctx = null, ganho = null;
+som.addEventListener('click', async () => {
+  if (!ctx) {
+    ctx = new AudioContext(); const n = ctx.sampleRate * 4, buf = ctx.createBuffer(1, n, ctx.sampleRate), d = buf.getChannelData(0);
+    let ult = 0; for (let i = 0; i < n; i++) { ult = (ult + .02 * (Math.random() * 2 - 1)) / 1.02; d[i] = ult * 3.5; } // ruído marrom
+    const fonte = ctx.createBufferSource(); fonte.buffer = buf; fonte.loop = true;
+    const filtro = ctx.createBiquadFilter(); filtro.type = 'lowpass'; filtro.frequency.value = 520; filtro.Q.value = .7;
+    const lfo = ctx.createOscillator(), lfoG = ctx.createGain(); lfo.frequency.value = .08; lfoG.gain.value = 260; lfo.connect(lfoG).connect(filtro.frequency);
+    ganho = ctx.createGain(); ganho.gain.value = 0; fonte.connect(filtro).connect(ganho).connect(ctx.destination); fonte.start(); lfo.start();
+  }
+  const ligar = som.getAttribute('aria-pressed') !== 'true';
+  if (ligar) await ctx.resume();
+  ganho.gain.setTargetAtTime(ligar ? .35 : 0, ctx.currentTime, .4);
+  som.setAttribute('aria-pressed', String(ligar)); som.classList.toggle('tocando', ligar); som.setAttribute('aria-label', ligar ? 'Desligar som ambiente' : 'Ligar som ambiente da serra');
+});
+
+// ---------- voo do drone no hero: quadros do vídeo desenhados conforme a rolagem (quando houver img/voo/NN.webp) ----------
+const hero = $('.hero'), nQuadros = +hero.dataset.quadros, tela = $('.hero-voo');
+const quadros = [];
+let desenharVoo = () => {};
+if (nQuadros > 0) {
+  tela.hidden = false; const g = tela.getContext('2d');
+  for (let i = 0; i < nQuadros; i++) { const im = new Image(); im.src = `img/voo/${String(i).padStart(2, '0')}.webp`; quadros.push(im); }
+  let ultimo = -1;
+  desenharVoo = t => { const i = Math.min(nQuadros - 1, Math.round(t * (nQuadros - 1))); const im = quadros[i]; if (i === ultimo || !im.complete) return; ultimo = i; g.drawImage(im, 0, 0, tela.width, tela.height); };
+  quadros[0].onload = () => desenharVoo(0);
+}
+
 // ---------- abertura ----------
 const abertura = $('.abertura');
 const fimAbertura = () => { abertura.remove(); atualizarTopo(); };
@@ -145,8 +180,8 @@ else {
     .from('.hero-topo > *, .hero-base > *', { opacity: 0, y: 24, stagger: .06, duration: 1, ease: 'power3.out' }, '-=1.4');
 
   // ---------- 1. HERO ----------
-  const th = gsap.timeline({ defaults: { ease: 'none' }, scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom bottom', scrub: true } });
-  th.to('.hero-foto', { scale: 1.32, xPercent: -5, yPercent: 3, duration: .55 }, 0)                 // voo: aproxima e desliza para o sol
+  const th = gsap.timeline({ defaults: { ease: 'none' }, scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom bottom', scrub: true, onUpdate: s => desenharVoo(Math.min(1, s.progress / .55)) } });
+  th.to(nQuadros > 0 ? '.hero-voo' : '.hero-foto', { scale: nQuadros > 0 ? 1.04 : 1.32, xPercent: nQuadros > 0 ? 0 : -5, yPercent: nQuadros > 0 ? 0 : 3, duration: .55 }, 0)   // voo: quadros do vídeo, ou a foto aproximando
     .to('.hero-topo', { opacity: 0, y: -60, duration: .12 }, .02)
     .to('.hero-cartao', { scale: () => largo ? 433 / 1440 : .6, duration: .39, ease: 'power2.in' }, .55)   // encolhe até o cartão no meio da paisagem
     .to('.hero-base', { opacity: .85, duration: .3 }, .55);

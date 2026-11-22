@@ -7,7 +7,7 @@
   --ease: cubic-bezier(.22, 1, .36, 1);
 }
 *, *::before, *::after { box-sizing: border-box; }
-html { background: var(--musgo); color: var(--liquen); }
+html { background: var(--liquen); color: var(--musgo); }
 body { margin: 0; font-family: var(--f-rot); overflow-x: clip; -webkit-font-smoothing: antialiased; }
 h1, h2, h3, p, figure, blockquote, ul, dl, dd { margin: 0; padding: 0; } ul { list-style: none; }
 img { display: block; max-width: 100%; height: auto; } a { color: inherit; } button { font: inherit; color: inherit; }
@@ -57,12 +57,11 @@ img { display: block; max-width: 100%; height: auto; } a { color: inherit; } but
 .topo { position: fixed; inset: 0 0 auto; z-index: 60; display: grid; grid-template-columns: auto auto 1fr auto auto; align-items: center; gap: 2.8vw; padding: 2.1vh 1.1vw; color: var(--musgo); pointer-events: none; opacity: 0; transition: color .45s, opacity .45s; }
 .topo.visivel { opacity: 1; pointer-events: auto; }
 .topo.escuro { color: var(--liquen); }
-.topo a, .topo button { font: 400 12px/1 var(--f-rot); letter-spacing: .06em; text-transform: uppercase; text-decoration: none; min-height: 44px; display: inline-flex; align-items: center; gap: 1.1vw; background: rgb(185 180 150 / .82); border: 0; border-radius: 999px; cursor: pointer; padding: 0 .9em; -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); transition: background-color .45s, color .45s; }
-.topo.escuro a, .topo.escuro button { background: rgb(27 38 32 / .82); }
+.topo a, .topo button { font: 400 12px/1 var(--f-rot); letter-spacing: .06em; text-transform: uppercase; text-decoration: none; min-height: 44px; display: inline-flex; align-items: center; gap: 1.1vw; background: none; border: 0; cursor: pointer; padding: 0; }
 .hamb { width: 32px; height: 9px; border-block: 1px solid currentColor; }
-.topo .topo-marca { justify-self: center; width: 15.3vw; background: none; -webkit-backdrop-filter: none; backdrop-filter: none; padding: 0; }
+.topo .topo-marca { justify-self: center; width: 15.3vw; }
 .topo-marca .marca-img { width: 100%; }
-.topo .topo-reservar { padding: 0 1.2em; background: var(--musgo); color: var(--liquen); }
+.topo .topo-reservar { padding: 0 1.2em; background: var(--musgo); color: var(--liquen); border-radius: 999px; transition: background-color .45s, color .45s; }
 .topo.escuro .topo-reservar { background: var(--liquen); color: var(--musgo); }
 .menu { position: fixed; inset: 0; z-index: 55; background: var(--musgo); color: var(--liquen); display: grid; place-items: center; }
 .menu[hidden] { display: none; }
@@ -74,7 +73,8 @@ img { display: block; max-width: 100%; height: auto; } a { color: inherit; } but
 .hero { position: relative; height: 400vh; background: var(--liquen); color: var(--musgo); }
 .hero-palco { position: sticky; top: 0; height: 100vh; overflow: hidden; }
 .hero-cartao { position: absolute; inset: 0; overflow: hidden; transform-origin: 50% 50%; will-change: transform; }
-.hero-foto { width: 100%; height: 100%; object-fit: cover; transform-origin: 70% 30%; will-change: transform; }
+.hero-foto, .hero-voo { width: 100%; height: 100%; object-fit: cover; transform-origin: 70% 30%; will-change: transform; }
+.hero-voo { position: absolute; inset: 0; display: block; }
 .hero-base { position: absolute; inset: 0; z-index: 2; color: var(--nevoa); pointer-events: none; background-image: linear-gradient(transparent 45%, rgb(12 18 14 / .55)); }
 .hero-base a { pointer-events: auto; }
 .hero-titulo { position: absolute; left: 6.1vw; top: 67.5vh; font: 500 max(26px, 2.95vw)/1.04 var(--f-serif); text-transform: uppercase; letter-spacing: -.01em; }
@@ -384,3 +384,21 @@ img { display: block; max-width: 100%; height: auto; } a { color: inherit; } but
   .letreiro-trilho { animation: none; }
   .acende .pal { opacity: 1; }
 }
+
+/* ---------- cookies e som (como no original: painel fixo embaixo, à esquerda, e o botão de som em barras) ---------- */
+.cookies { position: fixed; left: 16.7vw; bottom: 0; z-index: 70; width: 25vw; min-width: 300px; background: var(--liquen); color: var(--musgo); padding: 1.8vh 1.1vw 1.4vh; }
+.cookies[hidden] { display: none; }
+.cookies-topo { display: flex; justify-content: space-between; align-items: center; border-bottom: 3px double currentColor; padding-bottom: 1vh; }
+.cookies .cookies-titulo { margin: 0; font: 500 max(20px, 1.67vw)/1 var(--f-serif); letter-spacing: 0; text-transform: uppercase; }
+.cookies button { background: none; border: 0; cursor: pointer; min-height: 44px; min-width: 44px; font: 500 max(20px, 1.67vw)/1 var(--f-serif); }
+.cookies p { margin: 1.8vh 0 .6vh; font: 400 12px/1.45 var(--f-rot); letter-spacing: .05em; text-transform: uppercase; }
+.cookies p a { text-underline-offset: 3px; }
+.cookies .cookies-ok { font: 400 13px/1 var(--f-rot); letter-spacing: .06em; text-decoration: underline; text-underline-offset: 6px; padding: 0; text-align: left; }
+.som { position: fixed; left: 1.1vw; bottom: 1.2vh; z-index: 70; display: flex; align-items: flex-end; gap: 2px; height: 44px; padding: 0 6px; background: none; border: 0; cursor: pointer; color: var(--liquen); mix-blend-mode: difference; }
+.som i { display: block; width: 2px; height: 4px; background: currentColor; transition: height .3s; }
+.som.tocando i { animation: barra 1s ease-in-out infinite alternate; }
+.som i:nth-child(2n) { animation-delay: -.3s; } .som i:nth-child(3n) { animation-delay: -.6s; }
+@keyframes barra { to { height: 14px; } }
+@media (max-width: 860px) { .cookies { left: 0; right: 0; width: auto; padding: 2vh 5vw; } }
+.hero-voo[hidden] { display: none; }
+.cookies p a { padding: 14px 0; }

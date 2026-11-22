@@ -11,7 +11,7 @@
 <link rel="preload" href="fonts/michroma-normal-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="img/hero.webp" as="image" fetchpriority="high">
 <link rel="stylesheet" href="fonts/fonts.css">
-<link rel="stylesheet" href="estilo.css?v=1">
+<link rel="stylesheet" href="estilo.css?v=2">
 </head>
 <body>
 <a class="pular" href="#conteudo">Pular para o conteúdo</a>
@@ -50,9 +50,10 @@
 <main id="conteudo">
 
 <!-- 1. HERO (400vh): voo de drone sobre as serras → a foto encolhe num cartão dentro da paisagem em meio-tom -->
-<section class="hero" id="topo" data-tema="claro">
+<section class="hero" id="topo" data-tema="claro" data-quadros="0">
   <div class="hero-palco">
     <div class="hero-cartao">
+      <canvas class="hero-voo" width="1440" height="810" aria-hidden="true" hidden></canvas>
       <img class="hero-foto" src="img/hero.webp" width="1920" height="1080" alt="Serras da Mantiqueira em camadas ao entardecer, com névoa nos vales e o sol baixo à direita">
       <div class="hero-base">
         <p class="hero-titulo">Pousada<br>de design<br>em Gonçalves</p>
@@ -434,6 +435,13 @@
 </footer>
 </main>
 
-<script type="module" src="app.js?v=1"></script>
+<div class="cookies" role="region" aria-label="Aviso de cookies" hidden>
+  <div class="cookies-topo"><p class="cookies-titulo">Cookies</p><button type="button" class="cookies-fechar" aria-label="Fechar aviso de cookies">[X]</button></div>
+  <p>Ao continuar usando este site, você concorda com a nossa <a href="#perguntas">política de privacidade</a></p>
+  <button type="button" class="cookies-ok">OK</button>
+</div>
+<button class="som" type="button" aria-pressed="false" aria-label="Ligar som ambiente da serra"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></button>
+
+<script type="module" src="app.js?v=2"></script>
 </body>
 </html>
