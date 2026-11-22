@@ -37,6 +37,24 @@ O sabonete 3D já é nosso (`src/sabonete.js`) e continua. Faltam só as fotos c
 | 17 | (opcional) vídeo da intro | 16:9, 5 s | O sabonete redondo sobre uma base de corte verde, com a câmera se aproximando devagar e fundo desfocado. |
 | 18 | `img/review-5.webp` (5ª avaliação, nova) | 4:3 | Mulher cética olhando de lado para o sabonete redondo equilibrado na borda de uma pia de pedra, como se ele fosse cair, luz de banheiro suave. |
 
+## 08 · ESCUTA (réplica do MindMarket), agência de pesquisa qualitativa
+
+As ilustrações seguem o mesmo estilo: **vetorial chapado, cores vivas (caju, açaí, rosa, azul, amarelo, lilás), personagens alegres de proporções exageradas, fundo transparente (PNG ou SVG), sem texto**.
+
+| # | Arquivo (substitui) | Formato | Prompt |
+|---|---|---|---|
+| 1 | `img/ilustra/grupo.svg` | 737×527, transparente | Quatro amigos de etnias diferentes avançando juntos e animados, inclinados para a frente, a da frente apontando para o horizonte, confetes no ar. Ilustração vetorial chapada. |
+| 2 | `img/ilustra/corredora.svg` | 420×600, transparente | Mulher correndo de braços abertos, cabelo ruivo, roupa azul e calça lilás, papéis voando em volta. |
+| 3 | `img/ilustra/musico.svg` | 560×680, transparente | Homem negro tocando trompete com alegria, roupa amarela, notas musicais saindo do instrumento. |
+| 4 | `img/ilustra/gamer.svg` | 480×600, transparente | Jovem de boné jogando videogame com um controle azul, concentrado e sorrindo. |
+| 5 | `img/ilustra/jogador.svg` | 620×640, transparente | Pessoa chutando uma bola de futebol em pleno salto, camiseta laranja e calça rosa. |
+| 6 | `img/ilustra/ciclistas.svg` | 806×640, transparente | Três amigos numa bicicleta e correndo ao lado, comemorando, para atravessar uma colina com flores. |
+| 7 | `img/publico.webp` | 2016×1200 (cerca de 5:3) | Pai e filha lendo um livro juntos no sofá, luz natural suave de sala, cores quentes, a criança sorrindo e apontando para a página. |
+| 8 | `img/artigo-1.webp` | 902×1295 (em pé) | Mulher lendo um relatório impresso numa mesa de madeira, luz de janela, tons neutros. |
+| 9 | `img/artigo-2.webp` | 1202×1030 | Duas mulheres latino-americanas conversando numa mesa de cozinha, uma entrevistando a outra, com caderno e frutas na mesa. |
+| 10 | `img/artigo-3.webp` | 582×498 | Grupo focal de cinco pessoas sentadas em roda numa sala clara, uma moderadora com prancheta. |
+| 11 | `img/artigo-4.webp` | 582×498 | Pesquisadora fazendo uma entrevista por vídeo no notebook, mesa organizada, luz suave. |
+
 ---
 
 **Como mandar:** anexe os arquivos aqui com o número da tabela (por exemplo, "OLEA 1" ou "BRUMA 1"). Basta cada arquivo vir com o número; eu cuido do resto.

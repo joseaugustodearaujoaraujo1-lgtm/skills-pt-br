@@ -4,11 +4,11 @@
 |---|---|
 | **Original** | https://mindmarket.com/ |
 | **Tema sugerido** | agência de estratégia e pesquisa de comportamento |
-| **Nossa marca** | (defina). Crie um nome brasileiro curto e memorável que combine com o tema. |
+| **Nossa marca** | ESCUTA: agência brasileira de pesquisa qualitativa, com moderadores locais em mais de 60 países |
 | **Pasta** | `galeria/08-mindmarket/` (copie a estrutura de `galeria/06-olea/`: `package.json`, `servir.mjs`, `src/`, `public/`) |
 | **Porta local** | 3008 (`node servir.mjs 3008`) |
-| **Artefato** | novo; depois de publicar, anote o link e o slug nesta ficha |
-| **Situação** | Ainda não existe. |
+| **Artefato** | https://claude.ai/artifact/F1GFNKZp1UXppkg5BoPPLE, com o slug `71695685-d070-476f-b781-a54c89061583`. Republique **neste** artefato. |
+| **Situação** | Construída (1º ciclo). Altura total e topo de cada seção iguais ao original (13 732 px); textos dentro de 8 px nas telas-chave; verificar-site com 0 FAIL e 0 WARN. Ilustrações e fotos provisórias até chegarem as da lista (ESCUTA 1 a 11). Detalhes em `galeria/08-mindmarket/DIFERENCAS.md`. |
 
 ## Tarefa
 
