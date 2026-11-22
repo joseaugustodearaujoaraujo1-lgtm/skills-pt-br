@@ -1,0 +1,38 @@
+{
+ "hero": {
+  "autor": "Lebu Ayiga",
+  "licenca": "CC BY-SA 4.0",
+  "fonte": "https://commons.wikimedia.org/wiki/File:Swimming_pool_and_Makuti-thatched_villa_in_Malindi.jpg",
+  "titulo": "Swimming pool and Makuti-thatched villa in Malindi.jpg"
+ },
+ "casa": {
+  "autor": "Rawen Ab",
+  "licenca": "CC BY-SA 4.0",
+  "fonte": "https://commons.wikimedia.org/wiki/File:Traditional_Cycladic_house_-_Rue_Salambo,_La_Marsa,_Tunis_(Tunisia).jpg",
+  "titulo": "Traditional Cycladic house - Rue Salambo, La Marsa, Tunis (Tunisia).jpg"
+ },
+ "varanda": {
+  "autor": "Leonardo Quintino from Belo Horizonte, Brasil",
+  "licenca": "CC BY 2.0",
+  "fonte": "https://commons.wikimedia.org/wiki/File:Trancoso,_Bahia_(4348864311).jpg",
+  "titulo": "Trancoso, Bahia (4348864311).jpg"
+ },
+ "paisagem": {
+  "autor": "MTur Destinos",
+  "licenca": "Public domain",
+  "fonte": "https://commons.wikimedia.org/wiki/File:MARCIO_FILHO_PRAIA_ITAPOROROCA_TRANCOSO_BAHIA_(39168709600).jpg",
+  "titulo": "MARCIO FILHO PRAIA ITAPOROROCA TRANCOSO BAHIA (39168709600).jpg"
+ },
+ "aerea": {
+  "autor": "Teles",
+  "licenca": "Public domain",
+  "fonte": "https://commons.wikimedia.org/wiki/File:Itacarezinho_II.JPG",
+  "titulo": "Itacarezinho II.JPG"
+ },
+ "interior": {
+  "autor": "Basile Morin",
+  "licenca": "CC BY-SA 4.0",
+  "fonte": "https://commons.wikimedia.org/wiki/File:Lobby_lounge_of_Amantaka_Suite_Amantaka_luxury_Resort_%26_Hotel_Luang_Prabang_Laos.jpg",
+  "titulo": "Lobby lounge of Amantaka Suite Amantaka luxury Resort & Hotel Luang Prabang Laos.jpg"
+ }
+}

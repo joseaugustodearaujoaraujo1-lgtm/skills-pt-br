@@ -39,7 +39,7 @@ for (const [t, tema] of temas.entries()) {
     const r = await pedir(i.thumburl, false); if (!r || !r.ok) continue;
     fs.writeFileSync(path.join(saida, nome), Buffer.from(await r.arrayBuffer()));
     creditos[nome] = { tema, titulo: p.title.replace(/^File:/, ''), autor: limpar(m.Artist?.value).slice(0, 80), licenca: lic, fonte: i.descriptionurl };
-    n++;
+    n++; fs.writeFileSync(path.join(saida, 'creditos.json'), JSON.stringify(creditos, null, 1)); // salva a cada foto (sobrevive a interrupções)
   }
   console.log(`${tema}: ${n} fotos`);
 }
