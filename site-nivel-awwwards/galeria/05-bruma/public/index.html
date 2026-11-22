@@ -1,0 +1,439 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bruma Alta | Pousada de design na Serra da Mantiqueira</title>
+<meta name="description" content="Bruma Alta, pousada e spa de altitude em Gonçalves, MG, a 1.640 m na Serra da Mantiqueira. Suítes de pedra e madeira, trilhas próprias, café da roça e névoa ao entardecer.">
+<meta name="theme-color" content="#1b2620">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%231b2620'/%3E%3Cpath d='M8 7v18M12 7v18M16 7v18M20 7v18M24 7v18' stroke='%23b9b496' stroke-width='2.4'/%3E%3C/svg%3E">
+<link rel="preload" href="fonts/cormorant-normal-400-500.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/michroma-normal-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="img/hero.webp" as="image" fetchpriority="high">
+<link rel="stylesheet" href="fonts/fonts.css">
+<link rel="stylesheet" href="estilo.css?v=1">
+</head>
+<body>
+<a class="pular" href="#conteudo">Pular para o conteúdo</a>
+
+<!-- abertura: vale escuro, araucária em meio-tom e o letreiro listrado embaixo -->
+<div class="abertura" aria-hidden="true">
+  <span class="abertura-icone marca-mini"></span>
+  <p class="abertura-frase"><span>Sou um vale de silêncio</span><span>Até logo, num sonho</span></p>
+  <span class="abertura-arvore mt" style="--mt:url(img/mt-araucaria.webp)"></span>
+  <p class="abertura-esq"><span>Pousada</span><span>Design · hotel</span></p>
+  <p class="abertura-dir"><span>Carregando o site</span><span>Aguarde</span></p>
+  <span class="abertura-marca marca-img"></span>
+</div>
+
+<header class="topo">
+  <button class="menu-botao" type="button" aria-expanded="false" aria-controls="menu"><span class="hamb" aria-hidden="true"></span>Menu</button>
+  <a class="topo-link" href="#lugar">Tour 360°</a>
+  <a class="topo-marca" href="#topo" aria-label="Bruma Alta, voltar ao início"><span class="marca-img"></span></a>
+  <a class="topo-idioma" href="#contato" lang="en" aria-label="English version (coming soon)">EN</a>
+  <a class="pilula topo-reservar" href="#contato">Reservar</a>
+</header>
+
+<nav class="menu" id="menu" aria-label="Menu principal" hidden>
+  <ul>
+    <li><a href="#sobre">Sobre</a></li>
+    <li><a href="#lugar">O lugar</a></li>
+    <li><a href="#encanto">Experiências</a></li>
+    <li><a href="#suites">Suítes</a></li>
+    <li><a href="#estacoes">Estações</a></li>
+    <li><a href="#galeria">Galeria</a></li>
+    <li><a href="#perguntas">Perguntas</a></li>
+    <li><a href="#contato">Contato</a></li>
+  </ul>
+</nav>
+
+<main id="conteudo">
+
+<!-- 1. HERO (400vh): voo de drone sobre as serras → a foto encolhe num cartão dentro da paisagem em meio-tom -->
+<section class="hero" id="topo" data-tema="claro">
+  <div class="hero-palco">
+    <div class="hero-cartao">
+      <img class="hero-foto" src="img/hero.webp" width="1920" height="1080" alt="Serras da Mantiqueira em camadas ao entardecer, com névoa nos vales e o sol baixo à direita">
+      <div class="hero-base">
+        <p class="hero-titulo">Pousada<br>de design<br>em Gonçalves</p>
+        <ul class="hero-tags">
+          <li><span class="etiqueta">Gonçalves</span><span>Minas Gerais</span></li>
+          <li><span class="hero-ico" aria-hidden="true">✦</span><span>Projeto<br>do <span class="etiqueta">Ateliê Serra</span></span></li>
+          <li><span>Abertura</span><span>da 1ª ala <span class="etiqueta">Inverno 2027</span></span></li>
+        </ul>
+        <a class="circulo hero-circulo" href="#contato">Reserve sua estadia</a>
+      </div>
+    </div>
+    <div class="hero-topo">
+      <p class="rotulo hero-rotulo">Pousada &amp; spa de altitude</p>
+      <h1 class="hero-marca"><span class="marca-img" aria-hidden="true"></span><span class="sr">Bruma Alta</span></h1>
+      <dl class="hero-numeros">
+        <div><dt class="sr">Altitude</dt><dd><span class="num-pre">a</span><span class="num">1.640m</span></dd><dd class="rotulo">De altitude, no alto<br>da Mantiqueira</dd></div>
+        <div><dt class="sr">Inverno</dt><dd><span class="num-pre">até</span><span class="num">4°C</span></dd><dd class="rotulo">Nas madrugadas<br>de inverno</dd></div>
+      </dl>
+    </div>
+  </div>
+  <div class="hero-paisagem mt" style="--mt:url(img/mt-paisagem.webp)" aria-hidden="true"></div>
+</section>
+
+<!-- 2. PRÓLOGO (100vh, escuro): hortênsias nas bordas e o texto que acende palavra a palavra -->
+<section class="prologo" data-tema="escuro" aria-labelledby="t-prologo">
+  <div class="prologo-flores mt" style="--mt:url(img/mt-flores.webp)" aria-hidden="true"></div>
+  <h2 class="rotulo pontos" id="t-prologo">Prólogo</h2>
+  <blockquote class="prologo-texto acende"><p>“Entre estas serras, onde a névoa desce ao entardecer e as araucárias guardam séculos de silêncio, a Mantiqueira ensina o que a cidade esqueceu: um tempo mais lento, que devolve cada um a si mesmo e ao velho sonho de descansar de verdade.”</p></blockquote>
+  <a class="pilula clara prologo-pdf" href="#contato">Pedir a apresentação em PDF</a>
+</section>
+
+<div class="faixa mt" style="--mt:url(img/mt-faixa.webp)" aria-hidden="true"></div>
+
+<!-- 3. SOBRE (222vh, areia): nome em serifa, sobre + conceito em degraus, vídeo pequeno e a foto do lugar -->
+<section class="sobre" id="sobre" data-tema="claro" aria-labelledby="t-sobre">
+  <p class="sobre-nome" aria-hidden="true"><span>Bruma</span><span>Alta</span></p>
+  <p class="sobre-assina"><span aria-hidden="true">✦</span> Ateliê Serra</p>
+  <div class="sobre-a">
+    <h2 class="titulo-m" id="t-sobre">Sobre nós</h2>
+    <p class="texto-p">A Bruma Alta é um novo refúgio na Serra da Mantiqueira, onde a cultura mineira da roça é recontada pela arquitetura, pelo design de interiores, pela hospitalidade e pela arte contemporânea. Aqui, as tradições ganham forma nova e o espírito antigo das serras encontra o conforto de hoje.</p>
+    <a class="pilula escura" href="#contato">Reservar</a>
+  </div>
+  <div class="sobre-b">
+    <h2 class="titulo-m">Conceito</h2>
+    <p class="texto-p">A arquitetura nasce da montanha: guarda a força na pedra e o calor na madeira. Terraços panorâmicos abrem vistas que tiram o fôlego, e o modo antigo de receber se mistura ao novo num jeito de descansar mais fundo, cheio da energia da mata e da cultura do sul de Minas.</p>
+    <p class="texto-p">Um lugar onde causos, natureza e conforto moderno viram uma coisa só.</p>
+    <figure class="sobre-mini">
+      <img src="img/mini.webp" width="640" height="410" loading="lazy" alt="Cascata entre pedras cobertas de musgo na mata">
+      <figcaption>Até logo, num sonho</figcaption>
+    </figure>
+  </div>
+  <figure class="sobre-lugar">
+    <img src="img/lugar.webp" width="1920" height="960" loading="lazy" alt="Mar de névoa cobrindo os vales, com morros de mata saindo das nuvens">
+    <span class="sobre-dissolve mt" style="--mt:url(img/mt-dissolve.webp)" aria-hidden="true"></span>
+  </figure>
+</section>
+
+<!-- 4. O LUGAR (escuro): título em três linhas, mapa, texto e o cartão de infraestrutura -->
+<section class="lugar" id="lugar" data-tema="escuro" aria-labelledby="t-lugar">
+  <h2 class="lugar-titulo" id="t-lugar"><span class="l1">Onde</span><span class="l2"><span class="lugar-as">as</span> serras</span><span class="l3">falam</span></h2>
+  <svg class="mapa" viewBox="0 0 808 1048" role="img" aria-labelledby="t-mapa">
+    <title id="t-mapa">Mapa ilustrado dos arredores da Bruma Alta: cachoeiras, mirante, trilha das araucárias, empório e capela de pedra</title>
+    <g fill="none" stroke="currentColor" stroke-width="1" opacity=".22">
+      <path d="M-20 140 C120 120 200 210 330 190 S560 90 840 150"/><path d="M-20 230 C140 205 230 300 360 280 S600 170 840 240"/>
+      <path d="M-20 330 C110 300 260 400 400 372 S640 270 840 330"/><path d="M-20 440 C160 410 270 520 430 470 S660 380 840 430"/>
+      <path d="M-20 560 C140 540 300 640 470 580 S700 500 840 540"/><path d="M-20 690 C170 650 320 760 500 700 S720 630 840 660"/>
+      <path d="M-20 820 C160 790 340 880 520 820 S740 760 840 790"/><path d="M-20 950 C180 920 360 1000 560 950 S760 900 840 920"/>
+    </g>
+    <path d="M60 1060 C120 900 260 860 300 740 S250 560 360 500 S560 420 600 300 S700 120 780 -20" fill="none" stroke="currentColor" stroke-width="2.5" opacity=".55"/>
+    <path d="M300 740 C380 720 420 640 520 650" fill="none" stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 6" opacity=".6"/>
+    <g class="mapa-pontos" font-family="Cormorant, serif" font-size="13" fill="currentColor">
+      <circle cx="232" cy="390" r="4"/><text x="246" y="386">Bosque das</text><text x="246" y="401">Araucárias · 3 min</text>
+      <circle cx="420" cy="250" r="4"/><text x="434" y="246">Cachoeira das</text><text x="434" y="261">Andorinhas · 8 min</text>
+      <circle cx="300" cy="560" r="4"/><text x="314" y="556">Trilha da</text><text x="314" y="571">Cascata · 5 min</text>
+      <circle cx="560" cy="430" r="4"/><text x="574" y="426">Empório</text><text x="574" y="441">da Serra</text>
+      <circle cx="470" cy="640" r="4"/><text x="484" y="636">Capela de Pedra</text><text x="484" y="651">e feira de domingo</text>
+      <circle cx="640" cy="180" r="4"/><text x="654" y="176">Mirante</text><text x="654" y="191">do Vale · 20 min</text>
+    </g>
+    <g class="mapa-marca" transform="translate(300 740)"><circle r="30" fill="currentColor" opacity=".12"/><text text-anchor="middle" y="9" font-family="Michroma, sans-serif" font-size="22" fill="currentColor">BA</text></g>
+  </svg>
+  <p class="lugar-texto">A Bruma Alta fica no alto da Serra da Mantiqueira, em Gonçalves, no sul de Minas: terra de cachoeiras, araucárias, queijo de casca lavada e uma névoa que desce todo fim de tarde.</p>
+  <a class="pilula clara lugar-pilula" href="#contato">Reservar</a>
+  <div class="infra" aria-roledescription="carrossel" aria-label="Infraestrutura ao redor">
+    <p class="rotulo">Infraestrutura</p>
+    <div class="infra-disco"><p class="infra-min" aria-live="polite"><span class="infra-n">3</span><span class="infra-u">min.</span></p></div>
+    <p class="infra-texto">A pé até o<br><span class="infra-lugar">Bosque das Araucárias</span></p>
+    <div class="infra-nav"><span class="infra-conta"><span class="infra-i">1</span> | 6</span>
+      <button class="seta" type="button" data-dir="-1" aria-label="Lugar anterior">‹</button><button class="seta" type="button" data-dir="1" aria-label="Próximo lugar">›</button></div>
+  </div>
+  <figure class="infra-foto"><img src="img/infra-5.webp" width="665" height="887" loading="lazy" alt="Araucárias no alto de um morro com mata nativa"></figure>
+  <div class="lugar-local">
+    <p class="rotulo apagado">Localização</p>
+    <p class="rotulo">Estrada da Bruma, km 6<br>Gonçalves, Minas Gerais</p>
+  </div>
+  <a class="circulo lugar-circulo" href="#contato">Reserve sua estadia</a>
+</section>
+
+<!-- 5. POR QUE ENCANTA (896vh): lua em meio-tom fixa, depois o palco claro com os cartões que atravessam em diagonal -->
+<section class="encanto" id="encanto" aria-labelledby="t-encanto">
+  <div class="encanto-lua-trilho" aria-hidden="true"><div class="encanto-lua mt" style="--mt:url(img/mt-lua.webp)"></div></div>
+  <div class="encanto-palco" data-tema="claro">
+    <div class="encanto-cena">
+      <div class="encanto-galhos mt" style="--mt:url(img/mt-galhos.webp)" aria-hidden="true"></div>
+      <p class="rotulo pontos encanto-rotulo">Diferenciais</p>
+      <h2 class="encanto-titulo" id="t-encanto">Por que a Bruma<br>encanta</h2>
+      <ul class="cartoes">
+        <li class="cartao"><img src="img/cartao-1.webp" width="820" height="1094" loading="lazy" alt="Sala de massagem com cortinas de linho e luz da tarde"><div class="cartao-pe"><p>Spa de ervas da serra</p><span class="mais" aria-hidden="true">+</span></div></li>
+        <li class="cartao"><img src="img/cartao-2.webp" width="820" height="1094" loading="lazy" alt="Potes de vidro com granola e castanhas sobre a mesa de madeira"><div class="cartao-pe"><p>Café da roça até as 11h</p><span class="mais" aria-hidden="true">+</span></div></li>
+        <li class="cartao"><img src="img/cartao-3.webp" width="820" height="1093" loading="lazy" alt="Panela de fondue de queijo com pão em cubos e garfos longos"><div class="cartao-pe"><p>Fondue na adega de pedra</p><span class="mais" aria-hidden="true">+</span></div></li>
+        <li class="cartao"><img src="img/cartao-4.webp" width="820" height="1093" loading="lazy" alt="Cavaleiros atravessando um vale aberto ao pé das montanhas"><div class="cartao-pe"><p>Cavalgada ao nascer do sol</p><span class="mais" aria-hidden="true">+</span></div></li>
+        <li class="cartao"><img src="img/cartao-5.webp" width="820" height="1093" loading="lazy" alt="Lareira acesa numa sala de estar clássica com poltronas"><div class="cartao-pe"><p>Lareira e biblioteca, onde as ideias nascem</p><span class="mais" aria-hidden="true">+</span></div></li>
+        <li class="cartao"><img src="img/cartao-6.webp" width="820" height="1093" loading="lazy" alt="Água correndo entre pedras e mata fechada"><div class="cartao-pe"><p>Banho de cachoeira, onde a infância volta</p><span class="mais" aria-hidden="true">+</span></div></li>
+        <li class="cartao"><img src="img/cartao-7.webp" width="820" height="1093" loading="lazy" alt="Fogueira acesa à noite no gramado"><div class="cartao-pe"><p>Noite de fogueira e causos</p><span class="mais" aria-hidden="true">+</span></div></li>
+        <li class="cartao"><img src="img/cartao-8.webp" width="820" height="1093" loading="lazy" alt="Hortênsias azuis em flor"><div class="cartao-pe"><p>Jardim de hortênsias</p><span class="mais" aria-hidden="true">+</span></div></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 6. LINHA DO TEMPO (165vh, areia) -->
+<section class="linha" data-tema="claro" aria-labelledby="t-linha">
+  <h2 class="titulo-g linha-titulo" id="t-linha"><span>Linha</span><span>do tempo</span></h2>
+  <figure class="linha-foto"><img src="img/linha.webp" width="1920" height="1183" loading="lazy" alt="Lago espelhado ao pé da serra, com mata de pinheiros e paredões de pedra ao fundo"></figure>
+  <div class="linha-cartao">
+    <p class="linha-anos"><span>’25</span><span aria-hidden="true" class="traco"></span><span>’27</span></p>
+    <dl>
+      <div><dt>Início das obras</dt><dd>2º tri 2025</dd></div>
+      <div><dt>Ala Araucária pronta</dt><dd>4º tri 2026</dd></div>
+      <div><dt>Spa e ala Névoa prontos</dt><dd>2º tri 2027</dd></div>
+    </dl>
+  </div>
+</section>
+
+<!-- 7. SUÍTES (218vh, areia): texto grande com fio vertical, tipos, metragem e o carrossel de fotos -->
+<section class="suites" id="suites" data-tema="claro" aria-labelledby="t-suites">
+  <span class="suites-fio" aria-hidden="true"></span>
+  <h2 class="rotulo suites-rotulo" id="t-suites">✦ Suítes</h2>
+  <p class="suites-texto">Suítes de um a três quartos, pensadas para quem viaja só, a dois ou em família. Janelas panorâmicas, terraços amplos e texturas naturais fazem da estadia na Mantiqueira uma pausa de verdade.</p>
+  <p class="suites-design">O design traz detalhes da cultura mineira (bordado, pedra-sabão e cerâmica de fornada) que dão ao espaço uma autenticidade que se sente na mão.</p>
+  <div class="suites-tipos">
+    <p class="rotulo apagado">Tipos</p>
+    <ul role="tablist" aria-label="Tipos de suíte">
+      <li><button type="button" role="tab" aria-selected="true" data-i="0">Estúdio</button></li>
+      <li><button type="button" role="tab" aria-selected="false" data-i="1">Deluxe</button></li>
+      <li><button type="button" role="tab" aria-selected="false" data-i="2">Superior</button></li>
+      <li><button type="button" role="tab" aria-selected="false" data-i="3">Master</button></li>
+      <li><button type="button" role="tab" aria-selected="false" data-i="4">Família</button></li>
+      <li><button type="button" role="tab" aria-selected="false" data-i="5">Cobertura</button></li>
+    </ul>
+  </div>
+  <p class="suites-area" aria-live="polite"><span class="pre">a partir de</span><span class="num">37</span><span class="un">m²</span></p>
+  <p class="rotulo-g suites-preco">Diárias a partir de <span class="suites-valor">R$ 1.480</span> por casal</p>
+  <ul class="suites-chips">
+    <li class="cheio"><span class="suites-hosp">2+1</span> hóspedes</li><li>Sala panorâmica</li><li>Copa integrada</li>
+    <li>Vista para a mata, a serra e a cachoeira</li><li>Terraço de verão</li><li>Lareira a lenha</li><li>Interiores autorais</li>
+  </ul>
+  <p class="rotulo suites-desc">Um estúdio aconchegante com sala panorâmica ampla e copa integrada, voltado para a mata.</p>
+  <div class="suites-acoes"><a class="pilula escura" href="#contato">Consultar tarifas</a><a class="play" href="#galeria"><span class="play-ico" aria-hidden="true"></span><span>Ver a<br>galeria</span></a></div>
+  <div class="suites-fotos">
+    <img src="img/suite-1.webp" width="900" height="1258" loading="lazy" alt="Quarto com cama de dossel, piso de ladrilho e janelas altas">
+    <img src="img/suite-2.webp" width="900" height="1258" loading="lazy" alt="Suíte com cama de casal, cortinas brancas e luminárias de parede">
+    <img src="img/suite-3.webp" width="900" height="1258" loading="lazy" alt="Corredor de armários de madeira que leva ao quarto">
+    <img src="img/suite-4.webp" width="900" height="1258" loading="lazy" alt="Sauna de madeira clara com bancos e luz quente">
+    <div class="suites-nav"><span><span class="suites-i">1</span> | 4</span><button class="seta clara" type="button" data-dir="-1" aria-label="Foto anterior">‹</button><button class="seta clara" type="button" data-dir="1" aria-label="Próxima foto">›</button></div>
+  </div>
+  <div class="suites-serras mt" style="--mt:url(img/mt-serras.webp)" aria-hidden="true"></div>
+</section>
+
+<!-- 8. EM NÚMEROS (117vh, escuro): letreiro corrido, dados em colunas e o pico em meio-tom -->
+<section class="numeros" data-tema="escuro" aria-labelledby="t-numeros">
+  <div class="numeros-pico mt" style="--mt:url(img/mt-pico.webp)" aria-hidden="true"></div>
+  <div class="letreiro" aria-hidden="true"><div class="letreiro-trilho"><span>A pousada em números ✦</span><span>A pousada em números ✦</span><span>A pousada em números ✦</span><span>A pousada em números ✦</span><span>A pousada em números ✦</span><span>A pousada em números ✦</span><span>A pousada em números ✦</span><span>A pousada em números ✦</span></div></div>
+  <h2 class="sr" id="t-numeros">A pousada em números</h2>
+  <div class="numeros-abre"><p class="rotulo">A primeira ala abre</p><p class="titulo-n">Em jul<br>2027</p></div>
+  <dl class="numeros-dados">
+    <div><dt>Suítes</dt><dd>64</dd></div>
+    <div><dt>Mata nativa preservada</dt><dd>82%</dd></div>
+    <div><dt>Trilhas próprias</dt><dd>14 km</dd></div>
+    <div><dt>Altitude da sede</dt><dd>1.640 m</dd></div>
+  </dl>
+  <div class="numeros-ritmo"><h3 class="rotulo-g">Nosso clima</h3>
+    <dl><div><dt>Média no inverno:</dt><dd>≈9 °C</dd></div><div><dt>Dias de névoa por ano:</dt><dd>≈140</dd></div></dl></div>
+  <div class="numeros-inclui"><h3 class="rotulo-g">Incluído na diária</h3>
+    <ul><li>Café da manhã da roça, servido até as 11h</li><li>Trilha guiada ao nascer do sol, todo sábado, com café no mirante</li><li>Transfer desde a rodoviária de Gonçalves, sem custo extra, para quem chega de ônibus</li></ul>
+    <a class="pilula clara" href="#contato">Reservar</a></div>
+</section>
+
+<!-- 9. ESTAÇÕES (130vh, escuro): segure e arraste o sol pelo arco para trocar a estação -->
+<section class="estacoes" id="estacoes" data-tema="escuro" aria-labelledby="t-estacoes">
+  <div class="estacoes-fundo" aria-hidden="true">
+    <span class="mt ativa" style="--mt:url(img/mt-estacao-1.webp)"></span><span class="mt" style="--mt:url(img/mt-estacao-2.webp)"></span>
+    <span class="mt" style="--mt:url(img/mt-estacao-3.webp)"></span><span class="mt" style="--mt:url(img/mt-estacao-4.webp)"></span>
+  </div>
+  <h2 class="sr" id="t-estacoes">As quatro estações da Bruma Alta</h2>
+  <p class="rotulo estacoes-dica">Segure e arraste</p>
+  <div class="dial">
+    <svg class="dial-arco" viewBox="0 0 400 80" aria-hidden="true"><path d="M20 60 Q200 -20 380 60" fill="none" stroke="currentColor" stroke-width="1.5" stroke-dasharray="1 7" stroke-linecap="round"/></svg>
+    <div class="dial-paradas" role="radiogroup" aria-label="Escolha a estação">
+      <button type="button" role="radio" aria-checked="true" data-i="0">Verão</button>
+      <button type="button" role="radio" aria-checked="false" data-i="1">Outono</button>
+      <button type="button" role="radio" aria-checked="false" data-i="2">Inverno</button>
+      <button type="button" role="radio" aria-checked="false" data-i="3">Primavera</button>
+    </div>
+    <span class="dial-sol" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.2" fill="currentColor"/><g stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3M5.3 5.3l2.1 2.1M16.6 16.6l2.1 2.1M5.3 18.7l2.1-2.1M16.6 7.4l2.1-2.1"/></g></svg></span>
+  </div>
+  <p class="estacoes-texto acende-estacao" aria-live="polite">O verão transforma a serra num mapa de aventuras: trilhas na mata, banho de cachoeira, festas de padroeiro e um roteiro de sabores que vai do queijo ao café.</p>
+  <a class="pilula clara estacoes-pilula" href="#contato">Reservar</a>
+</section>
+
+<!-- 10. QUEM FAZ (147vh, escuro): frase grande que acende e o cartão do ateliê -->
+<section class="criadores" data-tema="escuro" aria-labelledby="t-criadores">
+  <div class="criadores-nuvens mt" style="--mt:url(img/mt-nuvens.webp)" aria-hidden="true"></div>
+  <h2 class="rotulo pontos" id="t-criadores">Quem faz</h2>
+  <p class="criadores-frase acende">Um sonho antigo erguido no coração da Mantiqueira, entre a pedra e a madeira, o ontem e o amanhã</p>
+  <div class="atelie-cartao">
+    <p class="rotulo">Estúdio de arquitetura e hospitalidade que constrói com pedra local, madeira de reflorestamento e o ritmo da serra, para que cada casa pareça ter estado sempre ali.</p>
+    <span class="tres-pontos" aria-hidden="true">•••</span>
+    <p class="atelie-logo"><span aria-hidden="true">✦</span> ateliê serra</p>
+    <p class="atelie-pe rotulo"><span>Arquitetura</span><span>Hospitalidade</span></p>
+  </div>
+</section>
+
+<!-- 11. O ATELIÊ EM NÚMEROS (148vh, escuro): quatro números e o lago em meio-tom que vira areia -->
+<section class="atelie-numeros" data-tema="escuro" aria-label="O Ateliê Serra em números">
+  <ul class="stats">
+    <li><span class="stat-n" data-n="18">18</span><span class="stat-mais">+</span><span class="rotulo">Anos construindo<br>na serra</span></li>
+    <li><span class="stat-n" data-n="6">6</span><span class="rotulo">Pousadas de altitude<br>entregues em Minas<br>e no Paraná</span></li>
+    <li><span class="stat-n" data-n="41">41</span><span class="stat-mais">mil</span><span class="rotulo">Mudas nativas<br>plantadas</span></li>
+    <li><span class="stat-n" data-n="3">3</span><span class="rotulo">Prêmios de arquitetura<br>sustentável</span></li>
+  </ul>
+  <div class="lago mt" style="--mt:url(img/mt-lago.webp)" aria-hidden="true"></div>
+  <div class="lago-areia mt" style="--mt:url(img/mt-dissolve-baixo.webp)" aria-hidden="true"></div>
+</section>
+
+<!-- 12. GALERIA (138vh): faixa de areia com o título, foto grande em carrossel e o cartão de areia embaixo -->
+<section class="galeria" id="galeria" aria-labelledby="t-galeria">
+  <h2 class="titulo-g galeria-titulo" id="t-galeria"><span>Galeria</span><span>da pousada</span></h2>
+  <div class="galeria-fotos" aria-roledescription="carrossel" aria-label="Fotos da pousada">
+    <img src="img/galeria-1.webp" width="1920" height="1183" loading="lazy" alt="Sala de estar com lareira de mármore, espelho e poltronas">
+    <img src="img/galeria-2.webp" width="1920" height="1183" loading="lazy" alt="Suíte de teto alto com cama de dossel">
+    <img src="img/galeria-3.webp" width="1920" height="1183" loading="lazy" alt="Lounge do spa com poltronas e luz baixa">
+    <img src="img/galeria-4.webp" width="1920" height="1183" loading="lazy" alt="Lago entre montanhas com mata nas margens">
+    <img src="img/galeria-5.webp" width="1917" height="1182" loading="lazy" alt="Névoa entre os pinheiros ao amanhecer">
+    <div class="galeria-nav"><span><span class="galeria-i">1</span> | 5</span><button class="seta clara" type="button" data-dir="-1" aria-label="Foto anterior">‹</button><button class="seta clara" type="button" data-dir="1" aria-label="Próxima foto">›</button></div>
+  </div>
+  <div class="galeria-cartao">
+    <a class="circulo escuro galeria-circulo" href="#contato">Reserve sua estadia</a>
+    <span class="marca-mini galeria-ico" aria-hidden="true"></span>
+    <p class="rotulo">A Bruma Alta foi desenhada para devolver o fôlego, acordar a curiosidade e lembrar que descanso de verdade não é luxo: é um estado de espírito. Até logo, na Bruma Alta.</p>
+  </div>
+</section>
+
+<!-- 13. NOTÍCIAS (135vh, escuro): título espalhado, abas e cartões que se arrastam -->
+<section class="noticias" data-tema="escuro" aria-labelledby="t-noticias">
+  <p class="rotulo pontos noticias-rotulo">Diário</p>
+  <h2 class="noticias-titulo" id="t-noticias"><span>Notícias</span><span>e</span><span>bastidores</span></h2>
+  <div class="noticias-barra">
+    <p class="rotulo-g">Última atualização:</p>
+    <div class="abas" role="tablist" aria-label="Filtrar notícias"><button type="button" role="tab" aria-selected="true" data-f="todas">Notícias</button><button type="button" role="tab" aria-selected="false" data-f="obra">Obra</button></div>
+    <p class="rotulo-g noticias-data"><time datetime="2026-11-19">19/11/2026</time></p>
+  </div>
+  <div class="noticias-trilho" tabindex="0" aria-label="Notícias: arraste ou use as setas para ver mais">
+    <ul class="noticias-lista">
+      <li data-tipo="obra"><img src="img/noticia-1.webp" width="700" height="467" loading="lazy" alt="Mesa de café com pães caseiros e geleia"><h3>Suíte-modelo aberta para visitas</h3><p class="rotulo">A suíte de 37 m² mostra o formato estúdio e a qualidade do acabamento: venha tomar um café nela.</p></li>
+      <li><img src="img/noticia-2.webp" width="700" height="467" loading="lazy" alt="Serras em camadas vistas do alto"><h3>Mantiqueira ou serra gaúcha? Onde a névoa é mais bonita</h3><p class="rotulo">Comparamos os dois invernos com quem mora em cada um.</p></li>
+      <li data-tipo="obra"><img src="img/noticia-3.webp" width="700" height="467" loading="lazy" alt="Morro com araucárias e mata nativa"><h3>Plantamos 2.000 araucárias no terreno</h3><p class="rotulo">Mudas de viveiro local, plantadas com a escola do bairro.</p></li>
+      <li><img src="img/noticia-4.webp" width="700" height="467" loading="lazy" alt="Mesa de fondue com pão e vinho"><h3>Temporada de pinhão: o que muda no cardápio</h3><p class="rotulo">Do entrevero ao pinhão na brasa, a cozinha segue a serra.</p></li>
+      <li data-tipo="obra"><img src="img/noticia-5.webp" width="700" height="467" loading="lazy" alt="Hortênsias cor-de-rosa em flor"><h3>Inverno 2027: reservas da primeira ala</h3><p class="rotulo">A lista de espera abre em março, com tarifa de lançamento.</p></li>
+    </ul>
+    <span class="arraste rotulo" aria-hidden="true">Arraste</span>
+  </div>
+  <a class="noticias-todas rotulo" href="#contato">Ver todas</a>
+</section>
+
+<!-- 14. FOTO ALTA (200vh): cachoeira em paralaxe, passagens em barras e o cartão de contato no meio -->
+<section class="alto" id="contato" data-tema="escuro" aria-labelledby="t-contato">
+  <img class="alto-foto" src="img/alto.webp" width="1440" height="1800" loading="lazy" alt="Cachoeira alta descendo entre a mata da serra">
+  <span class="alto-cima mt" style="--mt:url(img/mt-dissolve-cima.webp)" aria-hidden="true"></span>
+  <div class="alto-cartao">
+    <h2 class="rotulo" id="t-contato">A cada estadia, uma muda de araucária é plantada em nome de quem se hospedou: cada hóspede vira um pouco dono da serra, num lugar que repensa o descanso, a estética e o sentido.</h2>
+    <span class="tres-pontos" aria-hidden="true">•••</span>
+    <a class="pilula escura alto-pilula" href="mailto:ola@brumaalta.com.br">Reservar</a>
+    <p class="alto-contato rotulo"><a href="tel:+5535999000000">+55 35 99900-0000</a><a href="mailto:ola@brumaalta.com.br">ola@brumaalta.com.br</a></p>
+    <span class="alto-marca marca-mini" aria-hidden="true"></span>
+  </div>
+  <span class="alto-baixo mt" style="--mt:url(img/mt-dissolve-baixo.webp)" aria-hidden="true"></span>
+</section>
+
+<!-- 15. PERGUNTAS (196vh, escuro): F · A · Q fixo, depois a lista -->
+<section class="faq" id="perguntas" data-tema="escuro" aria-labelledby="t-faq">
+  <div class="faq-palco">
+    <div class="faq-letras" aria-hidden="true">
+      <span class="faq-f">F</span><span class="faq-l1 rotulo">Respostas para<br>as dúvidas-chave</span>
+      <span class="faq-a">A</span><span class="faq-l2 rotulo">Tudo o que você<br>precisa saber</span>
+      <span class="faq-q">Q</span>
+    </div>
+    <h2 class="sr" id="t-faq">Perguntas frequentes</h2>
+    <div class="faq-lista">
+      <details><summary><span>01</span>A pousada aceita animais de estimação?</summary><p class="rotulo">Sim, em quatro suítes térreas com quintal cercado. Avise na reserva para prepararmos caminha e potes.</p></details>
+      <details><summary><span>02</span>Crianças podem se hospedar?</summary><p class="rotulo">Podem e são bem-vindas. Crianças até 6 anos não pagam na cama dos pais e há recreação aos sábados.</p></details>
+      <details><summary><span>03</span>Como chegar sem carro?</summary><p class="rotulo">De ônibus até a rodoviária de Gonçalves e, de lá, nosso transfer (incluído). De São Paulo são cerca de 3h30.</p></details>
+      <details><summary><span>04</span>Faz muito frio no inverno?</summary><p class="rotulo">As madrugadas podem chegar a 4 °C. Todas as suítes têm lareira ou aquecimento no piso e mantas de lã.</p></details>
+      <details><summary><span>05</span>A estrada até a pousada é de terra?</summary><p class="rotulo">São 6 km de estrada de terra bem cuidada, que qualquer carro passa. Em dias de chuva forte, oferecemos busca de 4x4.</p></details>
+      <details><summary><span>06</span>O spa atende quem não está hospedado?</summary><p class="rotulo">Sim, de terça a domingo, com agendamento. Hóspedes têm prioridade nos horários do fim de tarde.</p></details>
+      <details><summary><span>07</span>Quais refeições estão incluídas?</summary><p class="rotulo">O café da manhã. Almoço e jantar são à parte, no restaurante, com cardápio da estação.</p></details>
+      <details><summary><span>08</span>Qual a política de cancelamento?</summary><p class="rotulo">Cancelamento gratuito até 15 dias antes da chegada. Depois disso, a primeira diária vira crédito por um ano.</p></details>
+      <details><summary><span>09</span>Dá para fazer evento ou casamento?</summary><p class="rotulo">Sim, para até 80 convidados, no gramado da capela de pedra ou na adega. Fale com a equipe de eventos.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- 16. RODAPÉ (200vh): tudo começa ampliado e se afasta até caber na tela, com a araucária no centro -->
+<footer class="rodape" data-tema="escuro">
+  <div class="rodape-palco">
+    <div class="rodape-cena">
+      <span class="rodape-arvore mt" style="--mt:url(img/mt-araucaria.webp)" aria-hidden="true"></span>
+      <div class="rodape-esq">
+        <p class="rotulo apagado">Localização</p>
+        <p class="rotulo">Estrada da Bruma, km 6,<br>Gonçalves, Minas Gerais,<br>Brasil</p>
+        <ul class="redes">
+          <li><a href="#topo" aria-label="Instagram (em breve)"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="5" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="3.6" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="17" cy="7" r="1" fill="currentColor"/></svg></a></li>
+          <li><a href="#topo" aria-label="Facebook (em breve)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 20v-7h2.4l.4-2.8h-2.8V8.5c0-.8.3-1.4 1.4-1.4h1.5V4.6c-.3 0-1.2-.1-2.2-.1-2.2 0-3.6 1.3-3.6 3.7v2H8.2V13h2.4v7z" fill="currentColor"/></svg></a></li>
+          <li><a href="#topo" aria-label="YouTube (em breve)"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="3.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M10.5 9.5v5l4-2.5z" fill="currentColor"/></svg></a></li>
+        </ul>
+        <a class="rodape-grande" href="tel:+5535999000000">+55 35 99900-0000</a>
+      </div>
+      <div class="rodape-dir">
+        <p class="rotulo apagado">Central de reservas</p>
+        <p class="rotulo">Rua do Comércio, 214<br>Gonçalves, MG</p>
+        <p class="rotulo apagado">Empório na cidade</p>
+        <p class="rotulo">Praça da Matriz, 33<br>Gonçalves, MG</p>
+        <a class="rodape-grande" href="mailto:ola@brumaalta.com.br">ola@brumaalta.com.br</a>
+      </div>
+      <details class="creditos">
+        <summary class="rotulo">Créditos das fotos · marca fictícia, estudo de motion</summary>
+        <p class="rotulo">Fotos de licença livre do Wikimedia Commons, tratadas e convertidas em meio-tom. Lista completa em <a href="creditos.json">creditos.json</a>.</p>
+        <ul class="rotulo"><li><a href="https://commons.wikimedia.org/wiki/File:Serra_da_Mantiqueira_-_Acau%C3%A3_Cabral_(08).jpg" rel="noopener">Serra da Mantiqueira - Acauã Cabral (08).jpg</a>, Acauã Heuruel Cabral (CC BY-SA 4.0)</li>
+<li><a href="https://commons.wikimedia.org/wiki/File:Serra_da_Mantiqueira_-_1.jpg" rel="noopener">Serra da Mantiqueira - 1.jpg</a>, Mauro Cateb (CC BY-SA 4.0)</li>
+<li><a href="https://commons.wikimedia.org/wiki/File:Serra_da_Mantiqueira,_vista_panor%C3%A2mica_com_arauc%C3%A1rias.jpg" rel="noopener">Serra da Mantiqueira, vista panorâmica com araucárias.jpg</a>, Ricardo Biloti (CC0)</li>
+<li><a href="https://commons.wikimedia.org/wiki/File:%C3%81rea_de_Prote%C3%A7%C3%A3o_Ambiental_da_Serra_da_Mantiqueira_Marco_Aurelio_Leite_Fontes_(05).jpg" rel="noopener">Área de Proteção Ambiental da Serra da Mantiqueira Marco Aur</a>, Marco Aurélio Leite Fontes (CC BY-SA 4.0)</li>
+<li><a href="https://commons.wikimedia.org/wiki/File:Campos_do_jord%C3%A3o_09.jpg" rel="noopener">Campos do jordão 09.jpg</a>, Bruna da Silva Rodrigues (CC BY-SA 4.0)</li>
+<li><a href="https://commons.wikimedia.org/wiki/File:Canopy_bed_of_Amantaka_Suite_in_Amantaka_luxury_Resort_%26_Hotel_in_Luang_Prabang_Laos.jpg" rel="noopener">Canopy bed of Amantaka Suite in Amantaka luxury Resort &amp; Hot</a>, Basile Morin (CC BY-SA 4.0)</li>
+<li><a href="https://commons.wikimedia.org/wiki/File:Canopy_bed_of_Amantaka_Suite_in_Amantaka_luxury_Resort_%26_Hotel_in_Luang_Prabang_Laos_5x4.jpg" rel="noopener">Canopy bed of Amantaka Suite in Amantaka luxury Resort &amp; Hot</a>, Basile Morin (CC BY-SA 4.0)</li>
+<li><a href="https://commons.wikimedia.org/wiki/File:Canopy_bed_of_Khan_Pool_Suite_in_Amantaka_luxury_Resort_%26_Hotel_in_Luang_Prabang_Laos.jpg" rel="noopener">Canopy bed of Khan Pool Suite in Amantaka luxury Resort &amp; Ho</a>, Basile Morin (CC BY-SA 4.0)</li>
+<li><a href="https://commons.wikimedia.org/wiki/File:Canopy_bed_and_wardrobes_in_Khan_Pool_Suite_at_Amantaka_luxury_Resort_%26_Hotel_in_Luang_Prabang_Laos.jpg" rel="noopener">Canopy bed and wardrobes in Khan Pool Suite at Amantaka luxu</a>, Basile Morin (CC BY-SA 4.0)</li>
+<li><a href="https://commons.wikimedia.org/wiki/File:Infinity_pool_KC.jpg" rel="noopener">Infinity pool KC.jpg</a>, Kasun Chanaka Gunawardana (CC BY-SA 4.0)</li>
+<li><a href="https://commons.wikimedia.org/wiki/File:Infinity_pool_at_The_Lalu_Resort,_Sun_Moon_Lake,_Taiwan.jpg" rel="noopener">Infinity pool at The Lalu Resort, Sun Moon Lake, Taiwan.jpg</a>, Richard Masoner / Cyclelicious (CC BY-SA 2.0)</li>
+<li><a href="https://commons.wikimedia.org/wiki/File:Schloss_Elmau_Rooftop_Pool.jpg" rel="noopener">Schloss Elmau Rooftop Pool.jpg</a>, Schloss Elmau (CC BY-SA 3.0)</li>
+<li><a href="https://commons.wikimedia.org/wiki/File:Mountains-forest-fog-mist_(24244093431).jpg" rel="noopener">Mountains-forest-fog-mist (24244093431).jpg</a>, www.Pixel.la Free Stock Photos (CC0)</li>
+<li><a href="https://commons.wikimedia.org/wiki/File:Mountains_in_the_Mist_19_oct_2025.jpg" rel="noopener">Mountains in the Mist 19 oct 2025.jpg</a>, Nirut Sangkeaw (CC BY-SA 4.0)</li>
+<li><a href="https://commons.wikimedia.org/wiki/File:Mist_in_the_trees_-_Public_Domain.jpg" rel="noopener">Mist in the trees - Public Domain.jpg</a>, Lisafern (CC0)</li>
+<li><a href="https://commons.wikimedia.org/wiki/File:Mountains_And_Mist_(118676755).jpeg" rel="noopener">Mountains And Mist (118676755).jpeg</a>, Jb Lardizabal (CC BY 3.0)</li>
+<li><a href="https://commons.wikimedia.org/wiki/File:Sauna_of_the_spa_at_Amantaka_luxury_Resort_%26_Hotel_in_Luang_Prabang_Laos.jpg" rel="noopener">Sauna of the spa at Amantaka luxury Resort &amp; Hotel in Luang </a>, Basile Morin (CC BY-SA 4.0)</li>
+<li><a href="https://commons.wikimedia.org/wiki/File:Cachoeira_da_Pedreira.jpg" rel="noopener">Cachoeira da Pedreira.jpg</a>, Daniela Lopes Segadilha (CC BY-SA 4.0)</li>
+<li><a href="https://commons.wikimedia.org/wiki/File:Cachoeira_dos_Pretos,_encravada_nas_montanhas_da_serra_da_Mantiqueira_na_cidade_de_Joan%C3%B3polis_SP._Divisa_com_Minas_Gerais_(Monte_Verde)_%C3%A9_uma_boa_op%C3%A7%C3%A3o._%C3%89_na_cachoeira_que_se_encontra_a_nascente_do_rio_Pira_-_panoramio.jpg" rel="noopener">Cachoeira dos Pretos, encravada nas montanhas da serra da Ma</a>, joao batista Shimoto (CC BY-SA 3.0)</li>
+<li><a href="https://commons.wikimedia.org/wiki/File:Cachoeira_da_Serra_dos_Toledos_(Itajub%C3%A1).jpg" rel="noopener">Cachoeira da Serra dos Toledos (Itajubá).jpg</a>, Gabrielrvallim (CC BY-SA 3.0)</li>
+<li><a href="https://commons.wikimedia.org/wiki/File:Cachoeira_Paiol_-_panoramio_(2).jpg" rel="noopener">Cachoeira Paiol - panoramio (2).jpg</a>, TMbux (CC BY-SA 3.0)</li>
+<li><a href="https://commons.wikimedia.org/wiki/File:YHI_Spa_treatment_room_at_Paradisus_by_Meli%C3%A1_Bali.jpg" rel="noopener">YHI Spa treatment room at Paradisus by Meliá Bali.jpg</a>, Paradisus Bali (CC BY-SA 4.0)</li>
+<li><a href="https://commons.wikimedia.org/wiki/File:Lounge_at_the_Spa_at_Silver_Legacy_-_2021-11-14_-_Sarah_Stierch_01.jpg" rel="noopener">Lounge at the Spa at Silver Legacy - 2021-11-14 - Sarah Stie</a>, Missvain (CC BY 4.0)</li>
+<li><a href="https://commons.wikimedia.org/wiki/File:A_rustic_wooden_table_showcases_an_assortment_of_glass_jars_filled_with_granola_and_healthy_toppings_at_a_cozy_breakfast_spot.jpg" rel="noopener">A rustic wooden table showcases an assortment of glass jars </a>, Shixart1985 (CC BY 2.0)</li>
+<li><a href="https://commons.wikimedia.org/wiki/File:Traditional_Serbian_breakfast_a_wooden_table_by_the_beach.jpg" rel="noopener">Traditional Serbian breakfast a wooden table by the beach.jp</a>, Shixart1985 (CC BY 2.0)</li>
+<li><a href="https://commons.wikimedia.org/wiki/File:Lounge_Fireplace,_Mount_Washington_Hotel,_Bretton_Woods,_NH.jpg" rel="noopener">Lounge Fireplace, Mount Washington Hotel, Bretton Woods, NH.</a>, w_lemay (CC BY-SA 2.0)</li>
+<li><a href="https://commons.wikimedia.org/wiki/File:Lounge_Fireplace,_Mount_Washington_Hotel,_Bretton_Woods,_NH_-_54306153870.jpg" rel="noopener">Lounge Fireplace, Mount Washington Hotel, Bretton Woods, NH </a>, w_lemay (CC BY-SA 2.0)</li>
+<li><a href="https://commons.wikimedia.org/wiki/File:Bonfire_night_celebrations_2019.jpg" rel="noopener">Bonfire night celebrations 2019.jpg</a>, Llewee (CC BY-SA 4.0)</li>
+<li><a href="https://commons.wikimedia.org/wiki/File:20150127_Wiki_Loves_Cheese_Vienna_Fondue-0629.jpg" rel="noopener">20150127 Wiki Loves Cheese Vienna Fondue-0629.jpg</a>, Isiwal (CC BY-SA 3.0)</li>
+<li><a href="https://commons.wikimedia.org/wiki/File:Cheese_fondue-01-a.jpg" rel="noopener">Cheese fondue-01-a.jpg</a>, Cheese_fondue-01.jpg: the_junes derivative work: Z (CC BY 2.0)</li>
+<li><a href="https://commons.wikimedia.org/wiki/File:Riding_lessons_in_the_mountains_(Unsplash).jpg" rel="noopener">Riding lessons in the mountains (Unsplash).jpg</a>, Rachel Heng raychsy (CC0)</li>
+<li><a href="https://commons.wikimedia.org/wiki/File:Hydrangea_macrophylla_in_front_of_Seongsan_Ilchulbong_volcano_at_blue_hour_in_Jeju_Island_South_Korea.jpg" rel="noopener">Hydrangea macrophylla in front of Seongsan Ilchulbong volcan</a>, Basile Morin (CC BY-SA 4.0)</li>
+<li><a href="https://commons.wikimedia.org/wiki/File:Hydrangea_macrophylla_-_Hortensia_hydrangea.jpg" rel="noopener">Hydrangea macrophylla - Hortensia hydrangea.jpg</a>, Raul654 (CC BY-SA 3.0)</li>
+<li><a href="https://commons.wikimedia.org/wiki/File:Hydrangea_macrophylla,_L%C3%A9vis.jpg" rel="noopener">Hydrangea macrophylla, Lévis.jpg</a>, Bernard Gagnon (CC BY 4.0)</li>
+<li><a href="https://commons.wikimedia.org/wiki/File:Hydrangea_macrophylla_05.JPG" rel="noopener">Hydrangea macrophylla 05.JPG</a>, Dominicus Johannes Bergsma (CC BY-SA 3.0)</li>
+<li><a href="https://commons.wikimedia.org/wiki/File:FullMoon2010.jpg" rel="noopener">FullMoon2010.jpg</a>, Gregory H. Revera (CC BY-SA 3.0)</li>
+<li><a href="https://commons.wikimedia.org/wiki/File:042_Full_Moon_rising_behind_Chasseral_during_sunset_Photo_by_Giles_Laurent.jpg" rel="noopener">042 Full Moon rising behind Chasseral during sunset Photo by</a>, Giles Laurent (CC BY-SA 4.0)</li>
+<li><a href="https://commons.wikimedia.org/wiki/File:Araucaria_cunninghamii_and_Araucaria_heterphyllus_in_silhouette_at_sunset_Hamilton_Rd_Chermside_P1040003.jpg" rel="noopener">Araucaria cunninghamii and Araucaria heterphyllus in silhoue</a>, John Robert McPherson (CC BY-SA 4.0)</li>
+<li><a href="https://commons.wikimedia.org/wiki/File:Araucaria_heterophyllus_in_silhouette_at_sunset_Piccadilly_St_Geebung_P1370430.jpg" rel="noopener">Araucaria heterophyllus in silhouette at sunset Piccadilly S</a>, John Robert McPherson (CC BY-SA 4.0)</li></ul>
+      </details>
+    </div>
+  </div>
+</footer>
+</main>
+
+<script type="module" src="app.js?v=1"></script>
+</body>
+</html>
