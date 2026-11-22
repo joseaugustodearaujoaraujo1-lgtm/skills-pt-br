@@ -1,0 +1,153 @@
+/* TAINÁ ROCHA — estrutura, ritmo e motion do site do Lando Norris (Awwwards SOTY 2025), identidade própria.
+   Medidas do original em 1440 px convertidas para vw. Fontes: Mona Sans (a mesma família do original, licença aberta) e DM Serif Display no lugar da Brier. */
+:root {
+  --mar: #0f2b2b; --mar-2: #163838; --areia: #f3f1ea; --areia-2: #e3e2d6; --coral: #ff5b3a; --musgo: #a9bcb7; --tinta: #12211f;
+  --f-sans: 'Mona Sans', system-ui, sans-serif; --f-serif: 'DM Serif Display', Georgia, serif; --f-mao: 'Caveat', cursive;
+  --ease: cubic-bezier(.22, 1, .36, 1);
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { background: var(--areia); color: var(--tinta); }
+body { margin: 0; font-family: var(--f-sans); overflow-x: clip; -webkit-font-smoothing: antialiased; }
+h1, h2, h3, p, figure, blockquote { margin: 0; } img { display: block; max-width: 100%; height: auto; } a { color: inherit; }
+em { font-family: var(--f-serif); font-style: normal; font-weight: 400; text-transform: none; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.pular { position: absolute; left: 1rem; top: -5rem; z-index: 100; min-height: 44px; background: var(--tinta); color: var(--areia); padding: .8rem 1rem; }
+.pular:focus { top: 1rem; }
+:focus-visible { outline: 3px solid var(--coral); outline-offset: 3px; }
+
+/* topo (fixo, como no original) */
+.topo { position: fixed; inset: 0 0 auto; z-index: 50; display: flex; justify-content: space-between; align-items: center; padding: 1rem 1.6rem; mix-blend-mode: normal; pointer-events: none; }
+.topo > * { pointer-events: auto; }
+.logo { font: 800 1.15rem/.92 var(--f-sans); letter-spacing: -.02em; text-decoration: none; min-height: 44px; display: flex; align-items: center; color: var(--tinta); transition: color .4s; }
+.monograma { position: absolute; left: 50%; transform: translateX(-50%); font: 800 1.1rem var(--f-sans); letter-spacing: -.06em; border: 2px solid currentColor; padding: .15rem .3rem; color: var(--tinta); transition: color .4s; }
+.topo.escuro .logo, .topo.escuro .monograma { color: var(--areia); }
+.topo-acoes { display: flex; gap: .5rem; }
+.loja-botao { display: inline-flex; align-items: center; gap: .35rem; min-height: 44px; padding: 0 1rem; border-radius: 10px; background: var(--coral); color: var(--tinta); font: 800 .8rem var(--f-sans); letter-spacing: .04em; text-decoration: none; }
+.loja-botao svg { width: 15px; height: 15px; }
+.menu-botao { width: 44px; height: 44px; border-radius: 10px; border: 1.5px solid currentColor; display: grid; place-content: center; gap: 5px; color: var(--tinta); background: var(--areia); }
+.menu-botao span { width: 16px; height: 1.5px; background: currentColor; display: block; }
+.botao { display: inline-flex; align-items: center; min-height: 44px; padding: 0 1.2rem; border-radius: 10px; background: var(--coral); color: var(--tinta); font: 800 .82rem var(--f-sans); letter-spacing: .05em; text-transform: uppercase; text-decoration: none; transition: transform .35s var(--ease); }
+.botao:hover { transform: translateY(-3px); }
+.rotulo { font: 700 .78rem var(--f-sans); letter-spacing: .1em; text-transform: uppercase; }
+
+/* 1. HERO: retrato + prancha 3D flutuando à frente (no lugar do capacete) */
+.hero { position: relative; height: 100svh; min-height: 640px; overflow: hidden; background: var(--areia) url(img/curvas.svg) center / cover; }
+.hero-nome { position: absolute; inset: 22% 0 auto; display: flex; justify-content: space-between; padding: 0 3vw; font: 800 clamp(4rem, 17vw, 16rem)/.8 var(--f-sans); letter-spacing: -.06em; color: var(--mar); }
+.hero-retrato { position: absolute; left: 50%; bottom: 0; height: 96%; width: auto; transform: translateX(-50%); mix-blend-mode: multiply; filter: contrast(1.04); }
+.hero-prancha { position: absolute; left: 50%; top: 6%; width: min(78vh, 56vw); aspect-ratio: 1; margin-left: calc(min(78vh, 56vw) / -2 + 4vw); z-index: 2; pointer-events: none; }
+.hero-poster, .hero-canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+.hero-canvas { opacity: 0; transition: opacity 1s; } .hero-prancha.ao-vivo .hero-canvas { opacity: 1; } .hero-prancha.ao-vivo .hero-poster { opacity: 0; transition: opacity 1s; }
+.proxima { position: absolute; left: 1.6rem; bottom: 1.6rem; z-index: 3; width: 9.5rem; border: 1.5px solid var(--tinta); border-radius: 10px; padding: .8rem; background: var(--areia); font-size: .78rem; line-height: 1.25; }
+.proxima-rotulo { font-weight: 700; text-transform: uppercase; letter-spacing: .08em; } .proxima-nome { font: 400 1.35rem/1 var(--f-serif); margin: .5rem 0 .3rem; } .proxima-data { color: #4c5a57; }
+.rolar { position: absolute; right: 1.6rem; bottom: 1.6rem; font: 700 .78rem var(--f-sans); letter-spacing: .1em; text-transform: uppercase; z-index: 3; }
+
+/* 2. EM CASA */
+.emcasa { position: relative; height: 130vh; background: var(--mar); color: var(--musgo); overflow: hidden; display: grid; place-items: center; }
+.letreiros { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; gap: 1.5vw; }
+.letreiro { white-space: nowrap; font: 800 clamp(3rem, 7.6vw, 7.3rem)/1 var(--f-sans); text-transform: uppercase; letter-spacing: -.02em; }
+.letreiro span { display: inline-block; }
+.l1 { color: var(--coral); } .l3 { color: var(--areia-2); }
+.contorno { color: var(--musgo); -webkit-text-fill-color: transparent; -webkit-text-stroke: 1.5px currentColor; }
+.emcasa-foto { position: relative; z-index: 1; width: 26vw; aspect-ratio: 1; object-fit: cover; }
+.assinatura { position: absolute; z-index: 2; width: 46vw; left: 27vw; top: 30%; overflow: visible; }
+
+/* 3. MANIFESTO */
+.manifesto { background: var(--mar); color: var(--areia); padding: 18vh 6vw 22vh; }
+.manifesto-texto { max-width: 16em; margin: 0 auto; text-align: center; font: 800 clamp(2.2rem, 4.6vw, 4.5rem)/.98 var(--f-sans); text-transform: uppercase; letter-spacing: -.025em; }
+.manifesto-texto em { color: var(--coral); font-size: 1.06em; }
+.manifesto-texto .pal { opacity: .5; transition: opacity .25s; } .manifesto-texto .pal.on { opacity: 1; }
+
+/* 4. COLAGEM (o fundo clareia do mar para a areia, com as curvas de profundidade) */
+.colagem { position: relative; height: 330vh; background: linear-gradient(var(--mar) 0%, #50605b 22%, var(--areia-2) 46%, var(--areia) 60%); overflow: hidden; }
+.colagem::before { content: ''; position: absolute; inset: 40% 0 0; background: url(img/curvas.svg) center / 120% auto repeat-y; opacity: .9; }
+.p { position: absolute; will-change: transform; }
+.cf img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
+.cf figcaption { font: 700 .75rem var(--f-sans); letter-spacing: .06em; text-transform: uppercase; margin-top: .5rem; color: inherit; }
+.f1 { left: 14vw; top: 6vh; width: 13vw; color: var(--musgo); }
+.f2 { left: 46vw; top: 34vh; width: 15vw; color: var(--areia); }
+.f3 { right: 0; top: 52vh; width: 24vw; color: var(--areia); }
+.f4 { left: 4vw; top: 86vh; width: 26vw; color: var(--tinta); }
+.f5 { left: 52vw; top: 120vh; width: 16vw; color: var(--tinta); }
+.f6 { left: 34vw; top: 168vh; width: 13vw; color: var(--tinta); }
+.f7 { right: 6vw; top: 196vh; width: 30vw; color: var(--tinta); }
+.citacao { position: absolute; right: 8vw; top: 10vh; width: 19vw; min-width: 220px; color: var(--areia-2); font: 400 clamp(1.1rem, 1.45vw, 1.4rem)/1.25 var(--f-serif); }
+.citacao em { color: var(--coral); }
+.mini-assinatura { display: block; width: 72px; margin-top: .6rem; color: var(--coral); }
+.colagem-texto { position: absolute; left: 10vw; top: 232vh; width: 24vw; min-width: 240px; font: 400 clamp(1.1rem, 1.45vw, 1.4rem)/1.25 var(--f-serif); }
+
+/* 5. DENTRO / FORA */
+.dentrofora { position: relative; background: var(--areia); display: grid; grid-template-columns: 1fr 1fr; min-height: 100vh; overflow: hidden; }
+.df-col { position: relative; }
+.df-col img { width: 100%; height: 100%; min-height: 100vh; object-fit: cover; }
+.df-col p { position: absolute; bottom: 2rem; width: 20rem; max-width: 80%; font-size: .9rem; line-height: 1.35; font-weight: 600; background: var(--areia); padding: .8rem 1rem; border-radius: 8px; }
+.df-esq p { left: 2rem; } .df-dir p { right: 2rem; }
+.df-titulo { position: absolute; z-index: 2; inset: 0; pointer-events: none; display: flex; align-items: center; justify-content: center; gap: 12vw; font: 800 clamp(3rem, 9vw, 9rem)/1 var(--f-sans); letter-spacing: -.03em; color: var(--areia); }
+.df-a, .df-b { background: var(--mar); padding: .06em .18em .1em; border-radius: .08em; }
+.df-mao { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -110%) rotate(-8deg); font: 600 clamp(3rem, 8vw, 8rem)/1 var(--f-mao); color: #c8381a; text-shadow: none; z-index: 1; }
+
+/* 6. HALL DA FAMA */
+.hall { position: relative; height: 110vh; background: var(--mar); color: var(--areia); overflow: hidden; }
+.hall-foto { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: brightness(.62) saturate(.9); }
+.hall-titulo { position: absolute; left: 4vw; bottom: 8vh; font: 800 clamp(2.6rem, 5.2vw, 5rem)/.92 var(--f-sans); letter-spacing: -.02em; }
+.hall-titulo em { color: var(--coral); font-size: 1.05em; }
+.hall-texto { position: absolute; left: 56vw; bottom: 9vh; width: 22rem; max-width: 50vw; font-size: .95rem; line-height: 1.4; }
+.grade { background: var(--tinta); color: var(--areia); padding: 10vh 4vw 14vh; }
+.pranchas { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.2vw; }
+.pranchas li { border: 1px solid #ffffff2e; border-radius: 6px; padding: 1vw; transition: border-color .3s, transform .5s var(--ease); clip-path: polygon(0 0, 88% 0, 100% 12%, 100% 100%, 0 100%); }
+.pranchas li:hover { border-color: var(--coral); transform: translateY(-6px); }
+.pranchas p { display: flex; justify-content: space-between; font-size: .8rem; margin-top: .4rem; }
+.pranchas b { color: var(--coral); }
+.grade-fim { text-align: center; margin-top: 8vh; display: grid; justify-items: center; gap: 1.4rem; font: 400 1.4rem var(--f-serif); }
+
+/* 7. LOJA */
+.loja { position: relative; background: var(--areia); padding: 16vh 4vw; display: grid; grid-template-columns: 1fr 1.1fr; gap: 4vw; align-items: center; overflow: hidden; }
+.loja-texto h2 { font: 800 clamp(2.8rem, 6vw, 6rem)/.9 var(--f-sans); letter-spacing: -.03em; margin: 1rem 0 1.6rem; }
+.loja-texto h2 em { color: var(--mar); }
+.loja-texto > p:not(.rotulo) { max-width: 28rem; line-height: 1.45; margin-bottom: 1.6rem; }
+.loja-foto { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 8px; }
+.loja-cartao { position: absolute; right: 6vw; bottom: 12vh; width: 12rem; aspect-ratio: 1.6; border-radius: 10px; background: linear-gradient(135deg, var(--coral), #ff9a6b); color: var(--tinta); display: grid; align-content: end; padding: 1rem; box-shadow: 0 24px 48px #0003; transform: rotate(8deg); }
+.loja-cartao span { font-size: .78rem; text-transform: uppercase; letter-spacing: .1em; font-weight: 700; } .loja-cartao b { font: 400 1.8rem var(--f-serif); }
+
+/* 8. PARCERIAS */
+.parcerias { position: relative; background: var(--areia); padding: 14vh 4vw 16vh; overflow: hidden; }
+.parc-mao { position: absolute; left: -2vw; top: 10vh; font: 600 clamp(6rem, 22vw, 20rem)/1 var(--f-mao); color: #c8381a; transform: rotate(-10deg); opacity: .95; pointer-events: none; }
+.parcerias h2 { position: relative; font: 800 clamp(2.4rem, 4.6vw, 4.4rem)/.92 var(--f-sans); letter-spacing: -.02em; }
+.parc-texto { position: relative; max-width: 22rem; margin: 1.4rem 0 0 34vw; line-height: 1.4; }
+.marcas { position: relative; list-style: none; margin: 14vh 0 0; padding: 0; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 2rem; color: var(--tinta); }
+.m1 { font: 800 1.5rem var(--f-sans); letter-spacing: .2em; } .m2 { font: 400 1.7rem var(--f-serif); } .m3 { font: 800 1.4rem var(--f-sans); letter-spacing: -.04em; border: 2px solid; padding: 0 .3rem; }
+.m4 { font: 600 2rem var(--f-mao); } .m5 { font: 800 1.6rem var(--f-sans); font-style: italic; } .m6 { font: 600 1.2rem var(--f-sans); letter-spacing: .08em; } .m7 { font: 400 1.9rem var(--f-serif); font-style: italic; }
+
+/* 9. REDES */
+.redes { background: var(--areia); padding: 12vh 4vw 20vh; text-align: center; overflow: hidden; }
+.redes h2 { font: 800 clamp(2.4rem, 4.6vw, 4.4rem)/.92 var(--f-sans); letter-spacing: -.02em; }
+.leque { position: relative; height: 54vh; margin-top: 8vh; }
+.leque img { position: absolute; left: 50%; bottom: 0; width: 17vw; min-width: 140px; aspect-ratio: 9 / 16; object-fit: cover; border-radius: 16px; transform-origin: 50% 120%; box-shadow: 0 20px 40px #0003; margin-left: calc(min(17vw, 300px) / -2); }
+
+/* RODAPÉ */
+.rodape { background: var(--mar); color: var(--areia); padding: 10vh 4vw 3rem; }
+.rodape-nome { font: 800 clamp(3.4rem, 13vw, 13rem)/.85 var(--f-sans); letter-spacing: -.05em; color: var(--coral); }
+.rodape-linhas { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem; margin: 3rem 0 2rem; }
+.rodape-linhas ul { display: flex; gap: 1.6rem; list-style: none; margin: 0; padding: 0; }
+.rodape-linhas a { min-height: 44px; display: inline-flex; align-items: center; font-weight: 700; }
+.creditos { font-size: .78rem; line-height: 1.5; color: var(--musgo); max-width: 80rem; }
+
+@media (max-width: 860px) {
+  .monograma { display: none; }
+  .hero-retrato { height: 82%; }
+  .hero-nome { flex-direction: column; inset: 12% 0 auto; font-size: 22vw; }
+  .hero-prancha { width: 92vw; margin-left: -46vw; top: 14%; }
+  .proxima { width: 8.5rem; left: 1rem; bottom: 1rem; }
+  .emcasa-foto { width: 56vw; } .assinatura { width: 86vw; left: 7vw; }
+  .colagem { height: 300vh; } .cf { width: 44vw !important; } .f1 { left: 6vw; } .f2 { left: 48vw; } .f3 { right: 4vw; top: 70vh; } .f4 { left: 4vw; top: 104vh; } .f5 { left: 50vw; top: 140vh; } .f6 { left: 8vw; top: 178vh; } .f7 { right: 4vw; top: 204vh; }
+  .citacao { left: 8vw; right: auto; top: 40vh; width: 70vw; } .colagem-texto { left: 8vw; width: 80vw; top: 250vh; }
+  .dentrofora { grid-template-columns: 1fr; } .df-col img { min-height: 60vh; } .df-titulo { flex-direction: column; gap: 0; }
+  .hall-texto { left: 4vw; bottom: auto; top: 10vh; max-width: 80vw; }
+  .pranchas { grid-template-columns: repeat(2, 1fr); gap: 3vw; }
+  .loja { grid-template-columns: 1fr; } .loja-cartao { width: 9rem; bottom: 6vh; }
+  .parc-texto { margin-left: 0; } .marcas { justify-content: center; }
+  .leque img { width: 30vw; margin-left: -15vw; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+  .manifesto-texto .pal { opacity: 1; }
+}
