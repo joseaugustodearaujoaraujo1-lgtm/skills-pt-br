@@ -222,7 +222,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   .grupo-trilho { height: 100vh; }
   .grupo-fixo { position: relative; }
   .grupo { left: 2vw; top: 52vh; width: 96vw; }
-  .linha { height: 1245.4vw; }
+  .linha { height: 1245.4vw; margin-top: -35px; }
   .linha-intro { height: 181vw; padding: 12vw 6vw 0; }
   .intro-texto { width: auto; font-size: 6.4vw; }
   .intro-bt { margin-top: 8vw; }
@@ -264,7 +264,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   .trilhos { margin-top: 12vw; gap: 4vw; }
   .pilula { height: 20vw; font-size: 4.6vw; padding: 0 7vw 0 3vw; gap: 3vw; }
   .pilula svg { width: 12vw; height: 12vw; }
-  .rodape { height: auto; min-height: 326.9vw; padding: 15vw 4vw 8vw; }
+  .rodape { height: 326.9vw; padding: 15vw 4vw 0; overflow: hidden; }
   .rod-alto { display: block; }
   .rodape .rod-alto { display: grid; grid-template-columns: 1fr 1fr; gap: 10vw 4vw; }
   .rod-chamada { grid-column: 1 / -1; }

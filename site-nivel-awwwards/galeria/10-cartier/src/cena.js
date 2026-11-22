@@ -146,7 +146,7 @@ export function criarCena(canvas) {
   const tmp = V(0, 0, 0);
   // k: índice do capítulo; u: 0 → câmera chegando (afastada), 1 → no lugar; ponteiro desloca levemente
   function quadro(k, u, t, ptr) {
-    if (k !== atual || !grupos[k].visible) { grupos.forEach((g, i) => { g.visible = i === k; }); atual = k; scene.background = new THREE.Color(k === 6 ? '#07080c' : '#000'); }
+    if (k !== atual || !grupos[k].visible) { grupos.forEach((g, i) => { g.visible = i === k; }); atual = k; const nev = ['#d9c9b2', '#e2cfb1', '#dcc7a6', '#1c0f08', '#cdbda4', '#bdb5ab', '#07080c', '#ddd6cb', '#3a2a1c'][k]; scene.background = new THREE.Color(nev); scene.fog = new THREE.Fog(nev, k === 6 ? 20 : 7, k === 6 ? 60 : 30); }
     const [p, a, fov] = CAM[k], e = 1 - Math.pow(1 - u, 3);
     camera.position.set(p.x + ptr.x * .12, p.y + ptr.y * .08 + (1 - e) * .3, p.z + (1 - e) * 1.6);
     camera.fov = fov; camera.updateProjectionMatrix(); tmp.copy(a); camera.lookAt(tmp);

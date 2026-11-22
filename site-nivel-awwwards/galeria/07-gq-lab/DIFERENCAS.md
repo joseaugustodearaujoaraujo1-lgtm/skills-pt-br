@@ -19,3 +19,16 @@ O original foi medido com Playwright em 1440×900. A página dele não rola (a a
 - **Família:** Inter Tight no lugar da GT America (paga), e EB Garamond nas falas.
 - **Textos de interface:** o original usa 10 e 11 px. Nós usamos no mínimo 12 px, para passar no portão de legibilidade.
 - **Imagens:** não há fotos. Tudo é 3D em tempo real, como no original.
+
+## Rodada final de comparação
+
+| Passo | Elemento | Original | Antes | Status |
+|---|---|---|---|---|
+| todos | Clima | penumbra, brancos contidos | brancos estourados | corrigido (exposição 0,86, luzes mais baixas, mesa cinza-claro) |
+| 0 | Título | cinza antes de acender | branco puro | corrigido (branco a 78%) |
+| 6 | Mesa do esboço | vista de longe e do alto | câmera próxima | corrigido |
+| 7–28 | Céu | laranja só numa faixa fina no horizonte | faixa laranja larga | corrigido |
+| 12–28 | Objeto | pequeno sobre o pedestal | grande | corrigido (escala 0,5) |
+| 36–40 | Tela de raio X | inclinada, com a sala escura em volta | enchia o quadro | corrigido (câmera recuada) |
+
+Fica para quando houver material próprio: o original tem chão espelhado e modelos fotográficos; o nosso usa geometria e materiais feitos em código.

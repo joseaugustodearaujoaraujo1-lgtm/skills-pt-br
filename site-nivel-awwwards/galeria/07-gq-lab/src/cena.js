@@ -63,13 +63,13 @@ float n(vec2 p){ vec2 i=floor(p), f=fract(p); f=f*f*(3.-2.*f); return mix(mix(h(
 float fbm(vec2 p){ float v=0., a=.5; for(int i=0;i<5;i++){ v+=a*n(p); p*=2.03; a*=.5; } return v; }
 void main(){
   vec3 d = normalize(vDir); float y = d.y;
-  vec3 c = mix(uHorizonte, uMeio, smoothstep(-0.02, .32, y));
-  c = mix(c, uAlto, smoothstep(.3, .95, y));
+  vec3 c = mix(uHorizonte, uMeio, smoothstep(-0.02, .12, y));
+  c = mix(c, uAlto, smoothstep(.35, 1.0, y));
   vec2 q = d.xz / (y + .35) * 1.6 + vec2(uTempo * .01, 0.);
   float nu = smoothstep(.38, .95, fbm(q * .7)) * smoothstep(0.0, .3, y) * uNuvem;
   c = mix(c, mix(uMeio, vec3(1.), .35), nu * .55);
   float brilho = exp(-abs(y) * 14.) * .5;
-  c += uHorizonte * brilho * .35;
+  c += uHorizonte * brilho * .15;
   c = mix(c, uChao, 1.0 - smoothstep(-.06, 0.0, y));
   gl_FragColor = vec4(c, 1.);
 }`;
@@ -78,7 +78,7 @@ export function criarCena(canvas) {
   const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, powerPreference: 'high-performance' });
   renderer.setPixelRatio(Math.min(devicePixelRatio, 1.5));
   renderer.outputColorSpace = THREE.SRGBColorSpace;
-  renderer.toneMapping = THREE.ACESFilmicToneMapping; renderer.toneMappingExposure = 1.05;
+  renderer.toneMapping = THREE.ACESFilmicToneMapping; renderer.toneMappingExposure = .86;
   const scene = new THREE.Scene();
   scene.background = new THREE.Color('#000');
   const pmrem = new THREE.PMREMGenerator(renderer);
@@ -88,7 +88,7 @@ export function criarCena(canvas) {
   // luzes
   const hemi = new THREE.HemisphereLight('#dfe6ee', '#1b1a18', .7); scene.add(hemi);
   const chave = new THREE.DirectionalLight('#fff3e2', 2.2); chave.position.set(3, 6, 4); scene.add(chave);
-  const foco = new THREE.SpotLight('#ffffff', 40, 12, .45, .6, 1.4); foco.position.set(0, 4.2, .6); foco.target.position.set(0, .1, 0); scene.add(foco, foco.target);
+  const foco = new THREE.SpotLight('#ffffff', 18, 12, .45, .6, 1.4); foco.position.set(0, 4.2, .6); foco.target.position.set(0, .1, 0); scene.add(foco, foco.target);
   const contra = new THREE.PointLight('#9cc4ff', 6, 6); contra.position.set(-1.5, 1.4, -1.6); scene.add(contra);
 
   // ---------- céu e chão comuns ----------
@@ -113,7 +113,7 @@ export function criarCena(canvas) {
   for (let i = 0; i < 4; i++) { const a = i * Math.PI / 2 + Math.PI / 4; const p = new THREE.Mesh(new THREE.CylinderGeometry(.022, .022, .012, 6), latao); p.position.set(Math.cos(a) * .12, 1.0, Math.sin(a) * .12); frasco.add(p); }
   const placa = new THREE.Mesh(new THREE.PlaneGeometry(.16, .07), new THREE.MeshStandardMaterial({ map: tela(256, 112, (g, w, h) => { g.fillStyle = '#1b1b1d'; g.fillRect(0, 0, w, h); g.fillStyle = '#e8d7b5'; g.font = '600 46px sans-serif'; g.textAlign = 'center'; g.fillText('AC-07', w / 2, 72); }), metalness: .4, roughness: .4 }));
   placa.position.set(0, .34, .34); frasco.add(placa);
-  frasco.scale.setScalar(.6); frasco.position.y = .12; scene.add(frasco);
+  frasco.scale.setScalar(.5); frasco.position.y = .12; scene.add(frasco);
 
   // ---------- 1. esboços em linha (abertura) ----------
   const esboco = new THREE.Group(); scene.add(esboco);
@@ -137,7 +137,7 @@ export function criarCena(canvas) {
 
   // ---------- 2. laboratório (capítulo I) ----------
   const lab = new THREE.Group(); scene.add(lab);
-  const branco = new THREE.MeshPhysicalMaterial({ color: '#f2f2f0', roughness: .32, clearcoat: .6, clearcoatRoughness: .2 });
+  const branco = new THREE.MeshPhysicalMaterial({ color: '#d6d6d3', roughness: .32, clearcoat: .6, clearcoatRoughness: .2 });
   const preto = new THREE.MeshPhysicalMaterial({ color: '#0a0a0b', roughness: .18, metalness: .2, clearcoat: 1 });
   const mesa = new THREE.Mesh(new RoundedBoxGeometry(6, .24, 3.2, 4, .08), branco); mesa.position.y = -.12; lab.add(mesa);
   const base = new THREE.Mesh(new RoundedBoxGeometry(6.02, 1.0, 3.22, 2, .04), preto); base.position.y = -.74; lab.add(base);
@@ -198,13 +198,13 @@ export function criarCena(canvas) {
   // ---------- trajetória da câmera: chaves por passo ----------
   const C = (p, pos, alvo, fov = 38) => ({ p, pos: V(...pos), alvo: V(...alvo), fov });
   const CHAVES = [
-    C(0, [0, 9, 13], [0, 0, 0], 42), C(2, [2.5, 6, 9], [0, 0, 0], 40), C(4, [1.6, 3.8, 5.6], [0, .1, 0], 38), C(6, [1.3, 2.7, 2.7], [-.3, 0, 0], 38),
-    C(6.6, [1.2, 2.5, 2.6], [-.3, 0, 0], 38), C(8, [0, 1.4, 4.2], [0, 2.6, -10], 40), C(9.4, [0, 1.0, 9.5], [0, 1.4, -10], 42), C(10.6, [0, .9, 8.2], [0, .3, 0], 34),
+    C(0, [0, 9, 13], [0, 0, 0], 42), C(2, [2.5, 6, 9], [0, 0, 0], 40), C(4, [1.6, 3.8, 5.6], [0, .1, 0], 38), C(6, [2.2, 4.2, 5.2], [-.3, 0, 0], 36),
+    C(6.6, [2.0, 3.9, 4.9], [-.3, 0, 0], 36), C(8, [0, 1.4, 4.2], [0, 2.6, -10], 40), C(9.4, [0, 1.0, 9.5], [0, 1.4, -10], 42), C(10.6, [0, .9, 8.2], [0, .3, 0], 34),
     C(12, [1.25, .95, 3.4], [0, .38, 0], 30), C(13.5, [-.75, .8, 2.6], [0, .4, 0], 30), C(15, [.6, .72, 2.5], [0, .42, 0], 28), C(16.5, [.05, 2.3, .95], [0, .25, 0], 32), C(18.4, [-1.7, .85, 2.4], [0, .4, 0], 32),
     C(18.6, [-3.2, 1.5, 6.2], [-1, 1.2, 0], 40), C(19.6, [-1.5, 1.1, 4], [0, .45, 0], 34), C(21, [.85, .72, 2.3], [0, .45, 0], 30), C(22.5, [0, .66, 2.0], [0, .45, 0], 28), C(24, [-1.2, .64, 1.8], [0, .42, 0], 28),
     C(25.5, [.95, .78, 1.75], [0, .4, 0], 28), C(27, [0, 1.25, 2.5], [0, .3, 0], 30), C(28.5, [1.9, 1.35, 2.8], [0, .3, 0], 32), C(29.9, [0, .95, 3.4], [0, .4, 0], 34),
-    C(30.1, [0, 1.5, 6.4], [0, .8, 0], 40), C(32, [.7, 1.05, 3.4], [0, 1.0, 0], 36), C(34, [0, 1.08, 2.3], [0, 1.08, -.35], 34), C(36, [.2, 1.12, 1.25], [0, 1.12, -.35], 34),
-    C(38, [-.7, 1.12, 1.6], [.15, 1.12, -.35], 34), C(40, [0, 1.12, .95], [0, 1.12, -.35], 32), C(42, [0, 1.12, .7], [0, 1.12, -.35], 32),
+    C(30.1, [0, 1.5, 6.4], [0, .8, 0], 40), C(32, [.7, 1.05, 3.4], [0, 1.0, 0], 36), C(34, [0, 1.08, 2.3], [0, 1.08, -.35], 34), C(36, [.55, 1.12, 1.9], [0, 1.12, -.35], 34),
+    C(38, [-.7, 1.12, 1.6], [.15, 1.12, -.35], 34), C(40, [-.3, 1.12, 1.35], [0, 1.12, -.35], 32), C(42, [0, 1.12, .7], [0, 1.12, -.35], 32),
     C(43, [-.05, .66, 1.1], [0, .62, 0], 24), C(46, [.04, .64, .82], [0, .62, 0], 24),
   ];
   const suave = t => t * t * (3 - 2 * t);
@@ -247,11 +247,11 @@ export function criarCena(canvas) {
     // frasco: pedestal certo para cada cena
     frasco.position.y = cena === 'escuro' ? .1 : .12;
     frasco.rotation.y = cena === 'fim' ? 0 : t * .05;
-    foco.intensity = cena === 'fim' ? 2 : 40; contra.intensity = cena === 'fim' ? 14 : cena === 'escuro' ? 10 : 6;
+    foco.intensity = cena === 'fim' ? 2 : 18; contra.intensity = cena === 'fim' ? 14 : cena === 'escuro' ? 10 : 6;
     contra.position.set(cena === 'fim' ? -1.2 : -1.5, cena === 'fim' ? 1.1 : 1.4, cena === 'fim' ? -.8 : -1.6);
-    hemi.intensity = cena === 'fim' ? .02 : cena === 'escuro' ? .25 : .7;
+    hemi.intensity = cena === 'fim' ? .02 : cena === 'escuro' ? .22 : .45;
     scene.environmentIntensity = cena === 'fim' ? .12 : cena === 'escuro' ? .5 : 1;
-    chave.intensity = cena === 'fim' ? .4 : cena === 'escuro' ? .6 : 2.2;
+    chave.intensity = cena === 'fim' ? .4 : cena === 'escuro' ? .5 : 1.5;
     scene.background.set(cena === 'fim' ? '#000' : '#000');
     renderer.render(scene, camera);
   }

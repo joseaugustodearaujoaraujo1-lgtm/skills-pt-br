@@ -70,12 +70,13 @@ $('.som').addEventListener('click', () => {
 const num = $('.carga-num'), linha = $('.carga-linha i');
 let carga = 0;
 function carregar() {
-  carga = Math.min(100, carga + (reduzido ? 100 : 2.5));
+  carga = reduzido ? 100 : Math.min(100, (performance.now() - inicioCarga) / 18);
   num.textContent = Math.round(carga); linha.style.transform = `scaleX(${carga / 100})`;
   if (carga < 100) setTimeout(carregar, 40);
   else { $('.carregando').classList.add('fim'); pronto = true; mostrarTexto(0); }
 }
-document.fonts.ready.then(carregar);
+let inicioCarga = performance.now();
+document.fonts.ready.then(() => { inicioCarga = performance.now(); carregar(); });
 
 let t0 = performance.now();
 function laco(agora) {

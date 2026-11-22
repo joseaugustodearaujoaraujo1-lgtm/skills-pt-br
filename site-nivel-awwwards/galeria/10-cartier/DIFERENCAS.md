@@ -17,3 +17,13 @@ O original foi medido com Playwright em 1440×900: 18 passos de roda, com captur
 - **Família:** Jost no lugar da Brilliant Cut Pro.
 - **Som:** o original tem trilha gravada; o nosso é um ambiente gerado na hora.
 - **Textos de interface:** o original usa 9 e 11 px; nós usamos no mínimo 12 px.
+
+## Rodada final de comparação
+
+| Sala | Elemento | Original | Antes | Status |
+|---|---|---|---|---|
+| todas | Profundidade | névoa e luz suave da cor da sala | fundo chapado | corrigido (névoa por sala) |
+| — | Carregamento | rápido, por tempo | lento em máquinas fracas | corrigido (progresso por tempo, 1,8 s) |
+| 0 | Arcos do fundo | visíveis | sumiam | corrigido |
+
+Fica para quando houver material próprio: as peças e as salas do original são modelos fotográficos detalhados; as nossas são geometria feita em código.

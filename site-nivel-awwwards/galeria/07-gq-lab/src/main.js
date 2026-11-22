@@ -82,7 +82,7 @@ $$('.ponto').forEach(b => b.addEventListener('click', () => {
   dlg.showModal();
 }));
 $('.fechar').addEventListener('click', () => dlg.close());
-const PONTO_3D = [[.0, .72, .0], [.0, .55, .0]];
+const PONTO_3D = [[.0, .62, .0], [.0, .48, .0]];
 
 // ---------- onda de áudio da barra de capítulos ----------
 const onda = $('.onda'), og = onda.getContext('2d');

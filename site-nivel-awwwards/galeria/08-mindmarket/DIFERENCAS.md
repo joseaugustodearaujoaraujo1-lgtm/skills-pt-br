@@ -28,3 +28,10 @@ Altura total: original 13 732 px, nosso 13 732 px. As seções começam nas mesm
 - **Ilustrações:** o original usa personagens animados (Rive). Os nossos são vetoriais próprios e provisórios, com a mesma posição e a mesma escala, e vão ser trocados pelas ilustrações da lista (`IMAGENS-PARA-GERAR.md`, seção ESCUTA).
 - **Fotos:** são provisórias, de licença livre (créditos em `public/creditos.json`). A foto do público e as dos artigos estão na lista de imagens para gerar.
 - **Marcas do trilho:** nomes e ícones de empresas fictícias, no lugar das marcas reais.
+
+## Rodada final de comparação
+
+| Tela | Elemento | Original | Antes | Status |
+|---|---|---|---|---|
+| celular | Início da linha do tempo | sobe 35 px por cima do hero (844) | 879 | corrigido |
+| celular | Altura total | 10 997 | 11 041 | corrigido (10 996) |

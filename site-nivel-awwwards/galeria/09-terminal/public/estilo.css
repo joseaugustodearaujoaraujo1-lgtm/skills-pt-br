@@ -116,7 +116,7 @@ main, .rodape { width: 100%; max-width: 1440px; margin: 0 auto; }
 .r-total { margin-top: 14px; font: 400 44px/1.2 var(--f); letter-spacing: -.014em; }
 .r-perc { margin-top: 14px; font: 400 20px/1.26 var(--f); color: rgb(255 255 255 / .85); }
 .r-perc b { font-weight: 400; font-size: 27px; color: #fff; margin-left: 8px; }
-.r-sub { margin-top: 36px; font: 400 20px/1.46 var(--f); }
+.r-sub { margin-top: 49px; font: 400 20px/1.46 var(--f); }
 .calc-resultado dl { margin-top: 20px; display: grid; gap: 14px; }
 .calc-resultado dl div { display: flex; justify-content: space-between; align-items: baseline; font: 400 16px/1.35 var(--f); }
 .calc-resultado dt span { color: rgb(255 255 255 / .6); }
@@ -166,7 +166,7 @@ main, .rodape { width: 100%; max-width: 1440px; margin: 0 auto; }
 .slide img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity .8s; }
 .slide.ativo img { opacity: 1; }
 .slide.ativo::after { content: ''; position: absolute; inset: 0; background: linear-gradient(rgb(11 30 45 / .15), rgb(11 30 45 / .65)); }
-.s-txt { position: absolute; left: 60px; right: 60px; top: 214px; bottom: 40px; z-index: 1; }
+.s-txt { position: absolute; left: 60px; right: 60px; top: 80px; bottom: 40px; z-index: 1; }
 .s-txt .rotulo { color: rgb(11 30 45 / .75); }
 .slide.ativo .s-txt .rotulo { color: rgb(255 255 255 / .7); }
 .s-txt h3 { margin-top: 13px; font: 400 46px/1.2 var(--f); letter-spacing: -.01em; }
@@ -195,7 +195,7 @@ main, .rodape { width: 100%; max-width: 1440px; margin: 0 auto; }
 /* ---------- 10. contato ---------- */
 .contato { height: 925px; padding-top: 115px; }
 .verde { color: #C25E00; } .cinza { color: #767C82; }
-.contato-grade { display: grid; grid-template-columns: 518px 655px; gap: 112px; padding-left: 85px; margin-top: 60px; }
+.contato-grade { display: grid; grid-template-columns: 518px 655px; gap: 112px; padding-left: 85px; margin-top: 15px; }
 .contato-txt p { font: 400 23px/1.26 var(--f); letter-spacing: -.01em; }
 .contato-txt ul { margin-top: 14px; display: grid; gap: 18px; }
 .contato-txt li { position: relative; padding-left: 51px; font: 400 23px/1.26 var(--f); color: #454742; }
@@ -240,7 +240,7 @@ main, .rodape { width: 100%; max-width: 1440px; margin: 0 auto; }
 .sociais { display: flex; gap: 14px; margin-top: 16px; }
 .sociais a { display: grid; place-items: center; width: 44px; height: 44px; margin: -10px; }
 .sociais svg { width: 22px; height: 22px; }
-.rod-baixo { position: absolute; left: 70px; bottom: 26px; display: grid; gap: 8px; font: 400 12px/1.24 var(--f); color: rgb(255 255 255 / .55); }
+.rod-baixo { position: absolute; left: 70px; bottom: 11px; display: grid; gap: 8px; font: 400 12px/1.24 var(--f); color: rgb(255 255 255 / .55); }
 .rod-baixo a { min-height: 24px; display: inline-flex; align-items: center; }
 @media (max-width: 860px) { .rod-baixo a { min-height: 44px; } .rod-baixo { position: relative; left: auto; bottom: auto; margin: 40px 16px 0; } }
 

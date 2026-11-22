@@ -19,3 +19,14 @@ O original foi medido com `estudar3.cjs` (passo de 450 px) e com leitura das cai
 - **Fotos:** são provisórias, de licença livre (créditos em `public/creditos.json`).
 - **Logos:** são marcas fictícias, escritas em texto com ícones nossos.
 - **Paleta:** azul-petróleo e laranja no lugar do verde-petróleo e do verde-limão.
+
+## Rodada final de comparação (medida pela DOM nas mesmas posições)
+
+| Elemento | Original | Antes | Status |
+|---|---|---|---|
+| "Economia anual estimada" no painel | y 5 155 | y 5 142 | corrigido |
+| Textos do slide ativo (rótulo, título, descrição) | y 10 067 / 10 091 / 10 229 | 134 px mais abaixo | corrigido |
+| Texto do contato | y 13 218 | y 13 263 | corrigido |
+| Copyright do rodapé | y 15 708 | y 15 693 | corrigido |
+
+Conferidos dentro de 8 px: títulos das marcas, dos caminhos e do "por que", cartões, calculadora, perguntas e colunas do rodapé.
