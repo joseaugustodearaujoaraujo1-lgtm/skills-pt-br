@@ -14,6 +14,10 @@ export const PRANCHAS = [
   { nome: 'Areia', ano: '2023', cores: ['#e9d8b4', '#a8763e', '#ffffff'], padrao: 'faixas' },
   { nome: 'Título', ano: '2023', cores: ['#ffd23a', '#0f2b2b', '#ff5b3a'], padrao: 'xadrez' },
   { nome: 'Estreia', ano: '2021', cores: ['#ffffff', '#5fd3c4', '#ff8fa3'], padrao: 'ondas' },
+  { nome: 'Abrolhos', ano: '2022', cores: ['#1d4e89', '#f3f1ea', '#ffb02e'], padrao: 'faixas' },
+  { nome: 'Coqueiral', ano: '2022', cores: ['#f6e7c1', '#2e8b57', '#ff5b3a'], padrao: 'folhas' },
+  { nome: 'Vermelha', ano: '2020', cores: ['#c8381a', '#121417', '#f3f1ea'], padrao: 'riscos' },
+  { nome: 'Primeira', ano: '2019', cores: ['#ff8fa3', '#ffffff', '#0f2b2b'], padrao: 'xadrez' },
 ];
 
 const rnd = (() => { let s = 5; return () => (s = (s * 16807) % 2147483647) / 2147483647; })();

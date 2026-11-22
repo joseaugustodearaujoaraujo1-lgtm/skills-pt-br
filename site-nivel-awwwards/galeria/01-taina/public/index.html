@@ -10,140 +10,176 @@
 <link rel="preload" href="fonts/mona-sans-normal-400-800.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="img/retrato.webp" as="image" fetchpriority="high">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230f2b2b'/%3E%3Ctext x='16' y='22' font-family='Arial' font-weight='900' font-size='15' text-anchor='middle' fill='%23ff5b3a'%3ETR%3C/text%3E%3C/svg%3E">
-<link rel="stylesheet" href="estilo.css?v=1">
-<script type="module" src="app.js?v=1"></script>
+<link rel="stylesheet" href="estilo.css?v=2">
+<script type="module" src="app.js?v=2"></script>
 </head>
 <body>
 <a class="pular" href="#conteudo">Pular para o conteúdo</a>
 
+<!-- símbolos reutilizados -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="louro" viewBox="0 0 60 40"><g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M20 34 C 8 30, 4 18, 10 6"/><path d="M40 34 C 52 30, 56 18, 50 6"/><path d="M11 12 l-6 -2 M10 19 l-7 0 M12 26 l-6 3 M49 12 l6 -2 M50 19 l7 0 M48 26 l6 3"/><circle cx="30" cy="20" r="7"/><path d="M27 20 h6 M30 17 v6"/></g></symbol>
+  <symbol id="assinatura" viewBox="0 0 600 300"><path d="M40 210 C 90 60, 150 40, 140 150 S 120 260, 190 170 S 260 40, 270 120 S 250 250, 330 160 C 380 100, 400 90, 420 140 S 380 230, 470 150 S 560 90, 580 120 M 120 250 C 260 200, 420 210, 560 170" fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="seta" viewBox="0 0 16 16"><path d="M4 12 L12 4 M6 4 H12 V10" fill="none" stroke="currentColor" stroke-width="1.8"/></symbol>
+</svg>
+
 <header class="topo">
-  <a class="logo" href="#inicio" aria-label="Tainá Rocha, início">TAINÁ<br>ROCHA</a>
+  <h1 class="logo"><a href="#inicio" aria-label="Tainá Rocha, início">TAINÁ<br>ROCHA</a></h1>
   <span class="monograma" aria-hidden="true">TR</span>
   <div class="topo-acoes">
     <a class="loja-botao" href="#loja"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6h10l-1 8H4z M6 6V4a2 2 0 0 1 4 0v2" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>LOJA</a>
-    <a class="menu-botao" href="#rodape" aria-label="Menu e contatos"><span></span><span></span></a>
+    <a class="menu-botao" href="#rodape" aria-label="Menu"><span></span><span></span></a>
   </div>
 </header>
 
 <main id="conteudo">
-  <!-- 1. HERO -->
-  <section class="hero" id="inicio" aria-labelledby="hero-titulo">
-    <h1 id="hero-titulo" class="hero-nome"><span>TAINÁ</span><span>ROCHA</span><span class="sr">, surfista profissional</span></h1>
-    <img class="hero-retrato" src="img/retrato.webp" width="1080" height="1440" alt="Retrato de Tainá Rocha com o cabelo molhado e roupa de neoprene preta" fetchpriority="high">
-    <figure class="hero-prancha" aria-hidden="true"><img class="hero-poster" src="img/prancha-hero.webp" alt="" width="900" height="900"></figure>
-    <aside class="proxima" aria-label="Próxima etapa">
-      <p class="proxima-rotulo">Próxima etapa</p>
-      <p class="proxima-nome">Saquarema Pro</p>
-      <p class="proxima-data">12—20 jun · Itaúna, RJ</p>
-    </aside>
-    <p class="rolar" aria-hidden="true">Role ↓</p>
-  </section>
-
-  <!-- 2. EM CASA: letreiros + assinatura que se desenha -->
-  <section class="emcasa" aria-label="Em casa, no Saquarema Pro">
-    <div class="letreiros" aria-hidden="true">
-      <p class="letreiro l1"><span>EM CASA · SAQUAREMA PRO · EM CASA · SAQUAREMA PRO · EM CASA · SAQUAREMA PRO · </span></p>
-      <p class="letreiro l2 contorno"><span>A ONDA VAI LEMBRAR · A ONDA VAI LEMBRAR · A ONDA VAI LEMBRAR · </span></p>
-      <p class="letreiro l3"><span>ETAPA 6 DE 10 · ITAÚNA · ETAPA 6 DE 10 · ITAÚNA · ETAPA 6 DE 10 · ITAÚNA · </span></p>
+  <!-- 1. HERO FIXO (200vh): retrato branco + prancha 3D → vira cartão central no escuro, com letreiros e assinatura -->
+  <section class="hero" id="inicio" aria-label="Tainá Rocha">
+    <div class="hero-palco">
+      <div class="hero-escuro" aria-hidden="true">
+        <div class="letreiros">
+          <p class="letreiro l1"><span>EM CASA · SAQUAREMA PRO · EM CASA · SAQUAREMA PRO · EM CASA · SAQUAREMA PRO · </span></p>
+          <p class="letreiro l2"><span>A ONDA VAI LEMBRAR · A ONDA VAI LEMBRAR · A ONDA VAI LEMBRAR · A ONDA VAI LEMBRAR · </span></p>
+        </div>
+        <p class="mini-topo"><b>TR</b><span>ETAPA DE CASA · SAQUAREMA PRO</span></p>
+      </div>
+      <div class="hero-curvas" aria-hidden="true"></div>
+      <figure class="hero-cartao">
+        <img class="hero-retrato" src="img/retrato.webp" width="1080" height="1440" alt="Retrato de Tainá Rocha com o cabelo molhado e roupa de neoprene preta" fetchpriority="high">
+      </figure>
+      <figure class="hero-prancha" aria-hidden="true"><img class="hero-poster" src="img/prancha-hero.webp" alt="" width="900" height="900"></figure>
+      <svg class="assinatura" viewBox="0 0 600 300" aria-hidden="true"><path d="M40 210 C 90 60, 150 40, 140 150 S 120 260, 190 170 S 260 40, 270 120 S 250 250, 330 160 C 380 100, 400 90, 420 140 S 380 230, 470 150 S 560 90, 580 120 M 120 250 C 260 200, 420 210, 560 170" fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <aside class="proxima" aria-label="Próxima etapa">
+        <p class="proxima-rotulo">Próxima etapa</p>
+        <svg class="proxima-mapa" viewBox="0 0 60 30" aria-hidden="true"><path d="M4 22 C 10 6, 22 6, 26 16 S 40 28, 46 12 L 56 8" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+        <p class="proxima-nome">Saquarema Pro</p>
+        <p class="proxima-data">12—20 jun</p>
+      </aside>
     </div>
-    <img class="emcasa-foto" src="img/tubo-1-pb.webp" width="1400" height="933" loading="lazy" alt="Surfista dentro do tubo de uma onda, em preto e branco">
-    <svg class="assinatura" viewBox="0 0 600 300" aria-hidden="true"><path d="M40 210 C 90 60, 150 40, 140 150 S 120 260, 190 170 S 260 40, 270 120 S 250 250, 330 160 C 380 100, 400 90, 420 140 S 380 230, 470 150 S 560 90, 580 120 M 120 250 C 260 200, 420 210, 560 170" fill="none" stroke="var(--coral)" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/></svg>
   </section>
 
-  <!-- 3. MANIFESTO -->
+  <!-- 2. MANIFESTO -->
   <section class="manifesto" aria-label="Manifesto">
+    <svg class="louro" aria-hidden="true"><use href="#louro"/></svg>
+    <p class="louro-legenda">Bicampeã mundial</p>
     <p class="manifesto-texto"><em>Redefinindo</em> limites, brigando por <em>notas</em>, dando tudo em cada onda. Construindo um <em>legado</em> no surfe dentro e fora d'água.</p>
   </section>
 
-  <!-- 4. COLAGEM -->
-  <section class="colagem" aria-labelledby="colagem-citacao">
-    <figure class="cf f1 p" data-v=".25"><img src="img/surfando-2.webp" width="1400" height="933" loading="lazy" alt="Surfista fazendo uma manobra na espuma da onda"><figcaption>Etapa de abertura · 2026</figcaption></figure>
-    <blockquote class="citacao" id="colagem-citacao"><p>Não importa de onde você <em>sai</em>. Importa como você <em>rema</em> de volta.</p><svg class="mini-assinatura" viewBox="0 0 120 40" aria-hidden="true"><path d="M5 30 C 20 5, 30 5, 30 22 S 45 35, 55 18 S 75 8, 80 24 S 100 30, 115 12" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg></blockquote>
-    <figure class="cf f2 p" data-v="-.2"><img src="img/por-do-sol-pb.webp" width="1400" height="933" loading="lazy" alt="Surfista com a prancha na praia ao pôr do sol, em preto e branco"><figcaption>Treino · Itacaré</figcaption></figure>
-    <figure class="cf f3 p" data-v=".45"><img src="img/tubo-2.webp" width="1400" height="933" loading="lazy" alt="Surfista dentro de um tubo de onda verde-azulada"><figcaption>Melhor nota da temporada · 9,43</figcaption></figure>
-    <figure class="cf f4 p" data-v="-.35"><img src="img/silhuetas-pb.webp" width="1400" height="933" loading="lazy" alt="Silhuetas de surfistas na areia molhada contra o sol"><figcaption>Fim de tarde</figcaption></figure>
-    <figure class="cf f5 p" data-v=".1"><img src="img/surfando-1.webp" width="1400" height="933" loading="lazy" alt="Surfista descendo uma onda com spray de água"><figcaption>Bateria 3 · Round 2</figcaption></figure>
-    <figure class="cf f6 p" data-v="-.15"><img src="img/aerea-pb.webp" width="1400" height="933" loading="lazy" alt="Vista aérea de uma surfista remando ao lado da arrebentação"><figcaption>Pico secreto</figcaption></figure>
-    <p class="colagem-texto">Comecei com 7 anos numa prancha emprestada. Desde então, remo todo dia para transformar esse sonho em rotina.<svg class="mini-assinatura" viewBox="0 0 120 40" aria-hidden="true"><path d="M5 30 C 20 5, 30 5, 30 22 S 45 35, 55 18 S 75 8, 80 24 S 100 30, 115 12" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg></p>
-    <figure class="cf f7 p" data-v=".3"><img src="img/entrando-mar.webp" width="1400" height="933" loading="lazy" alt="Surfista entrando no mar segurando a prancha"><figcaption>Primeira queda do dia</figcaption></figure>
-  </section>
-
-  <!-- 5. DENTRO / FORA D'ÁGUA -->
-  <section class="dentrofora" aria-labelledby="df-titulo">
-    <h2 id="df-titulo" class="df-titulo"><span class="df-mao" aria-hidden="true">d'água</span><span class="df-a">DENTRO</span><span class="df-b">FORA</span><span class="sr"> d'água e fora d'água</span></h2>
-    <div class="df-col df-esq">
-      <img src="img/surfando-1.webp" width="1400" height="933" loading="lazy" alt="Tainá numa onda durante a competição">
-      <p>Resultados, notas e fotos de cada etapa da temporada.</p>
-    </div>
-    <div class="df-col df-dir">
-      <img src="img/por-do-sol.webp" width="1400" height="933" loading="lazy" alt="Surfista com a prancha caminhando na praia ao pôr do sol">
-      <p>Campanhas, ensaios e o que acontece longe da arrebentação.</p>
+  <!-- 3. COLAGEM HORIZONTAL FIXA (349vh) -->
+  <section class="horizontal" aria-label="Bastidores da temporada">
+    <div class="horiz-palco">
+      <div class="trilho">
+        <figure class="hf h1"><figcaption>Abertura 2026</figcaption><img src="img/prancha-braco.webp" width="1400" height="933" loading="lazy" alt="Surfista levando a prancha para o mar"></figure>
+        <blockquote class="hq q1"><p>Não importa de onde você <em>sai</em>. Importa como você <em>rema</em> de volta.</p><svg aria-hidden="true"><use href="#assinatura"/></svg></blockquote>
+        <figure class="hf h2"><figcaption>Treino · Itacaré</figcaption><img src="img/por-do-sol-pb.webp" width="1400" height="933" loading="lazy" alt="Surfista com a prancha ao pôr do sol, em preto e branco"></figure>
+        <figure class="hf h3"><figcaption>Melhor nota · 9,43</figcaption><img src="img/surfando-1.webp" width="1400" height="933" loading="lazy" alt="Surfista descendo uma onda com spray de água"></figure>
+        <figure class="hf h4"><figcaption>Premiação 2025</figcaption><img src="img/silhuetas-pb.webp" width="1400" height="933" loading="lazy" alt="Silhuetas de surfistas na areia contra o sol"></figure>
+        <figure class="hf h5"><figcaption>Fim de tarde</figcaption><img src="img/aerea-pb.webp" width="1400" height="933" loading="lazy" alt="Vista aérea de surfista remando, em preto e branco"></figure>
+        <figure class="hf h6"><figcaption>Bateria final · Round 4</figcaption><img src="img/tubo-1.webp" width="1400" height="933" loading="lazy" alt="Surfista dentro do tubo de uma onda azul"></figure>
+        <figure class="hf h7"><figcaption>Prancha da final</figcaption><img src="img/prancha-0.webp" width="700" height="700" loading="lazy" alt="Prancha coral com faixas creme"></figure>
+        <figure class="hf h8"><figcaption>Pós-bateria</figcaption><img src="img/entrando-mar.webp" width="1400" height="933" loading="lazy" alt="Surfista entrando no mar com a prancha"></figure>
+        <figure class="hf h9"><figcaption>Mídia · 2025</figcaption><img src="img/tubo-2-pb.webp" width="1400" height="933" loading="lazy" alt="Tubo de onda, em preto e branco"></figure>
+        <figure class="hf h10"><figcaption>Bastidores · Peniche</figcaption><img src="img/surfando-2.webp" width="1400" height="933" loading="lazy" alt="Manobra na espuma da onda"></figure>
+        <blockquote class="hq q2"><p>Comecei com 7 anos numa prancha emprestada. Desde então, remo todo dia para transformar esse sonho em rotina.</p><svg aria-hidden="true"><use href="#assinatura"/></svg></blockquote>
+        <figure class="hf h11"><figcaption>Pódio · Saquarema</figcaption><img src="img/prancha-rosa.webp" width="1400" height="933" loading="lazy" alt="Mãe e filho com prancha rosa entrando no mar"></figure>
+        <figure class="hf h12"><figcaption>Treino</figcaption><img src="img/silhuetas.webp" width="1400" height="933" loading="lazy" alt="Surfistas caminhando na areia molhada"></figure>
+      </div>
     </div>
   </section>
 
-  <!-- 6. HALL DA FAMA -->
-  <section class="hall" aria-labelledby="hall-titulo">
-    <img class="hall-foto" src="img/rack-pranchas.webp" width="1400" height="933" loading="lazy" alt="Pranchas coloridas guardadas num rack de madeira à beira-mar">
-    <h2 id="hall-titulo" class="hall-titulo">PRANCHAS<br><em>Hall da fama</em></h2>
-    <p class="hall-texto">Da prancha emprestada da estreia às pinturas feitas para cada etapa: as pranchas que contam a história da Tainá.</p>
+  <!-- 4. DENTRO / FORA D'ÁGUA (200vh fixo) -->
+  <section class="otot" aria-labelledby="otot-titulo">
+    <div class="otot-palco">
+      <img class="otot-esq" src="img/prancha-1.webp" width="700" height="700" loading="lazy" alt="Prancha verde escura com ondas verde-água" aria-hidden="true">
+      <img class="otot-dir" src="img/retrato.webp" width="1080" height="1440" loading="lazy" alt="" aria-hidden="true">
+      <h2 id="otot-titulo" class="sr">Dentro e fora d'água</h2>
+      <div class="otot-col otot-a"><p class="otot-tit"><span class="contorno">DENTRO</span><span class="mao" aria-hidden="true">dentro</span><b>D'ÁGUA</b></p><p class="otot-txt">Resultados, notas e fotos de cada etapa da temporada.</p><a class="seta-botao" href="#hall" aria-label="Ver dentro d'água"><svg><use href="#seta"/></svg></a></div>
+      <div class="otot-col otot-b"><p class="otot-tit"><span class="serif">FORA</span><b>D'ÁGUA</b></p><p class="otot-txt">Campanhas, ensaios e o que acontece longe da arrebentação.</p><a class="seta-botao" href="#loja" aria-label="Ver fora d'água"><svg><use href="#seta"/></svg></a></div>
+      <div class="otot-fim"><img src="img/rack-pranchas.webp" width="1400" height="933" loading="lazy" alt="Pranchas coloridas num rack de madeira à beira-mar"></div>
+    </div>
   </section>
 
-  <section class="grade" aria-label="Pranchas da carreira">
-    <ul class="pranchas">
-      <li><img src="img/prancha-0.webp" width="700" height="700" loading="lazy" alt="Prancha Coral, pintura coral com faixas creme"><p><span>Coral</span><b>2026</b></p></li>
-      <li><img src="img/prancha-1.webp" width="700" height="700" loading="lazy" alt="Prancha Maré Baixa, verde escuro com ondas verde-água"><p><span>Maré Baixa</span><b>2025</b></p></li>
-      <li><img src="img/prancha-2.webp" width="700" height="700" loading="lazy" alt="Prancha Saquarema, branca com um sol laranja"><p><span>Saquarema</span><b>2025</b></p></li>
-      <li><img src="img/prancha-3.webp" width="700" height="700" loading="lazy" alt="Prancha Noturna, preta com riscos coral"><p><span>Noturna</span><b>2024</b></p></li>
-      <li><img src="img/prancha-4.webp" width="700" height="700" loading="lazy" alt="Prancha Itacaré, verde com folhas creme"><p><span>Itacaré</span><b>2024</b></p></li>
-      <li><img src="img/prancha-5.webp" width="700" height="700" loading="lazy" alt="Prancha Areia, creme com faixa caramelo"><p><span>Areia</span><b>2023</b></p></li>
-      <li><img src="img/prancha-6.webp" width="700" height="700" loading="lazy" alt="Prancha Título, amarela com xadrez"><p><span>Título</span><b>2023</b></p></li>
-      <li><img src="img/prancha-7.webp" width="700" height="700" loading="lazy" alt="Prancha Estreia, branca com ondas rosa e verde-água"><p><span>Estreia</span><b>2021</b></p></li>
-    </ul>
-    <div class="grade-fim"><p>Mais pranchas e os melhores momentos dentro d'água</p><a class="botao" href="#redes">Ver no mar</a></div>
-  </section>
+  <!-- 5. HALL DA FAMA (fundo preto) -->
+  <div class="grupo-preto">
+    <section class="hall" id="hall" aria-labelledby="hall-titulo">
+      <div class="hall-cab"><h2 id="hall-titulo" class="hall-titulo">PRANCHAS<br><em>HALL DA FAMA</em></h2><p class="hall-texto">Da prancha emprestada da estreia às pinturas feitas para cada etapa, a Tainá sempre fez das pranchas uma parte da sua história.</p></div>
+      <ul class="grade" aria-label="Pranchas da carreira">
+        <li class="col0"><img src="img/prancha-0.webp" width="700" height="700" loading="lazy" alt="Prancha Coral"><p><span>Coral</span><b>2026</b></p></li>
+        <li class="col1"><img src="img/prancha-1.webp" width="700" height="700" loading="lazy" alt="Prancha Maré Baixa"><p><span>Maré Baixa</span><b>2025</b></p></li>
+        <li class="col2"><img src="img/prancha-2.webp" width="700" height="700" loading="lazy" alt="Prancha Saquarema"><p><span>Saquarema</span><b>2025</b></p></li>
+        <li class="col3"><img src="img/prancha-3.webp" width="700" height="700" loading="lazy" alt="Prancha Noturna"><p><span>Noturna</span><b>2024</b></p></li>
+        <li class="col0"><img src="img/prancha-4.webp" width="700" height="700" loading="lazy" alt="Prancha Itacaré"><p><span>Itacaré</span><b>2024</b></p></li>
+        <li class="col1"><img src="img/prancha-5.webp" width="700" height="700" loading="lazy" alt="Prancha Areia"><p><span>Areia</span><b>2023</b></p></li>
+        <li class="col2"><img src="img/prancha-6.webp" width="700" height="700" loading="lazy" alt="Prancha Título"><p><span>Título</span><b>2023</b></p></li>
+        <li class="col3"><img src="img/prancha-8.webp" width="700" height="700" loading="lazy" alt="Prancha Abrolhos"><p><span>Abrolhos</span><b>2022</b></p></li>
+        <li class="col0"><img src="img/prancha-9.webp" width="700" height="700" loading="lazy" alt="Prancha Coqueiral"><p><span>Coqueiral</span><b>2022</b></p></li>
+        <li class="col1"><img src="img/prancha-7.webp" width="700" height="700" loading="lazy" alt="Prancha Estreia"><p><span>Estreia</span><b>2021</b></p></li>
+        <li class="col2"><img src="img/prancha-10.webp" width="700" height="700" loading="lazy" alt="Prancha Vermelha"><p><span>Vermelha</span><b>2020</b></p></li>
+        <li class="col3"><img src="img/prancha-11.webp" width="700" height="700" loading="lazy" alt="Prancha Primeira"><p><span>Primeira</span><b>2019</b></p></li>
+      </ul>
+    </section>
+    <section class="mais" aria-label="Mais pranchas">
+      <svg class="louro" aria-hidden="true"><use href="#louro"/></svg>
+      <p>Mais pranchas e os melhores momentos<br>da Tainá dentro d'água</p>
+      <a class="botao" href="#redes">VER NO MAR <svg><use href="#seta"/></svg></a>
+    </section>
+  </div>
 
-  <!-- 7. LOJA -->
+  <!-- 6. LOJA -->
   <section class="loja" id="loja" aria-labelledby="loja-titulo">
     <div class="loja-texto">
-      <p class="rotulo">Loja Tainá</p>
-      <h2 id="loja-titulo">COLEÇÃO<br><em>Campeã mundial</em></h2>
-      <p>Uma coleção para celebrar o bicampeonato: peças pensadas para quem nunca parou de remar. Edição limitada.</p>
-      <a class="botao" href="#rodape">Visitar a loja</a>
+      <p class="rotulo"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6h10l-1 8H4z M6 6V4a2 2 0 0 1 4 0v2" fill="none" stroke="currentColor" stroke-width="1.6"/></svg> LOJA TAINÁ</p>
+      <h2 id="loja-titulo">CAMPEÃ<br>DO MUNDO<br><em>BICAMPEÃ</em></h2>
+      <p>Celebre esse momento com uma coleção feita para quem nunca parou de remar. Vista, guarde, lembre para sempre.</p>
+      <a class="botao" href="#rodape">VISITAR A LOJA <svg><use href="#seta"/></svg></a>
     </div>
-    <img class="loja-foto" src="img/entrando-mar.webp" width="1400" height="933" loading="lazy" alt="Surfista entrando no mar com a prancha">
+    <img class="loja-grande" src="img/entrando-mar.webp" width="1400" height="933" loading="lazy" alt="Surfista entrando no mar com a prancha">
     <div class="loja-cartao" aria-hidden="true"><span>Edição</span><b>Bicampeã</b></div>
+    <img class="loja-p1" src="img/prancha-6.webp" width="700" height="700" loading="lazy" alt="" aria-hidden="true">
+    <img class="loja-p2" src="img/retrato-pb.webp" width="1080" height="1440" loading="lazy" alt="" aria-hidden="true">
+    <div class="loja-p3" aria-hidden="true">TR2×</div>
   </section>
 
-  <!-- 8. PARCERIAS -->
+  <!-- 7. PARCERIAS -->
   <section class="parcerias" aria-labelledby="parc-titulo">
     <p class="parc-mao" aria-hidden="true">Parcerias</p>
-    <h2 id="parc-titulo">PARCEIROS<br><em>&amp; campanhas</em></h2>
+    <h2 id="parc-titulo">PARCEIROS<br><em>&amp;CAMPANHAS</em></h2>
     <p class="parc-texto">A Tainá trabalha com marcas que dividem a paixão pelo mar, em campanhas dentro e fora d'água.</p>
-    <ul class="marcas" aria-label="Parceiros (marcas fictícias)"><li class="m1">QUILHA</li><li class="m2">maré alta</li><li class="m3">SALINA</li><li class="m4">Vento Sul</li><li class="m5">ATOL</li><li class="m6">parafina co.</li><li class="m7">ONDULA</li></ul>
+    <div class="marcas-janela"><ul class="marcas" aria-label="Parceiros (marcas fictícias)"><li class="m1">QUILHA</li><li class="m2">maré alta</li><li class="m3">SALINA</li><li class="m4">Vento Sul</li><li class="m5">ATOL</li><li class="m6">parafina co.</li><li class="m7">ONDULA</li><li class="m1">QUILHA</li><li class="m2">maré alta</li><li class="m3">SALINA</li><li class="m4">Vento Sul</li><li class="m5">ATOL</li></ul></div>
   </section>
 
-  <!-- 9. REDES -->
+  <!-- 8. REDES -->
   <section class="redes" id="redes" aria-labelledby="redes-titulo">
-    <h2 id="redes-titulo">O QUE ROLA<br><em>nas redes</em></h2>
+    <svg class="louro pequeno" aria-hidden="true"><use href="#louro"/></svg>
+    <h2 id="redes-titulo"><span>O QUE ROLA</span><em>NAS REDES</em></h2>
     <div class="leque">
       <img src="img/aerea.webp" width="1400" height="933" loading="lazy" alt="Vista aérea de surfista remando">
       <img src="img/tubo-2.webp" width="1400" height="933" loading="lazy" alt="Tubo de onda verde">
-      <img src="img/prancha-rosa.webp" width="1400" height="933" loading="lazy" alt="Mãe e filho com prancha rosa entrando no mar">
+      <img src="img/surfando-2.webp" width="1400" height="933" loading="lazy" alt="Manobra na espuma">
       <img src="img/retrato.webp" width="1080" height="1440" loading="lazy" alt="Retrato de Tainá Rocha">
       <img src="img/tubo-1.webp" width="1400" height="933" loading="lazy" alt="Surfista no tubo">
-      <img src="img/silhuetas.webp" width="1400" height="933" loading="lazy" alt="Silhuetas na praia ao sol">
-      <img src="img/surfando-2.webp" width="1400" height="933" loading="lazy" alt="Manobra na espuma">
+      <img src="img/silhuetas.webp" width="1400" height="933" loading="lazy" alt="Silhuetas na praia">
+      <img src="img/prancha-rosa.webp" width="1400" height="933" loading="lazy" alt="Prancha rosa">
     </div>
+    <p class="siga">Siga: a Tainá nas redes</p>
+    <ul class="redes-links"><li><a href="#rodape">TIKTOK</a></li><li><a href="#rodape">INSTAGRAM</a></li><li><a href="#rodape">YOUTUBE</a></li><li><a href="#rodape">TWITCH</a></li></ul>
   </section>
 </main>
 
+<!-- 9. RODAPÉ: painel escuro em forma de viseira sobre o degradê -->
 <footer class="rodape" id="rodape">
-  <p class="rodape-nome" aria-hidden="true">TAINÁ ROCHA</p>
-  <div class="rodape-linhas">
-    <ul><li><a href="#inicio">Início</a></li><li><a href="#loja">Loja</a></li><li><a href="#redes">Redes</a></li></ul>
-    <p>Contato para imprensa e parcerias: imprensa@taina.example</p>
+  <div class="painel">
+    <svg class="painel-assinatura" viewBox="0 0 600 300" aria-hidden="true"><path d="M40 210 C 90 60, 150 40, 140 150 S 120 260, 190 170 S 260 40, 270 120 S 250 250, 330 160 C 380 100, 400 90, 420 140 S 380 230, 470 150 S 560 90, 580 120 M 120 250 C 260 200, 420 210, 560 170" fill="none" stroke="currentColor" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <p class="painel-titulo"><b>SEMPRE</b> <em>REMANDO</em><br><b>ATÉ A</b> <em>ONDA</em><b>.</b></p>
+    <img class="painel-foto" src="img/retrato.webp" width="1080" height="1440" loading="lazy" alt="Retrato de Tainá Rocha">
+    <img class="painel-prancha" src="img/prancha-hero.webp" width="900" height="900" loading="lazy" alt="" aria-hidden="true">
+    <nav class="painel-nav esq" aria-label="Páginas"><p>PÁGINAS</p><a href="#inicio">INÍCIO</a><a href="#hall">DENTRO D'ÁGUA</a><a href="#loja">FORA D'ÁGUA</a><a href="#hall">CALENDÁRIO</a><a class="loja-link" href="#loja">LOJA</a></nav>
+    <nav class="painel-nav dir" aria-label="Redes"><p>REDES</p><a href="#redes">TIKTOK</a><a href="#redes">INSTAGRAM</a><a href="#redes">YOUTUBE</a><a href="#redes">TWITCH</a></nav>
+    <div class="painel-marcas" aria-hidden="true"><span>QUILHA · maré alta · SALINA · Vento Sul · ATOL · parafina co. · ONDULA · QUILHA · maré alta · SALINA · Vento Sul · ATOL · parafina co. · ONDULA · </span></div>
+    <a class="botao painel-botao" href="#rodape">CONTATOS COMERCIAIS <svg><use href="#seta"/></svg></a>
   </div>
-  <p class="creditos">Site de estudo: atleta e marcas fictícias, estrutura e movimento baseados no site do Lando Norris (Awwwards Site of the Year 2025). Retrato gerado com IA; pranchas modeladas em 3D no código. Fotos com licença aberta via Wikimedia Commons: <a href="https://commons.wikimedia.org/wiki/File:Teahupoo1.jpg">tubo-1</a>: The Last Minute (CC BY 2.0) · <a href="https://commons.wikimedia.org/wiki/File:Lance%27s_Right.jpg">tubo-2</a>: Pathofkarma (CC BY-SA 4.0) · <a href="https://commons.wikimedia.org/wiki/File:Cresting_the_wave_at_sundown_(25497704927).jpg">surfando-1</a>: photobom from Queensland, Australia (CC BY 2.0) · <a href="https://commons.wikimedia.org/wiki/File:A_woman_nearby_surfs_in_Kalama_Park_in_Maui.jpg">surfando-2</a>: Kirt Edblom (CC BY-SA 2.0) · <a href="https://commons.wikimedia.org/wiki/File:Surfer_Woman_is_Surfing_in_Bikini.jpg">entrando-mar</a>: epSos.de (CC BY 2.0) · <a href="https://commons.wikimedia.org/wiki/File:Young_Woman_Surfer_at_Dusk_-_Zicatela_Beach_-_Puerto_Escondido_-_Oaxaca_-_Mexico_-_02_(6533408783).jpg">prancha-braco</a>: Adam Jones from Kelowna, BC, Canada (CC BY-SA 2.0) · <a href="https://commons.wikimedia.org/wiki/File:Silhouette_surfer_at_sunset_(Unsplash).jpg">por-do-sol</a>: Rafael Leão raflfc (CC0) · <a href="https://commons.wikimedia.org/wiki/File:Joey_Pilgrim_2017-05-26_(Unsplash).jpg">rack-pranchas</a>: Joey Pilgrim joeypilgrim (CC0) · <a href="https://commons.wikimedia.org/wiki/File:Catching_the_Wave.jpg">aerea</a>: Michael Angelo Luna (CC BY-SA 4.0) · <a href="https://commons.wikimedia.org/wiki/File:Surfers_at_Piha_Beach_(7187483494).jpg">silhuetas</a>: Simon_sees from Australia (CC BY 2.0) · <a href="https://commons.wikimedia.org/wiki/File:Surfers_Sisters_(108497241).jpeg">prancha-rosa</a>: Susana De La Llave (CC BY 3.0).</p>
+  <div class="rodape-linha"><p>© 2026 Tainá Rocha · contato: imprensa@taina.example</p><p>PRIVACIDADE · TERMOS</p></div>
+  <p class="creditos">Site de estudo: atleta e marcas fictícias; estrutura, layout e movimento iguais ao site do Lando Norris (Awwwards Site of the Year 2025), com outro conteúdo. Retrato gerado com IA; pranchas modeladas em 3D no código. Fotos com licença aberta via Wikimedia Commons: <a href="https://commons.wikimedia.org/wiki/File:Teahupoo1.jpg">tubo-1</a>: The Last Minute (CC BY 2.0) · <a href="https://commons.wikimedia.org/wiki/File:Lance%27s_Right.jpg">tubo-2</a>: Pathofkarma (CC BY-SA 4.0) · <a href="https://commons.wikimedia.org/wiki/File:Cresting_the_wave_at_sundown_(25497704927).jpg">surfando-1</a>: photobom from Queensland, Australia (CC BY 2.0) · <a href="https://commons.wikimedia.org/wiki/File:A_woman_nearby_surfs_in_Kalama_Park_in_Maui.jpg">surfando-2</a>: Kirt Edblom (CC BY-SA 2.0) · <a href="https://commons.wikimedia.org/wiki/File:Surfer_Woman_is_Surfing_in_Bikini.jpg">entrando-mar</a>: epSos.de (CC BY 2.0) · <a href="https://commons.wikimedia.org/wiki/File:Young_Woman_Surfer_at_Dusk_-_Zicatela_Beach_-_Puerto_Escondido_-_Oaxaca_-_Mexico_-_02_(6533408783).jpg">prancha-braco</a>: Adam Jones from Kelowna, BC, Canada (CC BY-SA 2.0) · <a href="https://commons.wikimedia.org/wiki/File:Silhouette_surfer_at_sunset_(Unsplash).jpg">por-do-sol</a>: Rafael Leão raflfc (CC0) · <a href="https://commons.wikimedia.org/wiki/File:Joey_Pilgrim_2017-05-26_(Unsplash).jpg">rack-pranchas</a>: Joey Pilgrim joeypilgrim (CC0) · <a href="https://commons.wikimedia.org/wiki/File:Catching_the_Wave.jpg">aerea</a>: Michael Angelo Luna (CC BY-SA 4.0) · <a href="https://commons.wikimedia.org/wiki/File:Surfers_at_Piha_Beach_(7187483494).jpg">silhuetas</a>: Simon_sees from Australia (CC BY 2.0) · <a href="https://commons.wikimedia.org/wiki/File:Surfers_Sisters_(108497241).jpeg">prancha-rosa</a>: Susana De La Llave (CC BY 3.0).</p>
 </footer>
 </body>
 </html>

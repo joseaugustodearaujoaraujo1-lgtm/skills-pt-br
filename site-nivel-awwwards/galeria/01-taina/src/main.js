@@ -1,5 +1,8 @@
-// TAINÁ ROCHA — motion no ritmo do site do Lando Norris: objeto 3D sobre o retrato, letreiros em direções opostas,
-// assinatura que se desenha, manifesto que acende, colagem em paralaxe, títulos que se separam, grade que entra, leque das redes.
+// TAINÁ ROCHA — réplica do movimento do site do Lando Norris, fase por fase (medido no original):
+// 1) hero fixo 200vh: retrato branco com objeto 3D → a foto encolhe num cartão central, o fundo escurece, letreiros e assinatura;
+// 2) manifesto que acende; 3) colagem horizontal fixa (349vh) que clareia do escuro para o claro;
+// 4) dentro/fora fixo (200vh): objeto entra pela esquerda, perfil pela direita, foto final sobe cobrindo a tela;
+// 5) hall da fama em 4 colunas em escada com paralaxe; 6) loja; 7) parcerias; 8) leque das redes; 9) rodapé com assinatura.
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Lenis from 'lenis';
@@ -7,15 +10,18 @@ import Lenis from 'lenis';
 gsap.registerPlugin(ScrollTrigger);
 const reduzido = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const fino = matchMedia('(pointer: fine)').matches;
+const largo = matchMedia('(min-width: 861px)').matches;
 const $ = (s, c = document) => c.querySelector(s), $$ = (s, c = document) => [...c.querySelectorAll(s)];
-
-// topo claro/escuro conforme a seção embaixo dele
-const escuras = $$('.emcasa, .manifesto, .hall, .grade, .rodape');
 const topo = $('.topo');
-const atualizarTopo = () => { const y = 40; topo.classList.toggle('escuro', escuras.some(s => { const r = s.getBoundingClientRect(); return r.top <= y && r.bottom >= y; })); };
-addEventListener('scroll', atualizarTopo, { passive: true }); atualizarTopo();
+let escuroHero = false, claroHoriz = false;
+const atualizarTopo = () => {
+  const y = 40, emEscuro = ['.manifesto', '.grupo-preto', '.painel'].some(s => { const r = $(s).getBoundingClientRect(); return r.top <= y && r.bottom >= y; });
+  const h = $('.horiz-palco').getBoundingClientRect(), naHoriz = $('.horizontal').getBoundingClientRect();
+  const horizEscura = naHoriz.top <= y && naHoriz.bottom >= y && !claroHoriz;
+  topo.classList.toggle('escuro', emEscuro || escuroHero || horizEscura);
+};
+addEventListener('scroll', atualizarTopo, { passive: true });
 
-// manifesto: palavras (o texto segue no HTML)
 const man = $('.manifesto-texto');
 if (man && !reduzido) man.innerHTML = man.innerHTML.split(/(<em>.*?<\/em>|\s+)/).map(p => !p.trim() ? p : `<span class="pal">${p}</span>`).join('');
 
@@ -24,16 +30,23 @@ if (!reduzido) {
   if (fino) { lenis = new Lenis({ duration: 1.15 }); lenis.on('scroll', ScrollTrigger.update); gsap.ticker.add(t => lenis.raf(t * 1000)); gsap.ticker.lagSmoothing(0); }
   $$('a[href^="#"]').forEach(a => a.addEventListener('click', e => { const alvo = $(a.getAttribute('href')); if (!alvo) return; e.preventDefault(); lenis ? lenis.scrollTo(alvo, { duration: 1.4 }) : alvo.scrollIntoView({ behavior: 'smooth' }); }));
 
-  // HERO: entrada e saída
-  gsap.from('.hero-retrato', { yPercent: 12, opacity: 0, duration: 1.4, ease: 'expo.out' });
-  gsap.from('.hero-nome span:not(.sr)', { yPercent: 60, opacity: 0, duration: 1.3, ease: 'expo.out', stagger: .12 });
-  gsap.to('.hero-nome span:first-child', { xPercent: -25, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
-  gsap.to('.hero-nome span:nth-child(2)', { xPercent: 25, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
-  gsap.from('.hero-prancha', { scale: .6, rotate: -30, opacity: 0, duration: 1.6, delay: .3, ease: 'expo.out' });
-  gsap.from('.proxima, .rolar', { y: 30, opacity: 0, duration: 1, delay: .7, ease: 'power3.out', stagger: .1 });
-  const heroST = { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true };
-  gsap.to('.hero-retrato', { scale: 1.08, yPercent: 8, ease: 'none', scrollTrigger: heroST });
-  gsap.to('.hero-prancha', { yPercent: 55, xPercent: 18, rotate: 35, ease: 'none', scrollTrigger: heroST });
+  // ---------- 1. HERO ----------
+  gsap.from('.hero-retrato', { yPercent: 10, opacity: 0, duration: 1.4, ease: 'expo.out' });
+  gsap.from('.hero-prancha', { scale: .55, rotate: -40, opacity: 0, duration: 1.6, delay: .3, ease: 'expo.out' });
+  gsap.from('.proxima', { y: 30, opacity: 0, duration: 1, delay: .8, ease: 'power3.out' });
+  const traco = $('.assinatura path'), comp = traco.getTotalLength();
+  gsap.set(traco, { strokeDasharray: comp, strokeDashoffset: comp });
+  const th = gsap.timeline({ defaults: { ease: 'none' }, scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom bottom', scrub: true, onUpdate: s => { escuroHero = s.progress > .25; atualizarTopo(); } } });
+  th.to('.hero-prancha', { yPercent: -120, scale: .5, rotate: 40, opacity: 0, duration: .3 }, 0)
+    .to('.proxima', { opacity: 0, y: 20, duration: .15 }, 0)
+    .to('.hero-escuro', { opacity: 1, duration: .35 }, .05)
+    .to('.hero-curvas', { opacity: 0, duration: .3 }, .05)
+    .to('.hero-cartao', { width: '66vw', height: '67vh', backgroundColor: '#cfd3cc', duration: .45 }, 0)
+    .to('.hero-retrato', { filter: 'grayscale(.85)', height: '115%', duration: .45 }, 0)
+    .to('.hero-cartao', { width: '28vw', height: '40vh', duration: .4 }, .5)
+    .fromTo('.l1 span', { xPercent: 0 }, { xPercent: -30, duration: 1 }, 0)
+    .fromTo('.l2 span', { xPercent: -35 }, { xPercent: -5, duration: 1 }, 0)
+    .to(traco, { strokeDashoffset: 0, duration: .4 }, .55);
 
   // prancha 3D ao vivo (só com GPU de verdade; senão fica o render da própria cena)
   const temGPU = (() => { try { const gl = document.createElement('canvas').getContext('webgl2'); if (!gl) return false; const i = gl.getExtension('WEBGL_debug_renderer_info'); const n = i ? gl.getParameter(i.UNMASKED_RENDERER_WEBGL) : ''; gl.getExtension('WEBGL_lose_context')?.loseContext(); return !/swiftshader|llvmpipe|software/i.test(n); } catch { return false; } })();
@@ -43,48 +56,63 @@ if (!reduzido) {
     await document.fonts.load('800 64px "Mona Sans"');
     const c = document.createElement('canvas'); c.className = 'hero-canvas'; c.setAttribute('aria-hidden', 'true'); palco.append(c);
     const x = montarPrancha(c, { distancia: 12.5, aoPronto: () => palco.classList.add('ao-vivo') });
-    ScrollTrigger.create({ ...heroST, onUpdate: s => x.progresso(s.progress) });
     if (fino) addEventListener('pointermove', e => x.inclinar(e.clientX / innerWidth * 2 - 1, e.clientY / innerHeight * 2 - 1), { passive: true });
   }, 900), { once: true });
 
-  // EM CASA: letreiros em direções opostas + assinatura que se desenha
-  const ec = { trigger: '.emcasa', start: 'top bottom', end: 'bottom top', scrub: true };
-  gsap.fromTo('.l1 span', { xPercent: -10 }, { xPercent: -40, ease: 'none', scrollTrigger: ec });
-  gsap.fromTo('.l2 span', { xPercent: -45 }, { xPercent: -10, ease: 'none', scrollTrigger: ec });
-  gsap.fromTo('.l3 span', { xPercent: -5 }, { xPercent: -35, ease: 'none', scrollTrigger: ec });
-  const traco = $('.assinatura path'); const comp = traco.getTotalLength();
-  gsap.fromTo(traco, { strokeDasharray: comp, strokeDashoffset: comp }, { strokeDashoffset: 0, ease: 'none', scrollTrigger: { trigger: '.emcasa', start: 'top 60%', end: 'center 40%', scrub: true } });
-  gsap.fromTo('.emcasa-foto', { scale: .8, rotate: -4 }, { scale: 1.05, rotate: 3, ease: 'none', scrollTrigger: ec });
-
-  // MANIFESTO: acende palavra por palavra
+  // ---------- 2. MANIFESTO ----------
   const pals = $$('.manifesto-texto .pal');
-  ScrollTrigger.create({ trigger: '.manifesto', start: 'top 70%', end: 'bottom 60%', scrub: true, onUpdate: s => { const n = Math.round(s.progress * pals.length); pals.forEach((p, i) => p.classList.toggle('on', i < n)); } });
+  ScrollTrigger.create({ trigger: '.manifesto', start: 'top 70%', end: 'bottom 70%', scrub: true, onUpdate: s => { const n = Math.round(s.progress * pals.length); pals.forEach((p, i) => p.classList.toggle('on', i < n)); } });
+  gsap.from('.manifesto .louro, .louro-legenda', { y: 30, opacity: 0, duration: 1, stagger: .1, scrollTrigger: { trigger: '.manifesto', start: 'top 75%', once: true } });
 
-  // COLAGEM: camadas em velocidades diferentes
-  $$('.colagem .p').forEach(el => gsap.to(el, { yPercent: +el.dataset.v * -140, ease: 'none', scrollTrigger: { trigger: '.colagem', start: 'top bottom', end: 'bottom top', scrub: true } }));
-  $$('.colagem .cf img').forEach(img => gsap.from(img, { clipPath: 'inset(100% 0 0 0)', duration: 1.2, ease: 'expo.out', scrollTrigger: { trigger: img, start: 'top 90%', once: true } }));
-  gsap.from('.citacao, .colagem-texto', { y: 40, opacity: 0, duration: 1, ease: 'power3.out', scrollTrigger: { trigger: '.citacao', start: 'top 85%', once: true } });
+  if (largo) {
+    // ---------- 3. COLAGEM HORIZONTAL ----------
+    const palcoH = $('.horiz-palco');
+    const tc = gsap.timeline({ defaults: { ease: 'none' }, scrollTrigger: { trigger: '.horizontal', start: 'top top', end: 'bottom bottom', scrub: true, onUpdate: s => { claroHoriz = s.progress > .42; palcoH.classList.toggle('claro', claroHoriz); atualizarTopo(); } } });
+    tc.to('.trilho', { x: () => -(innerWidth * 1.9), duration: 1 }, 0)
+      .to(palcoH, { backgroundColor: '#6e7a76', duration: .3 }, 0)
+      .to(palcoH, { backgroundColor: '#e3e2d6', duration: .25 }, .3)
+      .to(palcoH, { backgroundColor: '#f3f1ea', duration: .2 }, .55)
+      .to(palcoH, { '--curvas': 1, duration: .3 }, .45);
+    $$('.hf').forEach((f, i) => tc.fromTo(f, { y: (i % 3 - 1) * 40 }, { y: (i % 3 - 1) * -40, duration: 1 }, 0));
 
-  // DENTRO / FORA: as palavras se afastam e as fotos crescem
-  const df = { trigger: '.dentrofora', start: 'top bottom', end: 'bottom top', scrub: true };
-  gsap.fromTo('.df-a', { xPercent: -5 }, { xPercent: -45, ease: 'none', scrollTrigger: df });
-  gsap.fromTo('.df-b', { xPercent: 5 }, { xPercent: 45, ease: 'none', scrollTrigger: df });
-  gsap.fromTo('.df-col img', { scale: 1.15 }, { scale: 1, ease: 'none', scrollTrigger: df });
+    // ---------- 4. DENTRO / FORA ----------
+    const to = gsap.timeline({ defaults: { ease: 'none' }, scrollTrigger: { trigger: '.otot', start: 'top top', end: 'bottom bottom', scrub: true } });
+    // como no original: os elementos entram ANTES de a seção fixar
+    const entra = { trigger: '.otot', start: 'top 85%', end: 'top top', scrub: true };
+    gsap.from('.otot-esq', { xPercent: -50, rotate: -50, ease: 'none', scrollTrigger: entra });
+    gsap.from('.otot-dir', { xPercent: 60, ease: 'none', scrollTrigger: entra });
+    gsap.from('.otot-col', { y: 80, opacity: 0, stagger: .1, ease: 'none', scrollTrigger: { trigger: '.otot', start: 'top 60%', end: 'top top', scrub: true } });
+    to.to('.otot-esq', { rotate: 6, duration: .5 }, 0)
+      .to('.otot-fim', { clipPath: 'inset(0% 0 0 0)', duration: .45 }, .55)
+      .fromTo('.otot-fim img', { scale: 1.25 }, { scale: 1, duration: .45 }, .55);
+  }
 
-  // HALL + GRADE
-  gsap.fromTo('.hall-foto', { scale: 1.2 }, { scale: 1, ease: 'none', scrollTrigger: { trigger: '.hall', start: 'top bottom', end: 'bottom top', scrub: true } });
-  gsap.from('.hall-titulo, .hall-texto', { y: 60, opacity: 0, duration: 1.1, ease: 'power3.out', stagger: .12, scrollTrigger: { trigger: '.hall', start: 'top 40%', once: true } });
-  gsap.from('.pranchas li', { y: 80, opacity: 0, rotate: 3, duration: 1, ease: 'power3.out', stagger: { each: .07, grid: 'auto', from: 'start' }, scrollTrigger: { trigger: '.pranchas', start: 'top 80%', once: true } });
-  $$('.pranchas img').forEach((img, i) => gsap.to(img, { rotate: i % 2 ? 6 : -6, ease: 'none', scrollTrigger: { trigger: img, start: 'top bottom', end: 'bottom top', scrub: true } }));
+  // ---------- 5. HALL DA FAMA ----------
+  gsap.from('.hall-titulo, .hall-texto', { y: 50, opacity: 0, duration: 1, stagger: .1, ease: 'power3.out', scrollTrigger: { trigger: '.hall', start: 'top 80%', once: true } });
+  if (largo) $$('.grade .col1, .grade .col3').forEach(li => gsap.fromTo(li, { y: 60 }, { y: -100, ease: 'none', scrollTrigger: { trigger: '.grade', start: 'top bottom', end: 'bottom top', scrub: true } }));
+  gsap.from('.grade li', { opacity: 0, y: 60, duration: .9, ease: 'power3.out', stagger: .05, scrollTrigger: { trigger: '.grade', start: 'top 85%', once: true } });
+  gsap.from('.mais > *', { y: 30, opacity: 0, duration: .9, stagger: .1, scrollTrigger: { trigger: '.mais', start: 'top 70%', once: true } });
 
-  // LOJA + PARCERIAS
-  gsap.fromTo('.loja-cartao', { rotate: -14, yPercent: 40 }, { rotate: 10, yPercent: -30, ease: 'none', scrollTrigger: { trigger: '.loja', start: 'top bottom', end: 'bottom top', scrub: true } });
-  gsap.fromTo('.parc-mao', { clipPath: 'inset(0 100% 0 0)' }, { clipPath: 'inset(0 0% 0 0)', ease: 'none', scrollTrigger: { trigger: '.parcerias', start: 'top 75%', end: 'top 15%', scrub: true } });
-  gsap.from('.marcas li', { y: 30, opacity: 0, duration: .8, stagger: .06, ease: 'power3.out', scrollTrigger: { trigger: '.marcas', start: 'top 90%', once: true } });
+  // ---------- 6. LOJA ----------
+  const tl = { trigger: '.loja', start: 'top bottom', end: 'bottom top', scrub: true };
+  gsap.fromTo('.loja-grande', { yPercent: 12 }, { yPercent: -6, ease: 'none', scrollTrigger: tl });
+  gsap.fromTo('.loja-cartao', { yPercent: 40, rotate: -6 }, { yPercent: -30, rotate: 4, ease: 'none', scrollTrigger: tl });
+  gsap.fromTo('.loja-p1, .loja-p2, .loja-p3', { y: 80 }, { y: -60, ease: 'none', stagger: .1, scrollTrigger: tl });
 
-  // REDES: leque de cartões que se abre
-  const cartas = $$('.leque img'); const meio = (cartas.length - 1) / 2;
-  cartas.forEach((c, i) => gsap.fromTo(c, { rotate: 0, x: 0 }, { rotate: (i - meio) * 9, x: (i - meio) * (innerWidth < 860 ? 30 : 70), ease: 'none', scrollTrigger: { trigger: '.redes', start: 'top 70%', end: 'center 50%', scrub: true } }));
+  // ---------- 7. PARCERIAS ----------
+  gsap.fromTo('.parc-mao', { clipPath: 'inset(0 100% 0 0)' }, { clipPath: 'inset(0 0% 0 0)', ease: 'none', scrollTrigger: { trigger: '.parcerias', start: 'top 90%', end: 'top 30%', scrub: true } });
+  gsap.fromTo('.marcas', { xPercent: 0 }, { xPercent: -30, ease: 'none', scrollTrigger: { trigger: '.parcerias', start: 'top bottom', end: 'bottom top', scrub: true } });
+
+  // ---------- 8. REDES: o leque sobe e abre ----------
+  const cartas = $$('.leque img'), meio = (cartas.length - 1) / 2;
+  cartas.forEach((c, i) => gsap.fromTo(c, { y: innerHeight * .35, rotate: 0, x: 0 }, { y: 0, rotate: (i - meio) * 8, x: (i - meio) * innerWidth * (largo ? .055 : .07), ease: 'none', scrollTrigger: { trigger: '.redes', start: 'top 85%', end: 'center 55%', scrub: true } }));
+
+  // ---------- 9. RODAPÉ ----------
+  const tr = $('.painel-assinatura path'), c2 = tr.getTotalLength();
+  gsap.fromTo(tr, { strokeDasharray: c2, strokeDashoffset: c2 }, { strokeDashoffset: 0, ease: 'none', scrollTrigger: { trigger: '.rodape', start: 'top 70%', end: 'top 20%', scrub: true } });
+  gsap.to('.painel-marcas span', { xPercent: -50, duration: 30, ease: 'none', repeat: -1 });
+  gsap.from('.painel-foto, .painel-prancha', { yPercent: 25, opacity: 0, duration: 1.2, ease: 'expo.out', stagger: .1, scrollTrigger: { trigger: '.rodape', start: 'top 50%', once: true } });
 
   document.fonts.ready.then(() => ScrollTrigger.refresh());
 }
+atualizarTopo();
