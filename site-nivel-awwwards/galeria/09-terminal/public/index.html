@@ -43,7 +43,7 @@
 
 <main id="conteudo">
   <!-- 1. hero: sequência de imagens presa à rolagem e três frases que se escrevem -->
-  <section class="hero" aria-label="Apresentação">
+  <section class="hero" data-rolagem="1800" aria-label="Apresentação">
     <div class="hero-fixo">
       <div class="hero-quadros" aria-hidden="true">
         <img class="hq hq1" src="img/hero-1.webp" width="1920" height="1200" fetchpriority="high" alt="">
@@ -61,7 +61,7 @@
   <!-- 2. marcas -->
   <section class="marcas" aria-labelledby="t-marcas">
     <h2 id="t-marcas" class="titulo-g">Movendo os pátios por trás das marcas que você conhece</h2>
-    <ul class="grade-logos"></ul>
+    <ul class="grade-logos" data-logos="Rodosul|Frio Norte|Cargas Tupi|Atacado Brisa|Via Norte|Armazéns Ipê|Porto Vivo|Agro Pampa|Maremar|Translitoral|Laticínios Serra|Depósito Central|Pneus Sertão|Moda Aroeira|Bebidas Ipanema|Eletro Caju|Papel Jatobá|Farma Brisa"></ul>
   </section>
 
   <!-- 3. três caminhos -->
@@ -80,7 +80,7 @@
     <h2 id="t-custo" class="titulo-g">Quanto o seu pátio está custando?</h2>
   </section>
   <section class="calculadora" aria-label="Calculadora de economia">
-    <form class="calc-form" onsubmit="return false">
+    <form class="calc-form" data-semanas="52" data-horas="8" data-fator-mao=".55" data-fator-manobra=".42" data-multa-base="4" data-multa-por="2.1" onsubmit="return false">
       <p class="calc-rotulo">Calculadora</p>
       <h3>Conte sobre o seu pátio:</h3>
       <div class="campos">
@@ -119,7 +119,7 @@
   </section>
 
   <!-- 6. passos com mídia fixa -->
-  <section class="passos" id="passos" aria-label="O que o sistema faz">
+  <section class="passos" id="passos" data-inicio="5700" data-passo="900" aria-label="O que o sistema faz">
     <div class="passos-dentro">
       <ol class="passos-lista">
         <li><h3>Orquestre a operação do pátio</h3><p>A visão computacional automatiza entrada, localização e validação do portão à doca: até 50% mais vazão e portões 85% mais rápidos.</p></li>
@@ -146,7 +146,7 @@
       <button role="tab" aria-selected="true" data-i="0">No portão</button><button role="tab" aria-selected="false" data-i="1">No pátio</button><button role="tab" aria-selected="false" data-i="2">Na doca</button><button role="tab" aria-selected="false" data-i="3">Em toda a operação</button>
     </div>
     <div class="setas"><button type="button" class="seta ant" aria-label="Anterior">‹</button><button type="button" class="seta prox" aria-label="Próximo">›</button></div>
-    <ul class="slides">
+    <ul class="slides" data-passo="600">
       <li class="slide ativo"><img src="img/slide-1.webp" width="1400" height="1140" loading="lazy" alt="Portão de entrada de um centro de distribuição com caminhão parado"><div class="s-txt"><p class="rotulo">No portão</p><h3>Automatize e agilize as operações do portão</h3><p class="s-desc">O sistema automatiza a entrada e a saída. A visão computacional acelera o portão, reduz a digitação, diminui o trabalho manual e, integrada ao seu TMS, controla as chegadas e emite os documentos sem papel.</p><a class="bt-pilula claro" href="#contato">Mais</a></div></li>
       <li class="slide"><img src="img/slide-2.webp" width="1000" height="1250" loading="lazy" alt="Guindastes de contêineres iluminados à noite"><div class="s-txt"><p class="rotulo">No pátio</p><h3>Visibilidade em tempo real e fluxos automáticos</h3><p class="s-desc">Cada carreta localizada no mapa do pátio, com tarefas de manobra criadas sozinhas e enviadas ao manobrista certo.</p><a class="bt-pilula claro" href="#contato">Mais</a></div></li>
       <li class="slide"><img src="img/slide-3.webp" width="1000" height="1250" loading="lazy" alt="Fileira de docas de carga num armazém"><div class="s-txt"><p class="rotulo">Na doca</p><h3>Doca certa, na hora certa</h3><p class="s-desc">Agendamento e ocupação das docas em tempo real, com a fila do pátio ordenada pela prioridade da carga.</p><a class="bt-pilula claro" href="#contato">Mais</a></div></li>
@@ -223,6 +223,7 @@
   </div>
   <div class="rod-baixo"><p>Copyright CAIS Tecnologia de Pátios 2026. Todos os direitos reservados.</p><a href="#perguntas">Índice técnico</a></div>
 </footer>
+<script>(function(){var t=new URLSearchParams(location.search).get('tema');if(t)document.documentElement.setAttribute('data-paleta',t)})()</script>
 <script type="module" src="app.js?v=1"></script>
 </body>
 </html>

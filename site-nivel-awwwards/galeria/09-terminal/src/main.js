@@ -10,7 +10,7 @@ const reduzido = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const estreito = matchMedia('(max-width: 860px)');
 
 // ---------- logos fictícios da grade ----------
-const LOGOS = ['Rodosul', 'Frio Norte', 'Cargas Tupi', 'Atacado Brisa', 'Via Norte', 'Armazéns Ipê', 'Porto Vivo', 'Agro Pampa', 'Maremar', 'Translitoral', 'Laticínios Serra', 'Depósito Central', 'Pneus Sertão', 'Moda Aroeira', 'Bebidas Ipanema', 'Eletro Caju', 'Papel Jatobá', 'Farma Brisa'];
+const LOGOS = $('.grade-logos').dataset.logos.split('|'); // nomes vêm do HTML
 const icones = ['<circle cx="13" cy="13" r="11" fill="none" stroke="currentColor" stroke-width="3"/>', '<path d="M2 22L13 3l11 19z" fill="currentColor"/>', '<rect x="3" y="3" width="20" height="20" rx="3" fill="currentColor"/>', '<path d="M2 13h22M13 2v22" stroke="currentColor" stroke-width="4"/>'];
 $('.grade-logos').innerHTML = LOGOS.map((n, i) => `<li><span><svg viewBox="0 0 26 26" aria-hidden="true">${icones[i % 4]}</svg>${n}</span></li>`).join('');
 
@@ -23,10 +23,10 @@ $$('#menu-cel a').forEach(a => a.addEventListener('click', () => { menuCel.hidde
 const fmt = n => Math.round(n).toLocaleString('pt-BR');
 function calcular() {
   const f = Object.fromEntries([...new FormData($('.calc-form'))].map(([k, v]) => [k, +v || 0]));
-  const semanas = 52, horas = 8;
-  const mao = f.portoes * f.turnos * horas * f.dias * semanas * f.hora * .55;
-  const manobra = f.manobristas * f.turnos * horas * f.dias * semanas * f.hora * .42;
-  const multa = f.entradas * f.dias * semanas * (4 + f.multas * 2.1);
+  const d = $('.calc-form').dataset, semanas = +d.semanas, horas = +d.horas; // premissas lidas do HTML
+  const mao = f.portoes * f.turnos * horas * f.dias * semanas * f.hora * +d.fatorMao;
+  const manobra = f.manobristas * f.turnos * horas * f.dias * semanas * f.hora * +d.fatorManobra;
+  const multa = f.entradas * f.dias * semanas * (+d.multaBase + f.multas * +d.multaPor);
   const set = (k, v) => { $(`[data-r="${k}"]`).textContent = fmt(v); };
   set('mao', mao); set('manobra', manobra); set('multa', multa); set('total', mao + manobra + multa);
 }
@@ -40,7 +40,7 @@ function irSlide(i) {
   slideAtual = (i + slides.length) % slides.length;
   slides.forEach((s, k) => s.classList.toggle('ativo', k === slideAtual));
   abasP.forEach((b, k) => b.setAttribute('aria-selected', String(k === slideAtual)));
-  if (!estreito.matches) $('.slides').style.transform = `translateX(${-slideAtual * 600}px)`;
+  if (!estreito.matches) $('.slides').style.transform = `translateX(${-slideAtual * +$('.slides').dataset.passo}px)`;
 }
 abasP.forEach(b => b.addEventListener('click', () => irSlide(+b.dataset.i)));
 $('.seta.ant').addEventListener('click', () => irSlide(slideAtual - 1));
@@ -108,7 +108,7 @@ if (reduzido) {
       gsap.set(gemeo, { opacity: gsap.utils.clamp(0, 1, (p - .66) / .12) });
       gsap.set('.rolar', { opacity: .75 * (1 - gsap.utils.clamp(0, 1, p / .06)) });
       // medido no original: cada frase ocupa 600 px; escreve de +40 a +355 e apaga de +400 a +570
-      const rol = p * 1800;
+      const rol = p * +$('.hero').dataset.rolagem;
       ['.f1', '.f2', '.f3'].forEach((sel, i) => { const s0 = i * 600; revelar($(sel), (rol - s0 - 40) / 315, (rol - s0 - 400) / 170); });
     },
   });
@@ -125,7 +125,7 @@ if (reduzido) {
     onUpdate: s => {
       if (estreito.matches) return;
       // trocas medidas no original: item 2 em ~6 600, item 3 em ~7 500, item 4 em ~8 400
-      const i = Math.max(0, Math.min(itens.length - 1, Math.floor((scrollY - 5700) / 900)));
+      const i = Math.max(0, Math.min(itens.length - 1, Math.floor((scrollY - +$('.passos').dataset.inicio) / +$('.passos').dataset.passo)));
       itens.forEach((li, k) => { li.classList.toggle('ativo', k === i); li.classList.toggle('saiu', k < i); });
       midias.forEach((m, k) => m.classList.toggle('ativo', k === i));
     },
