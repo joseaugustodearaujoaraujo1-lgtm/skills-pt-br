@@ -3,5 +3,6 @@ Thumbs.db
 node_modules
 .env
 site-nivel-awwwards/verificacao/
-acervos-design/
-acervo/
+**/acervos-design/
+/acervo/
+**/acervos-design/acervo/
