@@ -3,6 +3,8 @@
 Objetivo: para **cada site novo**, achar sites de referência de design, layout e UX/UI que fiquem bons **naquele tema** e decidir, **seção por seção**, o que aprender de cada um. A pesquisa tem 3 camadas: acervo local (rápida, grátis), pesquisa ao vivo (atual) e análise (o que importa).
 
 ## Camada 1 — Acervo local (910 sites, offline)
+Não tem o acervo? Monte do zero com [acervo-do-zero.md](acervo-do-zero.md).
+
 ```bash
 node ~/.claude/skills/site-nivel-awwwards/scripts/pesquisar-referencias.mjs --tema "joalheria" --recursos "3d,scroll,tipografia,cursor" --libs gsap --desde 2022 --limite 12
 ```
