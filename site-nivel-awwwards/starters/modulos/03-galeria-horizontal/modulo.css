@@ -1,0 +1,17 @@
+/* Galeria horizontal (POLPA, "momentos": trilho fixado; BRUMA, notícias: trilho com arraste). */
+.galeria-h-titulo { padding: 8vh 6vw 3vh; font: 700 clamp(1.8rem, 4vw, 3.4rem)/1.05 var(--f, sans-serif); }
+.galeria-h-janela { overflow: hidden; height: 100vh; display: flex; align-items: center; }   /* a altura é a do palco fixado */
+.galeria-h-trilho { display: flex; gap: 4vw; align-items: center; margin: 0; padding: 0 6vw; list-style: none; width: max-content; will-change: transform; }
+.galeria-h-passo { flex: none; width: min(38vw, 520px); }
+.galeria-h-passo:nth-child(even) { margin-top: 12vh; }      /* ritmo: passos pares descem; evita fila de cartões iguais */
+.galeria-h-passo figure { margin: 0; }
+.galeria-h-passo img { width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; background: var(--cor-escura, #14201a); }
+.galeria-h-passo figcaption { margin-top: .8rem; font-size: .95rem; }
+
+/* celular (<861px): sem trilho fixado; faixa que arrasta com o dedo e encaixa em cada passo */
+@media (max-width: 860px) {
+  .galeria-h-janela { height: auto; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; padding-bottom: 6vh; }
+  .galeria-h-trilho { padding: 0 5vw; gap: 4vw; }
+  .galeria-h-passo { width: 78vw; scroll-snap-align: center; } .galeria-h-passo:nth-child(even) { margin-top: 0; }
+}
+@media (prefers-reduced-motion: reduce) { .galeria-h-janela { height: auto; overflow-x: auto; } }

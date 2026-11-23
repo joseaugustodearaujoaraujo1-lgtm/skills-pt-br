@@ -1,0 +1,9 @@
+/* Trecho fixo (BRUMA, hero 400vh e palco do encanto 896vh). Altura da seção = duração da cena: progresso 0..1 do scrub = (altura − janela). */
+.trecho { position: relative; height: var(--trecho-altura, 400vh); color: var(--cor-claro, #fff); }
+.trecho-palco { position: sticky; top: 0; height: 100vh; overflow: hidden; }   /* sticky só funciona se nenhum ancestral tiver overflow diferente de visible/clip */
+.trecho-cartao { position: absolute; inset: 0; overflow: hidden; transform-origin: 50% 50%; will-change: transform; }
+.trecho-foto { width: 100%; height: 100%; object-fit: cover; transform-origin: 70% 30%; will-change: transform; background: var(--cor-escura, #14201a); }
+.trecho-texto { position: absolute; inset: 0; z-index: 2; pointer-events: none; display: grid; align-content: end; gap: 1rem; padding: 0 6.1vw 8vh; background-image: linear-gradient(transparent 45%, rgb(12 18 14 / .55)); }
+.trecho-texto h2 { font: 500 max(26px, 2.95vw)/1.04 var(--f, sans-serif); text-transform: uppercase; letter-spacing: -.01em; max-width: 18ch; }
+.trecho-base { opacity: 0; font-size: 1.1rem; }
+@media (prefers-reduced-motion: reduce) { .trecho { height: auto; } .trecho-palco { position: relative; height: 100vh; } .trecho-base { opacity: 1; } }

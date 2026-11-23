@@ -1,0 +1,12 @@
+/* Base mínima compartilhada pelos exemplos (não faz parte dos módulos): reset, cores por papel e texto legível. */
+:root { --cor-fundo: #f1ece1; --cor-texto: #1d1b17; --cor-escura: #14201a; --cor-claro: #f4f1ea; --cor-destaque: #b4552f; --f: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif; --ease: cubic-bezier(.22, 1, .36, 1); }
+*, *::before, *::after { box-sizing: border-box; }
+html { color-scheme: light; }
+body { margin: 0; font: 400 1.05rem/1.5 var(--f); background: var(--cor-fundo); color: var(--cor-texto); overflow-x: clip; }
+h1, h2, p { margin: 0; } img, canvas { display: block; max-width: 100%; }
+.pular { position: absolute; left: 1rem; top: -4rem; background: var(--cor-texto); color: var(--cor-fundo); padding: .7rem 1rem; z-index: 100; } .pular:focus { top: 1rem; }
+.intro, .fecho { min-height: 70vh; display: grid; place-content: center; gap: 1rem; padding: 4rem 6vw; text-align: left; }
+.intro h1 { font: 700 clamp(2.4rem, 7vw, 6rem)/1 var(--f); letter-spacing: -.02em; max-width: 14ch; }
+.intro p, .fecho p { max-width: 46ch; font-size: 1.15rem; }
+.fecho h2 { font: 700 clamp(1.8rem, 4vw, 3.4rem)/1.05 var(--f); }
+@media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }

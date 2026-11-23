@@ -1,0 +1,9 @@
+<!-- Giro de objeto 3D por quadros: a seção é alta (400vh) e o palco fica preso na tela; a rolagem escolhe o quadro. -->
+<section class="giro" id="giro" data-quadros="36" data-caminho="img/giro/{n}.webp" data-curva="linear" aria-labelledby="t-giro">
+  <div class="giro-palco">
+    <h2 class="giro-titulo" id="t-giro">[Título da peça]</h2>
+    <!-- poster = quadro 00: aparece antes do JS, com reduced-motion e se faltar canvas. -->
+    <img class="giro-poster" src="img/giro/00.webp" width="600" height="600" alt="[Descrição do objeto, de frente]">
+    <canvas class="giro-quadros" width="600" height="600" aria-hidden="true" hidden></canvas>
+  </div>
+</section>

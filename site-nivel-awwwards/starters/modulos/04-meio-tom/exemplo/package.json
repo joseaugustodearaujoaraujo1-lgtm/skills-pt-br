@@ -1,0 +1,9 @@
+{
+  "name": "exemplo-modulo",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "esbuild src/main.js --bundle --minify --format=esm --target=es2020 --outdir=public --entry-names=app",
+    "serve": "node servir.mjs"
+  }
+}

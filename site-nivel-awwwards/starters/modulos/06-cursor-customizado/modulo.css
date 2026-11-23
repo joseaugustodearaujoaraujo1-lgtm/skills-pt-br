@@ -1,0 +1,15 @@
+/* Cursor customizado. Só existe com mouse (pointer: fine) e sem prefers-reduced-motion: o JS liga a classe html.tem-cursor.
+   O cursor nativo continua visível (nunca esconda sem alternativa): o anel é só um acompanhante. */
+.cursor { position: fixed; left: 0; top: 0; z-index: 200; pointer-events: none; opacity: 0; transition: opacity .25s; color: var(--cor-cursor, #fff); mix-blend-mode: difference; }
+.tem-cursor .cursor.visivel { opacity: 1; }
+.cursor-ponto, .cursor-anel { position: absolute; left: 0; top: 0; border-radius: 50%; will-change: transform; }
+.cursor-ponto { width: 8px; height: 8px; margin: -4px 0 0 -4px; background: currentColor; }
+.cursor-anel { width: 36px; height: 36px; margin: -18px 0 0 -18px; border: 1px solid currentColor; display: grid; place-items: center; transition: width .35s var(--ease, ease), height .35s var(--ease, ease), margin .35s var(--ease, ease), background-color .35s, border-color .35s; }
+.cursor-rotulo { font: 500 11px/1 var(--f, sans-serif); text-transform: uppercase; letter-spacing: .08em; opacity: 0; transition: opacity .2s; white-space: nowrap; }
+/* estados (a classe vai em .cursor): */
+.cursor.sobre-link .cursor-anel { width: 64px; height: 64px; margin: -32px 0 0 -32px; }
+.cursor.com-rotulo .cursor-anel { width: 96px; height: 96px; margin: -48px 0 0 -48px; background: currentColor; }
+.cursor.com-rotulo .cursor-rotulo { opacity: 1; color: #000; mix-blend-mode: normal; }   /* texto escuro sobre disco claro: o blend difference inverte, então o rótulo precisa ser #000 */
+.cursor.com-rotulo .cursor-ponto, .cursor.escondido { opacity: 0; }
+.cursor.clicando .cursor-anel { scale: .85; }   /* propriedade `scale`, não transform: o GSAP já usa transform no anel */
+@media (pointer: coarse), (prefers-reduced-motion: reduce) { .cursor { display: none; } }
