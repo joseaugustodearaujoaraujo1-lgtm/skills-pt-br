@@ -22,9 +22,10 @@ try { cena = criarCena($('.palco')); } catch (e) { raiz.classList.add('sem-3d');
 // ---------- estado da rolagem virtual ----------
 let alvo = 0, atual = 0, iniciado = false;
 const ponteiro = { x: 0, y: 0, tx: 0, ty: 0 };
-const limitar = v => Math.max(0, Math.min(TOTAL, v));
+const PASSOS = +document.body.dataset.passos || TOTAL, PASSO_PX = +document.body.dataset.passoPx || 600; // lidos do <body>
+const limitar = v => Math.max(0, Math.min(PASSOS, v));
 const avancar = d => { if (!iniciado) return; alvo = limitar(alvo + d); };
-addEventListener('wheel', e => { e.preventDefault(); avancar(e.deltaY / 600); }, { passive: false });
+addEventListener('wheel', e => { e.preventDefault(); avancar(e.deltaY / PASSO_PX); }, { passive: false });
 let toqueY = null;
 addEventListener('touchstart', e => { toqueY = e.touches[0].clientY; }, { passive: true });
 addEventListener('touchmove', e => { if (toqueY === null) return; const y = e.touches[0].clientY; avancar((toqueY - y) / 260); toqueY = y; }, { passive: true });

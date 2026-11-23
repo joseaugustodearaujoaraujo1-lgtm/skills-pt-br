@@ -57,7 +57,7 @@ const igualaLum = (h, s, alvo) => { let lo = 0, hi = 1; for (let i = 0; i < 24; 
 const TEMAS = {
   quente: (h, s, n) => [(h - 28 + 360) % 360, Math.min(1, s * 1.05)],
   frio: (h, s, n) => [(h + 75) % 360, s],
-  mono: (h, s, n) => [h, /destaque|acento/.test(n) ? s : s * .3],
+  mono: (h, s, n) => [h, /destaque|acento/.test(n) ? s * .55 : s * .3],
 };
 let blocos = '';
 for (const [nome, fn] of Object.entries(TEMAS)) {
