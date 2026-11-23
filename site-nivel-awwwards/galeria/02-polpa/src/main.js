@@ -52,7 +52,7 @@ if (!reduzido) {
     const x = montarPicole(c, { sabor: 'morango', aoPronto: () => palco.classList.add('ao-vivo') });
     if (fino) addEventListener('pointermove', e => x.inclinar(e.clientX / innerWidth * 2 - 1, e.clientY / innerHeight * 2 - 1), { passive: true });
     // troca de sabor ao clicar no picolé
-    const sab = ['morango', 'manga', 'maracuja', 'limao', 'coco', 'acai']; let k = 0;
+    const sab = palco.dataset.sabores.split(','); let k = 0;
     palco.addEventListener('click', () => { x.trocar(sab[++k % sab.length]); ploc(); });
   }, 1000), { once: true });
 
@@ -60,7 +60,7 @@ if (!reduzido) {
   $$('.colagem .p').forEach(el => gsap.to(el, { yPercent: +el.dataset.v * -100, rotate: `+=${+el.dataset.v * 14}`, ease: 'none', scrollTrigger: { trigger: '.colagem', start: 'top bottom', end: 'bottom top', scrub: true } }));
   const pals = $$('.kraft-texto .pal');
   ScrollTrigger.create({ trigger: '.kraft', start: 'top 75%', end: 'bottom 35%', scrub: true, onUpdate: s => { const n = Math.round(s.progress * pals.length); pals.forEach((p, i) => p.classList.toggle('on', i < n)); } });
-  gsap.fromTo('.faixa-texto', { attr: { startOffset: '0%' } }, { attr: { startOffset: '-60%' }, ease: 'none', scrollTrigger: { trigger: '.faixa', start: 'top bottom', end: 'bottom top', scrub: true } });
+  gsap.fromTo('.faixa-texto', { attr: { startOffset: '0%' } }, { attr: { startOffset: $('.faixa').dataset.deslocamento }, ease: 'none', scrollTrigger: { trigger: '.faixa', start: 'top bottom', end: 'bottom top', scrub: true } });
 
   // A FRUTADA: título entra por letra, picolé gira com a rolagem, cartões flutuam
   gsap.from('.frutada-titulo span', { yPercent: 100, opacity: 0, duration: 1.1, ease: 'power4.out', stagger: .1, scrollTrigger: { trigger: '.frutada', start: 'top 70%', once: true } });
