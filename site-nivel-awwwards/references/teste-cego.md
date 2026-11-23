@@ -16,6 +16,9 @@ Pergunta: **um agente limpo, só com a skill, faz um site de nível Awwwards?** 
 | 2 | Joalheria de luxo | `teste-cego/r2-joalheria/` | 0 FAIL, 0 WARN | 7,05 | (não precisou: fora da faixa de corte) | **7,05** | acima da TAINÁ |
 | 3 | Produto físico com 3D | `teste-cego/r3-produto-3d/` | 0 FAIL na época; com o verificador novo, 3 FAIL (nota de produção) | 5,40 | (não precisou) | **5,40** | abaixo; sem a nota de produção seria ~7,30 |
 | 3b | Produto físico com 3D, de novo (agente novo, skill com as regras das rodadas 1 a 3) | `teste-cego/r3b-produto-3d/` | 0 FAIL, 0 WARN | 7,50 | 7,50 | **7,50 · LIBERADO** | 1,05 acima da TAINÁ; o primeiro a chegar ao corte |
+| 4a | Cafeteria de especialidade (Café Serra) | `teste-cego/r4a-cafeteria/` | 0 FAIL, 1 WARN | 6,85 | (não rodou) | **6,85** | abaixo da 3b |
+| 4b | Escritório de arquitetura (Linha Terra) | `teste-cego/r4b-arquitetura/` | 0 FAIL, 1 WARN | 7,15 | (não rodou) | **7,15** | abaixo da 3b |
+| 4c | Fintech de troco investido (Maré) | `teste-cego/r4c-fintech/` | 0 FAIL, 4 WARN | 7,10 | (não rodou) | **7,10** | abaixo da 3b |
 
 Notas por critério (Design / Usabilidade / Criatividade / Conteúdo):
 - Rodada 1: juiz 1, 7 / 6,5 / 7 / 6; juiz 2, 7 / 6,5 / 7 / 7.
@@ -101,6 +104,27 @@ Notas por critério (Design / Usabilidade / Criatividade / Conteúdo):
 | 10 | `img, svg, video {display:block}` do starter anula o `hidden` (agente) | `[hidden] { display: none !important }` no starter | `starters/html/public/estilo.css` |
 | 11 | Imagem `loading="lazy"` vazia na captura de página inteira (agente) | O verificador força o carregamento antes da captura | `scripts/verificar-site.mjs` |
 | 12 | Regra 0 (IoU ≥ 95%) contra o caso sem usuário (agente) | Exceção escrita na Regra 0 | `3d-leve.md` |
+
+## Rodada 4: três briefings novos, sem acervo (2026-11-23)
+Agentes Sonnet limpos, juízes Opus limpos (um por site; nenhum chegou à faixa de corte de 7,5, então não houve segundo juiz). Notas Design / Usabilidade / Criatividade / Conteúdo:
+- 4a cafeteria: 7 / 6,5 / 7 (teto: momento-assinatura não aparece na foto) / 7 → **6,85**.
+- 4b arquitetura: 7,5 / 6,5 / 7,5 / 7 → **7,15**.
+- 4c fintech: 7,5 / 6,5 / 7 / 7,5 → **7,10**.
+
+**Leitura:** a ideia e o design subiram (7 a 7,5 nos três), mas os três pararam na **Usabilidade 6,5 pelo mesmo motivo: menu e ação somem depois do hero**. A causa estava no próprio starter (o cabeçalho se escondia ao rolar para baixo). Regra escrita desde a rodada 1 não bastou: virou código e portão.
+
+| # | Falha (fonte) | Correção | Onde |
+|---|---|---|---|
+| 1 | Menu e ação somem depois do hero (juízes 4a, 4b, 4c) | Starter não esconde mais o cabeçalho (fica compacto); verificador dá **FAIL `sem-navegacao`** quando, no meio da página, não há link ou botão fixo à vista | `starters/html/src/main.js`, `starters/next/components/Motion.js`, `scripts/verificar-site.mjs` |
+| 2 | Sem acervo, 0 referências (agentes 4a, 4b, 4c) | Índice destilado de sites premiados no repositório, usado sozinho por `pesquisar-referencias.mjs` | `scripts/acervo/destilar.mjs`, `references/acervo-destilado/` |
+| 3 | `opcoes.mjs` recomendou o roxo proibido (agente 4c) | O comando do passo 1 passa `--evitar` com o "não quero parecer" | `SKILL.md` §1 |
+| 4 | `juiz.mjs` fotografava o trecho fixo no início (agente 4b) | Foto no meio do progresso do pin | `scripts/juiz.mjs` |
+| 5 | `--cores` só no `public/tokens.css` (agente 4b); brief editado não refaz tokens; título só em peso 400 (agente 4c) | Paleta gravada nos dois; `tokens.css` como fonte da verdade; título baixa 400 e 700 | `scripts/criar-projeto.mjs`, `construcao.md` §4 |
+| 6 | Conflito de animação CSS e GSAP no mesmo elemento; o que apagar do starter (agente 4b) | Regras 6 e 7 | `construcao.md` §4 |
+| 7 | Contraste medido com a camada animada ausente; CSS no fim anulando o celular (agentes 4a, 4c) | Regras 8 e 9 | `construcao.md` §4 |
+| 8 | Momento-assinatura não aparece na foto (juiz 4a) | Já coberto por `direcao-criativa.md` §2b; o juiz aplicou o teto 7 como previsto | — |
+
+Também apontado pelos juízes e ainda sem regra nova: placeholders que parecem vazios (retângulo creme, arco cinza) seguram o Design em 7,5; o celular que é só o desktop empilhado.
 
 ## Pendências (para a sessão E e depois)
 - Sem o acervo local, o bloco 2 (sites de referência) depende de pesquisa ao vivo, e o Awwwards recusou a conexão em 3 das 4 rodadas. O `opcoes.mjs` avisa e segue, mas o resultado é uma referência só.

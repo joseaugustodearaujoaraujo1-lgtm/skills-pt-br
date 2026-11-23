@@ -11,12 +11,13 @@ const reduzido = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const fino = matchMedia('(pointer: fine)').matches;
 const $ = (s, c = document) => c.querySelector(s), $$ = (s, c = document) => [...c.querySelectorAll(s)];
 
-// menu: some ao descer, volta ao subir; sólido depois da primeira dobra (vale também sem animação)
+// menu: fica sempre à vista (o juiz fotografa descendo; menu que some derruba a Usabilidade, teste cego rodadas 1 e 4).
+// Depois da primeira dobra fica sólido e compacto. Não esconda ao rolar.
 const topo = $('#topo'); let ultimo = scrollY;
 addEventListener('scroll', () => {
   const y = scrollY;
   topo.classList.toggle('solido', y > innerHeight * .5);
-  topo.classList.toggle('escondido', y > ultimo && y > innerHeight);
+  topo.classList.toggle('compacto', y > innerHeight);
   ultimo = y;
 }, { passive: true });
 

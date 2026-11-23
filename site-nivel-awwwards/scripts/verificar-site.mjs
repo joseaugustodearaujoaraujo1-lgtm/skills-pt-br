@@ -116,6 +116,12 @@ for (const [nome, w, h, movel] of VPS) {
   const txtSvg = await p.evaluate(async () => { let t = ''; for (const u of new Set([...document.images].map(i => i.currentSrc || i.src).filter(u => /\.svg(\?|#|$)/i.test(u)))) { try { const r = await fetch(u); t += (await r.text()).replace(/<(script|style)[\s\S]*?<\/\1>/gi, ' ').replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ') + '\n'; } catch { /* outra origem */ } } return t; });
   const notasSvg = (txtSvg.match(/[^\n]{0,30}(imagem provis[óo]ria|foto provis[óo]ria|a gerar\b|placeholder|IMAGENS\.md|[\w-]+\.(webp|png|jpe?g|avif|mp4))[^\n]{0,30}/gi) || []).map(x => 'no SVG: ' + x.trim());
   d.notasProducao = [...new Set([...(d.notasProducao || []), ...notasSvg])].slice(0, 6);
+  // no meio da página, menu ou ação principal ainda alcançáveis? (teste cego, rodadas 1 e 4: sem isso a Usabilidade para em 6,5)
+  await p.evaluate(() => window.scrollTo(0, Math.round(document.documentElement.scrollHeight * 0.5))); await p.mouse.wheel(0, 2); await p.waitForTimeout(1200);
+  d.navegacaoNoMeio = await p.evaluate(() => {
+    const fixo = el => { for (let e = el; e && e !== document.body; e = e.parentElement) { const ps = getComputedStyle(e).position; if (ps === 'fixed' || ps === 'sticky') return true; } return false; };
+    return [...document.querySelectorAll('a[href], button')].some(a => { const r = a.getBoundingClientRect(), s = getComputedStyle(a); return r.width > 20 && r.height > 14 && r.top >= 0 && r.bottom <= innerHeight && s.visibility !== 'hidden' && +s.opacity > 0.3 && (a.innerText || a.getAttribute('aria-label') || '').trim() && fixo(a); });
+  });
   // rola a página inteira para disparar carregamento tardio e capturar
   await p.evaluate(async () => { for (let y = 0; y < document.documentElement.scrollHeight; y += 500) { scrollTo(0, y); await new Promise(r => setTimeout(r, 70)); } scrollTo(0, 0); });
   await p.waitForTimeout(400);
@@ -155,6 +161,7 @@ for (const [nome, w, h, movel] of VPS) {
     const iguais = []; for (let i = 1; i < d.composicao.length; i++) if (d.composicao[i].sig === d.composicao[i - 1].sig) iguais.push(`${d.composicao[i - 1].id} = ${d.composicao[i].id} (${d.composicao[i].sig})`);
     if (iguais.length >= 2 || iguais.length / (d.composicao.length - 1) > 0.3) reg(nome, 'WARN', 'secoes-repetidas', `${iguais.length} par(es) de seções vizinhas com a mesma composição: ${iguais.slice(0, 4).join('; ')}. Varie colunas, posição do título, escala ou peso da imagem (references/direcao-criativa.md, "Composição por seção").`);
   }
+  if (d.navegacaoNoMeio === false) reg(nome, 'FAIL', 'sem-navegacao', 'no meio da página não há menu nem ação principal à vista (nada fixo com link ou botão). Mantenha uma barra compacta fixa no desktop e a ação fixa no pé do celular, sem cobrir botões ou texto (elementos.md §8). Menu que só reaparece ao rolar para cima não conta: o juiz fotografa descendo.');
   if (d.emoji) reg(nome, 'WARN', 'emoji', `${d.emoji} emoji(s) na página`);
   if (nome === '1440') {
     if (d.imgs < 4 && d.videos === 0) reg(nome, 'WARN', 'poucas-imagens', `só ${d.imgs} imagem(ns): sites premiados sustentam a identidade com imagem real`);
