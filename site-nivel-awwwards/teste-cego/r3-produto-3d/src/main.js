@@ -36,7 +36,8 @@ const LX = .74; // coluna dos rótulos (fração da caixa)
 // raio de cada peça (cm), para a linha de cota começar na borda e não no eixo; escala ~ 31 px/cm a 56 de distância
 const RAIO = { porca: .62, cabeca: 2.4, corpo: 2.55, mo: 1.3, anel: 2.9 };
 function cotas(anc, e, ativo) {
-  const vis = gsap.utils.clamp(0, 1, (e - .55) / .3);
+  // com movimento reduzido as cotas ficam sempre visíveis (nada de texto escondido esperando animação)
+  const vis = reduzido ? 1 : gsap.utils.clamp(0, 1, (e - .55) / .3);
   for (const p of PASSOS) {
     const [x, y] = anc[p], { g, l, c } = linhas[p], li = rotulos[p];
     const x0 = x * 640 + RAIO[p] * 31 * 56 / (56 + 34 * e) + 8, x1 = LX * 640 - 8, yy = y * 800;

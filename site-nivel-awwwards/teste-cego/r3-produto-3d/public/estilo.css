@@ -92,7 +92,7 @@ body::before { content: ''; position: fixed; inset: 0; z-index: 60; pointer-even
 .dial-miolo { fill: var(--surface-2); stroke: #B7B1A7; }
 .dial-entalhes rect { fill: #5F5C57; } .dial-entalhes rect.ativo { fill: var(--accent); }
 .dial-entalhes text { transform-box: fill-box; transform-origin: center; }
-.dial-entalhes text { font: 400 9px var(--font-detail); fill: var(--text-muted); text-anchor: middle; dominant-baseline: middle; }
+.dial-entalhes text { font: 400 12px var(--font-detail); fill: var(--text-muted); text-anchor: middle; dominant-baseline: middle; }
 .dial-eixo { fill: var(--text); }
 .dial-indice { position: absolute; left: 50%; top: -1.4rem; width: 2px; height: 2.6rem; background: var(--accent); transform: translateX(-50%); border-radius: 2px; }
 .reg-texto h2 { font-size: var(--fs-h2); margin: 1.2rem 0 1.6rem; max-width: 12ch; }
@@ -129,7 +129,7 @@ body::before { content: ''; position: fixed; inset: 0; z-index: 60; pointer-even
 .rodape-fecho { justify-self: end; max-width: 26rem; display: grid; gap: 1.4rem; padding-bottom: 1.2rem; }
 .rodape-fecho p { font-family: var(--font-display); font-size: clamp(1.8rem, 2.6vw, 2.6rem); line-height: 1.05; }
 .rodape-fecho ul { display: flex; flex-wrap: wrap; gap: .4rem 1.4rem; }
-.rodape-fecho a { min-height: 44px; display: inline-flex; align-items: center; }
+.rodape-fecho a { min-height: 44px; min-width: 44px; display: inline-flex; align-items: center; }
 .rodape-linha { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin-top: 2rem; padding-top: 1.2rem; border-top: 1px solid var(--line); color: var(--text-muted); font-size: .9rem; }
 
 /* ---------- celular e tablet: o objeto fica no alto da tela, o texto passa por baixo em painéis ---------- */
@@ -137,7 +137,7 @@ body::before { content: ''; position: fixed; inset: 0; z-index: 60; pointer-even
   .topo { gap: 1rem; } .topo nav { display: none; }
   .cena-caixa { top: 4.2rem; left: 50%; height: 54svh; transform: translateX(-50%); }
   .regua { top: 4.2rem; height: 54svh; transform: none; left: calc(50% - 54svh * .8 * .14 - 3.6rem); width: 2.6rem; }
-  .rotulos li { font-size: .7rem; }
+  .rotulos li { font-size: .75rem; }
   .rotulos li:not(.ativo) { visibility: hidden; }
   .hero { align-items: flex-end; padding: calc(4.2rem + 52svh) var(--gutter) 2rem; }
   .hero-painel, .secao-cab, .passo, .passo[data-peca="mo"] { max-width: none; }
