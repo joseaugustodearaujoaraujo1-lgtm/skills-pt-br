@@ -11,11 +11,6 @@ const estreito = matchMedia('(max-width: 860px)');
 const k = () => innerWidth / 1440; // as medidas do original são em px de 1440 de largura
 
 // ---------- marcas fictícias dos trilhos (ícones próprios) ----------
-const MARCAS = [
-  ['Café Serrano', 'Banco Ipê', 'Aroeira Moda', 'Viação Sabiá', 'Rede Jangada', 'Pão de Mel & Cia', 'Cacau do Sul', 'Mercado Tucano'],
-  ['Seguros Manacá', 'Óticas Brisa', 'Jacarandá Pay', 'Canal Pipoca', 'Motos Carcará', 'Hotéis Maré', 'Laticínios Serra Azul'],
-  ['Rádio Varanda', 'Caju Entregas', 'Tênis Picada', 'Livraria Ponteio', 'Saúde Jatobá', 'Mate do Pampa', 'Clube Arara'],
-];
 const CORES = ['#6A3FB5', '#2F7DE1', '#F06B8A', '#E07B2E', '#3FA36B', '#2C2E2A', '#C9A227'];
 const icone = (nome, i) => {
   const c = CORES[(nome.length + i) % CORES.length], l = nome[0];
@@ -23,7 +18,7 @@ const icone = (nome, i) => {
   return `<svg viewBox="0 0 56 56" aria-hidden="true"><circle cx="28" cy="28" r="28" fill="${c}"/>${forma}<text x="28" y="33" text-anchor="middle" font-size="14" font-weight="600" font-family="Inter, sans-serif" fill="${c}">${l}</text></svg>`;
 };
 $$('.trilho').forEach((t, r) => {
-  const itens = MARCAS[r].map((n, i) => `<div class="pilula">${icone(n, i)}<span>${n}</span></div>`).join('');
+  const itens = t.dataset.marcas.split('|').map((n, i) => `<div class="pilula">${icone(n, i)}<span>${n}</span></div>`).join('');
   t.innerHTML = itens + itens.replace(/class="pilula"/g, 'class="pilula" aria-hidden="true"');
 });
 
@@ -86,17 +81,13 @@ if (!reduzido) {
   gsap.fromTo('.fita', { y: 60 }, { y: -60, ease: 'none', scrollTrigger: { trigger: '.publico', start: 'top bottom', end: 'bottom top', scrub: true } });
 
   // ---------- números: cartões sobem e se empilham (posições medidas no original, em px de 1440) ----------
-  const PONTOS = [
-    [[7356, 1582], [8103, 835], [8552, 337], [9004, 273], [9452, 273], [9904, 85], [9944, 82]],
-    [[8600, 1004], [9004, 500], [9452, 332], [9904, 144], [9944, 141]],
-    [[9000, 1137], [9452, 685], [9904, 204], [9944, 201]],
-  ];
   const interp = (pts, s) => {
     if (s <= pts[0][0]) return pts[0][1] + (pts[0][0] - s);
     for (let i = 1; i < pts.length; i++) if (s <= pts[i][0]) { const [a, va] = pts[i - 1], [b, vb] = pts[i]; return va + (vb - va) * (s - a) / (b - a); }
     const [a, va] = pts[pts.length - 1]; return va - (s - a);
   };
-  const cartoes = $$('.ncard'), pilha = $('.num-pilha'), numeros = $('.numeros');
+  const cartoes = $$('.ncard'), PONTOS = $$('.ncard').map(c => JSON.parse(c.dataset.pontos)), // [[rolagem, y]] medidos no original, em px de 1440
+    pilha = $('.num-pilha'), numeros = $('.numeros');
   const posicionar = () => {
     if (estreito.matches) { cartoes.forEach(c => gsap.set(c, { clearProps: 'transform' })); return; }
     const f = k(), topoPilha = pilha.getBoundingClientRect().top;
