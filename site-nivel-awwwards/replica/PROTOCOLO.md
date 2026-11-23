@@ -61,7 +61,7 @@ ESPERA=4000 node replica/ferramentas/telas2.cjs http://localhost:<porta>/ o <pas
 ```
 
 ### 5.3 Listar as diferenças antes de editar
-Monte as folhas com `replica/ferramentas/lado-or.py`. Escreva `galeria/<site>/DIFERENCAS.md` com uma tabela:
+Monte as folhas com `replica/ferramentas/lado-or.py` e rode a nota de fidelidade (5.5) para achar as telas mais distantes. Escreva `galeria/<site>/DIFERENCAS.md` com uma tabela:
 
 | Tela | Elemento | Original | Nosso | Gravidade | Status |
 |---|---|---|---|---|---|
@@ -76,7 +76,7 @@ A gravidade é uma destas:
 Corrija nessa ordem de gravidade.
 
 ### 5.4 Corrigir em ciclos curtos
-Corrija um grupo de diferenças, gere o bundle, capture de novo, compare de novo e atualize o status. Repita até a tabela não ter nenhum item aberto de estrutura, layout, tipo ou movimento.
+Corrija um grupo de diferenças, gere o bundle, capture de novo, compare de novo e atualize o status. Repita até a tabela não ter nenhum item aberto de estrutura, layout, tipo ou movimento e a nota de fidelidade passar em todas as telas.
 
 ### 5.5 Tolerâncias de aceite (desktop 1440×900)
 - **Altura total da página e de cada seção:** até 1% do original (confira com o `mapa.json`).
@@ -84,6 +84,27 @@ Corrija um grupo de diferenças, gere o bundle, capture de novo, compare de novo
 - **Tamanho de fonte:** até 1 px. Entrelinha e espaçamento: visualmente iguais.
 - **Início e fim de cada animação:** até 2% da altura do trecho.
 - **Quantidade de elementos** (itens de menu, cartões, linhas, colunas): exatamente igual.
+
+**Nota de fidelidade (portão automático).** Com as duas séries do 5.1 e do 5.2 (mesmo passo, mesma largura), rode:
+
+```
+python3 -I replica/ferramentas/fidelidade.py <pasta-original> <pasta-nossa> --diferencas <pasta-fora-do-repo> [--alturas H_original,H_nossa]
+```
+
+Ela dá uma nota de 0 a 100 por tela e o total, em texto: 40% SSIM de contraste e estrutura (sem o termo de brilho, para a troca de paleta não pesar) e 60% coincidência de bordas a até 8 px; avisa deslocamento vertical acima de 8 px e acima de 2% da tela (rolagem ou animação fora de sincronia); confere a altura da página em 1%. **Aceite: toda tela ≥ 75.** A imagem de diferença (original | nosso | bordas: vermelho só no original, azul só no nosso) só sai para tela abaixo do limite e nunca dentro de um repositório, porque tem pixels do original.
+
+Calibração (CAIS, 14 telas de 900 px, 2026-11-23):
+
+| Comparação | Total | Telas ≥ 75 |
+|---|---|---|
+| nosso × nosso (duas capturas) | 99,9 | 14/14 |
+| nosso × nosso com `?tema=frio` (só paleta) | 99,9 | 14/14 |
+| nosso × nosso deslocado 8 px (no limite da tolerância) | 99,0 | 14/14 |
+| nosso × nosso deslocado 20 px | 71,5 | 4/14 |
+| nosso × nosso deslocado 60 px | 57,4 | 0/14 |
+| nosso × tela seguinte (rolagem fora de sincronia) | 50,1 | 1/13 |
+| nosso × outro site (BRUMA) | 37,7 | 0/14 |
+| **CAIS × Terminal original** | **65,7** | **4/14** (diferenças reais: blocos de texto em outra posição, estados de animação diferentes) |
 
 ### 5.6 Portão de qualidade
 

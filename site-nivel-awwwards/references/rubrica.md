@@ -1,6 +1,6 @@
 # Portão de qualidade (rubrica de entrega)
 
-Passe o site por esta rubrica **antes** de dizer que está pronto. Ela segue os critérios do júri do Awwwards (Design, Usabilidade, Criatividade e Conteúdo) mais os requisitos técnicos. Dê uma nota de 0 a 10 a cada critério, **com a evidência** (captura, medição ou trecho de código). Abaixo de 7 em qualquer item = corrigir e repetir.
+Passe o site por esta rubrica **antes** de dizer que está pronto. A avaliação final é feita por um juiz independente (subagente limpo) com os critérios objetivos e os tetos de [juiz.md](juiz.md): libera só com média ponderada ≥ 7,5 e nenhum critério abaixo de 6. Esta rubrica é a lista de conferência de quem constrói. Ela segue os critérios do júri do Awwwards (Design, Usabilidade, Criatividade e Conteúdo) mais os requisitos técnicos. Dê uma nota de 0 a 10 a cada critério, **com a evidência** (captura, medição ou trecho de código). Abaixo de 7 em qualquer item = corrigir e repetir.
 
 ## 1. Design (peso 40%)
 - [ ] A identidade é própria e coerente (paleta, tipografia, forma, motion) e bate com `brief.json`.
@@ -20,6 +20,7 @@ Passe o site por esta rubrica **antes** de dizer que está pronto. Ela segue os 
 - [ ] A ação principal é óbvia na primeira dobra.
 
 ## 3. Criatividade (peso 20%)
+- [ ] Existe `design/DIRECAO.md` aprovado ([direcao-criativa.md](direcao-criativa.md)) e **toda seção mostra o gesto dela**; seção sem gesto não está pronta.
 - [ ] Há **um** gesto de assinatura memorável (transição, hero, interação, 3D leve) que serve ao conceito.
 - [ ] A ideia do site cabe em uma frase e o conceito é **memorável em 5 segundos**.
 - [ ] Há pelo menos **um momento "uau"** que o visitante lembra depois (normalmente o próprio gesto de assinatura).

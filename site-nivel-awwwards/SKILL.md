@@ -49,6 +49,9 @@ Registre sites escolhidos, stack, estilo, paleta (ids e hex), decisão de 3D e o
 
 Marcas de terceiros nas referências (logotipo, nome, emblema, desenho registrado): o molde e o site **não** levam a marca, a menos que o usuário seja o dono ou tenha licença; use a referência só para forma, material e luz.
 
+### 3c. Direção criativa (obrigatória, antes de qualquer código) → [references/direcao-criativa.md](references/direcao-criativa.md)
+Escreva `design/DIRECAO.md` e aprove com o usuário antes de construir: (1) **ideia central em uma frase** (um verbo, não adjetivos; passa nos cinco testes, incluindo a troca de assunto e a logo coberta); (2) **gesto-assinatura por seção**, todos derivados da ideia e visíveis numa tela parada; (3) **uma regra que o site nunca quebra**; (4) **o que o site NÃO faz** (3 a 5 clichês do tema e da técnica). Ofereça duas ideias do banco de conceitos com `AskUserQuestion` (uma recomendada). **Seção sem gesto não está pronta.**
+
 ### 4. Identidade visual própria
 Conceito, elementos de assinatura (forma, tratamento de imagem, cursor, transição), tipografia (`base-design-completo/02-tipografia.md`), cor e modo escuro (`03-cor-e-contraste.md`), e como fugir da "cara de IA" (`08-cara-de-ia.md`, `references/anti-cliches.md`). Skill `identidade-visual` para fechar `docs/IDENTIDADE.md`. Logo e ativos-chave antes de estilo fino.
 
@@ -65,7 +68,8 @@ Combine com `frontend-design`, `gsap-*`, `scroll-craft`, `motion-design`, `desen
 ```bash
 node ~/.claude/skills/site-nivel-awwwards/scripts/verificar-site.mjs http://localhost:3001/ --saida ./verificacao --lighthouse
 ```
-O verificador abre o site em **1440, 768 e 390 px** e reprova (FAIL) rolagem horizontal, erros no console, requisições falhas, texto de modelo `[entre colchetes]`, lorem ipsum, `<h1>` ausente ou duplicado, **contraste abaixo de 4,5:1 (3:1 em texto grande)**, imagens sem `alt` ou quebradas, texto invisível com `prefers-reduced-motion` e acessibilidade Lighthouse < 95. Avisa (WARN) sobre fontes demais, texto pequeno, alvos de toque < 44 px, pouco movimento, gradiente em texto, emoji, poucas imagens e desempenho abaixo da meta (90 desktop, 75 celular). Gera `relatorio.md`, capturas da primeira dobra (com movimento) e da página inteira (estado final). **Depois olhe as capturas** e aplique a rubrica Awwwards (Design, Usabilidade, Criatividade, Conteúdo) com evidência. Corrija o que ficar abaixo de 7 e repita. Relate o que **não** foi testado (celular real, redes lentas, outros navegadores, leitor de tela). Formato do relatório: `base-design-completo/_SKILL-original.md`, seção 6.
+O verificador abre o site em **1440, 768 e 390 px** e reprova (FAIL) rolagem horizontal, erros no console, requisições falhas, texto de modelo `[entre colchetes]`, lorem ipsum, `<h1>` ausente ou duplicado, **contraste abaixo de 4,5:1 (3:1 em texto grande)**, imagens sem `alt` ou quebradas, texto invisível com `prefers-reduced-motion` e acessibilidade Lighthouse < 95. Avisa (WARN) sobre fontes demais, texto pequeno, alvos de toque < 44 px, pouco movimento, gradiente em texto, emoji, poucas imagens e desempenho abaixo da meta (90 desktop, 75 celular). Gera `relatorio.md`, capturas da primeira dobra (com movimento) e da página inteira (estado final). **Depois olhe as capturas** e aplique a rubrica Awwwards (Design, Usabilidade, Criatividade, Conteúdo) com evidência. Corrija o que ficar abaixo de 7 e repita.
+**Juiz Awwwards (portão final, obrigatório):** `node scripts/juiz.mjs <url> --saida ./juiz --direcao design/DIRECAO.md` (site sem rolagem: `--palco ...`) e lance um subagente limpo com `juiz/PEDIDO-AO-JUIZ.md` ([references/juiz.md](references/juiz.md)). Só entrega com **média ponderada ≥ 7,5 e nenhum critério abaixo de 6**; corrija na ordem de impacto devolvida e chame um juiz novo a cada rodada. Em réplica, rode também a nota de fidelidade (`replica/ferramentas/fidelidade.py`, toda tela ≥ 75; `replica/PROTOCOLO.md` 5.5). Relate o que **não** foi testado (celular real, redes lentas, outros navegadores, leitor de tela). Formato do relatório: `base-design-completo/_SKILL-original.md`, seção 6.
 
 ## Regras de ouro (de design-completo)
 Uma ação principal por tela · hierarquia antes de estética · poucas decisões repetidas com consistência (1–2 fontes, uma escala, um acento, um raio) · espaço é estrutura · contraste 4,5:1 (3:1 texto grande) · celular primeiro · identidade vem do assunto · motion com propósito (só `transform`/`opacity`) · conteúdo real, sem números ou depoimentos inventados · prove com antes e depois.
@@ -80,6 +84,9 @@ Ver [references/padroes.md](references/padroes.md). A primeira dobra tem **um pr
 | `scripts/pesquisar-referencias.mjs` | ranking de referências em toda a base por tema, recursos, libs e encaixe de layout (`--todos`, `--tipo`) |
 | `scripts/criar-projeto.mjs` | cria o projeto do zero (brief, tokens, fontes, paleta escura, projeto-base HTML+GSAP ou Next.js+GSAP) |
 | `scripts/verificar-site.mjs` | portão de qualidade automático: 3 larguras, contraste, placeholders, imagens, console, movimento reduzido, Lighthouse |
+| `scripts/juiz.mjs` + `references/juiz.md` | juiz Awwwards: 6 a 8 telas em 1440 e 390 px numa folha única, fatos medidos e o prompt do subagente avaliador (nota mínima para liberar) |
+| `replica/ferramentas/fidelidade.py` | nota de fidelidade da réplica por tela (SSIM + bordas a 8 px), com imagem de diferença só abaixo do limite |
+| `references/direcao-criativa.md` | etapa antes do código: ideia central, gesto por seção, regra inquebrável, o que não faz; banco de conceitos por tema |
 | `starters/html`, `starters/next` | projetos-base com os padrões e as lições de desempenho |
 | `references/componentes-plataformas.md` | catálogo real de componentes (reactbits, transitions.dev) por necessidade, peso e tipo de página |
 | `scripts/layout.mjs` | perfis de layout por tipo de página e cálculo do encaixe com a estrutura medida de cada site |
