@@ -24,16 +24,16 @@ p { margin: 0; } a { color: inherit; } em { font-style: normal; color: var(--acc
 
 /* botões das lojas */
 .loja { display: inline-flex; flex-direction: column; justify-content: center; min-height: 56px; min-width: 168px; padding: .55rem 1.5rem; border-radius: 999px; border: 1.5px solid var(--text); text-decoration: none; line-height: 1.15; transition: transform .35s var(--ease), background-color .3s, color .3s; }
-.loja small { font-size: .72rem; opacity: .85; } .loja b { font-size: 1.1rem; font-weight: 600; }
+.loja small { font-size: .8rem; opacity: .85; } .loja b { font-size: 1.1rem; font-weight: 600; }
 .loja:hover { transform: translateY(-3px); }
 .loja-escura { background: var(--text); color: var(--bg); } .loja-escura:hover { background: var(--accent); border-color: var(--accent); }
 .loja:not(.loja-escura):not(.loja-clara):hover { background: var(--text); color: var(--bg); }
 .loja-clara { background: var(--bg); color: var(--text); border-color: var(--bg); } .loja-clara:hover { background: var(--surface); }
 
 /* hero: o troco é um copo */
-.hero { min-height: 100svh; display: flex; flex-direction: column; justify-content: space-between; gap: 2rem; padding: 6.5rem var(--gutter) 0; max-width: var(--max); margin: 0 auto; overflow: clip; }
+.hero { min-height: 100svh; display: flex; flex-direction: column; justify-content: space-between; gap: 2rem; padding: 5.5rem var(--gutter) 0; max-width: var(--max); margin: 0 auto; overflow: clip; }
 .hero-local { font-family: var(--font-detail); font-size: .85rem; letter-spacing: .06em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 1.4rem; }
-.hero h1 { font-size: var(--fs-h1); line-height: .9; font-weight: 800; letter-spacing: -.045em; }
+.hero h1 { font-size: clamp(2.8rem, 7vw, 7.4rem); line-height: .9; font-weight: 800; letter-spacing: -.045em; }
 .linha { display: block; animation: entra-linha 1.2s var(--ease) both; animation-delay: calc(.15s + var(--i) * .12s); }
 @keyframes entra-linha { from { transform: translateY(105%); } }
 .hero-sub { max-width: 36ch; margin-top: 1.6rem; color: var(--text-muted); font-size: clamp(1.05rem, 1.25vw, 1.25rem); animation: aparece 1s .5s both; }
@@ -44,8 +44,8 @@ p { margin: 0; } a { color: inherit; } em { font-style: normal; color: var(--acc
 .hero-recibo b { color: var(--text); font-weight: 500; text-align: right; }
 .hero-recibo span:last-child { grid-column: 1 / -1; color: var(--accent); font-weight: 500; }
 .numeral { --n: 58%; display: flex; align-items: baseline; margin: 0; font-family: var(--font-display); font-weight: 800; line-height: .78; letter-spacing: -.06em; margin-left: auto; padding-bottom: .04em; }
-.numeral small { font-size: 6vw; letter-spacing: -.02em; margin-right: 1vw; color: var(--text); align-self: flex-start; margin-top: 3vw; }
-.agua-texto { font-size: min(31vw, 31rem); color: var(--agua-clara); background: linear-gradient(to top, var(--accent) 0 var(--n), var(--agua-clara) var(--n) 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+.numeral small { font-size: 5vw; letter-spacing: -.02em; margin-right: 1vw; color: var(--text); align-self: flex-start; margin-top: 2vw; }
+.agua-texto { font-size: min(25vw, 25rem); color: var(--agua-clara); background: linear-gradient(to top, var(--accent) 0 var(--n), var(--agua-clara) var(--n) 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
 
 /* 01 troco: o tanque */
 .troco { display: grid; grid-template-columns: 5fr 7fr; gap: var(--gutter); max-width: var(--max); margin: 0 auto; padding: var(--section) var(--gutter); align-items: start; }
@@ -53,8 +53,8 @@ p { margin: 0; } a { color: inherit; } em { font-style: normal; color: var(--acc
 .troco h2 { font-size: var(--fs-h2); max-width: 11ch; margin-bottom: 2rem; }
 .tanque { --n: 1; position: relative; height: min(46vh, 26rem); border: 2px solid var(--text); border-radius: 28px 28px 14px 14px; overflow: hidden; background: var(--surface); }
 .tanque-agua { position: absolute; inset: 0; background: var(--accent); transform-origin: bottom; transform: scaleY(var(--n)); }
-.tanque-total { position: absolute; left: 1.2rem; bottom: 1rem; display: flex; flex-direction: column; color: var(--on-accent); font-size: .85rem; }
-.tanque-total b { font-family: var(--font-display); font-size: clamp(2rem, 3.4vw, 3.4rem); font-weight: 800; letter-spacing: -.04em; line-height: 1; }
+.tanque-total { display: flex; align-items: baseline; gap: .8rem; margin-top: 1rem; color: var(--text-muted); font-size: .9rem; }
+.tanque-total b { color: var(--text); font-family: var(--font-display); font-size: clamp(2rem, 3.4vw, 3.4rem); font-weight: 800; letter-spacing: -.04em; line-height: 1; }
 .extrato { list-style: none; margin: 0; padding: 0; }
 .extrato li { display: grid; grid-template-columns: 1fr auto auto 5.5rem; gap: 1.5rem; align-items: baseline; padding: 1.7rem 0; border-top: 1px solid var(--line); color: var(--text-muted); transition: color .5s; }
 .extrato li:last-child { border-bottom: 1px solid var(--line); }
@@ -66,7 +66,8 @@ p { margin: 0; } a { color: inherit; } em { font-style: normal; color: var(--acc
 
 /* 02 renda fixa: camadas de profundidade */
 .escura { background: var(--d-bg); color: var(--d-text); padding: var(--section) 0 clamp(3rem, 6vw, 5rem); overflow: clip; }
-.rf-titulo { font-size: clamp(3.2rem, 13vw, 14rem); font-weight: 800; line-height: .88; letter-spacing: -.05em; white-space: nowrap; padding-left: var(--gutter); margin: 0 0 clamp(2rem, 5vw, 5rem) 0; transform: translateX(8vw); }
+.rf-titulo { font-size: clamp(3rem, 12vw, 13rem); font-weight: 800; line-height: .88; letter-spacing: -.05em; padding-left: var(--gutter); margin: 0 0 clamp(2rem, 5vw, 5rem) 0; }
+.rf-titulo em { display: block; margin-left: 22vw; white-space: nowrap; margin-right: -6vw; }
 .escura em { color: var(--d-accent); }
 .faixas { display: flex; flex-direction: column; }
 .faixa { padding: clamp(2.5rem, 6vw, 6rem) var(--gutter); display: grid; gap: .5rem 3rem; align-items: end; will-change: clip-path; }
@@ -94,11 +95,12 @@ p { margin: 0; } a { color: inherit; } em { font-style: normal; color: var(--acc
 .qs details p { padding: 0 0 1.5rem 2.6rem; color: var(--text-muted); max-width: 52ch; }
 
 /* 04 baixar: maré cheia */
-.baixar { position: relative; min-height: 90svh; display: grid; place-items: center; overflow: clip; color: var(--on-accent); padding: var(--section) var(--gutter); }
+.baixar { position: relative; min-height: 90svh; display: grid; place-items: center; overflow: clip; color: var(--text); background: var(--bg); padding: var(--section) var(--gutter); transition: color .5s, background-color .5s; }
+.baixar.cheia { color: var(--on-accent); background: var(--accent); }
 .mare-cheia { position: absolute; inset: 0; background: var(--accent); will-change: clip-path; }
 .baixar-corpo { position: relative; text-align: center; }
 .baixar h2 { font-size: clamp(3.4rem, 12vw, 12.5rem); font-weight: 800; line-height: .9; letter-spacing: -.05em; }
-.baixar em { color: var(--bg); }
+.baixar em { color: var(--accent); white-space: nowrap; } .baixar.cheia em { color: var(--bg); }
 .baixar p { margin: 1.8rem auto 0; max-width: 34ch; font-size: clamp(1.1rem, 1.5vw, 1.4rem); }
 .baixar-acoes { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; margin-top: 2.2rem; }
 
@@ -120,7 +122,7 @@ p { margin: 0; } a { color: inherit; } em { font-style: normal; color: var(--acc
   .troco h2 { max-width: none; font-size: 2.2rem; margin-bottom: 1rem; } .troco .rotulo { margin-bottom: .6rem; }
   .tanque { height: 7rem; border-radius: 18px; }
   .extrato li { grid-template-columns: 1fr auto; gap: .2rem 1rem; padding: 1.2rem 0; } .extrato .arr { display: none; } .extrato .tr { grid-row: 1; grid-column: 2; }
-  .rf-titulo { transform: translateX(6vw); }
+  .rf-titulo em { margin-left: 12vw; }
   .f1, .f2 { grid-template-columns: 1fr; } .f2 h3, .f2 p:not(.rotulo-d) { grid-column: 1; grid-row: auto; } .f2 { text-align: left; justify-items: start; }
   .foto { position: static; } .ph { aspect-ratio: 4 / 3; border-radius: 120px 120px 14px 14px; }
   .loja { min-width: 0; flex: 1 1 150px; }

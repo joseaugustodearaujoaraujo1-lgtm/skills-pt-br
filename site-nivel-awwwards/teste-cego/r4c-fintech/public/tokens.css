@@ -1,7 +1,7 @@
 /* Tokens de design — Maré */
 :root {
   --bg: #F6F0E4; --surface: #FFFBF3; --surface-2: #E9E1D0; --line: rgba(13,43,51,.2);
-  --text: #0D2B33; --text-muted: #4A656C; --accent: #0A7C8A; --accent-soft: color-mix(in oklab, #0A7C8A 18%, var(--bg)); --on-accent: #ffffff;
+  --text: #0D2B33; --text-muted: #4A656C; --accent: #08707C; --accent-soft: color-mix(in oklab, #08707C 18%, var(--bg)); --on-accent: #ffffff;
   --agua-clara: #CFE4E0;
   --font-display: 'Bricolage Grotesque', system-ui, sans-serif; --font-body: 'Figtree', system-ui, sans-serif; --font-detail: 'DM Mono', ui-monospace, monospace;
   --fs-h1: clamp(2.8rem, 8vw, 8.5rem); --fs-h2: clamp(2.2rem, 5.5vw, 5.5rem); --fs-h3: clamp(1.25rem, 2vw, 2rem); --fs-body: clamp(1rem, 1.1vw, 1.2rem);

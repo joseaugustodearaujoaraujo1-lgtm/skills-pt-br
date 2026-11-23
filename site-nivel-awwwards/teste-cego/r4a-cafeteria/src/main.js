@@ -5,6 +5,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { SplitText } from 'gsap/SplitText';
 import Lenis from 'lenis';
+import { iniciarNivel } from './nivel.js';
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
 const reduzido = matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -52,12 +53,12 @@ if (!reduzido) {
   // manifesto: opacidade mínima .5 (texto grande precisa de 3:1 de contraste)
   quandoPerto($('.manifesto-texto'), el => {
     const m = SplitText.create(el, { type: 'words', wordsClass: 'palavra', aria: 'none' });
-    gsap.fromTo(m.words, { opacity: .5 }, { opacity: 1, stagger: .05, ease: 'none', scrollTrigger: { trigger: el, start: 'top 80%', end: 'bottom 45%', scrub: true } });
+    gsap.fromTo(m.words, { opacity: .8, color: '#7a5636' }, { opacity: 1, color: '#2b1c12', stagger: .05, ease: 'none', scrollTrigger: { trigger: el, start: 'top 80%', end: 'bottom 45%', scrub: true } });
     ScrollTrigger.refresh();
   }, '100% 0px 100% 0px');
 
   // títulos de seção entram por linha, na direção de data-entrada
-  $$('.colecao-cab h2, .escura h2, .passos h2, .contato h2').forEach(h => quandoPerto(h, el => {
+  $$('.colecao-cab h2, .passos h2, .contato h2').forEach(h => quandoPerto(h, el => {
     const s = SplitText.create(el, { type: 'lines', mask: 'lines', linesClass: 'linha-js', aria: 'none' });
     const v = de(el, 105, true); if (v) gsap.from(s.lines, { ...v, duration: 1.1, ease: 'power4.out', stagger: .1 });
   }, '0px 0px -12% 0px'));
@@ -71,12 +72,7 @@ if (!reduzido) {
   });
   const vItem = de($('.item'), 50); if (vItem) gsap.from('.item', { ...vItem, duration: 1, ease: 'power3.out', stagger: .08, scrollTrigger: { trigger: '.trilho', start: 'top 85%', once: true } });
 
-  // números (valor final já no HTML para quem não roda JS)
-  $$('.num').forEach(el => {
-    const fim = +el.dataset.n, suf = el.dataset.suf || '', o = { v: 0 };
-    gsap.to(o, { v: fim, duration: 1.8, ease: 'power3.out', onUpdate: () => { el.textContent = Math.round(o.v).toLocaleString('pt-BR') + suf; }, scrollTrigger: { trigger: el, start: 'top 88%', once: true } });
-  });
-
+  iniciarNivel();
   // passos entram um a um
   gsap.utils.toArray('.passos-lista li').forEach(li => { const v = de(li, 30); if (v) gsap.from(li, { ...v, duration: .9, ease: 'power3.out', scrollTrigger: { trigger: li, start: 'top 88%', once: true } }); });
 

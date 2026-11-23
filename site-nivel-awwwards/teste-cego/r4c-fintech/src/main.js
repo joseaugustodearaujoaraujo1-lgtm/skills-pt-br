@@ -61,10 +61,10 @@ if (!reduzido) {
 
   // renda fixa: faixas de água sobem de baixo para cima, cada uma mais funda
   $$('.faixa').forEach((f, i) => gsap.fromTo(f, { clipPath: 'inset(100% 0% 0% 0%)' }, { clipPath: 'inset(0% 0% 0% 0%)', duration: 1.1, ease: 'power3.out', scrollTrigger: { trigger: f, start: 'top 92%', once: true } }));
-  gsap.to('.rf-titulo', { xPercent: -6, ease: 'none', scrollTrigger: { trigger: '.escura', start: 'top bottom', end: 'top top', scrub: true } });
 
   // baixar: a maré enche a seção
-  gsap.fromTo('.mare-cheia', { clipPath: 'inset(100% 0% 0% 0%)' }, { clipPath: 'inset(0% 0% 0% 0%)', ease: 'none', scrollTrigger: { trigger: '.baixar', start: 'top 85%', end: 'top 25%', scrub: true } });
+  const baixar = $('.baixar'); baixar.classList.remove('cheia');
+  gsap.fromTo('.mare-cheia', { clipPath: 'inset(100% 0% 0% 0%)' }, { clipPath: 'inset(0% 0% 0% 0%)', ease: 'none', scrollTrigger: { trigger: '.baixar', start: 'top 85%', end: 'top 25%', scrub: true, onUpdate: s => baixar.classList.toggle('cheia', s.progress > .55) } });
 
   // botão das lojas: leve atração (só mouse)
   if (fino) $$('.loja').forEach(b => {

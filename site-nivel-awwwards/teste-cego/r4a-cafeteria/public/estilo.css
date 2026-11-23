@@ -121,12 +121,12 @@ h2 { font-size: var(--fs-h2); } h3 { font-size: var(--fs-h3); line-height: 1.05;
 body::before { content: ''; position: fixed; inset: 0; z-index: 90; pointer-events: none; opacity: .05; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.8' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E"); }
 .hero h1 { line-height: .95; }
 .hero h1 em { color: var(--accent); }
-.hero { grid-template-columns: 1.1fr 1fr; }
+.hero { grid-template-columns: 1.1fr 1fr; overflow-x: clip; }
 
 /* régua de altitude: fica cheia conforme a rolagem */
 .regua { position: fixed; right: 1.1rem; top: 22vh; height: 56vh; width: 8px; border-radius: 4px; background: color-mix(in oklab, var(--cafe) 18%, transparent); z-index: 40; --p: 0; }
 .regua::after { content: ''; position: absolute; inset: 0; border-radius: 4px; background: var(--caramelo); transform-origin: bottom; transform: scaleY(var(--p)); }
-.regua-alt { position: absolute; right: 16px; bottom: 0; font-family: var(--font-detail); font-size: .72rem; color: var(--text-muted); white-space: nowrap; background: var(--bg); padding: .1rem .4rem; border-radius: 4px; }
+.regua-alt { position: absolute; right: 16px; bottom: 0; font-family: var(--font-detail); font-size: .8rem; color: var(--text-muted); white-space: nowrap; background: var(--bg); padding: .1rem .4rem; border-radius: 4px; }
 
 /* xícara vista de cima */
 .hero-midia { width: min(115%, 640px); justify-self: end; margin-right: calc(var(--gutter) * -1.2); }
@@ -146,7 +146,7 @@ body::before { content: ''; position: fixed; inset: 0; z-index: 90; pointer-even
 /* momento-assinatura: o nível chega ao topo */
 .nivel { height: 260vh; position: relative; }
 .nivel-palco { position: sticky; top: 0; height: 100svh; overflow: hidden; background: var(--bg); }
-.nivel-base, .nivel-cafe { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; padding: 0 var(--gutter); }
+.nivel-base, .nivel-cafe { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: flex-start; padding: 9vh var(--gutter) 0; }
 .nivel-cafe { background: var(--cafe); color: var(--creme); clip-path: inset(0 0 0 0); }
 .nivel-cafe::before { content: ''; position: absolute; left: 0; right: 0; top: 0; height: 8px; background: var(--caramelo); }
 .nivel-palavra { display: block; font-family: var(--font-display); font-size: clamp(5rem, 24vw, 26rem); line-height: .9; letter-spacing: -.04em; margin: 0; white-space: nowrap; }
@@ -172,10 +172,11 @@ body::before { content: ''; position: fixed; inset: 0; z-index: 90; pointer-even
 .zap-fixo { display: none; }
 
 @media (max-width: 860px) {
+  .hero { grid-template-columns: 1fr; }
   .regua { right: 0; left: 0; top: 0; width: auto; height: 5px; border-radius: 0; }
   .regua::after { transform-origin: left; transform: scaleX(var(--p)); border-radius: 0; }
   .regua-alt { display: none; }
-  .hero-midia { width: min(90vw, 420px); justify-self: end; margin-right: -2rem; grid-row: 1; margin-bottom: 0; }
+  .hero-midia { width: min(82vw, 360px); justify-self: end; margin-right: -1.5rem; grid-row: 1; margin-bottom: 0; }
   .item-midia { aspect-ratio: var(--ar, 4/5); }
   .passos-lista li { grid-template-columns: 5rem 1fr; }
   .contato h2 { text-align: left; margin-left: 0; }
