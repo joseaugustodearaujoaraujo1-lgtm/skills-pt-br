@@ -11,6 +11,7 @@
 <link rel="preload" href="img/retrato.webp" as="image" fetchpriority="high">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230f2b2b'/%3E%3Ctext x='16' y='22' font-family='Arial' font-weight='900' font-size='15' text-anchor='middle' fill='%23ff5b3a'%3ETR%3C/text%3E%3C/svg%3E">
 <link rel="stylesheet" href="estilo.css?v=3">
+<script>(function(){var t=new URLSearchParams(location.search).get('tema');if(t)document.documentElement.setAttribute('data-paleta',t)})()</script>
 <script type="module" src="app.js?v=3"></script>
 </head>
 <body>
@@ -35,7 +36,7 @@
 
 <main id="conteudo">
   <!-- 1. HERO FIXO (200vh): retrato branco com fumaça líquida no cursor → vira cartão central no escuro, com letreiros e assinatura -->
-  <section class="hero" id="inicio" aria-label="Tainá Rocha">
+  <section class="hero" id="inicio" data-escuro-em=".25" data-cartao-a="66vw 67vh" data-cartao-b="28vw 40vh" aria-label="Tainá Rocha">
     <div class="hero-palco">
       <div class="hero-escuro" aria-hidden="true">
         <div class="letreiros">
@@ -67,7 +68,7 @@
   </section>
 
   <!-- 3. COLAGEM HORIZONTAL FIXA (349vh) -->
-  <section class="horizontal" aria-label="Bastidores da temporada">
+  <section class="horizontal" data-deslocamento="1.9" data-claro-em=".42" aria-label="Bastidores da temporada">
     <div class="horiz-palco">
       <div class="trilho">
         <figure class="hf h1"><figcaption>Abertura 2026</figcaption><img src="img/prancha-braco.webp" width="1400" height="933" loading="lazy" alt="Surfista levando a prancha para o mar"></figure>
@@ -153,7 +154,7 @@
   <section class="redes" id="redes" aria-labelledby="redes-titulo">
     <svg class="louro pequeno" aria-hidden="true"><use href="#louro"/></svg>
     <h2 id="redes-titulo"><span>O QUE ROLA</span><em>NAS REDES</em></h2>
-    <div class="leque">
+    <div class="leque" data-giro="8" data-abertura=".055" data-abertura-celular=".07">
       <img src="img/aerea.webp" width="1400" height="933" loading="lazy" alt="Vista aérea de surfista remando">
       <img src="img/tubo-2.webp" width="1400" height="933" loading="lazy" alt="Tubo de onda verde">
       <img src="img/surfando-2.webp" width="1400" height="933" loading="lazy" alt="Manobra na espuma">

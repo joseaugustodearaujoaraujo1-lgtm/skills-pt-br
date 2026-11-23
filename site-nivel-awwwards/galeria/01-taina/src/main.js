@@ -14,6 +14,7 @@ const fino = matchMedia('(pointer: fine)').matches;
 const largo = matchMedia('(min-width: 861px)').matches;
 const $ = (s, c = document) => c.querySelector(s), $$ = (s, c = document) => [...c.querySelectorAll(s)];
 const topo = $('.topo');
+const cor = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim(); // lê o papel de cor do tema ativo
 let escuroHero = false, claroHoriz = false;
 const atualizarTopo = () => {
   const y = 40, emEscuro = ['.manifesto', '.grupo-preto', '.painel'].some(s => { const r = $(s).getBoundingClientRect(); return r.top <= y && r.bottom >= y; });
@@ -36,15 +37,16 @@ if (!reduzido) {
   gsap.from('.proxima', { y: 30, opacity: 0, duration: 1, delay: .8, ease: 'power3.out' });
   const traco = $('.assinatura path'), comp = traco.getTotalLength();
   gsap.set(traco, { strokeDasharray: comp, strokeDashoffset: comp });
-  const th = gsap.timeline({ defaults: { ease: 'none' }, scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom bottom', scrub: true, onUpdate: s => { escuroHero = s.progress > .25; atualizarTopo(); } } });
+  const cartA = $('.hero').dataset.cartaoA.split(' '), cartB = $('.hero').dataset.cartaoB.split(' '); // tamanho do cartão: [largura, altura]
+  const th = gsap.timeline({ defaults: { ease: 'none' }, scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom bottom', scrub: true, onUpdate: s => { escuroHero = s.progress > +$('.hero').dataset.escuroEm; atualizarTopo(); } } });
   th.to('.fumaca', { opacity: 0, duration: .2 }, 0)
     .set('.hero-cartao', { mixBlendMode: 'normal' }, .04)
     .to('.proxima', { opacity: 0, y: 20, duration: .15 }, 0)
     .to('.hero-escuro', { opacity: 1, duration: .35 }, .05)
     .to('.hero-curvas', { opacity: 0, duration: .3 }, .05)
-    .to('.hero-cartao', { width: '66vw', height: '67vh', backgroundColor: '#cfd3cc', duration: .45 }, 0)
+    .to('.hero-cartao', { width: cartA[0], height: cartA[1], backgroundColor: '#cfd3cc', duration: .45 }, 0)
     .to('.hero-retrato', { filter: 'grayscale(.85)', height: '115%', duration: .45 }, 0)
-    .to('.hero-cartao', { width: '28vw', height: '40vh', duration: .4 }, .5)
+    .to('.hero-cartao', { width: cartB[0], height: cartB[1], duration: .4 }, .5)
     .fromTo('.l1 span', { xPercent: 0 }, { xPercent: -30, duration: 1 }, 0)
     .fromTo('.l2 span', { xPercent: -35 }, { xPercent: -5, duration: 1 }, 0)
     .to(traco, { strokeDashoffset: 0, duration: .4 }, .55);
@@ -60,11 +62,11 @@ if (!reduzido) {
   if (largo) {
     // ---------- 3. COLAGEM HORIZONTAL ----------
     const palcoH = $('.horiz-palco');
-    const tc = gsap.timeline({ defaults: { ease: 'none' }, scrollTrigger: { trigger: '.horizontal', start: 'top top', end: 'bottom bottom', scrub: true, onUpdate: s => { claroHoriz = s.progress > .42; palcoH.classList.toggle('claro', claroHoriz); atualizarTopo(); } } });
-    tc.to('.trilho', { x: () => -(innerWidth * 1.9), duration: 1 }, 0)
-      .to(palcoH, { backgroundColor: '#6e7a76', duration: .3 }, 0)
-      .to(palcoH, { backgroundColor: '#e3e2d6', duration: .25 }, .3)
-      .to(palcoH, { backgroundColor: '#f3f1ea', duration: .2 }, .55)
+    const tc = gsap.timeline({ defaults: { ease: 'none' }, scrollTrigger: { trigger: '.horizontal', start: 'top top', end: 'bottom bottom', scrub: true, onUpdate: s => { claroHoriz = s.progress > +$('.horizontal').dataset.claroEm; palcoH.classList.toggle('claro', claroHoriz); atualizarTopo(); } } });
+    tc.to('.trilho', { x: () => -(innerWidth * +$('.horizontal').dataset.deslocamento), duration: 1 }, 0)
+      .to(palcoH, { backgroundColor: cor('--cor-neutra'), duration: .3 }, 0)
+      .to(palcoH, { backgroundColor: cor('--cor-fundo-2'), duration: .25 }, .3)
+      .to(palcoH, { backgroundColor: cor('--cor-fundo'), duration: .2 }, .55)
       .to(palcoH, { '--curvas': 1, duration: .3 }, .45);
     $$('.hf').forEach((f, i) => tc.fromTo(f, { y: (i % 3 - 1) * 40 }, { y: (i % 3 - 1) * -40, duration: 1 }, 0));
 
@@ -98,7 +100,7 @@ if (!reduzido) {
 
   // ---------- 8. REDES: o leque sobe e abre ----------
   const cartas = $$('.leque img'), meio = (cartas.length - 1) / 2;
-  cartas.forEach((c, i) => gsap.fromTo(c, { y: innerHeight * .35, rotate: 0, x: 0 }, { y: 0, rotate: (i - meio) * 8, x: (i - meio) * innerWidth * (largo ? .055 : .07), ease: 'none', scrollTrigger: { trigger: '.redes', start: 'top 85%', end: 'center 55%', scrub: true } }));
+  cartas.forEach((c, i) => gsap.fromTo(c, { y: innerHeight * .35, rotate: 0, x: 0 }, { y: 0, rotate: (i - meio) * +$('.leque').dataset.giro, x: (i - meio) * innerWidth * (largo ? +$('.leque').dataset.abertura : +$('.leque').dataset.aberturaCelular), ease: 'none', scrollTrigger: { trigger: '.redes', start: 'top 85%', end: 'center 55%', scrub: true } }));
 
   // ---------- 9. RODAPÉ ----------
   const tr = $('.painel-assinatura path'), c2 = tr.getTotalLength();
