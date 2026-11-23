@@ -54,6 +54,7 @@ Identidade, tipografia, cor, composição, imagem e acabamento.
 - Mais de 3 famílias de fonte: **máximo 6**.
 - Imagens que parecem banco de imagens genérico, ou blocos cinza no lugar de imagem em mais de uma tela: **máximo 6**.
 - Celular é só o desktop empilhado, com texto pequeno demais ou blocos espremidos: **máximo 6**.
+- Duas ou mais telas seguidas com a mesma composição (mesmo número de colunas, título no mesmo lugar, mesmo peso de imagem), só trocando o conteúdo: **máximo 7**. É o que separa 7 de 8.
 - Layout desmontado (defeito grave em 3+ telas, ou título principal ilegível na primeira dobra): **máximo 4**. Defeito pontual não é teto: é desconto (regra 3c).
 
 ## Usabilidade (30%)
@@ -91,6 +92,7 @@ Ideia, gesto-assinatura, surpresa e coerência entre ideia e forma.
 | 9 | A ideia é nova para o tema (você não viu nada igual em sites do mesmo assunto) e a execução está à altura. |
 
 **Tetos de Criatividade**
+- Nenhuma tela da folha mostra o momento-assinatura descrito no `DIRECAO.md` (ou, sem `DIRECAO.md`, nenhuma tela que você lembraria amanhã): **máximo 7**. Momento declarado que não aparece na foto não conta.
 - Hero no formato "título centralizado + subtítulo + botões" sobre foto ou gradiente, sem nenhum gesto: **máximo 4**.
 - Tipografia sem caráter (fonte padrão do sistema como principal, ou uma só família em pesos iguais em todas as telas): **máximo 5**. Sem voz tipográfica não há identidade memorável, por melhor que seja a imagem.
 - Não dá para dizer a ideia do site em uma frase depois de olhar a folha: **máximo 5**.

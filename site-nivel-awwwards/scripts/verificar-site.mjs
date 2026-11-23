@@ -83,6 +83,18 @@ function medir() {
   let mov = 0; for (const el of document.querySelectorAll('body *')) { const s = getComputedStyle(el); if (s.animationName !== 'none' || (s.transform !== 'none' && s.transform !== 'matrix(1, 0, 0, 1, 0, 0)') || s.transitionDuration.split(',').some(d => parseFloat(d) > 0)) mov++; }
   out.comMovimento = mov;
   out.secoes = document.querySelectorAll('main section, body > section').length; out.palavras = txt.split(/\s+/).filter(Boolean).length;
+  // composição de cada seção (colunas, posição do título, peso da mídia, tamanho do título): seções vizinhas iguais = página de modelo
+  out.composicao = [...document.querySelectorAll('main > section, main > div, main > article, body > section')].filter(sec => sec.getBoundingClientRect().height > 300 && visivel(sec)).slice(0, 30).map(sec => {
+    const R = sec.getBoundingClientRect(), area = R.width * R.height;
+    const blocos = [...sec.querySelectorAll('*')].filter(e => { const r = e.getBoundingClientRect(); return r.width > 120 && r.width < R.width * 0.9 && r.height > 60 && visivel(e); });
+    const linhas = new Map(); for (const b of blocos) { const r = b.getBoundingClientRect(); const k = Math.round(r.top / 80); if (!linhas.has(k)) linhas.set(k, new Set()); linhas.get(k).add(Math.round(r.left / 60)); }
+    const colunas = Math.min(4, Math.max(1, ...[...linhas.values()].map(v => v.size)));
+    const h = [...sec.querySelectorAll('h1,h2,h3')].find(visivel); let tit = 'sem', tam = 0;
+    if (h) { const r = h.getBoundingClientRect(), c = (r.left + r.width / 2 - R.left) / R.width; tit = r.width > R.width * 0.7 ? 'largo' : c < 0.4 ? 'esq' : c > 0.6 ? 'dir' : 'centro'; const px = parseFloat(getComputedStyle(h).fontSize); tam = px < 40 ? 1 : px < 90 ? 2 : 3; }
+    const midia = Math.max(0, ...[...sec.querySelectorAll('img,video,canvas,picture,svg')].filter(visivel).map(m => { const r = m.getBoundingClientRect(); return r.width * r.height / area; }));
+    const peso = midia < 0.05 ? 0 : midia < 0.3 ? 1 : midia < 0.7 ? 2 : 3;
+    return { id: sec.id || sec.className?.toString().split(' ')[0] || sec.tagName.toLowerCase(), sig: `${colunas}c-${tit}-t${tam}-m${peso}` };
+  });
   out.temMain = !!document.querySelector('main'); out.temNav = !!document.querySelector('nav'); out.temFooter = !!document.querySelector('footer');
   out.focoVisivel = (() => { const s = [...document.styleSheets].some(ss => { try { return [...ss.cssRules].some(r => /focus-visible|:focus/.test(r.selectorText || '')); } catch { return false; } }); return s; })();
   return out;
@@ -139,6 +151,10 @@ for (const [nome, w, h, movel] of VPS) {
   if (d.escondidoComMovimentoReduzido) reg(nome, 'FAIL', 'movimento-reduzido', `${d.escondidoComMovimentoReduzido} texto(s) invisível(is) com prefers-reduced-motion`);
   if (d.comMovimento < 8) reg(nome, 'WARN', 'pouco-movimento', `só ${d.comMovimento} elementos com movimento (premiados costumam ter 8 ou mais)`);
   if (d.gradienteTexto) reg(nome, 'WARN', 'gradiente-texto', `${d.gradienteTexto} texto(s) com gradiente (clichê de "cara de IA")`);
+  if (nome === '1440' && d.composicao?.length >= 3) { // teste cego: nota 8 pede composição própria por seção
+    const iguais = []; for (let i = 1; i < d.composicao.length; i++) if (d.composicao[i].sig === d.composicao[i - 1].sig) iguais.push(`${d.composicao[i - 1].id} = ${d.composicao[i].id} (${d.composicao[i].sig})`);
+    if (iguais.length >= 2 || iguais.length / (d.composicao.length - 1) > 0.3) reg(nome, 'WARN', 'secoes-repetidas', `${iguais.length} par(es) de seções vizinhas com a mesma composição: ${iguais.slice(0, 4).join('; ')}. Varie colunas, posição do título, escala ou peso da imagem (references/direcao-criativa.md, "Composição por seção").`);
+  }
   if (d.emoji) reg(nome, 'WARN', 'emoji', `${d.emoji} emoji(s) na página`);
   if (nome === '1440') {
     if (d.imgs < 4 && d.videos === 0) reg(nome, 'WARN', 'poucas-imagens', `só ${d.imgs} imagem(ns): sites premiados sustentam a identidade com imagem real`);

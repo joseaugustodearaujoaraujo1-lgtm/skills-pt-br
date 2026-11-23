@@ -30,7 +30,7 @@ async function um(item) {
   const slug = item.slug || slugDe(item.titulo || item.url), pasta = path.join(dir, slug);
   if (fs.existsSync(path.join(pasta, 'estrutura.json'))) { pulados++; return; }
   fs.mkdirSync(pasta, { recursive: true });
-  const reg = { slug, titulo: item.titulo || slug, url: item.url, urlFinal: item.url, ano: item.ano ?? null, nicho: item.nicho || '', generos: item.generos || [], estilos: item.estilos || [], http: 0, tituloPagina: '', libs: {}, fontes: [] };
+  const reg = { slug, titulo: item.titulo || slug, url: item.url, urlFinal: item.url, ano: item.ano ?? null, nicho: item.nicho || '', generos: item.generos || [], estilos: item.estilos || [], origem: item.origem || '', http: 0, tituloPagina: '', libs: {}, fontes: [] };
   const ctx = await nav.newContext({ viewport: { width: 1440, height: 900 }, locale: 'en-US' });
   try {
     const page = await ctx.newPage();
@@ -38,6 +38,8 @@ async function um(item) {
     reg.http = resp?.status() || 0; reg.urlFinal = page.url();
     const { estrutura, libs, fontes } = await extrairEstrutura(page, { espera });
     reg.tituloPagina = await page.title(); reg.libs = libs; reg.fontes = fontes;
+    reg.descricao = await page.evaluate(() => (document.querySelector('meta[name=description], meta[property="og:description"]')?.content || '').trim().slice(0, 300)).catch(() => '');
+    reg.textoInicio = await page.evaluate(() => (document.body?.innerText || '').replace(/\s+/g, ' ').trim().slice(0, 400)).catch(() => '');
     await page.evaluate(() => scrollTo(0, 0)); await dormir(300);
     await page.screenshot({ path: path.join(pasta, 'desktop.jpg'), type: 'jpeg', quality: 80 });
     await page.mouse.wheel(0, 1800); await dormir(1500);
@@ -61,4 +63,4 @@ async function um(item) {
 const fila = [...lista];
 await Promise.all(Array.from({ length: abas }, async () => { while (fila.length) await um(fila.shift()); }));
 await nav.close(); salvar();
-console.log(`\nfeitos ${feitos} · pulados ${pulados} · com erro ${falhas} · total no acervo ${porSlug.size}\npasta: ${dir}\nPróximo passo: node ../gerar-padroes.mjs && node ../gerar-padroes-ux.mjs`);
+console.log(`\nfeitos ${feitos} · pulados ${pulados} · com erro ${falhas} · total no acervo ${porSlug.size}\npasta: ${dir}\nPróximo passo: node classificar.mjs && node ../gerar-padroes.mjs && node ../gerar-padroes-ux.mjs`);

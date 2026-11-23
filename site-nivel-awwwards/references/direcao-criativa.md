@@ -24,8 +24,10 @@ Réplica fiel ensina técnica; o que ganha prêmio é **uma ideia que só aquele
 ## O que o site NÃO faz
 - <3 a 5 itens concretos, os clichês do tema e da técnica que ficam de fora>
 
-## Momento "uau"
+## Momento-assinatura ("uau")
 <a tela que o visitante vai lembrar amanhã, e por quê>
+- Onde: <seção> · em <x>% da rolagem da página · dura <y>% da rolagem da seção
+- O que a foto mostra: <descrição do quadro parado, como o juiz vai ver>
 ```
 
 ### 1. Ideia central (uma frase)
@@ -48,6 +50,19 @@ Réplica fiel ensina técnica; o que ganha prêmio é **uma ideia que só aquele
 - **Seções irmãs não repetem o mesmo bloco** (camadas, passos, serviços, capítulos): cada uma muda pelo menos duas destas coisas: escala do título, coluna ou alinhamento, título cortado na borda, posição e tamanho da imagem. Três blocos iguais seguram o Design no 7.
 - **O gesto-assinatura tem versão de celular** (faixa no topo, régua horizontal, rótulo fixo). Esconder o gesto no celular (`display: none`) tira o 8 de Criatividade e de Usabilidade.
 - Use pelo menos um gesto do repertório técnico medido (`references/scroll-avancado.md`, `references/elementos.md`, `references/3d-leve.md`) e um que seja **do tema** (do banco abaixo).
+
+### 2b. Momento-assinatura (obrigatório)
+O que leva de 7 para 8 é **um momento que o visitante lembraria amanhã** (teste cego, rodadas 2 e 3b: os juízes deram 7 e pediram "um uau visível na foto").
+- É **um** quadro, não um efeito espalhado: a maior escala, o maior contraste ou a maior surpresa do site acontecem ali.
+- Aparece **numa captura parada** e fica parado por pelo menos 25% da rolagem da seção. Se depende de movimento para ser entendido, não conta.
+- Fica entre as primeiras 3 telas ou no clímax da página, nunca no rodapé. Recursos que funcionam: tipografia que ocupa a tela inteira e é cortada pelo objeto, objeto que atravessa a dobra em escala 2×, mudança total de cor da página, um corte (máscara) que revela outra cena, um 3D que gira para o ângulo-chave.
+- Antes de entregar, abra as telas do `juiz.mjs`: se nenhuma mostra o momento, ele vira a correção número 1. O juiz limita Criatividade a 7 sem ele.
+
+### 2c. Composição por seção (obrigatório)
+Seções vizinhas **nunca** repetem a mesma composição (teste cego: "cada tela tem uma composição pensada" é a régua do 8 em Design).
+- Varie de uma seção para a próxima pelo menos **dois** destes: número de colunas, posição do título (esquerda, direita, centro, largura total), escala do título, peso da imagem (sem, pequena, metade, tela cheia), direção (vertical, horizontal, sobreposta).
+- Escreva no `DIRECAO.md`, ao lado do gesto, a composição de cada seção em poucas palavras ("2 colunas, título à direita, imagem metade").
+- O `verificar-site.mjs` mede isso e avisa (`secoes-repetidas`); o juiz limita Design a 7 quando duas telas seguidas têm a mesma composição.
 
 ### 3. A regra que o site nunca quebra
 Uma regra só, verificável olhando as telas ou o código: direção do movimento, um único ângulo, uma única curva, uma cor que só aparece em um papel, uma grade que nada atravessa (ou que tudo atravessa). Ela dá coerência; quebrar a regra uma única vez, no momento "uau", é permitido se estiver escrito aqui.
@@ -125,6 +140,8 @@ Para cada tema: a **matéria** do assunto (o que dá para transformar em forma e
 ## Checklist de saída (antes de escrever código)
 - [ ] A ideia passou nos cinco testes.
 - [ ] Toda seção do brief tem um gesto, com "como se vê numa tela parada".
+- [ ] O momento-assinatura tem lugar (seção e % da rolagem) e descrição do quadro parado.
+- [ ] Seções vizinhas têm composições diferentes (2 de: colunas, posição do título, escala, peso da imagem, direção).
 - [ ] Os gestos são parentes (mesma origem) e não há dois gestos na mesma seção.
 - [ ] A regra é verificável e está escrita.
 - [ ] O "não faz" tem de 3 a 5 itens concretos, incluindo os clichês do tema.

@@ -20,6 +20,7 @@ Fluxo em seis passos, na ordem. Cada passo aponta para o arquivo de detalhe: abr
 6. **Medir para declarar.** "Nível Awwwards" não se declara: o juiz libera.
 
 ## 1. Briefing → [references/perguntas.md](references/perguntas.md)
+Na primeira resposta, diga o agente e o modelo em uso (se souber) e o modelo e esforço que cada etapa pede ([modelos.md](references/modelos.md)): Opus na direção criativa, no 3D e no juiz; Sonnet no resto. Só o usuário troca o modelo da sessão; subagentes você cria com o modelo certo.
 Diga o modo de trabalho: **A · do zero**, **B · refazer** ou **C · reajustar**. Em B e C, capture e diagnostique antes de propor ([01-diagnostico.md](references/base-design-completo/01-diagnostico.md); níveis em [_SKILL-original.md](references/base-design-completo/_SKILL-original.md) §2).
 Pergunte em três blocos com `AskUserQuestion` (sempre com "Outro"): **1** entender o sistema, as provas e a stack; **2** sites de referência (A, B, C + E recomendada, com links); **3** estilo, paleta, 3D e scroll, sempre com a opção recomendada primeiro. Entre o bloco 1 e o 2:
 ```bash
@@ -28,7 +29,7 @@ node <skill>/scripts/opcoes.mjs --tema "<assunto>" --adjetivos "a,b,c" --recurso
 Abra as capturas antes de mostrar os sites (ranking e encaixe de layout em [pesquisa.md](references/pesquisa.md)). Feche com `montar-brief.mjs` (`design/brief.json` + `tokens.css`) e valide o brief com o usuário.
 
 ## 2. Direção criativa → [references/direcao-criativa.md](references/direcao-criativa.md)
-Antes de qualquer código, escreva `design/DIRECAO.md`: ideia central em uma frase, gesto-assinatura por seção (visível numa tela parada), uma regra que o site nunca quebra e o que ele **não** faz. Ofereça duas ideias, recomende uma e aprove com o usuário. Depois, a identidade visual (mesmo arquivo). **Seção sem gesto não está pronta.**
+Antes de qualquer código, escreva `design/DIRECAO.md`: ideia central em uma frase, gesto-assinatura por seção (visível numa tela parada), uma regra que o site nunca quebra e o que ele **não** faz. Ofereça duas ideias, recomende uma e aprove com o usuário. Depois, a identidade visual (mesmo arquivo). **Seção sem gesto não está pronta.** Obrigatórios também: um **momento-assinatura** visível numa captura parada e **composições diferentes entre seções vizinhas** (§2b e §2c).
 
 ## 3. Estudo de referências → [references/pesquisa.md](references/pesquisa.md)
 Recapture as 3 a 6 referências escolhidas (depois do preloader, em 1440 e 390 px) e escolha uma por seção, com o que adaptar e o que não copiar (`brief.json > secoes[].referencia`). Em réplica, siga [replica/PROTOCOLO.md](replica/PROTOCOLO.md).

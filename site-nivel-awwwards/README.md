@@ -17,6 +17,8 @@ Um agente sem método faz sites corretos e iguais entre si: grid de cards, gradi
    - **Fidelidade** (só em réplica): comparação pixel a pixel por tela, mínimo 75.
    - **Juiz** independente (`juiz.mjs` + subagente limpo): rubrica Awwwards (Design 40%, Usabilidade 30%, Criatividade 20%, Conteúdo 10%); libera com média ≥ 7,5 e nenhum critério abaixo de 6.
 
+6. **Modelo certo por etapa.** O agente diz qual modelo está usando e recomenda o melhor para cada etapa (forte na direção criativa e no juiz, intermediário no resto), para gastar menos sem perder nota ([references/modelos.md](references/modelos.md)).
+
 Fluxo: briefing → direção criativa → estudo de referências → construção (projeto-base + módulos prontos) → portões → entrega com relatório do que foi e do que não foi testado.
 
 ## O que tem aqui
