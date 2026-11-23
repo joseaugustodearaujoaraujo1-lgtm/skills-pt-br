@@ -11,7 +11,7 @@
 <link rel="preload" href="fonts/jost-normal-400-500.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="estilo.css?v=1">
 </head>
-<body>
+<body data-limiar-roda="120" data-limiar-toque="40" data-pausa-roda="400" data-transicao="650" data-carga-ms="18">
 <canvas class="palco" aria-hidden="true"></canvas>
 <div class="veu" aria-hidden="true"></div>
 
@@ -51,6 +51,7 @@
     </ul>
   </section>
 </main>
+<script>(function(){var t=new URLSearchParams(location.search).get('tema');if(t)document.documentElement.setAttribute('data-paleta',t)})()</script>
 <script type="module" src="app.js?v=1"></script>
 </body>
 </html>

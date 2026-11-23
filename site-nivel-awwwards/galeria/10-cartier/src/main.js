@@ -7,6 +7,8 @@ const $$ = s => [...document.querySelectorAll(s)];
 const reduzido = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const raiz = document.documentElement;
 const N = CAPITULOS.length;
+const cfg = document.body.dataset; // limiares e tempos lidos do <body>
+const LIM_RODA = +cfg.limiarRoda, LIM_TOQUE = +cfg.limiarToque, PAUSA_RODA = +cfg.pausaRoda, TRANSICAO = +cfg.transicao, CARGA_MS = +cfg.cargaMs;
 
 // pontos de navegação à direita
 $('.pontos').innerHTML = CAPITULOS.map((c, i) => `<li><button type="button" data-i="${i}" aria-label="Capítulo ${i + 1}${c.titulo ? ': ' + c.titulo.replace(/<br>/g, ' ') : ''}"><i></i></button></li>`).join('');
@@ -37,13 +39,13 @@ function ir(k) {
     cap = k; chegada = 0; mostrarTexto(k); titulo.classList.remove('sai');
     veu.classList.remove('ver');
     setTimeout(() => { ocupado = false; }, 900);
-  }, reduzido ? 0 : 650);
+  }, reduzido ? 0 : TRANSICAO);
 }
 let acum = 0, ultimo = 0;
-addEventListener('wheel', e => { e.preventDefault(); const agora = performance.now(); if (agora - ultimo > 400) acum = 0; ultimo = agora; acum += e.deltaY; if (Math.abs(acum) > 120) { ir(cap + Math.sign(acum)); acum = 0; } }, { passive: false });
+addEventListener('wheel', e => { e.preventDefault(); const agora = performance.now(); if (agora - ultimo > PAUSA_RODA) acum = 0; ultimo = agora; acum += e.deltaY; if (Math.abs(acum) > LIM_RODA) { ir(cap + Math.sign(acum)); acum = 0; } }, { passive: false });
 let toqueY = null;
 addEventListener('touchstart', e => { toqueY = e.touches[0].clientY; }, { passive: true });
-addEventListener('touchend', e => { if (toqueY === null) return; const d = toqueY - e.changedTouches[0].clientY; if (Math.abs(d) > 40) ir(cap + Math.sign(d)); toqueY = null; });
+addEventListener('touchend', e => { if (toqueY === null) return; const d = toqueY - e.changedTouches[0].clientY; if (Math.abs(d) > LIM_TOQUE) ir(cap + Math.sign(d)); toqueY = null; });
 addEventListener('keydown', e => { if ($('.painel').open) return; if (['ArrowDown', 'PageDown', ' '].includes(e.key)) { e.preventDefault(); ir(cap + 1); } if (['ArrowUp', 'PageUp'].includes(e.key)) { e.preventDefault(); ir(cap - 1); } });
 addEventListener('pointermove', e => { ptr.tx = e.clientX / innerWidth - .5; ptr.ty = .5 - e.clientY / innerHeight; });
 $('.pontos').addEventListener('click', e => { const b = e.target.closest('button'); if (b) ir(+b.dataset.i); });
@@ -70,7 +72,7 @@ $('.som').addEventListener('click', () => {
 const num = $('.carga-num'), linha = $('.carga-linha i');
 let carga = 0;
 function carregar() {
-  carga = reduzido ? 100 : Math.min(100, (performance.now() - inicioCarga) / 18);
+  carga = reduzido ? 100 : Math.min(100, (performance.now() - inicioCarga) / CARGA_MS);
   num.textContent = Math.round(carga); linha.style.transform = `scaleX(${carga / 100})`;
   if (carga < 100) setTimeout(carregar, 40);
   else { $('.carregando').classList.add('fim'); pronto = true; mostrarTexto(0); }

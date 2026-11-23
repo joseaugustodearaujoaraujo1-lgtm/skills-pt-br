@@ -1,9 +1,17 @@
 /* TURMALINA: réplica da experiência Cartier WAW. Interface medida em 1440×900. */
-:root { --f: 'Jost', system-ui, sans-serif; --s: 'Cormorant Garamond', Georgia, serif; --ease: cubic-bezier(.22, 1, .36, 1); }
+:root { --f: 'Jost', system-ui, sans-serif; --s: 'Cormorant Garamond', Georgia, serif; --ease: cubic-bezier(.22, 1, .36, 1);
+  --cor-fundo: #5b4936; --cor-texto: #fff; --cor-carga: #7f6a55; --cor-painel: #f6efe4; --cor-painel-texto: #6f5f4c; --cor-painel-tinta: #2a2118;
+}
+/* tema ?tema=quente */
+html[data-paleta="quente"] { --cor-fundo: #6c403e; --cor-texto: #fff; --cor-carga: #92615f; --cor-painel: #f9edeb; --cor-painel-texto: #7e5855; --cor-painel-tinta: #331d1c; }
+/* tema ?tema=frio */
+html[data-paleta="frio"] { --cor-fundo: #395331; --cor-texto: #fff; --cor-carga: #58754f; --cor-painel: #e3f5e0; --cor-painel-texto: #4e6848; --cor-painel-tinta: #1a2616; }
+/* tema ?tema=mono */
+html[data-paleta="mono"] { --cor-fundo: #514b45; --cor-texto: #fff; --cor-carga: #736d66; --cor-painel: #f1f0ed; --cor-painel-texto: #66615b; --cor-painel-tinta: #25221f; }
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html, body { height: 100%; overflow: hidden; background: #5b4936; color: #fff; font-family: var(--f); -webkit-font-smoothing: antialiased; }
+html, body { height: 100%; overflow: hidden; background: var(--cor-fundo); color: var(--cor-texto); font-family: var(--f); -webkit-font-smoothing: antialiased; }
 button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
-:focus-visible { outline: 2px solid #fff; outline-offset: 4px; }
+:focus-visible { outline: 2px solid var(--cor-texto); outline-offset: 4px; }
 .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
 .palco { position: fixed; inset: 0; width: 100%; height: 100%; display: block; }
 .veu { position: fixed; inset: 0; z-index: 5; opacity: 0; pointer-events: none; transition: opacity .65s var(--ease); }
@@ -12,12 +20,12 @@ main, .topo { position: relative; z-index: 10; }
 .palco ~ * { text-shadow: 0 1px 18px rgb(60 40 20 / .35); }
 
 /* ---------- carregamento ---------- */
-.carregando { position: fixed; inset: 0; z-index: 100; background: #7f6a55; color: #fff; transition: opacity 1s var(--ease), visibility 0s 1s; }
-.carga-frase { position: absolute; left: 50%; top: 280px; width: 520px; max-width: calc(100% - 40px); transform: translateX(-50%); text-align: center; font: 500 12px/1.6 var(--f); letter-spacing: .06em; text-transform: uppercase; color: #fff; }
-.carga-frase b { font-weight: 500; color: #fff; }
+.carregando { position: fixed; inset: 0; z-index: 100; background: var(--cor-carga); color: var(--cor-texto); transition: opacity 1s var(--ease), visibility 0s 1s; }
+.carga-frase { position: absolute; left: 50%; top: 280px; width: 520px; max-width: calc(100% - 40px); transform: translateX(-50%); text-align: center; font: 500 12px/1.6 var(--f); letter-spacing: .06em; text-transform: uppercase; color: var(--cor-texto); }
+.carga-frase b { font-weight: 500; color: var(--cor-texto); }
 .carga-num { position: absolute; left: 50%; top: 645px; transform: translateX(-50%); font: 500 12px/1 var(--f); }
-.carga-linha { position: absolute; left: 50%; top: 666px; width: 165px; height: 1px; transform: translateX(-50%); background: rgb(255 255 255 / .35); }
-.carga-linha i { position: absolute; inset: 0; background: #fff; transform-origin: 0 50%; transform: scaleX(0); }
+.carga-linha { position: absolute; left: 50%; top: 666px; width: 165px; height: 1px; transform: translateX(-50%); background: color-mix(in srgb, var(--cor-texto) 35%, transparent); }
+.carga-linha i { position: absolute; inset: 0; background: var(--cor-texto); transform-origin: 0 50%; transform: scaleX(0); }
 .carregando.fim { opacity: 0; visibility: hidden; }
 
 /* ---------- topo ---------- */
@@ -41,7 +49,7 @@ main, .topo { position: relative; z-index: 10; }
 .descobrir:hover::after { width: 60px; margin-left: -30px; }
 .descobrir[hidden] { display: none; }
 .rolar { position: fixed; left: 50%; top: 757px; transform: translateX(-50%); display: none; justify-items: center; gap: 10px; min-height: 44px; font: 600 12px/1 var(--f); letter-spacing: .08em; text-transform: uppercase; }
-.rolar i { width: 1px; height: 30px; background: linear-gradient(#fff, transparent); animation: desce 1.8s var(--ease) infinite; transform-origin: 50% 0; }
+.rolar i { width: 1px; height: 30px; background: linear-gradient(var(--cor-texto), transparent); animation: desce 1.8s var(--ease) infinite; transform-origin: 50% 0; }
 @keyframes desce { 0% { transform: scaleY(0); } 60% { transform: scaleY(1); } 100% { opacity: 0; } }
 .na-abertura .rolar { display: grid; }
 .rolar2 { position: fixed; left: 1330px; left: calc(100vw - 110px); top: 827px; top: calc(100vh - 73px); display: none; font: 600 12px/1 var(--f); letter-spacing: .02em; text-transform: uppercase; pointer-events: none; }
@@ -51,16 +59,16 @@ main, .topo { position: relative; z-index: 10; }
 @media (max-width: 760px) { .rolar2 { display: none !important; } }
 .pontos { position: fixed; right: 44px; top: 50%; transform: translateY(-50%); list-style: none; display: grid; gap: 0; }
 .pontos button { display: grid; place-items: center; width: 44px; height: 22px; }
-.pontos i { width: 3px; height: 3px; border-radius: 50%; background: rgb(255 255 255 / .6); transition: transform .4s var(--ease), background .4s; }
-.pontos button[aria-current] i { width: 9px; height: 9px; background: none; border: 1px solid #fff; }
+.pontos i { width: 3px; height: 3px; border-radius: 50%; background: color-mix(in srgb, var(--cor-texto) 60%, transparent); transition: transform .4s var(--ease), background .4s; }
+.pontos button[aria-current] i { width: 9px; height: 9px; background: none; border: 1px solid var(--cor-texto); }
 
 /* ---------- painel ---------- */
-.painel { position: fixed; inset: 0 0 0 auto; width: min(100vw, 440px); height: 100%; max-height: none; margin: 0 0 0 auto; padding: 120px 48px 48px; border: 0; background: #f6efe4; color: #2a2118; }
+.painel { position: fixed; inset: 0 0 0 auto; width: min(100vw, 440px); height: 100%; max-height: none; margin: 0 0 0 auto; padding: 120px 48px 48px; border: 0; background: var(--cor-painel); color: var(--cor-painel-tinta); }
 .painel::backdrop { background: rgb(40 30 20 / .35); }
-.painel-rotulo { font: 600 12px/1 var(--f); letter-spacing: .08em; text-transform: uppercase; color: #6f5f4c; }
+.painel-rotulo { font: 600 12px/1 var(--f); letter-spacing: .08em; text-transform: uppercase; color: var(--cor-painel-texto); }
 .painel-titulo { margin-top: 18px; font: 400 40px/1.05 var(--s); }
 .painel-texto { margin-top: 24px; font: 400 18px/1.6 var(--f); }
-.fechar { margin-top: 36px; min-height: 44px; padding: 0 22px; border: 1px solid #2a2118; font: 600 12px/1 var(--f); letter-spacing: .08em; text-transform: uppercase; }
+.fechar { margin-top: 36px; min-height: 44px; padding: 0 22px; border: 1px solid var(--cor-painel-tinta); font: 600 12px/1 var(--f); letter-spacing: .08em; text-transform: uppercase; }
 
 /* ---------- alternativa estática ---------- */
 .estatico { display: none; }
@@ -79,7 +87,7 @@ main, .topo { position: relative; z-index: 10; }
   .titulo .l { opacity: 1; filter: none; animation: none !important; }
   .rolar i { animation: none; }
   html, body { overflow: auto; height: auto; }
-  .estatico { display: block; position: relative; z-index: 10; margin-top: 100vh; padding: 80px max(24px, calc(50vw - 360px)); background: #f6efe4; color: #2a2118; text-shadow: none; }
+  .estatico { display: block; position: relative; z-index: 10; margin-top: 100vh; padding: 80px max(24px, calc(50vw - 360px)); background: var(--cor-painel); color: var(--cor-painel-tinta); text-shadow: none; }
   .estatico h2 { font: 400 48px/1.1 var(--s); }
   .estatico li { list-style: none; margin-top: 32px; }
   .estatico h3 { font: 500 14px/1.2 var(--f); letter-spacing: .08em; text-transform: uppercase; }
