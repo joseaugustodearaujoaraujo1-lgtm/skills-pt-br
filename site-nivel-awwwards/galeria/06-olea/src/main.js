@@ -15,7 +15,7 @@ const palco = sec => ({ trigger: sec, start: 'top top', end: 'bottom bottom', sc
 if (reduzido) gsap.globalTimeline.timeScale(1); // timelines abaixo só rodam sem movimento reduzido
 
 // ---------- quadros do giro (render 3D próprio, 48 quadros) ----------
-const N = 48, quadros = [];
+const N = +$('.giro').dataset.quadros, quadros = [];
 for (let i = 0; i < N; i++) { const im = new Image(); im.decoding = 'async'; im.src = `img/giro/${String(i).padStart(2, '0')}.webp`; quadros.push(im); }
 const desenhador = canvas => { const g = canvas.getContext('2d'); let ultimo = -1; return t => { const i = Math.max(0, Math.min(N - 1, Math.round(t * (N - 1)))); const im = quadros[i]; if (i === ultimo || !im.complete) return; ultimo = i; g.clearRect(0, 0, canvas.width, canvas.height); g.drawImage(im, 0, 0, canvas.width, canvas.height); }; };
 const giroQ = desenhador($('.giro-quadros')), amamQ = desenhador($('.amam-sab'));
@@ -48,13 +48,8 @@ const ptr = { x: -1, y: -1 };
 const avaliarMao = () => { if (!maoAtiva || ptr.x < 0) { giro.classList.remove('brilhando'); return; } const r = alvoMao.getBoundingClientRect(), cx = r.left + r.width / 2, cy = r.top + r.height / 2; giro.classList.toggle('brilhando', Math.hypot(ptr.x - cx, ptr.y - cy) < r.width * .36 || (ptr.y > cy && Math.abs(ptr.x - cx) < r.width * .3)); };
 addEventListener('pointermove', e => { ptr.x = e.clientX; ptr.y = e.clientY; avaliarMao(); }, { passive: true });
 if (!reduzido) gsap.to(document.documentElement, { '--giro': '360deg', duration: 6, repeat: -1, ease: 'none' });
-const MODELOS = [
-  { img: 'img/pilha-1.webp', nome: 'OLEA', txt: 'O original. Refinado até parecer inevitável. Espuma na medida, firmeza na medida, e some no seu dia como se nunca tivesse estado ali.', lista: ['Elevação de uma camada', 'Isolamento natural de azeite', 'Firme em qualquer saboneteira'] },
-  { img: 'img/pilha-2.webp', nome: 'OLEA Pro', txt: 'O dobro de azeite. O dobro de compromisso. Para quem quer espuma de sobra sem pensar nisso.', lista: ['Elevação de duas camadas', 'Isolamento térmico em dobro', 'Estabilidade para banheiras fundas'] },
-  { img: 'img/pilha-3.webp', nome: 'OLEA Pro Max', txt: 'Três camadas de confiança. Para quem gosta do banho levado a sério, e de ser visto levando.', lista: ['Elevação máxima de três camadas', 'Presença máxima na pia', 'Literalmente três sabonetes'] },
-];
 $$('.abas button').forEach(b => b.addEventListener('click', () => {
-  $$('.abas button').forEach(x => x.setAttribute('aria-selected', String(x === b))); const m = MODELOS[+b.dataset.i];
+  $$('.abas button').forEach(x => x.setAttribute('aria-selected', String(x === b))); const m = { img: b.dataset.img, nome: b.dataset.nome, txt: b.dataset.txt, lista: b.dataset.lista.split('|') }; // vem de data-* da aba
   const img = $('.escolha-img'); gsap.fromTo(img, { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: .6, ease: 'power3.out' }); img.src = m.img; img.alt = `${m.nome}: pilha de ${+b.dataset.i + 1} sabonete(s)`;
   $('.escolha-desc h3').textContent = m.nome; $('.escolha-desc p').textContent = m.txt; $$('.escolha-lista li').forEach((li, i) => { li.textContent = m.lista[i]; });
 }));

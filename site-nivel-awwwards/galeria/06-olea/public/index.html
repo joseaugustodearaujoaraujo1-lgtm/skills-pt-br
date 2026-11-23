@@ -56,7 +56,7 @@
 </section>
 
 <!-- 2. NÃO É SÓ UM SABONETE (800vh): o sabonete gira; depois "Feito com IA*" com a mão e o brilho de arco-íris -->
-<section class="giro" aria-labelledby="t-giro">
+<section class="giro" data-quadros="48" aria-labelledby="t-giro">
   <div class="palco">
     <div class="brilho" aria-hidden="true"></div>
     <h2 class="giro-titulo" id="t-giro">Não é só<br>um sabão.</h2>
@@ -233,7 +233,7 @@
     <p class="rotulo-c">Escolha a sua</p>
     <h2 class="escolha-titulo" id="t-escolha">OLEA</h2>
     <div class="abas" role="tablist" aria-label="Modelos">
-      <button type="button" role="tab" aria-selected="true" data-i="0">OLEA</button><button type="button" role="tab" aria-selected="false" data-i="1">OLEA Pro</button><button type="button" role="tab" aria-selected="false" data-i="2">OLEA Pro Max</button>
+      <button type="button" role="tab" aria-selected="true" data-i="0" data-img="img/pilha-1.webp" data-nome="OLEA" data-txt="O original. Refinado até parecer inevitável. Espuma na medida, firmeza na medida, e some no seu dia como se nunca tivesse estado ali." data-lista="Elevação de uma camada|Isolamento natural de azeite|Firme em qualquer saboneteira">OLEA</button><button type="button" role="tab" aria-selected="false" data-i="1" data-img="img/pilha-2.webp" data-nome="OLEA Pro" data-txt="O dobro de azeite. O dobro de compromisso. Para quem quer espuma de sobra sem pensar nisso." data-lista="Elevação de duas camadas|Isolamento térmico em dobro|Estabilidade para banheiras fundas">OLEA Pro</button><button type="button" role="tab" aria-selected="false" data-i="2" data-img="img/pilha-3.webp" data-nome="OLEA Pro Max" data-txt="Três camadas de confiança. Para quem gosta do banho levado a sério, e de ser visto levando." data-lista="Elevação máxima de três camadas|Presença máxima na pia|Literalmente três sabonetes">OLEA Pro Max</button>
     </div>
     <img class="escolha-img" src="img/pilha-1.webp" width="900" height="900" alt="Um sabonete OLEA">
     <div class="escolha-desc" aria-live="polite"><h3>OLEA</h3><p>O original. Refinado até parecer inevitável. Espuma na medida, firmeza na medida, e some no seu dia como se nunca tivesse estado ali.</p></div>
@@ -294,6 +294,7 @@
   <p class="rodape-aviso">Este site inteiro é um projeto criativo fictício. A OLEA não existe e nada está à venda. Todas as afirmações são satíricas e só para diversão. Fotos provisórias de licença livre: <a href="creditos.json">créditos</a>.</p>
 </footer>
 </main>
+<script>(function(){var t=new URLSearchParams(location.search).get('tema');if(t)document.documentElement.setAttribute('data-paleta',t)})()</script>
 <script type="module" src="app.js?v=2"></script>
 </body>
 </html>
