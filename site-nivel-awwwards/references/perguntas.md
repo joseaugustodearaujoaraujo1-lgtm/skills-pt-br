@@ -43,4 +43,7 @@ Em toda pergunta deste bloco a **primeira opção é "(Recomendado)"**, com o mo
 Todo site usa componentes ou transições das plataformas (reactbits.dev, transitions.dev, naocodei.com; pinstack e tasteskill como referência), com o que veio de onde e a licença no relatório (`plataformas.md`). Nada de login, conta ou compra: itens PRO ficam com o usuário.
 
 ## Depois das escolhas
-Registre no brief (`montar-brief.mjs`): resumo do sistema (bloco 1), sites escolhidos, stack, estilo, paleta (ids e hex), decisão de 3D. **Valide o brief com o usuário antes de construir.**
+```bash
+node <skill>/scripts/montar-brief.mjs --nome "<Marca>" --tema "<tema>" --adjetivos "a,b,c" --publico "..." --recursos "3d,scroll" [--ref3d "objeto=caminho"] --saida ./design
+```
+Registre no brief: resumo do sistema (bloco 1), sites escolhidos, stack, estilo, paleta (ids e hex), decisão de 3D; preencha `secoes[].referencia`, `componente` e `motion` (o estudo do passo 3 completa a referência por seção). **Valide o brief com o usuário antes de construir.**

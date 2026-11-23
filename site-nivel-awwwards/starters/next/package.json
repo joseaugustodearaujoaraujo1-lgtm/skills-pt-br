@@ -2,9 +2,9 @@
   "name": "projeto-base",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p {{PORTA}}",
     "build": "next build",
-    "start": "next start"
+    "start": "next start -p {{PORTA}}"
   },
   "dependencies": {
     "gsap": "^3.15.1",

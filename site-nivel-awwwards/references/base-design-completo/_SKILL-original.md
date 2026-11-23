@@ -62,11 +62,11 @@ Nos níveis 2 e 3, apresente a direção proposta (paleta, fontes, ideia de layo
 
 ### Passo 1 — Capturar o estado atual
 - Prints em desktop (~1440px) e celular (~375px), nos modos claro e escuro se existirem.
-- Inventário do que está em uso: famílias de fonte, tamanhos, cores, espaçamentos, raios, sombras. O script de inventário está em `references/01-diagnostico.md`.
+- Inventário do que está em uso: famílias de fonte, tamanhos, cores, espaçamentos, raios, sombras. O script de inventário está em `01-diagnostico.md`.
 - Anote o objetivo da página e a ação principal.
 
 ### Passo 2 — Diagnosticar
-Use a rubrica de 10 dimensões de `references/01-diagnostico.md` e dê nota de 0 a 3 em cada uma, sempre com evidência (o que você viu e onde). Faça também o teste dos 5 segundos e o teste de desfocar a vista (squint test), descritos no mesmo arquivo.
+Use a rubrica de 10 dimensões de `01-diagnostico.md` e dê nota de 0 a 3 em cada uma, sempre com evidência (o que você viu e onde). Faça também o teste dos 5 segundos e o teste de desfocar a vista (squint test), descritos no mesmo arquivo.
 
 ### Passo 3 — Priorizar
 Ordene os problemas por **impacto no objetivo ÷ esforço**. Em geral, a ordem que mais rende é:
@@ -96,7 +96,7 @@ Regras de implementação:
 - Mudanças pequenas e verificáveis.
 - Mantenha o conteúdo do usuário. Melhorias de texto são sugestões, nunca invenções: não crie depoimentos, números ou logos de clientes.
 - Respeite a stack: não troque CSS por Tailwind, nem adicione biblioteca, sem combinar.
-- Exemplos prontos em `references/implementacao/`.
+- Exemplos prontos em `implementacao/`.
 
 ### Passo 6 — Verificar
 - Prints de antes e depois, lado a lado, em desktop e celular.
@@ -108,16 +108,16 @@ Regras de implementação:
 
 | Preciso de… | Arquivo |
 |---|---|
-| Avaliar um site, dar notas, achar problemas | `references/01-diagnostico.md` |
-| Escolher fontes, montar escala, hierarquia de texto | `references/02-tipografia.md` |
-| Paleta, tokens de cor, modo escuro, contraste | `references/03-cor-e-contraste.md` |
-| Espaçamento, grid, alinhamento, responsivo | `references/04-layout-e-espaco.md` |
-| Botões, cards, menu, hero, formulários, pricing, footer | `references/05-componentes.md` |
-| Animações e microinterações | `references/06-motion.md` e `references/catalogo-naocodei.md` |
-| A página precisa converter (vender, gerar contato) | `references/07-conversao.md` |
-| O site parece genérico ou "feito por IA" | `references/08-cara-de-ia.md` |
-| Inspiração, galerias, fontes, ícones, cores | `references/09-referencias.md` |
-| Código pronto | `references/implementacao/css-puro.md`, `tailwind.md` ou `react.md` (só o da stack) |
+| Avaliar um site, dar notas, achar problemas | `01-diagnostico.md` |
+| Escolher fontes, montar escala, hierarquia de texto | `02-tipografia.md` |
+| Paleta, tokens de cor, modo escuro, contraste | `03-cor-e-contraste.md` |
+| Espaçamento, grid, alinhamento, responsivo | `04-layout-e-espaco.md` |
+| Botões, cards, menu, hero, formulários, pricing, footer | `05-componentes.md` |
+| Animações e microinterações | `06-motion.md` e `catalogo-naocodei.md` |
+| A página precisa converter (vender, gerar contato) | `07-conversao.md` |
+| O site parece genérico ou "feito por IA" | `08-cara-de-ia.md` |
+| Inspiração, galerias, fontes, ícones, cores | `09-referencias.md` |
+| Código pronto | `implementacao/css-puro.md`, `tailwind.md` ou `react.md` (só o da stack) |
 
 ## 5. Regras de ouro
 

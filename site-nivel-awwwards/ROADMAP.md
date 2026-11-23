@@ -35,8 +35,8 @@ Rodar a análise no computador do usuário (`~/Documents/acervos-design`) e guar
 ## Fase 6: Teste cego
 Rodar a skill em agente limpo, sem contexto, com 3 briefings diferentes, e medir com os portões. O que falhar vira regra na skill. Repetir até estabilizar. É assim que se confirma que "qualquer agente" consegue.
 
-## Fase 7: SKILL.md enxuto
-Entrada curta com o fluxo; o detalhe em `references/`, carregado só quando preciso.
+## Fase 7: SKILL.md enxuto (feita na sessão E)
+Entrada curta com o fluxo; o detalhe em `references/`, carregado só quando preciso. Links conferidos por `scripts/checar-links.mjs`.
 
 ## Como executar
 O plano está em `PROMPT-FINALIZAR-SKILL.md` (5 sessões com modelo e esforço por tarefa) e o andamento em `STATUS-SKILL.md`.

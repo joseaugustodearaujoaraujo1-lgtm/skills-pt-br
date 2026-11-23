@@ -10,7 +10,7 @@ export const viewport = { themeColor: '{{COR_FUNDO}}' };
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="pt-BR">
+    <html lang="pt-BR" data-entrada="{{ENTRADA}}">
       <head>
         <link rel="stylesheet" href="/fonts/fonts.css" />
 {{PRELOAD_FONTES_JSX}}

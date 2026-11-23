@@ -38,7 +38,7 @@ Regra: **preto + marfim + um dourado**. Semânticos só em feedback, sempre **es
 
 ## 4. Tipografia (a alma do estilo)
 
-- **Heading:** **Playfair Display** (alternativas: *Cormorant Garamond*, *Bodoni Moda*, *DM Serif Display*). Display grande, títulos de card e valores em marfim; **itálico em dourado** para a palavra de ênfase ("Every Detail Shapes Your *Legacy.*", "Subheading").
+- **Heading:** **Playfair Display** (alternativas: *Cormorant Garamond*, *Bodoni Moda*, *DM Serif Display*). Na skill, o brief usa **Bodoni Moda + Jost** (Playfair + Inter é o par de luxo mais visto: ver `anti-cliches.md`). Display grande, títulos de card e valores em marfim; **itálico em dourado** para a palavra de ênfase ("Every Detail Shapes Your *Legacy.*", "Subheading").
 - **Body:** **SF Pro Display** na prancha; na web use `-apple-system, "SF Pro Display", Inter, system-ui, sans-serif`.
 - **Escala:** Display (serifa 56–96px) · Heading (serifa 32–44px) · *Subheading* (serifa itálica dourada 24–28px) · Body (sans 16px, marfim) · **OVERLINE** (caps, dourado, 12px, tracking 0.18em) · Caption (sans 13px, cinza).
 - **Caixa-alta com tracking largo** (0.12–0.25em) em: rótulos de seção ("01 · COLOR PALETTE" em dourado), navegação (SHOP, STORY, CONTACT), botões, abas, rodapés, subtítulos ("FOUNDATIONS & NAVIGATION" em cinza).

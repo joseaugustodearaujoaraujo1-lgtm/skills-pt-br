@@ -28,8 +28,10 @@ try { refs = rodar('pesquisar-referencias.mjs', ['--tema', args.tema, ...opt('re
 catch { refs = { referencias: [] }; console.error('  AVISO: acervo não encontrado; brief sem referências (complete com pesquisa ao vivo no Awwwards/One Page Love).'); }
 
 // Fontes livres (Google Fonts) por estilo: título / corpo / detalhe. Substituem as fontes pagas dos sites premiados.
+// typography-luxury: Bodoni Moda (didone de alto contraste, com itálico e eixo óptico) + Jost (geométrica de corpo) + Fragment Mono (rótulos).
+// Saiu Playfair + Inter, "par de luxo muito visto" para o juiz (teste cego, rodada 2). Outras livres com caráter: Gloock, Fraunces, Cormorant Garamond.
 const FONTES = {
-  'typography-luxury': ['Playfair Display', 'Inter', 'Jost'], 'minimalism': ['Instrument Serif', 'Inter', 'DM Mono'],
+  'typography-luxury': ['Bodoni Moda', 'Jost', 'Fragment Mono'], 'minimalism': ['Instrument Serif', 'Inter', 'DM Mono'],
   'brutalism': ['Anton', 'Space Grotesk', 'Space Mono'], 'dark-mode': ['Inter Tight', 'Inter', 'JetBrains Mono'],
   'glassmorphism': ['Outfit', 'Plus Jakarta Sans', 'JetBrains Mono'], 'claymorphism': ['Fredoka', 'Nunito', 'Nunito'],
   'bento-grid': ['Manrope', 'Inter', 'JetBrains Mono'], 'pixel-art': ['Press Start 2P', 'VT323', 'Silkscreen'],
@@ -65,7 +67,7 @@ const brief = {
 fs.writeFileSync(path.join(saida, 'brief.json'), JSON.stringify(brief, null, 2));
 
 // Fontes por <link> com preconnect (menos uma etapa de rede que o @import). Só o título pede itálico real quando a família tem.
-const COM_ITALICO = new Set(['Playfair Display', 'Instrument Serif', 'Inter', 'Nunito']);
+const COM_ITALICO = new Set(['Playfair Display', 'Bodoni Moda', 'Instrument Serif', 'Inter', 'Nunito', 'Jost']);
 const familias = [...new Set([fTitulo, fCorpo, fDetalhe])].map(f => 'family=' + f.replace(/ /g, '+') + (f === fTitulo && COM_ITALICO.has(f) ? ':ital@0;1' : ''));
 // Dica: para hospedar as fontes no próprio site (recomendado), rode scripts/baixar-fontes.mjs; fontes.html fica só como atalho de desenvolvimento.
 fs.writeFileSync(path.join(saida, 'fontes.html'), `<link rel="preconnect" href="https://fonts.googleapis.com">

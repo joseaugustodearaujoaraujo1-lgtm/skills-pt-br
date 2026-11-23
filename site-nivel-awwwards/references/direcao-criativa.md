@@ -60,6 +60,9 @@ De 3 a 5 itens **concretos** do tema e da técnica (não "nada genérico"). **Co
 2. Com a ideia escolhida, preencha os gestos por seção, a regra e o "não faz", e mostre o `DIRECAO.md` para aprovação antes de construir.
 3. Na construção, cada seção é feita com o gesto dela. No portão final, rode o juiz com `--direcao design/DIRECAO.md`.
 
+## Identidade visual (depois do `DIRECAO.md` aprovado)
+A identidade sai da ideia central, não de tendência. Feche, nesta ordem: logo e ativos-chave; elementos de assinatura (forma, tratamento de imagem, cursor, transição); tipografia ([base-design-completo/02-tipografia.md](base-design-completo/02-tipografia.md)); cor e modo escuro ([base-design-completo/03-cor-e-contraste.md](base-design-completo/03-cor-e-contraste.md)); e a fuga da "cara de IA" ([base-design-completo/08-cara-de-ia.md](base-design-completo/08-cara-de-ia.md), [anti-cliches.md](anti-cliches.md)). A skill `identidade-visual`, se instalada, fecha o `docs/IDENTIDADE.md`. Só depois disso o estilo fino.
+
 ---
 
 ## Banco de conceitos: o que o tema permite que ninguém fez

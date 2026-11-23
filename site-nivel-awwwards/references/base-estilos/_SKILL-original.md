@@ -23,16 +23,16 @@ Catálogo de referência de **10 estilos visuais** para interfaces web. Cada est
 
 | # | Estilo | Arquivo | Resumo em uma frase | Referências visuais |
 |---|---|---|---|---|
-| 1 | **Neomorphism** | `references/neomorphism.md` | Material único cinza-azulado com relevo/rebaixo por duas sombras opostas e azul como único acento | 3 pranchas |
-| 2 | **Minimalism** | `references/minimalism.md` | Marfim quente, verde-sálvia, tipografia fina com tracking largo, pills e muito respiro | 3 pranchas |
-| 3 | **Brutalism** | `references/brutalism.md` | Papel + tinta + verde-lima ácido, raio 0, bordas pretas, sombra dura e tipografia condensada gigante | 3 pranchas |
-| 4 | **Glassmorphism** | `references/glassmorphism.md` | Vidro fosco translúcido sobre fundo colorido com esferas 3D, azul-céu e glow | 3 pranchas |
-| 5 | **Claymorphism** | `references/claymorphism.md` | Argila inflada em creme, preto e dourado, raios enormes e sombras externas + internas | 3 pranchas |
-| 6 | **Bento Grid** | `references/bento-grid.md` | Mosaico modular de cards brancos de tamanhos variados, fundo cinza e laranja de acento | 3 pranchas |
-| 7 | **Pixel Art** | `references/pixel-art.md` | Interface 8-bit: grade de pixels, bevel, cantos em degrau, dither, fonte pixel em caixa-alta | 3 pranchas |
-| 8 | **Typography Luxury** | `references/typography-luxury.md` | Preto profundo + dourado metálico + serifa Playfair, filetes finos e caixa-alta espaçada | 3 pranchas |
-| 9 | **Dark Mode** | `references/dark-mode.md` | Tema escuro premium por elevação de luminosidade, acento lilás e semânticos moderados | **nenhuma** (base: prompt "Dark Kit") |
-| 10 | **Cyberpunk** | `references/cyberpunk.md` | Neon ciano/magenta sobre quase preto, cantos chanfrados, HUD, glitch e scanlines | **nenhuma** (convenções do gênero) |
+| 1 | **Neomorphism** | `neomorphism.md` | Material único cinza-azulado com relevo/rebaixo por duas sombras opostas e azul como único acento | 3 pranchas |
+| 2 | **Minimalism** | `minimalism.md` | Marfim quente, verde-sálvia, tipografia fina com tracking largo, pills e muito respiro | 3 pranchas |
+| 3 | **Brutalism** | `brutalism.md` | Papel + tinta + verde-lima ácido, raio 0, bordas pretas, sombra dura e tipografia condensada gigante | 3 pranchas |
+| 4 | **Glassmorphism** | `glassmorphism.md` | Vidro fosco translúcido sobre fundo colorido com esferas 3D, azul-céu e glow | 3 pranchas |
+| 5 | **Claymorphism** | `claymorphism.md` | Argila inflada em creme, preto e dourado, raios enormes e sombras externas + internas | 3 pranchas |
+| 6 | **Bento Grid** | `bento-grid.md` | Mosaico modular de cards brancos de tamanhos variados, fundo cinza e laranja de acento | 3 pranchas |
+| 7 | **Pixel Art** | `pixel-art.md` | Interface 8-bit: grade de pixels, bevel, cantos em degrau, dither, fonte pixel em caixa-alta | 3 pranchas |
+| 8 | **Typography Luxury** | `typography-luxury.md` | Preto profundo + dourado metálico + serifa Playfair, filetes finos e caixa-alta espaçada | 3 pranchas |
+| 9 | **Dark Mode** | `dark-mode.md` | Tema escuro premium por elevação de luminosidade, acento lilás e semânticos moderados | **nenhuma** (base: prompt "Dark Kit") |
+| 10 | **Cyberpunk** | `cyberpunk.md` | Neon ciano/magenta sobre quase preto, cantos chanfrados, HUD, glitch e scanlines | **nenhuma** (convenções do gênero) |
 
 **Atenção:** dark mode e cyberpunk **não têm imagens de referência nem kit de componentes** no material de origem; seus arquivos são guias construídos por boas práticas e devem ser tratados como propostas. O kit de componentes visual existe apenas para os outros 8 estilos.
 

@@ -49,7 +49,7 @@ Notas por critério (Design / Usabilidade / Criatividade / Conteúdo):
 | 15 | O caminho `~/.claude/skills/...` citado não era onde a skill estava (agente) | Nota de caminhos no topo do SKILL.md | `SKILL.md` |
 | 16 | Imagem com `decoding="async"` e revelação por máscara saiu vazia na captura de página inteira (agente) | Sem `decoding="async"` em imagem que começa escondida | `elementos.md` §3 |
 
-**Ficou pendente (sessão E):** o `criar-projeto.mjs` grava a paleta gerada do tema e não a "recomendada" do `opcoes.mjs` (a de origem do estilo); também não baixa a fonte mono que o brief define. O starter anima tudo de baixo para cima, o que conflita com a regra de direção de muitos conceitos. A porta 3001 é fixa no starter.
+**Ficou pendente (resolvido):** a paleta e a mono foram resolvidas na rodada 3 (`--cores`); a direção única de entrada e a porta fixa, na sessão E (`--entrada`, `--porta`; ver Pendências).
 
 ## Rodada 2: joalheria de luxo
 **O que o agente fez:** "Vésper". A referência foi a ORE (Site of the Day), achada ao vivo. A ideia é "uma luz só acende a pedra, faceta por faceta". No hero, a marca aparece gigante, com um diamante de 57 facetas em WebGL2 com ray tracing, e o cursor é a única luz. Na lapidação, a pedra fica fixa e gira com a rolagem, com cotas reais (57%, 34,5°, 40,75°). Nas peças, cada uma se revela num círculo de luz, e há formulário de visita. Lighthouse deu 100/100/100/100 no desktop e 99/100/100/100 no celular. Passou de primeira: 0 FAIL e 7,05.
@@ -80,7 +80,7 @@ Notas por critério (Design / Usabilidade / Criatividade / Conteúdo):
 | 4 | Disco da regulagem desenhado plano, sem relação com o anel 3D (juiz) | O gesto usa o render e o material do objeto | `direcao-criativa.md` §2 |
 | 5 | Rótulo dinâmico contradiz a legenda ("para peixes" × "saladas, ovos, legumes") (juiz) | Conferir textos que mudam com a rolagem | `rubrica.md` §4 |
 | 6 | D03 a D05 com a mesma composição (juiz) | Já coberto: seções irmãs não repetem o bloco | `direcao-criativa.md` §2 |
-| 7 | O `criar-projeto.mjs` gravou a paleta gerada, não a escolhida (2ª vez) e não baixou a mono (agente) | `--cores` grava a paleta escolhida; a mono do brief é baixada; sem `--cores`, aviso | `scripts/criar-projeto.mjs`, `SKILL.md` §5 |
+| 7 | O `criar-projeto.mjs` gravou a paleta gerada, não a escolhida (2ª vez) e não baixou a mono (agente) | `--cores` grava a paleta escolhida; a mono do brief é baixada; sem `--cores`, aviso | `scripts/criar-projeto.mjs`, `construcao.md` §2 |
 | 8 | Sem gerador, o portão de igualdade dá IoU 1,0 sempre (molde e site do mesmo código) (agente) | Nesse caso a prova é a comparação com as referências reais | `aprovacoes.md` |
 | 9 | Dúvida entre "sem números inventados" e as medidas de um produto de conceito (agente) | Medidas e materiais são especificação a confirmar; avaliações, vendas e prêmios nunca | `perguntas.md` 1.2 |
 
@@ -105,6 +105,6 @@ Notas por critério (Design / Usabilidade / Criatividade / Conteúdo):
 ## Pendências (para a sessão E e depois)
 - Sem o acervo local, o bloco 2 (sites de referência) depende de pesquisa ao vivo, e o Awwwards recusou a conexão em 3 das 4 rodadas. O `opcoes.mjs` avisa e segue, mas o resultado é uma referência só.
 - O juiz só vê o plano B (sem GPU). O `?gpu=1` é convenção do site, não do `juiz.mjs`.
-- O mapa de fontes do `montar-brief.mjs` para `typography-luxury` continua Playfair + Inter + Jost (regra em `anti-cliches.md`, mas o mapa de fontes não mudou).
-- O starter ainda anima tudo de baixo para cima, e a porta 3001 é fixa.
+- ~~Mapa de fontes de `typography-luxury` em Playfair + Inter~~: resolvido na sessão E (Bodoni Moda + Jost + Fragment Mono).
+- ~~Starter que anima tudo de baixo para cima e porta 3001 fixa~~: resolvido na sessão E (`data-entrada` / `--entrada` com seis direções; `--porta`, porta por argumento e salto para a seguinte se ocupada).
 - Nenhuma rodada passou de 7,5. Para subir para 8, os juízes pedem sempre a mesma coisa: composição própria em cada seção irmã e um momento "uau" que apareça na foto.

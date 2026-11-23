@@ -34,6 +34,15 @@ if (!reduzido) {
     if (lenis) lenis.scrollTo(alvo, { duration: 1.4 }); else alvo.scrollIntoView({ behavior: 'smooth' });
   }));
 
+  // direção de entrada: data-entrada no elemento (ou no ancestral mais próximo, ou no <html>); o hero em CSS lê o mesmo atributo
+  const DIRECOES = { sobe: [0, 1], desce: [0, -1], 'da-esquerda': [-1, 0], 'da-direita': [1, 0], opacidade: [0, 0] };
+  const de = (el, dist, emPct) => { // valores para gsap.from; null = sem entrada
+    const nome = (el && el.closest('[data-entrada]') || document.documentElement).dataset.entrada || 'sobe';
+    if (nome === 'nenhuma') return null;
+    const [dx, dy] = DIRECOES[nome] || DIRECOES.sobe;
+    return emPct ? { xPercent: dx * dist, yPercent: dy * dist, ...(dx || dy ? {} : { opacity: 0 }) } : { x: dx * dist, y: dy * dist, opacity: 0 };
+  };
+
   // hero: a mídia afunda e gira de leve ao sair
   gsap.to('.hero-midia', { yPercent: 14, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
 
@@ -47,10 +56,10 @@ if (!reduzido) {
     ScrollTrigger.refresh();
   }, '100% 0px 100% 0px');
 
-  // títulos de seção sobem por linha quando entram
+  // títulos de seção entram por linha, na direção de data-entrada
   $$('.colecao-cab h2, .escura h2, .passos h2, .contato h2').forEach(h => quandoPerto(h, el => {
     const s = SplitText.create(el, { type: 'lines', mask: 'lines', linesClass: 'linha-js', aria: 'none' });
-    gsap.from(s.lines, { yPercent: 105, duration: 1.1, ease: 'power4.out', stagger: .1 });
+    const v = de(el, 105, true); if (v) gsap.from(s.lines, { ...v, duration: 1.1, ease: 'power4.out', stagger: .1 });
   }, '0px 0px -12% 0px'));
 
   // coleção: trilho horizontal fixado (tela larga); no celular é carrossel nativo
@@ -60,7 +69,7 @@ if (!reduzido) {
       gsap.to(trilho, { x: () => -dist(), ease: 'none', scrollTrigger: { trigger: '.colecao', pin: true, scrub: 1, start: 'top top', end: () => '+=' + dist(), invalidateOnRefresh: true } });
     },
   });
-  gsap.from('.item', { opacity: 0, y: 50, duration: 1, ease: 'power3.out', stagger: .08, scrollTrigger: { trigger: '.trilho', start: 'top 85%', once: true } });
+  const vItem = de($('.item'), 50); if (vItem) gsap.from('.item', { ...vItem, duration: 1, ease: 'power3.out', stagger: .08, scrollTrigger: { trigger: '.trilho', start: 'top 85%', once: true } });
 
   // números (valor final já no HTML para quem não roda JS)
   $$('.num').forEach(el => {
@@ -68,8 +77,8 @@ if (!reduzido) {
     gsap.to(o, { v: fim, duration: 1.8, ease: 'power3.out', onUpdate: () => { el.textContent = Math.round(o.v).toLocaleString('pt-BR') + suf; }, scrollTrigger: { trigger: el, start: 'top 88%', once: true } });
   });
 
-  // passos sobem um a um
-  gsap.utils.toArray('.passos-lista li').forEach(li => gsap.from(li, { opacity: 0, y: 30, duration: .9, ease: 'power3.out', scrollTrigger: { trigger: li, start: 'top 88%', once: true } }));
+  // passos entram um a um
+  gsap.utils.toArray('.passos-lista li').forEach(li => { const v = de(li, 30); if (v) gsap.from(li, { ...v, duration: .9, ease: 'power3.out', scrollTrigger: { trigger: li, start: 'top 88%', once: true } }); });
 
   // botão magnético (só com mouse)
   if (fino) $$('.botao').forEach(b => {
@@ -78,6 +87,6 @@ if (!reduzido) {
     b.addEventListener('pointerleave', () => { x(0); y(0); });
   });
 
-  gsap.from('.rodape-marca', { yPercent: 45, opacity: 0, duration: 1.4, ease: 'power4.out', scrollTrigger: { trigger: '.rodape', start: 'top 90%', once: true } });
+  const vMarca = de($('.rodape-marca'), 45, true); if (vMarca) gsap.from('.rodape-marca', { ...vMarca, opacity: 0, duration: 1.4, ease: 'power4.out', scrollTrigger: { trigger: '.rodape', start: 'top 90%', once: true } });
   document.fonts.ready.then(() => requestAnimationFrame(() => ScrollTrigger.refresh()));
 }

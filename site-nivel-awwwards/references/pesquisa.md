@@ -17,7 +17,8 @@ O acervo envelhece. Complemente com o que foi premiado recentemente **no mesmo n
 1. **Awwwards**: `https://www.awwwards.com/websites/<categoria>/` (ex.: `fashion`, `architecture`, `technology`, `e-commerce`) e `https://www.awwwards.com/websites/sites_of_the_day/`. Abra pelo navegador embutido (ou `tavily_extract`); se o site bloquear, volte ao acervo.
 2. **One Page Love**: `https://onepagelove.com/gallery/` e as listas `genre/<gênero>` e `style/<estilo>` (`scroll-effects`, `3d`, `typographic`, `editorial`, `horizontal-layout`).
 3. Anote 5 a 8 sites novos com URL; **abra cada um no navegador embutido** em 1440 px e 390 px. Se for útil, rode `coletar.mjs` no acervo para guardar capturas e dados (ver `referencias-ui`).
-4. Procure também **fora do nicho** a mesma necessidade (ex.: para uma joalheria, o hero de uma marca de relógios ou de uma galeria de arte).
+4. **tasteskill.dev** como referência de acabamento ([plataformas.md](plataformas.md)).
+5. Procure também **fora do nicho** a mesma necessidade (ex.: para uma joalheria, o hero de uma marca de relógios ou de uma galeria de arte).
 
 ### Recaptura em profundidade (obrigatória para as 3–6 referências escolhidas)
 ```bash

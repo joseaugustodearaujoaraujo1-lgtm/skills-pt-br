@@ -5,6 +5,15 @@
   --gutter: clamp(1.25rem, 4vw, 4rem); --section: clamp(5rem, 12vw, 11rem); --max: 1440px;
   --d-bg: #111; --d-surface: #1a1a1a; --d-line: #333; --d-text: #f5f5f5; --d-muted: #a8a8a8; --d-accent: var(--accent); /* sobrescritos em tokens.css pela paleta escura */
 }
+/* Direção de entrada (teste cego, rodada 1: o starter animava tudo de baixo para cima e brigava com o conceito).
+   data-entrada="sobe | desce | da-esquerda | da-direita | opacidade | nenhuma" no <html> vale para o site todo; num elemento, vale só para ele e
+   para o que está dentro. O hero (CSS) e o motion.js leem o mesmo atributo. Escolha a direção que a ideia central pede (direcao-criativa.md). */
+:root, [data-entrada="sobe"] { --entra-x: 0; --entra-y: 1; --entra-o: 1; }
+[data-entrada="desce"] { --entra-x: 0; --entra-y: -1; --entra-o: 1; }
+[data-entrada="da-esquerda"] { --entra-x: -1; --entra-y: 0; --entra-o: 1; }
+[data-entrada="da-direita"] { --entra-x: 1; --entra-y: 0; --entra-o: 1; }
+[data-entrada="opacidade"] { --entra-x: 0; --entra-y: 0; --entra-o: 0; }
+[data-entrada="nenhuma"] :is(.linha, .hero-sub, .hero-acoes, .hero-midia, .hero-fatos) { animation: none; }
 *, *::before, *::after { box-sizing: border-box; }
 body { margin: 0; font-size: var(--fs-body, 1.05rem); overflow-x: clip; -webkit-font-smoothing: antialiased; }
 p { margin: 0; } a { color: inherit; } em { font-style: italic; } img, svg, video { display: block; max-width: 100%; }
@@ -37,11 +46,11 @@ h2 { font-size: var(--fs-h2); } h3 { font-size: var(--fs-h3); line-height: 1.05;
 .hero h1 { font-size: var(--fs-h1); line-height: .9; letter-spacing: -.035em; }
 .hero h1 em { color: var(--accent); }
 .linha-mask { display: block; overflow: hidden; padding-bottom: .12em; margin-bottom: -.12em; }
-.linha { display: block; animation: sobe 1.2s var(--ease) both; animation-delay: calc(.15s + var(--i) * .12s); }
-@keyframes sobe { from { transform: translateY(105%); } }
+.linha { display: block; animation: entra-linha 1.2s var(--ease) both; animation-delay: calc(.15s + var(--i) * .12s); }
+@keyframes entra-linha { from { opacity: var(--entra-o); transform: translate(calc(var(--entra-x) * 105%), calc(var(--entra-y) * 105%)); } }
 .hero-sub { max-width: 34ch; margin-top: 2rem; color: var(--text-muted); font-size: clamp(1.05rem, 1.25vw, 1.25rem); animation: aparece 1s .55s both; }
 .hero-acoes { display: flex; flex-wrap: wrap; gap: 1.5rem; align-items: center; margin-top: 2.2rem; animation: aparece 1s .7s both; }
-@keyframes aparece { from { opacity: 0; transform: translateY(16px); } }
+@keyframes aparece { from { opacity: 0; transform: translate(calc(var(--entra-x) * 16px), calc(var(--entra-y) * 16px)); } }
 .hero-midia { margin: 0; justify-self: center; width: min(100%, 460px); animation: aparece 1.4s .3s both; }
 .hero-forma { aspect-ratio: 4 / 5; border-radius: 200px 200px 12px 12px; background: radial-gradient(120% 90% at 30% 20%, var(--accent-soft), var(--surface-2)); border: 1px solid var(--line); }
 .hero-fatos { grid-column: 1 / -1; display: flex; gap: clamp(1.5rem, 5vw, 5rem); list-style: none; margin: 3rem 0 0; padding: 1.4rem 0 0; border-top: 1px solid var(--line); color: var(--text-muted); font-size: .95rem; animation: aparece 1s .9s both; }
