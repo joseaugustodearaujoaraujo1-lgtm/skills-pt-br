@@ -23,14 +23,21 @@ let acervo = []; try { acervo = JSON.parse(fs.readFileSync(arq, 'utf8')); } catc
 const porSlug = new Map(acervo.map(s => [s.slug, s]));
 const salvar = () => fs.writeFileSync(arq, JSON.stringify([...porSlug.values()], null, 1));
 
-const nav = await abrirNavegador();
+const fila = [...lista];
+let nav = await abrirNavegador();
+let reabrindo = null;
+async function garantirNav() { if (nav.isConnected()) return; if (!reabrindo) reabrindo = (async () => { try { await nav.close(); } catch {} nav = await abrirNavegador(); console.log('  (navegador reaberto)'); })().finally(() => { reabrindo = null; }); await reabrindo; }
 let feitos = 0, pulados = 0, falhas = 0, i = 0;
 
 async function um(item) {
   const slug = item.slug || slugDe(item.titulo || item.url), pasta = path.join(dir, slug);
-  if (fs.existsSync(path.join(pasta, 'estrutura.json'))) { pulados++; return; }
+  if (fs.existsSync(path.join(pasta, 'estrutura.json'))) {
+    let e = {}; try { e = JSON.parse(fs.readFileSync(path.join(pasta, 'estrutura.json'), 'utf8')); } catch {}
+    if (!(e.erro && /has been closed|Target closed|Browser closed/i.test(e.erro))) { pulados++; return; }
+  }
   fs.mkdirSync(pasta, { recursive: true });
   const reg = { slug, titulo: item.titulo || slug, url: item.url, urlFinal: item.url, ano: item.ano ?? null, nicho: item.nicho || '', generos: item.generos || [], estilos: item.estilos || [], origem: item.origem || '', http: 0, tituloPagina: '', libs: {}, fontes: [] };
+  await garantirNav();
   const ctx = await nav.newContext({ viewport: { width: 1440, height: 900 }, locale: 'en-US' });
   try {
     const page = await ctx.newPage();
@@ -50,6 +57,9 @@ async function um(item) {
     fs.writeFileSync(path.join(pasta, 'estrutura.json'), JSON.stringify(estrutura, null, 1));
     feitos++;
   } catch (e) {
+    if (/has been closed|Target closed|Browser closed|browser has disconnected/i.test(String(e.message)) && !(item._tentativas >= 2)) { // queda do navegador, não do site: tenta de novo
+      await ctx.close().catch(() => {}); item._tentativas = (item._tentativas || 0) + 1; fila.push(item); await garantirNav(); return;
+    }
     reg.erroDesktop = String(e.message || e).split('\n')[0].slice(0, 160);
     fs.writeFileSync(path.join(pasta, 'estrutura.json'), JSON.stringify({ versao: 3, erro: reg.erroDesktop }));
     falhas++;
@@ -60,7 +70,7 @@ async function um(item) {
   await dormir(pausa);
 }
 
-const fila = [...lista];
+
 await Promise.all(Array.from({ length: abas }, async () => { while (fila.length) await um(fila.shift()); }));
 await nav.close(); salvar();
 console.log(`\nfeitos ${feitos} · pulados ${pulados} · com erro ${falhas} · total no acervo ${porSlug.size}\npasta: ${dir}\nPróximo passo: node classificar.mjs && node ../gerar-padroes.mjs && node ../gerar-padroes-ux.mjs`);
