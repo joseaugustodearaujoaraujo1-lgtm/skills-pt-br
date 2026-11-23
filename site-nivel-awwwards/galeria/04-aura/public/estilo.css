@@ -1,60 +1,67 @@
 /* AURA Residências — estrutura, ritmo e motion da ERA Residence (Awwwards), identidade própria.
    Ambroise (paga) → Instrument Serif; Sloop Script → Pinyon Script; Maison Neue → Archivo. Medidas do original em 1440 px → vw. */
 :root {
-  --cacau: #2b1d14; --creme: #f5efe4; --salvia: #c9d8c5; --salvia-2: #b7cbb2; --ipe: #f5b800; --terra: #8a4a22;
+  --cor-texto: #2b1d14; --cor-claro: #f5efe4; --cor-fundo: #c9d8c5; --cor-fundo-2: #b7cbb2; --cor-destaque: #f5b800; --cor-terra: #8a4a22;
   --f-serif: 'Instrument Serif', Georgia, serif; --f-script: 'Pinyon Script', cursive; --f-sans: 'Archivo', system-ui, sans-serif;
   --ease: cubic-bezier(.22, 1, .36, 1);
+  --cor-preta: #0f0d0c;
 }
+/* tema ?tema=quente */
+html[data-paleta="quente"] { --cor-texto: #34171a; --cor-claro: #f8edeb; --cor-fundo: #d0d6c1; --cor-fundo-2: #c0c9ad; --cor-destaque: #ffae8f; --cor-terra: #ac2631; --cor-preta: #100d0d; }
+/* tema ?tema=frio */
+html[data-paleta="frio"] { --cor-texto: #172310; --cor-claro: #e4f4e2; --cor-fundo: #c5d7d8; --cor-fundo-2: #b2cacb; --cor-destaque: #00e100; --cor-terra: #356619; --cor-preta: #0c0e0b; }
+/* tema ?tema=mono */
+html[data-paleta="mono"] { --cor-texto: #231f1c; --cor-claro: #f1efec; --cor-fundo: #d1d5d0; --cor-fundo-2: #c1c7c0; --cor-destaque: #f5b800; --cor-terra: #6b574a; --cor-preta: #0e0d0d; }
 *, *::before, *::after { box-sizing: border-box; }
-html { background: var(--creme); color: var(--cacau); }
+html { background: var(--cor-claro); color: var(--cor-texto); }
 body { margin: 0; font-family: var(--f-sans); overflow-x: clip; -webkit-font-smoothing: antialiased; }
 h1, h2, p, figure, blockquote, ul { margin: 0; } img { display: block; max-width: 100%; height: auto; } a { color: inherit; }
-.pular { position: absolute; left: 1rem; top: -5rem; z-index: 100; min-height: 44px; background: var(--cacau); color: var(--creme); padding: .8rem 1rem; }
+.pular { position: absolute; left: 1rem; top: -5rem; z-index: 100; min-height: 44px; background: var(--cor-texto); color: var(--cor-claro); padding: .8rem 1rem; }
 .pular:focus { top: 1rem; }
-:focus-visible { outline: 2px solid var(--terra); outline-offset: 3px; }
+:focus-visible { outline: 2px solid var(--cor-terra); outline-offset: 3px; }
 .rotulo { font: 600 .75rem var(--f-sans); letter-spacing: .14em; text-transform: uppercase; }
 
 /* topo */
-.topo { position: fixed; inset: 0 0 auto; z-index: 50; display: flex; justify-content: space-between; align-items: flex-start; padding: 1.2rem 1.6rem; color: var(--creme); transition: color .4s; pointer-events: none; }
+.topo { position: fixed; inset: 0 0 auto; z-index: 50; display: flex; justify-content: space-between; align-items: flex-start; padding: 1.2rem 1.6rem; color: var(--cor-claro); transition: color .4s; pointer-events: none; }
 .topo > * { pointer-events: auto; }
-.topo.escuro { color: var(--cacau); }
-.emblema { width: 84px; height: 84px; display: block; border-radius: 50%; background: #2b1d14b8; color: var(--creme); backdrop-filter: blur(6px); animation: gira 22s linear infinite; transition: background-color .4s, color .4s; }
-.topo.escuro .emblema { background: #f5efe4d9; color: var(--cacau); }
+.topo.escuro { color: var(--cor-texto); }
+.emblema { width: 84px; height: 84px; display: block; border-radius: 50%; background: #2b1d14b8; color: var(--cor-claro); backdrop-filter: blur(6px); animation: gira 22s linear infinite; transition: background-color .4s, color .4s; }
+.topo.escuro .emblema { background: #f5efe4d9; color: var(--cor-texto); }
 .emblema text { font: 600 9.6px var(--f-sans); letter-spacing: 1.6px; fill: currentColor; }
 @keyframes gira { to { transform: rotate(360deg); } }
 .menu { display: grid; justify-items: end; gap: 0; }
 .menu { gap: .3rem; }
-.menu a { font: 400 1.05rem/1 var(--f-serif); letter-spacing: .02em; text-decoration: none; min-height: 34px; display: inline-flex; align-items: center; padding: 0 .6rem; border-radius: 999px; background: #2b1d14b8; color: var(--creme); backdrop-filter: blur(6px); transition: background-color .4s, color .4s; }
-.topo.escuro .menu a { background: #f5efe4d9; color: var(--cacau); }
+.menu a { font: 400 1.05rem/1 var(--f-serif); letter-spacing: .02em; text-decoration: none; min-height: 34px; display: inline-flex; align-items: center; padding: 0 .6rem; border-radius: 999px; background: #2b1d14b8; color: var(--cor-claro); backdrop-filter: blur(6px); transition: background-color .4s, color .4s; }
+.topo.escuro .menu a { background: #f5efe4d9; color: var(--cor-texto); }
 .menu a:first-child { font-size: 1.25rem; }
 
 /* 1. HERO */
-.hero { position: relative; height: 260vh; background: var(--cacau); overflow-x: clip; }
+.hero { position: relative; height: 260vh; background: var(--cor-texto); overflow-x: clip; }
 .hero-foto { position: sticky; top: 0; height: 100vh; overflow: hidden; }
 .hero-foto img { width: 100%; height: 100%; object-fit: cover; transform-origin: 50% 85%; }
 .hero-foto::after { content: ''; position: absolute; inset: 0; background: linear-gradient(#1a120c66, transparent 45%); }
-.hero-titulo { position: absolute; top: 4vh; left: 0; right: 0; z-index: 2; text-align: center; color: var(--creme); font: 400 clamp(4rem, 11.5vw, 11rem)/.86 var(--f-serif); letter-spacing: -.01em; }
+.hero-titulo { position: absolute; top: 4vh; left: 0; right: 0; z-index: 2; text-align: center; color: var(--cor-claro); font: 400 clamp(4rem, 11.5vw, 11rem)/.86 var(--f-serif); letter-spacing: -.01em; }
 .hero-titulo span { display: block; }
 .h-l2 { font-size: .8em; }
 .h-script { font: 400 .52em/1 var(--f-script); margin-top: -.55em; transform: rotate(-8deg); text-transform: none; }
-.hero-lado { position: absolute; top: 56vh; z-index: 2; color: var(--creme); font: 400 1.2rem var(--f-serif); letter-spacing: .04em; }
+.hero-lado { position: absolute; top: 56vh; z-index: 2; color: var(--cor-claro); font: 400 1.2rem var(--f-serif); letter-spacing: .04em; }
 .hero-lado.esq { left: 22vw; } .hero-lado.dir { right: 22vw; }
 
 /* 2. ARCO (dentro da foto fixa do hero) */
-.arco { position: absolute; z-index: 3; left: 50%; bottom: 0; width: 150vw; height: 75vw; margin-left: -75vw; border-radius: 75vw 75vw 0 0; background: var(--salvia); }
+.arco { position: absolute; z-index: 3; left: 50%; bottom: 0; width: 150vw; height: 75vw; margin-left: -75vw; border-radius: 75vw 75vw 0 0; background: var(--cor-fundo); }
 .arco-texto { position: absolute; left: 50%; top: 2vw; width: 70vw; margin-left: -35vw; overflow: visible; }
-.arco-texto text { font: 400 26px var(--f-serif); letter-spacing: 6px; fill: var(--cacau); }
-.arco-rotulo { position: absolute; left: 0; right: 0; top: 17vw; text-align: center; font: 600 .78rem var(--f-sans); letter-spacing: .2em; color: var(--cacau); }
+.arco-texto text { font: 400 26px var(--f-serif); letter-spacing: 6px; fill: var(--cor-texto); }
+.arco-rotulo { position: absolute; left: 0; right: 0; top: 17vw; text-align: center; font: 600 .78rem var(--f-sans); letter-spacing: .2em; color: var(--cor-texto); }
 
 /* 3. PERTO DE TUDO */
-.local { position: relative; height: 260vh; background: var(--salvia); }
+.local { position: relative; height: 260vh; background: var(--cor-fundo); }
 .local-titulo { position: sticky; top: 14vh; text-align: center; font: 400 clamp(3.4rem, 12vw, 11rem)/.9 var(--f-serif); z-index: 1; }
 .local-janela { position: sticky; top: 0; height: 100vh; display: grid; place-items: center; margin-top: -10vh; z-index: 2; }
 .local-janela img { width: 100%; height: 100%; object-fit: cover; clip-path: inset(38% 41% 30% 41%); }
-.local-citacao { position: absolute; z-index: 3; bottom: 8vh; left: 50%; transform: translateX(-50%); width: min(60vw, 46rem); text-align: center; color: var(--creme); font: 400 clamp(1.2rem, 2.5vw, 2.3rem)/1.05 var(--f-serif); padding: 1.2rem 1.6rem; background: #2b1d14d0; border-radius: 4px; }
+.local-citacao { position: absolute; z-index: 3; bottom: 8vh; left: 50%; transform: translateX(-50%); width: min(60vw, 46rem); text-align: center; color: var(--cor-claro); font: 400 clamp(1.2rem, 2.5vw, 2.3rem)/1.05 var(--f-serif); padding: 1.2rem 1.6rem; background: #2b1d14d0; border-radius: 4px; }
 
 /* 4. MANIFESTO */
-.manifesto { position: relative; min-height: 130vh; background: var(--creme); display: grid; place-content: center; text-align: center; padding: 20vh 16vw; overflow: hidden; }
+.manifesto { position: relative; min-height: 130vh; background: var(--cor-claro); display: grid; place-content: center; text-align: center; padding: 20vh 16vw; overflow: hidden; }
 .ipe { position: absolute; width: 34vw; pointer-events: none; }
 .ipe-esq { left: -6vw; top: -6vw; } .ipe-dir { right: -6vw; bottom: -6vw; }
 .manifesto-texto { font: 400 clamp(1.5rem, 2.6vw, 2.5rem)/1.05 var(--f-serif); margin: 1.4rem auto 2rem; max-width: 26em; }
@@ -62,53 +69,53 @@ h1, h2, p, figure, blockquote, ul { margin: 0; } img { display: block; max-width
 .manifesto-sub { max-width: 26rem; margin: 0 auto; font-size: .9rem; line-height: 1.5; }
 
 /* 5. NOVA COSTA DOURADA */
-.costa { position: relative; min-height: 130vh; background: var(--creme); display: grid; grid-template-columns: 1fr 1fr; align-items: center; padding: 14vh 4vw; gap: 4vw; overflow: hidden; }
+.costa { position: relative; min-height: 130vh; background: var(--cor-claro); display: grid; grid-template-columns: 1fr 1fr; align-items: center; padding: 14vh 4vw; gap: 4vw; overflow: hidden; }
 .espacado { position: absolute; left: 6vw; top: 42vh; font: 400 .95rem var(--f-serif); letter-spacing: .6em; }
 .costa-titulo { font: 400 clamp(3.4rem, 9vw, 8.6rem)/.84 var(--f-serif); display: grid; justify-items: center; }
 .costa-titulo span:nth-child(2) { margin-left: 18vw; } .costa-titulo span:nth-child(3) { margin-left: -4vw; }
 .costa-foto { height: 86vh; overflow: hidden; }
 .costa-foto img { width: 100%; height: 118%; object-fit: cover; }
-.circulo { position: absolute; left: 48vw; bottom: 22vh; width: 8.4rem; height: 8.4rem; border-radius: 50%; border: 1px solid var(--cacau); display: grid; place-items: center; text-align: center; font: 600 .7rem/1.3 var(--f-sans); letter-spacing: .1em; text-decoration: none; background: var(--creme); z-index: 2; transition: transform .5s var(--ease), background-color .3s; }
-.circulo:hover { transform: scale(1.08); background: var(--salvia); }
+.circulo { position: absolute; left: 48vw; bottom: 22vh; width: 8.4rem; height: 8.4rem; border-radius: 50%; border: 1px solid var(--cor-texto); display: grid; place-items: center; text-align: center; font: 600 .7rem/1.3 var(--f-sans); letter-spacing: .1em; text-decoration: none; background: var(--cor-claro); z-index: 2; transition: transform .5s var(--ease), background-color .3s; }
+.circulo:hover { transform: scale(1.08); background: var(--cor-fundo); }
 .costa-texto { position: absolute; left: 4vw; bottom: 8vh; max-width: 24rem; display: grid; gap: .8rem; font-size: .88rem; line-height: 1.5; }
 
 /* 6. MAPA */
-.mapa-sec { background: var(--creme); padding: 18vh 4vw 12vh; text-align: center; }
+.mapa-sec { background: var(--cor-claro); padding: 18vh 4vw 12vh; text-align: center; }
 .mapa-titulo { font: 400 clamp(2.4rem, 5vw, 4.8rem)/.95 var(--f-serif); display: grid; justify-items: center; }
-.mapa-titulo .script { font: 400 .8em/1 var(--f-script); color: var(--terra); margin: -.15em 0 -.25em; }
-.mapa { margin-top: 10vh; color: var(--cacau); }
+.mapa-titulo .script { font: 400 .8em/1 var(--f-script); color: var(--cor-terra); margin: -.15em 0 -.25em; }
+.mapa { margin-top: 10vh; color: var(--cor-texto); }
 .mapa svg { width: 100%; height: auto; overflow: visible; }
 .lugares { list-style: none; padding: 0; display: flex; justify-content: space-between; gap: 1rem; margin-top: 1rem; font-size: .78rem; text-transform: uppercase; letter-spacing: .08em; }
 .lugares b { display: block; font: 400 1.05rem var(--f-serif); text-transform: none; letter-spacing: 0; }
 .nota-mapa { display: block; margin-top: 2rem; font-size: .78rem; }
 .paisagem { height: 110vh; overflow: hidden; } .paisagem img { width: 100%; height: 120%; object-fit: cover; }
 .aerea { position: relative; height: 120vh; overflow: hidden; } .aerea img { width: 100%; height: 100%; object-fit: cover; }
-.painel-sobe { position: absolute; left: 4vw; right: 4vw; bottom: 0; height: 55%; background: var(--salvia); border-radius: 4px 4px 0 0; transform: translateY(100%); }
+.painel-sobe { position: absolute; left: 4vw; right: 4vw; bottom: 0; height: 55%; background: var(--cor-fundo); border-radius: 4px 4px 0 0; transform: translateY(100%); }
 
 /* 7. PLANTAS */
-.plantas { position: relative; min-height: 110vh; background: var(--salvia); display: grid; grid-template-columns: 1fr 1.1fr 1fr; align-items: center; gap: 3vw; padding: 14vh 6vw 26vh; }
+.plantas { position: relative; min-height: 110vh; background: var(--cor-fundo); display: grid; grid-template-columns: 1fr 1.1fr 1fr; align-items: center; gap: 3vw; padding: 14vh 6vw 26vh; }
 .plantas-dados { display: grid; gap: .4rem; } .plantas-dados .num { font: 400 2.4rem/1 var(--f-serif); margin-bottom: 1.2rem; }
 .plantas-foto { aspect-ratio: 3 / 4; overflow: hidden; } .plantas-foto img { width: 100%; height: 100%; object-fit: cover; }
 .plantas-acao { display: grid; gap: 1.2rem; font-size: .9rem; line-height: 1.5; justify-items: start; }
-.botao { display: inline-flex; align-items: center; min-height: 44px; padding: 0 1.3rem; border: 1px solid var(--cacau); border-radius: 999px; font: 600 .72rem var(--f-sans); letter-spacing: .12em; text-decoration: none; transition: background-color .3s, color .3s; }
-.botao:hover { background: var(--cacau); color: var(--creme); }
+.botao { display: inline-flex; align-items: center; min-height: 44px; padding: 0 1.3rem; border: 1px solid var(--cor-texto); border-radius: 999px; font: 600 .72rem var(--f-sans); letter-spacing: .12em; text-decoration: none; transition: background-color .3s, color .3s; }
+.botao:hover { background: var(--cor-texto); color: var(--cor-claro); }
 .plantas-titulo { position: absolute; left: 0; right: 0; bottom: 8vh; text-align: center; font: 400 clamp(2.4rem, 6.4vw, 6rem)/1 var(--f-serif); }
-.metragem { position: relative; min-height: 90vh; background: var(--salvia); display: grid; place-content: center; padding: 10vh 18vw; text-align: center; overflow: hidden; }
+.metragem { position: relative; min-height: 90vh; background: var(--cor-fundo); display: grid; place-content: center; padding: 10vh 18vw; text-align: center; overflow: hidden; }
 .metragem .ipe-esq { left: -8vw; top: auto; bottom: -8vw; transform: scaleY(-1); }
 .metragem-texto { font: 400 clamp(1.6rem, 3.9vw, 3.6rem)/1 var(--f-serif); }
 
 /* 8. NOITE + ARCO CREME */
-.noite { position: relative; height: 260vh; background: #0f0d0c; }
+.noite { position: relative; height: 260vh; background: var(--cor-preta); }
 .noite-palco { position: sticky; top: 0; height: 100vh; overflow: hidden; }
 .noite-foto { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: brightness(.48) saturate(.7) hue-rotate(-12deg) contrast(1.1); }
-.noite-lista { position: absolute; right: 6vw; top: 12vh; list-style: none; padding: 0; color: var(--creme); font: 400 clamp(1.2rem, 2.5vw, 2.3rem)/1.02 var(--f-serif); text-align: right; }
+.noite-lista { position: absolute; right: 6vw; top: 12vh; list-style: none; padding: 0; color: var(--cor-claro); font: 400 clamp(1.2rem, 2.5vw, 2.3rem)/1.02 var(--f-serif); text-align: right; }
 .noite-lista li:not(:first-child) { opacity: .75; }
-.noite-citacao { position: absolute; left: 6vw; top: 70vh; max-width: 30rem; color: var(--creme); font: 400 clamp(1.1rem, 2vw, 1.8rem)/1.05 var(--f-serif); }
-.arco-creme { position: absolute; left: 50%; bottom: -10vh; width: 120vw; height: 110vh; margin-left: -60vw; border-radius: 60vw 60vw 0 0; background: var(--creme); display: grid; place-items: start center; padding-top: 22vh; }
-.arco-creme h2 { font: 400 clamp(3.4rem, 10vw, 9.6rem)/.86 var(--f-serif); color: var(--cacau); }
+.noite-citacao { position: absolute; left: 6vw; top: 70vh; max-width: 30rem; color: var(--cor-claro); font: 400 clamp(1.1rem, 2vw, 1.8rem)/1.05 var(--f-serif); }
+.arco-creme { position: absolute; left: 50%; bottom: -10vh; width: 120vw; height: 110vh; margin-left: -60vw; border-radius: 60vw 60vw 0 0; background: var(--cor-claro); display: grid; place-items: start center; padding-top: 22vh; }
+.arco-creme h2 { font: 400 clamp(3.4rem, 10vw, 9.6rem)/.86 var(--f-serif); color: var(--cor-texto); }
 
 /* RODAPÉ */
-.rodape { background: var(--creme); padding: 4vh 4vw 2.4rem; text-align: center; }
+.rodape { background: var(--cor-claro); padding: 4vh 4vw 2.4rem; text-align: center; }
 .rodape-marca { font: 400 clamp(6rem, 30vw, 28rem)/.8 var(--f-serif); letter-spacing: -.02em; }
 .rodape-linhas { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1.4rem; margin: 3rem 0 1.6rem; text-align: left; font-size: .9rem; line-height: 1.5; }
 .rodape-linhas nav { display: flex; gap: 1.6rem; } .rodape-linhas nav a { min-height: 44px; display: inline-flex; align-items: center; font-weight: 600; }

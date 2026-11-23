@@ -31,10 +31,11 @@ if (!reduzido) {
   const hero = { trigger: '.hero', start: 'top top', end: 'bottom bottom', scrub: true };
   gsap.to('.hero-titulo', { yPercent: -120, ease: 'none', scrollTrigger: hero });
   gsap.to('.hero-lado', { opacity: 0, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: '25% top', scrub: true } });
-  gsap.to('.hero-foto img', { scale: 1.45, yPercent: 6, ease: 'none', scrollTrigger: hero });
+  gsap.to('.hero-foto img', { scale: +$('.hero').dataset.zoom, yPercent: 6, ease: 'none', scrollTrigger: hero });
 
   // ARCO sobe sobre a foto
-  gsap.fromTo('.arco', { yPercent: 100 }, { yPercent: 52, ease: 'none', scrollTrigger: { trigger: '.hero', start: '30% top', end: '62% top', scrub: true } });
+  const arco = $('.arco').dataset;
+  gsap.fromTo('.arco', { yPercent: +arco.sobeDe }, { yPercent: +arco.sobeAte, ease: 'none', scrollTrigger: { trigger: '.hero', start: arco.sobeInicio + ' top', end: arco.sobeFim + ' top', scrub: true } });
 
   // PERTO DE TUDO: a janela abre até a tela cheia; a citação aparece no fim
   gsap.to('.local-janela img', { clipPath: 'inset(0% 0% 0% 0%)', ease: 'none', scrollTrigger: { trigger: '.local', start: 'top top', end: '70% bottom', scrub: true } });
@@ -62,7 +63,7 @@ if (!reduzido) {
 
   // NOITE: lista entra; arco creme sobe com "O ESPAÇO"
   gsap.from('.noite-lista li', { x: 60, opacity: 0, duration: 1, stagger: .08, ease: 'power3.out', scrollTrigger: { trigger: '.noite', start: 'top 50%', once: true } });
-  gsap.fromTo('.arco-creme', { yPercent: 100 }, { yPercent: 0, ease: 'none', scrollTrigger: { trigger: '.noite', start: '30% top', end: 'bottom bottom', scrub: true } });
+  gsap.fromTo('.arco-creme', { yPercent: 100 }, { yPercent: 0, ease: 'none', scrollTrigger: { trigger: '.noite', start: $('.noite').dataset.arcoInicio + ' top', end: 'bottom bottom', scrub: true } });
   gsap.fromTo('.noite-foto', { scale: 1.15 }, { scale: 1, ease: 'none', scrollTrigger: { trigger: '.noite', start: 'top bottom', end: 'bottom bottom', scrub: true } });
 
   document.fonts.ready.then(() => ScrollTrigger.refresh());
