@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="pt-BR" data-entrada="sobe">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Maré — o troco das suas compras, investido</title>
+<meta name="description" content="Maré separa o troco das suas compras e investe em renda fixa, sem você precisar entender de mercado. Baixe o app.">
+<meta name="theme-color" content="#F6F0E4">
+<link rel="preload" href="fonts/bricolage-grotesque-normal-400-800.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/figtree-normal-400-600.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230A7C8A'/%3E%3Cpath d='M0 18 Q8 12 16 18 T32 18 V32 H0Z' fill='%23F6F0E4'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="fonts/fonts.css">
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="estilo.css?v=2">
+<script type="module" src="app.js?v=2"></script>
+</head>
+<body>
+<a class="pular" href="#conteudo">Pular para o conteúdo</a>
+
+<header class="topo" id="topo">
+  <a class="marca" href="#inicio" aria-label="Maré, início">Maré</a>
+  <nav aria-label="Principal">
+    <ul>
+      <li><a href="#como-funciona">Como funciona</a></li>
+      <li><a href="#renda-fixa">Renda fixa</a></li>
+      <li><a href="#perguntas">Perguntas</a></li>
+    </ul>
+  </nav>
+  <a class="topo-cta" href="#baixar">Baixar o app</a>
+</header>
+
+<main id="conteudo">
+  <section class="hero" id="inicio" aria-labelledby="hero-titulo">
+    <div class="hero-texto">
+      <p class="hero-local">Investimento automático · para quem está começando</p>
+      <h1 id="hero-titulo">
+        <span class="linha-mask"><span class="linha" style="--i:0">Seu troco,</span></span>
+        <span class="linha-mask"><span class="linha" style="--i:1"><em>investido.</em></span></span>
+      </h1>
+      <p class="hero-sub">O Maré arredonda cada compra para cima e põe os centavos que sobram em renda fixa. Você nem sente, e o saldo cresce.</p>
+      <div class="hero-acoes">
+        <a class="loja loja-escura" href="https://apps.apple.com/br/" rel="noopener"><small>Baixar na</small><b>App Store</b></a>
+        <a class="loja" href="https://play.google.com/store" rel="noopener"><small>Disponível no</small><b>Google Play</b></a>
+      </div>
+    </div>
+    <div class="hero-troco" id="heroTroco">
+      <p class="hero-recibo">
+        <span>Café</span> <b>R$ 11,30</b>
+        <span>Maré arredonda para</span> <b>R$ 12,00</b>
+        <span>Sobra, e começa a render</span>
+      </p>
+      <p class="numeral" aria-label="R$ 0,70"><small aria-hidden="true">R$</small><span class="agua-texto" aria-hidden="true">0,70</span></p>
+    </div>
+  </section>
+
+  <section class="troco" id="como-funciona" aria-labelledby="troco-titulo">
+    <div class="troco-lado">
+      <p class="rotulo">01 · O troco</p>
+      <h2 id="troco-titulo">Cada compra <em>arredonda</em> para cima.</h2>
+      <div class="tanque" role="img" aria-label="Tanque que enche com o troco guardado">
+        <div class="tanque-agua"></div>
+        <p class="tanque-total"><b id="total">R$ 2,85</b><span>guardados neste exemplo</span></p>
+      </div>
+    </div>
+    <div class="troco-lista">
+      <p class="rotulo">Exemplo de uma semana (valores ilustrativos)</p>
+      <ol class="extrato" role="list">
+        <li><span class="loc">Padaria da esquina</span><span class="val">R$ 11,30</span><span class="arr">R$ 12,00</span><b class="tr" data-c="70">+ 0,70</b></li>
+        <li><span class="loc">Mercadinho</span><span class="val">R$ 24,90</span><span class="arr">R$ 25,00</span><b class="tr" data-c="10">+ 0,10</b></li>
+        <li><span class="loc">Almoço</span><span class="val">R$ 38,45</span><span class="arr">R$ 39,00</span><b class="tr" data-c="55">+ 0,55</b></li>
+        <li><span class="loc">Transporte</span><span class="val">R$ 7,80</span><span class="arr">R$ 8,00</span><b class="tr" data-c="20">+ 0,20</b></li>
+        <li><span class="loc">Farmácia</span><span class="val">R$ 52,10</span><span class="arr">R$ 53,00</span><b class="tr" data-c="90">+ 0,90</b></li>
+        <li><span class="loc">Livraria</span><span class="val">R$ 19,60</span><span class="arr">R$ 20,00</span><b class="tr" data-c="40">+ 0,40</b></li>
+      </ol>
+      <p class="troco-nota">Você não faz nada: o arredondamento acontece sozinho e o troco vai para a renda fixa.</p>
+    </div>
+  </section>
+
+  <section class="escura" id="renda-fixa" aria-labelledby="rf-titulo">
+    <h2 id="rf-titulo" class="rf-titulo">Onde o troco vai <em>morar.</em></h2>
+    <div class="faixas">
+      <article class="faixa f1"><p class="rotulo-d">01</p><h3>Você empresta.</h3><p>Renda fixa é um empréstimo: seu dinheiro vai para o governo ou para um banco, que se compromete a devolver com juros combinados.</p></article>
+      <article class="faixa f2"><p class="rotulo-d">02</p><h3>Ele trabalha.</h3><p>O prazo e a forma de remuneração são informados antes de você investir. Nada de gráfico de bolsa para acompanhar todo dia.</p></article>
+      <article class="faixa f3"><p class="rotulo-d">03</p><h3>Você recebe.</h3><p>No fim do prazo, o valor volta com o que rendeu. Cada produto mostra as regras de resgate no app antes de você confirmar.</p></article>
+    </div>
+    <p class="aviso">Todo investimento tem riscos, inclusive a renda fixa. As condições de cada produto aparecem no app antes de você aplicar.</p>
+  </section>
+
+  <section class="perguntas" id="perguntas" aria-labelledby="perg-titulo">
+    <figure class="foto" aria-hidden="true"><div class="ph" data-imagem="pessoa-padaria"></div></figure>
+    <div class="perg-corpo">
+      <p class="rotulo">02 · Primeira vez</p>
+      <h2 id="perg-titulo">Perguntas de quem <em>nunca investiu.</em></h2>
+      <div class="qs">
+        <details open><summary><i aria-hidden="true"></i>Preciso de quanto dinheiro para começar?</summary><p>Do troco. O Maré investe o que sobra do arredondamento das suas compras, então você começa com centavos e vê o valor crescer aos poucos.</p></details>
+        <details><summary><i aria-hidden="true"></i>Meu dinheiro fica preso?</summary><p>Depende do produto de renda fixa. O app mostra o prazo e as regras de resgate antes de você aplicar, em linguagem simples.</p></details>
+        <details><summary><i aria-hidden="true"></i>E se eu não entender nada de investimento?</summary><p>Você não precisa. Em vez de gráficos de bolsa, você vê quanto guardou e quanto rendeu, e cada termo vem explicado na hora.</p></details>
+        <details><summary><i aria-hidden="true"></i>É seguro?</summary><p>Todo investimento tem riscos, inclusive a renda fixa. Por isso o app explica o risco de cada opção antes de você confirmar, e não promete ganho.</p></details>
+        <details><summary><i aria-hidden="true"></i>Como o Maré sabe das minhas compras?</summary><p>Você conecta seu cartão ou sua conta no app e escolhe o que entra no arredondamento.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="baixar" id="baixar" aria-labelledby="baixar-titulo">
+    <div class="mare-cheia" aria-hidden="true"></div>
+    <div class="baixar-corpo">
+      <h2 id="baixar-titulo">Comece com <em>R$ 0,70.</em></h2>
+      <p>Baixe o Maré e deixe o próximo café fazer o seu primeiro investimento.</p>
+      <div class="baixar-acoes">
+        <a class="loja loja-clara" href="https://apps.apple.com/br/" rel="noopener"><small>Baixar na</small><b>App Store</b></a>
+        <a class="loja loja-clara" href="https://play.google.com/store" rel="noopener"><small>Disponível no</small><b>Google Play</b></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="rodape">
+  <p class="rodape-marca" aria-hidden="true">Maré</p>
+  <div class="rodape-linha"><p>© 2026 Maré</p><p>Investimentos em renda fixa têm riscos. Leia as condições no app.</p></div>
+</footer>
+</body>
+</html>
