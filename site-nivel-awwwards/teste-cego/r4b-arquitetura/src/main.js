@@ -43,7 +43,7 @@ if (!reduzido) {
   }));
 
   // hero: as fiadas sobem em ritmos diferentes ao rolar (só para cima)
-  $$('.fiada').forEach((f, i) => gsap.to(f, { yPercent: -(4 + i * 5), ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } }));
+  $$('.fiada').forEach((f, i) => gsap.fromTo(f, { yPercent: 0 }, { yPercent: -(4 + i * 5), ease: 'none', immediateRender: false, scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } }));
 
   const quandoPerto = (el, fn, margem) => new IntersectionObserver((es, obs) => { if (es[0].isIntersecting) { obs.disconnect(); fn(el); } }, { rootMargin: margem }).observe(el);
 

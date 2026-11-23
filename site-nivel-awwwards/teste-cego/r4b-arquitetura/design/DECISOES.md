@@ -11,3 +11,13 @@
 - Aprovação do DIRECAO.md e do brief: aprovados automaticamente.
 - Provas não fornecidas (CAU, endereço, números, clientes): não inventadas; o contato mostra só a cidade (Curitiba) e o lugar da prova fica marcado em "a confirmar com o cliente". Medidas de parede (45 cm) são especificação típica, a confirmar.
 - Plataformas externas: sem login/conta/compra; componentes (Fade Content, Pill Nav, Accordion) reimplementados em GSAP/CSS próprio; origem registrada abaixo.
+
+## Execução
+- Componentes de plataformas: não foram copiados (sem login/compra). Padrões reimplementados em GSAP/CSS próprio: revelação por linha (Fade/Animated Content, reactbits.dev), recorte de baixo para cima (transitions.dev). Licença: código próprio, sem terceiros além de gsap e lenis.
+- Formulário: sem backend; a confirmação é local. Falta ligar a um endpoint ou e-mail do cliente.
+- Medidas nas cotas (e = 45 cm, 12 × 24 cm, e = 20 cm) são especificações típicas, a confirmar com o cliente.
+- Rodapé: sem CAU, endereço, telefone nem números (não fornecidos); a confirmar com o cliente.
+- Legendas das obras são tipológicas ("Residência · Taipa de pilão"), sem nomes de projetos inventados.
+- Placeholders de obra: ruídos e faixas de terra sem texto; lista em IMAGENS.md.
+- Verificador: WARN poucas-imagens é esperado (sem fotos, placeholders em CSS).
+- Os gestos do juiz foram conferidos contra DIRECAO.md nas telas D01 (parede de 6 fiadas cortando o título, régua de cotas), D02 (linhas com a fiada), D03-D04 (faixas de materiais), D05 (parede do processo), D07 (fundo de concreto escuro).

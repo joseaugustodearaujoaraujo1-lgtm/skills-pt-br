@@ -78,6 +78,7 @@ const pontosDaPagina = ([h, sel]) => {
   const H = document.documentElement.scrollHeight; const max = Math.max(0, H - innerHeight); const o = [];
   document.querySelectorAll(sel).forEach(e => { const r = e.getBoundingClientRect(); if (r.height < h * 0.3) return; const y = Math.round(r.top + scrollY);
     const nm = (e.id || (typeof e.className === 'string' && e.className.split(' ')[0]) || e.tagName.toLowerCase()).replace(/[^a-z0-9-]/gi, '').slice(0, 20);
+    if (e.classList.contains('pin-spacer') || e.parentElement?.classList.contains('pin-spacer')) { o.push({ nome: nm + '-pin', y: Math.min(Math.round(y + Math.max(0, r.height - h) * 0.55), max) }); return; } // trecho fixo: fotografa no meio do progresso, não no início (teste cego, rodada 4)
     o.push({ nome: nm, y: Math.min(y, max) }); if (r.height > h * 2.5) o.push({ nome: nm + '-meio', y: Math.min(Math.round(y + r.height / 2 - h / 2), max) }); });
   return { H, max, pontos: o };
 };

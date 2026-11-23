@@ -42,6 +42,8 @@ Copie `modulo.css` e `modulo.js` para `src/`, cole o trecho de `modulo.html` e a
 3. Ajuste as seções ao estudo de referências (passo 3), sem copiar o protegido.
 4. Cada seção recebe o gesto dela, do `DIRECAO.md` ([direcao-criativa.md](direcao-criativa.md) §2). Seção sem gesto não está pronta.
 5. Imagens: reais (do cliente ou abertas, com crédito); a imagem essencial que ainda não existe vira placeholder sem texto, com a cara da imagem final ([elementos.md](elementos.md) §3), e entra na lista de imagens ([entrega.md](entrega.md)). Vídeo com pôster.
+6. **O starter é ponto de partida, não layout** (teste cego, rodada 4). Mantenha: `servir.mjs`, `package.json`, a carga de fontes e tokens, o Lenis e o registro do GSAP no topo do `main.js`, o `data-entrada` e o verificador. Pode apagar sem medo: o HTML de todas as seções de exemplo (hero em duas colunas, faixa escura de números, cartões), o CSS delas e os blocos do `main.js` que procuram esses seletores. Reescreva o `index.html` a partir do `DIRECAO.md` e mantenha o `main.js` em sincronia (seletor sem elemento não dá erro, mas é código morto).
+7. **Animação de entrada por CSS e GSAP nunca no mesmo elemento** (teste cego, rodada 4: o `gsap.to` leu o `transform` no meio da animação CSS e deixou vãos). O que o GSAP anima recebe `data-entrada="nenhuma"`; use `gsap.fromTo` com valores explícitos e `immediateRender: false` quando a animação depende de rolagem.
 
 ## 5. Onde está cada receita
 - Tipografia, grade, imagem, vídeo, scroll, animação, cursor, preloader e acabamento: [elementos.md](elementos.md). Desempenho no celular: §9.

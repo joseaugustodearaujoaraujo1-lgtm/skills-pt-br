@@ -58,6 +58,7 @@ if (args.cores) {
     tokens = tokens.replace(/--on-accent:\s*[^;]+;/, `--on-accent: ${tinta};`);
     if (r < 4.5) console.log(`   AVISO: texto do botão sobre o acento dá ${r.toFixed(2)}:1 (< 4,5). Escureça o acento para botões e use o original só em elementos grandes.`);
   }
+  fs.writeFileSync(path.join(pastaDesign, 'tokens.css'), tokens); // design/ e public/ ficam com a mesma paleta (teste cego, rodada 4)
   console.log('   paleta escolhida gravada em tokens.css: ' + args.cores + ' (confira o contraste no verificador)');
 } else console.log('   AVISO: tokens.css ficou com a paleta GERADA para o tema. Se a escolhida foi outra (ex.: a de origem do estilo, recomendada pelo opcoes.mjs), rode de novo com --cores "fundo=#..,superficie=#..,texto=#..,acento=#..".');
 
