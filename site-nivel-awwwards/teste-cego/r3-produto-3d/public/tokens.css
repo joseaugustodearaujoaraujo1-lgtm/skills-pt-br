@@ -1,0 +1,14 @@
+/* Tokens — MÓ (estilo Minimalism, paleta de origem ajustada para contraste AA; ver design/DECISOES.md) */
+:root {
+  --bg: #F4EFE8; --surface: #F8F4EE; --surface-2: #ECE5DA; --line: #D8CFC2; --sand: #C9BDAF;
+  --text: #1F2A22; --text-muted: #5E625A; --accent: #4A5D4E; --accent-soft: #D9E1D9; --on-accent: #F8F4EE; --sage: #6B7F6E;
+  --wood: #5A3A26;
+  --font-display: 'Instrument Serif', serif; --font-body: 'Inter', system-ui, sans-serif; --font-detail: 'DM Mono', ui-monospace, monospace;
+  --fs-h1: clamp(3.4rem, 9vw, 9.5rem); --fs-h2: clamp(2.3rem, 5.2vw, 5.2rem); --fs-h3: clamp(1.5rem, 2.2vw, 2.1rem); --fs-body: clamp(1rem, 1.05vw, 1.15rem);
+  --lh-title: .95; --lh-body: 1.55; --tracking-title: -0.025em;
+  --space-section: clamp(5rem, 12vw, 11rem); --gutter: clamp(1.25rem, 4vw, 4rem); --radius: 16px; --max-w: 1440px;
+  --ease-out: cubic-bezier(0.25, 1, 0.5, 1); --ease-in-out: cubic-bezier(0.76, 0, 0.24, 1);
+}
+html { background: var(--bg); color: var(--text); font-family: var(--font-body); line-height: var(--lh-body); }
+h1, h2, h3 { font-family: var(--font-display); line-height: var(--lh-title); letter-spacing: var(--tracking-title); font-weight: 400; margin: 0; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }

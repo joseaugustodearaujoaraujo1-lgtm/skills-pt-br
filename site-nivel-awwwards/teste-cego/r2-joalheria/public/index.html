@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vésper — alta joalheria e ateliê de lapidação</title>
+<meta name="description" content="Vésper, alta joalheria: diamantes de lapidação brilhante escolhidos um a um, peças sob encomenda e visita ao ateliê com hora marcada.">
+<meta name="theme-color" content="#110c08">
+<link rel="preload" href="fonts/playfair-display-normal-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/inter-normal-400-500.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="img/gema/poster.webp" as="image" type="image/webp" fetchpriority="high">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 29 3 12l4-6h18l4 6z' fill='%23f7f1e9'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="fonts/fonts.css">
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="estilo.css?v=3">
+<script>if(!matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('anim')</script>
+<script type="module" src="js/main.js?v=3"></script>
+</head>
+<body>
+<a class="pular" href="#conteudo">Pular para o conteúdo</a>
+
+<header class="topo" id="topo">
+  <a class="marca" href="#inicio" aria-label="Vésper, voltar ao início">Vésper</a>
+  <nav aria-label="Principal">
+    <ul>
+      <li><a href="#lapidacao">A lapidação</a></li>
+      <li><a href="#pecas">As peças</a></li>
+    </ul>
+  </nav>
+  <a class="botao botao-topo" href="#visita">Agendar visita</a>
+</header>
+
+<main id="conteudo">
+  <div class="palco" id="palco">
+    <div class="cena">
+      <div class="halo" aria-hidden="true"></div>
+      <div class="gema-caixa" aria-hidden="true">
+        <img class="gema-poster" src="img/gema/poster.webp" width="720" height="720" alt="" fetchpriority="high">
+        <canvas class="gema-canvas" width="2" height="2"></canvas>
+        <svg class="cotas" viewBox="-1.565 -1.565 3.13 3.13" aria-hidden="true">
+          <g class="cota cota-mesa">
+            <path class="traco" d="M-.6 -1.1 H.6" pathLength="1"/>
+            <path class="traco fino" d="M-.6 -1.02 V-1.18 M.6 -1.02 V-1.18" pathLength="1"/>
+            <text x="0" y="-1.2" text-anchor="middle">mesa · 57%</text>
+          </g>
+          <g class="cota cota-coroa">
+            <path class="traco" d="M1 -.313 L.57 -.609" pathLength="1"/>
+            <path class="traco fino" d="M.5 -.313 H1.42" pathLength="1"/>
+            <path class="traco fino" d="M.74 -.313 A.26 .26 0 0 1 .786 -.46" pathLength="1"/>
+            <text x="1.07" y="-.37">34,5°</text>
+          </g>
+          <g class="cota cota-pavilhao">
+            <path class="traco" d="M1 -.253 L0 .609" pathLength="1"/>
+            <path class="traco fino" d="M.5 -.253 H1.42" pathLength="1"/>
+            <path class="traco fino" d="M.74 -.253 A.26 .26 0 0 0 .803 -.083" pathLength="1"/>
+            <text x="1.07" y="-.12">40,75°</text>
+          </g>
+        </svg>
+      </div>
+
+      <section class="hero" id="inicio" aria-labelledby="hero-titulo">
+        <p class="hero-rotulo">Alta joalheria · ateliê de lapidação</p>
+        <h1 id="hero-titulo" class="marca-gigante"><span class="so-leitor">Vésper, alta joalheria</span><span class="marca-letras" aria-hidden="true">Vésper</span></h1>
+        <div class="hero-colunas">
+          <p>Diamantes de lapidação brilhante, escolhidos um a um e montados sob encomenda.</p>
+          <p class="so-cursor">Mova o cursor: a única luz desta página é a sua.</p>
+          <p><a class="link-seta" href="#lapidacao">Role e veja a pedra por dentro <span aria-hidden="true">↓</span></a></p>
+        </div>
+      </section>
+
+      <section class="lapidacao" id="lapidacao" aria-labelledby="lap-titulo">
+        <img class="lap-estatica" src="img/gema/perfil.webp" width="720" height="720" alt="Diamante de lapidação brilhante visto de perfil, com a coroa em cima e o pavilhão pontudo embaixo." loading="lazy">
+        <div class="lap-texto">
+          <p class="rotulo">A lapidação</p>
+          <h2 id="lap-titulo">Cinquenta e sete facetas. <em>Uma luz.</em></h2>
+          <p class="lap-intro">Um diamante não brilha sozinho: ele devolve a luz que recebe. A lapidação decide quanto dela volta para os seus olhos.</p>
+          <ol class="passos">
+            <li class="passo" data-de=".30" data-ate=".52">
+              <span class="passo-n">01</span>
+              <div><h3>Mesa</h3><p>A janela de cima, por onde a luz entra. Larga demais, a pedra perde fogo; estreita demais, perde brilho.</p><p class="medida">cerca de 57% do diâmetro</p></div>
+            </li>
+            <li class="passo" data-de=".52" data-ate=".74">
+              <span class="passo-n">02</span>
+              <div><h3>Coroa</h3><p>Trinta e três facetas acima da cintura. É nelas que a luz se divide em cores: o fogo do diamante.</p><p class="medida">34,5° de inclinação</p></div>
+            </li>
+            <li class="passo" data-de=".74" data-ate="1.01">
+              <span class="passo-n">03</span>
+              <div><h3>Pavilhão</h3><p>Vinte e quatro facetas embaixo, inclinadas como espelhos: a luz que entrou pela mesa bate nelas e volta para cima.</p><p class="medida">40,75° de inclinação</p></div>
+            </li>
+          </ol>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <section class="pecas" id="pecas" aria-labelledby="pecas-titulo">
+    <div class="pecas-cab">
+      <p class="rotulo">As peças</p>
+      <h2 id="pecas-titulo">Três peças, <em>uma pedra por vez.</em></h2>
+      <p>Cada peça é feita sob encomenda em volta de uma pedra que você escolhe no ateliê. O valor depende da pedra e é apresentado na visita.</p>
+    </div>
+    <ul class="pecas-lista" role="list">
+      <li class="peca peca-1">
+        <figure>
+          <div class="peca-luz"><img src="img/pecas/solitario.svg" width="800" height="1000" alt="Anel solitário em platina com um diamante redondo preso por quatro garras, sobre fundo escuro." loading="lazy"></div>
+          <figcaption><span class="peca-n">I</span><h3>Solitário</h3><p>Anel em platina 950, quatro garras. A pedra fica alta, para receber luz por todos os lados.</p></figcaption>
+        </figure>
+      </li>
+      <li class="peca peca-2">
+        <figure>
+          <div class="peca-luz"><img src="img/pecas/brincos.svg" width="800" height="1000" alt="Par de brincos de ouro branco, cada um com um diamante redondo em garras de três pontas." loading="lazy"></div>
+          <figcaption><span class="peca-n">II</span><h3>Pontos de luz</h3><p>Brincos em ouro branco 18k, um diamante em cada orelha, garras de três pontas.</p></figcaption>
+        </figure>
+      </li>
+      <li class="peca peca-3">
+        <figure>
+          <div class="peca-luz"><img src="img/pecas/pingente.svg" width="800" height="1000" alt="Pingente de ouro branco: um diamante suspenso numa corrente fina, sem moldura." loading="lazy"></div>
+          <figcaption><span class="peca-n">III</span><h3>Vésper</h3><p>Pingente em ouro branco 18k. Um diamante suspenso numa corrente fina, sem moldura entre a pedra e a luz.</p></figcaption>
+        </figure>
+      </li>
+    </ul>
+
+    <div class="visita" id="visita">
+      <div class="visita-texto">
+        <h2 id="visita-titulo">Escolha a pedra <em>sob a mesma luz.</em></h2>
+        <p>No ateliê, as pedras são mostradas uma a uma, sob uma única luz, como nesta página. A visita é marcada com hora.</p>
+      </div>
+      <form class="form" aria-labelledby="visita-titulo" novalidate>
+        <label>Seu nome<input name="nome" autocomplete="name" required></label>
+        <label>E-mail ou telefone<input name="contato" autocomplete="email" required></label>
+        <label>O que procura
+          <select name="interesse">
+            <option>Anel de noivado</option>
+            <option>Joia para dar de presente</option>
+            <option>Peça sob encomenda</option>
+            <option>Ainda não sei</option>
+          </select>
+        </label>
+        <button class="botao botao-grande" type="submit">Pedir um horário</button>
+        <p class="form-msg" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="rodape">
+  <p>© 2026 Vésper · alta joalheria</p>
+  <p>O diamante desta página é calculado em tempo real no seu navegador, faceta por faceta.</p>
+</footer>
+</body>
+</html>
