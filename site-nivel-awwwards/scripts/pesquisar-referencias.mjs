@@ -35,12 +35,28 @@ const ehListagem = s => host(s.urlFinal) === 'onepagelove.com' || host(s.url) ==
 const FONTES = [['awwwards', 'awwwards'], ['opl', 'onepagelove']].filter(([k]) => fonteSel === 'todas' || fonteSel === k);
 
 const candidatos = [];
+// registros: acervo local (com capturas) ou, sem ele, o índice destilado do repositório (só fatos e endereço)
+const registros = [];
 for (const [rotulo, pasta] of FONTES) {
   const dir = path.join(ACERVO, pasta, 'final');
-  if (!fs.existsSync(path.join(dir, 'acervo.json'))) { console.error(`AVISO: acervo não encontrado em ${dir} (defina ACERVO=caminho). Sem sites do acervo: pesquise ao vivo (Awwwards, One Page Love) como manda references/pesquisa.md.`); continue; }
+  if (!fs.existsSync(path.join(dir, 'acervo.json'))) continue;
   for (const s of JSON.parse(fs.readFileSync(path.join(dir, 'acervo.json'), 'utf8'))) {
     if (s.erroDesktop || ehListagem(s) || capturaInvalida(s)) continue;
     let est = null; try { est = JSON.parse(fs.readFileSync(path.join(dir, s.slug, 'estrutura.json'), 'utf8')); if (est.erro) est = null; } catch {}
+    registros.push({ rotulo, s, est, capturas: path.join(dir, s.slug) });
+  }
+}
+let usouDestilado = false;
+if (!registros.length) {
+  try {
+    const ind = JSON.parse(fs.readFileSync(path.join(AQUI, '..', 'references', 'acervo-destilado', 'indice.json'), 'utf8'));
+    for (const s of ind.sites) { const rotulo = s.fonte === 'onepagelove' ? 'opl' : 'awwwards'; if (fonteSel !== 'todas' && fonteSel !== rotulo) continue; registros.push({ rotulo, s: { ...s, libs: Object.fromEntries((s.libs || []).map(k => [k, true])) }, est: s.estrutura, capturas: null }); }
+    usouDestilado = registros.length > 0;
+    console.error(`AVISO: sem acervo local em ${ACERVO}; usando o índice destilado do repositório (${registros.length} sites, sem capturas: abra o endereço de cada um).`);
+  } catch { console.error(`AVISO: acervo não encontrado em ${ACERVO} (defina ACERVO=caminho) e sem índice destilado. Pesquise ao vivo (Awwwards, One Page Love) como manda references/pesquisa.md.`); }
+}
+for (const { rotulo, s, est, capturas } of registros) {
+  {
     const L = s.libs || {}, E = (s.estilos || []).map(x => x.toLowerCase());
     let pts = 0; const por = [];
     const nicho = norm(s.nicho || ''), gens = (s.generos || []).map(norm);
@@ -53,7 +69,7 @@ for (const [rotulo, pasta] of FONTES) {
     const enc = encaixe(est, perfil);
     if (enc) { pts += enc.pts; if (enc.pts >= 3.5) por.push('layout: ' + enc.motivos.join(', ')); }
     if (pts <= 1.5 && !args.todos) continue;
-    candidatos.push({ fonte: rotulo, slug: s.slug, titulo: (s.titulo || '').replace(/&#0?38;|&amp;/g, '&'), ano: s.ano, nicho: s.nicho, url: s.urlFinal || s.url, pts: +pts.toFixed(1), layout: enc ? enc.pts : null, layoutMotivos: enc ? enc.motivos : [], por, capturas: path.join(ACERVO, pasta, 'final', s.slug), estrutura: !!est });
+    candidatos.push({ fonte: rotulo, slug: s.slug, titulo: (s.titulo || '').replace(/&#0?38;|&amp;/g, '&'), ano: s.ano, nicho: s.nicho, url: s.urlFinal || s.url, pts: +pts.toFixed(1), layout: enc ? enc.pts : null, layoutMotivos: enc ? enc.motivos : [], por, capturas, estrutura: !!est });
   }
 }
 // sem repetir domínio; mistura as duas fontes se ambas existirem
@@ -66,6 +82,6 @@ console.log(`${ordenados.length} candidatos; top ${saida.length}:\n`);
 saida.forEach((c, i) => {
   console.log(`${String(i + 1).padStart(2)}. [${c.pts}] ${c.titulo} (${c.ano ?? '?'}, ${c.fonte}) — ${c.nicho}`);
   console.log(`    ${c.url}  | por: ${c.por.join(', ') || '-'}${c.estrutura ? '' : '  (sem estrutura.json)'}`);
-  console.log(`    capturas: ${c.capturas}`);
+  console.log(c.capturas ? `    capturas: ${c.capturas}` : '    (sem captura: abra o endereço no navegador em 1440 e 390 px)');
 });
 console.log('\nPróximo passo: abra desktop.jpg, desktop-scroll.jpg e mobile.jpg de 3 a 6 sites e escolha a referência de cada SEÇÃO (hero, conteúdo, prova, chamada, rodapé).');

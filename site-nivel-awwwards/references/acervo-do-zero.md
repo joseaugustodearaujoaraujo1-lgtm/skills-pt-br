@@ -58,6 +58,11 @@ A coleta lê um arquivo de lista: `sites.json` (`[{ "titulo", "url", "ano", "nic
   node scripts/acervo/listar-awwwards.mjs --sotd --paginas 5 --saida sites-sotd.json
   ```
   Lê só as páginas públicas de listagem e a página de cada site (para achar o link "Visit site"). Depende do HTML do Awwwards: se mudar e nada for achado, o script avisa, e você monta o `sites.json` à mão. Categorias úteis: `fashion`, `architecture`, `technology`, `e-commerce`, `photography`, `art`, `food-beverage`.
+- **CSS Design Awards** (premiação do mesmo nível; funciona também na nuvem, onde o Awwwards é recusado):
+  ```bash
+  node scripts/acervo/listar-cssda.mjs --paginas 12 --saida sites-cssda.json
+  ```
+  Na nuvem do Claude Code, rode com `NODE_USE_ENV_PROXY=1` (o `fetch` do Node não usa o proxy sozinho).
 - **One Page Love:** o próprio site pede para agentes usarem a **API oficial** (`https://onepagelove.com/api`, plano grátis com chave) em vez de raspar o HTML. Gere o `sites.json` com ela (campos: título, URL, ano, gênero, estilo) e rode com `--fonte onepagelove`.
 - **Seus favoritos:** qualquer lista de URLs vale.
 
@@ -92,6 +97,8 @@ Detecção por heurística (ex.: serifa por nome de fonte, preloader por element
 
 Outros scripts: `recapturar.mjs` (hero e rolagem em N pontos, desktop ou celular, para estudar uma referência), `buscar.mjs` (filtra por texto, nicho, estilo, lib e ano).
 
+Depois da coleta: `node scripts/acervo/classificar.mjs` dá um tema a cada site que veio sem categoria (lendo título, descrição e o início da página).
+
 ## 5. Limpar
 
 Não apague nada: o filtro é por código. `scripts/qualidade.mjs` descarta (`capturaInvalida`) status ≥ 400 e títulos de bloqueio ("just a moment", "403", "domain for sale"…). Os scripts também ignoram páginas de listagem do One Page Love e `estrutura.json` com `erro` ou `versao < 3`.
@@ -111,7 +118,12 @@ Critério de pronto: `gerar-padroes.mjs` exige ao menos 20 sites com `estrutura.
 
 ## 7. Destilado (o que pode ir para o GitHub)
 
-Se quiser levar o conhecimento para outras máquinas sem levar o bruto, escreva na pasta `acervo-destilado` dentro de `references` uma ficha por site, com palavras suas: `slug`, `url`, `ano`, `nicho`, 1 frase da ideia, técnica de destaque (ex.: "título por linhas com máscara"), recursos (`gsap`, `three`…) e a nota de 0 a 10 de acabamento. Sem trechos de texto, sem imagem, sem código do site. Um índice por nicho e por técnica ajuda a busca.
+```bash
+node scripts/acervo/destilar.mjs   # → references/acervo-destilado/indice.json e README.md
+```
+O índice guarda só fatos medidos e o endereço público de cada site, sem captura, texto ou código. Quando não há acervo local (nuvem, outro computador), `pesquisar-referencias.mjs` usa esse índice automaticamente: o agente recebe sites reais para abrir, em vez de depender só da pesquisa ao vivo.
+
+Opcional, à mão: escreva na pasta `acervo-destilado` dentro de `references` uma ficha por site, com palavras suas: `slug`, `url`, `ano`, `nicho`, 1 frase da ideia, técnica de destaque (ex.: "título por linhas com máscara"), recursos (`gsap`, `three`…) e a nota de 0 a 10 de acabamento. Sem trechos de texto, sem imagem, sem código do site. Ajuda o agente a escolher sem abrir cada site.
 
 ## 8. Manter
 
