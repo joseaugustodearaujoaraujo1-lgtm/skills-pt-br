@@ -65,6 +65,17 @@ As ilustrações seguem o mesmo estilo: **vetorial chapado, cores vivas (caju, a
 | 4 | `img/slide-1..4.webp` | 1400×1140 e 1000×1250 | (1) cabine de portão com leitura automática, (2) pátio à noite com holofotes, (3) fileira de docas com carretas encostadas, (4) torre de controle com telas. |
 | 5 | `img/citacao.webp` | 16:9 | Caminhão subindo uma estrada com neve no meio de um pinheiral, ao amanhecer, faróis acesos. |
 
+## Teste cego (sessão D): sites feitos por um agente limpo só com a skill
+
+Ficam em `teste-cego/`, fora da galeria. Hoje usam placeholders desenhados por script.
+
+### R1 · ESTRATO, clínica de dermatologia em São Paulo (`teste-cego/r1-dermatologia/`)
+
+| # | Arquivo (substitui) | Formato | Prompt |
+|---|---|---|---|
+| 1 | `public/img/hero-corte-pele.webp` (o site divide em 3 fatias, cortes em 30% e 70% da altura) | 4:5, 1440×1800 | Corte transversal macro da pele humana, como uma lâmina de histologia fotografada de lado, preenchendo todo o quadro na vertical. Faixa de cima (30% da altura): epiderme rosada-clara, com a linha ondulada da junção com a derme. Faixa do meio (40%): derme rosa mais profunda, com fibras finas de colágeno e pequenos vasos. Faixa de baixo (30%): hipoderme, com células de gordura arredondadas cor de areia. Luz de estúdio difusa, cores quentes e dessaturadas, textura nítida, sem fundo e sem rótulos. |
+| 2 | `public/img/consulta-dermatoscopia.webp` | 14:9, 2100×1350 | Imagem dermatoscópica real de uma pinta benigna em pele clara-média, vista de cima pela lente do dermatoscópio, com rede pigmentar marrom simétrica no centro-direita do quadro e a textura fina da pele em volta. Luz polarizada uniforme, tons rosados e quentes, foco nítido no quadro todo, sem borda da lente, régua ou texto. |
+
 ---
 
 **Como mandar:** anexe os arquivos aqui com o número da tabela (por exemplo, "OLEA 1" ou "BRUMA 1"). Basta cada arquivo vir com o número; eu cuido do resto.

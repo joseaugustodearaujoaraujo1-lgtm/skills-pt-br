@@ -125,6 +125,8 @@ Use somente se o conceito pede. Receita completa, orçamento e método testado e
 ## 8. Acabamento que separa o nível
 - Estados de hover/focus/active em **tudo** que é clicável; foco visível.
 - **Menu ou ação principal ao alcance em toda a rolagem** (teste cego, rodada 1): barra compacta fixa (logo + ação principal) no desktop e botão fixo no pé da tela no celular. Cabeçalho que some ao rolar impede o 7 de Usabilidade: o juiz vê telas paradas e não vê o menu voltar quando se rola para cima.
+- **No celular, o protagonista do hero aparece na primeira dobra** (teste cego, rodada 1): a imagem ou o objeto do gesto vem logo abaixo do título (mais baixo, se preciso), nunca depois do parágrafo e dos botões.
+- **Rótulos pequenos (mono, sobrelinhas, legendas): mínimo de 12 px no desktop e 13 px no celular**, com contraste de texto de leitura. Elemento fixo na margem (régua, índice) tem coluna própria reservada: o conteúdo começa depois dela e nunca encosta nele.
 - Ícone de três barras só para abrir menu. Símbolo de logo que lembra um hambúrguer e não abre nada confunde.
 - Seleção de texto na cor do acento (`::selection`), barra de rolagem estilizada, favicon e imagem de compartilhamento (Open Graph) com identidade.
 - Microcopy com personalidade (botões, erros, 404, rodapé).
