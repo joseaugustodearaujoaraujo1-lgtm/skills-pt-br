@@ -13,8 +13,16 @@ Pergunta: **um agente limpo, só com a skill, faz um site de nível Awwwards?** 
 | Rodada | Briefing | Pasta | Verificador | Juiz 1 | Juiz 2 | Nota (menor) | × galeria |
 |---|---|---|---|---|---|---|---|
 | 1 | Clínica de dermatologia em São Paulo | `teste-cego/r1-dermatologia/` | 0 FAIL (1 WARN falso, corrigido no script) | 6,75 | 6,85 | **6,75** | acima da TAINÁ (6,45) |
+| 2 | Joalheria de luxo | `teste-cego/r2-joalheria/` | 0 FAIL, 0 WARN | 7,05 | (não precisou: fora da faixa de corte) | **7,05** | acima da TAINÁ |
+| 3 | Produto físico com 3D | `teste-cego/r3-produto-3d/` | 0 FAIL na época; com o verificador novo, 3 FAIL (nota de produção) | 5,40 | (não precisou) | **5,40** | abaixo; sem a nota de produção seria ~7,30 |
+| 3b | Produto físico com 3D, de novo (agente novo, skill com as regras das rodadas 1 a 3) | `teste-cego/r3b-produto-3d/` | PENDENTE | | | | |
 
-Notas por critério na rodada 1 (Design / Usabilidade / Criatividade / Conteúdo): juiz 1, 7 / 6,5 / 7 / 6; juiz 2, 7 / 6,5 / 7 / 7.
+Notas por critério (Design / Usabilidade / Criatividade / Conteúdo):
+- Rodada 1: juiz 1, 7 / 6,5 / 7 / 6; juiz 2, 7 / 6,5 / 7 / 7.
+- Rodada 2: 7 / 7 / 7 / 7,5.
+- Rodada 3: 7 / **3** (teto: texto provisório) / 7,5 / **2** (teto: texto provisório). Antes dos tetos, Usabilidade e Conteúdo estavam em 7,5.
+
+**Leitura:** com a skill sozinha, um agente limpo fez dois sites acima do melhor da galeria (6,75 e 7,05) e um que perdeu tudo por um único defeito evitável. Nenhum chegou a 7,5. O que segura todos no 7 é o mesmo: seções que repetem o bloco, gestos declarados que não aparecem numa tela parada e acabamento de celular. A rodada 3 mostrou também que **regra escrita não basta**: a regra do placeholder já existia depois da rodada 1 e o agente não a seguiu. Por isso ela virou FAIL no verificador.
 
 ## Rodada 1: clínica de dermatologia
 **O que o agente fez:** "Estrato Dermatologia". Usou HTML + GSAP e o estilo Minimalism com paleta creme, rosa e musgo. A ideia é "a rolagem desce pelas camadas da pele": o hero é um corte em 3 fatias com a espessura em mm, uma régua de profundidade fixa fica na margem, e o fundo escurece a cada camada. As seções são as queixas por camada e a primeira consulta com formulário. Lighthouse deu 100 nas quatro notas. Passou de primeira: 0 FAIL e 6,75, acima de todos os sites da galeria.
@@ -41,3 +49,36 @@ Notas por critério na rodada 1 (Design / Usabilidade / Criatividade / Conteúdo
 | 16 | Imagem com `decoding="async"` e revelação por máscara saiu vazia na captura de página inteira (agente) | Sem `decoding="async"` em imagem que começa escondida | `elementos.md` §3 |
 
 **Ficou pendente (sessão E):** o `criar-projeto.mjs` grava a paleta gerada do tema e não a "recomendada" do `opcoes.mjs` (a de origem do estilo); também não baixa a fonte mono que o brief define. O starter anima tudo de baixo para cima, o que conflita com a regra de direção de muitos conceitos. A porta 3001 é fixa no starter.
+
+## Rodada 2: joalheria de luxo
+**O que o agente fez:** "Vésper". A referência foi a ORE (Site of the Day), achada ao vivo. A ideia é "uma luz só acende a pedra, faceta por faceta". No hero, a marca aparece gigante, com um diamante de 57 facetas em WebGL2 com ray tracing, e o cursor é a única luz. Na lapidação, a pedra fica fixa e gira com a rolagem, com cotas reais (57%, 34,5°, 40,75°). Nas peças, cada uma se revela num círculo de luz, e há formulário de visita. Lighthouse deu 100/100/100/100 no desktop e 99/100/100/100 no celular. Passou de primeira: 0 FAIL e 7,05.
+
+| # | Falha (fonte) | Regra criada | Onde |
+|---|---|---|---|
+| 1 | Poços de luz das peças vazios nas telas paradas (juiz) | Revelação termina até a peça entrar 30% na tela | `direcao-criativa.md` §2 |
+| 2 | Formulário com campos e `select` nativos, sem tratamento (juiz) | Campos no sistema visual; até 5 opções viram opções clicáveis | `elementos.md` §8 |
+| 3 | O menu não marca a seção, e no celular só há "Agendar" (juiz) | Seção ativa marcada; botão "Menu" de 44 px no celular | `elementos.md` §8 |
+| 4 | Playfair + Inter, "par de luxo muito visto" (juiz) | Trocar por serifado de display com mais caráter e registrar | `anti-cliches.md` |
+| 5 | Gesto do hero diferente do declarado (pedra acima da palavra, não na frente) (juiz) | Já coberto: conferir cada gesto nas telas do `juiz.mjs` | `direcao-criativa.md` §2 |
+| 6 | Faltam lugar e pessoa (endereço, lapidário) (juiz) | Já coberto: provas no bloco 1 | `perguntas.md` 1.2 |
+| 7 | O brief recomendou dourado sobre preto, o clichê do tema (agente) | Conferir a paleta e o estilo recomendados contra o "não faz" | `direcao-criativa.md` §4 |
+| 8 | Regra −1 (three.js com PBR) contra "WebGL2 puro" para o diamante (agente) | WebGL2 puro vale para um objeto só | `3d-leve.md` (topo) |
+| 9 | Princípio 3 ("quase igual") contra `pesquisa.md` ("nunca molde") (agente) | Molde de estrutura e experiência; o protegido nunca | `pesquisa.md` |
+| 10 | Texto de SVG medido em unidade do viewBox, falso "texto pequeno" (agente) | Tamanho na tela pela matriz do SVG | `scripts/verificar-site.mjs` |
+| 11 | GSAP não entende `svh` e o objeto saiu do lugar no celular (agente) | `svh` só no CSS; no GSAP, px ou `vh` | `elementos.md` §5 |
+| 12 | Sem GPU, o verificador e o juiz só veem o pôster (agente) | O plano B carrega o gesto (quadros da cena); `?gpu=1` força o WebGL | `3d-leve.md` |
+
+## Rodada 3: produto físico com 3D
+**O que o agente fez:** "MÓ 01", um moedor de pimenta de nogueira e aço. A ideia é "role e o moedor se abre, peça por peça, ao longo do eixo". O hero tem uma régua de 20 cm ao lado do moedor. Na rolagem vem a vista explodida das seis peças com linhas de cota, depois a regulagem clique a clique e a lista de espera. O 3D é three.js com geometria em código e materiais PBR. Sem GPU, a página mostra 24 quadros renderizados da própria cena. Lighthouse deu 100/100/100/100 e 99/100/100/100. O juiz deu 5,40: o placeholder da foto "na mão" era um SVG com o texto "FOTO A GERAR · moedor-na-mao.webp · ver IMAGENS.md", e isso conta como texto provisório, com tetos de 3 e 2.
+
+| # | Falha (fonte) | Regra criada | Onde |
+|---|---|---|---|
+| 1 | Nota de produção à vista, dentro de um SVG de placeholder (juiz) | **FAIL no verificador**: "imagem provisória", "a gerar", "placeholder", "IMAGENS.md" ou nome de arquivo à vista, também dentro de SVG usado como `<img>`; o `juiz.mjs` também marca | `scripts/verificar-site.mjs`, `scripts/juiz.mjs` |
+| 2 | Cota acesa de um passo com o texto de outro (juiz) | Um gatilho só para cada passo (mesmo índice) | `elementos.md` §5 |
+| 3 | No celular, o cartão cobre o objeto e a metade de baixo fica vazia (juiz) | Objeto e texto em faixas separadas no celular | `elementos.md` §8 |
+| 4 | Disco da regulagem desenhado plano, sem relação com o anel 3D (juiz) | O gesto usa o render e o material do objeto | `direcao-criativa.md` §2 |
+| 5 | Rótulo dinâmico contradiz a legenda ("para peixes" × "saladas, ovos, legumes") (juiz) | Conferir textos que mudam com a rolagem | `rubrica.md` §4 |
+| 6 | D03 a D05 com a mesma composição (juiz) | Já coberto: seções irmãs não repetem o bloco | `direcao-criativa.md` §2 |
+| 7 | O `criar-projeto.mjs` gravou a paleta gerada, não a escolhida (2ª vez) e não baixou a mono (agente) | `--cores` grava a paleta escolhida; a mono do brief é baixada; sem `--cores`, aviso | `scripts/criar-projeto.mjs`, `SKILL.md` §5 |
+| 8 | Sem gerador, o portão de igualdade dá IoU 1,0 sempre (molde e site do mesmo código) (agente) | Nesse caso a prova é a comparação com as referências reais | `aprovacoes.md` |
+| 9 | Dúvida entre "sem números inventados" e as medidas de um produto de conceito (agente) | Medidas e materiais são especificação a confirmar; avaliações, vendas e prêmios nunca | `perguntas.md` 1.2 |
