@@ -132,6 +132,8 @@ Use somente se o conceito pede. Receita completa, orçamento e método testado e
 - **O menu marca a seção ativa** (sublinhado ou ponto no acento), e no celular há acesso às seções (botão "Menu" de 44 px), não só a ação principal (teste cego, rodada 2).
 - **Formulário com tratamento próprio** (teste cego, rodada 2): campos no sistema visual do site (linha fina que acende no acento no foco, rótulo no tipo de detalhe). Com até 5 opções, troque o `<select>` nativo por opções clicáveis (rádios estilizados). Formulário padrão do navegador segura o Design no 7.
 - **No celular, objeto fixo e texto em faixas separadas** (teste cego, rodada 3): por exemplo, o objeto nos 55% de cima e os cartões na faixa de baixo. O cartão nunca cobre o objeto que descreve, e a faixa de baixo não fica vazia.
+- **Botão fixo no pé do celular reserva o espaço dele** (teste cego, rodada 3b): `padding-bottom` de ~96 px nas seções fixas, para nenhum título de passo parar atrás do botão; durante a seção fixa, recolha o botão para uma pílula no canto.
+- **Rótulo sobre cena 3D nunca fica atrás do objeto nem sob outro texto** (rodada 3b: "150 ml" escondido atrás da cafeteira; numeral "15" sobre o rótulo). Confira nas telas do `juiz.mjs`, desktop e celular.
 - Ícone de três barras só para abrir menu. Símbolo de logo que lembra um hambúrguer e não abre nada confunde.
 - Seleção de texto na cor do acento (`::selection`), barra de rolagem estilizada, favicon e imagem de compartilhamento (Open Graph) com identidade.
 - Microcopy com personalidade (botões, erros, 404, rodapé).
