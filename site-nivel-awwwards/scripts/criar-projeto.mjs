@@ -24,7 +24,7 @@ fs.mkdirSync(saida, { recursive: true });
 const pastaDesign = path.join(saida, 'design');
 console.log(`1/5 Brief e tokens (${stack === 'next' ? 'Next.js + GSAP' : 'HTML + CSS + JS + GSAP'})`);
 if (!fs.existsSync(path.join(pastaDesign, 'brief.json'))) {
-  run('montar-brief.mjs', ['--nome', args.nome, '--tema', args.tema, '--adjetivos', args.adjetivos || '', '--publico', args.publico || '', '--recursos', args.recursos || '', '--saida', pastaDesign]);
+  run('montar-brief.mjs', ['--nome', args.nome, '--tema', args.tema, '--adjetivos', args.adjetivos || '', '--publico', args.publico || '', '--recursos', args.recursos || '', ...(args.ref3d ? ['--ref3d', String(args.ref3d)] : []), ...(args['3d'] ? ['--3d', String(args['3d'])] : []), '--saida', pastaDesign]);
 }
 const brief = JSON.parse(fs.readFileSync(path.join(pastaDesign, 'brief.json'), 'utf8'));
 let tokens = fs.readFileSync(path.join(pastaDesign, 'tokens.css'), 'utf8');
@@ -39,6 +39,16 @@ if (escura) tokens += `\n/* seção escura de contraste (paleta escura da skill)
 const VAR = { fundo: '--bg', superficie: '--surface', texto: '--text', acento: '--accent', textoMudo: '--text-muted', linha: '--line' };
 if (args.cores) {
   for (const par of String(args.cores).split(',')) { const [k, v] = par.split('=').map(x => x.trim()); if (VAR[k] && /^#[0-9a-f]{3,8}$/i.test(v || '')) tokens = tokens.replace(new RegExp(`${VAR[k]}:\\s*[^;]+;`), `${VAR[k]}: ${v};`); else console.log(`   (cor ignorada: ${par})`); }
+  const acento = (String(args.cores).match(/acento=(#[0-9a-f]{6})/i) || [])[1];
+  if (acento) {
+    tokens = tokens.replace(/--accent-soft:\s*[^;]+;/, `--accent-soft: color-mix(in oklab, ${acento} 18%, var(--bg));`);
+    const lum = h => { const c = [1, 3, 5].map(i => parseInt(h.slice(i, i + 2), 16) / 255).map(v => v <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4); return 0.2126 * c[0] + 0.7152 * c[1] + 0.0722 * c[2]; };
+    const contraste = (a, b) => { const [x, y] = [lum(a), lum(b)].sort((m, n) => n - m); return (x + 0.05) / (y + 0.05); };
+    const texto = (String(args.cores).match(/texto=(#[0-9a-f]{6})/i) || [])[1] || '#111111';
+    const tinta = contraste('#ffffff', acento) >= contraste(texto, acento) ? '#ffffff' : texto, r = contraste(tinta, acento);
+    tokens = tokens.replace(/--on-accent:\s*[^;]+;/, `--on-accent: ${tinta};`);
+    if (r < 4.5) console.log(`   AVISO: texto do botão sobre o acento dá ${r.toFixed(2)}:1 (< 4,5). Escureça o acento para botões e use o original só em elementos grandes.`);
+  }
   console.log('   paleta escolhida gravada em tokens.css: ' + args.cores + ' (confira o contraste no verificador)');
 } else console.log('   AVISO: tokens.css ficou com a paleta GERADA para o tema. Se a escolhida foi outra (ex.: a de origem do estilo, recomendada pelo opcoes.mjs), rode de novo com --cores "fundo=#..,superficie=#..,texto=#..,acento=#..".');
 

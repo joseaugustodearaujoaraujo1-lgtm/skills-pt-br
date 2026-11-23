@@ -112,7 +112,9 @@ for (const [nome, w, h, movel] of VPS) {
   // movimento reduzido: nada de texto escondido
   const ctx2 = await navegador.newContext({ viewport: { width: w, height: h }, reducedMotion: 'reduce' }); const p2 = await ctx2.newPage();
   await p2.goto(url + (url.includes('?') ? '&' : '?') + 'r=' + Date.now(), { waitUntil: 'networkidle' }); await p2.waitForTimeout(espera);
-  await p2.addStyleTag({ content: '*{content-visibility:visible!important}' }); await p2.waitForTimeout(300); // content-visibility:auto não pinta o que está fora da tela: força só durante a captura
+  await p2.addStyleTag({ content: '*{content-visibility:visible!important}' }); await p2.waitForTimeout(300);
+  // loading="lazy" só carrega perto da tela: força o carregamento antes da captura da página inteira (teste cego, rodada 3b)
+  await p2.evaluate(async () => { for (const i of document.images) if (i.loading === 'lazy') i.loading = 'eager'; await Promise.all([...document.images].map(i => i.complete ? 0 : new Promise(r => { i.onload = i.onerror = r; setTimeout(r, 3000); }))); }); // content-visibility:auto não pinta o que está fora da tela: força só durante a captura
   await p2.screenshot({ path: path.join(saida, `captura-${nome}.png`), fullPage: true }); // página inteira no estado final (movimento reduzido)
   d.escondidoComMovimentoReduzido = await p2.evaluate(() => { let n = 0; for (const el of document.querySelectorAll('h1,h2,h3,p,li,a,button')) { const t = el.innerText?.trim(); if (!t) continue; const s = getComputedStyle(el), r = el.getBoundingClientRect(); if (+s.opacity < .1 && r.width > 1) n++; } return n; });
   await ctx2.close(); await ctx.close();

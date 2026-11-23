@@ -7,7 +7,8 @@
 }
 *, *::before, *::after { box-sizing: border-box; }
 body { margin: 0; font-size: var(--fs-body, 1.05rem); overflow-x: clip; -webkit-font-smoothing: antialiased; }
-p { margin: 0; } a { color: inherit; } em { font-style: italic; } img, svg, video { display: block; max-width: 100%; }
+p { margin: 0; } a { color: inherit; } em { font-style: italic; } img, svg, video, canvas { display: block; max-width: 100%; }
+[hidden] { display: none !important; } /* sem isto, display:block anula o atributo hidden (teste cego, rodada 3b: canvas e pôster duplicados) */
 h2 { font-size: var(--fs-h2); } h3 { font-size: var(--fs-h3); line-height: 1.05; }
 .pular { position: absolute; left: 1rem; top: -4rem; background: var(--text); color: var(--bg); padding: .7rem 1rem; z-index: 100; }
 .pular:focus { top: 1rem; }
