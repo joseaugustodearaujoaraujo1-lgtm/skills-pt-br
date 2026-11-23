@@ -44,3 +44,11 @@ O que pegar da ORE (técnica, não cópia): marca gigante cortando a base do her
 
 ## Componentes das plataformas (regra permanente)
 Ver tabela no fim do `DIRECAO.md`.
+
+## Portão de qualidade (rodada final)
+- `verificar-site.mjs --lighthouse`: **APROVADO, 0 FAIL, 0 WARN**. Lighthouse desktop 100/100/100/100 (LCP 0,4 s, TBT 0), celular 99/100/100/100 (LCP 2,1 s, TBT 60 ms, CLS 0). Atenção: o Chromium de teste não tem GPU, então o Lighthouse mediu o caminho de reserva (pôster + quadros), não o 3D ao vivo.
+- 1ª rodada tinha 3 WARN de texto < 12 px (legendas SVG das cotas e microtexto no celular): corrigido.
+- Juiz (subagente): não lançado, como pedido; o `juiz.mjs` também não rodou (bloqueado pela permissão do ambiente). Os gestos foram conferidos com `ferramentas/capturar.mjs` em 1440 e 390 px, incluindo o ponto de 14% da rolagem (hero ainda visível).
+- Autoavaliação pela rubrica (sem juiz, então é a nota de quem construiu): Design 8 (marca gigante + pedra, uma serifa e uma sans, acento só no clicável); Usabilidade 8 (menu e CTA fixos em toda tela, foco visível, movimento reduzido mostra tudo); Criatividade 8 (luz conduzida pelo cursor + pedra calculada por ray tracing, cotas reais de lapidação); Conteúdo 6 (sem fotos reais das peças, sem endereço, gemólogo, certificado nem preços: faltam provas do cliente).
+- Não testado: celular real, GPU real de celular (custo do shader), redes lentas, Safari/Firefox, leitor de tela. O formulário não tem servidor (só mostra a confirmação).
+- Vídeo-prévia: `design/previa.mp4` (protótipo gravado, 8,5 s).

@@ -171,8 +171,9 @@ if (!reduzido) {
     gsap.from(s.lines, { yPercent: 105, duration: 1.1, ease: 'power4.out', stagger: .1 });
   }, '0px 0px -12% 0px'));
   // passos assentam de cima para baixo, como peças descendo no eixo
-  $$('.passo').forEach(p => gsap.from(p.children, { y: -18, opacity: 0, duration: .9, ease: 'power3.out', stagger: .07, scrollTrigger: { trigger: p, start: 'top 75%', once: true } }));
-  gsap.from('.graos .grao', { y: -40, opacity: 0, duration: .7, ease: 'bounce.out', stagger: .05, scrollTrigger: { trigger: '.graos', start: 'top 85%', once: true } });
+  $$('.passo').forEach(p => gsap.from(p.children, { y: -18, opacity: 0, duration: .9, ease: 'power3.out', stagger: .07, scrollTrigger: { trigger: p, start: innerWidth > 900 ? 'top 75%' : 'top 92%', once: true } }));
+  // grãos caem no eixo (IntersectionObserver: o gatilho do ScrollTrigger ficava preso abaixo do palco fixo)
+  quandoPerto($('.graos'), el => gsap.from($$('.grao', el), { y: -40, opacity: 0, duration: .7, ease: 'bounce.out', stagger: .05 }), '0px 0px -15% 0px');
   gsap.from('.rodape-marca', { yPercent: 40, duration: 1.4, ease: 'power4.out', scrollTrigger: { trigger: '.rodape', start: 'top 90%', once: true } });
   document.fonts.ready.then(() => requestAnimationFrame(() => ScrollTrigger.refresh()));
 }

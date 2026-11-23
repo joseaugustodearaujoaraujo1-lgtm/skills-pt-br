@@ -78,6 +78,8 @@ gsap.fromTo('.parallax img', { yPercent: -10 }, { yPercent: 10, ease: 'none',
 - Nunca dependa de player de terceiros (YouTube/Vimeo) na primeira dobra.
 
 ## 5. Scroll: seções fixadas, horizontal, snap
+- **Um gatilho só para cada passo** (teste cego, rodada 3): texto, número, cota acesa e peça destacada mudam pelo mesmo índice, calculado num único `onUpdate`. Dois ScrollTriggers com limiares próprios saem de sincronia, e a tela parada mostra o texto de um passo com a cota de outro.
+- **GSAP e ScrollTrigger não entendem `svh`, `dvh` nem `lvh`** (teste cego, rodada 2: o objeto saiu do lugar no celular). Em `start`, `end`, `y` e alturas animadas use px calculado (`innerHeight`, refeito no `refresh`) ou `vh`; `svh` só no CSS.
 - **Seção fixada com troca de etapas** (storytelling):
 ```js
 gsap.timeline({ scrollTrigger: { trigger: '.historia', pin: true, scrub: 1, end: '+=300%' } })
@@ -127,6 +129,9 @@ Use somente se o conceito pede. Receita completa, orçamento e método testado e
 - **Menu ou ação principal ao alcance em toda a rolagem** (teste cego, rodada 1): barra compacta fixa (logo + ação principal) no desktop e botão fixo no pé da tela no celular. Cabeçalho que some ao rolar impede o 7 de Usabilidade: o juiz vê telas paradas e não vê o menu voltar quando se rola para cima.
 - **No celular, o protagonista do hero aparece na primeira dobra** (teste cego, rodada 1): a imagem ou o objeto do gesto vem logo abaixo do título (mais baixo, se preciso), nunca depois do parágrafo e dos botões.
 - **Rótulos pequenos (mono, sobrelinhas, legendas): mínimo de 12 px no desktop e 13 px no celular**, com contraste de texto de leitura. Elemento fixo na margem (régua, índice) tem coluna própria reservada: o conteúdo começa depois dela e nunca encosta nele.
+- **O menu marca a seção ativa** (sublinhado ou ponto no acento), e no celular há acesso às seções (botão "Menu" de 44 px), não só a ação principal (teste cego, rodada 2).
+- **Formulário com tratamento próprio** (teste cego, rodada 2): campos no sistema visual do site (linha fina que acende no acento no foco, rótulo no tipo de detalhe). Com até 5 opções, troque o `<select>` nativo por opções clicáveis (rádios estilizados). Formulário padrão do navegador segura o Design no 7.
+- **No celular, objeto fixo e texto em faixas separadas** (teste cego, rodada 3): por exemplo, o objeto nos 55% de cima e os cartões na faixa de baixo. O cartão nunca cobre o objeto que descreve, e a faixa de baixo não fica vazia.
 - Ícone de três barras só para abrir menu. Símbolo de logo que lembra um hambúrguer e não abre nada confunde.
 - Seleção de texto na cor do acento (`::selection`), barra de rolagem estilizada, favicon e imagem de compartilhamento (Open Graph) com identidade.
 - Microcopy com personalidade (botões, erros, 404, rodapé).

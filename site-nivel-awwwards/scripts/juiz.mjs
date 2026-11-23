@@ -70,7 +70,7 @@ const medir = () => {
     canvas: document.querySelectorAll('canvas').length, trechosFixos: fixos,
     bibliotecas: ['gsap', 'ScrollTrigger', 'Lenis', 'lenis', 'THREE', 'barba', 'Swiper'].filter(k => window[k]),
     palavras: (document.body.innerText || '').split(/\s+/).filter(Boolean).length,
-    textoProvisorio: /lorem ipsum|\[[^\]]{2,40}\]/i.test(document.body.innerText || ''),
+    textoProvisorio: /lorem ipsum|\[[^\]]{2,40}\]|imagem provis[óo]ria|foto a gerar|IMAGENS\.md/i.test(document.body.innerText || ''),
   };
 };
 

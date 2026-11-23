@@ -21,6 +21,7 @@ Use como lista de verificação **antes de entregar** e como filtro ao propor di
 | Scroll "snap" na página toda | Quebra o controle do usuário | Snap só em carrosséis |
 
 ## Sinais de que passou do ponto
+- **Playfair Display + Inter em site de luxo**: é o par mais visto do tema, e o juiz o chama de "muito visto" (teste cego, rodada 2). Prefira um serifado de display com mais caráter (Bodoni Moda, Fraunces com ajuste óptico, Gloock) e registre a troca em `design/DECISOES.md`.
 - Mais de 2 famílias de fonte e mais de 1 acento de cor.
 - Mais de 1 efeito "de impacto" visível ao mesmo tempo.
 - Contraste de texto abaixo de AA; texto sobre imagem sem proteção.

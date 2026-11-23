@@ -101,8 +101,8 @@ body::before { content: ''; position: fixed; inset: 0; z-index: 60; pointer-even
 .reg-num-rolo { display: block; }
 .graos { display: grid; grid-template-columns: repeat(8, 1fr); gap: .5rem; margin: 2.2rem 0 1.8rem; align-items: end; max-width: 34rem; }
 .graos li { display: flex; flex-direction: column; align-items: center; gap: .6rem; text-align: center; }
-.grao { display: block; width: calc(4px + var(--g) * 3.4px); aspect-ratio: 1; border-radius: 42% 58% 50% 46%; background: #3A2E26; transition: background-color .3s, transform .3s; }
-.graos li.ativo { color: var(--text); } .graos li.ativo .grao { background: var(--accent); transform: translateY(-6px); }
+.grao { display: block; width: calc(4px + var(--g) * 3.4px); aspect-ratio: 1; border-radius: 42% 58% 50% 46%; background: #3A2E26; transition: background-color .3s, box-shadow .3s; }
+.graos li.ativo { color: var(--text); } .graos li.ativo .grao { background: var(--accent); box-shadow: 0 0 0 4px var(--accent-soft); }
 .usos { display: grid; gap: .55rem; max-width: 34rem; border-top: 1px solid var(--line); padding-top: 1.2rem; color: var(--text-muted); }
 .usos strong { display: inline-block; min-width: 3.2rem; font-family: var(--font-detail); font-weight: 400; color: var(--text); }
 

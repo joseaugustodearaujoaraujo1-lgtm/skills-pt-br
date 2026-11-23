@@ -151,45 +151,21 @@
   "secoes": [
     {
       "id": "hero",
-      "objetivo": "primeira impressão e promessa",
-      "referencia": null,
-      "motion": "revelação do título por linhas/palavras + 1 gesto de assinatura",
-      "componente": null
+      "referencia": "Duo Case (título grande + produto)",
+      "componente": "Split Text (reactbits.dev), por CSS",
+      "motion": "título sobe por linha; régua de 0 a 20 cm"
     },
     {
-      "id": "manifesto",
-      "objetivo": "ideia da marca em uma frase grande",
-      "referencia": null,
-      "motion": "texto que se revela com o scroll",
-      "componente": null
+      "id": "por-dentro",
+      "referencia": "Duo Case \"Scroll to open\" + Tenztan (pin longo)",
+      "componente": "cena three.js + cotas SVG",
+      "motion": "vista explodida ligada à rolagem; passo ativo destacado"
     },
     {
-      "id": "conteudo",
-      "objetivo": "o que a marca oferece (produtos, trabalhos, serviços)",
-      "referencia": null,
-      "motion": "cards/galeria com hover e entrada escalonada",
-      "componente": null
-    },
-    {
-      "id": "prova",
-      "objetivo": "confiança: números, depoimentos, logos, prêmios",
-      "referencia": null,
-      "motion": "contadores ou marquee discreto",
-      "componente": null
-    },
-    {
-      "id": "chamada",
-      "objetivo": "ação principal",
-      "referencia": null,
-      "motion": "botão com microinteração magnética/preenchimento",
-      "componente": null
-    },
-    {
-      "id": "rodape",
-      "objetivo": "fechar com marca e navegação",
-      "referencia": null,
-      "motion": "tipografia grande e revelação ao final",
-      "componente": null
+      "id": "regulagem",
+      "referencia": "próprio (peça 05 do eixo)",
+      "componente": "Spinning counter e Success check (transitions.dev); Noise (reactbits.dev) em CSS",
+      "motion": "anel gira clique a clique; número rola na vertical; grãos caem"
     }
   ],
   "qualidade": {
@@ -214,5 +190,30 @@
     "Validar paleta e fontes com o usuário antes de construir",
     "Construir e passar pelo portão de qualidade (rubrica.md)"
   ],
-  "geradoEm": "2026-11-23T03:04:55.664Z"
+  "geradoEm": "2026-11-23T03:04:55.664Z",
+  "escolhas": {
+    "modo": "A · do zero",
+    "produto": "MÓ 01, moedor de pimenta (nome e medidas provisórios)",
+    "acao": "Entrar na lista da 1ª fornada",
+    "stack": "HTML + CSS + JS + GSAP + three.js",
+    "estilo": "minimalism",
+    "paleta": {
+      "fundo": "#F4EFE8",
+      "superficie": "#F8F4EE",
+      "texto": "#1F2A22",
+      "textoMudo": "#5E625A",
+      "acento": "#4A5D4E",
+      "sand": "#C9BDAF",
+      "nogueira": "#5A3A26"
+    },
+    "sites": {
+      "E": "https://www.duocase.lol",
+      "A": "https://www.tenztan.in/",
+      "B": "https://www.theartofcinema.xyz/",
+      "C": "https://geoform.co/"
+    },
+    "tresD": "moedor em three.js (6 peças, PBR, estúdio HDR em código), pôster + WebGL tardio, 24 quadros como plano B",
+    "scroll": "pin + scrub (sticky + ScrollTrigger): a rolagem abre o moedor ao longo do eixo",
+    "direcao": "design/DIRECAO.md"
+  }
 }

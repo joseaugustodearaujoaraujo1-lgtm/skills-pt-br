@@ -48,6 +48,8 @@ function medir() {
   const txt = document.body.innerText || '';
   out.placeholders = [...new Set((txt.match(/\[[^\]\n]{2,80}\]/g) || []))].slice(0, 6);
   out.lorem = /lorem ipsum|dolor sit amet/i.test(txt);
+  // notas de produção à vista (teste cego, rodadas 1 e 3: "IMAGEM PROVISÓRIA", "FOTO A GERAR · x.webp · ver IMAGENS.md") contam como texto provisório para o juiz
+  out.notasProducao = [...new Set((txt.match(/[^\n]{0,30}(imagem provis[óo]ria|foto provis[óo]ria|a gerar\b|placeholder|IMAGENS\.md|PARA-GERAR|[\w-]+\.(webp|png|jpe?g|avif|mp4))[^\n]{0,30}/gi) || []).map(s => s.trim()))].slice(0, 6);
   out.emoji = (txt.match(/\p{Extended_Pictographic}/gu) || []).filter(e => !'©®™‼⁉'.includes(e)).length; // ©, ® e ™ são símbolos de texto, não emoji
   out.h1 = [...document.querySelectorAll('h1')].map(h => ({ texto: h.innerText.trim().slice(0, 80), px: Math.round(parseFloat(getComputedStyle(h).fontSize)), visivel: visivel(h) }));
   out.overflowX = document.documentElement.scrollWidth - innerWidth;
@@ -62,7 +64,7 @@ function medir() {
   for (let n; (n = walker.nextNode());) {
     const t = n.textContent.trim(); const el = n.parentElement; if (!t || !el || vistos.has(el) || !visivel(el)) continue; vistos.add(el);
     if (/^(SCRIPT|STYLE|NOSCRIPT)$/.test(el.tagName)) continue;
-    const s = getComputedStyle(el), px = parseFloat(s.fontSize), f = s.fontFamily.split(',')[0].replace(/["']/g, '').trim();
+    const s = getComputedStyle(el), ctm = el instanceof SVGGraphicsElement && el.getScreenCTM ? el.getScreenCTM() : null, px = parseFloat(s.fontSize) * (ctm ? Math.hypot(ctm.a, ctm.b) : 1), f = s.fontFamily.split(',')[0].replace(/["']/g, '').trim();
     fam.set(f, (fam.get(f) || 0) + 1); nTxt++; if (el.tagName === 'P') corpoPx = Math.max(corpoPx, px);
     if (px < 12) pequenos++;
     if (s.backgroundClip === 'text' || s.webkitBackgroundClip === 'text') gradTexto++;
@@ -98,6 +100,10 @@ for (const [nome, w, h, movel] of VPS) {
   // espera as animações finitas terminarem: texto ainda entrando tem opacidade menor e daria contraste falso
   await p.evaluate(() => Promise.race([Promise.allSettled(document.getAnimations().filter(a => a.effect?.getTiming().iterations !== Infinity).map(a => a.finished)), new Promise(r => setTimeout(r, 5000))]));
   const d = await p.evaluate(medir); dados[nome] = d;
+  // texto escrito dentro de SVG usado como <img> (o innerText não o vê): também é nota de produção se nomear arquivo ou "a gerar"
+  const txtSvg = await p.evaluate(async () => { let t = ''; for (const u of new Set([...document.images].map(i => i.currentSrc || i.src).filter(u => /\.svg(\?|#|$)/i.test(u)))) { try { const r = await fetch(u); t += (await r.text()).replace(/<(script|style)[\s\S]*?<\/\1>/gi, ' ').replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ') + '\n'; } catch { /* outra origem */ } } return t; });
+  const notasSvg = (txtSvg.match(/[^\n]{0,30}(imagem provis[óo]ria|foto provis[óo]ria|a gerar\b|placeholder|IMAGENS\.md|[\w-]+\.(webp|png|jpe?g|avif|mp4))[^\n]{0,30}/gi) || []).map(x => 'no SVG: ' + x.trim());
+  d.notasProducao = [...new Set([...(d.notasProducao || []), ...notasSvg])].slice(0, 6);
   // rola a página inteira para disparar carregamento tardio e capturar
   await p.evaluate(async () => { for (let y = 0; y < document.documentElement.scrollHeight; y += 500) { scrollTo(0, y); await new Promise(r => setTimeout(r, 70)); } scrollTo(0, 0); });
   await p.waitForTimeout(400);
@@ -117,6 +123,7 @@ for (const [nome, w, h, movel] of VPS) {
   if (d.requisicoesFalhas.length) reg(nome, 'FAIL', 'requisicoes', `requisições falhas: ${d.requisicoesFalhas.join(', ')}`);
   if (d.placeholders.length) reg(nome, 'FAIL', 'placeholder', `texto de modelo ainda na página: ${d.placeholders.join(' ')}`);
   if (d.lorem) reg(nome, 'FAIL', 'lorem', 'lorem ipsum na página');
+  if (d.notasProducao?.length) reg(nome, 'FAIL', 'nota-de-producao', `nota de produção à vista (o juiz lê como texto provisório, teto 3 em Usabilidade): ${d.notasProducao.join(' | ')}. O nome do arquivo vai em data-imagem e na lista de imagens, nunca no texto.`);
   if (d.h1.length !== 1) reg(nome, 'FAIL', 'h1', `deve haver 1 <h1>, há ${d.h1.length}`); else { if (!d.h1[0].visivel) reg(nome, 'FAIL', 'h1-visivel', 'o <h1> não está visível'); if (d.h1[0].px < (nome === '390' ? 40 : 56)) reg(nome, 'WARN', 'h1-pequeno', `título pequeno para a primeira dobra: ${d.h1[0].px}px`); }
   if (d.contrasteBaixoTotal) reg(nome, 'FAIL', 'contraste', `${d.contrasteBaixoTotal} texto(s) abaixo do mínimo (ex.: ${d.contrasteBaixo.map(c => `"${c.texto}" ${c.razao}:1<${c.min}`).slice(0, 3).join('; ')})`);
   if (d.contrasteIndefinido > 8) reg(nome, 'WARN', 'contraste-indefinido', `${d.contrasteIndefinido} textos sobre imagem ou gradiente: confira o contraste na captura`);

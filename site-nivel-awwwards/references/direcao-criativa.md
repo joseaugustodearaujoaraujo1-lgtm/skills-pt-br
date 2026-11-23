@@ -42,6 +42,8 @@ Réplica fiel ensina técnica; o que ganha prêmio é **uma ideia que só aquele
 - Todos os gestos são **parentes**: mesma origem, variações diferentes. Um gesto por seção, não três.
 - Cada gesto precisa **aparecer numa captura parada** (o juiz olha fotos). Descreva o quadro: "no meio da seção, o título está metade coberto pela névoa".
 - **O estado-chave do gesto fica parado na tela** (teste cego, rodada 1): ele precisa durar pelo menos 25% da rolagem da seção, e o do hero já tem que aparecer entre 10% e 15% da rolagem da página (o `juiz.mjs` fotografa por volta de 14%). Antes de entregar, abra as telas do `juiz.mjs` e confira cada gesto do `DIRECAO.md`. Gesto declarado que não aparece nelas não conta e vira correção.
+- **Revelação completa cedo:** máscara, círculo de luz ou recorte terminam até a peça entrar 30% na tela. Um poço ou quadro vazio numa tela parada é lido como bloco vazio (teste cego, rodada 2).
+- **O gesto fala a língua do objeto:** um elemento derivado do 3D (anel de regulagem, peça destacada, cota) usa o mesmo render e material do objeto, nunca uma ilustração plana no meio do site (teste cego, rodada 3).
 - **Seções irmãs não repetem o mesmo bloco** (camadas, passos, serviços, capítulos): cada uma muda pelo menos duas destas coisas: escala do título, coluna ou alinhamento, título cortado na borda, posição e tamanho da imagem. Três blocos iguais seguram o Design no 7.
 - **O gesto-assinatura tem versão de celular** (faixa no topo, régua horizontal, rótulo fixo). Esconder o gesto no celular (`display: none`) tira o 8 de Criatividade e de Usabilidade.
 - Use pelo menos um gesto do repertório técnico medido (`references/scroll-avancado.md`, `references/elementos.md`, `references/3d-leve.md`) e um que seja **do tema** (do banco abaixo).
@@ -50,7 +52,7 @@ Réplica fiel ensina técnica; o que ganha prêmio é **uma ideia que só aquele
 Uma regra só, verificável olhando as telas ou o código: direção do movimento, um único ângulo, uma única curva, uma cor que só aparece em um papel, uma grade que nada atravessa (ou que tudo atravessa). Ela dá coerência; quebrar a regra uma única vez, no momento "uau", é permitido se estiver escrito aqui.
 
 ### 4. O que o site NÃO faz
-De 3 a 5 itens **concretos** do tema e da técnica (não "nada genérico"). Comece pelos clichês do tema no banco abaixo e pelos de `references/anti-cliches.md`. O juiz desconta quando um item proibido aparece.
+De 3 a 5 itens **concretos** do tema e da técnica (não "nada genérico"). **Confira a paleta e o estilo recomendados pelos scripts contra esta lista** (teste cego, rodada 2: para joalheria, o brief recomendou dourado sobre preto, que é o clichê do tema). Se caírem num clichê, use a alternativa e registre o motivo. Comece pelos clichês do tema no banco abaixo e pelos de `references/anti-cliches.md`. O juiz desconta quando um item proibido aparece.
 
 ## Como conduzir com o usuário
 1. Proponha **duas ideias** do banco de conceitos (ou novas, do mesmo jeito), cada uma com a frase, o gesto do hero e o momento "uau". Pergunte com `AskUserQuestion` (com "Outro"), recomendando uma e dizendo por quê.

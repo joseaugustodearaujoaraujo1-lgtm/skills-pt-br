@@ -37,13 +37,13 @@ Abra as capturas de **3 a 6 sites** e preencha, para cada um, em poucas linhas (
 | Como a página **se ordena**? | seções na ordem; onde está a prova e a chamada |
 | Qual o **ritmo** do scroll? | revelações, seções fixadas, horizontal, parada para respirar |
 | Quais **tokens**? | fontes, escala do título, paleta, raio, espaçamento (veja `dados.json`) |
-| O que **não copiar** | layout inteiro, texto, imagens, fontes pagas, logo |
+| O que **não copiar** | texto, imagens, fontes pagas, logo, código, a composição exata de cada tela |
 | O que **adaptar** | a técnica (ex.: "título por linhas com máscara"), não o resultado |
 
 Depois escolha **1 referência por seção** do site novo (hero, manifesto, conteúdo, prova, chamada, rodapé) e registre no `brief.json` (`secoes[].referencia`), junto do componente da biblioteca (`biblioteca-componentes`) e do efeito (`elementos.md`).
 
 ## Regras
-- Referência é **qualidade e técnica**, nunca molde: não reproduza layout, texto, imagem, logo, fonte paga ou código de nenhum site.
+- Referência é molde de **estrutura e experiência** (princípio 3 do `SKILL.md`): ordem e proporção das seções, ritmo, tipo de scroll e de motion. Nunca reproduza o que é protegido: texto, imagem, logo, fonte paga ou código. A ideia e os gestos são do site novo (`direcao-criativa.md`).
 - Cite a fonte de cada decisão ("hero inspirado na técnica de X") no documento de design do projeto.
 - Se achar um padrão que se repete entre 3 ou mais referências, é candidato a regra do projeto; se aparece em um só, é gosto.
 - Pesquisa ao vivo abre páginas externas: use só leitura (sem login, sem formulários).

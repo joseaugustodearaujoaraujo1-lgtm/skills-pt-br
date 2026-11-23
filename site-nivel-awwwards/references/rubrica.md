@@ -32,6 +32,7 @@ Passe o site por esta rubrica **antes** de dizer que está pronto. A avaliação
 - [ ] O scroll conta uma história com começo, meio e fim (não é uma pilha de seções soltas).
 - [ ] Títulos concretos e específicos; microcopy com personalidade; sem texto de enchimento.
 - [ ] Prova real (números, nomes, casos), não genérica.
+- [ ] Textos que mudam com a rolagem (rótulo do passo, regulagem, legenda) batem com a legenda fixa e entre si (teste cego, rodada 3: "5 · médio, para peixes" contra a legenda "3–5 saladas, ovos, legumes").
 - [ ] Direitos de imagem/fonte/ícone conferidos; créditos quando exigido.
 
 ## 5. Requisitos técnicos (obrigatórios)

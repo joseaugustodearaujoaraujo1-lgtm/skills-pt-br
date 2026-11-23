@@ -2,7 +2,7 @@
 // tokens da paleta escura para a seção de contraste e campos preenchidos. O conteúdo real ([entre colchetes]) é escrito depois.
 // Uso:
 //   node criar-projeto.mjs --stack html|next --nome "Marca" --tema "cafeteria artesanal" --adjetivos "elegante,raro" --publico "..." \
-//        --descricao "frase de até 155 caracteres" --saida ./meu-site [--recursos "tipografia,scroll"] [--instalar]
+//        --descricao "frase de até 155 caracteres" --saida ./meu-site [--recursos "tipografia,scroll"] [--cores "fundo=#..,texto=#..,acento=#.."] [--instalar]
 // Com --instalar roda npm install (e o build, no HTML). Sem ele, só gera os arquivos.
 import { execFileSync } from 'node:child_process';
 import fs from 'node:fs';
@@ -34,11 +34,20 @@ let escura = null;
 try { escura = JSON.parse(run('gerar-paleta.mjs', ['--tema', args.tema, '--tom', 'escuro', '--json'])).cores; } catch { /* mantém os valores padrão do estilo.css */ }
 if (escura) tokens += `\n/* seção escura de contraste (paleta escura da skill) */\n:root { --d-bg: ${escura.fundo}; --d-surface: ${escura.superficie}; --d-line: ${escura.linha}; --d-text: ${escura.texto}; --d-muted: ${escura.textoMudo}; --d-accent: ${escura.acento}; }\n`;
 
+// --cores "fundo=#..,superficie=#..,texto=#..,acento=#.." grava a paleta escolhida (ex.: a recomendada pelo opcoes.mjs, de origem do estilo).
+// Sem --cores fica a paleta gerada para o tema; o aviso abaixo diz isso (teste cego, rodada 1 e 3: a paleta escolhida não chegava ao tokens.css).
+const VAR = { fundo: '--bg', superficie: '--surface', texto: '--text', acento: '--accent', textoMudo: '--text-muted', linha: '--line' };
+if (args.cores) {
+  for (const par of String(args.cores).split(',')) { const [k, v] = par.split('=').map(x => x.trim()); if (VAR[k] && /^#[0-9a-f]{3,8}$/i.test(v || '')) tokens = tokens.replace(new RegExp(`${VAR[k]}:\\s*[^;]+;`), `${VAR[k]}: ${v};`); else console.log(`   (cor ignorada: ${par})`); }
+  console.log('   paleta escolhida gravada em tokens.css: ' + args.cores + ' (confira o contraste no verificador)');
+} else console.log('   AVISO: tokens.css ficou com a paleta GERADA para o tema. Se a escolhida foi outra (ex.: a de origem do estilo, recomendada pelo opcoes.mjs), rode de novo com --cores "fundo=#..,superficie=#..,texto=#..,acento=#..".');
+
 console.log('3/5 Fontes locais (woff2 latin, sem Google em produção)');
 const titulo = brief.tipografia?.titulo || 'Instrument Serif', corpo = brief.tipografia?.corpo || 'Inter';
+const detalhe = brief.tipografia?.detalhe && ![titulo, corpo].includes(brief.tipografia.detalhe) ? `,${brief.tipografia.detalhe}` : ''; // fonte de detalhe (mono) do brief
 const pubFontes = stack === 'next' ? path.join(saida, 'public', 'fonts') : path.join(saida, 'public', 'fonts');
 let preload = '';
-const tentativas = [`${titulo}:ital@0;1,${corpo}:wght@400;500`, `${titulo},${corpo}:wght@400;500`, `${titulo},${corpo}`];
+const tentativas = [`${titulo}:ital@0;1,${corpo}:wght@400;500${detalhe}`, `${titulo},${corpo}:wght@400;500${detalhe}`, `${titulo},${corpo}${detalhe}`, `${titulo},${corpo}`];
 for (const fam of tentativas) {
   try { const out = run('baixar-fontes.mjs', ['--familias', fam, '--saida', pubFontes, '--preload', `${titulo},${corpo}`]); preload = out.split('\n').filter(l => l.startsWith('<link rel="preload"')).join('\n'); console.log('   ' + out.split('\n')[0]); break; }
   catch (e) { console.log('   (tentativa de fontes falhou: ' + fam + ')'); }

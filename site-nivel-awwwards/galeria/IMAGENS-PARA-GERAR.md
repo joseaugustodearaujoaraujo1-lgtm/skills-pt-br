@@ -76,6 +76,26 @@ Ficam em `teste-cego/`, fora da galeria. Hoje usam placeholders desenhados por s
 | 1 | `public/img/hero-corte-pele.webp` (o site divide em 3 fatias, cortes em 30% e 70% da altura) | 4:5, 1440×1800 | Corte transversal macro da pele humana, como uma lâmina de histologia fotografada de lado, preenchendo todo o quadro na vertical. Faixa de cima (30% da altura): epiderme rosada-clara, com a linha ondulada da junção com a derme. Faixa do meio (40%): derme rosa mais profunda, com fibras finas de colágeno e pequenos vasos. Faixa de baixo (30%): hipoderme, com células de gordura arredondadas cor de areia. Luz de estúdio difusa, cores quentes e dessaturadas, textura nítida, sem fundo e sem rótulos. |
 | 2 | `public/img/consulta-dermatoscopia.webp` | 14:9, 2100×1350 | Imagem dermatoscópica real de uma pinta benigna em pele clara-média, vista de cima pela lente do dermatoscópio, com rede pigmentar marrom simétrica no centro-direita do quadro e a textura fina da pele em volta. Luz polarizada uniforme, tons rosados e quentes, foco nítido no quadro todo, sem borda da lente, régua ou texto. |
 
+### R2 · VÉSPER, joalheria de luxo (`teste-cego/r2-joalheria/`)
+Tratamento comum: fundo quase preto e quente (#110c08), **uma única luz** dura e pequena vinda de cima à esquerda, só a joia iluminada, sem reflexo dourado no fundo, sem mãos, sem modelo, sem texto.
+
+| # | Arquivo (substitui) | Formato | Prompt |
+|---|---|---|---|
+| 1 | `public/img/pecas/solitario.webp` (hoje `.svg`) | 4:5, 1600×2000 | Anel solitário de platina com um diamante redondo de cerca de 1 quilate preso alto por quatro garras finas, aro fino polido, em pé sobre superfície preta quente fosca. Uma única luz pequena e dura vinda de cima à esquerda faz um círculo de luz em volta do anel; o resto cai para quase preto. Fogo visível na pedra, arestas nítidas, muito espaço negativo escuro. |
+| 2 | `public/img/pecas/brincos.webp` (hoje `.svg`) | 4:5, 1600×2000 | Par de brincos de ouro branco 18k, cada um com um diamante redondo em três garras, em alturas um pouco diferentes sobre superfície preta quente fosca, um mais perto da luz. Mesma luz única de cima à esquerda, contraste forte nas facetas, editorial e mínimo. |
+| 3 | `public/img/pecas/pingente.webp` (hoje `.svg`) | 4:5, 1600×2000 | Pingente de ouro branco 18k: um diamante redondo pendurado livre numa corrente muito fina, que entra pelos cantos de cima em V suave; a pedra fica no terço de baixo, pega pela mesma luz única; o resto quase preto. |
+| 4 | `referencias-3d/diamante/molde-ia-4-vistas.webp` (opcional) | 1:1, 4096 | Folha de 4 vistas (frente, perfil, topo, base) de um diamante lapidação brilhante redonda, incolor, 57 facetas, mesa 57%, coroa 34,5°, pavilhão 40,75°, cintura facetada fina, sem culaça; estúdio escuro com uma luz pequena e dura de cima à esquerda; fundo #110c08; mesma escala nas 4 vistas. |
+| 5 | `referencias-3d/diamante/molde-ia-giro.mp4` (opcional) | vídeo 1:1, 10 s em laço | O mesmo diamante girando 360° em 10 s, câmera 20° acima da cintura, fundo #110c08; a luz única faz as facetas acenderem em sequência. |
+
+### R3 · MÓ 01, moedor de pimenta em nogueira e aço (`teste-cego/r3-produto-3d/`)
+O produto é o modelo 3D em código; estas imagens são a prova de escala e as referências do molde.
+
+| # | Arquivo (substitui) | Formato | Prompt |
+|---|---|---|---|
+| 1 | `public/img/moedor-na-mao.webp` (hoje `.svg`) | 4:5, 1600×2000 | Mão adulta segurando um moedor de pimenta fino de nogueira (20 cm de altura, 5,8 cm de diâmetro, corpo cilíndrico com cintura suave, tampa de nogueira em cúpula, pequeno pomo de aço serrilhado, anel de aço escovado na base com 8 entalhes), moendo pimenta-do-reino sobre uma tábua clara de freixo. Fundo de linho marfim (#F4EFE8), um montinho de pimenta moída e alguns grãos inteiros, luz suave de janela pela esquerda, sem joias, sem uniforme de chef. |
+| 2 | `referencias-3d/moedor/molde-ia-4-vistas.png` | 4:1, 4096×1024 | Folha com 4 vistas do mesmo moedor (frente, perfil, três-quartos de 20° acima, costas), mesma escala e luz, fundo branco liso: nogueira maciça oleada de veio reto com um sulco fino escuro 1,4 cm acima da base, tampa em cúpula com junta fina, pomo de aço com 24 estrias, anel de aço escovado com 8 entalhes, uma pequena marca de índice no corpo. Estúdio claro com duas softboxes e um spot quente. |
+| 3 | `referencias-3d/moedor/molde-ia-giro.mp4` | vídeo 1:1, 10 s em laço | O mesmo moedor: de 0 a 4 s gira 360°; de 4 a 7 s se separa ao longo do eixo em seis peças (pomo, tampa, eixo de aço, corpo, mó cônica de cerâmica, anel de aço); de 7 a 10 s volta a se montar, terminando igual ao primeiro quadro. Câmera 12° acima da base, fundo marfim #F4EFE8 só com sombra de contato. |
+
 ---
 
 **Como mandar:** anexe os arquivos aqui com o número da tabela (por exemplo, "OLEA 1" ou "BRUMA 1"). Basta cada arquivo vir com o número; eu cuido do resto.

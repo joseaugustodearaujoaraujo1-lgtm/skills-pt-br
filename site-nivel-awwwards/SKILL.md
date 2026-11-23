@@ -7,7 +7,7 @@ description: Skill única para criar sites, landing pages, portfólios e lojas d
 
 Conduz o processo completo, **com o usuário escolhendo** nas decisões de gosto: entender a marca, pesquisar, oferecer opções de estilo, paleta e site de referência, montar o brief, construir com receitas testadas e **medir** antes de entregar.
 
-> **Caminhos:** `~/.claude/skills/site-nivel-awwwards/` é a pasta desta skill (a que tem este arquivo); se ela estiver em outro lugar, use esse caminho. **Sem usuário para responder** (teste, automação): em cada pergunta ou aprovação, escolha a opção recomendada pela skill e registre a escolha e o motivo em `design/DECISOES.md`. Os scripts acham o playwright-core e o Chromium sozinhos nos caminhos comuns; se não acharem, defina `PLAYWRIGHT_CORE` e `CHROME`.
+> **Caminhos:** `~/.claude/skills/site-nivel-awwwards/` é a pasta desta skill (a que tem este arquivo); se ela estiver em outro lugar, use esse caminho. **Sem usuário para responder** (teste, automação): em cada pergunta ou aprovação (inclusive o "Posso começar?" e os portões do 3D, ver `aprovacoes.md`), escolha a opção recomendada pela skill e registre a escolha e o motivo em `design/DECISOES.md`. Os scripts acham o playwright-core e o Chromium sozinhos nos caminhos comuns; se não acharem, defina `PLAYWRIGHT_CORE` e `CHROME`.
 >
 > Regras do `CLAUDE.md` valem: perguntar "Posso começar?" antes de usar ferramentas, pedir autorização para etapas novas, custos, publicações e operações externas. Esta skill não amplia o escopo autorizado. Nas plataformas externas: sem login, sem conta, sem compra.
 
@@ -60,9 +60,9 @@ Conceito, elementos de assinatura (forma, tratamento de imagem, cursor, transiç
 ### 5. Construção → [references/elementos.md](references/elementos.md)
 **Comece pelo projeto-base** (HTML + CSS + JS + GSAP ou Next.js + GSAP), que já traz hero em CSS, menu, manifesto, trilho horizontal, números, passos, contato, rodapé, acessibilidade e as lições de desempenho medidas:
 ```bash
-node ~/.claude/skills/site-nivel-awwwards/scripts/criar-projeto.mjs --stack html|next --nome "<Marca>" --tema "<assunto>" --adjetivos "a,b,c" --publico "..." --descricao "<até 155 caracteres>" --saida ./meu-site --instalar
+node ~/.claude/skills/site-nivel-awwwards/scripts/criar-projeto.mjs --stack html|next --nome "<Marca>" --tema "<assunto>" --adjetivos "a,b,c" --publico "..." --descricao "<até 155 caracteres>" --saida ./meu-site --cores "fundo=#..,superficie=#..,texto=#..,acento=#.." --instalar
 ```
-Ele gera o brief e os tokens, baixa as fontes locais, escreve a paleta escura da seção de contraste, copia o projeto-base e instala. Depois: (1) troque todo texto **[entre colchetes]** por conteúdo real; (2) aplique estilo e paleta escolhidos e os **componentes das plataformas** ([references/componentes-plataformas.md](references/componentes-plataformas.md) tem nomes reais, peso e combinação por tipo de página); (3) ajuste as seções ao layout do site de referência escolhido (sem copiar); (4) imagens reais (do cliente ou abertas com crédito), vídeo com poster, 3D leve se o conceito pedir.
+`--cores` grava a paleta escolhida no bloco 3; sem ela fica a paleta gerada para o tema. Ele gera o brief e os tokens, baixa as fontes locais, escreve a paleta escura da seção de contraste, copia o projeto-base e instala. Depois: (1) troque todo texto **[entre colchetes]** por conteúdo real; (2) aplique estilo e paleta escolhidos e os **componentes das plataformas** ([references/componentes-plataformas.md](references/componentes-plataformas.md) tem nomes reais, peso e combinação por tipo de página); (3) ajuste as seções ao layout do site de referência escolhido (sem copiar); (4) imagens reais (do cliente ou abertas com crédito), vídeo com poster, 3D leve se o conceito pedir.
 Receitas: tipografia, scroll, animação, cursor, preloader, imagem e vídeo em `elementos.md`; **desempenho no celular** em `elementos.md` seção 9. 3D: [references/3d-leve.md](references/3d-leve.md) e [references/prompts-3d.md](references/prompts-3d.md).
 Combine com `frontend-design`, `gsap-*`, `scroll-craft`, `motion-design`, `desenvolvedor-de-solucoes` e `karpathy-guidelines`.
 
