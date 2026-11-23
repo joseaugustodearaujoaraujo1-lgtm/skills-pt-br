@@ -50,7 +50,7 @@
 <main id="conteudo">
 
 <!-- 1. HERO (400vh): voo de drone sobre as serras → a foto encolhe num cartão dentro da paisagem em meio-tom -->
-<section class="hero" id="topo" data-tema="claro" data-quadros="0">
+<section class="hero" id="topo" data-tema="claro" data-quadros="0" data-cartao-px="433" data-cartao-celular=".6" data-voo-fim=".55" data-cartao-duracao=".39">
   <div class="hero-palco">
     <div class="hero-cartao">
       <canvas class="hero-voo" width="1440" height="810" aria-hidden="true" hidden></canvas>
@@ -136,7 +136,7 @@
   </svg>
   <p class="lugar-texto">A Bruma Alta fica no alto da Serra da Mantiqueira, em Gonçalves, no sul de Minas: terra de cachoeiras, araucárias, queijo de casca lavada e uma névoa que desce todo fim de tarde.</p>
   <a class="pilula clara lugar-pilula" href="#contato">Reservar</a>
-  <div class="infra" aria-roledescription="carrossel" aria-label="Infraestrutura ao redor">
+  <div class="infra" data-lugares='[{"n": 3, "lugar": "Bosque das Araucárias", "foto": 5, "alt": "Araucárias no alto de um morro com mata nativa"}, {"n": 8, "lugar": "Cachoeira das Andorinhas", "foto": 1, "alt": "Cachoeira alta descendo pela mata"}, {"n": 12, "lugar": "Poço Verde", "foto": 2, "alt": "Poço de água verde entre pedras"}, {"n": 5, "lugar": "Trilha da Cascata", "foto": 4, "alt": "Cascata entre pedras com musgo"}, {"n": 20, "lugar": "Mirante do Vale", "foto": 3, "alt": "Vale aberto com cachoeira ao fundo"}, {"n": 15, "lugar": "Jardim de Hortênsias", "foto": 6, "alt": "Hortênsias em flor"}]' aria-roledescription="carrossel" aria-label="Infraestrutura ao redor">
     <p class="rotulo">Infraestrutura</p>
     <div class="infra-disco"><p class="infra-min" aria-live="polite"><span class="infra-n">3</span><span class="infra-u">min.</span></p></div>
     <p class="infra-texto">A pé até o<br><span class="infra-lugar">Bosque das Araucárias</span></p>
@@ -154,20 +154,20 @@
 <!-- 5. POR QUE ENCANTA (896vh): lua em meio-tom fixa, depois o palco claro com os cartões que atravessam em diagonal -->
 <section class="encanto" id="encanto" aria-labelledby="t-encanto">
   <div class="encanto-lua-trilho" aria-hidden="true"><div class="encanto-lua mt" style="--mt:url(img/mt-lua.webp)"></div></div>
-  <div class="encanto-palco" data-tema="claro">
+  <div class="encanto-palco" data-tema="claro" data-velocidade="1.15">
     <div class="encanto-cena">
       <div class="encanto-galhos mt" style="--mt:url(img/mt-galhos.webp)" aria-hidden="true"></div>
       <p class="rotulo pontos encanto-rotulo">Diferenciais</p>
       <h2 class="encanto-titulo" id="t-encanto">Por que a Bruma<br>encanta</h2>
       <ul class="cartoes">
-        <li class="cartao"><img src="img/cartao-1.webp" width="820" height="1094" loading="lazy" alt="Sala de massagem com cortinas de linho e luz da tarde"><div class="cartao-pe"><p>Spa de ervas da serra</p><span class="mais" aria-hidden="true">+</span></div></li>
-        <li class="cartao"><img src="img/cartao-2.webp" width="820" height="1094" loading="lazy" alt="Potes de vidro com granola e castanhas sobre a mesa de madeira"><div class="cartao-pe"><p>Café da roça até as 11h</p><span class="mais" aria-hidden="true">+</span></div></li>
-        <li class="cartao"><img src="img/cartao-3.webp" width="820" height="1093" loading="lazy" alt="Panela de fondue de queijo com pão em cubos e garfos longos"><div class="cartao-pe"><p>Fondue na adega de pedra</p><span class="mais" aria-hidden="true">+</span></div></li>
-        <li class="cartao"><img src="img/cartao-4.webp" width="820" height="1093" loading="lazy" alt="Cavaleiros atravessando um vale aberto ao pé das montanhas"><div class="cartao-pe"><p>Cavalgada ao nascer do sol</p><span class="mais" aria-hidden="true">+</span></div></li>
-        <li class="cartao"><img src="img/cartao-5.webp" width="820" height="1093" loading="lazy" alt="Lareira acesa numa sala de estar clássica com poltronas"><div class="cartao-pe"><p>Lareira e biblioteca, onde as ideias nascem</p><span class="mais" aria-hidden="true">+</span></div></li>
-        <li class="cartao"><img src="img/cartao-6.webp" width="820" height="1093" loading="lazy" alt="Água correndo entre pedras e mata fechada"><div class="cartao-pe"><p>Banho de cachoeira, onde a infância volta</p><span class="mais" aria-hidden="true">+</span></div></li>
-        <li class="cartao"><img src="img/cartao-7.webp" width="820" height="1093" loading="lazy" alt="Fogueira acesa à noite no gramado"><div class="cartao-pe"><p>Noite de fogueira e causos</p><span class="mais" aria-hidden="true">+</span></div></li>
-        <li class="cartao"><img src="img/cartao-8.webp" width="820" height="1093" loading="lazy" alt="Hortênsias azuis em flor"><div class="cartao-pe"><p>Jardim de hortênsias</p><span class="mais" aria-hidden="true">+</span></div></li>
+        <li class="cartao" data-x="1737" data-y="375" data-r="-4"><img src="img/cartao-1.webp" width="820" height="1094" loading="lazy" alt="Sala de massagem com cortinas de linho e luz da tarde"><div class="cartao-pe"><p>Spa de ervas da serra</p><span class="mais" aria-hidden="true">+</span></div></li>
+        <li class="cartao" data-x="2312" data-y="520" data-r="3"><img src="img/cartao-2.webp" width="820" height="1094" loading="lazy" alt="Potes de vidro com granola e castanhas sobre a mesa de madeira"><div class="cartao-pe"><p>Café da roça até as 11h</p><span class="mais" aria-hidden="true">+</span></div></li>
+        <li class="cartao" data-x="2887" data-y="721" data-r="-2"><img src="img/cartao-3.webp" width="820" height="1093" loading="lazy" alt="Panela de fondue de queijo com pão em cubos e garfos longos"><div class="cartao-pe"><p>Fondue na adega de pedra</p><span class="mais" aria-hidden="true">+</span></div></li>
+        <li class="cartao" data-x="3462" data-y="451" data-r="5"><img src="img/cartao-4.webp" width="820" height="1093" loading="lazy" alt="Cavaleiros atravessando um vale aberto ao pé das montanhas"><div class="cartao-pe"><p>Cavalgada ao nascer do sol</p><span class="mais" aria-hidden="true">+</span></div></li>
+        <li class="cartao" data-x="4037" data-y="700" data-r="-3"><img src="img/cartao-5.webp" width="820" height="1093" loading="lazy" alt="Lareira acesa numa sala de estar clássica com poltronas"><div class="cartao-pe"><p>Lareira e biblioteca, onde as ideias nascem</p><span class="mais" aria-hidden="true">+</span></div></li>
+        <li class="cartao" data-x="4612" data-y="448" data-r="4"><img src="img/cartao-6.webp" width="820" height="1093" loading="lazy" alt="Água correndo entre pedras e mata fechada"><div class="cartao-pe"><p>Banho de cachoeira, onde a infância volta</p><span class="mais" aria-hidden="true">+</span></div></li>
+        <li class="cartao" data-x="5187" data-y="651" data-r="-5"><img src="img/cartao-7.webp" width="820" height="1093" loading="lazy" alt="Fogueira acesa à noite no gramado"><div class="cartao-pe"><p>Noite de fogueira e causos</p><span class="mais" aria-hidden="true">+</span></div></li>
+        <li class="cartao" data-x="5762" data-y="531" data-r="2"><img src="img/cartao-8.webp" width="820" height="1093" loading="lazy" alt="Hortênsias azuis em flor"><div class="cartao-pe"><p>Jardim de hortênsias</p><span class="mais" aria-hidden="true">+</span></div></li>
       </ul>
     </div>
   </div>
@@ -196,12 +196,12 @@
   <div class="suites-tipos">
     <p class="rotulo apagado">Tipos</p>
     <ul role="tablist" aria-label="Tipos de suíte">
-      <li><button type="button" role="tab" aria-selected="true" data-i="0">Estúdio</button></li>
-      <li><button type="button" role="tab" aria-selected="false" data-i="1">Deluxe</button></li>
-      <li><button type="button" role="tab" aria-selected="false" data-i="2">Superior</button></li>
-      <li><button type="button" role="tab" aria-selected="false" data-i="3">Master</button></li>
-      <li><button type="button" role="tab" aria-selected="false" data-i="4">Família</button></li>
-      <li><button type="button" role="tab" aria-selected="false" data-i="5">Cobertura</button></li>
+      <li><button type="button" role="tab" aria-selected="true" data-i="0" data-area="37" data-hosp="2+1" data-preco="R$ 1.480" data-desc="Um estúdio aconchegante com sala panorâmica ampla e copa integrada, voltado para a mata." data-foto="0">Estúdio</button></li>
+      <li><button type="button" role="tab" aria-selected="false" data-i="1" data-area="46" data-hosp="2" data-preco="R$ 1.790" data-desc="Deluxe com banheira de imersão junto à janela e terraço para o vale." data-foto="1">Deluxe</button></li>
+      <li><button type="button" role="tab" aria-selected="false" data-i="2" data-area="52" data-hosp="2+1" data-preco="R$ 2.050" data-desc="Superior de pé-direito alto, armários de madeira maciça e lareira a lenha." data-foto="2">Superior</button></li>
+      <li><button type="button" role="tab" aria-selected="false" data-i="3" data-area="64" data-hosp="2" data-preco="R$ 2.480" data-desc="Master com sauna privativa de madeira clara e varanda para o nascer do sol." data-foto="3">Master</button></li>
+      <li><button type="button" role="tab" aria-selected="false" data-i="4" data-area="78" data-hosp="4" data-preco="R$ 2.900" data-desc="Família com dois quartos, sala com lareira e quintal gramado." data-foto="0">Família</button></li>
+      <li><button type="button" role="tab" aria-selected="false" data-i="5" data-area="112" data-hosp="4+2" data-preco="R$ 4.200" data-desc="Cobertura com terraço jardim, banheira externa e vista de 270° da serra." data-foto="1">Cobertura</button></li>
     </ul>
   </div>
   <p class="suites-area" aria-live="polite"><span class="pre">a partir de</span><span class="num">37</span><span class="un">m²</span></p>
@@ -252,10 +252,10 @@
   <div class="dial">
     <svg class="dial-arco" viewBox="0 0 400 80" aria-hidden="true"><path d="M20 60 Q200 -20 380 60" fill="none" stroke="currentColor" stroke-width="1.5" stroke-dasharray="1 7" stroke-linecap="round"/></svg>
     <div class="dial-paradas" role="radiogroup" aria-label="Escolha a estação">
-      <button type="button" role="radio" aria-checked="true" data-i="0">Verão</button>
-      <button type="button" role="radio" aria-checked="false" data-i="1">Outono</button>
-      <button type="button" role="radio" aria-checked="false" data-i="2">Inverno</button>
-      <button type="button" role="radio" aria-checked="false" data-i="3">Primavera</button>
+      <button type="button" role="radio" aria-checked="true" data-i="0" data-texto="O verão transforma a serra num mapa de aventuras: trilhas na mata, banho de cachoeira, festas de padroeiro e um roteiro de sabores que vai do queijo ao café.">Verão</button>
+      <button type="button" role="radio" aria-checked="false" data-i="1" data-texto="O outono pinta os morros de ferrugem e ouro: é tempo de pinhão na brasa, de vinho na adega e de caminhadas longas no ar seco e limpo.">Outono</button>
+      <button type="button" role="radio" aria-checked="false" data-i="2" data-texto="O inverno traz a névoa que dá nome à casa: manhãs de geada, lareira acesa, fondue, céu estrelado e o silêncio que só existe a 1.640 metros.">Inverno</button>
+      <button type="button" role="radio" aria-checked="false" data-i="3" data-texto="A primavera abre o jardim de hortênsias, enche as trilhas de passarinhos e devolve às cachoeiras a força das primeiras chuvas.">Primavera</button>
     </div>
     <span class="dial-sol" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.2" fill="currentColor"/><g stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3M5.3 5.3l2.1 2.1M16.6 16.6l2.1 2.1M5.3 18.7l2.1-2.1M16.6 7.4l2.1-2.1"/></g></svg></span>
   </div>
@@ -442,6 +442,7 @@
 </div>
 <button class="som" type="button" aria-pressed="false" aria-label="Ligar som ambiente da serra"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></button>
 
+<script>(function(){var t=new URLSearchParams(location.search).get('tema');if(t)document.documentElement.setAttribute('data-paleta',t)})()</script>
 <script type="module" src="app.js?v=2"></script>
 </body>
 </html>

@@ -43,30 +43,15 @@ function carrossel(caixa, contador, aoTrocar) {
   ir(0); return ir;
 }
 carrossel($('.galeria-fotos'), $('.galeria-i'));
-const SUITES = [
-  { area: 37, hosp: '2+1', preco: 'R$ 1.480', desc: 'Um estúdio aconchegante com sala panorâmica ampla e copa integrada, voltado para a mata.', foto: 0 },
-  { area: 46, hosp: '2', preco: 'R$ 1.790', desc: 'Deluxe com banheira de imersão junto à janela e terraço para o vale.', foto: 1 },
-  { area: 52, hosp: '2+1', preco: 'R$ 2.050', desc: 'Superior de pé-direito alto, armários de madeira maciça e lareira a lenha.', foto: 2 },
-  { area: 64, hosp: '2', preco: 'R$ 2.480', desc: 'Master com sauna privativa de madeira clara e varanda para o nascer do sol.', foto: 3 },
-  { area: 78, hosp: '4', preco: 'R$ 2.900', desc: 'Família com dois quartos, sala com lareira e quintal gramado.', foto: 0 },
-  { area: 112, hosp: '4+2', preco: 'R$ 4.200', desc: 'Cobertura com terraço jardim, banheira externa e vista de 270° da serra.', foto: 1 },
-];
 const irSuite = carrossel($('.suites-fotos'), $('.suites-i'));
 $$('.suites-tipos button').forEach(b => b.addEventListener('click', () => {
   $$('.suites-tipos button').forEach(x => x.setAttribute('aria-selected', String(x === b)));
-  const s = SUITES[+b.dataset.i];
-  $('.suites-area .num').textContent = s.area; $('.suites-hosp').textContent = s.hosp; $('.suites-valor').textContent = s.preco; $('.suites-desc').textContent = s.desc; irSuite(s.foto);
+  const s = b.dataset; // tipo de suíte vem de data-area, data-hosp, data-preco, data-desc, data-foto
+  $('.suites-area .num').textContent = s.area; $('.suites-hosp').textContent = s.hosp; $('.suites-valor').textContent = s.preco; $('.suites-desc').textContent = s.desc; irSuite(+s.foto);
 }));
 
 // infraestrutura: minutos e lugar mudam junto com a foto ao lado
-const INFRA = [
-  { n: 3, lugar: 'Bosque das Araucárias', foto: 5, alt: 'Araucárias no alto de um morro com mata nativa' },
-  { n: 8, lugar: 'Cachoeira das Andorinhas', foto: 1, alt: 'Cachoeira alta descendo pela mata' },
-  { n: 12, lugar: 'Poço Verde', foto: 2, alt: 'Poço de água verde entre pedras' },
-  { n: 5, lugar: 'Trilha da Cascata', foto: 4, alt: 'Cascata entre pedras com musgo' },
-  { n: 20, lugar: 'Mirante do Vale', foto: 3, alt: 'Vale aberto com cachoeira ao fundo' },
-  { n: 15, lugar: 'Jardim de Hortênsias', foto: 6, alt: 'Hortênsias em flor' },
-];
+const INFRA = JSON.parse($('.infra').dataset.lugares); // [{n, lugar, foto, alt}] vem do HTML
 let infraI = 0;
 const fotoInfra = $('.infra-foto img');
 const irInfra = n => {
@@ -77,12 +62,6 @@ const irInfra = n => {
 $$('.infra .seta').forEach(b => b.addEventListener('click', () => irInfra(infraI + +b.dataset.dir)));
 
 // ---------- estações: arraste o sol pelo arco (ou clique / setas) ----------
-const ESTACOES = [
-  'O verão transforma a serra num mapa de aventuras: trilhas na mata, banho de cachoeira, festas de padroeiro e um roteiro de sabores que vai do queijo ao café.',
-  'O outono pinta os morros de ferrugem e ouro: é tempo de pinhão na brasa, de vinho na adega e de caminhadas longas no ar seco e limpo.',
-  'O inverno traz a névoa que dá nome à casa: manhãs de geada, lareira acesa, fondue, céu estrelado e o silêncio que só existe a 1.640 metros.',
-  'A primavera abre o jardim de hortênsias, enche as trilhas de passarinhos e devolve às cachoeiras a força das primeiras chuvas.',
-];
 const dial = $('.dial'), sol = $('.dial-sol'), paradas = $$('.dial-paradas button'), fundos = $$('.estacoes-fundo .mt'), textoEst = $('.estacoes-texto');
 let estI = 0;
 const pontoArco = t => { // curva quadrática do SVG (20,60) (200,-20) (380,60) em fração da caixa
@@ -93,7 +72,7 @@ const porSol = t => { const [x, y] = pontoArco(t); sol.style.left = x * 100 + '%
 const irEstacao = (n, animar = true) => {
   estI = n; paradas.forEach((b, k) => b.setAttribute('aria-checked', String(k === n)));
   fundos.forEach((f, k) => f.classList.toggle('ativa', k === n));
-  textoEst.style.opacity = 0; setTimeout(() => { textoEst.textContent = ESTACOES[n]; textoEst.style.opacity = 1; }, animar ? 250 : 0);
+  textoEst.style.opacity = 0; setTimeout(() => { textoEst.textContent = paradas[n].dataset.texto; textoEst.style.opacity = 1; }, animar ? 250 : 0);
   porSol(n / 3);
 };
 paradas.forEach(b => b.addEventListener('click', () => irEstacao(+b.dataset.i)));
@@ -101,7 +80,7 @@ $('.dial-paradas').addEventListener('keydown', e => { const d = { ArrowRight: 1,
 let arrasto = false;
 const tDoPonteiro = e => { const r = dial.getBoundingClientRect(); return Math.min(1, Math.max(0, (e.clientX - r.left - r.width * .05) / (r.width * .9))); };
 sol.addEventListener('pointerdown', e => { arrasto = true; dial.classList.add('arrastando'); sol.setPointerCapture(e.pointerId); });
-sol.addEventListener('pointermove', e => { if (!arrasto) return; const t = tDoPonteiro(e); porSol(t); const n = Math.round(t * 3); if (n !== estI) { estI = n; paradas.forEach((b, k) => b.setAttribute('aria-checked', String(k === n))); fundos.forEach((f, k) => f.classList.toggle('ativa', k === n)); textoEst.textContent = ESTACOES[n]; } });
+sol.addEventListener('pointermove', e => { if (!arrasto) return; const t = tDoPonteiro(e); porSol(t); const n = Math.round(t * 3); if (n !== estI) { estI = n; paradas.forEach((b, k) => b.setAttribute('aria-checked', String(k === n))); fundos.forEach((f, k) => f.classList.toggle('ativa', k === n)); textoEst.textContent = paradas[n].dataset.texto; } });
 sol.addEventListener('pointerup', () => { arrasto = false; dial.classList.remove('arrastando'); irEstacao(estI, false); });
 irEstacao(0, false);
 
@@ -148,7 +127,7 @@ som.addEventListener('click', async () => {
 });
 
 // ---------- voo do drone no hero: quadros do vídeo desenhados conforme a rolagem (quando houver img/voo/NN.webp) ----------
-const hero = $('.hero'), nQuadros = +hero.dataset.quadros, tela = $('.hero-voo');
+const hero = $('.hero'), nQuadros = +hero.dataset.quadros, vooFim = +hero.dataset.vooFim, tela = $('.hero-voo');
 const quadros = [];
 let desenharVoo = () => {};
 if (nQuadros > 0) {
@@ -180,11 +159,11 @@ else {
     .from('.hero-topo > *, .hero-base > *', { opacity: 0, y: 24, stagger: .06, duration: 1, ease: 'power3.out' }, '-=1.4');
 
   // ---------- 1. HERO ----------
-  const th = gsap.timeline({ defaults: { ease: 'none' }, scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom bottom', scrub: true, onUpdate: s => desenharVoo(Math.min(1, s.progress / .55)) } });
-  th.to(nQuadros > 0 ? '.hero-voo' : '.hero-foto', { scale: nQuadros > 0 ? 1.04 : 1.32, xPercent: nQuadros > 0 ? 0 : -5, yPercent: nQuadros > 0 ? 0 : 3, duration: .55 }, 0)   // voo: quadros do vídeo, ou a foto aproximando
+  const th = gsap.timeline({ defaults: { ease: 'none' }, scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom bottom', scrub: true, onUpdate: s => desenharVoo(Math.min(1, s.progress / vooFim)) } });
+  th.to(nQuadros > 0 ? '.hero-voo' : '.hero-foto', { scale: nQuadros > 0 ? 1.04 : 1.32, xPercent: nQuadros > 0 ? 0 : -5, yPercent: nQuadros > 0 ? 0 : 3, duration: vooFim }, 0)   // voo: quadros do vídeo, ou a foto aproximando
     .to('.hero-topo', { opacity: 0, y: -60, duration: .12 }, .02)
-    .to('.hero-cartao', { scale: () => largo ? 433 / 1440 : .6, duration: .39, ease: 'power2.in' }, .55)   // encolhe até o cartão no meio da paisagem
-    .to('.hero-base', { opacity: .85, duration: .3 }, .55);
+    .to('.hero-cartao', { scale: () => largo ? +hero.dataset.cartaoPx / 1440 : +hero.dataset.cartaoCelular, duration: +hero.dataset.cartaoDuracao, ease: 'power2.in' }, vooFim)   // encolhe até o cartão no meio da paisagem
+    .to('.hero-base', { opacity: .85, duration: .3 }, vooFim);
 
   // ---------- 2. PRÓLOGO e frases que acendem ----------
   const acender = (el, gatilho, ini = 'top 75%', fim = 'bottom 60%') => {
@@ -212,12 +191,11 @@ else {
     gsap.fromTo('.infra-foto', { yPercent: 18 }, { yPercent: -10, ease: 'none', scrollTrigger: { trigger: '.infra-foto', start: 'top bottom', end: 'bottom top', scrub: true } });
 
     // ---------- 5. POR QUE ENCANTA: cartões em diagonal (posições do original em px a 1440×900) ----------
-    const X0 = [0, 1, 2, 3, 4, 5, 6, 7].map(i => 1737 + i * 575), Y0 = [375, 520, 721, 451, 700, 448, 651, 531], R0 = [-4, 3, -2, 5, -3, 4, -5, 2];
-    const cartoes = $$('.cartao');
+    const cartoes = $$('.cartao'), X0 = cartoes.map(c => +c.dataset.x), Y0 = cartoes.map(c => +c.dataset.y), R0 = cartoes.map(c => +c.dataset.r), vel = +$('.encanto-palco').dataset.velocidade;
     const posicionar = px => { // px = rolagem dentro do palco fixo, em px de 1440
       const kx = innerWidth / 1440, ky = innerHeight / 900;
       cartoes.forEach((c, i) => {
-        const x = X0[i] - 1.15 * px, sobe = Math.min(2700, Math.max(0, 2000 - x));
+        const x = X0[i] - vel * px, sobe = Math.min(2700, Math.max(0, 2000 - x));
         const y = Y0[i] - .33 * sobe, r = R0[i] * Math.max(-1, Math.min(1, (x - 430) / 900));
         const meio = 1 - Math.min(1, Math.abs(x + 290 - 720) / 900), s = .94 + .08 * meio;
         c.style.transform = `translate3d(${x * kx}px, ${y * ky}px, 0) rotate(${r}deg) scale(${s})`;
