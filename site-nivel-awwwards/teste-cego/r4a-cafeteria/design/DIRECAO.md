@@ -8,7 +8,7 @@ Testes: 19 palavras; troca de assunto (pousada ou joalheria não "enchem"); dá 
 ## Gestos por seção
 | Seção | Composição | Gesto-assinatura | De onde vem na ideia | Como se vê numa tela parada |
 |---|---|---|---|---|
-| Hero | 2 colunas, título gigante à esquerda, xícara vista de cima grande, cortada na borda direita | O café dentro da xícara sobe (o disco escuro cresce até a borda) conforme a rolagem do hero | O nível sobe | Aos ~14% da rolagem a xícara tem café pela metade, crema clara e uma borda de louça visível |
+| Hero | 2 colunas, título gigante à esquerda, xícara vista de cima grande, cortada na borda direita | O café dentro da xícara sobe (o disco escuro cresce até a borda) conforme a rolagem do hero | O nível sobe | Na primeira tela o café ocupa cerca de metade do diâmetro da xícara, com borda de louça e pires visíveis |
 | Manifesto | 1 coluna larga, texto enorme alinhado à esquerda, sem imagem | As palavras "pegam cor": passam de creme a café, como papel absorvendo | O café tinge | Metade do parágrafo escura, metade clara |
 | Na bancada (cafés) | Trilho horizontal fixado, cartões de alturas diferentes, imagem pequena | Cada cartão tem uma "linha d'água": faixa de café com altura diferente (intensidade do café) | Nível = intensidade | Quatro faixas de alturas distintas visíveis |
 | MOMENTO-ASSINATURA: Devagar | Tela cheia, título único gigante, cortado pelo nível | Um fundo de café torrado sobe de baixo até cobrir toda a tela; a palavra "devagar." é cortada pela linha do nível | O nível chega ao topo: a xícara está cheia | Quadro parado: metade da tela café escuro, metade creme, palavra enorme partida ao meio pela linha |
@@ -34,7 +34,7 @@ O quadro em que o café sobe e a palavra "devagar." fica partida pela linha do n
 - O que a foto mostra: tela dividida na horizontal, em cima creme com o topo da palavra, embaixo café escuro com o resto da palavra em creme, uma linha fina de crema na divisa.
 
 ## Identidade visual
-- Tipografia: título serifado de display com caráter (Fraunces, ajuste óptico) e corpo em sans humanista (DM Sans); detalhe em mono pequena para a régua de altitude. Sem Playfair+Inter.
+- Tipografia: título em Instrument Serif (contraste alto, caráter próprio), corpo em Inter, detalhe em DM Mono (régua). Sem Playfair+Inter.
 - Cor: creme quente, caramelo, terracota como acento (só no que é clicável e em destaques de uma palavra), café torrado para contraste.
 - Forma: raio grande só na xícara e botões em pílula; cartões com cantos retos e uma linha d'água.
 - Textura: grão de papel (ruído em CSS) leve.

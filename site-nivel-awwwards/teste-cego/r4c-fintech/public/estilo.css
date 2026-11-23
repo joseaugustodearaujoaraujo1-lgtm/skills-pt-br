@@ -33,7 +33,7 @@ p { margin: 0; } a { color: inherit; } em { font-style: normal; color: var(--acc
 /* hero: o troco é um copo */
 .hero { min-height: 100svh; display: flex; flex-direction: column; justify-content: space-between; gap: 2rem; padding: 5.5rem var(--gutter) 0; max-width: var(--max); margin: 0 auto; overflow: clip; }
 .hero-local { font-family: var(--font-detail); font-size: .85rem; letter-spacing: .06em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 1.4rem; }
-.hero h1 { font-size: clamp(2.8rem, 7vw, 7.4rem); line-height: .9; font-weight: 800; letter-spacing: -.045em; }
+.hero h1 { font-size: clamp(3.6rem, 7vw, 7.4rem); line-height: .9; font-weight: 800; letter-spacing: -.045em; }
 .linha { display: block; animation: entra-linha 1.2s var(--ease) both; animation-delay: calc(.15s + var(--i) * .12s); }
 @keyframes entra-linha { from { transform: translateY(105%); } }
 .hero-sub { max-width: 36ch; margin-top: 1.6rem; color: var(--text-muted); font-size: clamp(1.05rem, 1.25vw, 1.25rem); animation: aparece 1s .5s both; }

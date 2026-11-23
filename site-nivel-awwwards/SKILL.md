@@ -24,7 +24,7 @@ Na primeira resposta, diga o agente e o modelo em uso (se souber) e o modelo e e
 Diga o modo de trabalho: **A · do zero**, **B · refazer** ou **C · reajustar**. Em B e C, capture e diagnostique antes de propor ([01-diagnostico.md](references/base-design-completo/01-diagnostico.md); níveis em [_SKILL-original.md](references/base-design-completo/_SKILL-original.md) §2).
 Pergunte em três blocos com `AskUserQuestion` (sempre com "Outro"): **1** entender o sistema, as provas e a stack; **2** sites de referência (A, B, C + E recomendada, com links); **3** estilo, paleta, 3D e scroll, sempre com a opção recomendada primeiro. Entre o bloco 1 e o 2:
 ```bash
-node <skill>/scripts/opcoes.mjs --tema "<assunto>" --adjetivos "a,b,c" --recursos "3d,scroll,tipografia" [--tipo vitrine|portfólio|saas|institucional|editorial|evento]
+node <skill>/scripts/opcoes.mjs --tema "<assunto>" --adjetivos "a,b,c" --recursos "3d,scroll,tipografia" --evitar "<o que o cliente não quer parecer, ex.: roxo,neon,banco>" [--tipo vitrine|portfólio|saas|institucional|editorial|evento]
 ```
 Abra as capturas antes de mostrar os sites (ranking e encaixe de layout em [pesquisa.md](references/pesquisa.md)). Feche com `montar-brief.mjs` (`design/brief.json` + `tokens.css`) e valide o brief com o usuário.
 

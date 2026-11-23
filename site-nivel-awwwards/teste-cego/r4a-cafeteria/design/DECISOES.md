@@ -21,3 +21,8 @@
 - Altitude 1.628 m: dado público de Campos do Jordão (cidade mais alta do Brasil); confirmar a redação.
 - Endereço, horário, prazos e área de entrega: não informados; a página manda perguntar no WhatsApp.
 - Sem depoimentos, avaliações ou prêmios (não existem no briefing).
+
+## Notas da construção
+- Fontes: o `criar-projeto.mjs` escolheu Instrument Serif + Inter + DM Mono (conferido contra o "não faz": não é Playfair+Inter). Mantidas.
+- Momento-assinatura: na tela "meio" do `juiz.mjs` o nível já está em cerca de 90%; a palavra "devagar." aparece cortada só no topo pela linha. O quadro com a palavra partida ao meio acontece um pouco antes (em ~60% da subida). Ponto fraco registrado.
+- Servidor: `node servir.mjs 4601` na pasta do projeto.

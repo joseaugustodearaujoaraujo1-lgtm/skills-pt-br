@@ -67,7 +67,7 @@ const titulo = brief.tipografia?.titulo || 'Instrument Serif', corpo = brief.tip
 const detalhe = brief.tipografia?.detalhe && ![titulo, corpo].includes(brief.tipografia.detalhe) ? `,${brief.tipografia.detalhe}` : ''; // fonte de detalhe (mono) do brief
 const pubFontes = stack === 'next' ? path.join(saida, 'public', 'fonts') : path.join(saida, 'public', 'fonts');
 let preload = '';
-const tentativas = [`${titulo}:ital@0;1,${corpo}:wght@400;500${detalhe}`, `${titulo},${corpo}:wght@400;500${detalhe}`, `${titulo},${corpo}${detalhe}`, `${titulo},${corpo}`];
+const tentativas = [`${titulo}:ital,wght@0,400;0,700;1,400,${corpo}:wght@400;500;700${detalhe}`, `${titulo}:ital@0;1,${corpo}:wght@400;500${detalhe}`, `${titulo},${corpo}:wght@400;500${detalhe}`, `${titulo},${corpo}${detalhe}`, `${titulo},${corpo}`];
 for (const fam of tentativas) {
   try { const out = run('baixar-fontes.mjs', ['--familias', fam, '--saida', pubFontes, '--preload', `${titulo},${corpo}`]); preload = out.split('\n').filter(l => l.startsWith('<link rel="preload"')).join('\n'); console.log('   ' + out.split('\n')[0]); break; }
   catch (e) { console.log('   (tentativa de fontes falhou: ' + fam + ')'); }
