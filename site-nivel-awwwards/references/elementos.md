@@ -69,6 +69,7 @@ gsap.fromTo('.parallax img', { yPercent: -10 }, { yPercent: 10, ease: 'none',
 ```
 - Tratamento consistente: mesma temperatura de cor, mesmo recorte e mesma proporção nas galerias. Foto genérica de banco derruba o nível mais rápido que qualquer efeito.
 - **Placeholder de imagem essencial sem texto à vista** (teste cego, rodada 1): nada de "IMAGEM PROVISÓRIA" nem nome de arquivo sobre a imagem. O nome vai em `data-imagem="..."` e na lista de imagens a gerar. Desenhe o placeholder no tamanho e na proporção finais, com a cor e a textura do assunto, para a composição ser julgada como vai ficar. Etiqueta à vista é lida como texto provisório (tetos de 3 em Usabilidade e 2 em Conteúdo no juiz).
+- **O placeholder precisa se ler como a imagem final** (teste cego, rodada 3b: um bloco escuro com brilho laranja "não se lê como nada"). Em site com 3D, use um render da própria cena naquele lugar, com a mesma luz e o mesmo fundo das outras imagens. Miniaturas de render mostram o objeto inteiro, com o mesmo respiro em todas.
 - Imagem que começa escondida (revelação por máscara) não leva `decoding="async"`: na captura de página inteira ela pode sair vazia.
 
 ## 4. Vídeo

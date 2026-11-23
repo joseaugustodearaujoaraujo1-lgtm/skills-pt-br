@@ -96,6 +96,14 @@ O produto é o modelo 3D em código; estas imagens são a prova de escala e as r
 | 2 | `referencias-3d/moedor/molde-ia-4-vistas.png` | 4:1, 4096×1024 | Folha com 4 vistas do mesmo moedor (frente, perfil, três-quartos de 20° acima, costas), mesma escala e luz, fundo branco liso: nogueira maciça oleada de veio reto com um sulco fino escuro 1,4 cm acima da base, tampa em cúpula com junta fina, pomo de aço com 24 estrias, anel de aço escovado com 8 entalhes, uma pequena marca de índice no corpo. Estúdio claro com duas softboxes e um spot quente. |
 | 3 | `referencias-3d/moedor/molde-ia-giro.mp4` | vídeo 1:1, 10 s em laço | O mesmo moedor: de 0 a 4 s gira 360°; de 4 a 7 s se separa ao longo do eixo em seis peças (pomo, tampa, eixo de aço, corpo, mó cônica de cerâmica, anel de aço); de 7 a 10 s volta a se montar, terminando igual ao primeiro quadro. Câmera 12° acima da base, fundo marfim #F4EFE8 só com sombra de contato. |
 
+### R3b · FERVO 3, cafeteira moka de inox (`teste-cego/r3b-produto-3d/`)
+
+| # | Arquivo (substitui) | Formato | Prompt |
+|---|---|---|---|
+| 1 | `public/img/uso-fogao.webp` (hoje o `div.uso` com `data-imagem`) | 4:3, 1200×900 | Cafeteira moka de inox escovado com 12 faces (corpo em ampulheta, câmara de cima aberta com bico em V, alça preta de baquelite em forma de "7", pequeno pegador preto na tampa), sem logo, sobre a grelha de ferro de um fogão a gás, chama baixa e quente embaixo, vista de lado na altura da cafeteira, cozinha escura e quente desfocada ao fundo. Luz baixa da chama mais uma luz suave de janela pela esquerda; anéis do escovado visíveis no metal. Sem vapor, sem grãos, sem xícaras, sem pessoas. |
+| 2 | `referencias-3d/cafeteira/molde-ia-4-vistas.png` | 1:1, 2048 | Folha com 4 vistas da mesma cafeteira (frente, perfil com bico à direita e alça à esquerda, topo e três-quartos), mesma escala e luz, fundo branco: inox 18/10 escovado, 12 faces na caldeira, na câmara e na tampa, válvula com porca sextavada, fresta da rosca na cintura, dobradiça atrás da tampa, baquelite preto brilhante. Sem o formato octogonal clássico de outras marcas. |
+| 3 | `referencias-3d/cafeteira/molde-ia-giro.mp4` (opcional) | vídeo 1:1, 10 s em laço | A mesma cafeteira girando 360°; entre 3 e 7 s as peças se separam para cima (tampa, câmara, junta e filtro, funil com café moído) e voltam a se montar, só na vertical. Câmera 15° acima da base, fundo marfim #F4EFE8 com sombra de contato. |
+
 ---
 
 **Como mandar:** anexe os arquivos aqui com o número da tabela (por exemplo, "OLEA 1" ou "BRUMA 1"). Basta cada arquivo vir com o número; eu cuido do resto.
