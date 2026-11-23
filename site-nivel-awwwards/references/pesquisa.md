@@ -11,20 +11,20 @@ node ~/.claude/skills/site-nivel-awwwards/scripts/pesquisar-referencias.mjs --te
 - `--tema` aceita o texto livre do briefing; o script reconhece ~25 temas (`gerar-paleta.mjs --listar`) e mapeia para os nichos do Awwwards e do One Page Love.
 - `--recursos`: `3d, scroll, tipografia, horizontal, experimental, editorial, video, cursor, preloader, marquee, pin, canvas`. `cursor`, `preloader`, `marquee` e `pin` só pontuam nos sites que já têm `estrutura.json` (coleta estrutural).
 - Resultado: ranking com os motivos da pontuação e a pasta de capturas de cada site (`desktop.jpg`, `desktop-scroll.jpg`, `mobile.jpg`, `dados.json`, `estrutura.json`).
-- Para mais controle use `buscar.mjs` (filtros por nicho, estilo, libs, ano, texto) na pasta do acervo.
+- Para mais controle use `scripts/acervo/buscar.mjs` (filtros por nicho, estilo, libs, ano, texto).
 - **Atenção: muitas capturas do acervo pegam o site ainda no preloader/intro** (ex.: Bennett & Clive aparece só como o nome gigante; GQ & AP, uma tela preta com logo). Para estudar layout e UX, **recapture as referências escolhidas** (próximo passo).
 
 ## Camada 2 — Pesquisa ao vivo (o que está premiado agora)
 O acervo envelhece. Complemente com o que foi premiado recentemente **no mesmo nicho**:
 1. **Awwwards**: `https://www.awwwards.com/websites/<categoria>/` (ex.: `fashion`, `architecture`, `technology`, `e-commerce`) e `https://www.awwwards.com/websites/sites_of_the_day/`. Abra pelo navegador embutido (ou `tavily_extract`); se o site bloquear, volte ao acervo.
 2. **One Page Love**: `https://onepagelove.com/gallery/` e as listas `genre/<gênero>` e `style/<estilo>` (`scroll-effects`, `3d`, `typographic`, `editorial`, `horizontal-layout`).
-3. Anote 5 a 8 sites novos com URL; **abra cada um no navegador embutido** em 1440 px e 390 px. Se for útil, rode `coletar.mjs` no acervo para guardar capturas e dados (ver `referencias-ui`).
+3. Anote 5 a 8 sites novos com URL; **abra cada um no navegador embutido** em 1440 px e 390 px. Se for útil, rode `scripts/acervo/coletar.mjs` para guardar capturas e dados (ver `referencias-ui`).
 4. **tasteskill.dev** como referência de acabamento ([plataformas.md](plataformas.md)).
 5. Procure também **fora do nicho** a mesma necessidade (ex.: para uma joalheria, o hero de uma marca de relógios ou de uma galeria de arte).
 
 ### Recaptura em profundidade (obrigatória para as 3–6 referências escolhidas)
 ```bash
-cd ~/Documents/acervos-design
+cd ~/.claude/skills/site-nivel-awwwards/scripts/acervo
 node recapturar.mjs --slug bennett-and-clive --espera 12000 --pontos 5          # desktop 1440: hero + 4 pontos da rolagem
 node recapturar.mjs --slug bennett-and-clive --largura 390 --pontos 4           # celular
 node recapturar.mjs --url https://exemplo.com --nome ref-nova                    # site que não está no acervo

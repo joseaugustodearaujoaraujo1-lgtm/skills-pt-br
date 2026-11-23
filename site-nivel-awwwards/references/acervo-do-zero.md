@@ -6,7 +6,7 @@ O acervo é uma **base local de sites premiados** (Awwwards e One Page Love), co
 
 | Fica só no computador | Pode subir |
 |---|---|
-| Capturas (`*.jpg`), HTML, `dados.json`, `estrutura.json`, `acervo.json` | Os scripts de coleta (código) |
+| Capturas (`*.jpg`), HTML, `dados.json`, `estrutura.json`, `acervo.json` | Os scripts de coleta (`scripts/acervo/`, só código) |
 | Qualquer arquivo copiado do site original | `padroes.md`, `padroes-ux.md` (números e resumos escritos por nós) |
 | | Fichas destiladas em a pasta `acervo-destilado` dentro de `references` (opcional, ver §7) |
 
@@ -46,43 +46,51 @@ mkdir -p ~/Documents/acervos-design && cd ~/Documents/acervos-design
 npm init -y && npm i playwright && npx playwright install chromium
 ```
 
-Todos os scripts abaixo usam Playwright, Chromium em 1440×900 (desktop) e 390×844 (celular).
+Os scripts ficam em `scripts/acervo/` e usam Playwright, Chromium em 1440×900 (desktop) e 390×844 (celular).
 
-## 3. Coletar a lista de sites (por fonte)
+## 3. Fazer a lista de sites
 
-1. **Awwwards:** páginas `https://www.awwwards.com/websites/sites_of_the_day/` e `https://www.awwwards.com/websites/<categoria>/?page=N` (ex.: `fashion`, `architecture`, `technology`, `e-commerce`). Para cada card guarde `titulo`, a URL do site, o `ano` e a categoria (`nicho`).
-2. **One Page Love:** `https://onepagelove.com/gallery/` e as listas `genre/<gênero>` e `style/<estilo>` (`scroll-effects`, `3d`, `typographic`, `editorial`, `horizontal-layout`). Guarde também `generos[]` e `estilos[]`.
-3. Gere o `slug` (minúsculas, sem acento, hífens) e o `acervo.json`.
+A coleta lê um arquivo de lista: `sites.json` (`[{ "titulo", "url", "ano", "nicho", "generos", "estilos" }]`) ou um `.txt` com uma URL por linha.
 
-Boas maneiras (obrigatório): espere 2 a 3 s entre páginas, no máximo 2 abas ao mesmo tempo, identifique o navegador normalmente, só leitura (sem login nem formulário), pare se a fonte bloquear. O Awwwards costuma recusar conexões de nuvem: **rode no seu computador**, com a sua internet.
+- **Awwwards** (rode no SEU computador; a nuvem costuma ser recusada):
+  ```bash
+  node scripts/acervo/listar-awwwards.mjs --categoria fashion --paginas 3 --saida sites-fashion.json
+  node scripts/acervo/listar-awwwards.mjs --sotd --paginas 5 --saida sites-sotd.json
+  ```
+  Lê só as páginas públicas de listagem e a página de cada site (para achar o link "Visit site"). Depende do HTML do Awwwards: se mudar e nada for achado, o script avisa, e você monta o `sites.json` à mão. Categorias úteis: `fashion`, `architecture`, `technology`, `e-commerce`, `photography`, `art`, `food-beverage`.
+- **One Page Love:** o próprio site pede para agentes usarem a **API oficial** (`https://onepagelove.com/api`, plano grátis com chave) em vez de raspar o HTML. Gere o `sites.json` com ela (campos: título, URL, ano, gênero, estilo) e rode com `--fonte onepagelove`.
+- **Seus favoritos:** qualquer lista de URLs vale.
 
-## 4. Capturar e medir cada site
+Boas maneiras (já embutidas nos scripts, não remova): pausa de 2,5 s, no máximo 3 abas, só leitura, sem login nem formulário.
 
-Para cada item, abra o site em 1440×900 e faça:
+## 4. Capturar e medir
 
-1. **Espere o preloader acabar** (a página para de mudar, até ~12 s). Sem isso a captura pega só a tela de carregamento (problema real do acervo antigo).
-2. Salve `desktop.jpg`; role uma vez e salve `desktop-scroll.jpg`; repita em 390 px para `mobile.jpg`.
-3. Registre `http`, `tituloPagina`, `urlFinal`, `libs` (procure `window.gsap`, `ScrollTrigger`, `Lenis`, `THREE`, `<canvas>`, `<video>`…) e `fontes`.
-4. Rode a extração de `estrutura.json` (versão 3), medida no DOM e no CSS computado:
+```bash
+node scripts/acervo/coletar.mjs --lista sites-fashion.json --fonte awwwards --limite 100 --abas 2
+```
+
+Para cada site: espera o preloader acabar (a página para de mudar, até 10 s), salva `desktop.jpg`, `desktop-scroll.jpg` e `mobile.jpg`, e grava `dados.json` e `estrutura.json` (versão 3). **Retoma sozinho**: sites com `estrutura.json` são pulados; falhas ficam com `"erro"` e são ignoradas pelos outros scripts. Faça em lotes de 50 a 100.
+
+O `estrutura.json` mede (DOM e CSS computado, 1440×900):
 
 | Bloco | Campos |
 |---|---|
-| `versao`, `erro` | `3`; só presente se falhou |
 | `pagina` | `alturaVh`, `secoes`, `palavras`, `paddingVerticalMedianoPx`, `rolagemVirtual` |
 | `menu` | `links`, `altura`, `fixo`, `hamburguer`, `textoEmCaixaAlta`, `transparente` |
 | `preloader` | `existe`, `comPorcentagem` |
 | `hero` | `video`, `canvas`, `imagemGrande`, `botoes` |
 | `titulo` | `px`, `emVw`, `peso`, `entrelinha`, `trackingEm`, `caixaAlta`, `serifa`, `alinhamento`, `palavras` |
-| `corpo` | `px`, `entrelinha`, `h` |
+| `corpo` | `px`, `entrelinha`, `h2`, `h3` |
 | `rolagem` | `lenis`, `locomotive`, `pinSpacer`, `sticky`, `carrossel`, `scrollSnap` |
 | `efeitos` | `clipPath`, `mixBlend`, `backdropFilter`, `filtro`, `gradiente`, `textoGradiente`, `sombra` |
 | `forma` | `botaoPilula`, `grid`, `raioCartaoMedianoPx` |
 | `midia` | `img`, `imgLazy`, `imgSrcset`, `svg`, `video`, `videoAuto`, `canvas`, `iframe` |
 | `motion` | `duracoesMs`, `curvas`, `animacoesAtivas`, `marquee`, `prefersReducedMotion` |
-| `rodape` | `existe`, `maiorTextoPx` |
-| raiz | `cursorCustom`, `larguraMaxMedianaPx` |
+| `rodape`, raiz | `rodape.existe`, `rodape.maiorTextoPx`, `cursorCustom`, `larguraMaxMedianaPx` |
 
-Rode em lote (50 a 100 por vez), com 2 abas, e **retome** de onde parou (pule o que já tem `estrutura.json`). Sites que falham ficam com `"erro"` e são ignorados pelos scripts.
+Detecção por heurística (ex.: serifa por nome de fonte, preloader por elemento fixo de tela cheia): confirme visualmente em caso de dúvida. Para medir um site avulso: `node scripts/acervo/extrair-estrutura.mjs <url>`.
+
+Outros scripts: `recapturar.mjs` (hero e rolagem em N pontos, desktop ou celular, para estudar uma referência), `buscar.mjs` (filtra por texto, nicho, estilo, lib e ano).
 
 ## 5. Limpar
 
@@ -111,6 +119,6 @@ Se quiser levar o conhecimento para outras máquinas sem levar o bruto, escreva 
 - Reexecute §6 depois de cada coleta. Os arquivos `padroes*.md` trazem a data e o tamanho da amostra.
 - Sem o acervo (nuvem, outro computador) a skill continua funcionando: `pesquisar-referencias.mjs` avisa e a pesquisa vira ao vivo (`pesquisa.md`, camada 2), com resultado mais fraco.
 
-## O que falta neste repositório
+## Teste feito
 
-Os scripts `coletar.mjs`, `extrair-estrutura.mjs`, `recapturar.mjs`, `buscar.mjs` e `servidor.mjs` existem só no computador do autor (`~/Documents/acervos-design`). Copie-os (só código, nunca as capturas) para `site-nivel-awwwards/scripts/acervo/` para que este guia fique executável em outra máquina.
+Os scripts foram rodados de ponta a ponta sobre sites locais (captura, medição, `buscar.mjs`, `recapturar.mjs` e `pesquisar-referencias.mjs` lendo o resultado). A coleta ao vivo no Awwwards não pôde ser testada na nuvem (conexão recusada): rode `listar-awwwards.mjs` no seu computador e, se o HTML tiver mudado, ajuste o seletor ou monte o `sites.json` à mão.

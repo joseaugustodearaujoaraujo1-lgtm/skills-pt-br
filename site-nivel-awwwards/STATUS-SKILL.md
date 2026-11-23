@@ -123,3 +123,7 @@ Cada sessão lê este arquivo primeiro e o atualiza no fim. Plano em `PROMPT-FIN
 - GQ Lab e TURMALINA têm conteúdo em `src/roteiro.js` e `src/capitulos.js`; só limiares e tempos foram para `data-*`.
 - Imagens essenciais continuam sendo do usuário (`galeria/IMAGENS-PARA-GERAR.md`); TAINÁ, POLPA, AURA, GQ Lab e TURMALINA não têm seção própria lá (usam renders nossos ou fotos provisórias).
 - Avisos (WARN) do verificador mantidos, sem FAIL.
+
+## Fechamento (pós-E)
+- Scripts do acervo escritos no repositório (`scripts/acervo/`: listar-awwwards, coletar, extrair-estrutura, recapturar, buscar) e testados de ponta a ponta em sites locais. A listagem ao vivo do Awwwards não foi testada (conexão recusada na nuvem).
+- `scripts/diagnostico.mjs`, `references/acervo-do-zero.md`, `README.md` da skill (propósito, instalação, uso, prompt de exemplo).

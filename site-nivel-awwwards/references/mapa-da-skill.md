@@ -29,6 +29,7 @@
 | `gerar-pacote.mjs` | pacote liberável de um site da galeria (CLAUDE.md, `PROMPT-DE-USO.md`) |
 | `buscar-fotos-livres.mjs` | fotos de licença aberta, com crédito |
 | `gerar-padroes.mjs`, `gerar-padroes-ux.mjs` | regeram `padroes.md` e `padroes-ux.md` a partir do acervo |
+| `diagnostico.mjs` | confere Node, Playwright, Chromium, ffmpeg, Python e acervo |
 | `qualidade.mjs` | filtro de capturas inválidas do acervo |
 | `temas.json` | ~25 temas: palavras, nichos do acervo, cor, estilos |
 
@@ -43,7 +44,7 @@
 | `references/base-design-completo/` | conteúdo da skill design-completo (diagnóstico, tipografia, cor, layout, componentes, motion, conversão, cara de IA, referências, implementação) |
 | `references/base-estilos/` | os 10 estilos completos (tabela comparativa e compatibilidade em `_SKILL-original.md`) |
 
-Acervo (computador do usuário; para refazer do zero veja [acervo-do-zero.md](acervo-do-zero.md)): `~/Documents/acervos-design` (galeria: `node servidor.mjs 3000`; busca: `node buscar.mjs`; recaptura: `recapturar.mjs`; coleta: `coletar.mjs` e `extrair-estrutura.mjs`).
+Acervo (computador do usuário; para refazer do zero veja [acervo-do-zero.md](acervo-do-zero.md)): `~/Documents/acervos-design` (scripts em `scripts/acervo/`: `listar-awwwards.mjs`, `coletar.mjs`, `extrair-estrutura.mjs`, `recapturar.mjs`, `buscar.mjs`).
 
 ## Limites conhecidos
 - **Base:** 1.819 sites coletados, ~884 válidos e únicos (Awwwards 150, One Page Love ~734; o resto é erro, bloqueio ou site fora do ar). A estrutura é medida por heurística de DOM em 1440 px; sites sem medida aparecem como "layout ainda não medido". A base não cresce sozinha.
