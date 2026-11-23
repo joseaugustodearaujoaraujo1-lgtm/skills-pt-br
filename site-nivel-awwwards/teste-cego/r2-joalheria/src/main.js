@@ -93,7 +93,7 @@ function iniciarMovimento() {
   const mm = gsap.matchMedia();
   mm.add({ largo: '(min-width: 861px)', estreito: '(max-width: 860px)' }, ctx => {
     const { largo } = ctx.conditions;
-    tl.fromTo(caixa, { x: 0, y: largo ? '-4svh' : '-6svh', scale: largo ? .82 : .9 }, { x: largo ? '-22vw' : 0, y: largo ? 0 : '-17svh', scale: largo ? 1 : .78, duration: .1, immediateRender: true }, .26);
+    tl.fromTo(caixa, { x: 0, y: () => innerHeight * (largo ? .07 : .0), scale: largo ? .82 : .9 }, { x: () => largo ? -innerWidth * .22 : 0, y: () => largo ? 0 : -innerHeight * .17, scale: largo ? 1 : .78, duration: .1, immediateRender: true }, .26);
     tl.fromTo('.lap-texto', { visibility: 'hidden', clipPath: largo ? 'circle(0% at -30% 50%)' : 'circle(0% at 50% -40%)' },
       { visibility: 'visible', clipPath: largo ? 'circle(160% at -30% 50%)' : 'circle(170% at 50% -40%)', duration: .1, immediateRender: true }, .3);
   });

@@ -22,6 +22,12 @@ if (modo === 'molde' || modo === 'tudo') {
   execFileSync('ffmpeg', ['-y', '-loglevel', 'error', ...['frente', 'perfil', 'tres-quartos', 'verso'].flatMap(n => ['-i', path.join(dir, `molde-${n}.png`)]), '-filter_complex', 'color=c=0xF4EFE8:s=2400x900[f];[0][1][2][3]hstack=4[h];[f][h]overlay', '-frames:v', '1', path.join(dir, 'molde-folha-4-vistas.jpg')]);
   console.log(JSON.stringify(await p.evaluate(() => window.info())));
 }
+if (modo === 'igualdade') {
+  const dir = path.join(RAIZ, 'referencias-3d', 'moedor');
+  for (const [nome, t] of [['montado', 0], ['aberto', 1]]) { const r = await rend({ w: 640, h: 800, t }); salvar(r.url, path.join(dir, `igualdade-molde-${nome}.png`)); }
+  const n = await p.evaluate(() => { const c = document.querySelector('canvas'); return c ? 1 : 0; });
+  console.log('igualdade: renders do molde gravados', n);
+}
 if (modo === 'quadros' || modo === 'tudo') {
   const { QUADROS } = await import(path.join(RAIZ, 'src', 'roteiro.js'));
   const dir = path.join(RAIZ, 'public', 'img', 'quadros'); const ancoras = [];
