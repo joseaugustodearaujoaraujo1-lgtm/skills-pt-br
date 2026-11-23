@@ -18,6 +18,7 @@ Passe o site por esta rubrica **antes** de dizer que está pronto. A avaliação
 - [ ] Responsivo de verdade em **1440, 768 e 390 px** (sem rolagem horizontal indesejada).
 - [ ] Estados: hover, focus, active, disabled, carregando, erro, vazio e 404.
 - [ ] A ação principal é óbvia na primeira dobra.
+- [ ] Menu ou ação principal visíveis em **todas** as telas (barra fixa compacta; no celular, botão fixo no pé), não só no topo.
 
 ## 3. Criatividade (peso 20%)
 - [ ] Existe `design/DIRECAO.md` aprovado ([direcao-criativa.md](direcao-criativa.md)) e **toda seção mostra o gesto dela**; seção sem gesto não está pronta.

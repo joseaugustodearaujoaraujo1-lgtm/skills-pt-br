@@ -1,0 +1,28 @@
+/* Tokens de design — Estrato Dermatologia
+   Paleta: de origem do estilo Minimalism (recomendada pela skill), com texto mudo e acento escurecidos para AA.
+   Tons de profundidade: o fundo escurece conforme a página desce pelas camadas da pele. */
+:root {
+  /* cor */
+  --bg: #F4EFE8; --surface: #F8F4EE; --surface-2: #EEE6DC; --line: #D9CFC2;
+  --text: #1F2A22; --text-muted: #5E625A; --accent: #4A5D4E; --accent-soft: #D9E1D9; --on-accent: #F8F4EE;
+  --sage: #6B7F6E; --moss: #A7B8A7; --sand: #C9BDAF;
+  /* profundidade (camadas) */
+  --c1: #EEE6DC; --c2: #E2D7CA; --c3: #D6C8B8; --c-muted: #4B5047;
+  /* camada mais funda (consulta) */
+  --d-bg: #2B3A2F; --d-surface: #33443A; --d-line: #4A5B4F; --d-text: #F4EFE8; --d-muted: #C9C3B8; --d-accent: #A7B8A7;
+  /* tipografia */
+  --font-display: 'Instrument Serif', Georgia, serif; --font-body: 'Inter', system-ui, sans-serif; --font-detail: 'DM Mono', ui-monospace, monospace;
+  --fs-h1: clamp(3.1rem, 8.4vw, 8.75rem); --fs-h2: clamp(2.4rem, 5.6vw, 5.6rem); --fs-h3: clamp(1.6rem, 2.6vw, 2.5rem); --fs-body: clamp(1rem, 1.05vw, 1.125rem);
+  --lh-title: 0.95; --lh-body: 1.55; --tracking-title: -0.025em;
+  /* espaço e forma */
+  --space-section: clamp(5rem, 11vw, 10rem); --gutter: clamp(1.25rem, 4vw, 4rem); --radius: 24px; --max-w: 1440px;
+  /* motion */
+  --ease-out: cubic-bezier(0.25, 1, 0.5, 1); --ease-in-out: cubic-bezier(0.76, 0, 0.24, 1);
+  --dur-micro: 200ms; --dur-reveal: 900ms; --dur-transition: 1000ms;
+}
+@media (prefers-reduced-motion: reduce) { :root { --dur-micro: 0ms; --dur-reveal: 0ms; --dur-transition: 0ms; } }
+html { background: var(--bg); color: var(--text); font-family: var(--font-body); line-height: var(--lh-body); }
+h1, h2, h3 { font-family: var(--font-display); line-height: var(--lh-title); letter-spacing: var(--tracking-title); font-weight: 400; margin: 0; }
+h1 { font-size: var(--fs-h1); } h2 { font-size: var(--fs-h2); } h3 { font-size: var(--fs-h3); }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+::selection { background: var(--moss); color: var(--text); }

@@ -22,5 +22,12 @@ Três paradas obrigatórias antes de construir um site com elemento 3D. Cada uma
 - Entregue de forma que o usuário consiga ver no celular (MP4 H.264, `playsinline`) e pergunte: **Aprovar** · **Alterar** (descrever).
 - Só depois da aprovação construa o site completo e rode o portão de qualidade.
 
+## Sem usuário para aprovar (teste, automação)
+Achado do teste cego, rodada 1: sem usuário, os portões travavam e o agente cortava o 3D. Não corte. Faça assim:
+1. **Referências:** pesquise fontes abertas do tipo de objeto (forma, material, luz), anote links e direitos em `referencias-3d/<objeto>/README.md`, sem marca de terceiros.
+2. **Molde:** se houver gerador de imagem, gere as 4 vistas. Se não houver, o molde é o próprio modelo: modele em three.js (geometria real: `LatheGeometry`, `ExtrudeGeometry`, peças combinadas; material PBR com `RoomEnvironment`) e renderize as 4 vistas em PNG com Playwright. Confira você mesmo contra as referências (proporção, material, luz) e registre em `design/DECISOES.md`.
+3. **Prévia:** grave o protótipo do hero (opção 1 da seção 3) e confira se o objeto aparece em ângulos diferentes nas telas do `juiz.mjs`.
+4. Liste em `IMAGENS.md` o molde ultrarrealista e o vídeo que o usuário pode gerar depois, com prompt (`prompts-3d.md`).
+
 ## Ordem resumida
 referências → molde → **aprovação** → vídeo-prévia do site → **aprovação** → construção → verificação.

@@ -1,0 +1,264 @@
+{
+  "projeto": {
+    "nome": "Estrato Dermatologia",
+    "tema": "saude",
+    "publico": "adultos de 25 a 60 anos em São Paulo que querem tratar a pele com critério médico, acessam mais pelo celular",
+    "adjetivos": [
+      "preciso",
+      "sereno",
+      "acolhedor"
+    ],
+    "evitar": []
+  },
+  "estilo": {
+    "principal": {
+      "id": "minimalism",
+      "nome": "Minimalism",
+      "pontos": 12,
+      "motivos": [
+        "tema \"saude\" (posição 1)",
+        "adjetivo \"preciso\"",
+        "adjetivo \"sereno\""
+      ],
+      "arquivo": "~/.claude/skills/site-nivel-awwwards/references/base-estilos/minimalism.md"
+    },
+    "secundario": {
+      "id": "claymorphism",
+      "nome": "Claymorphism",
+      "pontos": 7,
+      "motivos": [
+        "tema \"saude\" (posição 2)",
+        "adjetivo \"acolhedor\""
+      ],
+      "arquivo": "~/.claude/skills/site-nivel-awwwards/references/base-estilos/claymorphism.md"
+    },
+    "aviso": null
+  },
+  "paleta": {
+    "tom": "claro",
+    "matizAcento": 160,
+    "cores": {
+      "fundo": "#f2f9f3",
+      "superficie": "#fafffb",
+      "superficie2": "#e7efe9",
+      "linha": "#d2dad3",
+      "textoMudo": "#505851",
+      "texto": "#131714",
+      "acento": "#2d7f59",
+      "acentoSuave": "#d5f0e0",
+      "tintaNoAcento": "#f9fdfb"
+    },
+    "contraste": [
+      {
+        "par": "texto sobre fundo",
+        "razao": 16.91,
+        "minimo": 7,
+        "ok": true
+      },
+      {
+        "par": "texto sobre superfície",
+        "razao": 17.89,
+        "minimo": 7,
+        "ok": true
+      },
+      {
+        "par": "texto mudo sobre fundo",
+        "razao": 6.87,
+        "minimo": 4.5,
+        "ok": true
+      },
+      {
+        "par": "texto mudo sobre superfície",
+        "razao": 7.27,
+        "minimo": 4.5,
+        "ok": true
+      },
+      {
+        "par": "tinta sobre acento",
+        "razao": 4.77,
+        "minimo": 4.5,
+        "ok": true
+      },
+      {
+        "par": "acento sobre fundo (elementos grandes/ícones)",
+        "razao": 4.57,
+        "minimo": 3,
+        "ok": true
+      },
+      {
+        "par": "acento como texto sobre fundo",
+        "razao": 4.57,
+        "minimo": 4.5,
+        "ok": true
+      }
+    ],
+    "nota": "Claro, verdes e azuis suaves, formas arredondadas; passe calma e cuidado, não frieza clínica."
+  },
+  "tipografia": {
+    "titulo": "Instrument Serif",
+    "corpo": "Inter",
+    "detalhe": "DM Mono",
+    "escala": {
+      "h1": "clamp(3rem, 10vw, 10.5rem)",
+      "h2": "clamp(2rem, 5.5vw, 5.5rem)",
+      "h3": "clamp(1.25rem, 2vw, 2rem)",
+      "corpo": "clamp(1rem, 1.1vw, 1.25rem)"
+    },
+    "entrelinhaTitulo": 0.95,
+    "trackingTitulo": "-0.03em",
+    "entrelinhaCorpo": 1.5,
+    "regras": [
+      "no máximo 2 famílias + 1 de detalhe",
+      "hierarquia por escala e peso, não por cor",
+      "medida de leitura 60-75 caracteres"
+    ]
+  },
+  "motion": {
+    "stack": [
+      "gsap",
+      "ScrollTrigger",
+      "lenis"
+    ],
+    "easing": {
+      "entrada": "cubic-bezier(0.25, 1, 0.5, 1)",
+      "transicao": "cubic-bezier(0.76, 0, 0.24, 1)"
+    },
+    "duracoesMs": {
+      "micro": 200,
+      "revelacao": 800,
+      "transicao": 1000
+    },
+    "regras": [
+      "1 efeito de assinatura + 1 padrão de revelação consistente",
+      "animar só transform e opacity",
+      "prefers-reduced-motion obrigatório",
+      "pausar canvas fora da tela"
+    ]
+  },
+  "tridimensional": {
+    "usar": false
+  },
+  "referencias": [],
+  "secoes": [
+    {
+      "id": "hero",
+      "objetivo": "promessa: diagnóstico antes do procedimento",
+      "referencia": "Decibel Health (hero dividido)",
+      "componente": "título por recorte em CSS + corte da pele em 3 fatias",
+      "motion": "as fatias do corte se afastam com a rolagem (vista explodida)"
+    },
+    {
+      "id": "camadas",
+      "objetivo": "o que a clínica trata, organizado por profundidade da pele",
+      "referencia": "Era Residence / Zentry (clip-path)",
+      "componente": "Animated Content reescrito",
+      "motion": "cada faixa abre de cima para baixo por clip-path; o fundo escurece com a profundidade"
+    },
+    {
+      "id": "consulta",
+      "objetivo": "como é a primeira consulta e pedido de agendamento (ação principal)",
+      "referencia": "Decibel Health (CTA em pílula)",
+      "componente": "Magnet + Success check + Error state shake",
+      "motion": "a imagem é examinada: abre de cima para baixo com uma linha de leitura na borda"
+    }
+  ],
+  "qualidade": {
+    "portao": "~/.claude/skills/site-nivel-awwwards/references/rubrica.md",
+    "alvos": {
+      "lighthouseDesktop": ">=90",
+      "lighthouseMobile": ">=75",
+      "LCP": "<2.5s",
+      "CLS": "<0.1",
+      "contraste": "AA",
+      "viewports": [
+        "1440",
+        "768",
+        "390"
+      ]
+    }
+  },
+  "proximosPassos": [
+    "Abrir as capturas das referências (3-6) e preencher a referência de cada seção em \"secoes\"",
+    "Conferir a biblioteca de componentes para cada seção (skill biblioteca-componentes)",
+    "Validar paleta e fontes com o usuário antes de construir",
+    "Construir e passar pelo portão de qualidade (rubrica.md)"
+  ],
+  "geradoEm": "2026-11-23T02:43:31.888Z",
+  "escolhas": {
+    "modo": "A · do zero",
+    "stack": "HTML + CSS + JS + GSAP (recomendada)",
+    "sites": {
+      "recomendada": {
+        "nome": "Decibel Health",
+        "url": "https://decibelhealth.com/",
+        "fonte": "One Page Love (pesquisa ao vivo; acervo local indisponível)",
+        "pegar": "hero dividido em texto e imagem, fundo creme quente, serifa grande e calma, CTA único em pílula; tom de cuidado, não de hospital"
+      },
+      "A": {
+        "nome": "ONSKN",
+        "url": "https://onskn.com/"
+      },
+      "B": {
+        "nome": "GlowGuide",
+        "url": "https://www.glowguide.com/"
+      },
+      "C": {
+        "nome": "Lóvi",
+        "url": "https://lovi.care/"
+      }
+    },
+    "estilo": "Minimalism (recomendado; secundário Claymorphism não usado)",
+    "paleta": {
+      "origem": "paleta de origem do estilo Minimalism (recomendada pelo opcoes.mjs), com dois tons escurecidos para passar no contraste AA",
+      "cores": {
+        "fundo": "#F4EFE8",
+        "superficie": "#F8F4EE",
+        "texto": "#1F2A22",
+        "textoMudo": "#5E625A",
+        "acentoTexto": "#4A5D4E",
+        "sage": "#6B7F6E",
+        "moss": "#A7B8A7",
+        "mist": "#D9E1D9",
+        "sand": "#C9BDAF",
+        "derme": "#E6DDD1",
+        "anexos": "#D8CCBD",
+        "profundo": "#2B3A2F"
+      }
+    },
+    "tridimensional": {
+      "decisao": "sem 3D",
+      "sugerido": "forma orgânica suave (blob) respirando",
+      "motivo": "os portões de 3b (referências, molde e vídeo-prévia aprovados pelo usuário) não podem ser cumpridos sem usuário; o conceito de camadas se resolve com recorte (clip-path)"
+    },
+    "scroll": {
+      "assinatura": "revelação por clip-path (recomendado para institucional)",
+      "referencias": [
+        "https://zentry.com/",
+        "https://www.era-residence.com/"
+      ],
+      "apoio": "régua de profundidade fixa ligada à rolagem"
+    },
+    "componentes": [
+      {
+        "nome": "Animated Content / Fade Content",
+        "plataforma": "reactbits.dev",
+        "uso": "reescrito como revelação por recorte de cima para baixo"
+      },
+      {
+        "nome": "Magnet",
+        "plataforma": "reactbits.dev",
+        "uso": "botão de agendar"
+      },
+      {
+        "nome": "Success check",
+        "plataforma": "transitions.dev",
+        "uso": "confirmação do pedido de agendamento"
+      },
+      {
+        "nome": "Error state shake",
+        "plataforma": "transitions.dev",
+        "uso": "campo obrigatório vazio"
+      }
+    ]
+  }
+}

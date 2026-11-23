@@ -7,6 +7,8 @@ description: Skill única para criar sites, landing pages, portfólios e lojas d
 
 Conduz o processo completo, **com o usuário escolhendo** nas decisões de gosto: entender a marca, pesquisar, oferecer opções de estilo, paleta e site de referência, montar o brief, construir com receitas testadas e **medir** antes de entregar.
 
+> **Caminhos:** `~/.claude/skills/site-nivel-awwwards/` é a pasta desta skill (a que tem este arquivo); se ela estiver em outro lugar, use esse caminho. **Sem usuário para responder** (teste, automação): em cada pergunta ou aprovação, escolha a opção recomendada pela skill e registre a escolha e o motivo em `design/DECISOES.md`. Os scripts acham o playwright-core e o Chromium sozinhos nos caminhos comuns; se não acharem, defina `PLAYWRIGHT_CORE` e `CHROME`.
+>
 > Regras do `CLAUDE.md` valem: perguntar "Posso começar?" antes de usar ferramentas, pedir autorização para etapas novas, custos, publicações e operações externas. Esta skill não amplia o escopo autorizado. Nas plataformas externas: sem login, sem conta, sem compra.
 
 ## Princípios

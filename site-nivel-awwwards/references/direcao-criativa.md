@@ -41,6 +41,9 @@ Réplica fiel ensina técnica; o que ganha prêmio é **uma ideia que só aquele
 - Um gesto é **uma decisão visual ou de movimento que deriva da ideia**: um recorte, uma transição, um objeto que atravessa, uma régua, uma textura, uma forma de revelar texto. Componentes de catálogo (fade-up, cartões que sobem, marquee genérico) **não são gesto** sozinhos; podem ser o veículo, se ganharem o motivo da ideia.
 - Todos os gestos são **parentes**: mesma origem, variações diferentes. Um gesto por seção, não três.
 - Cada gesto precisa **aparecer numa captura parada** (o juiz olha fotos). Descreva o quadro: "no meio da seção, o título está metade coberto pela névoa".
+- **O estado-chave do gesto fica parado na tela** (teste cego, rodada 1): ele precisa durar pelo menos 25% da rolagem da seção, e o do hero já tem que aparecer entre 10% e 15% da rolagem da página (o `juiz.mjs` fotografa por volta de 14%). Antes de entregar, abra as telas do `juiz.mjs` e confira cada gesto do `DIRECAO.md`. Gesto declarado que não aparece nelas não conta e vira correção.
+- **Seções irmãs não repetem o mesmo bloco** (camadas, passos, serviços, capítulos): cada uma muda pelo menos duas destas coisas: escala do título, coluna ou alinhamento, título cortado na borda, posição e tamanho da imagem. Três blocos iguais seguram o Design no 7.
+- **O gesto-assinatura tem versão de celular** (faixa no topo, régua horizontal, rótulo fixo). Esconder o gesto no celular (`display: none`) tira o 8 de Criatividade e de Usabilidade.
 - Use pelo menos um gesto do repertório técnico medido (`references/scroll-avancado.md`, `references/elementos.md`, `references/3d-leve.md`) e um que seja **do tema** (do banco abaixo).
 
 ### 3. A regra que o site nunca quebra

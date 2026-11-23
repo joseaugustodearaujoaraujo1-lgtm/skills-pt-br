@@ -18,13 +18,13 @@ const espera = +args.espera || 1500;
 
 // ---- playwright-core e navegador ----
 function carregarPlaywright() {
-  const cands = [process.env.PLAYWRIGHT_CORE, path.join(process.cwd(), 'node_modules', 'playwright-core'), path.join(os.homedir(), 'Documents', 'acervos-design', 'node_modules', 'playwright-core')].filter(Boolean);
+  const cands = [process.env.PLAYWRIGHT_CORE, path.join(process.cwd(), 'node_modules', 'playwright-core'), path.join(os.homedir(), 'Documents', 'acervos-design', 'node_modules', 'playwright-core'), '/opt/node-tools/node_modules/playwright-core'].filter(Boolean);
   for (const c of cands) { try { return createRequire(path.join(path.resolve(c), 'package.json'))(path.resolve(c)); } catch { /* próxima */ } }
   throw new Error('playwright-core não encontrado. Rode "npm i -D playwright-core" no projeto ou defina PLAYWRIGHT_CORE.');
 }
 function acharChrome() {
   const cands = [process.env.CHROME, process.env.LOCALAPPDATA && path.join(process.env.LOCALAPPDATA, 'ms-playwright', 'chromium-1248', 'chrome-win64', 'chrome.exe'),
-    'C:/Program Files/Google/Chrome/Application/chrome.exe', 'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe', '/usr/bin/google-chrome', '/usr/bin/chromium', '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'].filter(Boolean);
+    'C:/Program Files/Google/Chrome/Application/chrome.exe', 'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe', '/opt/pw-browsers/chromium-1243/chrome-linux64/chrome', '/opt/pw-browsers/chromium/chrome-linux64/chrome', '/usr/bin/google-chrome', '/usr/bin/chromium', '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'].filter(Boolean);
   const achado = cands.find(c => fs.existsSync(c)); if (!achado) throw new Error('Chrome/Edge/Chromium não encontrado. Defina CHROME=caminho.'); return achado;
 }
 const { chromium } = carregarPlaywright();
@@ -48,7 +48,7 @@ function medir() {
   const txt = document.body.innerText || '';
   out.placeholders = [...new Set((txt.match(/\[[^\]\n]{2,80}\]/g) || []))].slice(0, 6);
   out.lorem = /lorem ipsum|dolor sit amet/i.test(txt);
-  out.emoji = (txt.match(/\p{Extended_Pictographic}/gu) || []).length;
+  out.emoji = (txt.match(/\p{Extended_Pictographic}/gu) || []).filter(e => !'©®™‼⁉'.includes(e)).length; // ©, ® e ™ são símbolos de texto, não emoji
   out.h1 = [...document.querySelectorAll('h1')].map(h => ({ texto: h.innerText.trim().slice(0, 80), px: Math.round(parseFloat(getComputedStyle(h).fontSize)), visivel: visivel(h) }));
   out.overflowX = document.documentElement.scrollWidth - innerWidth;
   out.lang = document.documentElement.lang; out.titulo = document.title; out.desc = document.querySelector('meta[name=description]')?.content || '';

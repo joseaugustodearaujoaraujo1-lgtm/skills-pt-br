@@ -68,6 +68,8 @@ gsap.fromTo('.parallax img', { yPercent: -10 }, { yPercent: 10, ease: 'none',
   scrollTrigger: { trigger: '.parallax', scrub: true } });
 ```
 - Tratamento consistente: mesma temperatura de cor, mesmo recorte e mesma proporção nas galerias. Foto genérica de banco derruba o nível mais rápido que qualquer efeito.
+- **Placeholder de imagem essencial sem texto à vista** (teste cego, rodada 1): nada de "IMAGEM PROVISÓRIA" nem nome de arquivo sobre a imagem. O nome vai em `data-imagem="..."` e na lista de imagens a gerar. Desenhe o placeholder no tamanho e na proporção finais, com a cor e a textura do assunto, para a composição ser julgada como vai ficar. Etiqueta à vista é lida como texto provisório (tetos de 3 em Usabilidade e 2 em Conteúdo no juiz).
+- Imagem que começa escondida (revelação por máscara) não leva `decoding="async"`: na captura de página inteira ela pode sair vazia.
 
 ## 4. Vídeo
 - Hero/fundo: `<video autoplay muted loop playsinline preload="metadata" poster="poster.webp">` com **MP4 (H.264) e WebM** (AV1 primeiro, quando houver), 720p, ≤ 3 MB, sem áudio, loop sem emenda e **color grading igual ao da paleta e das fotos** (vídeo cinematográfico, não stock).
@@ -122,6 +124,8 @@ Use somente se o conceito pede. Receita completa, orçamento e método testado e
 
 ## 8. Acabamento que separa o nível
 - Estados de hover/focus/active em **tudo** que é clicável; foco visível.
+- **Menu ou ação principal ao alcance em toda a rolagem** (teste cego, rodada 1): barra compacta fixa (logo + ação principal) no desktop e botão fixo no pé da tela no celular. Cabeçalho que some ao rolar impede o 7 de Usabilidade: o juiz vê telas paradas e não vê o menu voltar quando se rola para cima.
+- Ícone de três barras só para abrir menu. Símbolo de logo que lembra um hambúrguer e não abre nada confunde.
 - Seleção de texto na cor do acento (`::selection`), barra de rolagem estilizada, favicon e imagem de compartilhamento (Open Graph) com identidade.
 - Microcopy com personalidade (botões, erros, 404, rodapé).
 - Celular **redesenhado**, não encolhido: no toque, troque hover e cursor por toque e, se o gesto pedir, por giroscópio (`deviceorientation`, com pedido de permissão no iOS e plano B parado).

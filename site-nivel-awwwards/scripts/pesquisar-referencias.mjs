@@ -37,6 +37,7 @@ const FONTES = [['awwwards', 'awwwards'], ['opl', 'onepagelove']].filter(([k]) =
 const candidatos = [];
 for (const [rotulo, pasta] of FONTES) {
   const dir = path.join(ACERVO, pasta, 'final');
+  if (!fs.existsSync(path.join(dir, 'acervo.json'))) { console.error(`AVISO: acervo não encontrado em ${dir} (defina ACERVO=caminho). Sem sites do acervo: pesquise ao vivo (Awwwards, One Page Love) como manda references/pesquisa.md.`); continue; }
   for (const s of JSON.parse(fs.readFileSync(path.join(dir, 'acervo.json'), 'utf8'))) {
     if (s.erroDesktop || ehListagem(s) || capturaInvalida(s)) continue;
     let est = null; try { est = JSON.parse(fs.readFileSync(path.join(dir, s.slug, 'estrutura.json'), 'utf8')); if (est.erro) est = null; } catch {}
