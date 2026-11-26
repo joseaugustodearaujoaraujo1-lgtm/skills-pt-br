@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Estrato Dermatologia — clínica de dermatologia em São Paulo</title>
+<meta name="description" content="Clínica de dermatologia em São Paulo: consulta, dermatoscopia e tratamentos para cada camada da pele, com diagnóstico antes de qualquer procedimento.">
+<meta name="theme-color" content="#F4EFE8">
+<meta property="og:title" content="Estrato Dermatologia">
+<meta property="og:description" content="A pele tem camadas. O cuidado também. Dermatologia clínica e estética em São Paulo.">
+<link rel="stylesheet" href="fonts/fonts.css">
+<link rel="preload" href="fonts/instrument-serif-normal-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/instrument-serif-italic-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/inter-normal-400-500.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="img/hero-corte-pele.webp" as="image" type="image/webp" fetchpriority="high">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23F4EFE8'/%3E%3Cpath d='M6 10h20M6 16h20M6 22h20' stroke='%234A5D4E' stroke-width='2.4' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="estilo.css?v=2">
+<script type="module" src="app.js?v=2"></script>
+</head>
+<body>
+<a class="pular" href="#conteudo">Pular para o conteúdo</a>
+
+<header class="topo" id="topo">
+  <a class="marca" href="#inicio" aria-label="Estrato Dermatologia, início">
+    <svg class="marca-sinal" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="2" width="20" height="6" rx="3" fill="#E2C2B4"/><rect x="2" y="9.5" width="20" height="7" rx="1.5" fill="#C99A92"/><rect x="2" y="18" width="20" height="4" rx="2" fill="#4A5D4E"/></svg>
+    Estrato
+  </a>
+  <span class="topo-camada" aria-hidden="true"><span class="topo-camada-ponto"></span><span data-camada-texto>Superfície</span></span>
+  <nav aria-label="Principal">
+    <ul>
+      <li><a href="#camadas">O que tratamos</a></li>
+      <li><a href="#consulta">Primeira consulta</a></li>
+    </ul>
+  </nav>
+  <a class="topo-cta" href="#agendar">Agendar avaliação</a>
+</header>
+
+<!-- Régua de profundidade: o fio da descida pelas camadas (decorativa; o conteúdo está nas seções) -->
+<div class="regua" aria-hidden="true">
+  <div class="regua-trilho"><span class="regua-marcador"></span></div>
+  <p class="regua-rotulo"><span data-camada-texto>Superfície</span><span class="regua-mm" data-camada-mm>0 mm</span></p>
+</div>
+
+<main id="conteudo">
+  <!-- HERO · superfície -->
+  <section class="hero" id="inicio" aria-labelledby="hero-titulo" data-camada="Superfície" data-mm="0 mm">
+    <div class="hero-texto">
+      <p class="rotulo">Dermatologia clínica e estética · São Paulo</p>
+      <h1 id="hero-titulo">
+        <span class="linha-mask"><span class="linha" style="--i:0">A pele tem camadas.</span></span>
+        <span class="linha-mask"><span class="linha" style="--i:1">O cuidado <em>também.</em></span></span>
+      </h1>
+      <p class="hero-sub">Antes de qualquer procedimento, examinamos a sua pele e localizamos onde está o problema. O tratamento vem depois, para a camada certa.</p>
+      <div class="hero-acoes">
+        <a class="botao" href="#agendar">Agendar avaliação</a>
+        <a class="link-seta" href="#camadas">Ver o que tratamos <span aria-hidden="true">↓</span></a>
+      </div>
+    </div>
+
+    <figure class="corte" aria-labelledby="corte-legenda">
+      <div class="corte-fatias">
+        <div class="fatia" style="--f:0"><img src="img/hero-corte-pele.webp" width="960" height="1200" alt="Corte transversal da pele em três camadas: epiderme, derme e hipoderme" fetchpriority="high"></div>
+        <div class="fatia" style="--f:1"><img src="img/hero-corte-pele.webp" width="960" height="1200" alt="" aria-hidden="true"></div>
+        <div class="fatia" style="--f:2"><img src="img/hero-corte-pele.webp" width="960" height="1200" alt="" aria-hidden="true"></div>
+        <ol class="corte-rotulos" aria-label="Camadas da pele">
+          <li style="--f:0"><span class="corte-nome">Epiderme</span><span class="corte-mm">0,05–1,5 mm</span></li>
+          <li style="--f:1"><span class="corte-nome">Derme</span><span class="corte-mm">0,3–3 mm</span></li>
+          <li style="--f:2"><span class="corte-nome">Hipoderme</span><span class="corte-mm">varia por região</span></li>
+        </ol>
+      </div>
+      <figcaption id="corte-legenda" class="sr">Esquema das três camadas da pele, com a espessura aproximada de cada uma.</figcaption>
+    </figure>
+
+    <ul class="hero-fatos" aria-label="Como trabalhamos">
+      <li><strong>Consulta com dermatoscopia</strong> exame das pintas e lesões com lente de aumento</li>
+      <li><strong>Plano por escrito</strong> o que tratar, em que ordem e por quanto tempo</li>
+      <li><strong>Procedimento só com indicação</strong> nada é vendido na primeira visita</li>
+    </ul>
+  </section>
+
+  <!-- SEÇÃO 1 · o que tratamos, por profundidade -->
+  <section class="camadas" id="camadas" aria-labelledby="camadas-titulo">
+    <div class="camadas-cab">
+      <p class="rotulo">01 · O que tratamos</p>
+      <h2 id="camadas-titulo">Cada queixa mora numa <em>profundidade.</em></h2>
+      <p class="camadas-intro">Mancha, ruga e queda de cabelo nascem em lugares diferentes da pele. Saber onde é o que decide se a resposta é um ajuste na rotina, um ativo, um laser ou um procedimento.</p>
+    </div>
+
+    <ol class="faixas">
+      <li class="faixa" style="--tom: var(--c1)" data-camada="Epiderme" data-mm="0,05–1,5 mm">
+        <div class="faixa-dentro">
+          <div class="faixa-lado"><p class="faixa-prof"><span>Camada 1</span><span>Epiderme</span><span>0,05–1,5 mm</span></p><span class="faixa-amostra" style="--y:15%" aria-hidden="true"></span></div>
+          <div class="faixa-corpo">
+            <h3>O que se vê primeiro</h3>
+            <p>A camada que renova a pele a cada poucas semanas e recebe sol, poluição e cosméticos.</p>
+            <ul class="pilulas">
+              <li>Acne e oleosidade</li><li>Manchas e melasma</li><li>Exame de pintas</li><li>Dermatites e descamação</li>
+            </ul>
+          </div>
+        </div>
+      </li>
+      <li class="faixa" style="--tom: var(--c2)" data-camada="Derme" data-mm="0,3–3 mm">
+        <div class="faixa-dentro">
+          <div class="faixa-lado"><p class="faixa-prof"><span>Camada 2</span><span>Derme</span><span>0,3–3 mm</span></p><span class="faixa-amostra" style="--y:50%" aria-hidden="true"></span></div>
+          <div class="faixa-corpo">
+            <h3>Onde fica a sustentação</h3>
+            <p>Colágeno, elastina e vasos: é aqui que a pele perde firmeza e guarda as marcas.</p>
+            <ul class="pilulas">
+              <li>Rugas e flacidez</li><li>Cicatrizes de acne</li><li>Rosácea e vasinhos</li><li>Queloides</li>
+            </ul>
+          </div>
+        </div>
+      </li>
+      <li class="faixa" style="--tom: var(--c3)" data-camada="Hipoderme" data-mm="varia por região">
+        <div class="faixa-dentro">
+          <div class="faixa-lado"><p class="faixa-prof"><span>Camada 3</span><span>Hipoderme e anexos</span><span>varia por região</span></p><span class="faixa-amostra" style="--y:85%" aria-hidden="true"></span></div>
+          <div class="faixa-corpo">
+            <h3>Raiz, unha e glândula</h3>
+            <p>Folículos, glândulas e a gordura que sustenta tudo acima. Cabelo e unha também são pele.</p>
+            <ul class="pilulas">
+              <li>Queda de cabelo</li><li>Doenças das unhas</li><li>Suor excessivo</li><li>Cistos e lipomas</li>
+            </ul>
+          </div>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <!-- SEÇÃO 2 · a camada mais funda: a consulta -->
+  <section class="consulta" id="consulta" aria-labelledby="consulta-titulo" data-camada="Consulta" data-mm="diagnóstico">
+    <div class="consulta-cab">
+      <p class="rotulo">02 · Primeira consulta</p>
+      <h2 id="consulta-titulo">Antes do tratamento, <em>o exame.</em></h2>
+    </div>
+
+    <figure class="exame">
+      <div class="exame-janela">
+        <img src="img/consulta-dermatoscopia.webp" width="1400" height="900" alt="Pinta vista de perto pelo dermatoscópio durante a consulta">
+        <span class="exame-linha" aria-hidden="true"></span>
+      </div>
+      <figcaption>Dermatoscopia: a lente amplia a pele e mostra o que o olho não vê.</figcaption>
+    </figure>
+
+    <ol class="passos">
+      <li><span class="passo-n">01</span><h3>Conversa</h3><p>Histórico, rotina de cuidados, medicamentos em uso e o que mais incomoda você.</p></li>
+      <li><span class="passo-n">02</span><h3>Exame da pele inteira</h3><p>Da cabeça aos pés, com dermatoscópio nas pintas e lesões que pedem um olhar de perto.</p></li>
+      <li><span class="passo-n">03</span><h3>Plano por escrito</h3><p>O que tratar, em que ordem e por quanto tempo. Você sai com o plano na mão.</p></li>
+      <li><span class="passo-n">04</span><h3>Procedimento, se indicado</h3><p>Muitas vezes a primeira resposta é ajustar a rotina. Procedimento só quando faz sentido.</p></li>
+    </ol>
+
+    <div class="agendar" id="agendar">
+      <div class="agendar-texto">
+        <h3>Peça seu horário</h3>
+        <p>Deixe nome e telefone. Retornamos para combinar o dia da avaliação.</p>
+      </div>
+      <form class="form" novalidate>
+        <div class="campo">
+          <label for="f-nome">Nome</label>
+          <input id="f-nome" name="nome" type="text" autocomplete="name" required>
+          <p class="campo-erro" id="f-nome-erro" hidden>Diga como podemos chamar você.</p>
+        </div>
+        <div class="campo">
+          <label for="f-tel">Telefone ou WhatsApp</label>
+          <input id="f-tel" name="telefone" type="tel" autocomplete="tel" inputmode="tel" required>
+          <p class="campo-erro" id="f-tel-erro" hidden>Precisamos de um telefone com DDD.</p>
+        </div>
+        <div class="campo">
+          <label for="f-motivo">Motivo principal</label>
+          <select id="f-motivo" name="motivo">
+            <option>Pele: acne, manchas ou pintas</option>
+            <option>Cabelo ou unhas</option>
+            <option>Rugas, flacidez ou cicatrizes</option>
+            <option>Ainda não sei: quero uma avaliação</option>
+          </select>
+        </div>
+        <button class="botao botao-claro" type="submit">Pedir horário</button>
+        <p class="form-ok" role="status" aria-live="polite" hidden>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M7 12.5l3.2 3.2L17 9"/></svg>
+          <span data-ok-texto>Pedido recebido. Vamos ligar para combinar o dia.</span>
+        </p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="rodape">
+  <p class="rodape-marca" aria-hidden="true">Estrato</p>
+  <div class="rodape-linha">
+    <p>© 2026 Estrato Dermatologia · São Paulo</p>
+    <p>Imagens provisórias, a substituir por fotografia própria da clínica.</p>
+  </div>
+</footer>
+</body>
+</html>

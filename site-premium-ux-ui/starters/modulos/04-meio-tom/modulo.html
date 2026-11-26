@@ -1,0 +1,7 @@
+<!-- Meio-tom em linhas verticais: uma foto vira máscara; o CSS pinta a máscara com currentColor (tema troca a cor sem refazer imagem). -->
+<figure class="mt-bloco" style="color: var(--cor-destaque)">
+  <!-- Opção A (em tempo de execução): o JS gera a máscara a partir de uma foto. -->
+  <div class="mt" role="img" aria-label="[Descrição do que a imagem mostra]"
+       data-mt-src="img/lua.webp" data-mt-largura="1200" data-mt-gama="1.6" data-mt-corte=".96" data-mt-piso=".12" data-mt-inverter></div>
+  <!-- Opção B (pré-gerada, melhor para produção): <div class="mt" style="--mt: url(img/mt-lua.webp)" role="img" aria-label="..."></div> -->
+</figure>

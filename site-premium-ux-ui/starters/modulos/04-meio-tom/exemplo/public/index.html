@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Módulo 4 · Meio-tom em linhas verticais</title>
+<meta name="description" content="Exemplo mínimo do módulo meio-tom: uma imagem vira colunas de largura variável pintadas com a cor do tema.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='12' fill='%23b4552f'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="app.css">
+<script type="module" src="app.js"></script>
+<style>
+  .demo { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 4vw; padding: 4rem 6vw; align-items: center; }
+  .demo figure { margin: 0; } .demo figcaption { margin-top: .6rem; font-size: .95rem; color: var(--cor-texto); }
+  .demo .mt { width: 100%; max-width: 520px; }
+</style>
+</head>
+<body>
+<a class="pular" href="#conteudo">Pular para o conteúdo</a>
+<main id="conteudo">
+  <header class="intro"><h1>Uma foto, só barras.</h1><p>A lua abaixo é uma máscara gerada no navegador: colunas mais largas onde há sombra. A cor é a do bloco, então o tema troca tudo de uma vez.</p></header>
+  <section class="demo" aria-label="Exemplos">
+    <figure class="mt-bloco" style="color: var(--cor-destaque)">
+      <div class="mt" role="img" aria-label="Lua com crateras, desenhada em barras verticais terracota" data-mt-src="img/lua.webp" data-mt-largura="900" data-mt-gama="1.6" data-mt-corte=".96" data-mt-piso=".12" data-mt-inverter></div>
+      <figcaption>Terracota, gama 1,6 · corte ,96 · piso ,12</figcaption>
+    </figure>
+    <figure class="mt-bloco" style="color: var(--cor-escura)">
+      <div class="mt" role="img" aria-label="A mesma lua em barras verdes escuras, com tinta mais leve" data-mt-src="img/lua.webp" data-mt-largura="900" data-mt-gama="1.1" data-mt-corte=".9" data-mt-inverter></div>
+      <figcaption>Verde escuro, gama 1,1 · mesma imagem</figcaption>
+    </figure>
+  </section>
+  <section class="fecho"><h2>Fim.</h2><p>Para produção, gere a máscara uma vez (a BRUMA usa Python) e sirva um .webp de ~20 KB.</p></section>
+</main>
+</body>
+</html>

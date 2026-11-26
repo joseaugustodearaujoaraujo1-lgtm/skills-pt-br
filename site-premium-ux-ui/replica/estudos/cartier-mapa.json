@@ -1,0 +1,29 @@
+{
+ "original": "https://cartier-waw-0225.dev.60fps.fr/",
+ "viewport": [
+  1440,
+  900
+ ],
+ "H": 900,
+ "tipo": "experiência WebGL em tela cheia dentro de um componente com shadow DOM; cada gesto da roda troca de sala (navegação por passos)",
+ "salas": [
+  "abertura: sala bege, arcos, letreiro 'Watches & Wonders'",
+  "Panthère: corredor de cortinas, coluna xadrez de ouro",
+  "Tank Louis: coluna de placas de ouro",
+  "Tank Louis escuro: molduras concêntricas",
+  "Tank à guichets: cartões curvos flutuando",
+  "Montre joaillière: nicho",
+  "noite: céu, lua, dunas",
+  "Tressage: fitas trançadas e rochas",
+  "Icônes: árvore e lua"
+ ],
+ "interface": {
+  "som": "12px/600 caixa alta em (55,53)",
+  "marca": "logotipo no topo ao centro; 'Présente' 9px em y 124 só na abertura",
+  "titulo": "48px/52.8 caixa alta, centrado, linhas em y 651 e 704",
+  "descobrir": "12px/600 em y 792",
+  "defiler": "12px em y 757 na abertura",
+  "pontos": "9 pontos verticais à direita (x ≈ 1380)",
+  "carregamento": "frase 12px caixa alta no centro + número e linha de progresso"
+ }
+}

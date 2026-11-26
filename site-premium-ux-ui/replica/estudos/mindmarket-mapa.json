@@ -1,0 +1,125 @@
+{
+ "original": "https://mindmarket.com/",
+ "viewport": [
+  1440,
+  900
+ ],
+ "H": 13732,
+ "secoes": [
+  {
+   "nome": "pre-carregamento",
+   "pos": "fixed",
+   "bg": "#F5F1E4",
+   "obs": "marca vetorial 340x293 no centro, sobe 44 px e some"
+  },
+  {
+   "nome": "topo",
+   "pos": "fixed",
+   "obs": "pílula branca 108–1118 (logo, 5 itens 18px/500, botão de menu redondo que gira com a rolagem) + pílula 'Get a quote' 1141–1331 com avatar animado 40px"
+  },
+  {
+   "nome": "hero",
+   "top": 0,
+   "h": 900,
+   "inner_abs_h": 1800,
+   "bg": "#8ED462",
+   "obs": "título 139.7px/0.95 ls -0.06em centrado em y204; subtítulo 29.75px em y521; o conteúdo fixo encolhe para 0.8 e escurece enquanto a seção creme sobe por cima"
+  },
+  {
+   "nome": "ilustracao-hero",
+   "top": 0,
+   "h": 1670,
+   "sticky": 900,
+   "obs": "grupo de personagens 737x527 em (352,552), cresce 1.11 até y900, por cima das duas seções"
+  },
+  {
+   "nome": "linha-do-tempo",
+   "top": 900,
+   "h": 5296,
+   "bg": "#F5F1E4",
+   "raio": "50 50 0 0",
+   "obs": "intro 770 (texto 29.75px largura 611 em 1009, botão em 1280); caminho verde sinuoso 1498x4738 a partir de 1602; 4 cartões brancos 513 de largura em 2107 (dir 819), 2751 (esq 109), 3669 (464), 4818 (dir 819); morros em 3 camadas com paralaxe 5333–6197"
+  },
+  {
+   "nome": "chamada",
+   "top": 6196,
+   "h": 1202,
+   "bg": "#8ED462",
+   "raio": "0 0 50 50",
+   "obs": "título 139.7px centrado em 6366; texto 29.75px largura 595 em 6717; botão; 3 itens 18px em 7206 (x 109/523/937, 394 de largura); ilustração fixa à esquerda (806x640) de 5296 a 7398"
+  },
+  {
+   "nome": "foto-publico",
+   "top": 7398,
+   "h": 857,
+   "raio": 50,
+   "obs": "foto em 2 camadas com paralaxe e fita amarela com texto no caminho, uma parte atrás e outra na frente das pessoas"
+  },
+  {
+   "nome": "numeros",
+   "top": 8256,
+   "h": 2466,
+   "raio": 50,
+   "obs": "título fixo 80.75px/0.95 em top 158 (largura 690), texto 18px em 495; 3 cartões empilhados à direita (x 924, 408 de largura): 60+ branco/azul, 400+ verde, 50+ coral; números 144px/400"
+  },
+  {
+   "nome": "artigos",
+   "top": 10722,
+   "h": 1209,
+   "bg": "#E0DBCE",
+   "raio": 50,
+   "obs": "grade: 1 grande 601x863 + título 29.75px; à direita 601x515 + título 20px; 2 pequenos 291x249 com etiquetas 15px"
+  },
+  {
+   "nome": "marcas",
+   "top": 11931,
+   "h": 900,
+   "obs": "título 53px centrado em 12101; 3 trilhos de pílulas (passo de 123 px) em 12349/12472/12595, deslizando em sentidos alternados"
+  },
+  {
+   "nome": "rodape",
+   "top": 12831,
+   "h": 901,
+   "bg": "#F5E211",
+   "raio": 50,
+   "obs": "texto 20px largura 335; colunas de links 17px em x 908 e 1085; 'Let’s Connect' 139.7px em 13328 com sublinhado ondulado; endereços 18px a 60%; linha final em 13669"
+  }
+ ],
+ "celular": {
+  "viewport": [
+   390,
+   844
+  ],
+  "H": 10997,
+  "secoes": {
+   "hero": [
+    0,
+    879
+   ],
+   "linha-do-tempo": [
+    844,
+    4857
+   ],
+   "chamada": [
+    5701,
+    743
+   ],
+   "foto": [
+    6445,
+    232
+   ],
+   "numeros": [
+    6677,
+    1856
+   ],
+   "artigos+marcas": [
+    8533,
+    1189
+   ],
+   "rodape": [
+    9722,
+    1275
+   ]
+  }
+ }
+}

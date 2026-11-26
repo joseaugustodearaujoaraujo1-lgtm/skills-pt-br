@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fervo 3 — cafeteira de pressão em aço inox, vista por dentro</title>
+<meta name="description" content="Fervo 3: cafeteira de pressão em aço inox de 12 faces. Veja por dentro como a água sobe e entre na lista da primeira fornada.">
+<meta name="theme-color" content="#F4EFE8">
+<meta property="og:title" content="Fervo 3 — a água sobe">
+<meta property="og:description" content="Cafeteira de pressão em aço inox de 12 faces. Veja como ela funciona por dentro.">
+<meta property="og:image" content="img/og-fervo.jpg">
+<link rel="preload" href="fonts/instrument-serif-normal-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/inter-normal-400-500.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="img/quadros/760/00.webp" as="image" type="image/webp" media="(min-width: 861px)" fetchpriority="high">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M9 4h14l-2 11 3 13H8l3-13z' fill='%231F2A22'/%3E%3Cpath d='M6 15h20' stroke='%236B7F6E' stroke-width='2'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="fonts/fonts.css">
+<link rel="stylesheet" href="tokens.css?v=7">
+<link rel="stylesheet" href="estilo.css?v=7">
+<script type="module" src="app.js?v=7"></script>
+</head>
+<body>
+<a class="pular" href="#conteudo">Pular para o conteúdo</a>
+
+<header class="topo" id="topo">
+  <a class="marca" href="#inicio" aria-label="Fervo, início"><span class="marca-simbolo" aria-hidden="true"></span>Fervo</a>
+  <nav class="topo-nav" id="topo-nav" aria-label="Principal">
+    <ul>
+      <li><a href="#por-dentro" data-secao="por-dentro">Por dentro</a></li>
+      <li><a href="#ficha" data-secao="ficha">Ficha</a></li>
+    </ul>
+  </nav>
+  <a class="topo-cta" href="#lista">Entrar na lista</a>
+  <button class="topo-menu" type="button" aria-expanded="false" aria-controls="topo-nav">Menu</button>
+</header>
+
+<main id="conteudo">
+  <div class="palco" id="inicio">
+    <!-- Cena fixa: título do hero, a cafeteira (3D ao vivo com GPU; quadros renderizados da mesma cena sem GPU), linha d'água e cota -->
+    <div class="palco-visual">
+      <div class="hero-titulo">
+        <p class="rotulo hero-rotulo"><span>Fervo 3</span> cafeteira de pressão · aço inox · 12 faces</p>
+        <h1 id="hero-titulo">
+          <span class="linha-mask l1"><span class="linha" style="--i:0">A água</span></span>
+          <span class="linha-mask l2"><span class="linha" style="--i:1"><em>sobe.</em></span></span>
+        </h1>
+      </div>
+      <div class="palco-objeto">
+        <img class="palco-poster" src="img/quadros/760/00.webp" srcset="img/quadros/440/00.webp 440w, img/quadros/760/00.webp 760w" sizes="(max-width: 860px) 52svh, 80svh" width="760" height="950" alt="Cafeteira Fervo 3 montada, em aço inox escovado de 12 faces, com alça e pegador pretos" fetchpriority="high">
+        <canvas class="palco-quadros" width="760" height="950" aria-hidden="true" hidden></canvas>
+      </div>
+      <div class="agua" aria-hidden="true"><span class="agua-rotulo"><b>nível máx.</b> 150 ml</span><span class="agua-direita">até a válvula</span></div>
+      <div class="cota" aria-hidden="true"><span class="cota-ponto"></span><span class="cota-rotulo"></span></div>
+      <p class="arraste" aria-hidden="true">arraste para girar</p>
+    </div>
+
+    <div class="palco-texto">
+      <section class="hero" aria-labelledby="hero-titulo">
+        <div class="hero-base">
+          <div class="hero-chamada">
+            <p class="hero-sub">Uma cafeteira de fogão que você entende olhando: a água sobe da caldeira, atravessa o café e chega pronta em cima. Role e veja por dentro.</p>
+            <div class="hero-acoes">
+              <a class="botao" href="#lista">Entrar na lista da 1ª fornada</a>
+              <a class="link-seta" href="#por-dentro">Ver por dentro <span aria-hidden="true">↓</span></a>
+            </div>
+          </div>
+          <dl class="hero-fatos">
+            <div><dt>Capacidade</dt><dd>3 xícaras · 150 ml</dd></div>
+            <div><dt>Corpo</dt><dd>inox 18/10, 12 faces</dd></div>
+            <div><dt>Fogão</dt><dd>gás, elétrico e indução</dd></div>
+          </dl>
+        </div>
+      </section>
+
+      <section class="por-dentro" id="por-dentro" aria-labelledby="dentro-titulo">
+        <div class="dentro-cab">
+          <p class="rotulo">Por dentro · 4 peças, um caminho</p>
+          <h2 id="dentro-titulo">De baixo para cima, <em>como a água.</em></h2>
+        </div>
+        <ol class="passos">
+          <li class="passo p1" data-peca="caldeira">
+            <div class="passo-corpo">
+            <p class="passo-num"><span class="rotulo">01 · caldeira</span><span class="passo-medida">150<small>ml</small></span></p>
+            <h3>A água espera abaixo da válvula.</h3>
+            <p>Água fria até a linha da válvula de segurança, nunca acima. Se a pressão passar do ponto, é por ela que o vapor sai.</p>
+            </div>
+          </li>
+          <li class="passo p2" data-peca="funil">
+            <div class="passo-corpo">
+            <p class="passo-num"><span class="rotulo">02 · funil</span><span class="passo-medida">15<small>g</small></span></p>
+            <h3>O vapor empurra a água pelo tubo.</h3>
+            <p>No fogo, o ar e o vapor acima da água ganham pressão e empurram a água pelo tubo do funil até o café: moagem média-fina, nivelado, sem socar.</p>
+            </div>
+          </li>
+          <li class="passo p3" data-peca="filtro">
+            <div class="passo-corpo">
+            <p class="passo-num"><span class="rotulo">03 · filtro e junta</span><span class="passo-medida">0,6<small>mm</small></span></p>
+            <h3>A placa segura o pó. A junta segura a pressão.</h3>
+            <p>Placa de inox com furos de 0,6 mm e anel de silicone alimentar: o café passa, o pó fica, e nada vaza pela rosca.</p>
+            </div>
+          </li>
+          <li class="passo p4" data-peca="coletor">
+            <div class="passo-corpo">
+            <p class="passo-num"><span class="rotulo">04 · coletor</span><span class="passo-medida">3<small>×50 ml</small></span></p>
+            <h3>O café chega por cima, pela chaminé.</h3>
+            <p>Ele sobe pela chaminé central e cai no coletor. Quando o som virar um borbulhar baixo, tire do fogo: o resto da água fica na caldeira, e o amargo também.</p>
+            </div>
+          </li>
+        </ol>
+      </section>
+    </div>
+  </div>
+
+  <section class="ficha" id="ficha" aria-labelledby="ficha-titulo">
+    <figure class="ficha-figura">
+      <div class="ficha-desenho">
+        <img class="ficha-img" src="img/perfil.webp" width="800" height="1000" fetchpriority="low" alt="Fervo 3 de perfil: bico à direita, alça preta à esquerda, tampa com pegador">
+        <div class="cota-v" aria-hidden="true"><span class="cota-v-linha"></span><span class="cota-v-texto">17,5 cm</span></div>
+        <div class="cota-h" aria-hidden="true"><span class="cota-h-linha"></span><span class="cota-h-texto">14,7 cm, da alça ao bico</span></div>
+      </div>
+      <figcaption class="rotulo">Perfil · perto do tamanho real numa tela comum</figcaption>
+      <ul class="vistas" aria-label="Outras vistas">
+        <li><img src="img/vista-frente.webp" width="360" height="396" fetchpriority="low" alt="Fervo 3 de frente, com o bico apontado para quem olha"><span class="rotulo">frente</span></li>
+        <li><img src="img/vista-tresquartos.webp" width="360" height="396" fetchpriority="low" alt="Fervo 3 em três quartos, mostrando as faces escovadas"><span class="rotulo">3/4</span></li>
+        <li><img src="img/vista-topo.webp" width="360" height="396" fetchpriority="low" alt="Fervo 3 vista de cima: tampa de 12 faces e pegador"><span class="rotulo">topo</span></li>
+      </ul>
+    </figure>
+
+    <div class="ficha-texto">
+      <p class="rotulo">Ficha · primeira fornada</p>
+      <h2 id="ficha-titulo">Montada, ela <em>mede 17,5 cm.</em></h2>
+      <dl class="specs">
+        <div><dt>Capacidade</dt><dd>150 ml de água · 3 xícaras de 50 ml</dd></div>
+        <div><dt>Café</dt><dd>15 g, moagem média-fina</dd></div>
+        <div><dt>Corpo</dt><dd>aço inox 18/10, 12 faces escovadas</dd></div>
+        <div><dt>Fundo</dt><dd>inox 430 encapsulado: gás, elétrico, vitrocerâmico e indução</dd></div>
+        <div><dt>Alça e pegador</dt><dd>baquelite, não esquentam na mão</dd></div>
+        <div><dt>Junta e filtro</dt><dd>silicone alimentar e placa de inox, substituíveis</dd></div>
+        <div><dt>Peso</dt><dd>≈ 720 g</dd></div>
+      </dl>
+      <div class="uso" role="img" aria-label="A Fervo 3 na boca do fogão, em chama baixa, vista de lado" data-imagem="uso-fogao.webp"></div>
+      <p class="aviso">Produto em desenvolvimento: medidas e materiais desta ficha podem mudar até a produção.</p>
+    </div>
+
+    <form class="lista" id="lista" novalidate aria-labelledby="lista-titulo">
+      <h3 id="lista-titulo">Entre na lista da <em>primeira fornada.</em></h3>
+      <p class="lista-sub">Um e-mail quando abrir a pré-venda. Só isso.</p>
+      <div class="campo">
+        <label for="email">Seu e-mail</label>
+        <input id="email" name="email" type="email" autocomplete="email" inputmode="email" required placeholder="voce@exemplo.com.br" aria-describedby="email-erro">
+        <p class="erro" id="email-erro" aria-live="polite"></p>
+      </div>
+      <fieldset class="opcoes">
+        <legend>Seu fogão</legend>
+        <label><input type="radio" name="fogao" value="gas" checked><span>Gás</span></label>
+        <label><input type="radio" name="fogao" value="inducao"><span>Indução</span></label>
+        <label><input type="radio" name="fogao" value="eletrico"><span>Elétrico</span></label>
+      </fieldset>
+      <button class="botao botao-grande" type="submit"><span class="botao-texto">Entrar na lista</span><svg class="check" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></button>
+      <p class="lista-ok" role="status" aria-live="polite"></p>
+    </form>
+  </section>
+</main>
+
+<footer class="rodape">
+  <p class="rodape-marca" aria-hidden="true">Fervo</p>
+  <div class="rodape-linha">
+    <p>© 2026 Fervo · projeto de conceito</p>
+    <p>Cafeteira modelada em código (three.js), sem foto de catálogo.</p>
+    <a href="#inicio">Voltar ao topo ↑</a>
+  </div>
+</footer>
+<a class="cta-fixo" href="#lista">Entrar na lista</a>
+</body>
+</html>

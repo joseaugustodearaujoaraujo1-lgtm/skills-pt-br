@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Torra Lenta — cafeteria artesanal</title>
+<meta name="description" content="Torra Lenta: café especial torrado na casa, em pequenos lotes. Grãos de origem única, método filtrado e espresso no centro da cidade.">
+<meta name="theme-color" content="#fbf6f0">
+<link rel="preload" href="fonts/instrument-serif-italic-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/instrument-serif-normal-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/inter-normal-400-500.woff2" as="font" type="font/woff2" crossorigin>
+<meta property="og:title" content="Torra Lenta — café torrado devagar">
+<meta property="og:description" content="Torrefação e cafeteria de café especial, em lotes de 5 kg.">
+<link rel="preload" href="xicara.webp" as="image" fetchpriority="high">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='12' fill='%23c44323'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="fonts/fonts.css">
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="estilo.css?v=3">
+<script type="module" src="app.js?v=3"></script>
+</head>
+<body>
+<a class="pular" href="#conteudo">Pular para o conteúdo</a>
+
+<header class="topo" id="topo">
+  <a class="marca" href="#inicio" aria-label="Torra Lenta, início">Torra Lenta</a>
+  <nav aria-label="Principal">
+    <ul>
+      <li><a href="#colecao">Cafés</a></li>
+      <li><a href="#torra">A torra</a></li>
+      <li><a href="#ritual">Ritual</a></li>
+      <li><a href="#contato">Visite</a></li>
+    </ul>
+  </nav>
+  <a class="topo-cta" href="#contato">Reservar degustação</a>
+</header>
+
+<main id="conteudo">
+  <section class="hero" id="inicio" aria-labelledby="hero-titulo">
+    <div class="hero-texto">
+      <p class="hero-local">Torrefação e cafeteria · Centro</p>
+      <h1 id="hero-titulo">
+        <span class="linha-mask"><span class="linha" style="--i:0">Café que espera</span></span>
+        <span class="linha-mask"><span class="linha" style="--i:1"><em>o tempo certo.</em></span></span>
+      </h1>
+      <p class="hero-sub">Torramos em lotes de 5 kg, devagar, para cada grão chegar à xícara com o doce que a pressa queima.</p>
+      <div class="hero-acoes">
+        <a class="botao" href="#colecao">Ver os cafés</a>
+        <a class="link-seta" href="#torra">Como torramos <span aria-hidden="true">→</span></a>
+      </div>
+    </div>
+    <figure class="hero-midia">
+      <img class="hero-poster" src="xicara.webp" width="920" height="1150" alt="Xícara de cerâmica terracota com espresso e crema, sobre pires creme" fetchpriority="high" decoding="async">
+      <figcaption class="hero-legenda">Espresso da casa · cerâmica feita à mão</figcaption>
+    </figure>
+    <ul class="hero-fatos" aria-label="Resumo">
+      <li><strong>Lotes de 5 kg</strong> torrados toda terça</li>
+      <li><strong>Origem única</strong> cinco fazendas no balcão</li>
+      <li><strong>Moído na hora</strong> para cada xícara</li>
+    </ul>
+  </section>
+
+  <section class="manifesto" aria-label="Manifesto">
+    <p class="manifesto-texto">A gente não tem pressa. Escolhemos cada lote na prova, torramos olhando o grão e só servimos depois que ele descansa. O resultado é um café que você bebe sem açúcar e lembra no fim da tarde.</p>
+  </section>
+
+  <section class="colecao" id="colecao" aria-labelledby="colecao-titulo">
+    <div class="colecao-cab">
+      <h2 id="colecao-titulo">Cinco origens, <em>um balcão</em></h2>
+      <p>O cardápio muda com a safra. Estes são os lotes desta estação.</p>
+    </div>
+    <div class="trilho-janela">
+      <ol class="trilho" role="list">
+        <li class="item"><div class="item-midia lote" style="--c1:#e9b77e;--c2:#9a5a2c"><span class="lote-n">01</span><span class="lote-dados">1.250 m · natural · torra clara</span></div><h3>Mantiqueira, MG</h3><p>Mel, laranja e um final de chá preto. O nosso filtrado da manhã.</p></li>
+        <li class="item"><div class="item-midia lote" style="--c1:#c98a52;--c2:#5c3218"><span class="lote-n">02</span><span class="lote-dados">1.100 m · cereja descascado · média</span></div><h3>Cerrado Mineiro</h3><p>Chocolate ao leite e castanha. Feito para o espresso e o cappuccino.</p></li>
+        <li class="item"><div class="item-midia lote" style="--c1:#e3a07a;--c2:#8a3b26"><span class="lote-n">03</span><span class="lote-dados">1.300 m · fermentado · clara</span></div><h3>Chapada Diamantina, BA</h3><p>Frutas vermelhas e acidez viva. Peça no coado, sem pressa.</p></li>
+        <li class="item"><div class="item-midia lote" style="--c1:#f0c99a;--c2:#a86a3a"><span class="lote-n">04</span><span class="lote-dados">1.400 m · lavado · clara</span></div><h3>Caparaó, ES</h3><p>Floral, jasmim e limão-siciliano. O mais delicado da casa.</p></li>
+        <li class="item"><div class="item-midia lote" style="--c1:#b07448;--c2:#3e2010"><span class="lote-n">05</span><span class="lote-dados">1.050 m · natural · média-escura</span></div><h3>Sul de Minas</h3><p>Caramelo e rapadura. Corpo denso, bom com leite vaporizado.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="escura" id="numeros" aria-labelledby="numeros-titulo">
+    <h2 id="numeros-titulo">Do grão à xícara <em>em sete dias.</em></h2>
+    <ul class="numeros" aria-label="Números da torra">
+      <li><span class="num" data-n="7" data-suf=" dias">7 dias</span> do torrador ao balcão, nunca mais que isso</li>
+      <li><span class="num" data-n="5" data-suf=" kg">5 kg</span> por lote, para torrar olhando cada grão</li>
+      <li><span class="num" data-n="92" data-suf=" °C">92 °C</span> na água do coado, medida a cada preparo</li>
+    </ul>
+  </section>
+
+  <section class="passos" id="torra" aria-labelledby="passos-titulo">
+    <h2 id="passos-titulo">Como <em>torramos</em></h2>
+    <ul class="passos-lista">
+      <li><h3>Provar</h3><p>Cada lote passa por prova às cegas antes de entrar na casa. Se não surpreende, não entra.</p></li>
+      <li><h3>Torrar devagar</h3><p>Curva longa e fogo baixo: o açúcar do grão carameliza em vez de queimar.</p></li>
+      <li><h3>Descansar</h3><p>Dois dias de repouso para o gás sair e o sabor assentar antes de moer.</p></li>
+      <li><h3>Servir</h3><p>Moído na hora, pesado na balança e preparado do jeito que cada origem pede.</p></li>
+    </ul>
+  </section>
+
+  <!-- RITUAL: pin + scrub de sequência (60 quadros renderizados da própria cena 3D). Sem JS ou com movimento reduzido, vira lista + imagem. -->
+  <section class="ritual" id="ritual" aria-labelledby="ritual-titulo">
+    <div class="ritual-palco">
+      <div class="ritual-texto">
+        <p class="ritual-rotulo">O ritual do espresso</p>
+        <h2 id="ritual-titulo">Trinta segundos <em>que levaram sete dias.</em></h2>
+        <ol class="ritual-passos">
+          <li class="ritual-passo"><span class="ritual-n" aria-hidden="true">01</span><div><h3>Moer na hora</h3><p>18 g de café, moagem fina, só quando o pedido chega. Café moído perde aroma em minutos.</p></div></li>
+          <li class="ritual-passo"><span class="ritual-n" aria-hidden="true">02</span><div><h3>Extrair</h3><p>9 bar de pressão por cerca de 27 segundos, até 36 g na xícara. A balança decide, não o relógio.</p></div></li>
+          <li class="ritual-passo"><span class="ritual-n" aria-hidden="true">03</span><div><h3>Deixar o vapor baixar</h3><p>Espere um minuto. Entre 60 e 65 °C, o doce e a acidez aparecem; quente demais, só se sente o amargo.</p></div></li>
+          <li class="ritual-passo"><span class="ritual-n" aria-hidden="true">04</span><div><h3>Olhar a crema</h3><p>Cor de avelã, com rajadas mais escuras. É o sinal de grão fresco e torra no ponto.</p></div></li>
+        </ol>
+        <div class="ritual-barra" aria-hidden="true"><span></span></div>
+      </div>
+      <figure class="ritual-midia">
+        <img class="ritual-img" src="ritual/q-00.webp" width="640" height="640" loading="lazy" decoding="async" alt="Xícara de espresso girando sobre o pires; a câmera sobe até mostrar a crema de cima">
+        <canvas class="ritual-canvas" width="640" height="640" aria-hidden="true"></canvas>
+      </figure>
+    </div>
+  </section>
+
+  <section class="contato" id="contato" aria-labelledby="contato-titulo">
+    <h2 id="contato-titulo">Venha pela <em>xícara.</em></h2>
+    <div class="contato-grade">
+      <div><p class="contato-rotulo">Endereço</p><p>Rua das Acácias, 120 · Centro</p></div>
+      <div><p class="contato-rotulo">Horário</p><p>Ter a sáb, 8h às 19h<br>Dom, 9h às 14h</p></div>
+      <div class="contato-acao"><a class="botao botao-grande" href="mailto:ola@torralenta.example?subject=Degusta%C3%A7%C3%A3o">Reservar degustação</a><p class="contato-nota">Sábados às 10h, até 6 pessoas.</p></div>
+    </div>
+  </section>
+</main>
+
+<footer class="rodape">
+  <p class="rodape-marca" aria-hidden="true">Torra Lenta</p>
+  <div class="rodape-linha"><p>© 2026 Torra Lenta</p><p>Site de teste da skill site-premium-ux-ui: marca, endereço e cardápio fictícios. Xícara 3D modelada em código.</p></div>
+</footer>
+</body>
+</html>

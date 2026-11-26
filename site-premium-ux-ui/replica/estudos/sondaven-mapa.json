@@ -1,0 +1,133 @@
+{
+ "H": 33203,
+ "secs": [
+  {
+   "c": "section theme_on-color clip",
+   "tag": "SECTION",
+   "top": 0,
+   "h": 3600,
+   "pos": "static",
+   "bg": "rgba(0, 0, 0, 0)"
+  },
+  {
+   "c": "section bg-light theme_on-dark",
+   "tag": "SECTION",
+   "top": 3600,
+   "h": 900,
+   "pos": "static",
+   "bg": "rgb(44, 40, 36)"
+  },
+  {
+   "c": "section bg-light theme_on-light",
+   "tag": "SECTION",
+   "top": 4859,
+   "h": 1998,
+   "pos": "static",
+   "bg": "rgb(168, 148, 116)"
+  },
+  {
+   "c": "section bg-light theme_on-dark",
+   "tag": "SECTION",
+   "top": 6857,
+   "h": 1999,
+   "pos": "static",
+   "bg": "rgb(44, 40, 36)"
+  },
+  {
+   "c": "section",
+   "tag": "SECTION",
+   "top": 8991,
+   "h": 8424,
+   "pos": "static",
+   "bg": "rgba(0, 0, 0, 0)"
+  },
+  {
+   "c": "section",
+   "tag": "SECTION",
+   "top": 17055,
+   "h": 1486,
+   "pos": "static",
+   "bg": "rgba(0, 0, 0, 0)"
+  },
+  {
+   "c": "section bg-light",
+   "tag": "SECTION",
+   "top": 18541,
+   "h": 1964,
+   "pos": "static",
+   "bg": "rgb(168, 148, 116)"
+  },
+  {
+   "c": "section bg-light theme_on-dark",
+   "tag": "SECTION",
+   "top": 20504,
+   "h": 1051,
+   "pos": "static",
+   "bg": "rgb(44, 40, 36)"
+  },
+  {
+   "c": "section bg-light theme_on-dark",
+   "tag": "SECTION",
+   "top": 21555,
+   "h": 1172,
+   "pos": "static",
+   "bg": "rgb(44, 40, 36)"
+  },
+  {
+   "c": "section bg-light theme_on-dark",
+   "tag": "SECTION",
+   "top": 22727,
+   "h": 1325,
+   "pos": "static",
+   "bg": "rgb(44, 40, 36)"
+  },
+  {
+   "c": "section bg-light theme_on-dark",
+   "tag": "SECTION",
+   "top": 24052,
+   "h": 1328,
+   "pos": "static",
+   "bg": "rgb(44, 40, 36)"
+  },
+  {
+   "c": "section",
+   "tag": "SECTION",
+   "top": 25379,
+   "h": 1243,
+   "pos": "static",
+   "bg": "rgba(0, 0, 0, 0)"
+  },
+  {
+   "c": "section bg-light theme_on-dark clip",
+   "tag": "SECTION",
+   "top": 26623,
+   "h": 1216,
+   "pos": "static",
+   "bg": "rgb(44, 40, 36)"
+  },
+  {
+   "c": "section theme_on-color",
+   "tag": "SECTION",
+   "top": 27839,
+   "h": 1800,
+   "pos": "static",
+   "bg": "rgba(0, 0, 0, 0)"
+  },
+  {
+   "c": "section bg-light theme_on-dark",
+   "tag": "SECTION",
+   "top": 29639,
+   "h": 1764,
+   "pos": "static",
+   "bg": "rgb(44, 40, 36)"
+  },
+  {
+   "c": "section bg-light theme_on-dark",
+   "tag": "SECTION",
+   "top": 31403,
+   "h": 1800,
+   "pos": "static",
+   "bg": "rgb(44, 40, 36)"
+  }
+ ]
+}

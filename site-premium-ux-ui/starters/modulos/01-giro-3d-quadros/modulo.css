@@ -1,0 +1,10 @@
+/* Giro por quadros. Alturas medidas em OLEA (giro 900vh no site inteiro) e BRUMA (hero 400vh): o palco é sticky de 100vh. */
+.giro { position: relative; height: 400vh; }
+.giro-palco { position: sticky; top: 0; height: 100vh; overflow: hidden; display: grid; place-items: center; }
+.giro-titulo { position: absolute; left: 6vw; top: 12vh; z-index: 2; font: 700 max(28px, 3.55vw)/1 var(--f, sans-serif); text-transform: uppercase; letter-spacing: -.01em; }
+/* OLEA: canvas quadrado de 47vw (900x900 de origem) centrado em 54,4vh; no celular 120vw, cortado pelas bordas. */
+.giro-quadros, .giro-poster { grid-area: 1 / 1; width: 47vw; aspect-ratio: 1; height: auto; margin-top: 8vh; }
+.giro-quadros[hidden] { display: none; }
+.giro.pronto .giro-poster { display: none; }
+@media (max-width: 860px) { .giro-quadros, .giro-poster { width: 120vw; max-width: none; } .giro-titulo { font-size: 7.6vw; top: 9vh; } }
+@media (prefers-reduced-motion: reduce) { .giro { height: auto; } .giro-palco { position: static; height: auto; min-height: 80vh; } }

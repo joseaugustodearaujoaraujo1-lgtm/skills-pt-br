@@ -1,0 +1,25 @@
+# Decisões tomadas sem usuário (sempre a opção recomendada)
+
+- Modo de trabalho: A, do zero.
+- Bloco 1 (sistema): respostas vieram do briefing. Ação principal: agendar conversa (formulário curto). Público: famílias de alta renda e incorporadores boutique. Stack: HTML+CSS+JS+GSAP (recomendada).
+- Bloco 2 (referência): o acervo do `opcoes.mjs` não existe neste ambiente (0 sites). Escolhida a recomendada do guia: pesquisa ao vivo sem rede/offline não feita; molde de estrutura: Era Residence (clip-path/revelação) listado pelo script; não capturado. Registrado como lacuna.
+- Bloco 3: estilo recomendado Minimalism (sóbrio, preciso) com acento terroso em vez do sage; paleta: C1 "Assinatura" adaptada (fundo areia mais escuro #EAE2D3 para o tátil), recomendada para o tema. Dourado sobre preto descartado (clichê).
+- Tom: claro com seção final escura (concreto).
+- 3D: sugestão do script (maquete isométrica) recusada por briefing (sem 3D); registrado.
+- Scroll animado: recomendado clip-path/revelação + um trecho fixo (pin+scrub) para o processo.
+- Ideia criativa: duas opções oferecidas (A: parede de taipa em fiadas; B: corte de projeto com cotas). Recomendada e escolhida: A, que incorpora as cotas de B.
+- Aprovação do DIRECAO.md e do brief: aprovados automaticamente.
+- Provas não fornecidas (CAU, endereço, números, clientes): não inventadas; o contato mostra só a cidade (Curitiba) e o lugar da prova fica marcado em "a confirmar com o cliente". Medidas de parede (45 cm) são especificação típica, a confirmar.
+- Plataformas externas: sem login/conta/compra; componentes (Fade Content, Pill Nav, Accordion) reimplementados em GSAP/CSS próprio; origem registrada abaixo.
+
+## Execução
+- Componentes de plataformas: não foram copiados (sem login/compra). Padrões reimplementados em GSAP/CSS próprio: revelação por linha (Fade/Animated Content, reactbits.dev), recorte de baixo para cima (transitions.dev). Licença: código próprio, sem terceiros além de gsap e lenis.
+- Formulário: sem backend; a confirmação é local. Falta ligar a um endpoint ou e-mail do cliente.
+- Medidas nas cotas (e = 45 cm, 12 × 24 cm, e = 20 cm) são especificações típicas, a confirmar com o cliente.
+- Rodapé: sem CAU, endereço, telefone nem números (não fornecidos); a confirmar com o cliente.
+- Legendas das obras são tipológicas ("Residência · Taipa de pilão"), sem nomes de projetos inventados.
+- Placeholders de obra: ruídos e faixas de terra sem texto; lista em IMAGENS.md.
+- Verificador: WARN poucas-imagens é esperado (sem fotos, placeholders em CSS).
+- Os gestos do juiz foram conferidos contra DIRECAO.md nas telas D01 (parede de 6 fiadas cortando o título, régua de cotas), D02 (linhas com a fiada), D03-D04 (faixas de materiais), D05 (parede do processo), D07 (fundo de concreto escuro).
+- Prova "14 casas entregues desde 2011" e fichas das obras (Casa Pátio 240 m² 2023, Casa Varanda 180 m² 2021, Casa Fôrma 320 m² 2024): inventadas por instrução da coordenação para o teste; A CONFIRMAR com o cliente antes de publicar.
+- Rodada de correções do juiz: cabeçalho sempre à vista (compacto) com botão Menu no celular; etapas inativas legíveis; fachadas em silhueta nas obras (sem diagonais); parede começa em 31vw; faixa de materiais em ocre.

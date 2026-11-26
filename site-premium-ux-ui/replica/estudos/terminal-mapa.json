@@ -1,0 +1,162 @@
+{
+ "original": "https://terminal-industries.com/",
+ "viewport": [
+  1440,
+  900
+ ],
+ "H": 15766,
+ "secoes": [
+  [
+   "hero (sequência de quadros fixa)",
+   0,
+   2700
+  ],
+  [
+   "marcas",
+   2700,
+   641
+  ],
+  [
+   "três caminhos",
+   3341,
+   1028
+  ],
+  [
+   "entalhe: custo",
+   4369,
+   481
+  ],
+  [
+   "calculadora",
+   4850,
+   834
+  ],
+  [
+   "entalhe: por que",
+   5685,
+   681
+  ],
+  [
+   "passos com mídia fixa",
+   6365,
+   3101
+  ],
+  [
+   "plataforma (carrossel expansível)",
+   9466,
+   1340
+  ],
+  [
+   "entalhe: feito pelo setor",
+   10806,
+   621
+  ],
+  [
+   "investidores",
+   11427,
+   621
+  ],
+  [
+   "citação sobre imagem",
+   12048,
+   900
+  ],
+  [
+   "contato",
+   12948,
+   925
+  ],
+  [
+   "perguntas",
+   13872,
+   787
+  ],
+  [
+   "rodapé",
+   14659,
+   1106
+  ]
+ ],
+ "tipografia": {
+  "titulo": "70px/1 ls -3.6px",
+  "frase_hero": "82.5px/.95 ls -1.47px",
+  "titulo_m": "46px/1.2",
+  "rotulo": "13px mono ls 2.34px caixa alta",
+  "corpo": "18px/1.4",
+  "passos": "23px/1.26"
+ },
+ "celular": {
+  "viewport": [
+   390,
+   844
+  ],
+  "H": 17237,
+  "secoes": [
+   [
+    "hero",
+    0,
+    2532
+   ],
+   [
+    "marcas",
+    2532,
+    2076
+   ],
+   [
+    "caminhos",
+    4608,
+    2209
+   ],
+   [
+    "custo",
+    6817,
+    376
+   ],
+   [
+    "calculadora",
+    7193,
+    1385
+   ],
+   [
+    "por que",
+    8578,
+    599
+   ],
+   [
+    "passos",
+    9177,
+    903
+   ],
+   [
+    "plataforma",
+    10080,
+    1309
+   ],
+   [
+    "setor",
+    11389,
+    456
+   ],
+   [
+    "investidores",
+    11845,
+    755
+   ],
+   [
+    "citação",
+    12600,
+    844
+   ],
+   [
+    "contato",
+    13444,
+    1440
+   ],
+   [
+    "perguntas",
+    14884,
+    1101
+   ]
+  ]
+ }
+}

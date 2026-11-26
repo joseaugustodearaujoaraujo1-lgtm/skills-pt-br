@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Módulo 1 · Giro de objeto 3D por quadros</title>
+<meta name="description" content="Exemplo mínimo do módulo giro por quadros: a rolagem gira um disco desenhado em 36 quadros.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='12' fill='%23b4552f'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="app.css">
+<script type="module" src="app.js"></script>
+</head>
+<body>
+<a class="pular" href="#conteudo">Pular para o conteúdo</a>
+<main id="conteudo">
+  <header class="intro">
+    <h1>Role para girar a peça.</h1>
+    <p>O disco abaixo não é 3D em tempo real: são 36 imagens trocadas conforme a rolagem. Leve, nítido e igual em todo aparelho.</p>
+  </header>
+
+  <section class="giro" id="giro" data-quadros="36" data-caminho="img/giro/{n}.webp" data-curva="linear" aria-labelledby="t-giro">
+    <div class="giro-palco">
+      <h2 class="giro-titulo" id="t-giro">Disco de teste</h2>
+      <img class="giro-poster" src="img/giro/00.webp" width="600" height="600" alt="Disco terracota visto de frente, com um triângulo claro no centro">
+      <canvas class="giro-quadros" width="600" height="600" aria-hidden="true" hidden></canvas>
+    </div>
+  </section>
+
+  <section class="fecho"><h2>Fim do giro.</h2><p>Depois do trecho fixo a página continua normalmente.</p></section>
+</main>
+</body>
+</html>

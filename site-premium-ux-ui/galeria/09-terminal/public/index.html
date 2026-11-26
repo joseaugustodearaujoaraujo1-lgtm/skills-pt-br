@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CAIS · o sistema operacional do pátio de cargas</title>
+<meta name="description" content="A CAIS usa visão computacional e IA para transformar o pátio entre o portão e a doca num sistema conectado e automatizado.">
+<meta name="theme-color" content="#0B1E2D">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23FF8A1F'/%3E%3Cpath d='M16 44V20h12M36 44V20h12M16 32h32' stroke='%230B1E2D' stroke-width='6' fill='none'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="fonts/fonts.css">
+<link rel="preload" href="fonts/inter-tight-normal-400-600.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="estilo.css?v=1">
+</head>
+<body>
+<a class="pular" href="#conteudo">Pular para o conteúdo</a>
+
+<div class="carregando" aria-hidden="true"><div class="c-alto"></div><div class="c-baixo"></div><svg class="c-marca" viewBox="0 0 120 28"><path d="M2 26V2h10M18 26V2h10M2 14h26" fill="none" stroke="currentColor" stroke-width="4"/><text x="38" y="22" font-size="22" font-weight="600" font-family="Inter Tight, sans-serif" fill="currentColor">CAIS</text></svg></div>
+
+<header class="topo">
+  <div class="topo-pilula">
+    <a class="logo" href="#conteudo" aria-label="CAIS, início"><svg viewBox="0 0 112 26" aria-hidden="true"><rect width="26" height="26" rx="6" fill="currentColor"/><path d="M7 20V6h5M15 20V6h5M7 13h13" fill="none" stroke="#FF8A1F" stroke-width="3"/><text x="34" y="20" font-size="19" font-weight="600" font-family="Inter Tight, sans-serif" fill="currentColor" letter-spacing="-.4">CAIS</text></svg></a>
+    <nav aria-label="Principal">
+      <ul>
+        <li><a href="#porque">Sistema<i aria-hidden="true"></i></a></li>
+        <li><a href="#passos">Equipes<i aria-hidden="true"></i></a></li>
+        <li><a href="#plataforma">Destaques<i aria-hidden="true"></i></a></li>
+        <li><a href="#perguntas">Conteúdos<i aria-hidden="true"></i></a></li>
+        <li><a href="#setor">Sobre</a></li>
+      </ul>
+    </nav>
+    <div class="topo-bts">
+      <a class="bt-topo destaque" href="#plataforma"><span>Conhecer</span><span>produto</span></a>
+      <a class="bt-topo" href="#contato"><span>Pedir</span><span>demo</span></a>
+      <a class="bt-topo" href="#contato"><span>Fale</span><span>conosco</span></a>
+    </div>
+    <button class="menu-bt" type="button" aria-expanded="false" aria-controls="menu-cel" aria-label="Abrir menu"><i></i><i></i></button>
+  </div>
+</header>
+<div class="menu-cel" id="menu-cel" hidden>
+  <ul><li><a href="#porque">Sistema</a></li><li><a href="#passos">Equipes</a></li><li><a href="#plataforma">Destaques</a></li><li><a href="#perguntas">Conteúdos</a></li><li><a href="#setor">Sobre</a></li></ul>
+  <a class="bt-cheio" href="#contato">Pedir demo</a>
+</div>
+
+<main id="conteudo">
+  <!-- 1. hero: sequência de imagens presa à rolagem e três frases que se escrevem -->
+  <section class="hero" data-rolagem="1800" aria-label="Apresentação">
+    <div class="hero-fixo">
+      <div class="hero-quadros" aria-hidden="true">
+        <img class="hq hq1" src="img/hero-1.webp" width="1920" height="1200" fetchpriority="high" alt="">
+        <img class="hq hq2" src="img/hero-2.webp" width="1920" height="1200" alt="">
+        <img class="hq hq3" src="img/hero-3.webp" width="1920" height="1200" alt="">
+        <canvas class="gemeo"></canvas>
+      </div>
+      <p class="rolar" aria-hidden="true">Role para explorar</p>
+      <h1 class="frase f1">Reinventamos o futuro da logística a partir do pátio.</h1>
+      <p class="frase f2" aria-hidden="true">Tecnologia nativa de IA que transforma o espaço entre o seu portão e a sua doca...</p>
+      <p class="frase f3" aria-hidden="true">em um só sistema conectado e automatizado.</p>
+    </div>
+  </section>
+
+  <!-- 2. marcas -->
+  <section class="marcas" aria-labelledby="t-marcas">
+    <h2 id="t-marcas" class="titulo-g">Movendo os pátios por trás das marcas que você conhece</h2>
+    <ul class="grade-logos" data-logos="Rodosul|Frio Norte|Cargas Tupi|Atacado Brisa|Via Norte|Armazéns Ipê|Porto Vivo|Agro Pampa|Maremar|Translitoral|Laticínios Serra|Depósito Central|Pneus Sertão|Moda Aroeira|Bebidas Ipanema|Eletro Caju|Papel Jatobá|Farma Brisa"></ul>
+  </section>
+
+  <!-- 3. três caminhos -->
+  <section class="caminhos" aria-labelledby="t-caminhos">
+    <h2 id="t-caminhos" class="titulo-g">Resolva hoje um problema do pátio. Cresça no seu ritmo.</h2>
+    <div class="cards">
+      <article class="card"><p class="rotulo">01 Começo rápido</p><h3>Resolva um problema do pátio</h3><p>Portão, segurança, doca: comece pelo único problema que mais atrasa o seu pátio hoje. Entre no ar em dias, com pouca interrupção e baixo custo.</p><img src="img/card-1.webp" width="668" height="416" loading="lazy" alt="Vista aérea de um porto de contêineres às margens de um rio"><a class="bt-pilula" href="#contato">Resolver agora</a></article>
+      <article class="card"><p class="rotulo">02 Um pátio em crescimento</p><h3>Tenho alguns pátios para otimizar</h3><p>Comece por um pátio, prove o valor e leve para os outros no seu tempo. Sem compromisso de plataforma para começar.</p><img src="img/card-2.webp" width="668" height="416" loading="lazy" alt="Terminal portuário visto do alto, com pilhas de contêineres"><a class="bt-pilula" href="#contato">Saiba mais</a></article>
+      <article class="card c-largo"><p class="rotulo">03 Rede de pátios</p><h3>Opero uma rede de pátios</h3><p>Uma torre de controle para todos os pátios, com a análise e a orquestração para comandar a operação inteira numa só tela.</p><img src="img/card-3.webp" width="690" height="432" loading="lazy" alt="Porto e pátio de contêineres vistos de avião"><a class="bt-pilula" href="#contato">Um sistema para todos</a></article>
+    </div>
+  </section>
+
+  <!-- 4. calculadora -->
+  <section class="entalhe custo" aria-labelledby="t-custo">
+    <p class="rotulo-c">Calculadora de eficiência</p>
+    <h2 id="t-custo" class="titulo-g">Quanto o seu pátio está custando?</h2>
+  </section>
+  <section class="calculadora" aria-label="Calculadora de economia">
+    <form class="calc-form" data-semanas="52" data-horas="8" data-fator-mao=".55" data-fator-manobra=".42" data-multa-base="4" data-multa-por="2.1" onsubmit="return false">
+      <p class="calc-rotulo">Calculadora</p>
+      <h3>Conte sobre o seu pátio:</h3>
+      <div class="campos">
+        <label>Número de portões<input type="number" name="portoes" value="2" min="1"></label>
+        <label>Turnos por dia<input type="number" name="turnos" value="3" min="1" max="4"></label>
+        <label>Dias de operação por semana<input type="number" name="dias" value="6" min="1" max="7"></label>
+        <label>Manobristas por turno<input type="number" name="manobristas" value="3" min="0"></label>
+        <label class="largo">Entradas por dia<input type="number" name="entradas" value="45" min="0"></label>
+        <label class="largo">Custo médio da hora de trabalho<span class="moeda">R$</span><input type="number" name="hora" value="28" min="0"></label>
+        <label class="largo faixa">Qual o peso das multas por atraso e sobre-estadia?<input type="range" name="multas" value="5" min="1" max="10"><span class="marcas-faixa"><span>1 · baixo</span><span>5 · médio</span><span>10 · alto</span></span></label>
+      </div>
+    </form>
+    <div class="calc-resultado">
+      <p class="r-titulo">Com a CAIS <span>seu pátio economiza</span></p>
+      <p class="r-total">R$ <b data-r="total">0</b></p>
+      <p class="r-perc">Economia estimada: <b>23%</b></p>
+      <p class="r-sub">Economia anual estimada por categoria:</p>
+      <dl>
+        <div><dt>Mão de obra <span>(portão, tráfego, despacho, conferência)</span></dt><dd>R$ <b data-r="mao">0</b></dd></div>
+        <div><dt>Manobras <span>(motoristas e locação de cavalos)</span></dt><dd>R$ <b data-r="manobra">0</b></dd></div>
+        <div><dt>Atraso e sobre-estadia</dt><dd>R$ <b data-r="multa">0</b></dd></div>
+      </dl>
+      <form class="r-mais" onsubmit="event.preventDefault(); this.querySelector('button').textContent = 'Enviado';">
+        <p class="r-mais-t">Quer saber mais?</p>
+        <p>Deixe seu e-mail de trabalho e enviamos uma análise de retorno feita para o seu pátio.</p>
+        <div class="r-linha"><label class="sr" for="r-email">E-mail de trabalho</label><input id="r-email" type="email" placeholder="nome@empresa.com.br" required><button type="submit">Enviar</button></div>
+      </form>
+    </div>
+  </section>
+
+  <!-- 5. por que -->
+  <section class="entalhe porque" id="porque" aria-labelledby="t-porque">
+    <p class="rotulo-c">Por que a CAIS</p>
+    <h2 id="t-porque" class="titulo-g">Conheça o Sistema Operacional de Pátio da CAIS</h2>
+    <p class="texto-c">O Sistema Operacional de Pátio (SOP) usa visão computacional e decisões autônomas para transformar pátios caóticos, operados à mão, em ambientes logísticos que se acompanham sozinhos e entendem o que acontece. Os principais ganhos:</p>
+  </section>
+
+  <!-- 6. passos com mídia fixa -->
+  <section class="passos" id="passos" data-inicio="5700" data-passo="900" aria-label="O que o sistema faz">
+    <div class="passos-dentro">
+      <ol class="passos-lista">
+        <li><h3>Orquestre a operação do pátio</h3><p>A visão computacional automatiza entrada, localização e validação do portão à doca: até 50% mais vazão e portões 85% mais rápidos.</p></li>
+        <li><h3>Monte o sistema que você precisa</h3><p>Comece pelos módulos de que mais precisa e amplie conforme a operação fica mais complexa. No ar em 5 dias, com pouco esforço de TI e sem aparelhos de terceiros.</p></li>
+        <li><h3>Elimine trabalho desnecessário</h3><p>Fluxos automáticos acabam com a mão de obra no portão, no despacho e na conferência do pátio, e deixam a doca mais eficiente.</p></li>
+        <li><h3>Retorno rápido</h3><p>Tudo incluído, cobrado como serviço. Retorno medido em meses, sem investimento em capital.</p></li>
+      </ol>
+      <div class="passos-midia" aria-hidden="true">
+        <img src="img/passo-1.webp" width="1000" height="1194" alt="">
+        <img src="img/passo-2.webp" width="1000" height="1194" alt="">
+        <img src="img/passo-3.webp" width="1000" height="1194" alt="">
+        <img src="img/passo-4.webp" width="1000" height="1194" alt="">
+        <canvas class="gemeo-passo"></canvas>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. carrossel expansível -->
+  <section class="plataforma" id="plataforma" aria-labelledby="t-plataforma">
+    <p class="rotulo-c">Plataforma</p>
+    <h2 id="t-plataforma" class="titulo-m"><span class="apagado">Uma plataforma modular,</span> possibilidades infinitas</h2>
+    <p class="texto-c">Monte o seu Sistema Operacional de Pátio um módulo de cada vez. Do portão à doca, use o que precisa agora e amplie para automatizar fluxos, aumentar a produtividade e ter visibilidade total de cada ativo e de cada movimento no pátio.</p>
+    <div class="abas" role="tablist" aria-label="Áreas do pátio">
+      <button role="tab" aria-selected="true" data-i="0">No portão</button><button role="tab" aria-selected="false" data-i="1">No pátio</button><button role="tab" aria-selected="false" data-i="2">Na doca</button><button role="tab" aria-selected="false" data-i="3">Em toda a operação</button>
+    </div>
+    <div class="setas"><button type="button" class="seta ant" aria-label="Anterior">‹</button><button type="button" class="seta prox" aria-label="Próximo">›</button></div>
+    <ul class="slides" data-passo="600">
+      <li class="slide ativo"><img src="img/slide-1.webp" width="1400" height="1140" loading="lazy" alt="Portão de entrada de um centro de distribuição com caminhão parado"><div class="s-txt"><p class="rotulo">No portão</p><h3>Automatize e agilize as operações do portão</h3><p class="s-desc">O sistema automatiza a entrada e a saída. A visão computacional acelera o portão, reduz a digitação, diminui o trabalho manual e, integrada ao seu TMS, controla as chegadas e emite os documentos sem papel.</p><a class="bt-pilula claro" href="#contato">Mais</a></div></li>
+      <li class="slide"><img src="img/slide-2.webp" width="1000" height="1250" loading="lazy" alt="Guindastes de contêineres iluminados à noite"><div class="s-txt"><p class="rotulo">No pátio</p><h3>Visibilidade em tempo real e fluxos automáticos</h3><p class="s-desc">Cada carreta localizada no mapa do pátio, com tarefas de manobra criadas sozinhas e enviadas ao manobrista certo.</p><a class="bt-pilula claro" href="#contato">Mais</a></div></li>
+      <li class="slide"><img src="img/slide-3.webp" width="1000" height="1250" loading="lazy" alt="Fileira de docas de carga num armazém"><div class="s-txt"><p class="rotulo">Na doca</p><h3>Doca certa, na hora certa</h3><p class="s-desc">Agendamento e ocupação das docas em tempo real, com a fila do pátio ordenada pela prioridade da carga.</p><a class="bt-pilula claro" href="#contato">Mais</a></div></li>
+      <li class="slide"><img src="img/slide-4.webp" width="1000" height="1250" loading="lazy" alt="Porto visto do alto ao longo de um rio"><div class="s-txt"><p class="rotulo">Em toda a operação</p><h3>Uma torre de controle para a rede</h3><p class="s-desc">Indicadores de todos os pátios numa só tela, com comparação entre unidades e alertas antes do problema.</p><a class="bt-pilula claro" href="#contato">Mais</a></div></li>
+    </ul>
+  </section>
+
+  <!-- 8. feito pelo setor + investidores -->
+  <section class="entalhe setor" id="setor" aria-labelledby="t-setor">
+    <p class="rotulo-c">Feito pelo setor</p>
+    <h2 id="t-setor" class="titulo-g">Criado por líderes da logística por um novo padrão no pátio</h2>
+  </section>
+  <section class="investidores" aria-label="Investidores e parceiros">
+    <ul class="grade-inv"><li>Capital Ipê</li><li>Rodosul</li><li>Frio Norte</li><li>Parque Logístico Tietê</li><li>Cargas Tupi</li></ul>
+  </section>
+
+  <!-- 9. citação sobre imagem -->
+  <section class="citacao" aria-label="Depoimento">
+    <img src="img/citacao.webp" width="1920" height="1200" loading="lazy" alt="Caminhão subindo uma estrada com neve no meio da floresta">
+    <blockquote><p>“Nunca vimos esse nível de precisão em visão computacional… é um marco importante na corrida para modernizar o pátio.”</p><footer><b>Renata Albuquerque</b><span>Diretora de Novos Produtos</span><b>Rodosul Transportes</b></footer></blockquote>
+  </section>
+
+  <!-- 10. contato -->
+  <section class="contato" id="contato" aria-labelledby="t-contato">
+    <h2 id="t-contato" class="titulo-g">Fale com a gente e <span class="verde">retornamos</span> <span class="cinza">no mesmo dia, do seu jeito</span></h2>
+    <div class="contato-grade">
+      <div class="contato-txt">
+        <p>Preencha o formulário e vamos adorar mostrar como a CAIS pode ajudar no seu pátio do futuro:</p>
+        <ul><li>Demonstração de 30 minutos</li><li>Conversa para entender a necessidade</li><li>Avaliação de retorno do pátio</li></ul>
+        <p class="confia">Quem entende confia.</p>
+        <p class="faixa-logos" aria-label="Clientes"><span>Rodosul</span><span>Frio Norte</span><span>Cargas Tupi</span><span>Atacado Brisa</span><span>Via Norte</span></p>
+      </div>
+      <form class="contato-form" onsubmit="event.preventDefault(); this.querySelector('button').textContent = 'Recebido. Retornamos hoje.';">
+        <label>Nome completo *<input required placeholder="Ana Souza"></label>
+        <label>Cargo *<input required placeholder="Gerente de operações"></label>
+        <label>Telefone *<input required type="tel" placeholder="(11) 4002-8922"></label>
+        <label>E-mail *<input required type="email" placeholder="nome@empresa.com.br"></label>
+        <label class="largo">Empresa *<input required placeholder="Sua empresa"></label>
+        <label class="largo">Como podemos ajudar? *<select required><option value="">Escolha uma opção</option><option>Quero uma demonstração</option><option>Quero calcular o retorno</option><option>Tenho uma rede de pátios</option></select></label>
+        <button type="submit" class="largo">Enviar</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- 11. perguntas -->
+  <section class="perguntas" id="perguntas" aria-labelledby="t-perguntas">
+    <div class="perg-esq"><h2 id="t-perguntas">Perguntas</h2><p>As dúvidas mais comuns de quem está começando com a CAIS.</p></div>
+    <div class="perg-dir">
+      <div class="abas" role="tablist" aria-label="Temas"><button role="tab" aria-selected="true">Tecnologia</button><button role="tab" aria-selected="false">Valor</button><button role="tab" aria-selected="false">Implantação</button><button role="tab" aria-selected="false">Operação</button></div>
+      <div class="acordeao">
+        <details><summary>O que a CAIS faz, na prática?</summary><p>Câmeras e visão computacional registram cada carreta que entra, onde ela para e para onde vai. O sistema transforma isso em tarefas, alertas e indicadores, do portão à doca.</p></details>
+        <details><summary>Qual a diferença para um sistema de gestão de pátio tradicional?</summary><p>Um sistema tradicional depende de alguém digitar o que aconteceu. A CAIS enxerga o pátio sozinha e age na hora, sem papel e sem digitação.</p></details>
+        <details><summary>O que é “IA agêntica” no contexto do pátio?</summary><p>São agentes de software que tomam decisões simples sozinhos, como chamar o manobrista certo ou reservar uma doca, e pedem ajuda quando precisam.</p></details>
+        <details><summary>Qual a precisão dos dados captados?</summary><p>Acima de 99% na leitura de placas e números de contêiner nos pátios em operação, com conferência automática das divergências.</p></details>
+        <details><summary>Dá para gerenciar vários pátios com um só login?</summary><p>Sim. A torre de controle reúne todos os pátios, com permissões por unidade e comparação entre elas.</p></details>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="rodape">
+  <div class="rod-cta"><p class="rod-frase">O pátio do futuro começa hoje.</p><a class="bt-pilula escuro" href="#contato">Assuma o controle do seu pátio</a></div>
+  <div class="rod-grade">
+    <div class="rod-marca">
+      <svg viewBox="0 0 168 37" role="img" aria-label="CAIS"><rect width="37" height="37" rx="8" fill="#FF8A1F"/><path d="M10 28V9h7M21 28V9h7M10 18h18" fill="none" stroke="#0B1E2D" stroke-width="4"/><text x="48" y="28" font-size="27" font-weight="600" font-family="Inter Tight, sans-serif" fill="#fff">CAIS</text></svg>
+      <svg class="selo" viewBox="0 0 140 32" role="img" aria-label="Guia de Mercado 2026"><rect width="140" height="32" rx="4" fill="none" stroke="#fff" stroke-opacity=".4"/><text x="12" y="21" font-size="13" font-weight="600" font-family="Inter Tight, sans-serif" fill="#fff">Guia de Mercado</text></svg>
+      <p>Guia de Mercado 2026 · Gestão de Pátios · Fornecedor em destaque</p>
+    </div>
+    <div class="rod-col"><p class="rotulo">Tecnologia</p><a href="#conteudo">Início</a><a href="#porque">Sistema Operacional de Pátio</a><a href="#passos">O pátio com IA agêntica</a><a href="#conteudo">Calculadora de eficiência</a></div>
+    <div class="rod-col"><p class="rotulo">Empresa</p><a href="#setor">Sobre</a><a href="#perguntas">Conteúdos</a><a href="#contato">Contato</a></div>
+    <div class="rod-col"><p class="rotulo">Fale conosco</p><a href="#contato">Pronto para o pátio do futuro?</a><p class="apagado">Siga a gente.</p>
+      <div class="sociais"><a href="#rodape" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="3" fill="currentColor"/><path d="M7 10v7M7 7v.5M11 17v-7M11 13c0-2 1.2-3 3-3s3 1 3 3v4" stroke="#0B1E2D" stroke-width="2"/></svg></a><a href="#rodape" aria-label="X"><svg viewBox="0 0 24 24"><path d="M4 4l16 16M20 4L4 20" stroke="currentColor" stroke-width="2.4"/></svg></a><a href="#rodape" aria-label="YouTube"><svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="4" fill="currentColor"/><path d="M10 9l5 3-5 3z" fill="#0B1E2D"/></svg></a></div>
+    </div>
+  </div>
+  <div class="rod-baixo"><p>Copyright CAIS Tecnologia de Pátios 2026. Todos os direitos reservados.</p><a href="#perguntas">Índice técnico</a></div>
+</footer>
+<script>(function(){var t=new URLSearchParams(location.search).get('tema');if(t)document.documentElement.setAttribute('data-paleta',t)})()</script>
+<script type="module" src="app.js?v=1"></script>
+</body>
+</html>

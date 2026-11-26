@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Módulo 3 · Galeria horizontal</title>
+<meta name="description" content="Exemplo mínimo do módulo galeria horizontal: trilho preso na tela que anda de lado conforme a rolagem, e faixa com arraste no celular.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='12' fill='%23b4552f'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="app.css">
+<script type="module" src="app.js"></script>
+</head>
+<body>
+<a class="pular" href="#conteudo">Pular para o conteúdo</a>
+<main id="conteudo">
+  <header class="intro"><h1>Role para andar de lado.</h1><p>Seis peças em um trilho horizontal. No computador a página fica presa enquanto o trilho passa; no celular a faixa arrasta com o dedo.</p></header>
+  <section class="galeria-h" id="galeria" aria-labelledby="t-galeria">
+    <h2 class="galeria-h-titulo" id="t-galeria">Seis peças</h2>
+    <div class="galeria-h-janela">
+      <ul class="galeria-h-trilho">
+      <li class="galeria-h-passo"><figure><img src="img/g1.webp" width="640" height="800" alt="Composição abstrata 1: círculos concêntricos e um retângulo" loading="lazy"><figcaption>Peça 01</figcaption></figure></li>
+      <li class="galeria-h-passo"><figure><img src="img/g2.webp" width="640" height="800" alt="Composição abstrata 2: círculos concêntricos e um retângulo" loading="lazy"><figcaption>Peça 02</figcaption></figure></li>
+      <li class="galeria-h-passo"><figure><img src="img/g3.webp" width="640" height="800" alt="Composição abstrata 3: círculos concêntricos e um retângulo" loading="lazy"><figcaption>Peça 03</figcaption></figure></li>
+      <li class="galeria-h-passo"><figure><img src="img/g4.webp" width="640" height="800" alt="Composição abstrata 4: círculos concêntricos e um retângulo" loading="lazy"><figcaption>Peça 04</figcaption></figure></li>
+      <li class="galeria-h-passo"><figure><img src="img/g5.webp" width="640" height="800" alt="Composição abstrata 5: círculos concêntricos e um retângulo" loading="lazy"><figcaption>Peça 05</figcaption></figure></li>
+      <li class="galeria-h-passo"><figure><img src="img/g6.webp" width="640" height="800" alt="Composição abstrata 6: círculos concêntricos e um retângulo" loading="lazy"><figcaption>Peça 06</figcaption></figure></li>
+      </ul>
+    </div>
+  </section>
+  <section class="fecho"><h2>Fim da galeria.</h2><p>A rolagem vertical volta a andar quando o trilho chega ao fim.</p></section>
+</main>
+</body>
+</html>

@@ -1,0 +1,16 @@
+{
+  "name": "mo",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "esbuild src/main.js --bundle --splitting --minify --format=esm --target=es2020 --outdir=public/js --chunk-names=[name]-[hash]",
+    "serve": "node servir.mjs 3203",
+    "imagens": "esbuild ferramentas/render-entrada.js --bundle --format=esm --outfile=ferramentas/dist/render.js && node ferramentas/gerar-imagens.mjs tudo"
+  },
+  "dependencies": {
+    "esbuild": "^0.28.2",
+    "gsap": "^3.15.1",
+    "lenis": "^1.3.27",
+    "three": "^0.187.0"
+  }
+}

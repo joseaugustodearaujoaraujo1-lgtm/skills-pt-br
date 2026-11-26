@@ -1,0 +1,17 @@
+/* Tokens de design — Maré */
+:root {
+  --bg: #F6F0E4; --surface: #FFFBF3; --surface-2: #E9E1D0; --line: rgba(13,43,51,.2);
+  --text: #0D2B33; --text-muted: #4A656C; --accent: #08707C; --accent-soft: color-mix(in oklab, #08707C 18%, var(--bg)); --on-accent: #ffffff;
+  --agua-clara: #CFE4E0;
+  --font-display: 'Bricolage Grotesque', system-ui, sans-serif; --font-body: 'Figtree', system-ui, sans-serif; --font-detail: 'DM Mono', ui-monospace, monospace;
+  --fs-h1: clamp(2.8rem, 8vw, 8.5rem); --fs-h2: clamp(2.2rem, 5.5vw, 5.5rem); --fs-h3: clamp(1.25rem, 2vw, 2rem); --fs-body: clamp(1rem, 1.1vw, 1.2rem);
+  --lh-title: 0.95; --lh-body: 1.55; --tracking-title: -0.035em;
+  --space-section: clamp(4rem, 12vw, 12rem); --gutter: clamp(1.25rem, 4vw, 4rem); --radius: 12px; --max-w: 1440px;
+  --ease-out: cubic-bezier(0.25, 1, 0.5, 1); --ease-in-out: cubic-bezier(0.76, 0, 0.24, 1);
+  --dur-micro: 200ms; --dur-reveal: 800ms; --dur-transition: 1000ms;
+  --d-bg: #061A21; --d-surface: #0F3A44; --d-line: rgba(236,243,250,.2); --d-text: #EAF4F3; --d-muted: #A9C4C6; --d-accent: #7FD6D8;
+}
+@media (prefers-reduced-motion: reduce) { :root { --dur-micro: 0ms; --dur-reveal: 0ms; --dur-transition: 0ms; } }
+html { background: var(--bg); color: var(--text); font-family: var(--font-body); line-height: var(--lh-body); }
+h1, h2, h3 { font-family: var(--font-display); line-height: var(--lh-title); letter-spacing: var(--tracking-title); font-weight: 700; margin: 0; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }

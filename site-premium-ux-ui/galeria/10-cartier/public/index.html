@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TURMALINA apresenta Gemas &amp; Maravilhas</title>
+<meta name="description" content="Uma exposição imersiva da joalheria TURMALINA: nove salas em 3D, da onça de ouro ao anel de turmalina Paraíba.">
+<meta name="theme-color" content="#e9dccb">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23c9b49a'/%3E%3Cpath d='M32 10l14 14-14 30-14-30z' fill='%2322c7c3'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="fonts/fonts.css">
+<link rel="preload" href="fonts/jost-normal-400-500.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="estilo.css?v=1">
+</head>
+<body data-limiar-roda="120" data-limiar-toque="40" data-pausa-roda="400" data-transicao="650" data-carga-ms="18">
+<canvas class="palco" aria-hidden="true"></canvas>
+<div class="veu" aria-hidden="true"></div>
+
+<div class="carregando" aria-hidden="true">
+  <p class="carga-frase"><b>A arte da metamorfose</b> está no coração da joalheria Turmalina, que, como um mágico, desafia o tempo e as aparências.</p>
+  <p class="carga-num">0</p>
+  <p class="carga-linha"><i></i></p>
+</div>
+
+<header class="topo">
+  <button class="som" type="button" aria-pressed="false">Som</button>
+  <h1 class="marca"><span class="marca-nome">Turmalina</span><span class="apresenta">apresenta Gemas &amp; Maravilhas</span></h1>
+</header>
+
+<main>
+  <h2 class="titulo" aria-live="polite"></h2>
+  <button class="descobrir" type="button" hidden>Descobrir</button>
+  <button class="rolar" type="button"><span>Rolar</span><i aria-hidden="true"></i></button>
+  <p class="rolar2" aria-hidden="true"><span style="--i:0">R</span><span style="--i:1">o</span><span style="--i:2">l</span><span style="--i:3">a</span><span style="--i:4">r</span></p>
+  <nav aria-label="Salas da exposição"><ol class="pontos"></ol></nav>
+  <dialog class="painel" aria-labelledby="p-titulo">
+    <p class="painel-rotulo">Peça da exposição</p>
+    <h3 class="painel-titulo" id="p-titulo"></h3>
+    <p class="painel-texto"></p>
+    <button class="fechar" type="button">Fechar</button>
+  </dialog>
+  <section class="estatico" aria-label="Peças da exposição">
+    <h2>Gemas &amp; Maravilhas</h2>
+    <ul>
+      <li><h3>Bracelete Onça</h3><p>Malha de ouro amarelo 18k articulada à mão, com um mostrador de turmalina verde lapidada em degraus.</p></li>
+      <li><h3>Pingente Baguete Imperial</h3><p>Uma turmalina rosa de corte baguete, emoldurada por ouro rosé polido.</p></li>
+      <li><h3>Relógio Baguete Imperial</h3><p>Caixa retangular de ouro, pulseira de couro e mostrador de nácar.</p></li>
+      <li><h3>Relógio de Janelas</h3><p>As horas e os minutos aparecem em janelas recortadas no aço escovado.</p></li>
+      <li><h3>Relógio Joalheiro Onça</h3><p>Cento e doze diamantes e duas esmeraldas no lugar dos olhos.</p></li>
+      <li><h3>Bracelete Trançado</h3><p>Contas de ouro e ônix trançadas em espiral.</p></li>
+      <li><h3>Anel Ícone</h3><p>Turmalina Paraíba de 6 quilates sobre aro de ouro amarelo.</p></li>
+    </ul>
+  </section>
+</main>
+<script>(function(){var t=new URLSearchParams(location.search).get('tema');if(t)document.documentElement.setAttribute('data-paleta',t)})()</script>
+<script type="module" src="app.js?v=1"></script>
+</body>
+</html>

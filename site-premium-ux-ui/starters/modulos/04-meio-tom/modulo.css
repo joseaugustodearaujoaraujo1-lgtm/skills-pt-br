@@ -1,0 +1,5 @@
+/* Meio-tom em linhas verticais (BRUMA: .mt + máscaras mt-*.webp). A cor vem de currentColor: troque `color` do bloco e a imagem acompanha o tema. */
+.mt { display: block; background: currentColor; -webkit-mask: var(--mt) center / 100% 100% no-repeat; mask: var(--mt) center / 100% 100% no-repeat; pointer-events: none; aspect-ratio: var(--mt-proporcao, 1); }
+.mt-bloco { margin: 0; }
+/* Dissolver: borda "digital" entre foto e cor chapada (BRUMA, mt-dissolve-*.webp = barras verticais de comprimento aleatório). Use com uma máscara alfa gerada por `dissolver()`. */
+.mt-dissolve { display: block; width: 100%; height: 40vh; background: var(--cor-fundo, #f1ece1); -webkit-mask: var(--mt) center / 100% 100% no-repeat; mask: var(--mt) center / 100% 100% no-repeat; }

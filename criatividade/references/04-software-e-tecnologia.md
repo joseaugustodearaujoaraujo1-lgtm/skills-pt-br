@@ -54,7 +54,7 @@ Perguntas e padrões que geram soluções diferentes em arquitetura, produto, UX
 - **Mostrar em vez de explicar:** exemplos preenchidos, prévias ao vivo, estados vazios que ensinam.
 - **Desfazer em vez de confirmar:** "Arquivado. Desfazer" é mais rápido e menos irritante que "Tem certeza?" (para ações reversíveis).
 - **Feedback imediato:** atualização otimista da interface, com reversão se falhar.
-- Para o lado visual, use a skill `site-nivel-awwwards`, se disponível.
+- Para o lado visual, use a skill `site-premium-ux-ui`, se disponível.
 
 ## 5. Dados e desempenho
 

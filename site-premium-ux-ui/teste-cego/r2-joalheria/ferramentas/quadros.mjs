@@ -1,0 +1,20 @@
+// Gera o pôster do hero, o pôster de perfil e os quadros de reserva (sem GPU) a partir da PRÓPRIA cena. Uso: node ferramentas/quadros.mjs
+import { createRequire } from 'module'; import fs from 'fs'; import path from 'path'; import { fileURLToPath } from 'url';
+const require = createRequire(import.meta.url);
+const { chromium } = require(process.env.PLAYWRIGHT_CORE || '/opt/node-tools/node_modules/playwright-core');
+const AQUI = path.dirname(fileURLToPath(import.meta.url));
+const SAIDA = path.join(AQUI, '..', 'public', 'img', 'gema'); fs.mkdirSync(SAIDA, { recursive: true });
+const b = await chromium.launch({ executablePath: process.env.CHROME || '/opt/pw-browsers/chromium-1243/chrome-linux64/chrome', args: ['--use-gl=angle', '--use-angle=swiftshader', '--enable-unsafe-swiftshader'] });
+const p = await b.newPage();
+await p.goto('file://' + path.join(AQUI, 'render.html'));
+const TAM = 560;
+const poses = await p.evaluate(() => { const n = window.QUADROS; return [...Array(n)].map((_, i) => window.poseEm(i / (n - 1))); });
+const extra = await p.evaluate(() => [window.poseEm(0), window.poseEm(.65)]);
+const quadros = await p.evaluate(([v, t]) => window.renderizar(v, t, 'image/webp', .6), [poses, TAM]);
+quadros.forEach((d, i) => fs.writeFileSync(path.join(SAIDA, `q-${String(i).padStart(2, '0')}.webp`), Buffer.from(d.split(',')[1], 'base64')));
+const [poster, perfil] = await p.evaluate(([v, t]) => window.renderizar(v, t, 'image/webp', .72), [extra, 720]);
+fs.writeFileSync(path.join(SAIDA, 'poster.webp'), Buffer.from(poster.split(',')[1], 'base64'));
+fs.writeFileSync(path.join(SAIDA, 'perfil.webp'), Buffer.from(perfil.split(',')[1], 'base64'));
+let total = 0; for (const f of fs.readdirSync(SAIDA)) total += fs.statSync(path.join(SAIDA, f)).size;
+console.log(fs.readdirSync(SAIDA).length, 'arquivos,', (total / 1024).toFixed(1), 'KB');
+await b.close();

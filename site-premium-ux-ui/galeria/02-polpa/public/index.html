@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>POLPA — Picolé de fruta de verdade</title>
+<meta name="description" content="POLPA: picolés artesanais feitos com polpa de fruta de verdade, em pequenos lotes. Morango, manga, maracujá, limão, coco e açaí.">
+<meta name="theme-color" content="#ff6fae">
+<link rel="stylesheet" href="fonts/fonts.css">
+<link rel="preload" href="fonts/anton-normal-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="img/picole-morango-0.webp" as="image" fetchpriority="high">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='8' y='3' width='16' height='20' rx='8' fill='%23e3304a'/%3E%3Crect x='14' y='20' width='4' height='10' rx='2' fill='%23e2c08c'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="estilo.css?v=2">
+<script>(function(){var t=new URLSearchParams(location.search).get('tema');if(t)document.documentElement.setAttribute('data-paleta',t)})()</script>
+<script type="module" src="app.js?v=2"></script>
+</head>
+<body>
+<a class="pular" href="#conteudo">Pular para o conteúdo</a>
+
+<!-- textura de papel amassado (sobre a página inteira) -->
+<svg class="papel" aria-hidden="true" focusable="false">
+  <filter id="amassado" x="0" y="0" width="100%" height="100%">
+    <feTurbulence type="fractalNoise" baseFrequency=".012" numOctaves="4" seed="7" result="ruido"/>
+    <feDiffuseLighting in="ruido" lighting-color="#fff" surfaceScale="2.4" result="luz"><feDistantLight azimuth="45" elevation="58"/></feDiffuseLighting>
+  </filter>
+  <rect width="100%" height="100%" filter="url(#amassado)"/>
+</svg>
+
+<header class="topo">
+  <p class="topo-frase">GELANDO JUNTO COM VOCÊ<br>DESDE A PRIMEIRA ONDA DE CALOR</p>
+  <a class="puxa" href="#sabores" aria-label="Ver os sabores"><span>PUXA<br>AQUI</span></a>
+</header>
+
+<main id="conteudo">
+  <!-- 1. HERO -->
+  <section class="hero" id="inicio" aria-labelledby="hero-titulo">
+    <h1 id="hero-titulo" class="hero-titulo">
+      <span class="hero-linha1"><span class="sobe" style="--i:0">A</span> <span class="selo sobe" style="--i:1" aria-label="POLPA"><span aria-hidden="true">POLPA</span></span> <span class="sobe" style="--i:2">TÁ AQUI PRA</span></span>
+      <span class="hero-grande"><span class="mascara"><span class="sobe" style="--i:3">GELAR</span></span><span class="mascara"><span class="sobe" style="--i:4">COM VOCÊ</span></span></span>
+    </h1>
+    <div class="arco" aria-hidden="true"></div>
+    <figure class="hero-picole" data-sabores="morango,manga,maracuja,limao,coco,acai">
+      <img class="hero-poster" src="img/picole-morango-0.webp" width="900" height="900" alt="Picolé de morango da POLPA, com pedacinhos de fruta e palito de madeira" fetchpriority="high">
+    </figure>
+    <button class="som" type="button" aria-pressed="false" aria-label="Ligar efeitos sonoros"><span></span></button>
+  </section>
+
+  <!-- 2. COLAGEM -->
+  <section class="colagem" aria-labelledby="colagem-texto">
+    <div class="nota-adesiva p" data-v="-.25">
+      <p class="mao">LISTA DA PRAIA</p>
+      <ul><li>protetor</li><li>canga</li><li class="feito">picolé de manga</li></ul>
+    </div>
+    <div class="papel-fruta laranjas p" data-v=".2" aria-hidden="true"></div>
+    <div class="fita f1 p" data-v="-.4" aria-hidden="true"></div>
+    <div class="kraft p" data-v=".08">
+      <p id="colagem-texto" class="kraft-texto">FILA DO ÔNIBUS, TARDE DE 40 GRAUS, DOMINGO NA LAJE, RECREIO, VOLTA DA PRAIA. A GENTE SEMPRE GELA COM VOCÊ.</p>
+      <span class="fita f2" aria-hidden="true"></span>
+    </div>
+    <div class="papel-fruta morangos p" data-v=".35" aria-hidden="true"></div>
+    <div class="presente p" data-v="-.15" aria-hidden="true"><span></span></div>
+    <img class="colagem-picole p" data-v="-.5" src="img/picole-maracuja-3.webp" width="900" height="900" loading="lazy" alt="Picolé de maracujá com sementes">
+    <!-- faixa curva com letreiro -->
+    <svg class="faixa" data-deslocamento="-60%" viewBox="0 0 1440 360" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M-80,300 C380,40 900,40 1520,180" fill="none" stroke="var(--cor-destaque)" stroke-width="112"/>
+      <path id="curva" d="M-80,300 C380,40 900,40 1520,180" fill="none" stroke="#2a0618" stroke-width="96"/>
+      <text><textPath class="faixa-texto" href="#curva" startOffset="0">O CALOR APERTA, A POLPA ALIVIA + O CALOR APERTA, A POLPA ALIVIA + O CALOR APERTA, A POLPA ALIVIA + O CALOR APERTA, A POLPA ALIVIA +</textPath></text>
+    </svg>
+  </section>
+
+  <!-- 3. A FRUTADA -->
+  <section class="frutada" id="sabores" aria-labelledby="frutada-titulo">
+    <p class="etiqueta">LINHA FRUTADA</p>
+    <ul class="chips" aria-label="Diferenciais"><li>100% FRUTA</li><li>SEM CORANTE</li><li>PALITO DE MADEIRA</li></ul>
+    <p class="frutada-texto">Polpa de verdade, batida na hora e congelada em lotes pequenos. Fruta que dá pra ver em cada mordida.</p>
+    <h2 id="frutada-titulo" class="frutada-titulo"><span>A</span> <span>FRUTADA</span></h2>
+    <img class="frutada-picole" src="img/picole-manga-0.webp" width="900" height="900" loading="lazy" alt="Picolé de manga com pedaços de fruta">
+    <div class="cartao c1" aria-hidden="true"><img src="img/picole-limao-1.webp" alt="" loading="lazy" width="900" height="900"></div>
+    <div class="cartao c2" aria-hidden="true"><img src="img/picole-acai-0.webp" alt="" loading="lazy" width="900" height="900"></div>
+    <div class="cartao c3" aria-hidden="true"><img src="img/picole-coco-1.webp" alt="" loading="lazy" width="900" height="900"></div>
+    <a class="adesivo-redondo" href="#momentos">PROVA<br>TODOS</a>
+  </section>
+
+  <!-- 4. MOMENTOS: trilho horizontal fixado -->
+  <section class="momentos" id="momentos" aria-labelledby="momentos-titulo">
+    <div class="momentos-cab">
+      <p class="etiqueta etiqueta-escura">TODO DIA</p>
+      <h2 id="momentos-titulo">A GENTE TÁ AQUI PROS<br>MOMENTOS DE TODO DIA.</h2>
+    </div>
+    <div class="trilho-janela">
+      <div class="trilho">
+        <div class="passo">
+          <span class="num mao" aria-hidden="true">1</span>
+          <h3 class="palavra">PRA ADOÇAR</h3>
+          <p class="nota mao">depois do almoço,<br>sem culpa nenhuma</p>
+          <img class="voa v1" src="img/picole-morango-3.webp" alt="" aria-hidden="true" loading="lazy" width="900" height="900">
+          <div class="cartao voa v2" aria-hidden="true"><img src="img/picole-manga-1.webp" alt="" loading="lazy" width="900" height="900"></div>
+        </div>
+        <div class="passo">
+          <span class="num mao" aria-hidden="true">2</span>
+          <h3 class="palavra">PRA DIVIDIR</h3>
+          <p class="nota mao">um pra você,<br>um pra mim</p>
+          <img class="voa v3" src="img/picole-acai-3.webp" alt="" aria-hidden="true" loading="lazy" width="900" height="900">
+          <img class="voa v4" src="img/picole-coco-0.webp" alt="" aria-hidden="true" loading="lazy" width="900" height="900">
+        </div>
+        <div class="passo">
+          <span class="num mao" aria-hidden="true">3</span>
+          <h3 class="palavra">PRA REFRESCAR</h3>
+          <p class="nota mao">o calor não avisa.<br>a gente também não</p>
+          <img class="voa v5" src="img/picole-limao-0.webp" alt="" aria-hidden="true" loading="lazy" width="900" height="900">
+          <div class="cartao voa v6" aria-hidden="true"><img src="img/picole-maracuja-1.webp" alt="" loading="lazy" width="900" height="900"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. BORA GELAR -->
+  <section class="bora" aria-labelledby="bora-titulo">
+    <div class="bora-foto" aria-hidden="true">
+      <img src="img/picole-morango-1.webp" alt="" loading="lazy" width="900" height="900">
+      <img src="img/picole-limao-3.webp" alt="" loading="lazy" width="900" height="900">
+      <img src="img/picole-acai-1.webp" alt="" loading="lazy" width="900" height="900">
+    </div>
+    <div class="bora-caixa">
+      <h2 id="bora-titulo">BORA<br>GELAR!</h2>
+      <p>Pra tudo que importa.</p>
+    </div>
+  </section>
+</main>
+
+<!-- 6. RODAPÉ -->
+<footer class="rodape" aria-labelledby="rodape-titulo">
+  <nav class="rodape-nav" aria-label="Rodapé">
+    <a href="#sabores">SABORES</a><a href="#colagem-texto">SOBRE</a>
+    <span class="selo selo-claro" aria-hidden="true"><span>POLPA</span></span>
+    <a href="#momentos">NOVIDADES</a><a href="mailto:oi@polpa.example">CONTATO</a>
+  </nav>
+  <h2 id="rodape-titulo" class="rodape-grande">GELA COM VOCÊ</h2>
+  <div class="pilha" aria-hidden="true">
+    <img src="img/picole-coco-3.webp" alt="" loading="lazy" width="900" height="900">
+    <img src="img/picole-limao-1.webp" alt="" loading="lazy" width="900" height="900">
+    <img src="img/picole-morango-2.webp" alt="" loading="lazy" width="900" height="900">
+    <img src="img/picole-acai-2.webp" alt="" loading="lazy" width="900" height="900">
+    <img src="img/picole-manga-3.webp" alt="" loading="lazy" width="900" height="900">
+    <img src="img/picole-maracuja-0.webp" alt="" loading="lazy" width="900" height="900">
+  </div>
+  <a class="rodape-botao" href="#inicio" aria-label="Voltar ao topo">↑</a>
+  <p class="rodape-nota">© 2026 POLPA · marca fictícia · estudo de estrutura e movimento baseado no Sweet Tape (Awwwards Site of the Day) · picolés modelados em 3D no código</p>
+</footer>
+</body>
+</html>
