@@ -24,7 +24,7 @@ Foto só aparece dentro de um arco (vão de porta ou janela de casa colonial); t
 
 ## Momento-assinatura ("uau")
 O fogão: a palavra FOGO ocupa a largura inteira da tela, a foto das panelas de barro sobre a lenha acesa corta a palavra num arco, e o fundo vira brasa.
-- Onde: seção 2 (O fogão) · em cerca de 12% a 24% da rolagem da página · dura mais de 25% da rolagem da seção
+- Onde: seção 2 (O fogão) · em cerca de 14% a 25% da rolagem da página · dura mais de 25% da rolagem da seção
 - O que a foto mostra: fundo ardósia escuro que esquenta para marrom-brasa, FOGO em letras enormes cor de brasa, ao centro um arco com o fogão e as panelas.
 
 ## Identidade visual

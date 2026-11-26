@@ -10,7 +10,7 @@
 <meta property="og:description" content="Do fogo à mesa, sem pressa. Reserve pelo WhatsApp.">
 <meta property="og:image" content="img/hero-rua.webp">
 <link rel="preload" href="fonts/fraunces-normal-400-600.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="img/hero-rua.webp" as="image" fetchpriority="high">
+<link rel="preload" href="img/hero-rua.webp" as="image" imagesrcset="img/hero-rua-900.webp 900w, img/hero-rua.webp 1500w" imagesizes="100vw" fetchpriority="high">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M5 30V14a11 11 0 0 1 22 0v16z' fill='%23a93f22'/%3E%3C/svg%3E">
 <link rel="stylesheet" href="fonts/fonts.css">
 <link rel="stylesheet" href="tokens.css">
@@ -40,7 +40,7 @@
   <section class="hero" id="inicio" aria-labelledby="hero-titulo">
     <div class="hero-pin">
       <figure class="hero-arco">
-        <img src="img/hero-rua.webp" width="1800" height="1342" alt="Rua de pedra do centro histórico de Tiradentes, com casario colonial e a Serra de São José ao fundo" fetchpriority="high">
+        <img src="img/hero-rua.webp" srcset="img/hero-rua-900.webp 900w, img/hero-rua.webp 1500w" sizes="100vw" width="1500" height="1119" alt="Rua de pedra do centro histórico de Tiradentes, com casario colonial e a Serra de São José ao fundo" fetchpriority="high">
         <span class="hero-frio"></span>
       </figure>
       <div class="hero-texto">
@@ -80,9 +80,9 @@
     </div>
     <div class="trilho-janela">
       <ol class="trilho" role="list">
+        <li class="item"><figure class="arco"><img src="img/almoco.webp" width="1300" height="677" alt="Panelas de barro com frango e quiabo, arroz e angu sobre a mesa" loading="lazy"></figure><h3>A panela na mesa</h3><p>Servido na própria panela de barro, quente até o fim.</p></li>
         <li class="item"><figure class="arco"><img src="img/tutu.webp" width="1000" height="700" alt="Tutu de feijão servido em travessa de metal" loading="lazy"></figure><h3>Tutu de feijão</h3><p>Feijão batido com farinha, servido com torresmo e couve.</p></li>
         <li class="item"><figure class="arco"><img src="img/tropeiro.webp" width="1100" height="619" alt="Feijão tropeiro com linguiça, cheiro-verde e ovo" loading="lazy"></figure><h3>Feijão tropeiro</h3><p>Feijão, farinha, linguiça e couve, refogados na hora.</p></li>
-        <li class="item"><figure class="arco"><img src="img/almoco.webp" width="1300" height="677" alt="Panelas de barro com frango e quiabo, arroz e angu sobre a mesa" loading="lazy"></figure><h3>A panela na mesa</h3><p>Servido na própria panela de barro, quente até o fim.</p></li>
         <li class="item"><figure class="arco"><img src="img/pao-queijo.webp" width="1100" height="733" alt="Pães de queijo dourados em cesta de vime" loading="lazy"></figure><h3>Pão de queijo</h3><p>Saindo do forno, para abrir a conversa.</p></li>
         <li class="item"><figure class="arco"><img src="img/doce.webp" width="1100" height="614" alt="Doce de leite em fatia ao lado de queijo com goiabada" loading="lazy"></figure><h3>Doce de leite</h3><p>O fim da refeição, com queijo e goiabada se você quiser.</p></li>
       </ol>

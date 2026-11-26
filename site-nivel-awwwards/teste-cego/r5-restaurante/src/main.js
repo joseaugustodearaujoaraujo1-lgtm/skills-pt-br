@@ -59,11 +59,11 @@ if (!reduzido) {
   });
   function abrirPorta(fechado, fim) {
     const tl = gsap.timeline({ defaults: { ease: 'none' }, scrollTrigger: { trigger: '.hero', start: 'top top', end: '+=' + fim + '%', pin: '.hero-pin', scrub: .6, anticipatePin: 1, onUpdate: self => $('.hero').classList.toggle('aberto', self.progress > .85) } });
-    tl.fromTo('.hero-arco', { clipPath: fechado }, { clipPath: 'inset(0vh 0vw 0vh 0vw round 0vw 0vw 0vw 0vw)' }, 0)
-      .fromTo('.hero-arco img', { scale: 1.12 }, { scale: 1 }, 0)
-      .fromTo('.hero-frio', { opacity: 1 }, { opacity: 0 }, 0)
-      .to('.hero-texto', { opacity: 0, yPercent: -12 }, 0.05)
-      .fromTo('.hero-legenda', { opacity: 0 }, { opacity: 1 }, 0.8);
+    tl.to('.hero-texto', { opacity: 0, yPercent: -10, duration: .2 }, 0)
+      .fromTo('.hero-arco', { clipPath: fechado }, { clipPath: 'inset(0vh 0vw 0vh 0vw round 0vw 0vw 0vw 0vw)', duration: .75 }, .18)
+      .fromTo('.hero-arco img', { scale: 1.12 }, { scale: 1, duration: .75 }, .18)
+      .fromTo('.hero-frio', { opacity: 1 }, { opacity: 0, duration: .75 }, .18)
+      .fromTo('.hero-legenda', { opacity: 0 }, { opacity: 1, duration: .15 }, .85);
   }
 
   // fogão: o calor sobe e a palavra gigante desliza
