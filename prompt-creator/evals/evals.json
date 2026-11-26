@@ -1,0 +1,23 @@
+{
+  "skill_name": "prompt-creator",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "faz um prompt pra eu criar um sistema de barbearia",
+      "expected_output": "Resume o entendimento e faz no máximo 3 perguntas com opções e recomendação, começando pela intenção. Não escreve o prompt ainda.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "quero um prompt de imagem bem bonito pro meu produto, uma garrafa térmica",
+      "expected_output": "Não aceita 'bonito' como definição: pergunta sobre uso da imagem, estilo ou referência e ferramenta de destino. No máximo 3 perguntas, sem escrever o prompt ainda.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "sem perguntas, só me dá um prompt para resumir atas de reunião em tópicos",
+      "expected_output": "Entrega o prompt em bloco de código, mostra as suposições, indica quais mais afetam o resultado e informa que não foi testado.",
+      "files": []
+    }
+  ]
+}

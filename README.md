@@ -2,9 +2,9 @@
 
 # 🧰 Skills em português para agentes de código
 
-**Seis skills para Claude Code (e agentes compatíveis) que transformam o assistente em um parceiro mais cuidadoso, mais criativo, capaz de criar sites com design nível Awwwards (com 10 estilos visuais e paletas para escolher), e capaz de levar um MVP do requisito à produção com atenção à lei.**
+**Sete skills para Claude Code (e agentes compatíveis) que transformam o assistente em um parceiro mais cuidadoso, mais criativo, capaz de criar prompts a partir do que você quer, capaz de criar sites com design nível Awwwards (com 10 estilos visuais e paletas para escolher), e capaz de levar um MVP do requisito à produção com atenção à lei.**
 
-![Skills](https://img.shields.io/badge/skills-6-6366F1?style=for-the-badge)
+![Skills](https://img.shields.io/badge/skills-7-6366F1?style=for-the-badge)
 ![Idioma](https://img.shields.io/badge/idioma-pt--BR-009C3B?style=for-the-badge)
 ![Licença](https://img.shields.io/badge/licen%C3%A7a-MIT-black?style=for-the-badge)
 
@@ -24,6 +24,7 @@ Agentes de código escrevem rápido, mas repetem erros previsíveis: falhas de s
 | [`mvp-completo`](mvp-completo/SKILL.md) | Conduzir qualquer MVP do requisito ao teste de carga, com portões de aprovação entre as etapas | 7 etapas, 8 referências |
 | [`judicial-sistema`](judicial-sistema/SKILL.md) | Transformar a lei brasileira em requisitos e documentos para reduzir o risco de processos e multas | 8 áreas jurídicas, 10 referências |
 | [`velocidade-sistema`](velocidade-sistema/SKILL.md) | Auditar e otimizar a velocidade de sites e apps web (front-end, API, banco, infra) com um checklist priorizado | 31 técnicas, 4 áreas + medição |
+| [`prompt-creator`](prompt-creator/SKILL.md) | Criar, melhorar e revisar prompts, entrevistando o usuário antes de escrever | 7 passos, 3 referências |
 
 ## 🛡️ seguranca-completa
 
@@ -104,6 +105,20 @@ Audita e otimiza a **performance** de um site ou app web seguindo um checklist d
 - **Áreas do checklist:** interface e carregamento (skeleton, WebP/AVIF, lazy load, SSR/SSG, code splitting, fontes, cache), API e back-end (paginação, paralelismo, timeouts, filas, Brotli/GZIP, Redis), banco de dados (N+1, índices, pool de conexões), infraestrutura (CDN, região, balanceamento) e medição (OpenTelemetry, RUM, testes em redes e celulares lentos).
 - **Honestidade:** não marca um item como feito sem mostrar o arquivo ou trecho onde isso aparece.
 
+## ✍️ prompt-creator
+
+Descobre **o que a pessoa quer fazer** antes de escrever qualquer prompt.
+
+1. **Escutar** e resumir o pedido.
+2. **Entrevistar** em rodadas de até 3 perguntas, com opções e recomendação, aprofundando respostas vagas.
+3. **Confirmar** o entendimento, com critérios de pronto verificáveis.
+4. **Escrever** o prompt, usando só as seções necessárias.
+5. **Revisar** com checklist.
+6. **Testar** em contexto limpo, somente com autorização.
+7. **Entregar e ajustar** com base no retorno.
+
+As perguntas só são puladas se o usuário pedir; nesse caso, as suposições ficam visíveis.
+
 ## Como instalar
 
 Copie a pasta da skill desejada para o diretório de skills do seu agente. No Claude Code:
@@ -115,6 +130,7 @@ cp -r skills-pt-br/site-nivel-awwwards ~/.claude/skills/
 cp -r skills-pt-br/criatividade ~/.claude/skills/
 cp -r skills-pt-br/mvp-completo ~/.claude/skills/
 cp -r skills-pt-br/judicial-sistema ~/.claude/skills/
+cp -r skills-pt-br/prompt-creator ~/.claude/skills/
 ```
 
 No Windows (PowerShell), o destino é `$HOME\.claude\skills\`. Reinicie a sessão do agente e a skill passa a ser sugerida quando a tarefa combinar com a descrição dela.
@@ -128,7 +144,8 @@ skills-pt-br/
 ├── criatividade/     # SKILL.md + references/ (técnicas, exemplo, modelos)
 ├── mvp-completo/   # SKILL.md + references/ (uma por etapa + media-prompts)
 ├── judicial-sistema/   # SKILL.md + references/ (por área jurídica + checklist + templates)
-└── velocidade-sistema/  # SKILL.md (checklist de 31 técnicas de performance)
+├── velocidade-sistema/  # SKILL.md (checklist de 31 técnicas de performance)
+└── prompt-creator/  # SKILL.md + references/ (perguntas, modelos, checklist) + evals/
 ```
 
 Cada skill segue o mesmo formato: `SKILL.md` curto com o essencial e a pasta `references/` carregada **sob demanda**, para gastar poucos tokens.
@@ -141,6 +158,7 @@ Cada skill segue o mesmo formato: `SKILL.md` curto com o essencial e a pasta `re
 - Em `judicial-sistema`, os textos legais são resumos educativos escritos de memória, **sem verificação linha a linha nas fontes oficiais**, e **não substituem assessoria jurídica**. Confirme a vigência de normas recentes (ECA Digital, regulação de IA, responsabilidade de plataformas no art. 19 do Marco Civil, prazos da ANPD).
 - Em `site-nivel-awwwards`, as paletas geradas por script têm contraste **medido**; as cores dos guias de estilo marcadas como *(aprox.)* ou *(derivado)* continuam estimativas. Os scripts de pesquisa (`pesquisar-referencias.mjs`, `opcoes.mjs`, `gerar-padroes.mjs`) dependem de um **acervo local de capturas que não está no repositório** (defina `ACERVO` com a pasta); sem ele, use a pesquisa ao vivo descrita na skill. Preços das plataformas verificados em novembro de 2026.
 - As skills ainda **não passaram por avaliação formal de comportamento** (evals).
+- Em `prompt-creator`, há 3 casos de teste em `evals/evals.json` que **ainda não foram executados**.
 - Links de galerias de referência não foram abertos individualmente.
 
 Sugestões e correções são bem-vindas via issues.
