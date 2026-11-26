@@ -1,0 +1,24 @@
+/* Tokens de design — Casa Ofício (gerado por montar-brief.mjs; edite livremente, mantenha os nomes) */
+/* Fontes: NÃO use @import aqui (cria uma cadeia de 3 requisições). Cole o conteúdo de fontes.html no <head>. */
+:root {
+  /* cor (claro; acento 35°) */
+  --bg: #f1e7d6; --surface: #f8f1e4; --surface-2: #f2ece4; --line: #ddd6ce;
+  --text: #2a1a12; --text-muted: #5a544d; --accent: #a93f22; --accent-soft: color-mix(in oklab, #a93f22 18%, var(--bg)); --on-accent: #ffffff;
+  /* tipografia */
+  --font-display: 'Fredoka', serif; --font-body: 'Nunito', system-ui, sans-serif; --font-detail: 'Nunito', ui-monospace, monospace;
+  --fs-h1: clamp(3rem, 10vw, 10.5rem); --fs-h2: clamp(2rem, 5.5vw, 5.5rem); --fs-h3: clamp(1.25rem, 2vw, 2rem); --fs-body: clamp(1rem, 1.1vw, 1.25rem);
+  --lh-title: 0.95; --lh-body: 1.5; --tracking-title: -0.03em;
+  /* espaço e forma */
+  --space-section: clamp(4rem, 12vw, 12rem); --gutter: clamp(1rem, 4vw, 4rem); --radius: 12px; --max-w: 1440px;
+  /* motion */
+  --ease-out: cubic-bezier(0.25, 1, 0.5, 1); --ease-in-out: cubic-bezier(0.76, 0, 0.24, 1);
+  --dur-micro: 200ms; --dur-reveal: 800ms; --dur-transition: 1000ms;
+}
+@media (prefers-reduced-motion: reduce) { :root { --dur-micro: 0ms; --dur-reveal: 0ms; --dur-transition: 0ms; } }
+html { background: var(--bg); color: var(--text); font-family: var(--font-body); line-height: var(--lh-body); }
+h1, h2, h3 { font-family: var(--font-display); line-height: var(--lh-title); letter-spacing: var(--tracking-title); font-weight: 400; margin: 0; }
+h1 { font-size: var(--fs-h1); } h2 { font-size: var(--fs-h2); } h3 { font-size: var(--fs-h3); }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+/* seção escura de contraste (paleta escura da skill) */
+:root { --d-bg: #110c08; --d-surface: #1b1611; --d-line: #3d372f; --d-text: #f7f1e9; --d-muted: #aca39a; --d-accent: #fc9980; }

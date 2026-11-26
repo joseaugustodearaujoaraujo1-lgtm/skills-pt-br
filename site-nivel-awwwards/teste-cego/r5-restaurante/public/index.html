@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="pt-BR" data-entrada="desce">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Casa Ofício — restaurante comida mineira fogão a lenha Tiradentes</title>
+<meta name="description" content="Comida mineira de fogão a lenha no centro histórico de Tiradentes. Reserve sua mesa pelo WhatsApp.">
+<meta name="theme-color" content="#f1e7d6">
+<link rel="preload" href="fonts/fredoka-normal-400-700.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/nunito-normal-400-700.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='12' fill='%23888'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="fonts/fonts.css">
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="estilo.css?v=1">
+<script type="module" src="app.js?v=1"></script>
+</head>
+<body>
+<a class="pular" href="#conteudo">Pular para o conteúdo</a>
+
+<header class="topo" id="topo">
+  <a class="marca" href="#inicio" aria-label="Casa Ofício, início">Casa Ofício</a>
+  <button class="topo-menu" type="button" aria-expanded="false" aria-controls="menu-principal">Menu</button>
+  <nav aria-label="Principal" id="menu-principal">
+    <ul>
+      <li><a href="#colecao">[Seção 1]</a></li>
+      <li><a href="#numeros">[Seção 2]</a></li>
+      <li><a href="#contato">[Contato]</a></li>
+    </ul>
+  </nav>
+  <a class="topo-cta" href="#contato">[Ação principal]</a>
+</header>
+
+<main id="conteudo">
+  <!-- HERO: um protagonista na primeira dobra. O título entra por CSS (linhas já divididas no HTML): não depende de JS nem de fontes. -->
+  <section class="hero" id="inicio" aria-labelledby="hero-titulo">
+    <div class="hero-texto">
+      <p class="hero-local">[Rótulo curto: o que é · onde]</p>
+      <h1 id="hero-titulo">
+        <span class="linha-mask"><span class="linha" style="--i:0">[Título linha 1]</span></span>
+        <span class="linha-mask"><span class="linha" style="--i:1"><em>[linha 2 em destaque.]</em></span></span>
+      </h1>
+      <p class="hero-sub">[Uma frase que diz o que você faz e para quem, com o diferencial concreto.]</p>
+      <div class="hero-acoes">
+        <a class="botao" href="#contato">[Ação principal]</a>
+        <a class="link-seta" href="#colecao">[Ação secundária] <span aria-hidden="true">→</span></a>
+      </div>
+    </div>
+    <figure class="hero-midia" aria-hidden="true">
+      <!-- SUBSTITUA pelo protagonista: imagem real (img com width/height e fetchpriority="high"), vídeo com poster, ou cena 3D leve (pôster + WebGL tardio). -->
+      <div class="hero-forma"></div>
+    </figure>
+    <ul class="hero-fatos" aria-label="Resumo">
+      <li><strong>[Fato 1]</strong> [detalhe]</li>
+      <li><strong>[Fato 2]</strong> [detalhe]</li>
+      <li><strong>[Fato 3]</strong> [detalhe]</li>
+    </ul>
+  </section>
+
+  <!-- MANIFESTO: as palavras acendem com a rolagem -->
+  <section class="manifesto" aria-label="Manifesto">
+    <p class="manifesto-texto">[Escreva 25 a 45 palavras sobre o que acredita e como trabalha. Texto real do cliente, sem inventar números nem depoimentos.]</p>
+  </section>
+
+  <!-- COLEÇÃO: trilho horizontal fixado (desktop) / carrossel nativo (celular). Use para produtos, projetos ou serviços reais. -->
+  <section class="colecao" id="colecao" aria-labelledby="colecao-titulo">
+    <div class="colecao-cab">
+      <h2 id="colecao-titulo">[Título da <em>coleção</em>]</h2>
+      <p>[Frase de apoio]</p>
+    </div>
+    <div class="trilho-janela">
+      <ol class="trilho" role="list">
+        <li class="item"><div class="item-midia"></div><h3>[Item 1]</h3><p>[Descrição curta e real]</p></li>
+        <li class="item"><div class="item-midia"></div><h3>[Item 2]</h3><p>[Descrição curta e real]</p></li>
+        <li class="item"><div class="item-midia"></div><h3>[Item 3]</h3><p>[Descrição curta e real]</p></li>
+        <li class="item"><div class="item-midia"></div><h3>[Item 4]</h3><p>[Descrição curta e real]</p></li>
+        <li class="item"><div class="item-midia"></div><h3>[Item 5]</h3><p>[Descrição curta e real]</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- NÚMEROS: seção escura de contraste (paleta escura da skill) -->
+  <section class="escura" id="numeros" aria-labelledby="numeros-titulo">
+    <h2 id="numeros-titulo">[Título da <em>seção escura</em>]</h2>
+    <ul class="numeros" aria-label="Números">
+      <li><span class="num" data-n="0" data-suf="">0</span> [legenda 1: número real do cliente]</li>
+      <li><span class="num" data-n="0" data-suf="">0</span> [legenda 2]</li>
+      <li><span class="num" data-n="0" data-suf="">0</span> [legenda 3]</li>
+    </ul>
+  </section>
+
+  <!-- PASSOS: lista editorial, sem ícones em cards -->
+  <section class="passos" aria-labelledby="passos-titulo">
+    <h2 id="passos-titulo">[Como <em>funciona</em>]</h2>
+    <ul class="passos-lista">
+      <li><h3>[Passo 1]</h3><p>[Descrição]</p></li>
+      <li><h3>[Passo 2]</h3><p>[Descrição]</p></li>
+      <li><h3>[Passo 3]</h3><p>[Descrição]</p></li>
+    </ul>
+  </section>
+
+  <!-- CONTATO: a ação principal -->
+  <section class="contato" id="contato" aria-labelledby="contato-titulo">
+    <h2 id="contato-titulo">[Chamada <em>final.</em>]</h2>
+    <div class="contato-grade">
+      <div><p class="contato-rotulo">[Endereço ou canal]</p><p>[Texto]</p></div>
+      <div><p class="contato-rotulo">[Horário ou prazo]</p><p>[Texto]</p></div>
+      <div class="contato-acao"><a class="botao botao-grande" href="#contato">[Ação principal]</a><p class="contato-nota">[Nota curta]</p></div>
+    </div>
+  </section>
+</main>
+
+<footer class="rodape">
+  <p class="rodape-marca" aria-hidden="true">Casa Ofício</p>
+  <div class="rodape-linha"><p>© 2026 Casa Ofício</p><p>[Créditos das imagens e licenças, se houver]</p></div>
+</footer>
+</body>
+</html>

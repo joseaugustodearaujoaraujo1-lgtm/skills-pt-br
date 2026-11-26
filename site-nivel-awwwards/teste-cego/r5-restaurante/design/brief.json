@@ -1,0 +1,328 @@
+{
+  "projeto": {
+    "nome": "Casa Ofício",
+    "tema": "alimentacao",
+    "publico": "casais e famílias em fim de semana, 30 a 55 anos",
+    "adjetivos": [
+      "acolhedor",
+      "histórico",
+      "generoso"
+    ],
+    "evitar": []
+  },
+  "estilo": {
+    "principal": {
+      "id": "claymorphism",
+      "nome": "Claymorphism",
+      "pontos": 9,
+      "motivos": [
+        "tema \"alimentacao\" (posição 1)",
+        "adjetivo \"acolhedor\""
+      ],
+      "arquivo": "~/.claude/skills/site-nivel-awwwards/references/base-estilos/claymorphism.md"
+    },
+    "secundario": {
+      "id": "minimalism",
+      "nome": "Minimalism",
+      "pontos": 4,
+      "motivos": [
+        "tema \"alimentacao\" (posição 2)"
+      ],
+      "arquivo": "~/.claude/skills/site-nivel-awwwards/references/base-estilos/minimalism.md"
+    },
+    "aviso": null
+  },
+  "paleta": {
+    "tom": "claro",
+    "matizAcento": 35,
+    "cores": {
+      "fundo": "#fbf6f0",
+      "superficie": "#fffdfb",
+      "superficie2": "#f2ece4",
+      "linha": "#ddd6ce",
+      "textoMudo": "#5a544d",
+      "texto": "#191511",
+      "acento": "#c44323",
+      "acentoSuave": "#fee0d9",
+      "tintaNoAcento": "#fffbfa"
+    },
+    "contraste": [
+      {
+        "par": "texto sobre fundo",
+        "razao": 16.9,
+        "minimo": 7,
+        "ok": true
+      },
+      {
+        "par": "texto sobre superfície",
+        "razao": 17.89,
+        "minimo": 7,
+        "ok": true
+      },
+      {
+        "par": "texto mudo sobre fundo",
+        "razao": 6.95,
+        "minimo": 4.5,
+        "ok": true
+      },
+      {
+        "par": "texto mudo sobre superfície",
+        "razao": 7.36,
+        "minimo": 4.5,
+        "ok": true
+      },
+      {
+        "par": "tinta sobre acento",
+        "razao": 4.89,
+        "minimo": 4.5,
+        "ok": true
+      },
+      {
+        "par": "acento sobre fundo (elementos grandes/ícones)",
+        "razao": 4.68,
+        "minimo": 3,
+        "ok": true
+      },
+      {
+        "par": "acento como texto sobre fundo",
+        "razao": 4.68,
+        "minimo": 4.5,
+        "ok": true
+      }
+    ],
+    "nota": "Cores de ingrediente (tomate, mostarda, cacau) sobre fundo creme; foto de comida com luz natural."
+  },
+  "tipografia": {
+    "titulo": "Fredoka",
+    "corpo": "Nunito",
+    "detalhe": "Nunito",
+    "escala": {
+      "h1": "clamp(3rem, 10vw, 10.5rem)",
+      "h2": "clamp(2rem, 5.5vw, 5.5rem)",
+      "h3": "clamp(1.25rem, 2vw, 2rem)",
+      "corpo": "clamp(1rem, 1.1vw, 1.25rem)"
+    },
+    "entrelinhaTitulo": 0.95,
+    "trackingTitulo": "-0.03em",
+    "entrelinhaCorpo": 1.5,
+    "regras": [
+      "no máximo 2 famílias + 1 de detalhe",
+      "hierarquia por escala e peso, não por cor",
+      "medida de leitura 60-75 caracteres"
+    ]
+  },
+  "motion": {
+    "stack": [
+      "gsap",
+      "ScrollTrigger",
+      "lenis"
+    ],
+    "easing": {
+      "entrada": "cubic-bezier(0.25, 1, 0.5, 1)",
+      "transicao": "cubic-bezier(0.76, 0, 0.24, 1)"
+    },
+    "duracoesMs": {
+      "micro": 200,
+      "revelacao": 800,
+      "transicao": 1000
+    },
+    "regras": [
+      "1 efeito de assinatura + 1 padrão de revelação consistente",
+      "animar só transform e opacity",
+      "prefers-reduced-motion obrigatório",
+      "pausar canvas fora da tela"
+    ]
+  },
+  "tridimensional": {
+    "usar": false
+  },
+  "referencias": [
+    {
+      "titulo": "Safeer",
+      "ano": 2026,
+      "fonte": "awwwards",
+      "url": "https://safeertemplate.webflow.io/",
+      "motivos": [
+        "nicho do tema",
+        "scroll",
+        "premiado",
+        "layout: 8 seções, 56 imagens, hero com imagem grande"
+      ],
+      "capturas": null
+    },
+    {
+      "titulo": "Mr. BLACK Franchise",
+      "ano": 2026,
+      "fonte": "awwwards",
+      "url": "https://mrblack-case.dolganev.com/",
+      "motivos": [
+        "nicho do tema",
+        "scroll",
+        "premiado"
+      ],
+      "capturas": null
+    },
+    {
+      "titulo": "Nudot Studio",
+      "ano": 2026,
+      "fonte": "awwwards",
+      "url": "https://nudot.com.tw/",
+      "motivos": [
+        "scroll",
+        "premiado",
+        "layout: 8 seções, texto moderado, 31 imagens, hero com vídeo, seções fixadas"
+      ],
+      "capturas": null
+    },
+    {
+      "titulo": "Radian",
+      "ano": 2026,
+      "fonte": "awwwards",
+      "url": "https://www.rideradian.com/",
+      "motivos": [
+        "scroll",
+        "premiado",
+        "layout: 6 seções, texto moderado, 34 imagens, hero com cena WebGL, seções fixadas"
+      ],
+      "capturas": null
+    },
+    {
+      "titulo": "Cipher Digital",
+      "ano": 2026,
+      "fonte": "awwwards",
+      "url": "https://cipherdigital.com/",
+      "motivos": [
+        "scroll",
+        "premiado",
+        "layout: 5 seções, pouco texto, 7 imagens, hero com vídeo, seções fixadas"
+      ],
+      "capturas": null
+    },
+    {
+      "titulo": "Code by Jesse",
+      "ano": 2026,
+      "fonte": "awwwards",
+      "url": "https://www.codebyjesse.com/",
+      "motivos": [
+        "scroll",
+        "premiado",
+        "layout: 4 seções, texto moderado, 36 imagens, hero com vídeo"
+      ],
+      "capturas": null
+    },
+    {
+      "titulo": "House of Honey",
+      "ano": 2026,
+      "fonte": "awwwards",
+      "url": "https://www.houseofhoney.com/",
+      "motivos": [
+        "scroll",
+        "premiado",
+        "layout: 8 seções, texto moderado, 8 imagens, hero com imagem grande"
+      ],
+      "capturas": null
+    },
+    {
+      "titulo": "Geolava",
+      "ano": 2026,
+      "fonte": "awwwards",
+      "url": "https://www.geolava.com/",
+      "motivos": [
+        "scroll",
+        "premiado",
+        "layout: 7 seções, pouco texto, hero com cena WebGL, seções fixadas"
+      ],
+      "capturas": null
+    },
+    {
+      "titulo": "Cristiana Araújo — Portfolio",
+      "ano": 2026,
+      "fonte": "awwwards",
+      "url": "https://www.cristianaaraujo.com/",
+      "motivos": [
+        "scroll",
+        "premiado",
+        "layout: 6 seções, pouco texto, hero com imagem grande, seções fixadas"
+      ],
+      "capturas": null
+    },
+    {
+      "titulo": "1367 Studio",
+      "ano": 2026,
+      "fonte": "awwwards",
+      "url": "https://www.1367studio.com/",
+      "motivos": [
+        "scroll",
+        "premiado",
+        "layout: texto moderado, 24 imagens, hero com vídeo, seções fixadas"
+      ],
+      "capturas": null
+    }
+  ],
+  "secoes": [
+    {
+      "id": "hero",
+      "objetivo": "primeira impressão e promessa",
+      "referencia": null,
+      "motion": "revelação do título por linhas/palavras + 1 gesto de assinatura",
+      "componente": null
+    },
+    {
+      "id": "manifesto",
+      "objetivo": "ideia da marca em uma frase grande",
+      "referencia": null,
+      "motion": "texto que se revela com o scroll",
+      "componente": null
+    },
+    {
+      "id": "conteudo",
+      "objetivo": "o que a marca oferece (produtos, trabalhos, serviços)",
+      "referencia": null,
+      "motion": "cards/galeria com hover e entrada escalonada",
+      "componente": null
+    },
+    {
+      "id": "prova",
+      "objetivo": "confiança: números, depoimentos, logos, prêmios",
+      "referencia": null,
+      "motion": "contadores ou marquee discreto",
+      "componente": null
+    },
+    {
+      "id": "chamada",
+      "objetivo": "ação principal",
+      "referencia": null,
+      "motion": "botão com microinteração magnética/preenchimento",
+      "componente": null
+    },
+    {
+      "id": "rodape",
+      "objetivo": "fechar com marca e navegação",
+      "referencia": null,
+      "motion": "tipografia grande e revelação ao final",
+      "componente": null
+    }
+  ],
+  "qualidade": {
+    "portao": "~/.claude/skills/site-nivel-awwwards/references/rubrica.md",
+    "alvos": {
+      "lighthouseDesktop": ">=90",
+      "lighthouseMobile": ">=75",
+      "LCP": "<2.5s",
+      "CLS": "<0.1",
+      "contraste": "AA",
+      "viewports": [
+        "1440",
+        "768",
+        "390"
+      ]
+    }
+  },
+  "proximosPassos": [
+    "Abrir as capturas das referências (3-6) e preencher a referência de cada seção em \"secoes\"",
+    "Conferir a biblioteca de componentes para cada seção (skill biblioteca-componentes)",
+    "Validar paleta e fontes com o usuário antes de construir",
+    "Construir e passar pelo portão de qualidade (rubrica.md)"
+  ],
+  "geradoEm": "2026-11-26T17:11:41.744Z"
+}
