@@ -1,4 +1,4 @@
-/* Projeto-base da skill site-nivel-awwwards (HTML + CSS + JS + GSAP). Usa as variáveis de tokens.css (gerado do brief) e as lições de desempenho medidas:
+/* Projeto-base da skill site-premium-ux-ui (HTML + CSS + JS + GSAP). Usa as variáveis de tokens.css (gerado do brief) e as lições de desempenho medidas:
    hero em CSS puro, sem text-rendering global, content-visibility nas seções de baixo, motion só com transform/opacity, prefers-reduced-motion. */
 :where(:root) { /* especificidade 0: os valores de tokens.css vencem */
   --ease: cubic-bezier(.25, 1, .5, 1); --ease-io: cubic-bezier(.76, 0, .24, 1);

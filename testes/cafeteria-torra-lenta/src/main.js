@@ -1,4 +1,4 @@
-// Projeto-base da skill site-nivel-awwwards: motion com GSAP.
+// Projeto-base da skill site-premium-ux-ui: motion com GSAP.
 // O hero NÃO depende de JS (entra por CSS). Aqui: Lenis só com mouse, manifesto que acende, trilho horizontal fixado,
 // números, botão magnético e rodapé. Lições de desempenho: dividir texto só quando a seção se aproxima; sem laço de JS no toque.
 import gsap from 'gsap';

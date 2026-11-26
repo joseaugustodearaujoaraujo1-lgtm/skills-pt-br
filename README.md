@@ -19,7 +19,7 @@ Agentes de código escrevem rápido, mas repetem erros previsíveis: falhas de s
 | Skill | Para quê | Tamanho |
 |---|---|---|
 | [`seguranca-completa`](seguranca-completa/SKILL.md) | Evitar, detectar e corrigir falhas de software: código gerado por IA, front-end, APIs, pagamentos, agentes/LLMs e infraestrutura | 92 falhas catalogadas |
-| [`site-nivel-awwwards`](site-nivel-awwwards/SKILL.md) | Cria sites do zero com design, identidade e movimento nível Awwwards / One Page Love: sugere referências de um acervo de sites premiados (que você monta com os scripts da skill), estilos, paletas, componentes das plataformas, projeto-base HTML+GSAP ou Next.js+GSAP, e um verificador automático | Fluxo de 6 passos, 10 estilos, 2 projetos-base, 6 módulos, verificador e juiz. [Leia o README da skill](site-nivel-awwwards/README.md) |
+| [`site-premium-ux-ui`](site-premium-ux-ui/SKILL.md) | Cria sites do zero com design, identidade e movimento nível Awwwards / One Page Love: sugere referências de um acervo de sites premiados (que você monta com os scripts da skill), estilos, paletas, componentes das plataformas, projeto-base HTML+GSAP ou Next.js+GSAP, e um verificador automático | Fluxo de 6 passos, 10 estilos, 2 projetos-base, 6 módulos, verificador e juiz. [Leia o README da skill](site-premium-ux-ui/README.md) |
 | [`criatividade`](criatividade/SKILL.md) | Gerar ideias fora da caixa com método e entregar soluções viáveis | 5 fases, 3 intensidades |
 | [`mvp-completo`](mvp-completo/SKILL.md) | Conduzir qualquer MVP do requisito ao teste de carga, com portões de aprovação entre as etapas | 7 etapas, 8 referências |
 | [`judicial-sistema`](judicial-sistema/SKILL.md) | Transformar a lei brasileira em requisitos e documentos para reduzir o risco de processos e multas | 8 áreas jurídicas, 10 referências |
@@ -34,7 +34,7 @@ Um atlas de **92 falhas reais** com identificador estável (`IA-01`, `FE-05`, `A
 - **Modos de uso:** de uma checagem rápida até uma auditoria completa, com relatório e plano de correção.
 - Inclui `checklist-pre-deploy.md` e `casos-reais.md`.
 
-## 🎨 site-nivel-awwwards
+## 🎨 site-premium-ux-ui
 
 Substitui e reúne as antigas `design-completo` e `estilos-paletas-design` em **uma skill só**, que conduz o site do briefing ao portão de qualidade **com o usuário escolhendo** as decisões de gosto.
 
@@ -111,7 +111,7 @@ Copie a pasta da skill desejada para o diretório de skills do seu agente. No Cl
 ```bash
 git clone https://github.com/joseaugustodearaujoaraujo1-lgtm/skills-pt-br.git
 cp -r skills-pt-br/seguranca-completa ~/.claude/skills/
-cp -r skills-pt-br/site-nivel-awwwards ~/.claude/skills/
+cp -r skills-pt-br/site-premium-ux-ui ~/.claude/skills/
 cp -r skills-pt-br/criatividade ~/.claude/skills/
 cp -r skills-pt-br/mvp-completo ~/.claude/skills/
 cp -r skills-pt-br/judicial-sistema ~/.claude/skills/
@@ -124,7 +124,7 @@ No Windows (PowerShell), o destino é `$HOME\.claude\skills\`. Reinicie a sessã
 ```text
 skills-pt-br/
 ├── seguranca-completa/       # SKILL.md + references/ (por área e por linguagem)
-├── site-nivel-awwwards/    # SKILL.md + scripts/ + references/ (incl. base-design-completo/ e base-estilos/)
+├── site-premium-ux-ui/    # SKILL.md + scripts/ + references/ (incl. base-design-completo/ e base-estilos/)
 ├── criatividade/     # SKILL.md + references/ (técnicas, exemplo, modelos)
 ├── mvp-completo/   # SKILL.md + references/ (uma por etapa + media-prompts)
 ├── judicial-sistema/   # SKILL.md + references/ (por área jurídica + checklist + templates)
@@ -139,7 +139,7 @@ Cada skill segue o mesmo formato: `SKILL.md` curto com o essencial e a pasta `re
 - Os exemplos de Tailwind e React não foram executados em um projeto real.
 - Os exemplos de `mvp-completo` (Express, GSAP, OpenAPI, k6, ffmpeg e Cloudflare) **não foram executados nem testados em um projeto real**; confira versões e flags antes de usar.
 - Em `judicial-sistema`, os textos legais são resumos educativos escritos de memória, **sem verificação linha a linha nas fontes oficiais**, e **não substituem assessoria jurídica**. Confirme a vigência de normas recentes (ECA Digital, regulação de IA, responsabilidade de plataformas no art. 19 do Marco Civil, prazos da ANPD).
-- Em `site-nivel-awwwards`, as paletas geradas por script têm contraste **medido**; as cores dos guias de estilo marcadas como *(aprox.)* ou *(derivado)* continuam estimativas. Os scripts de pesquisa (`pesquisar-referencias.mjs`, `opcoes.mjs`, `gerar-padroes.mjs`) dependem de um **acervo local de capturas que não está no repositório** (defina `ACERVO` com a pasta); sem ele, use a pesquisa ao vivo descrita na skill. Preços das plataformas verificados em novembro de 2026.
+- Em `site-premium-ux-ui`, as paletas geradas por script têm contraste **medido**; as cores dos guias de estilo marcadas como *(aprox.)* ou *(derivado)* continuam estimativas. Os scripts de pesquisa (`pesquisar-referencias.mjs`, `opcoes.mjs`, `gerar-padroes.mjs`) usam o acervo local de capturas (defina `ACERVO` com a pasta; os scripts para montá-lo estão em `scripts/acervo/`). Sem ele, usam o índice destilado de 139 sites premiados que vai no repositório, e a pesquisa ao vivo descrita na skill complementa. Preços das plataformas verificados em novembro de 2026.
 - As skills ainda **não passaram por avaliação formal de comportamento** (evals).
 - Links de galerias de referência não foram abertos individualmente.
 

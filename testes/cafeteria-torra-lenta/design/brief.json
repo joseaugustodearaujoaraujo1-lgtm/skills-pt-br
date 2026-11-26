@@ -19,7 +19,7 @@
         "tema \"alimentacao\" (posição 2)",
         "adjetivo \"artesanal\""
       ],
-      "arquivo": "~/.claude/skills/site-nivel-awwwards/references/base-estilos/minimalism.md"
+      "arquivo": "~/.claude/skills/site-premium-ux-ui/references/base-estilos/minimalism.md"
     },
     "secundario": {
       "id": "claymorphism",
@@ -28,7 +28,7 @@
       "motivos": [
         "tema \"alimentacao\" (posição 1)"
       ],
-      "arquivo": "~/.claude/skills/site-nivel-awwwards/references/base-estilos/claymorphism.md"
+      "arquivo": "~/.claude/skills/site-premium-ux-ui/references/base-estilos/claymorphism.md"
     },
     "aviso": null
   },
@@ -136,7 +136,7 @@
   },
   "tridimensional": {
     "usar": true,
-    "receita": "~/.claude/skills/site-nivel-awwwards/references/3d-leve.md",
+    "receita": "~/.claude/skills/site-premium-ux-ui/references/3d-leve.md",
     "regra": "TODO objeto 3D precisa de uma imagem muito detalhada (várias vistas) ou de um vídeo de como deve ficar, ANTES de modelar. Sem referência, não modele.",
     "objetos": [],
     "bloqueio": "Nenhuma referência visual de objeto 3D informada (--ref3d \"nome=caminho\"). Obtenha imagem/vídeo detalhado antes de modelar.",
@@ -192,7 +192,7 @@
     }
   ],
   "qualidade": {
-    "portao": "~/.claude/skills/site-nivel-awwwards/references/rubrica.md",
+    "portao": "~/.claude/skills/site-premium-ux-ui/references/rubrica.md",
     "alvos": {
       "lighthouseDesktop": ">=90",
       "lighthouseMobile": ">=75",
