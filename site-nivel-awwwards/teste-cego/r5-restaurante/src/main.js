@@ -52,8 +52,29 @@ if (!reduzido) {
     return emPct ? { xPercent: dx * dist, yPercent: dy * dist, ...(dx || dy ? {} : { opacity: 0 }) } : { x: dx * dist, y: dy * dist, opacity: 0 };
   };
 
-  // hero: a mídia afunda e gira de leve ao sair
-  gsap.to('.hero-midia', { yPercent: 14, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
+  // hero: o arco da porta se abre até a tela cheia e a luz fria esquenta (gesto-assinatura 1)
+  ScrollTrigger.matchMedia({
+    '(min-width: 861px)': () => abrirPorta('inset(11vh 4vw 6vh 50vw round 23vw 23vw 0 0)', 120),
+    '(max-width: 860px)': () => abrirPorta('inset(45svh 7vw 4svh 7vw round 43vw 43vw 0 0)', 80),
+  });
+  function abrirPorta(fechado, fim) {
+    const tl = gsap.timeline({ defaults: { ease: 'none' }, scrollTrigger: { trigger: '.hero', start: 'top top', end: '+=' + fim + '%', pin: '.hero-pin', scrub: .6, anticipatePin: 1, onUpdate: self => $('.hero').classList.toggle('aberto', self.progress > .85) } });
+    tl.fromTo('.hero-arco', { clipPath: fechado }, { clipPath: 'inset(0vh 0vw 0vh 0vw round 0vw 0vw 0vw 0vw)' }, 0)
+      .fromTo('.hero-arco img', { scale: 1.12 }, { scale: 1 }, 0)
+      .fromTo('.hero-frio', { opacity: 1 }, { opacity: 0 }, 0)
+      .to('.hero-texto', { opacity: 0, yPercent: -12 }, 0.05)
+      .fromTo('.hero-legenda', { opacity: 0 }, { opacity: 1 }, 0.8);
+  }
+
+  // fogão: o calor sobe e a palavra gigante desliza
+  gsap.fromTo('.fogo-brasa', { opacity: .15 }, { opacity: 1, ease: 'none', scrollTrigger: { trigger: '.fogo', start: 'top 80%', end: 'bottom 60%', scrub: true } });
+  gsap.fromTo('.fogo-palavra', { yPercent: -6 }, { yPercent: 8, ease: 'none', scrollTrigger: { trigger: '.fogo', start: 'top bottom', end: 'bottom top', scrub: true } });
+
+  // termômetro: do frio à brasa
+  ScrollTrigger.create({ start: 0, end: 'max', onUpdate: self => document.documentElement.style.setProperty('--p', self.progress.toFixed(4)) });
+
+  // régua de brasa do ofício
+  gsap.fromTo('.regua i', { scaleY: .04 }, { scaleY: 1, ease: 'none', scrollTrigger: { trigger: '.oficio-lista', start: 'top 65%', end: 'bottom 70%', scrub: true } });
 
   // divisão de texto só quando a seção se aproxima
   const quandoPerto = (el, fn, margem) => new IntersectionObserver((es, obs) => { if (es[0].isIntersecting) { obs.disconnect(); fn(el); } }, { rootMargin: margem }).observe(el);
@@ -66,7 +87,7 @@ if (!reduzido) {
   }, '100% 0px 100% 0px');
 
   // títulos de seção entram por linha, na direção de data-entrada
-  $$('.colecao-cab h2, .escura h2, .passos h2, .contato h2').forEach(h => quandoPerto(h, el => {
+  $$('.colecao-cab h2, .fogo h2, .casa h2, .oficio h2, .reserva h2').forEach(h => quandoPerto(h, el => {
     const s = SplitText.create(el, { type: 'lines', mask: 'lines', linesClass: 'linha-js', aria: 'none' });
     const v = de(el, 105, true); if (v) gsap.from(s.lines, { ...v, duration: 1.1, ease: 'power4.out', stagger: .1 });
   }, '0px 0px -12% 0px'));
@@ -80,15 +101,6 @@ if (!reduzido) {
   });
   const vItem = de($('.item'), 50); if (vItem) gsap.from('.item', { ...vItem, duration: 1, ease: 'power3.out', stagger: .08, scrollTrigger: { trigger: '.trilho', start: 'top 85%', once: true } });
 
-  // números (valor final já no HTML para quem não roda JS)
-  $$('.num').forEach(el => {
-    const fim = +el.dataset.n, suf = el.dataset.suf || '', o = { v: 0 };
-    gsap.to(o, { v: fim, duration: 1.8, ease: 'power3.out', onUpdate: () => { el.textContent = Math.round(o.v).toLocaleString('pt-BR') + suf; }, scrollTrigger: { trigger: el, start: 'top 88%', once: true } });
-  });
-
-  // passos entram um a um
-  gsap.utils.toArray('.passos-lista li').forEach(li => { const v = de(li, 30); if (v) gsap.from(li, { ...v, duration: .9, ease: 'power3.out', scrollTrigger: { trigger: li, start: 'top 88%', once: true } }); });
-
   // botão magnético (só com mouse)
   if (fino) $$('.botao').forEach(b => {
     const x = gsap.quickTo(b, 'x', { duration: .4, ease: 'power3' }), y = gsap.quickTo(b, 'y', { duration: .4, ease: 'power3' });
@@ -99,3 +111,16 @@ if (!reduzido) {
   const vMarca = de($('.rodape-marca'), 45, true); if (vMarca) gsap.from('.rodape-marca', { ...vMarca, opacity: 0, duration: 1.4, ease: 'power4.out', scrollTrigger: { trigger: '.rodape', start: 'top 90%', once: true } });
   document.fonts.ready.then(() => requestAnimationFrame(() => ScrollTrigger.refresh()));
 }
+
+// barra de WhatsApp do celular some quando a reserva aparece
+const barra = $('.barra-wpp'), res = $('#reserva');
+if (barra && res) new IntersectionObserver(es => barra.classList.toggle('some', es[0].isIntersecting), { threshold: .12 }).observe(res);
+
+// formulário: monta a mensagem e abre o WhatsApp (número a confirmar com a casa)
+const NUM = '5532999990000';
+$('#form-reserva')?.addEventListener('submit', e => {
+  e.preventDefault();
+  const f = new FormData(e.target); const [y, m, d] = String(f.get('dia')).split('-');
+  const msg = `Olá, Casa Ofício! Sou ${f.get('nome')}. Gostaria de reservar uma mesa para ${f.get('pessoas')} pessoa(s), no ${f.get('turno')} do dia ${d}/${m}/${y}. Podem confirmar?`;
+  open(`https://wa.me/${NUM}?text=${encodeURIComponent(msg)}`, '_blank', 'noopener');
+});

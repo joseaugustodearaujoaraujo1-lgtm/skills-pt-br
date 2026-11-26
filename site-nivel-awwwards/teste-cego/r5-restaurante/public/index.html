@@ -3,115 +3,173 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Casa Ofício — restaurante comida mineira fogão a lenha Tiradentes</title>
+<title>Casa Ofício | Comida mineira de fogão a lenha em Tiradentes, MG</title>
 <meta name="description" content="Comida mineira de fogão a lenha no centro histórico de Tiradentes. Reserve sua mesa pelo WhatsApp.">
 <meta name="theme-color" content="#f1e7d6">
-<link rel="preload" href="fonts/fredoka-normal-400-700.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="fonts/nunito-normal-400-700.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='12' fill='%23888'/%3E%3C/svg%3E">
+<meta property="og:title" content="Casa Ofício | Comida mineira de fogão a lenha em Tiradentes">
+<meta property="og:description" content="Do fogo à mesa, sem pressa. Reserve pelo WhatsApp.">
+<meta property="og:image" content="img/hero-rua.webp">
+<link rel="preload" href="fonts/fraunces-normal-400-600.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="img/hero-rua.webp" as="image" fetchpriority="high">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M5 30V14a11 11 0 0 1 22 0v16z' fill='%23a93f22'/%3E%3C/svg%3E">
 <link rel="stylesheet" href="fonts/fonts.css">
 <link rel="stylesheet" href="tokens.css">
-<link rel="stylesheet" href="estilo.css?v=1">
-<script type="module" src="app.js?v=1"></script>
+<link rel="stylesheet" href="estilo.css?v=2">
+<script type="module" src="app.js?v=2"></script>
 </head>
 <body>
 <a class="pular" href="#conteudo">Pular para o conteúdo</a>
+<div class="termo" aria-hidden="true"><i></i></div>
 
 <header class="topo" id="topo">
   <a class="marca" href="#inicio" aria-label="Casa Ofício, início">Casa Ofício</a>
   <button class="topo-menu" type="button" aria-expanded="false" aria-controls="menu-principal">Menu</button>
   <nav aria-label="Principal" id="menu-principal">
     <ul>
-      <li><a href="#colecao">[Seção 1]</a></li>
-      <li><a href="#numeros">[Seção 2]</a></li>
-      <li><a href="#contato">[Contato]</a></li>
+      <li><a href="#fogao">O fogão</a></li>
+      <li><a href="#mesa">A mesa</a></li>
+      <li><a href="#casa">A casa</a></li>
+      <li><a href="#oficio">O ofício</a></li>
     </ul>
   </nav>
-  <a class="topo-cta" href="#contato">[Ação principal]</a>
+  <a class="topo-cta" href="#reserva">Reservar mesa</a>
 </header>
 
 <main id="conteudo">
-  <!-- HERO: um protagonista na primeira dobra. O título entra por CSS (linhas já divididas no HTML): não depende de JS nem de fontes. -->
+  <!-- 1. HERO: a rua de pedra vista por um arco; ao rolar o arco se abre e a luz esquenta -->
   <section class="hero" id="inicio" aria-labelledby="hero-titulo">
-    <div class="hero-texto">
-      <p class="hero-local">[Rótulo curto: o que é · onde]</p>
-      <h1 id="hero-titulo">
-        <span class="linha-mask"><span class="linha" style="--i:0">[Título linha 1]</span></span>
-        <span class="linha-mask"><span class="linha" style="--i:1"><em>[linha 2 em destaque.]</em></span></span>
-      </h1>
-      <p class="hero-sub">[Uma frase que diz o que você faz e para quem, com o diferencial concreto.]</p>
-      <div class="hero-acoes">
-        <a class="botao" href="#contato">[Ação principal]</a>
-        <a class="link-seta" href="#colecao">[Ação secundária] <span aria-hidden="true">→</span></a>
+    <div class="hero-pin">
+      <figure class="hero-arco">
+        <img src="img/hero-rua.webp" width="1800" height="1342" alt="Rua de pedra do centro histórico de Tiradentes, com casario colonial e a Serra de São José ao fundo" fetchpriority="high">
+        <span class="hero-frio"></span>
+      </figure>
+      <div class="hero-texto">
+        <p class="hero-local">Tiradentes · Minas Gerais</p>
+        <h1 id="hero-titulo">
+          <span class="linha-mask"><span class="linha" style="--i:0">Comida mineira</span></span>
+          <span class="linha-mask"><span class="linha" style="--i:1"><em>de fogão a lenha.</em></span></span>
+        </h1>
+        <p class="hero-sub">No centro histórico, a panela vai do fogo direto para a sua mesa. Sem pressa, com fartura.</p>
+        <div class="hero-acoes">
+          <a class="botao" href="#reserva">Reservar pelo WhatsApp</a>
+          <a class="link-seta" href="#mesa">Ver a mesa <span aria-hidden="true">→</span></a>
+        </div>
       </div>
+      <p class="hero-legenda" aria-hidden="true">Rua de pedra, Tiradentes. A porta está aberta.</p>
     </div>
-    <figure class="hero-midia" aria-hidden="true">
-      <!-- SUBSTITUA pelo protagonista: imagem real (img com width/height e fetchpriority="high"), vídeo com poster, ou cena 3D leve (pôster + WebGL tardio). -->
-      <div class="hero-forma"></div>
+  </section>
+
+  <!-- 2. O FOGÃO: momento-assinatura. Fundo vai da ardósia fria à brasa; FOGO enche a largura e é cortado pelo arco -->
+  <section class="fogo" id="fogao" aria-labelledby="fogo-titulo">
+    <div class="fogo-brasa" aria-hidden="true"></div>
+    <p class="fogo-palavra" aria-hidden="true">FOGO</p>
+    <figure class="arco fogo-arco">
+      <img src="img/fogo-panelas.webp" width="1600" height="1200" alt="Fogão a lenha com a lenha acesa e panelas de barro e de ferro sobre a chapa" loading="lazy">
     </figure>
-    <ul class="hero-fatos" aria-label="Resumo">
-      <li><strong>[Fato 1]</strong> [detalhe]</li>
-      <li><strong>[Fato 2]</strong> [detalhe]</li>
-      <li><strong>[Fato 3]</strong> [detalhe]</li>
-    </ul>
+    <div class="fogo-texto">
+      <h2 id="fogo-titulo">Aceso antes de a porta <em>abrir.</em></h2>
+      <p>O fogão a lenha é o coração da casa. Ele esquenta devagar, e é nessa temperatura que o feijão, o torresmo e a couve ficam do jeito que a gente lembra da casa da avó.</p>
+    </div>
   </section>
 
-  <!-- MANIFESTO: as palavras acendem com a rolagem -->
-  <section class="manifesto" aria-label="Manifesto">
-    <p class="manifesto-texto">[Escreva 25 a 45 palavras sobre o que acredita e como trabalha. Texto real do cliente, sem inventar números nem depoimentos.]</p>
-  </section>
-
-  <!-- COLEÇÃO: trilho horizontal fixado (desktop) / carrossel nativo (celular). Use para produtos, projetos ou serviços reais. -->
-  <section class="colecao" id="colecao" aria-labelledby="colecao-titulo">
+  <!-- 3. A MESA: trilho horizontal fixado (desktop) / carrossel nativo (celular) -->
+  <section class="colecao" id="mesa" aria-labelledby="mesa-titulo">
     <div class="colecao-cab">
-      <h2 id="colecao-titulo">[Título da <em>coleção</em>]</h2>
-      <p>[Frase de apoio]</p>
+      <h2 id="mesa-titulo">A mesa <em>posta.</em></h2>
+      <p>Pratos de panela, para dividir. O que chega à mesa saiu do fogo há pouco.</p>
     </div>
     <div class="trilho-janela">
       <ol class="trilho" role="list">
-        <li class="item"><div class="item-midia"></div><h3>[Item 1]</h3><p>[Descrição curta e real]</p></li>
-        <li class="item"><div class="item-midia"></div><h3>[Item 2]</h3><p>[Descrição curta e real]</p></li>
-        <li class="item"><div class="item-midia"></div><h3>[Item 3]</h3><p>[Descrição curta e real]</p></li>
-        <li class="item"><div class="item-midia"></div><h3>[Item 4]</h3><p>[Descrição curta e real]</p></li>
-        <li class="item"><div class="item-midia"></div><h3>[Item 5]</h3><p>[Descrição curta e real]</p></li>
+        <li class="item"><figure class="arco"><img src="img/tutu.webp" width="1000" height="700" alt="Tutu de feijão servido em travessa de metal" loading="lazy"></figure><h3>Tutu de feijão</h3><p>Feijão batido com farinha, servido com torresmo e couve.</p></li>
+        <li class="item"><figure class="arco"><img src="img/tropeiro.webp" width="1100" height="619" alt="Feijão tropeiro com linguiça, cheiro-verde e ovo" loading="lazy"></figure><h3>Feijão tropeiro</h3><p>Feijão, farinha, linguiça e couve, refogados na hora.</p></li>
+        <li class="item"><figure class="arco"><img src="img/almoco.webp" width="1300" height="677" alt="Panelas de barro com frango e quiabo, arroz e angu sobre a mesa" loading="lazy"></figure><h3>A panela na mesa</h3><p>Servido na própria panela de barro, quente até o fim.</p></li>
+        <li class="item"><figure class="arco"><img src="img/pao-queijo.webp" width="1100" height="733" alt="Pães de queijo dourados em cesta de vime" loading="lazy"></figure><h3>Pão de queijo</h3><p>Saindo do forno, para abrir a conversa.</p></li>
+        <li class="item"><figure class="arco"><img src="img/doce.webp" width="1100" height="614" alt="Doce de leite em fatia ao lado de queijo com goiabada" loading="lazy"></figure><h3>Doce de leite</h3><p>O fim da refeição, com queijo e goiabada se você quiser.</p></li>
       </ol>
     </div>
   </section>
 
-  <!-- NÚMEROS: seção escura de contraste (paleta escura da skill) -->
-  <section class="escura" id="numeros" aria-labelledby="numeros-titulo">
-    <h2 id="numeros-titulo">[Título da <em>seção escura</em>]</h2>
-    <ul class="numeros" aria-label="Números">
-      <li><span class="num" data-n="0" data-suf="">0</span> [legenda 1: número real do cliente]</li>
-      <li><span class="num" data-n="0" data-suf="">0</span> [legenda 2]</li>
-      <li><span class="num" data-n="0" data-suf="">0</span> [legenda 3]</li>
-    </ul>
+  <!-- 4. A CASA: duas colunas, manifesto que acende, arcos escalonados -->
+  <section class="casa" id="casa" aria-labelledby="casa-titulo">
+    <div class="casa-texto">
+      <p class="rotulo">A casa e a vila</p>
+      <h2 id="casa-titulo">Pedra, cal e <em>serra.</em></h2>
+      <p class="manifesto-texto">Tiradentes guarda ruas de pedra, casarões caiados e a Serra de São José no fundo de cada esquina. A Casa Ofício cozinha como a vila vive: devagar, com lenha, e de portas abertas para quem chega.</p>
+    </div>
+    <div class="casa-fotos">
+      <figure class="arco casa-a"><img src="img/casario.webp" width="1400" height="933" alt="Vista do casario de Tiradentes com a igreja matriz entre as árvores" loading="lazy"></figure>
+      <figure class="arco casa-b"><img src="img/serra.webp" width="1400" height="1050" alt="Cruz de pedra no adro e a Serra de São José sob nuvens" loading="lazy"></figure>
+    </div>
   </section>
 
-  <!-- PASSOS: lista editorial, sem ícones em cards -->
-  <section class="passos" aria-labelledby="passos-titulo">
-    <h2 id="passos-titulo">[Como <em>funciona</em>]</h2>
-    <ul class="passos-lista">
-      <li><h3>[Passo 1]</h3><p>[Descrição]</p></li>
-      <li><h3>[Passo 2]</h3><p>[Descrição]</p></li>
-      <li><h3>[Passo 3]</h3><p>[Descrição]</p></li>
-    </ul>
+  <!-- 5. O OFÍCIO: título fixo, régua de brasa que enche -->
+  <section class="oficio" id="oficio" aria-labelledby="oficio-titulo">
+    <div class="oficio-lado">
+      <h2 id="oficio-titulo">Do fogo à mesa, <em>sem pressa.</em></h2>
+      <figure class="arco oficio-foto"><img src="img/fogao-fazenda.webp" width="1400" height="933" alt="Cozinha com fogão a lenha aceso, chaleiras e panelas de ferro" loading="lazy"></figure>
+    </div>
+    <div class="oficio-corpo">
+      <div class="regua" aria-hidden="true"><i></i></div>
+      <ol class="oficio-lista">
+        <li><span class="passo-n">01</span><div><h3>Acender</h3><p>A lenha entra antes de a porta abrir. O fogão leva horas para chegar à temperatura em que o feijão cozinha sozinho.</p></div></li>
+        <li><span class="passo-n">02</span><div><h3>Cozinhar devagar</h3><p>Panelas de ferro e de barro ficam sobre a chapa. Ninguém corre com o tutu, o torresmo ou a couve.</p></div></li>
+        <li><span class="passo-n">03</span><div><h3>Servir na panela</h3><p>O que cozinhou na panela chega nela até a mesa, quente, para a família dividir.</p></div></li>
+        <li><span class="passo-n">04</span><div><h3>Fechar com doce</h3><p>Doce de leite, queijo com goiabada, café coado. A conta só vem quando vocês pedirem.</p></div></li>
+      </ol>
+    </div>
   </section>
 
-  <!-- CONTATO: a ação principal -->
-  <section class="contato" id="contato" aria-labelledby="contato-titulo">
-    <h2 id="contato-titulo">[Chamada <em>final.</em>]</h2>
-    <div class="contato-grade">
-      <div><p class="contato-rotulo">[Endereço ou canal]</p><p>[Texto]</p></div>
-      <div><p class="contato-rotulo">[Horário ou prazo]</p><p>[Texto]</p></div>
-      <div class="contato-acao"><a class="botao botao-grande" href="#contato">[Ação principal]</a><p class="contato-nota">[Nota curta]</p></div>
+  <!-- 6. RESERVA: a ação principal -->
+  <section class="reserva" id="reserva" aria-labelledby="reserva-titulo">
+    <h2 id="reserva-titulo">Sua mesa está <em>posta.</em></h2>
+    <div class="reserva-grade">
+      <figure class="arco reserva-arco"><img src="img/patio.webp" width="1000" height="770" alt="Pátio de pedra de um casarão colonial com plantas e janelas coloridas" loading="lazy"></figure>
+      <div class="reserva-corpo">
+        <form class="reserva-form" id="form-reserva" aria-label="Pedido de reserva pelo WhatsApp">
+          <p class="reserva-intro">Escolha o dia e quantas pessoas. A conversa abre no WhatsApp com tudo preenchido, e a casa confirma por lá.</p>
+          <div class="campos">
+            <label>Nome<input name="nome" type="text" autocomplete="given-name" required></label>
+            <label>Dia<input name="dia" type="date" required></label>
+            <label>Pessoas
+              <select name="pessoas">
+                <option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>Mais de 8</option>
+              </select>
+            </label>
+            <label>Turno
+              <select name="turno"><option>almoço</option><option>jantar</option></select>
+            </label>
+          </div>
+          <button class="botao botao-grande" type="submit">Reservar pelo WhatsApp</button>
+        </form>
+        <dl class="reserva-dados">
+          <div><dt>Onde</dt><dd>Centro histórico de Tiradentes, Minas Gerais</dd></div>
+          <div><dt>Quando</dt><dd>Sexta a domingo e feriados, almoço e jantar</dd></div>
+          <div><dt>Grupos</dt><dd>Mesas para casais e famílias; avise se vier com crianças</dd></div>
+        </dl>
+      </div>
     </div>
   </section>
 </main>
 
+<a class="barra-wpp" href="https://wa.me/5532999990000?text=Ol%C3%A1%2C%20Casa%20Of%C3%ADcio!%20Gostaria%20de%20reservar%20uma%20mesa." rel="noopener">Reservar pelo WhatsApp</a>
+
 <footer class="rodape">
   <p class="rodape-marca" aria-hidden="true">Casa Ofício</p>
-  <div class="rodape-linha"><p>© 2026 Casa Ofício</p><p>[Créditos das imagens e licenças, se houver]</p></div>
+  <div class="rodape-linha"><p>© 2026 Casa Ofício · Tiradentes, MG</p><p>Fotos reais do Wikimedia Commons, em licenças abertas, com o mesmo tratamento de cor aplicado.</p></div>
+  <h2 class="creditos-titulo">Créditos das fotos</h2>
+  <ul class="creditos">
+    <li>Rua e Serra: Glauco Umbelino, <a href="https://commons.wikimedia.org/wiki/File:Tiradentes,_com_a_Serra_de_S%C3%A3o_Jos%C3%A9_ao_fundo_(1511722953).jpg" rel="noopener">CC BY 2.0</a></li>
+    <li>Casario e igreja: Marinelson Almeida, <a href="https://commons.wikimedia.org/wiki/File:Tiradentes_-_Minas_Gerais_-_Brasil._(15463465202).jpg" rel="noopener">CC BY 2.0</a></li>
+    <li>Cruz e serra: Rômer Castanheira, <a href="https://commons.wikimedia.org/wiki/File:Serra_de_S%C3%A3o_Jos%C3%A9_em_TIRADENTES.jpg" rel="noopener">CC BY-SA 4.0</a></li>
+    <li>Pátio: M. H. Mathias, <a href="https://commons.wikimedia.org/wiki/File:Tiradentes,_Minas_Gerais_(21017547978).jpg" rel="noopener">CC BY 2.0</a></li>
+    <li>Fogão com panelas: Under the same moon..., <a href="https://commons.wikimedia.org/wiki/File:Comida_Mineira_in_Minas_Gerais_(20240098865).jpg" rel="noopener">CC BY 2.0</a></li>
+    <li>Fogão de lenha: Jonathan Wilkins, <a href="https://commons.wikimedia.org/wiki/File:Fog%C3%A3o_de_lenha_na_fazenda.jpg" rel="noopener">CC BY-SA 3.0</a></li>
+    <li>Tutu de feijão: DAR7, <a href="https://commons.wikimedia.org/wiki/File:Tutu_de_feij%C3%A3o_27_05_2015_(4).JPG" rel="noopener">CC BY-SA 4.0</a></li>
+    <li>Feijão tropeiro: Melsj, <a href="https://commons.wikimedia.org/wiki/File:Feij%C3%A3o_tropeiro_vegano.jpg" rel="noopener">CC BY-SA 4.0</a></li>
+    <li>Panelas de barro: Pablo G. Lopes, <a href="https://commons.wikimedia.org/wiki/File:Almo%C3%A7o_em_Ouro_Preto.jpg" rel="noopener">CC BY-SA 4.0</a></li>
+    <li>Pão de queijo: Murilo Manzini, <a href="https://commons.wikimedia.org/wiki/File:Cheesebread.jpg" rel="noopener">CC BY-SA 4.0</a></li>
+    <li>Doce de leite: إيان, <a href="https://commons.wikimedia.org/wiki/File:Romeo_e_Julieta_e_doce_de_leite.jpg" rel="noopener">CC BY-SA 4.0</a></li>
+  </ul>
 </footer>
 </body>
 </html>
