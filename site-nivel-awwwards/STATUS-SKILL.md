@@ -127,3 +127,10 @@ Cada sessão lê este arquivo primeiro e o atualiza no fim. Plano em `PROMPT-FIN
 ## Fechamento (pós-E)
 - Scripts do acervo escritos no repositório (`scripts/acervo/`: listar-awwwards, coletar, extrair-estrutura, recapturar, buscar) e testados de ponta a ponta em sites locais. A listagem ao vivo do Awwwards não foi testada (conexão recusada na nuvem).
 - `scripts/diagnostico.mjs`, `references/acervo-do-zero.md`, `README.md` da skill (propósito, instalação, uso, prompt de exemplo).
+
+## Fechamento 2 (2026-11-26)
+- Acervo coletado na nuvem pelo CSS Design Awards (215 sites, 139 válidos e medidos), classificado por tema e destilado em `references/acervo-destilado/` (só fatos e endereço, vai para o GitHub). Sem acervo local, `pesquisar-referencias.mjs` usa esse índice sozinho.
+- Teste cego rodada 4 (3 briefings novos): 6,85 / 7,15 / 7,10; depois de uma rodada de correções, 7,15 / 7,05 / 7,35. Nenhum liberado (7,5).
+- Viraram código: cabeçalho sempre à vista, botão "Menu" no celular, FAIL `sem-navegacao`, `sem-menu-celular`, `h1-pequeno` (celular), WARN `secoes-repetidas`, juiz fotografa trechos fixos no meio, momento-assinatura e composição por seção no juiz.
+- Starter Next: `npm run build` passou e o verificador roda nele.
+- Pendente com o usuário: imagens essenciais (o que mais segura o Design em 7 a 7,5).

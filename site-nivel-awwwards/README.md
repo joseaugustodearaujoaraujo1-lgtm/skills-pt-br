@@ -90,7 +90,7 @@ e me entregue o relatório com o que foi e o que não foi testado.
 
 ## Limites honestos
 
-- Nenhum site feito pela skill foi avaliado pelo júri real do Awwwards. O juiz é um modelo, calibrado com sites de nível conhecido. Em testes cegos (agente limpo, só com a skill), as notas foram 6,75; 7,05; 7,50 (esta liberada).
+- Nenhum site feito pela skill foi avaliado pelo júri real do Awwwards. O juiz é um modelo, calibrado com sites de nível conhecido. Em testes cegos (agente limpo, só com a skill), as notas foram 6,75; 7,05; 7,50 (liberada) e, na rodada 4, 7,15; 7,05; 7,35 depois de uma rodada de correções. O que mais segura a nota hoje são as imagens provisórias.
 - O juiz só vê o plano B do 3D (sem GPU na nuvem). Imagens e vídeos essenciais dependem de você.
 - Cores definidas dentro do JS ou do 3D não seguem o `?tema=` dos sites da galeria.
 - A coleta ao vivo do Awwwards depende do HTML dele, que muda; o One Page Love pede o uso da API oficial.

@@ -95,6 +95,12 @@ function medir() {
     const peso = midia < 0.05 ? 0 : midia < 0.3 ? 1 : midia < 0.7 ? 2 : 3;
     return { id: sec.id || sec.className?.toString().split(' ')[0] || sec.tagName.toLowerCase(), sig: `${colunas}c-${tit}-t${tam}-m${peso}` };
   });
+  // menu: links do cabeçalho à vista, ou um botão que o abre (teste cego, rodada 4: celular sem menu segura a Usabilidade em 7)
+  const cab = document.querySelector('header, [role=banner]');
+  out.linksMenuVisiveis = cab ? [...cab.querySelectorAll('nav a')].filter(visivel).length : 0;
+  out.linksMenuTotal = cab ? cab.querySelectorAll('nav a').length : 0;
+  out.botaoMenu = !!(cab && [...cab.querySelectorAll('button, [aria-expanded], [aria-controls]')].some(b => visivel(b) && (/menu|abrir|navega/i.test((b.innerText || '') + ' ' + (b.getAttribute('aria-label') || '')) || b.hasAttribute('aria-expanded'))));
+  out.maiorTextoDobra = Math.round(Math.max(0, ...[...document.querySelectorAll('h1,h2,p,span,a,div,strong,em,text')].filter(e => { const r = e.getBoundingClientRect(); return r.top < innerHeight && r.bottom > 0 && visivel(e) && [...e.childNodes].some(n => n.nodeType === 3 && n.textContent.trim()); }).map(e => { const ctm = e instanceof SVGGraphicsElement && e.getScreenCTM ? e.getScreenCTM() : null; return parseFloat(getComputedStyle(e).fontSize) * (ctm ? Math.hypot(ctm.a, ctm.b) : 1); })));
   out.temMain = !!document.querySelector('main'); out.temNav = !!document.querySelector('nav'); out.temFooter = !!document.querySelector('footer');
   out.focoVisivel = (() => { const s = [...document.styleSheets].some(ss => { try { return [...ss.cssRules].some(r => /focus-visible|:focus/.test(r.selectorText || '')); } catch { return false; } }); return s; })();
   return out;
@@ -144,7 +150,7 @@ for (const [nome, w, h, movel] of VPS) {
   if (d.placeholders.length) reg(nome, 'FAIL', 'placeholder', `texto de modelo ainda na página: ${d.placeholders.join(' ')}`);
   if (d.lorem) reg(nome, 'FAIL', 'lorem', 'lorem ipsum na página');
   if (d.notasProducao?.length) reg(nome, 'FAIL', 'nota-de-producao', `nota de produção à vista (o juiz lê como texto provisório, teto 3 em Usabilidade): ${d.notasProducao.join(' | ')}. O nome do arquivo vai em data-imagem e na lista de imagens, nunca no texto.`);
-  if (d.h1.length !== 1) reg(nome, 'FAIL', 'h1', `deve haver 1 <h1>, há ${d.h1.length}`); else { if (!d.h1[0].visivel) reg(nome, 'FAIL', 'h1-visivel', 'o <h1> não está visível'); if (d.h1[0].px < (nome === '390' ? 40 : 56)) reg(nome, 'WARN', 'h1-pequeno', `título pequeno para a primeira dobra: ${d.h1[0].px}px`); }
+  if (d.h1.length !== 1) reg(nome, 'FAIL', 'h1', `deve haver 1 <h1>, há ${d.h1.length}`); else { if (!d.h1[0].visivel) reg(nome, 'FAIL', 'h1-visivel', 'o <h1> não está visível'); if (nome === '390' && Math.max(d.h1[0].px, d.maiorTextoDobra || 0) < 40) reg(nome, 'FAIL', 'h1-pequeno', `maior texto da primeira dobra com ${Math.max(d.h1[0].px, d.maiorTextoDobra || 0)}px no celular: o hero vira o desktop empilhado; use 48 a 72 px (teste cego, rodada 4)`); else if (d.h1[0].px < (nome === '390' ? 48 : 56)) reg(nome, 'WARN', 'h1-pequeno', `título pequeno para a primeira dobra: ${d.h1[0].px}px`); }
   if (d.contrasteBaixoTotal) reg(nome, 'FAIL', 'contraste', `${d.contrasteBaixoTotal} texto(s) abaixo do mínimo (ex.: ${d.contrasteBaixo.map(c => `"${c.texto}" ${c.razao}:1<${c.min}`).slice(0, 3).join('; ')})`);
   if (d.contrasteIndefinido > 8) reg(nome, 'WARN', 'contraste-indefinido', `${d.contrasteIndefinido} textos sobre imagem ou gradiente: confira o contraste na captura`);
   if (d.imgsSemAlt) reg(nome, 'FAIL', 'alt', `${d.imgsSemAlt} imagem(ns) sem atributo alt`);
@@ -162,6 +168,7 @@ for (const [nome, w, h, movel] of VPS) {
     if (iguais.length >= 2 || iguais.length / (d.composicao.length - 1) > 0.3) reg(nome, 'WARN', 'secoes-repetidas', `${iguais.length} par(es) de seções vizinhas com a mesma composição: ${iguais.slice(0, 4).join('; ')}. Varie colunas, posição do título, escala ou peso da imagem (references/direcao-criativa.md, "Composição por seção").`);
   }
   if (d.navegacaoNoMeio === false) reg(nome, 'FAIL', 'sem-navegacao', 'no meio da página não há menu nem ação principal à vista (nada fixo com link ou botão). Mantenha uma barra compacta fixa no desktop e a ação fixa no pé do celular, sem cobrir botões ou texto (elementos.md §8). Menu que só reaparece ao rolar para cima não conta: o juiz fotografa descendo.');
+  if (nome === '390' && d.linksMenuTotal >= 2 && d.linksMenuVisiveis < 2 && !d.botaoMenu) reg(nome, 'FAIL', 'sem-menu-celular', `o cabeçalho tem ${d.linksMenuTotal} links de seção, mas no celular nenhum aparece e não há botão de menu. Ponha um botão "Menu" de 44 px que abre as seções (o starter já tem).`);
   if (d.emoji) reg(nome, 'WARN', 'emoji', `${d.emoji} emoji(s) na página`);
   if (nome === '1440') {
     if (d.imgs < 4 && d.videos === 0) reg(nome, 'WARN', 'poucas-imagens', `só ${d.imgs} imagem(ns): sites premiados sustentam a identidade com imagem real`);

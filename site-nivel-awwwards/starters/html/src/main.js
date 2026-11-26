@@ -21,6 +21,14 @@ addEventListener('scroll', () => {
   ultimo = y;
 }, { passive: true });
 
+// menu do celular: abre e fecha a lista de seções; fecha ao escolher um link ou apertar Esc
+const botaoMenu = topo.querySelector('.topo-menu');
+const alternarMenu = abrir => { topo.classList.toggle('aberto', abrir); botaoMenu.setAttribute('aria-expanded', String(abrir)); botaoMenu.textContent = abrir ? 'Fechar' : 'Menu'; };
+botaoMenu?.addEventListener('click', () => alternarMenu(!topo.classList.contains('aberto')));
+topo.querySelectorAll('nav a').forEach(a => a.addEventListener('click', () => alternarMenu(false)));
+addEventListener('keydown', e => { if (e.key === 'Escape') alternarMenu(false); });
+
+
 if (!reduzido) {
   let lenis = null;
   if (fino) {

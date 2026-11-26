@@ -16,9 +16,9 @@ Pergunta: **um agente limpo, só com a skill, faz um site de nível Awwwards?** 
 | 2 | Joalheria de luxo | `teste-cego/r2-joalheria/` | 0 FAIL, 0 WARN | 7,05 | (não precisou: fora da faixa de corte) | **7,05** | acima da TAINÁ |
 | 3 | Produto físico com 3D | `teste-cego/r3-produto-3d/` | 0 FAIL na época; com o verificador novo, 3 FAIL (nota de produção) | 5,40 | (não precisou) | **5,40** | abaixo; sem a nota de produção seria ~7,30 |
 | 3b | Produto físico com 3D, de novo (agente novo, skill com as regras das rodadas 1 a 3) | `teste-cego/r3b-produto-3d/` | 0 FAIL, 0 WARN | 7,50 | 7,50 | **7,50 · LIBERADO** | 1,05 acima da TAINÁ; o primeiro a chegar ao corte |
-| 4a | Cafeteria de especialidade (Café Serra) | `teste-cego/r4a-cafeteria/` | 0 FAIL, 1 WARN | 6,85 | (não rodou) | **6,85** | abaixo da 3b |
-| 4b | Escritório de arquitetura (Linha Terra) | `teste-cego/r4b-arquitetura/` | 0 FAIL, 1 WARN | 7,15 | (não rodou) | **7,15** | abaixo da 3b |
-| 4c | Fintech de troco investido (Maré) | `teste-cego/r4c-fintech/` | 0 FAIL, 4 WARN | 7,10 | (não rodou) | **7,10** | abaixo da 3b |
+| 4a | Cafeteria de especialidade (Café Serra) | `teste-cego/r4a-cafeteria/` | 0 FAIL, 1 WARN | 6,85 | 7,15 (depois das correções) | **7,15** | abaixo da 3b |
+| 4b | Escritório de arquitetura (Linha Terra) | `teste-cego/r4b-arquitetura/` | 0 FAIL, 1 WARN | 7,15 | 7,05 (depois das correções) | **7,05** | abaixo da 3b |
+| 4c | Fintech de troco investido (Maré) | `teste-cego/r4c-fintech/` | 0 FAIL, 4 WARN | 7,10 | 7,35 (depois das correções) | **7,35** | abaixo da 3b |
 
 Notas por critério (Design / Usabilidade / Criatividade / Conteúdo):
 - Rodada 1: juiz 1, 7 / 6,5 / 7 / 6; juiz 2, 7 / 6,5 / 7 / 7.
@@ -123,6 +123,11 @@ Agentes Sonnet limpos, juízes Opus limpos (um por site; nenhum chegou à faixa 
 | 6 | Conflito de animação CSS e GSAP no mesmo elemento; o que apagar do starter (agente 4b) | Regras 6 e 7 | `construcao.md` §4 |
 | 7 | Contraste medido com a camada animada ausente; CSS no fim anulando o celular (agentes 4a, 4c) | Regras 8 e 9 | `construcao.md` §4 |
 | 8 | Momento-assinatura não aparece na foto (juiz 4a) | Já coberto por `direcao-criativa.md` §2b; o juiz aplicou o teto 7 como previsto | — |
+
+**Segunda rodada de juízes** (cada agente corrigiu o que o juiz pediu; juiz Opus novo, limpo): cafeteria 6,85 → **7,15**; arquitetura 7,15 → **7,05**; fintech 7,10 → **7,35**. A Usabilidade subiu para 7 nos três (menu à vista). O que segurou:
+- **Imagens provisórias:** obras em ilustração chapada e pacotes desenhados seguram o Design em 7 a 7,5. Só se resolve com imagem real (`galeria/IMAGENS-PARA-GERAR.md` e o `IMAGENS.md` de cada site).
+- **Celular sem menu** (4a, 4c) e **hero do celular como desktop empilhado**: viraram FAIL `sem-menu-celular` e FAIL `h1-pequeno` (maior texto da primeira dobra < 40 px no celular); o starter ganhou o botão "Menu" que abre as seções.
+- **Cabeçalho fixo cobrindo o título da seção** (4a): regra em `construcao.md` §4.
 
 Também apontado pelos juízes e ainda sem regra nova: placeholders que parecem vazios (retângulo creme, arco cinza) seguram o Design em 7,5; o celular que é só o desktop empilhado.
 

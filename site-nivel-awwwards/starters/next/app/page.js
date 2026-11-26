@@ -15,7 +15,8 @@ export default function Page() {
       <a className="pular" href="#conteudo">Pular para o conteúdo</a>
       <header className="topo" id="topo">
         <a className="marca" href="#inicio" aria-label="{{NOME}}, início">{{NOME}}</a>
-        <nav aria-label="Principal"><ul>
+        <button className="topo-menu" type="button" aria-expanded="false" aria-controls="menu-principal">Menu</button>
+        <nav aria-label="Principal" id="menu-principal"><ul>
           <li><a href="#colecao">[Seção 1]</a></li><li><a href="#numeros">[Seção 2]</a></li><li><a href="#contato">[Contato]</a></li>
         </ul></nav>
         <a className="topo-cta" href="#contato">[Ação principal]</a>

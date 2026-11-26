@@ -47,6 +47,7 @@ Copie `modulo.css` e `modulo.js` para `src/`, cole o trecho de `modulo.html` e a
 8. **Contraste em todos os estados** (teste cego, rodada 4). O verificador mede o texto no estado em que a página abre. Texto sobre uma camada que só aparece com a rolagem (água que sobe, véu que escurece) precisa de fundo próprio que garanta contraste também antes da camada chegar.
 9. **CSS novo não anula o celular** (teste cego, rodada 4). Regras acrescentadas no fim do `estilo.css` vencem os `@media` do starter que vêm antes. Escreva cada componente já com a versão de celular dentro do mesmo bloco, ou ponha os `@media` depois, e confira as telas `m-*` do `juiz.mjs`.
 10. **Mudou a tipografia ou a paleta depois do brief?** O `tokens.css` é a fonte da verdade (o `criar-projeto.mjs` não refaz o brief existente). Edite o `tokens.css` direto e baixe os pesos que o título usa: `baixar-fontes.mjs --familias "Fonte:wght@400;700"` (sem `wght`, vem só o 400). Apague os arquivos de fonte antigos só depois de conferir que o CSS não os cita.
+11. **Cabeçalho fixo não cobre títulos** (teste cego, rodada 4). Toda seção tem `scroll-margin-top` e respiro no topo maiores que a altura do cabeçalho; no celular, a barra fixa de ação some quando a seção de contato aparece e não cobre texto (espaço no fim de cada seção igual à altura dela).
 
 ## 5. Onde está cada receita
 - Tipografia, grade, imagem, vídeo, scroll, animação, cursor, preloader e acabamento: [elementos.md](elementos.md). Desempenho no celular: §9.

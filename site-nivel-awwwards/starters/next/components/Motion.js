@@ -22,6 +22,10 @@ export default function Motion() {
         return emPct ? { xPercent: dx * dist, yPercent: dy * dist, ...(dx || dy ? {} : { opacity: 0 }) } : { x: dx * dist, y: dy * dist, opacity: 0 };
       };
       const topo = $('#topo'); let ultimo = scrollY;
+      const botaoMenu = topo.querySelector('.topo-menu'); // menu do celular (teste cego, rodada 4)
+      const alternarMenu = abrir => { topo.classList.toggle('aberto', abrir); botaoMenu?.setAttribute('aria-expanded', String(abrir)); if (botaoMenu) botaoMenu.textContent = abrir ? 'Fechar' : 'Menu'; };
+      botaoMenu?.addEventListener('click', () => alternarMenu(!topo.classList.contains('aberto')));
+      topo.querySelectorAll('nav a').forEach(a => a.addEventListener('click', () => alternarMenu(false)));
       const aoRolar = () => { const y = scrollY; topo.classList.toggle('solido', y > innerHeight * .5); topo.classList.toggle('compacto', y > innerHeight); /* nunca esconder: teste cego, rodadas 1 e 4 */ ultimo = y; };
       addEventListener('scroll', aoRolar, { passive: true });
       const observadores = []; let lenis = null, tick = null;
