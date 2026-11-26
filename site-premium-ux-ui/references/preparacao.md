@@ -2,6 +2,8 @@
 
 Copiar a skill não instala programas. **No primeiro uso numa máquina** (e quando um script avisar que falta algo), antes de começar o projeto:
 
+O **Blender só é necessário se o usuário escolher o caminho com Blender** no 3D ([pipeline-3d.md](pipeline-3d.md)): não o ofereça antes dessa escolha, salvo se ele pedir.
+
 1. Rode `node <skill>/scripts/preparar.mjs`. Ele só confere; não instala nada. Se não faltar nada, siga em frente sem perguntar.
 2. Se faltar algo, **pergunte ao usuário** com `AskUserQuestion` (várias escolhas), dizendo para cada item: para que serve, se é obrigatório, o tamanho, que é gratuito o comando que vai rodar e, no `winget`, que o comando **aceita os termos do pacote** em nome dele. Sempre ofereça "não instalar nada".
 3. Instale **somente os itens que ele escolher**, com a resposta dele:
@@ -11,6 +13,8 @@ Copiar a skill não instala programas. **No primeiro uso numa máquina** (e quan
 4. Rode o passo 1 de novo para conferir. Para cada item recusado, diga uma vez o que deixa de funcionar e não insista.
 
 **Nunca:** instalar sem resposta do usuário nesta conversa, ampliar a autorização para outro item, confirmar a janela de administrador por ele, nem usar `sudo`. Sem usuário para responder, não instale.
+
+**Se a instalação falhar ou o usuário recusar a janela de administrador** (no `winget`, cancelar dá o código 1602): não repita sozinho. Para o Blender no Windows, ofereça a **versão portátil**, que não pede administrador: o `.zip` oficial de https://www.blender.org/download/ extraído em `<skill>/ferramentas/` (os scripts acham sozinhos). É um download grande: antes, diga o nome do arquivo, a origem e o tamanho e peça permissão.
 
 **Se faltar o Node** (o script não roda): peça permissão e use `winget install OpenJS.NodeJS.LTS` (Windows) ou `brew install node` (macOS); no Linux, oriente a instalação manual.
 

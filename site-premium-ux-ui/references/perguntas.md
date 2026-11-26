@@ -37,7 +37,7 @@ Em toda pergunta deste bloco a **primeira opção é "(Recomendado)"**, com o mo
 
 **Scroll animado (sempre, logo depois do 3D).** Mesmo sem 3D, pergunte. Base: [scroll-avancado.md](scroll-avancado.md), com os 7 sites de referência (Era Residence, Rectangles FM, Zentry, Tenztan, The Art of Cinema, Diego Liv, Collab Capitolium) e os padrões medidos na base. Opções: **scroll recomendado** (ligado ao tema e ao 3D: com objeto 3D, "pin + scrub" que gira o objeto e troca o texto) · 2 alternativas (pilha sticky, revelação por clip-path, vídeo ligado ao scroll, texto que acende, trilho horizontal) · **"você escolhe por mim"** · **Outro** (digitar). Mostre cada padrão com o link do site que o usa. Um scroll de assinatura por página.
 
-**Molde do 3D e prévia do site.** Se houver 3D, quatro aprovações, nesta ordem: imagens molde → molde no Blender → elemento em Three.js → vídeo-prévia do site. Em cada uma, pergunte "o que precisa alterar?" até aprovar. Só então construa. Detalhes em [aprovacoes.md](aprovacoes.md) e [pipeline-3d.md](pipeline-3d.md).
+**Molde do 3D e prévia do site.** Se houver 3D, as aprovações seguem esta ordem: imagens molde → molde no Blender (opcional) → elemento em Three.js → vídeo-prévia do site. Depois do molde, recomende com ou sem Blender e deixe o usuário escolher. Em cada uma, pergunte "o que precisa alterar?" até aprovar. Só então construa. Detalhes em [aprovacoes.md](aprovacoes.md) e [pipeline-3d.md](pipeline-3d.md).
 
 ## Regra permanente (não é pergunta)
 Todo site usa componentes ou transições das plataformas (reactbits.dev, transitions.dev, naocodei.com; pinstack e tasteskill como referência), com o que veio de onde e a licença no relatório (`plataformas.md`). Nada de login, conta ou compra: itens PRO ficam com o usuário.

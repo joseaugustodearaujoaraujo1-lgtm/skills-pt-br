@@ -2,7 +2,7 @@
 
 Skill para agentes de código (Claude Code e compatíveis) que faz o agente entregar **experiências visuais** surreais, ultrarrealistas e leves, com UX/UI e movimento de nível **Awwwards**, em vez do site genérico que um agente faz sozinho.
 
-**Elemento 3D:** referências do usuário → imagens molde → molde no Blender → elemento só em Three.js com menos de 200 KB, com aprovação do usuário em cada etapa ([references/pipeline-3d.md](references/pipeline-3d.md)).
+**Elemento 3D:** referências do usuário → imagens molde → molde no Blender (opcional) → elemento só em Three.js com menos de 200 KB, com aprovação do usuário em cada etapa ([references/pipeline-3d.md](references/pipeline-3d.md)).
 
 ## Por que existe
 
@@ -55,7 +55,7 @@ cd ~/.claude/skills/site-premium-ux-ui
 npm i playwright && npx playwright install chromium     # verificador, juiz, acervo
 node scripts/diagnostico.mjs                            # diz o que ainda falta
 ```
-Obrigatórios: Node 20+, Playwright e Chromium. Para o elemento 3D: Blender 4.x ou mais novo (no PATH ou em `BLENDER=caminho`) e um gerador de imagens para as imagens molde. Recomendados: `ffmpeg` (converter imagens e vídeos) e Python 3 (só para réplicas).
+Obrigatórios: Node 20+, Playwright e Chromium. Opcional no 3D: Blender 4.x ou mais novo (no PATH ou em `BLENDER=caminho`); as imagens molde o próprio agente faz, sem gerador pago. Recomendados: `ffmpeg` (converter imagens e vídeos) e Python 3 (só para réplicas).
 
 **Acervo de sites premiados (opcional, deixa as referências muito melhores).** Sem ele a skill funciona, mas pesquisa ao vivo e acha menos referências. Para montar o seu, no **seu computador** (o Awwwards recusa conexões de nuvem):
 

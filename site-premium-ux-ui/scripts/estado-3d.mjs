@@ -4,6 +4,7 @@
 //   node estado-3d.mjs --objeto <obj> exigir  --etapa <etapa>            (sai com erro se a etapa anterior não foi aprovada)
 //   node estado-3d.mjs --objeto <obj> aprovar --etapa <etapa> --fala "<palavras do usuário>"
 //   node estado-3d.mjs --objeto <obj> alterar --etapa <etapa> --fala "<o que o usuário pediu>"   (anula esta e as seguintes)
+//   node estado-3d.mjs --objeto <obj> dispensar --etapa blender --fala "<resposta do usuário>"   (caminho sem Blender)
 // Etapas, em ordem: referencias, molde, blender, threejs, previa. "site" só serve para exigir (pede tudo aprovado).
 // Opcional: --raiz <pasta do projeto> (padrão: pasta atual). Arquivo: <raiz>/referencias-3d/<obj>/estado.json
 import fs from 'node:fs';
@@ -17,14 +18,15 @@ const objeto = opt('objeto'), etapa = opt('etapa'), fala = opt('fala');
 const sair = (msg, cod = 1) => { console.log(msg); process.exit(cod); };
 
 if (!objeto || !/^[\w-]+$/.test(objeto)) sair('Informe --objeto (letras, números, - ou _).');
-if (!['status', 'exigir', 'aprovar', 'alterar'].includes(acao)) sair('Ação: status, exigir, aprovar ou alterar.');
+if (!['status', 'exigir', 'aprovar', 'alterar', 'dispensar'].includes(acao)) sair('Ação: status, exigir, aprovar, alterar ou dispensar.');
 const arq = path.join(path.resolve(opt('raiz') || '.'), 'referencias-3d', objeto, 'estado.json');
 const est = fs.existsSync(arq) ? JSON.parse(fs.readFileSync(arq, 'utf8')) : { objeto, etapas: {}, historico: [] };
 const salvar = () => { fs.mkdirSync(path.dirname(arq), { recursive: true }); fs.writeFileSync(arq, JSON.stringify(est, null, 2) + '\n'); };
-const aprovada = e => est.etapas[e]?.status === 'aprovada';
+const dispensada = e => est.etapas[e]?.status === 'dispensada';
+const aprovada = e => est.etapas[e]?.status === 'aprovada' || dispensada(e); // etapa que não bloqueia as seguintes
 
 if (acao === 'status') {
-  for (const e of ETAPAS) console.log(`${aprovada(e) ? 'APROVADA' : 'pendente'.padEnd(8)}  ${e}${est.etapas[e]?.fala ? `  ("${est.etapas[e].fala}")` : ''}`);
+  for (const e of ETAPAS) console.log(`${dispensada(e) ? 'DISPENSADA' : aprovada(e) ? 'APROVADA  ' : 'pendente  '}  ${e}${est.etapas[e]?.fala ? `  ("${est.etapas[e].fala}")` : ''}`);
   const prox = ETAPAS.find(e => !aprovada(e));
   sair(prox ? `\nPróxima etapa: ${prox}` : '\nTudo aprovado: pode construir o site.', 0);
 }
@@ -40,6 +42,15 @@ if (acao === 'exigir') {
 
 if (!fala || fala.trim().length < 2) sair('Informe --fala com as palavras do usuário nesta conversa. Sem resposta do usuário, não registre nada.');
 const agora = new Date().toISOString();
+if (acao === 'dispensar') {
+  if (etapa !== 'blender') sair('Só a etapa "blender" pode ser dispensada.');
+  if (faltando.length) sair(`Não dá para dispensar "blender": faltam ${faltando.join(', ')}.`);
+  if (est.etapas.blender?.status === 'aprovada') sair('O Blender já foi aprovado. Para trocar de caminho, use antes: alterar --etapa blender.');
+  est.etapas.blender = { status: 'dispensada', fala, em: agora };
+  est.historico.push({ acao, etapa, fala, em: agora });
+  salvar();
+  sair('Blender dispensado pelo usuário. Próxima: threejs.', 0);
+}
 if (acao === 'aprovar') {
   if (faltando.length) sair(`Não dá para aprovar "${etapa}": faltam ${faltando.join(', ')}.`);
   est.etapas[etapa] = { status: 'aprovada', fala, em: agora };

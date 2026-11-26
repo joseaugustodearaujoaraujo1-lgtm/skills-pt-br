@@ -24,7 +24,7 @@ const temNavegador = () => [process.env.CHROME, 'C:/Program Files/Google/Chrome/
   process.env.LOCALAPPDATA && path.join(process.env.LOCALAPPDATA, 'Google/Chrome/Application/chrome.exe'),
   'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe', '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
   '/usr/bin/google-chrome', '/usr/bin/chromium', '/usr/bin/chromium-browser'].some(existe);
-const temBlender = () => existe(process.env.BLENDER) || roda('blender') || existe('/Applications/Blender.app') ||
+const temBlender = () => existe(process.env.BLENDER) || subpastas(FERRAMENTAS).some(v => existe(path.join(FERRAMENTAS, v, 'blender.exe'))) || roda('blender') || existe('/Applications/Blender.app') ||
   ['C:/Program Files/Blender Foundation', path.join(process.env.LOCALAPPDATA || '', 'Programs/Blender Foundation')]
     .some(d => subpastas(d).some(v => existe(path.join(d, v, 'blender.exe'))));
 const temPlaywright = () => [process.env.PLAYWRIGHT_CORE, path.join(FERRAMENTAS, 'node_modules/playwright-core'),
@@ -45,7 +45,7 @@ const ITENS = [
     cmd: ['npm', ['install', '--no-audit', '--no-fund', '--prefix', q(FERRAMENTAS), 'playwright-core@1']], tamanho: 'poucos MB' },
   { id: 'modulos', nome: 'three, esbuild, gsap, lenis (npm)', uso: 'elemento 3D e módulos-base', tem: temModulos,
     cmd: ['npm', ['install', '--no-audit', '--no-fund', '--prefix', q(MODULOS)]], tamanho: 'dezenas de MB' },
-  { id: 'blender', nome: 'Blender', uso: 'molde 3D (etapa 2); sem ele o 3D para', tem: temBlender, tamanho: 'centenas de MB',
+  { id: 'blender', nome: 'Blender', uso: 'só para o caminho com Blender no 3D (etapa 2, opcional)', tem: temBlender, tamanho: 'centenas de MB',
     cmd: sistema(winget('BlenderFoundation.Blender'), brew('--cask', 'blender'), null), manual: 'baixe em https://www.blender.org/download/' },
   { id: 'ffmpeg', nome: 'ffmpeg', uso: 'comparar vistas e gravar a prévia', tem: () => roda('ffmpeg', ['-version']),
     cmd: sistema(winget('Gyan.FFmpeg'), brew('ffmpeg'), null), manual: 'instale o pacote ffmpeg pelo gerenciador do sistema' },
@@ -85,7 +85,9 @@ for (const id of pedidos) {
   if (simular) { console.log(`SIMULAÇÃO ${id}: ${texto(i)}`); continue; }
   console.log(`Instalando ${id}. Se o sistema pedir permissão de administrador, quem confirma é o usuário.`);
   const r = spawnSync(i.cmd[0], i.cmd[1], { stdio: 'inherit', shell: SO === 'win32' && i.cmd[0] === 'npm' });
-  if (r.status !== 0) { console.log(`ERRO ${id}: o comando falhou${r.error ? ` (${r.error.code})` : ''}. Comando: ${texto(i)}`); falhas++; }
+  if (r.status !== 0) { console.log(`ERRO ${id}: o comando falhou${r.error ? ` (${r.error.code})` : ''}. Comando: ${texto(i)}`); falhas++;
+    console.log('Se a janela de administrador foi recusada ou fechada, NÃO repita sozinho: avise o usuário e pergunte.');
+    if (id === 'blender') console.log(`Sem administrador: versão portátil (.zip) de https://www.blender.org/download/, extraída em ${FERRAMENTAS} (references/preparacao.md).`); }
   else console.log(i.tem() ? `OK ${id}: instalado` : `AVISO ${id}: comando terminou; abra um terminal novo (PATH) e rode preparar.mjs de novo`);
 }
 process.exit(falhas ? 1 : 0);

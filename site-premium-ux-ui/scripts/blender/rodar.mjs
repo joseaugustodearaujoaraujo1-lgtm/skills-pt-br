@@ -5,9 +5,12 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { spawnSync } from 'node:child_process';
+import { fileURLToPath } from 'node:url';
 
 const pastasWin = ['C:/Program Files/Blender Foundation', path.join(process.env.LOCALAPPDATA || '', 'Programs', 'Blender Foundation')];
+const FERRAMENTAS = path.join(path.dirname(fileURLToPath(import.meta.url)), '..', '..', 'ferramentas'); // Blender portátil
 const candidatos = [process.env.BLENDER,
+  ...(() => { try { return fs.readdirSync(FERRAMENTAS).sort().reverse().map(v => path.join(FERRAMENTAS, v, 'blender.exe')); } catch { return []; } })(),
   ...pastasWin.flatMap(d => { try { return fs.readdirSync(d).sort().reverse().map(v => path.join(d, v, 'blender.exe')); } catch { return []; } }),
   '/Applications/Blender.app/Contents/MacOS/Blender', '/usr/bin/blender', '/snap/bin/blender'].filter(Boolean);
 let blender = candidatos.find(c => fs.existsSync(c));

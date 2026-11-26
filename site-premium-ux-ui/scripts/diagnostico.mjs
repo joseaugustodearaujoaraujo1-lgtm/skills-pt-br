@@ -25,8 +25,9 @@ if (!navegador && pw) { try { navegador = fs.existsSync(pw.chromium.executablePa
 ok('Chrome/Chromium', navegador || 'falta', 'npx playwright install chromium (ou defina CHROME=caminho)');
 
 ok('ffmpeg (converter imagens e vídeos)', cmd('ffmpeg -version') ? 'ok' : 'falta', 'Instale em ffmpeg.org (opcional, mas recomendado)');
-const blenders = [process.env.BLENDER, ...['C:/Program Files/Blender Foundation'].flatMap(d => { try { return fs.readdirSync(d).sort().reverse().map(v => path.join(d, v, 'blender.exe')); } catch { return []; } }), '/Applications/Blender.app/Contents/MacOS/Blender', '/usr/bin/blender'].filter(Boolean);
-ok('Blender (molde 3D, etapa 2 do pipeline-3d.md)', cmd('blender --version') || blenders.some(b => fs.existsSync(b)) ? 'ok' : 'falta', 'Instale em blender.org (gratuito) e ponha no PATH ou defina BLENDER=caminho. Sem ele, o elemento 3D para na etapa 2');
+const FERR = path.join(path.dirname(fileURLToPath(import.meta.url)), '..', 'ferramentas');
+const blenders = [process.env.BLENDER, ...(() => { try { return fs.readdirSync(FERR).map(v => path.join(FERR, v, 'blender.exe')); } catch { return []; } })(), ...['C:/Program Files/Blender Foundation'].flatMap(d => { try { return fs.readdirSync(d).sort().reverse().map(v => path.join(d, v, 'blender.exe')); } catch { return []; } }), '/Applications/Blender.app/Contents/MacOS/Blender', '/usr/bin/blender'].filter(Boolean);
+ok('Blender (opcional, etapa 2 do pipeline-3d.md)', cmd('blender --version') || blenders.some(b => fs.existsSync(b)) ? 'ok' : 'falta', 'Instale em blender.org (gratuito) e ponha no PATH ou defina BLENDER=caminho. Sem ele, use o caminho sem Blender');
 ok('Python 3 (fidelidade.py, só em réplica)', cmd('python3 --version') || cmd('python --version') ? 'ok' : 'falta', 'Opcional');
 
 let n = 0;

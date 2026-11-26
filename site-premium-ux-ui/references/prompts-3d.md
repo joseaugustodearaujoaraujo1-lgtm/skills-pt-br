@@ -1,6 +1,6 @@
 # Prompts de referência para componentes 3D (imagem e vídeo)
 
-Regra da skill: **todo elemento 3D segue [pipeline-3d.md](pipeline-3d.md)**: referências do usuário → imagens molde aprovadas → molde no Blender aprovado → elemento só em Three.js (< 200 KB) aprovado. Esta página dá os prompts do molde e o fluxo da pergunta. Depois do 3D, sugira sempre o scroll animado ([scroll-avancado.md](scroll-avancado.md)).
+Regra da skill: **todo elemento 3D segue [pipeline-3d.md](pipeline-3d.md)**: referências do usuário → imagens molde aprovadas → molde no Blender aprovado (opcional) → elemento só em Three.js (< 200 KB) aprovado. Esta página dá os prompts do molde e o fluxo da pergunta. Depois do 3D, sugira sempre o scroll animado ([scroll-avancado.md](scroll-avancado.md)).
 
 ## A pergunta (sempre que o projeto tiver 3D)
 Ofereça duas opções (mais "Outro" para texto livre):
@@ -98,5 +98,5 @@ Salve como `1-molde/detalhe-<peca>.png`. Se o gerador fizer uma folha única, re
 ## Depois de receber a referência
 1. Salve em `referencias-3d/<objeto>/` (imagens e vídeo) e extraia quadros (`ffmpeg -i video.mp4 -vf fps=2 quadro-%02d.png`).
 2. Meça proporções e conte as partes (facetas, sulcos, dobras); o diagrama manda na **estrutura**, o vídeo manda na **aparência**.
-3. Siga [pipeline-3d.md](pipeline-3d.md): imagens molde aprovadas → Blender igual a elas → elemento em Three.js igual ao Blender, comparando lado a lado em cada etapa (`comparar-vistas.mjs`).
+3. Siga [pipeline-3d.md](pipeline-3d.md): imagens molde aprovadas → Blender igual a elas (opcional) → elemento em Three.js igual ao alvo aprovado, comparando lado a lado em cada etapa (`comparar-vistas.mjs`).
 4. Direitos: o vídeo ou a imagem gerados são referência interna; o 3D do site é geometria própria.

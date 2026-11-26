@@ -1,10 +1,10 @@
 # 3D leve para sites
 
 ## REGRA ATUAL (2026-11-26): manda sobre tudo o que vem abaixo
-- **Como nasce o elemento:** [pipeline-3d.md](pipeline-3d.md). Referências do usuário → imagens molde → molde no Blender → elemento em Three.js, com aprovação do usuário em cada etapa ([aprovacoes.md](aprovacoes.md)).
+- **Como nasce o elemento:** [pipeline-3d.md](pipeline-3d.md). Referências do usuário → imagens molde → molde no Blender (opcional) → elemento em Three.js, com aprovação do usuário em cada etapa ([aprovacoes.md](aprovacoes.md)).
 - **Só Three.js:** o elemento é feito apenas com `three` e seus complementos oficiais que não carregam arquivos. Geometria, texturas, shaders e luz saem de código. Proibido no elemento: `.glb`/`.gltf`/`.obj`/`.fbx`, imagem de textura, HDRI, `.ktx2`, vídeo, sequência de quadros, loaders, `data:` URI e malha ou imagem escondida em base64 ou em listas grandes de números. WebGL puro sem Three.js também não vale.
 - **Menos de 200 KB por elemento**, somando código, dados e pôster, sem compressão e sem contar a biblioteca `three`. Confira com `scripts/verificar-3d.mjs` (0 FAIL).
-- **Ultrarrealista:** chanfros em toda aresta, detalhes finos modelados, materiais físicos distintos por peça (`MeshPhysicalMaterial`: metalness, roughness, clearcoat, transmission, IOR), microdetalhe em textura gerada por código (escovado, granulado, riscos), ambiente `RoomEnvironment` + PMREM, tone mapping ACES/AgX, sombra de contato, antialias. Valores de material copiados do molde do Blender.
+- **Ultrarrealista:** chanfros em toda aresta, detalhes finos modelados, materiais físicos distintos por peça (`MeshPhysicalMaterial`: metalness, roughness, clearcoat, transmission, IOR), microdetalhe em textura gerada por código (escovado, granulado, riscos), ambiente `RoomEnvironment` + PMREM, tone mapping ACES/AgX, sombra de contato, antialias. Valores de material copiados do molde aprovado.
 - **Plano B:** um pôster capturado do próprio render Three.js (conta no orçamento), para `prefers-reduced-motion`, sem WebGL ou celular fraco.
 - As seções abaixo são **receitas e testes anteriores**. Use as técnicas (orçamento, render sob demanda, pôster, compilação paralela, ray tracing em shader) **dentro do Three.js** (`ShaderMaterial`); onde elas carregam foto, atlas PNG, `.glb` ou WebGL puro, não valem mais para o elemento final.
 

@@ -25,7 +25,7 @@ Passe o site por esta rubrica **antes** de dizer que está pronto. A avaliação
 - [ ] Há **um** gesto de assinatura memorável (transição, hero, interação, 3D leve) que serve ao conceito.
 - [ ] A ideia do site cabe em uma frase e o conceito é **memorável em 5 segundos**.
 - [ ] Há pelo menos **um momento "uau"** que o visitante lembra depois (normalmente o próprio gesto de assinatura).
-- [ ] **Todo elemento 3D passou pelo pipeline ([pipeline-3d.md](pipeline-3d.md)): imagens molde, Blender e Three.js aprovados pelo usuário, `verificar-3d.mjs` com 0 FAIL (só Three.js, < 200 KB). Ultrarrealista (PBR, ambiente, sombras); imagem recortada = nota 0.** **Todo objeto 3D tem referência visual detalhada** (imagem com várias vistas ou vídeo) em `referencias-3d/<objeto>/`, e o render foi **comparado** com ela (silhueta, proporção, material, luz). Sem referência = nota 0 neste item.
+- [ ] **Todo elemento 3D passou pelo pipeline ([pipeline-3d.md](pipeline-3d.md)): imagens molde e Three.js aprovados pelo usuário (e o Blender aprovado ou dispensado por ele), `verificar-3d.mjs` com 0 FAIL (só Three.js, < 200 KB). Ultrarrealista (PBR, ambiente, sombras); imagem recortada = nota 0.** **Todo objeto 3D tem referência visual detalhada** (imagem com várias vistas ou vídeo) em `referencias-3d/<objeto>/`, e o render foi **comparado** com ela (silhueta, proporção, material, luz). Sem referência = nota 0 neste item.
 - [ ] Teste da logo coberta: reconhece-se a marca/tema pelo visual e pelo texto.
 
 ## 4. Conteúdo (peso 10%)

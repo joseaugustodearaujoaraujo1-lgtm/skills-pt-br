@@ -1,5 +1,5 @@
 // Exemplo de elemento: peça de aço escovado com cúpula de cristal.
-// Troque por um elemento novo, feito igual ao molde aprovado no Blender (references/pipeline-3d.md):
+// Troque por um elemento novo, feito igual ao molde aprovado (references/pipeline-3d.md):
 // mesmas medidas (em metros), mesmas peças e os mesmos valores de material anotados no README do objeto.
 import { revolucao, texturaEscovada } from '../../../modulo.js';
 

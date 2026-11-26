@@ -3,7 +3,7 @@
 Comece **sempre** pelo projeto-base e pelos módulos prontos; escreva código do zero só para o gesto que nenhum deles cobre.
 
 ## 1. Se houver 3D: portões antes de modelar
-Referências → imagens molde → aprovação → Blender → aprovação → Three.js (< 200 KB) → aprovação → vídeo-prévia do site → aprovação, nesta ordem ([pipeline-3d.md](pipeline-3d.md), [aprovacoes.md](aprovacoes.md)). Sem usuário, pare e espere. `estado-3d.mjs --objeto <obj> exigir --etapa site` precisa passar antes de criar o projeto. Prompts em [prompts-3d.md](prompts-3d.md).
+Referências → imagens molde → aprovação → [Blender → aprovação, se o usuário escolheu] → Three.js (< 200 KB) → aprovação → vídeo-prévia do site → aprovação, nesta ordem ([pipeline-3d.md](pipeline-3d.md), [aprovacoes.md](aprovacoes.md)). Sem usuário, pare e espere. `estado-3d.mjs --objeto <obj> exigir --etapa site` precisa passar antes de criar o projeto. Prompts em [prompts-3d.md](prompts-3d.md).
 
 ## 2. Criar o projeto
 ```bash

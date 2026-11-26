@@ -3,7 +3,7 @@
 Base da etapa 3 do [pipeline 3D](../../../references/pipeline-3d.md): o elemento ultrarrealista feito **só com código Three.js**, com menos de 200 KB.
 
 ## Quando usar
-Sempre que a experiência tem um elemento 3D. Comece aqui **depois** de o usuário aprovar as imagens molde e o molde no Blender (`estado-3d.mjs ... exigir --etapa threejs`).
+Sempre que a experiência tem um elemento 3D. Comece aqui **depois** de o usuário aprovar as imagens molde e aprovar ou dispensar o Blender (`estado-3d.mjs ... exigir --etapa threejs`).
 
 ## O que já vem pronto (`modulo.js`)
 | Peça | Para quê |
@@ -18,7 +18,7 @@ Sempre que a experiência tem um elemento 3D. Comece aqui **depois** de o usuár
 
 ## Como fazer o seu elemento
 1. Copie `modulo.js` e `exemplo/src/elemento/` para o projeto (ex.: `src/elemento/`).
-2. Reescreva `objeto.js` igual ao molde do Blender: mesmas medidas (em metros), mesmas peças e os mesmos valores de material anotados no `README.md` do objeto. A forma sai de **parâmetros**: perfis com poucos pontos, curvas, laços e instâncias. Não cole vértices exportados do Blender.
+2. Reescreva `objeto.js` igual ao molde aprovado (o do Blender, se houve): mesmas medidas (em metros), mesmas peças e os mesmos valores de material anotados no `README.md` do objeto. A forma sai de **parâmetros**: perfis com poucos pontos, curvas, laços e instâncias. Não cole vértices exportados do Blender.
 3. Microdetalhe (riscos, granulado, gravação) com `CanvasTexture`/`DataTexture` gerados em código ou `onBeforeCompile`.
 4. Compare e verifique:
    ```bash

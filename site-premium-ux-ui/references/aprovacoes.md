@@ -1,6 +1,6 @@
 # Portões de aprovação do 3D e da prévia do site
 
-Antes de construir uma experiência com elemento 3D, o usuário aprova **quatro** coisas, nesta ordem. Cada parada termina com uma pergunta (`AskUserQuestion`: **Aprovar** · **Alterar**, o usuário descreve o quê) e só avança com aprovação explícita dada nesta conversa. Detalhe de cada etapa em [pipeline-3d.md](pipeline-3d.md).
+Antes de construir uma experiência com elemento 3D, o usuário aprova, nesta ordem, **quatro** coisas (três se escolher o caminho sem Blender). Cada parada termina com uma pergunta (`AskUserQuestion`: **Aprovar** · **Alterar**, o usuário descreve o quê) e só avança com aprovação explícita dada nesta conversa. Detalhe de cada etapa em [pipeline-3d.md](pipeline-3d.md).
 
 ## 0. Referências do elemento
 Peça imagens de referência de como o elemento é (vários ângulos e closes de material), ou descrição e esboço se ele for inventado. Sem referência, não gere o molde.
@@ -8,11 +8,12 @@ Peça imagens de referência de como o elemento é (vários ângulos e closes de
 ## 1. Imagens molde → "o que precisa alterar?"
 Vistas `frente`, `lado`, `tres-quartos`, `costas`, `topo` e detalhes, mesmo objeto e mesma luz. Mostre e peça ao usuário para verificar. Ajuste até aprovar.
 
-## 2. Molde 3D no Blender → "o que precisa alterar?"
+## 2. Molde 3D no Blender (opcional) → "o que precisa alterar?"
+Depois do molde aprovado, recomende um caminho (com ou sem Blender), explique o gasto e pergunte ([pipeline-3d.md](pipeline-3d.md)). Sem Blender: registre `dispensar --etapa blender` com a resposta do usuário e vá para o 3. Com Blender:
 Exatamente igual às imagens molde aprovadas, renderizado nas mesmas vistas, com a comparação lado a lado. Ajuste até aprovar.
 
 ## 3. Elemento em Three.js (< 200 KB) → "o que precisa alterar?"
-Só código Three.js, igual ao molde do Blender, com a comparação das três etapas, a página interativa e `verificar-3d.mjs` com 0 FAIL. Ajuste até aprovar.
+Só código Three.js, igual ao molde aprovado (o do Blender, se houve), com a comparação das etapas usadas, a página interativa e `verificar-3d.mjs` com 0 FAIL. Ajuste até aprovar.
 
 ## 4. Vídeo-prévia de como o SITE vai ficar → "o que precisa alterar?"
 - Depois das três aprovações e **antes** de construir o site: hero, o elemento em cena, o scroll de assinatura e 2–3 seções, com a paleta, a tipografia e o estilo escolhidos.

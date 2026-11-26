@@ -1,10 +1,23 @@
 # Pipeline do elemento 3D (obrigatório)
 
-Todo elemento 3D da experiência passa por quatro etapas, **nesta ordem**, cada uma com aprovação do usuário. Este arquivo manda sobre qualquer outra regra de 3D da skill; se outro arquivo disser diferente, vale este.
+Todo elemento 3D da experiência passa por estas etapas, **nesta ordem**, cada uma com aprovação do usuário. A etapa 2 (Blender) é **opcional: quem decide é o usuário**. Este arquivo manda sobre qualquer outra regra de 3D da skill; se outro arquivo disser diferente, vale este.
 
 ```
-0. Referências  →  1. Imagens molde  →  APROVAÇÃO  →  2. Molde no Blender  →  APROVAÇÃO  →  3. Elemento em Three.js (< 200 KB)  →  APROVAÇÃO
+0. Referências  →  1. Imagens molde  →  APROVAÇÃO  →  [2. Molde no Blender → APROVAÇÃO]  →  3. Elemento em Three.js (< 200 KB)  →  APROVAÇÃO
 ```
+
+## Com ou sem Blender (perguntar depois que o molde for aprovado)
+Recomende um caminho, diga o motivo e o gasto, e **pergunte** com `AskUserQuestion`. A opção recomendada vem primeiro. Nunca escolha sozinho.
+
+| Recomende **com Blender** quando | Recomende **sem Blender** quando |
+|---|---|
+| objeto complexo: muitas peças, curvas compostas, encaixes | objeto simples: anel, frasco liso, lata, moeda, peça de revolução |
+| o usuário quer aprovar forma e proporção em 3D antes do código | as imagens molde já deixam tudo claro |
+| falta um alvo realista de luz e material | há boas fotos reais que servem de alvo |
+
+Diga com franqueza: com Blender o objeto é feito duas vezes (mais tempo, tokens e uma aprovação a mais), o que ajuda a acertar a forma mas **não melhora sozinho** o resultado em Three.js; e pede o Blender instalado ([preparacao.md](preparacao.md)).
+- **Escolheu com:** siga para a etapa 2.
+- **Escolheu sem:** registre `estado-3d.mjs --objeto <obj> dispensar --etapa blender --fala "<resposta do usuário>"`, pule para a etapa 3 e não instale o Blender. Para voltar atrás: `alterar --etapa blender`.
 
 **Em todas as etapas, o máximo de realismo possível.** Não existe "versão rápida": proporção exata, bordas chanfradas (nenhuma aresta de primitivo), imperfeições (riscos, poeira, variação de rugosidade), materiais distintos por peça, reflexos e refrações coerentes com o ambiente, sombra de contato e oclusão.
 
@@ -40,7 +53,8 @@ node <skill>/scripts/estado-3d.mjs --objeto relogio alterar --etapa molde --fala
 - Salve em `referencias-3d/<objeto>/1-molde/<vista>.png`.
 - **Peça ao usuário para verificar as imagens molde**: o que precisa alterar, ou se está aprovado. Ajuste até aprovar.
 
-## Etapa 2. Molde 3D no Blender
+## Etapa 2. Molde 3D no Blender (opcional)
+Só se o usuário escolheu o caminho com Blender.
 - Rode `node <skill>/scripts/estado-3d.mjs --objeto <obj> exigir --etapa blender`.
 - Modele **exatamente igual às imagens molde aprovadas**: carregue as vistas como imagens de fundo, ajuste silhueta e proporção vista por vista.
 - Trabalhe por script Python, rodado em segundo plano com `node <skill>/scripts/blender/rodar.mjs --python <arquivo>.py` (acha o Blender sozinho e resume a saída); o script salva o `.blend` com `bpy.ops.wm.save_as_mainfile`. Guarde script e `.blend` em `referencias-3d/<objeto>/2-blender/`. Use as vistas do molde como guia de medidas (valores em mm do SVG), não por tentativa e erro com capturas.
@@ -56,12 +70,13 @@ node <skill>/scripts/estado-3d.mjs --objeto relogio alterar --etapa molde --fala
 
 ## Etapa 3. Elemento em Three.js (< 200 KB)
 - Rode `exigir --etapa threejs`.
-- Recrie o molde do Blender **somente com código Three.js**, partindo do módulo [../starters/modulos/07-elemento-threejs/](../starters/modulos/07-elemento-threejs/README.md).
+- **Alvo:** o molde do Blender aprovado; sem Blender, as imagens molde aprovadas mais as fotos reais das referências (o molde em SVG manda na forma; as fotos, no acabamento).
+- Recrie o alvo **somente com código Three.js**, partindo do módulo [../starters/modulos/07-elemento-threejs/](../starters/modulos/07-elemento-threejs/README.md).
 - **Permitido:** `three` e seus complementos oficiais (`three/addons/...`) que não carregam arquivos: geometrias (`LatheGeometry`, `ExtrudeGeometry` com bevel, `TubeGeometry`, `RoundedBoxGeometry`, `mergeGeometries`), `MeshPhysicalMaterial`, `RoomEnvironment` + `PMREMGenerator`, texturas geradas em código (`CanvasTexture`, `DataTexture`), `ShaderMaterial` e `onBeforeCompile`, pós-processamento.
 - **Proibido no elemento:** arquivos de modelo (`.glb`, `.gltf`, `.obj`, `.fbx`), imagens de textura (`.png`, `.jpg`, `.webp`, `.avif`), HDRI (`.hdr`, `.exr`), `.ktx2`, vídeo, sequência de quadros, loaders (`GLTFLoader`, `TextureLoader`, `RGBELoader`...), `data:` URI, e malha ou imagem escondida em base64 ou em listas grandes de números (vértices copiados do Blender). A forma sai de **parâmetros e funções** (perfil de revolução com poucos pontos de controle, curvas, laços).
 - **Peso:** todo o código e os dados do elemento somam **menos de 200 KB sem compressão**. A biblioteca `three` não entra nessa conta. O pôster de reserva (captura do próprio render Three.js) entra.
-- Mesmos valores de material e mesma luz do Blender; tone mapping ACES ou AgX; sombra de contato; antialias.
-- Renderize as mesmas vistas (`?vista=frente` etc.) com `scripts/capturar-vistas-three.mjs`, compare com o Blender e o molde, e rode o verificador:
+- Mesmos valores de material anotados no molde (com Blender, os valores e a luz do Blender); tone mapping ACES ou AgX; sombra de contato; antialias.
+- Renderize as mesmas vistas (`?vista=frente` etc.) com `scripts/capturar-vistas-three.mjs`, compare com o molde (e com o Blender, se houve), e rode o verificador. **Sem Blender**, tire a pasta `2-blender/vistas` do `--pastas`:
   ```bash
   node <skill>/scripts/capturar-vistas-three.mjs --url http://localhost:3100/ --saida referencias-3d/<obj>/3-threejs/vistas
   node <skill>/scripts/comparar-vistas.mjs --pastas referencias-3d/<obj>/1-molde,referencias-3d/<obj>/2-blender/vistas,referencias-3d/<obj>/3-threejs/vistas --saida referencias-3d/<obj>/comparacao.png

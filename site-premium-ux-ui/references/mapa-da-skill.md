@@ -35,7 +35,7 @@
 | `estado-3d.mjs` | registra as aprovações do pipeline 3D e bloqueia etapa pulada |
 | `blender/vistas.py` | renderiza no Blender as vistas padrão do molde 3D |
 | `capturar-vistas-three.mjs` | captura as mesmas vistas do elemento Three.js (`?vista=`) |
-| `comparar-vistas.mjs` | folha lado a lado molde × Blender × Three.js, com SSIM por vista |
+| `comparar-vistas.mjs` | folha lado a lado molde × Blender (se usado) × Three.js, com SSIM por vista |
 | `blender/rodar.mjs` | acha o Blender e roda em segundo plano, com saída resumida |
 | `starters/molde/molde.html` | modelo do molde em SVG feito pelo próprio agente (5 vistas + materiais), sem custo |
 | `verificar-3d.mjs` | portão do elemento: só Three.js, nada proibido, < 200 KB |
