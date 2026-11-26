@@ -1,4 +1,5 @@
 // Confere se a máquina está pronta para a skill. Uso: node scripts/diagnostico.mjs
+import { fileURLToPath } from 'node:url';
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
@@ -13,7 +14,7 @@ const node = +process.versions.node.split('.')[0];
 ok('Node 20 ou mais', node >= 20 ? 'ok' : `falta (tem ${process.versions.node})`, 'Instale em nodejs.org');
 
 let pw = null;
-for (const c of [process.env.PLAYWRIGHT_CORE, path.join(process.cwd(), 'node_modules', 'playwright-core'), path.join(process.cwd(), 'node_modules', 'playwright'), path.join(os.homedir(), 'Documents', 'acervos-design', 'node_modules', 'playwright'), '/opt/node-tools/node_modules/playwright-core'].filter(Boolean)) {
+for (const c of [process.env.PLAYWRIGHT_CORE, path.join(path.dirname(fileURLToPath(import.meta.url)), '..', 'ferramentas', 'node_modules', 'playwright-core'), path.join(process.cwd(), 'node_modules', 'playwright-core'), path.join(process.cwd(), 'node_modules', 'playwright'), path.join(os.homedir(), 'Documents', 'acervos-design', 'node_modules', 'playwright'), path.join(os.homedir(), 'Documents', 'acervos-design', 'node_modules', 'playwright-core'), '/opt/node-tools/node_modules/playwright-core'].filter(Boolean)) {
   try { pw = createRequire(path.join(path.resolve(c), 'package.json'))(path.resolve(c)); break; } catch {}
 }
 ok('Playwright', pw ? 'ok' : 'falta', 'npm i playwright && npx playwright install chromium');
@@ -24,6 +25,8 @@ if (!navegador && pw) { try { navegador = fs.existsSync(pw.chromium.executablePa
 ok('Chrome/Chromium', navegador || 'falta', 'npx playwright install chromium (ou defina CHROME=caminho)');
 
 ok('ffmpeg (converter imagens e vídeos)', cmd('ffmpeg -version') ? 'ok' : 'falta', 'Instale em ffmpeg.org (opcional, mas recomendado)');
+const blenders = [process.env.BLENDER, ...['C:/Program Files/Blender Foundation'].flatMap(d => { try { return fs.readdirSync(d).sort().reverse().map(v => path.join(d, v, 'blender.exe')); } catch { return []; } }), '/Applications/Blender.app/Contents/MacOS/Blender', '/usr/bin/blender'].filter(Boolean);
+ok('Blender (molde 3D, etapa 2 do pipeline-3d.md)', cmd('blender --version') || blenders.some(b => fs.existsSync(b)) ? 'ok' : 'falta', 'Instale em blender.org (gratuito) e ponha no PATH ou defina BLENDER=caminho. Sem ele, o elemento 3D para na etapa 2');
 ok('Python 3 (fidelidade.py, só em réplica)', cmd('python3 --version') || cmd('python --version') ? 'ok' : 'falta', 'Opcional');
 
 let n = 0;

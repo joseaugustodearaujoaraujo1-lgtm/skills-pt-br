@@ -1,6 +1,8 @@
 # site-premium-ux-ui
 
-Skill para agentes de código (Claude Code e compatíveis) que faz o agente entregar sites com UX/UI e movimento de nível **Awwwards**, em vez do site genérico que um agente faz sozinho.
+Skill para agentes de código (Claude Code e compatíveis) que faz o agente entregar **experiências visuais** surreais, ultrarrealistas e leves, com UX/UI e movimento de nível **Awwwards**, em vez do site genérico que um agente faz sozinho.
+
+**Elemento 3D:** referências do usuário → imagens molde → molde no Blender → elemento só em Three.js com menos de 200 KB, com aprovação do usuário em cada etapa ([references/pipeline-3d.md](references/pipeline-3d.md)).
 
 ## Por que existe
 
@@ -29,7 +31,7 @@ Fluxo: briefing → direção criativa → estudo de referências → construç�
 | `references/` | Detalhe de cada passo, rubrica, juiz, estilos, paletas, receitas de motion e 3D, padrões medidos |
 | `scripts/` | Opções de referência, paleta, brief, criador de projeto, verificador, juiz, diagnóstico |
 | `scripts/acervo/` | Coleta, medição e busca do acervo de sites premiados |
-| `starters/` | Projeto-base HTML+GSAP e Next+GSAP, e 6 módulos reutilizáveis (giro por quadros, trecho fixo, galeria horizontal, meio-tom, vidro, cursor) |
+| `starters/` | Projeto-base HTML+GSAP e Next+GSAP, e 7 módulos reutilizáveis (giro por quadros, trecho fixo, galeria horizontal, meio-tom, vidro, cursor, elemento 3D em Three.js) |
 | `galeria/` | 9 sites de exemplo (réplicas de sites premiados com marca fictícia) com `CLAUDE.md`, temas e capturas-alvo |
 | `replica/` | Protocolo e ferramentas para refazer fielmente um site de referência |
 | `teste-cego/` | Sites feitos por agentes limpos só com a skill, usados para calibrar |
@@ -44,12 +46,16 @@ Para uso só em um projeto, copie para `.claude/skills/` dentro dele. A pasta `g
 
 ## Deixar completa e funcionando
 
+**No primeiro uso, o agente confere a máquina e pede sua permissão** para instalar o que falta; nada é instalado sem a sua resposta ([references/preparacao.md](references/preparacao.md)). Para só conferir à mão: `node scripts/preparar.mjs`.
+
+Os comandos abaixo são o caminho manual.
+
 ```bash
 cd ~/.claude/skills/site-premium-ux-ui
 npm i playwright && npx playwright install chromium     # verificador, juiz, acervo
 node scripts/diagnostico.mjs                            # diz o que ainda falta
 ```
-Obrigatórios: Node 20+, Playwright e Chromium. Recomendados: `ffmpeg` (converter imagens e vídeos) e Python 3 (só para réplicas).
+Obrigatórios: Node 20+, Playwright e Chromium. Para o elemento 3D: Blender 4.x ou mais novo (no PATH ou em `BLENDER=caminho`) e um gerador de imagens para as imagens molde. Recomendados: `ffmpeg` (converter imagens e vídeos) e Python 3 (só para réplicas).
 
 **Acervo de sites premiados (opcional, deixa as referências muito melhores).** Sem ele a skill funciona, mas pesquisa ao vivo e acha menos referências. Para montar o seu, no **seu computador** (o Awwwards recusa conexões de nuvem):
 

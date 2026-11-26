@@ -1,22 +1,39 @@
 ---
 name: site-premium-ux-ui
-description: Skill única para criar sites, landing pages, portfólios e lojas do zero com design, identidade visual, UX/UI, componentes e movimento de nível Awwwards e One Page Love. Pergunta, em ordem fixa e com opções (e campo para digitar), qual site de referência o usuário prefere (3 sugestões do acervo de sites premiados + 1 recomendada, com links clicáveis), a stack (HTML+CSS+JS+GSAP ou Next.js+GSAP), o estilo (entre 10, com opção de deixar a escolha para a skill) e a paleta (a recomendada ou a que o usuário escrever); se houver 3D, pergunta se o usuário gera a imagem ou vídeo de referência (com prompt de comandos de barra) ou se a skill faz, e sempre sugere um elemento 3D leve. Sempre usa componentes das plataformas reactbits.dev, transitions.dev e naocodei.com (com pinstack e tasteskill.dev de referência), inclui todo o conteúdo de design-completo e estilos-paletas-design, monta brief em JSON com tokens CSS, tem receitas de código e portão de qualidade. Use SEMPRE que o pedido envolver site nível Awwwards, premiado, One Page Love, design incrível ou profissional, identidade visual, escolha de paleta ou estilo, hero, scroll, animação ou 3D, mesmo sem citar esses nomes.
+description: Skill única para criar sites, landing pages, portfólios e lojas do zero com design, identidade visual, UX/UI, componentes e movimento de nível Awwwards e One Page Love. Pergunta, em ordem fixa e com opções (e campo para digitar), qual site de referência o usuário prefere (3 sugestões do acervo de sites premiados + 1 recomendada, com links clicáveis), a stack (HTML+CSS+JS+GSAP ou Next.js+GSAP), o estilo (entre 10, com opção de deixar a escolha para a skill) e a paleta (a recomendada ou a que o usuário escrever); o objetivo é uma experiência visual surreal, ultrarrealista e leve; o elemento 3D segue um pipeline com aprovação do usuário em cada etapa (referências do usuário, imagens molde, molde no Blender, elemento só em Three.js com menos de 200 KB). Sempre usa componentes das plataformas reactbits.dev, transitions.dev e naocodei.com (com pinstack e tasteskill.dev de referência), inclui todo o conteúdo de design-completo e estilos-paletas-design, monta brief em JSON com tokens CSS, tem receitas de código e portão de qualidade. Use SEMPRE que o pedido envolver site nível Awwwards, premiado, One Page Love, design incrível ou profissional, identidade visual, escolha de paleta ou estilo, hero, scroll, animação ou 3D, mesmo sem citar esses nomes.
 ---
 
 # Site nível Awwwards / One Page Love
 
+**O objetivo não é um site comum: é uma experiência visual surreal, ultrarrealista e leve.** Um elemento 3D ultrarrealista conduz a página, e cada seção existe para revelá-lo.
+
 Fluxo em seis passos, na ordem. Cada passo aponta para o arquivo de detalhe: abra-o só quando chegar nele.
 
 > **Caminhos:** `<skill>` é a pasta desta skill (a que tem este arquivo), normalmente `~/.claude/skills/site-premium-ux-ui/`. Os scripts acham o playwright-core e o Chromium sozinhos nos caminhos comuns; se não acharem, defina `PLAYWRIGHT_CORE` e `CHROME` (teste cego, rodada 1).
-> **Sem usuário para responder** (teste, automação): em cada pergunta ou aprovação, inclusive o "Posso começar?" e os portões do 3D, escolha a opção recomendada e registre a escolha e o motivo em `design/DECISOES.md` (teste cego, rodada 1).
+> **Sem usuário para responder:** pare e aguarde. Nunca responda o "Posso começar?", os portões do 3D ou qualquer aprovação no lugar do usuário.
 > Valem as regras do `CLAUDE.md`: "Posso começar?" antes de usar ferramentas; autorização para etapas novas, custos, publicações e operações externas. Nas plataformas externas: sem login, sem conta, sem compra.
+
+## Primeiro uso: preparar a máquina (com permissão)
+Antes do primeiro projeto numa máquina, rode `node <skill>/scripts/preparar.mjs` (só confere). Se faltar algo, **pergunte ao usuário quais itens instalar** e instale só os escolhidos. Nunca instale sem a resposta dele. Regras em [references/preparacao.md](references/preparacao.md).
+
+## Economia (sem custo extra, poucos tokens)
+- **Nada pago por padrão:** imagens molde feitas por você em SVG ([starters/molde/molde.html](starters/molde/molde.html)), render de foto no Blender (gratuito), elemento em Three.js. Gerador de imagem ou serviço pago só se o usuário pedir e autorizar.
+- **Leia só o necessário:** o arquivo do passo atual; no 3D, [pipeline-3d.md](references/pipeline-3d.md). Dos arquivos longos (`3d-leve.md`, `elementos.md`, `juiz.md`), leia só a seção que precisa (procure o título com Grep e leia com `offset`/`limit`).
+- **Scripts em vez de tentativa e erro:** Blender por `scripts/blender/rodar.mjs` (saída resumida), não por MCP; medidas tiradas do SVG do molde; `verificar-3d.mjs` e `estado-3d.mjs` respondem em poucas linhas.
+- **Imagens pequenas e poucas:** veja a folha de `comparar-vistas.mjs` (uma imagem por rodada) em vez de cada vista; capturas a 1024 px no máximo; não reabra imagem que não mudou.
+- **Uma rodada de correção por pedido do usuário:** junte os ajustes e mostre de uma vez. Ao pedir aprovação, peça **todas as alterações em uma só mensagem**.
+- **Edite, não reescreva:** corrija só as linhas necessárias dos scripts (Blender, molde, `objeto.js`); não reimprima arquivo inteiro na resposta.
+- **Medidas e materiais no topo do script**, em constantes: um ajuste ("aro mais fino") muda um valor.
+- **Rascunho leve, aprovação em qualidade máxima:** no Blender, trabalhe com `--lado 512 --amostras 32`; só as vistas que vão para aprovação saem com a qualidade padrão (1024 px, 256 amostras).
+- **Boas referências antes de começar:** peça frente, lado, topo, detalhes e medidas de uma vez; menos tentativa e erro.
+- **Sessão curta:** a cada elemento aprovado, sugira ao usuário abrir uma sessão nova ou rodar `/compact`. O progresso fica em `referencias-3d/<obj>/` (`estado.json` e `README.md`); na sessão nova, comece por `estado-3d.mjs ... status`.
 
 ## Princípios
 1. **O usuário escolhe, você recomenda.** Estilo, paleta e referência sempre em opções, com uma recomendada e justificada.
 2. **Evidência antes de gosto.** As opções vêm do acervo, da pesquisa ao vivo e de dados medidos.
 3. **A referência Awwwards é o molde de estrutura e experiência**: ordem e proporção das seções, grid, hierarquia, ritmo, tipo de scroll e motion (medidos com a skill `reanimate`). Nunca o protegido: texto, imagem, vídeo, logo, marca, fonte paga e código.
 4. **Uma ideia, um gesto.** Um conceito claro e um efeito de assinatura; menos efeitos, melhor acabamento.
-5. **3D é 3D de verdade** (geometria em WebGL, material PBR, girável), igual ao molde aprovado. Depois do 3D, sempre se sugere um scroll avançado.
+5. **3D ultrarrealista, feito só com Three.js, com menos de 200 KB por elemento.** Referências do usuário → imagens molde → molde no Blender → elemento em código Three.js, com aprovação do usuário em cada etapa ([pipeline-3d.md](references/pipeline-3d.md)). Máximo realismo em todas as etapas. Depois do 3D, sempre se sugere um scroll avançado.
 6. **Medir para declarar.** "Nível Awwwards" não se declara: o juiz libera.
 
 ## 1. Briefing → [references/perguntas.md](references/perguntas.md)
@@ -35,14 +52,14 @@ Antes de qualquer código, escreva `design/DIRECAO.md`: ideia central em uma fra
 Recapture as 3 a 6 referências escolhidas (depois do preloader, em 1440 e 390 px) e escolha uma por seção, com o que adaptar e o que não copiar (`brief.json > secoes[].referencia`). Em réplica, siga [replica/PROTOCOLO.md](replica/PROTOCOLO.md).
 
 ## 4. Construção com starters → [references/construcao.md](references/construcao.md)
-Se houver 3D, passe antes pelos portões de [aprovacoes.md](references/aprovacoes.md). Depois:
+Se houver 3D, faça antes o pipeline de [pipeline-3d.md](references/pipeline-3d.md) e os portões de [aprovacoes.md](references/aprovacoes.md); `node <skill>/scripts/estado-3d.mjs --objeto <obj> exigir --etapa site` precisa passar. Depois:
 ```bash
 node <skill>/scripts/criar-projeto.mjs --stack html|next --nome "<Marca>" --tema "<assunto>" --saida ./meu-site --cores "fundo=#..,superficie=#..,texto=#..,acento=#.." --entrada <direção> --instalar
 ```
 Use os módulos de [starters/modulos/](starters/modulos/README.md) para os gestos que eles cobrem e as receitas de [elementos.md](references/elementos.md) para o resto.
 
 ## 5. Portões (nesta ordem)
-1. **Verificador:** `node <skill>/scripts/verificar-site.mjs <url> --saida ./verificacao --lighthouse` com **0 FAIL**; depois olhe as capturas e passe a rubrica ([rubrica.md](references/rubrica.md)).
+1. **Verificador:** `node <skill>/scripts/verificar-site.mjs <url> --saida ./verificacao --lighthouse` com **0 FAIL** (e `verificar-3d.mjs` com 0 FAIL para cada elemento 3D); depois olhe as capturas e passe a rubrica ([rubrica.md](references/rubrica.md)).
 2. **Fidelidade** (só em réplica): `replica/ferramentas/fidelidade.py`, toda tela ≥ 75 ([replica/PROTOCOLO.md](replica/PROTOCOLO.md) §5.5).
 3. **Juiz:** `node <skill>/scripts/juiz.mjs <url> --saida ./juiz --direcao design/DIRECAO.md` e um subagente limpo com `juiz/PEDIDO-AO-JUIZ.md` ([juiz.md](references/juiz.md)). Libera com **média ≥ 7,5 e nenhum critério < 6**. Corrija na ordem devolvida e chame um juiz novo a cada rodada.
 

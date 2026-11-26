@@ -1,34 +1,26 @@
-# Portões de aprovação: referências, molde e prévia do site
+# Portões de aprovação do 3D e da prévia do site
 
-Três paradas obrigatórias antes de construir um site com elemento 3D. Cada uma termina com uma pergunta ao usuário (use `AskUserQuestion` quando disponível) e só avança com aprovação explícita.
+Antes de construir uma experiência com elemento 3D, o usuário aprova **quatro** coisas, nesta ordem. Cada parada termina com uma pergunta (`AskUserQuestion`: **Aprovar** · **Alterar**, o usuário descreve o quê) e só avança com aprovação explícita dada nesta conversa. Detalhe de cada etapa em [pipeline-3d.md](pipeline-3d.md).
 
-## 1. Imagens de referência do elemento 3D
-- **Sempre que possível, peça ao usuário.** Fotos do produto real, links de loja ou fabricante, prints. Peça vários ângulos (frente, perfil, 3/4, verso) e detalhes de material.
-- **Exceção: elemento inventado.** Personagem ou objeto de uma história, mascote, peça que não existe: não há imagem na internet. Peça descrição (forma, tamanho, cores, materiais, clima) e, se houver, esboço ou referências de estilo.
-- **Se o usuário pedir que você procure:** pesquise fontes abertas, mostre o que achou com o link e só use depois do "ok".
-- Salve tudo em `referencias-3d/<objeto>/` com um `README.md` (fonte, direitos, o que não copiar).
-- **Marcas de terceiros** (logo, nome, emblema, desenho registrado): use a referência só para forma, material e luz. O molde e o site saem **sem a marca**, a menos que o usuário seja o dono ou tenha licença. Diga isso ao usuário.
+## 0. Referências do elemento
+Peça imagens de referência de como o elemento é (vários ângulos e closes de material), ou descrição e esboço se ele for inventado. Sem referência, não gere o molde.
 
-## 2. Molde ultrarrealista → "ficou bom ou precisa alterar?"
-- Gere a folha de 4 vistas (frente, perfil, 3/4, verso) na mesma escala, fundo neutro, luz de estúdio, sem texto (modelos em `prompts-3d.md`). Anexe as imagens de referência ao gerador quando ele aceitar.
-- Mostre o molde ao usuário e pergunte. Opções: **Aprovar** · **Alterar** (o usuário descreve: cor, proporção, detalhe, material).
-- Ajuste e mostre de novo até aprovar. Registre a versão aprovada no README.
+## 1. Imagens molde → "o que precisa alterar?"
+Vistas `frente`, `lado`, `tres-quartos`, `costas`, `topo` e detalhes, mesmo objeto e mesma luz. Mostre e peça ao usuário para verificar. Ajuste até aprovar.
 
-## 3. Vídeo-prévia de como o SITE vai ficar → "ficou bom ou precisa alterar?"
-- Depois do molde aprovado e **antes** de construir, mostre em vídeo como o site vai ficar: hero, o objeto 3D em cena, o scroll de assinatura e 2–3 seções, com a paleta, a tipografia e o estilo escolhidos.
-- Como gerar (do mais fiel ao mais rápido):
-  1. **Protótipo gravado:** monte só o hero, o objeto 3D e o scroll principal e grave (screencast por CDP/Playwright, montado em MP4 com ffmpeg). É o que mais se parece com o resultado.
-  2. **Vídeo gerado por IA** com a ferramenta disponível na conta do usuário (ex.: Veo pelo Gemini), descrevendo layout e movimento e anexando o molde. Avise que é ilustrativo.
-- Entregue de forma que o usuário consiga ver no celular (MP4 H.264, `playsinline`) e pergunte: **Aprovar** · **Alterar** (descrever).
-- Só depois da aprovação construa o site completo e rode o portão de qualidade.
+## 2. Molde 3D no Blender → "o que precisa alterar?"
+Exatamente igual às imagens molde aprovadas, renderizado nas mesmas vistas, com a comparação lado a lado. Ajuste até aprovar.
 
-## Sem usuário para aprovar (teste, automação)
-Achado do teste cego, rodada 1: sem usuário, os portões travavam e o agente cortava o 3D. Não corte. Faça assim:
-1. **Referências:** pesquise fontes abertas do tipo de objeto (forma, material, luz), anote links e direitos em `referencias-3d/<objeto>/README.md`, sem marca de terceiros.
-2. **Molde:** se houver gerador de imagem, gere as 4 vistas. Se não houver, o molde é o próprio modelo: modele em three.js (geometria real: `LatheGeometry`, `ExtrudeGeometry`, peças combinadas; material PBR com `RoomEnvironment`) e renderize as 4 vistas em PNG com Playwright. Confira você mesmo contra as referências (proporção, material, luz) e registre em `design/DECISOES.md`.
-   O portão de igualdade (IoU) não prova nada quando molde e site saem do mesmo código (dá 1,0 sempre). Nesse caso a prova é a comparação lado a lado do render com as **referências reais** (fotos abertas do tipo de objeto): proporção, material, luz. Registre a comparação em `referencias-3d/<objeto>/README.md`.
-3. **Prévia:** grave o protótipo do hero (opção 1 da seção 3) e confira se o objeto aparece em ângulos diferentes nas telas do `juiz.mjs`.
-4. Liste em `IMAGENS.md` o molde ultrarrealista e o vídeo que o usuário pode gerar depois, com prompt (`prompts-3d.md`).
+## 3. Elemento em Three.js (< 200 KB) → "o que precisa alterar?"
+Só código Three.js, igual ao molde do Blender, com a comparação das três etapas, a página interativa e `verificar-3d.mjs` com 0 FAIL. Ajuste até aprovar.
 
-## Ordem resumida
-referências → molde → **aprovação** → vídeo-prévia do site → **aprovação** → construção → verificação.
+## 4. Vídeo-prévia de como o SITE vai ficar → "o que precisa alterar?"
+- Depois das três aprovações e **antes** de construir o site: hero, o elemento em cena, o scroll de assinatura e 2–3 seções, com a paleta, a tipografia e o estilo escolhidos.
+- Como gerar: protótipo do hero com o elemento Three.js aprovado, gravado (screencast por CDP/Playwright, MP4 H.264 com ffmpeg, `playsinline` para ver no celular).
+- Só depois da aprovação construa o site completo e rode os portões de qualidade.
+
+## Regras
+- **Nunca aprove no lugar do usuário**, nem em teste ou automação. Sem usuário para responder: pare e espere.
+- Registre cada aprovação com `scripts/estado-3d.mjs` (com as palavras do usuário). Alterar uma etapa anula as aprovações seguintes.
+- Custo, conta nova ou serviço pago (gerador de imagem, instalação do Blender) pedem autorização própria.
+- Marca de terceiros: só forma, material e luz; o elemento sai sem a marca, a menos que o usuário seja o dono ou tenha licença. Diga isso ao usuário.

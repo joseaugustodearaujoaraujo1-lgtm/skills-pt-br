@@ -1,41 +1,12 @@
 # 3D leve para sites
 
-## REGRA −1: 3D real e ultrarrealista, molde feito pela skill (atualizada em 2026-11-19)
-- **Todo componente 3D do site é 3D de verdade**: geometria em WebGL (three.js/R3F; para **um objeto só**, WebGL2 puro com shader também vale, ver "Objeto único em WebGL puro" abaixo), girável em qualquer ângulo, com material PBR ou shader equivalente (`MeshPhysicalMaterial`: metalness, roughness, clearcoat, transmission para vidro/cristal), iluminação por ambiente (`RoomEnvironment`/HDRI + PMREM), tone mapping ACES/AgX, sombras de contato e antialias. **Proibido** entregar como "3D": PNG recortado, sprite, flip CSS de imagem ou vídeo pré-renderizado sem a cena real.
-- **Ultrarrealista**: biselados e chanfros (nada de arestas retas de primitivo), detalhes finos modelados (sulcos, parafusos, índices, gravações), materiais distintos por peça, reflexo coerente com o ambiente e microdetalhe por textura procedural (escovado, granulado). Compare com o molde e corrija até parecer foto.
-- **Referências do usuário primeiro:** sempre que o objeto existir, peça ao usuário imagens de referência (fotos, links, prints, vários ângulos). Só dispense se o elemento for inventado (personagem ou objeto de uma história); aí peça descrição ou esboço.
-- **A skill gera a imagem-molde ela mesma** a partir dessas referências: use a ferramenta de imagem disponível (ex.: Gemini no navegador do usuário, com a conta dele já logada; anexe as imagens de referência ao prompt), prompt de `prompts-3d.md`, e salve em `referencias-3d/<objeto>/`. Custo, conta nova ou serviço pago continuam pedindo autorização.
-- **Portões de aprovação** (`aprovacoes.md`): mostre o molde e pergunte "ficou bom ou precisa alterar?" até aprovar; depois gere o vídeo-prévia do site e pergunte de novo. Sem as duas aprovações, não construa.
-- **Caminho padrão: modelar no código** a partir do molde (`LatheGeometry`, `ExtrudeGeometry` com bevel, `TubeGeometry`, CSG simples). Serviço de imagem-para-3D (Meshy, Tripo, Rodin) só com autorização do usuário (custo/login).
-- **Pós-processamento sutil** (dá o acabamento de foto): bloom leve nos brilhos, profundidade de campo, grão de filme e aberração cromática mínima (`postprocessing` / `EffectComposer`; desligue tudo no nível de qualidade baixo).
-- **Assets pesados comprimidos:** `.glb` com Draco ou Meshopt, texturas em **KTX2** (Basis) e **LOD** (versão simplificada à distância e no celular).
-- Plano B obrigatório: pôster renderizado da **própria cena** (não outra imagem) para `prefers-reduced-motion`, sem WebGL ou celular fraco.
-
-## REGRA 0 (vem antes de tudo): molde ultrarrealista, e o 3D é estritamente igual a ele
-Antes de modelar **qualquer** elemento 3D, gere um **molde ultrarrealista** do objeto: uma folha com 4 vistas (frente, lado, topo, base) e, se possível, um vídeo giratório de 10 s (Modelo A e B de `prompts-3d.md`, com `/8k /ultra-realistic /ray-traced ...`). O molde é aprovado pelo usuário **antes** de modelar. O elemento 3D do site é então construído **estritamente igual ao molde**: mesma silhueta, proporções, número de partes (facetas, sulcos, dobras), material e luz.
-
-**Portão de igualdade (obrigatório antes de entregar):** renderize o 3D nos mesmos ângulos do molde e compare lado a lado e numericamente: silhueta (IoU) **≥ 95%**, razão largura/altura/profundidade com diferença **≤ 2%**, contagem de partes **idêntica**, diferença média de cor registrada. Se algum item falhar, corrija o 3D (nunca o molde) e repita. Registre a comparação em `referencias-3d/<objeto>/README.md`. Sem molde aprovado, não há 3D. **Exceção:** se o molde é o próprio modelo renderizado (sem gerador de imagem nem usuário, ver `aprovacoes.md`, "Sem usuário"), o IoU dá 1,0 sempre e não prova nada. A prova passa a ser a comparação lado a lado com as referências reais (proporção, material, luz).
-
-Quem gera o molde: o usuário (a skill entrega o prompt) **ou** a skill (com a ferramenta de imagem/vídeo disponível, **só com autorização** por causa do custo). Depois do 3D, a skill sempre sugere o **scroll animado** que o conduz ([scroll-avancado.md](scroll-avancado.md)).
-
-## REGRA OBRIGATÓRIA: todo objeto 3D tem uma referência visual detalhada
-Antes de modelar **qualquer** objeto 3D (produto, joia, personagem, cena), exija **uma imagem muito detalhada ou um vídeo** de como ele deve ficar. Sem isso, não comece: sem referência a IA inventa forma, proporção e material, e o resultado fica genérico.
-
-**O que conta como referência suficiente**
-- Imagem em alta resolução (ou várias) com **mais de uma vista**: frente, lado, topo e um detalhe de material (reflexo, textura, transparência). Ou um **vídeo** do objeto girando (turntable) ou em uso.
-- Mostra a **luz e o fundo** pretendidos, para casar o brilho e a cor.
-- Tem **medidas ou proporções** (diagrama técnico, ficha do produto, ou medidas anotadas).
-
-**Onde guardar e o que registrar** — `referencias-3d/<objeto>/` no projeto, com um `README.md`: fonte, licença/direitos (só estudo local, ou uso autorizado), vistas disponíveis, medidas, material e o que **não** copiar.
-
-**Como obter, nesta ordem**
-1. O usuário fornece imagem/vídeo (melhor caso).
-2. Pesquisa no navegador embutido (Wikimedia Commons, fabricante, ficha técnica); anote a fonte.
-3. Se nada servir, proponha gerar uma imagem de referência com uma ferramenta de imagem (**com a autorização do usuário**, pois pode ter custo) e deixe o usuário aprovar a imagem **antes** de modelar.
-
-**Como usar** — modele a partir da referência (silhueta e proporções medidas, não de memória); renderize no mesmo ângulo e **compare lado a lado** (e numericamente, se possível, como no teste da lata); só entregue quando silhueta, proporção, material e luz baterem. Registre a comparação.
-
-`montar-brief.mjs --ref3d "objeto=caminho"` grava a referência no brief e **bloqueia** (campo `tridimensional.bloqueio`) se faltar.
+## REGRA ATUAL (2026-11-26): manda sobre tudo o que vem abaixo
+- **Como nasce o elemento:** [pipeline-3d.md](pipeline-3d.md). Referências do usuário → imagens molde → molde no Blender → elemento em Three.js, com aprovação do usuário em cada etapa ([aprovacoes.md](aprovacoes.md)).
+- **Só Three.js:** o elemento é feito apenas com `three` e seus complementos oficiais que não carregam arquivos. Geometria, texturas, shaders e luz saem de código. Proibido no elemento: `.glb`/`.gltf`/`.obj`/`.fbx`, imagem de textura, HDRI, `.ktx2`, vídeo, sequência de quadros, loaders, `data:` URI e malha ou imagem escondida em base64 ou em listas grandes de números. WebGL puro sem Three.js também não vale.
+- **Menos de 200 KB por elemento**, somando código, dados e pôster, sem compressão e sem contar a biblioteca `three`. Confira com `scripts/verificar-3d.mjs` (0 FAIL).
+- **Ultrarrealista:** chanfros em toda aresta, detalhes finos modelados, materiais físicos distintos por peça (`MeshPhysicalMaterial`: metalness, roughness, clearcoat, transmission, IOR), microdetalhe em textura gerada por código (escovado, granulado, riscos), ambiente `RoomEnvironment` + PMREM, tone mapping ACES/AgX, sombra de contato, antialias. Valores de material copiados do molde do Blender.
+- **Plano B:** um pôster capturado do próprio render Three.js (conta no orçamento), para `prefers-reduced-motion`, sem WebGL ou celular fraco.
+- As seções abaixo são **receitas e testes anteriores**. Use as técnicas (orçamento, render sob demanda, pôster, compilação paralela, ray tracing em shader) **dentro do Three.js** (`ShaderMaterial`); onde elas carregam foto, atlas PNG, `.glb` ou WebGL puro, não valem mais para o elemento final.
 
 Objetivo: cena 3D que carrega rápido, roda a 60 fps em celular médio e cai bem para uma imagem quando não dá. Inspirada em um vídeo analisado em 2026-11-15 (site de tema Minecraft feito com ajuda de IA) e em práticas conhecidas de Three.js. A seção "Origem" separa o que veio do vídeo do que é conhecimento técnico adicional.
 
@@ -61,7 +32,7 @@ Objetivo: cena 3D que carrega rápido, roda a 60 fps em celular médio e cai bem
 | Chamadas de desenho (draw calls) | ≤ 60 | ≤ 150 |
 | Triângulos na tela | ≤ 100 mil | ≤ 400 mil |
 | Textura (atlas único) | ≤ 512×512 | ≤ 1024×1024 |
-| Peso do código 3D (gzip, sem contar o `three`) | ≤ 60 KB | ≤ 120 KB |
+| Peso do elemento (código + dados + pôster, sem compressão, sem contar o `three`) | < 200 KB | < 200 KB |
 | Resolução de renderização (DPR) | ≤ 1,5 | ≤ 2 |
 Confira com `renderer.info.render.calls` e `renderer.info.render.triangles`.
 
@@ -97,13 +68,14 @@ function expostos(mapa) { // mapa: Map<chave, tipo>
 ```
 Blocos cercados por outros nunca entram na cena.
 
-### 3. Geometria em código, sem Blender
+### 3. Geometria em código (o Blender é só o molde; o elemento final não usa arquivo dele)
 Descreva a cena como dados e gere a malha no carregamento:
 - Terreno: laço sobre x/z com altura por função (ruído simples ou tabela), camadas grama → terra → pedra.
 - Objetos (casa, portal, árvore): listas de coordenadas por tipo, em um arquivo JSON de poucos KB.
 - Peça a IA para escrever o gerador **e** uma página de teste que mostre cada elemento isolado, girando, antes de compor a cena (como no vídeo).
 
 ### 4. Texturas de pixel (leves e nítidas)
+Textura de arquivo não vale mais para o elemento (`pipeline-3d.md`): gere o atlas em `<canvas>` e use `THREE.CanvasTexture`. Antigo, só como referência:
 ```js
 const tex = new THREE.TextureLoader().load('/atlas.png');
 tex.magFilter = THREE.NearestFilter;
@@ -145,7 +117,7 @@ Cada seção do texto é um ponto de passagem da câmera. Descarte (`dispose()`)
 ### 9. Níveis de qualidade e plano B
 - **Baixo** (celular fraco, `navigator.hardwareConcurrency <= 4`, `deviceMemory <= 4`, `pointer: coarse`): DPR 1, menos blocos (distância de render menor), sem partículas, sem névoa animada.
 - **Movimento reduzido** (`prefers-reduced-motion`): renderize um quadro fixo; sem câmera animada.
-- **Sem WebGL ou falha de carregamento:** troque o canvas por uma imagem (WebP) da cena. Gere essa imagem com uma captura da própria cena.
+- **Sem WebGL ou falha de carregamento:** troque o canvas pelo pôster (WebP) capturado da própria cena Three.js. Ele conta nos 200 KB.
 - Carregue o 3D **depois** do conteúdo principal (`import()` dinâmico) para não prejudicar o LCP.
 
 ### 10. Alternativas ainda mais leves ao 3D real
@@ -155,9 +127,10 @@ Cada seção do texto é um ponto de passagem da câmera. Descarte (`dispose()`)
 | CSS 3D transforms (cubos, cartões inclinados) | muito baixo | objetos simples |
 | Shader de gradiente em 1 plano | baixo | fundos vivos |
 | Low-poly com sombreamento chapado | baixo a médio | objetos estilizados |
-| Modelo .glb comprimido (Draco/meshopt) | médio a alto | só quando o objeto é o produto |
+| Modelo .glb comprimido (Draco/meshopt) | médio a alto | **não vale mais** para o elemento (`pipeline-3d.md`) |
 
 ## Do objeto real ao 3D leve (método testado com uma lata, 2026-11-15)
+> Histórico: este teste usa a foto como textura, o que não vale mais para o elemento (`pipeline-3d.md`). Aproveite a medição do perfil, a comparação numérica e a interação.
 Projeto de referência: `~/Documents/acervos-design/teste-3d-lata` (`src/gerar-textura.mjs`, `src/main.js`; página em `http://localhost:3000/lata-3d/`).
 
 **Passos**
@@ -183,7 +156,9 @@ Projeto de referência: `~/Documents/acervos-design/teste-3d-lata` (`src/gerar-t
 **Limite honesto**: a nitidez fica presa à resolução da foto (aqui a lata tem 139 px de largura). Em telas grandes, use uma foto maior do mesmo produto, ou exiba a lata perto do tamanho original.
 
 ## Objeto único em WebGL puro: o diamante (testado em 2026-11-16)
-Quando o 3D é **um objeto só** (joia, produto), dispense o Three.js: WebGL2 puro + shader cabe em ~3 KB (o `three` custa ~135 KB gzip). Código de referência: `acervos-design/teste-skill-lume/src/gema3d.js`; página: http://localhost:3000/lume/.
+> Histórico: hoje o elemento é **só Three.js**. Leve o shader do diamante para um `ShaderMaterial` (mesma lógica, mesmos uniforms).
+
+No teste, para um objeto só, o WebGL2 puro + shader coube em ~3 KB (o `three` custa ~135 KB gzip). Código de referência: `acervos-design/teste-skill-lume/src/gema3d.js`; página: http://localhost:3000/lume/.
 
 **Fluxo seguindo a regra de referência**
 1. Referência detalhada em `referencias-3d/diamante/` (diagrama de facetas, render de perfil, padrão hearts-and-arrows, foto; CC BY, com README de fonte/licença/medidas).
@@ -199,7 +174,7 @@ Quando o 3D é **um objeto só** (joia, produto), dispense o Three.js: WebGL2 pu
 - **Shader barato**: `dot` no lugar de `acos` nas luzes; poucas luzes (8 pequenas + 5 grandes); DPR ≤ 1,25 em objeto pequeno.
 - **Sem GPU, sem 3D**: se `UNMASKED_RENDERER_WEBGL` contiver SwiftShader/llvmpipe/Software, mantenha o pôster (renderização por software trava a página).
 - **Metal escovado com textura esticada e faces chapadas** (teste cego, rodada 3b): ajuste a repetição da textura pela dimensão real de cada peça (escala uniforme, `texture.repeat` proporcional à altura e ao perímetro) e use um mapa de ambiente com uma fonte clara (janela ou softbox) para o metal ter reflexo. Renderize os quadros do plano B em 2×.
-- **O verificador e o juiz rodam sem GPU, então julgam o plano B** (teste cego, rodadas 2 e 3). O plano B tem que carregar o gesto: quadros renderizados da própria cena, trocados pela rolagem (`starters/modulos/01-giro-3d-quadros`), com os mesmos ângulos e estados do WebGL; nunca um pôster parado só. Aceite `?gpu=1` na URL para forçar o WebGL nos testes e confira as telas do `juiz.mjs` com e sem ele.
+- **O verificador e o juiz rodam sem GPU, então julgam o plano B** (teste cego, rodadas 2 e 3). O plano B é o pôster capturado do próprio render Three.js; sequência de quadros não vale mais para o elemento (`pipeline-3d.md`). Dê ao pôster o ângulo do momento-assinatura. Aceite `?gpu=1` na URL para forçar o WebGL nos testes e confira as telas do `juiz.mjs` com e sem ele.
 - **Gire pouco**: giro automático só nos primeiros ~7 s (e quando o mouse passa/arrasta); depois **renderize apenas sob demanda** (`sujo`), pausando fora da tela e com a aba escondida.
 - **Marque as etapas** com `performance.mark` (contexto, link, compilado, primeiro desenho) para achar o gargalo; e faça **A/B** (mesma página com `getContext('webgl2')` retornando `null`) várias vezes, porque o TBT varia muito entre rodadas.
 - Resultado do A/B depois das correções: com 3D e sem 3D ficaram equivalentes (480/954/554 ms contra 947/853/379 ms, ruído da máquina), e o 3D ficou ativo nas três rodadas.

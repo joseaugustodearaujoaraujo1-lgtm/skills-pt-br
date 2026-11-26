@@ -9,7 +9,7 @@
 | 2. Direção criativa | [direcao-criativa.md](direcao-criativa.md), [anti-cliches.md](anti-cliches.md), [base-design-completo/](base-design-completo/) | |
 | 3. Estudo de referências | [pesquisa.md](pesquisa.md) (camadas 2 e 3), [../replica/PROTOCOLO.md](../replica/PROTOCOLO.md) (réplica), [../replica/README.md](../replica/README.md) (ferramentas) | `replica/ferramentas/estudar3.cjs`, `secoes.cjs`, `palco.cjs` |
 | Modelos | [modelos.md](modelos.md) (modelo e esforço por etapa) | — |
-| 4. Construção | [construcao.md](construcao.md), [elementos.md](elementos.md), [componentes-plataformas.md](componentes-plataformas.md), [plataformas.md](plataformas.md), [3d-leve.md](3d-leve.md), [aprovacoes.md](aprovacoes.md), [padroes.md](padroes.md), [padroes-ux.md](padroes-ux.md), [../starters/modulos/README.md](../starters/modulos/README.md) | `criar-projeto.mjs`, `baixar-fontes.mjs`, `tematizar.mjs`, `buscar-fotos-livres.mjs` |
+| 4. Construção | [construcao.md](construcao.md), [elementos.md](elementos.md), [componentes-plataformas.md](componentes-plataformas.md), [plataformas.md](plataformas.md), [pipeline-3d.md](pipeline-3d.md), [3d-leve.md](3d-leve.md), [aprovacoes.md](aprovacoes.md), [padroes.md](padroes.md), [padroes-ux.md](padroes-ux.md), [../starters/modulos/README.md](../starters/modulos/README.md) | `criar-projeto.mjs`, `baixar-fontes.mjs`, `tematizar.mjs`, `buscar-fotos-livres.mjs`, `estado-3d.mjs`, `blender/vistas.py`, `capturar-vistas-three.mjs`, `comparar-vistas.mjs`, `verificar-3d.mjs` |
 | 5. Portões | [rubrica.md](rubrica.md), [juiz.md](juiz.md), [juiz-calibracao.md](juiz-calibracao.md) (não passar ao juiz), [../replica/PROTOCOLO.md](../replica/PROTOCOLO.md) §5.5 | `verificar-site.mjs`, `juiz.mjs`, `replica/ferramentas/fidelidade.py` |
 | 6. Entrega e imagens | [entrega.md](entrega.md), [../galeria/IMAGENS-PARA-GERAR.md](../galeria/IMAGENS-PARA-GERAR.md) | |
 
@@ -30,7 +30,15 @@
 | `gerar-pacote.mjs` | pacote liberável de um site da galeria (CLAUDE.md, `PROMPT-DE-USO.md`) |
 | `buscar-fotos-livres.mjs` | fotos de licença aberta, com crédito |
 | `gerar-padroes.mjs`, `gerar-padroes-ux.mjs` | regeram `padroes.md` e `padroes-ux.md` a partir do acervo |
-| `diagnostico.mjs` | confere Node, Playwright, Chromium, ffmpeg, Python e acervo |
+| `diagnostico.mjs` | confere Node, Playwright, Chromium, ffmpeg, Python, Blender e acervo |
+| `preparar.mjs` | confere o que falta e instala só o que o usuário autorizar ([preparacao.md](preparacao.md)) |
+| `estado-3d.mjs` | registra as aprovações do pipeline 3D e bloqueia etapa pulada |
+| `blender/vistas.py` | renderiza no Blender as vistas padrão do molde 3D |
+| `capturar-vistas-three.mjs` | captura as mesmas vistas do elemento Three.js (`?vista=`) |
+| `comparar-vistas.mjs` | folha lado a lado molde × Blender × Three.js, com SSIM por vista |
+| `blender/rodar.mjs` | acha o Blender e roda em segundo plano, com saída resumida |
+| `starters/molde/molde.html` | modelo do molde em SVG feito pelo próprio agente (5 vistas + materiais), sem custo |
+| `verificar-3d.mjs` | portão do elemento: só Three.js, nada proibido, < 200 KB |
 | `qualidade.mjs` | filtro de capturas inválidas do acervo |
 | `temas.json` | ~25 temas: palavras, nichos do acervo, cor, estilos |
 
@@ -38,7 +46,7 @@
 | Pasta | O que tem |
 |---|---|
 | `starters/html`, `starters/next` | projetos-base (HTML + CSS + JS + GSAP; Next.js + GSAP) |
-| `starters/modulos/` | 6 módulos medidos (giro por quadros, trecho fixo, galeria horizontal, meio-tom, vidro, cursor) |
+| `starters/modulos/` | 7 módulos (giro por quadros, trecho fixo, galeria horizontal, meio-tom, vidro, cursor, elemento 3D em Three.js) |
 | `galeria/` | 9 sites de estudo, cada um com `CLAUDE.md`, `PROMPT-DE-USO.md`, `conceito/` e `?tema=` |
 | `replica/` | protocolo de réplica, fichas dos sites, ferramentas de estudo e de fidelidade |
 | `teste-cego/` | os 4 sites feitos por agente limpo só com a skill; registro em [teste-cego.md](teste-cego.md) |
@@ -54,5 +62,6 @@ Acervo (computador do usuário; para refazer do zero veja [acervo-do-zero.md](ac
 - O verificador não julga hierarquia, composição nem originalidade, e não testa celular real, redes lentas, leitor de tela nem outros navegadores. O juiz não vê movimento e, sem GPU, só vê o plano B do 3D.
 - O projeto-base é genérico (sem fotos): a identidade vem do conteúdo real, do estilo e do gesto.
 - Preços das plataformas verificados em 2026-11-16; os do pinstack não aparecem sem login.
-- Cenas 3D complexas exigem análise caso a caso; a receita cobre o 3D leve.
+- Cenas 3D complexas exigem análise caso a caso. Pessoas, cabelo, tecido e vegetação ultrarrealistas em < 200 KB de código podem não ser possíveis: avise antes ([pipeline-3d.md](pipeline-3d.md)).
+- `blender/vistas.py` e o fluxo do Blender ainda não foram testados com Blender instalado.
 - Direitos: marcas, fotos e texturas de terceiros só como estudo; em projeto de cliente, material próprio ou licenciado.

@@ -29,7 +29,7 @@ const espera = +args.espera || 4000;
 const nome = args.nome || url;
 
 function carregarPlaywright() {
-  const cands = [process.env.PLAYWRIGHT_CORE, path.join(process.cwd(), 'node_modules', 'playwright-core'), '/opt/node-tools/node_modules/playwright-core'].filter(Boolean);
+  const cands = [process.env.PLAYWRIGHT_CORE, path.join(path.dirname(fileURLToPath(import.meta.url)), '..', 'ferramentas', 'node_modules', 'playwright-core'), path.join(process.cwd(), 'node_modules', 'playwright-core'), path.join(os.homedir(), 'Documents', 'acervos-design', 'node_modules', 'playwright-core'), '/opt/node-tools/node_modules/playwright-core'].filter(Boolean);
   for (const c of cands) { try { return { pw: createRequire(path.join(path.resolve(c), 'package.json'))(path.resolve(c)), core: path.resolve(c) }; } catch { /* próximo */ } }
   try { return { pw: createRequire(import.meta.url)('playwright'), core: null }; } catch { /* sem playwright */ }
   throw new Error('playwright-core não encontrado. Defina PLAYWRIGHT_CORE=caminho ou instale playwright-core no projeto.');

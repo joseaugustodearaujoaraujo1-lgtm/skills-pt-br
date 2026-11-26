@@ -1,13 +1,13 @@
 # Prompts de referência para componentes 3D (imagem e vídeo)
 
-Regra da skill: **todo objeto 3D tem antes um MOLDE ultrarrealista (imagem com 4 vistas e/ou vídeo giratório) aprovado pelo usuário, e o 3D do site é estritamente igual ao molde** (portão de igualdade em `3d-leve.md`, Regra 0: silhueta ≥ 95%, proporções ≤ 2%, mesmo número de partes). Esta página dá os prompts do molde e o fluxo da pergunta. Depois do 3D, sugira sempre o scroll animado ([scroll-avancado.md](scroll-avancado.md)).
+Regra da skill: **todo elemento 3D segue [pipeline-3d.md](pipeline-3d.md)**: referências do usuário → imagens molde aprovadas → molde no Blender aprovado → elemento só em Three.js (< 200 KB) aprovado. Esta página dá os prompts do molde e o fluxo da pergunta. Depois do 3D, sugira sempre o scroll animado ([scroll-avancado.md](scroll-avancado.md)).
 
 ## A pergunta (sempre que o projeto tiver 3D)
 Ofereça duas opções (mais "Outro" para texto livre):
 1. **"Eu gero e você me passa o prompt"**: entrego o prompt abaixo preenchido (imagem e/ou vídeo); o usuário gera na ferramenta dele e salva em `referencias-3d/<objeto>/`.
 2. **"Você mesmo faz a referência"**: eu produzo uma imagem detalhada por vistas (diagrama, render de perfil, de cima, de baixo) ou um vídeo girando; se houver geração paga, peço autorização antes (custo).
 
-**Sempre sugira também um elemento 3D leve** do tema (`opcoes.mjs` já traz `sugestao3d`), com o método de `3d-leve.md`: geometria em código, pôster WebP + WebGL carregado tarde, ≤ 150 KB, plano B sem GPU.
+**Sempre sugira também um elemento 3D** do tema (`opcoes.mjs` já traz `sugestao3d`), feito pelo pipeline: só Three.js, < 200 KB, pôster + WebGL carregado tarde, plano B sem GPU.
 
 ## Comandos de barra (linhas no começo do prompt)
 As linhas que começam com `/` são **instruções de configuração no topo do prompt** para empurrar o resultado ao máximo de qualidade e controle. Não são comandos oficiais de todo gerador: se a ferramenta tiver campos próprios (proporção, duração, resolução), preencha-os com o mesmo valor; senão, deixe as linhas no prompt.
@@ -40,7 +40,7 @@ As linhas que começam com `/` são **instruções de configuração no topo do 
 /no-text /no-watermark /no-hands
 
 SUBJECT: <OBJETO>, <material, cor, acabamento, tamanho relativo>
-SHEET: one reference sheet with FOUR views of the same object, evenly spaced on a pure white background: front, side (profile), top (90 degrees) and bottom (looking up), identical scale and lighting
+SHEET: one reference sheet with FIVE views of the same object, evenly spaced on a neutral light-grey background: front, side (profile), three-quarter (45 degrees), back and top (90 degrees), identical scale, identical camera height and identical lighting
 DETAIL: <partes e proporções que importam: ex. "8 faces principais", "alça com 3 dobras", "tampa rosqueada com 12 sulcos">
 LIGHT: high-key product studio, two overhead softboxes, two vertical strip lights, one warm accent spot, white bounce card
 MATERIAL: <índice de refração, rugosidade, reflexo, translucidez>
@@ -76,8 +76,27 @@ NEGATIVE: no text, no watermark, no hands, no extra objects, no morphing, no cha
 ```
 Exemplo completo e testado: `~/Documents/acervos-design/teste-skill-lume/referencias-3d/diamante/prompt-video-diamante.md` (diamante em 3 vistas: 3/4, de baixo e de cima).
 
+## Modelo C — close de material (uma imagem por material importante)
+```
+/8k
+/ultra-realistic
+/macro-100mm
+/studio-lighting
+/ray-traced
+/sharp-focus
+/1:1
+/no-text /no-watermark /no-hands
+
+SUBJECT: extreme close-up of the <PEÇA> of the same <OBJETO> shown in the reference sheet
+SURFACE: <acabamento: brushed steel with fine circular grain, micro-scratches, slight fingerprint haze...>
+EDGES: <chanfros e raios das bordas>
+LIGHT: same studio lighting as the reference sheet
+NEGATIVE: no text, no watermark, no different object, no stylization
+```
+Salve como `1-molde/detalhe-<peca>.png`. Se o gerador fizer uma folha única, recorte cada vista em `1-molde/<vista>.png` (`frente`, `lado`, `tres-quartos`, `costas`, `topo`). As imagens molde só valem com as vistas e os detalhes **do mesmo objeto**: confira proporção e número de partes entre elas antes de mostrar ao usuário.
+
 ## Depois de receber a referência
 1. Salve em `referencias-3d/<objeto>/` (imagens e vídeo) e extraia quadros (`ffmpeg -i video.mp4 -vf fps=2 quadro-%02d.png`).
 2. Meça proporções e conte as partes (facetas, sulcos, dobras); o diagrama manda na **estrutura**, o vídeo manda na **aparência**.
-3. Modele em código (`3d-leve.md`), compare lado a lado com a referência e corrija até a diferença sumir.
+3. Siga [pipeline-3d.md](pipeline-3d.md): imagens molde aprovadas → Blender igual a elas → elemento em Three.js igual ao Blender, comparando lado a lado em cada etapa (`comparar-vistas.mjs`).
 4. Direitos: o vídeo ou a imagem gerados são referência interna; o 3D do site é geometria própria.

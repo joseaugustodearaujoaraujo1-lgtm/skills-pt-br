@@ -97,7 +97,7 @@ Ideia, gesto-assinatura, surpresa e coerência entre ideia e forma.
 - Tipografia sem caráter (fonte padrão do sistema como principal, ou uma só família em pesos iguais em todas as telas): **máximo 5**. Sem voz tipográfica não há identidade memorável, por melhor que seja a imagem.
 - Não dá para dizer a ideia do site em uma frase depois de olhar a folha: **máximo 5**.
 - Todo o movimento visível é genérico (aparecer de baixo, fade): **máximo 5**.
-- "3D" falso: foto ou ilustração plana recortada fingindo profundidade (luz e sombra incoerentes, mesmo ângulo em toda parte): **máximo 4**. Render de modelo 3D (feito offline em WebP, como manda o `replica/PROTOCOLO.md`, ou WebGL ao vivo) **conta como 3D**: material, luz e sombra coerentes e ângulos que mudam entre telas são a prova. O número de `canvas` nos fatos não decide isso.
+- "3D" falso: foto ou ilustração plana recortada fingindo profundidade (luz e sombra incoerentes, mesmo ângulo em toda parte): **máximo 4**. Elemento 3D em Three.js ao vivo (ou o pôster capturado dele, que é o que o juiz vê sem GPU) **conta como 3D**: material, luz e sombra coerentes e ângulos que mudam entre telas são a prova. Em réplica, render offline em WebP segue valendo para o cenário (`replica/PROTOCOLO.md`), não para o elemento 3D. Julgue também o **realismo** (parece foto?) e a **fidelidade ao molde aprovado** (`referencias-3d/<objeto>/comparacao.png`, se houver). O número de `canvas` nos fatos não decide isso.
 
 ## Conteúdo (10%)
 Texto, prova, história e direitos.

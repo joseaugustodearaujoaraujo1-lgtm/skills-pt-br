@@ -1,4 +1,5 @@
 // Utilidades comuns dos scripts do acervo: Playwright, Chrome, argumentos, slug, pastas.
+import { fileURLToPath } from 'node:url';
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
@@ -16,7 +17,7 @@ export function args(av = process.argv.slice(2)) {
 }
 
 export function carregarPlaywright() {
-  const cands = [process.env.PLAYWRIGHT_CORE, path.join(process.cwd(), 'node_modules', 'playwright-core'), path.join(process.cwd(), 'node_modules', 'playwright'),
+  const cands = [process.env.PLAYWRIGHT_CORE, path.join(path.dirname(fileURLToPath(import.meta.url)), '..', '..', 'ferramentas', 'node_modules', 'playwright-core'), path.join(process.cwd(), 'node_modules', 'playwright-core'), path.join(process.cwd(), 'node_modules', 'playwright'),
     path.join(os.homedir(), 'Documents', 'acervos-design', 'node_modules', 'playwright'), path.join(os.homedir(), 'Documents', 'acervos-design', 'node_modules', 'playwright-core'),
     '/opt/node-tools/node_modules/playwright-core'].filter(Boolean);
   for (const c of cands) { try { return createRequire(path.join(path.resolve(c), 'package.json'))(path.resolve(c)); } catch { /* próxima */ } }

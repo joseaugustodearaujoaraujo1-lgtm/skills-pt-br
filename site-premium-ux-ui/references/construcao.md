@@ -3,7 +3,7 @@
 Comece **sempre** pelo projeto-base e pelos módulos prontos; escreva código do zero só para o gesto que nenhum deles cobre.
 
 ## 1. Se houver 3D: portões antes de modelar
-Referências do objeto → molde → aprovação → vídeo-prévia do site → aprovação, nesta ordem ([aprovacoes.md](aprovacoes.md)). Sem usuário, siga a seção "Sem usuário para aprovar" desse arquivo. O 3D é estritamente igual ao molde aprovado ([3d-leve.md](3d-leve.md), Regras −1 e 0); prompts do molde e do vídeo em [prompts-3d.md](prompts-3d.md).
+Referências → imagens molde → aprovação → Blender → aprovação → Three.js (< 200 KB) → aprovação → vídeo-prévia do site → aprovação, nesta ordem ([pipeline-3d.md](pipeline-3d.md), [aprovacoes.md](aprovacoes.md)). Sem usuário, pare e espere. `estado-3d.mjs --objeto <obj> exigir --etapa site` precisa passar antes de criar o projeto. Prompts em [prompts-3d.md](prompts-3d.md).
 
 ## 2. Criar o projeto
 ```bash
@@ -23,11 +23,12 @@ Gera o brief e os tokens (se `design/brief.json` ainda não existe), baixa as fo
 O projeto-base já traz hero em CSS, menu, manifesto, trilho horizontal, números, passos, contato, rodapé, acessibilidade e as lições de desempenho medidas ([elementos.md](elementos.md) §9).
 
 ## 3. Módulos prontos → [../starters/modulos/README.md](../starters/modulos/README.md)
-Seis peças medidas nos sites da galeria, cada uma com README (quando usar, parâmetros, armadilhas) e exemplo que passa no verificador com 0 FAIL:
+Sete peças (seis medidas nos sites da galeria, mais a base do elemento 3D), cada uma com README (quando usar, parâmetros, armadilhas) e exemplo que passa no verificador com 0 FAIL:
 
 | Gesto que o conceito pede | Módulo |
 |---|---|
-| objeto que gira com a rolagem (sem GPU, por quadros) | `01-giro-3d-quadros` |
+| elemento 3D ultrarrealista (só Three.js, < 200 KB) | `07-elemento-threejs` |
+| giro por quadros (só para imagens que não são o elemento 3D) | `01-giro-3d-quadros` |
 | seção presa enquanto uma timeline anda | `02-trecho-fixo-timeline` |
 | galeria que corre de lado | `03-galeria-horizontal` |
 | foto em barras (meio-tom) | `04-meio-tom` |

@@ -3,6 +3,7 @@
 // Exige playwright-core (instale no projeto, ou defina PLAYWRIGHT_CORE com o caminho) e Chrome/Edge/Chromium (ou CHROME=caminho).
 // Resultado: FAIL = precisa corrigir antes de entregar; WARN = verifique e justifique; OK. Código de saída 1 se houver FAIL.
 // Não substitui olhar as capturas (hierarquia, composição, identidade) nem testar em celular real.
+import { fileURLToPath } from 'node:url';
 import { createRequire } from 'node:module';
 import { execFileSync } from 'node:child_process';
 import fs from 'node:fs';
@@ -18,7 +19,7 @@ const espera = +args.espera || 1500;
 
 // ---- playwright-core e navegador ----
 function carregarPlaywright() {
-  const cands = [process.env.PLAYWRIGHT_CORE, path.join(process.cwd(), 'node_modules', 'playwright-core'), path.join(os.homedir(), 'Documents', 'acervos-design', 'node_modules', 'playwright-core'), '/opt/node-tools/node_modules/playwright-core'].filter(Boolean);
+  const cands = [process.env.PLAYWRIGHT_CORE, path.join(path.dirname(fileURLToPath(import.meta.url)), '..', 'ferramentas', 'node_modules', 'playwright-core'), path.join(process.cwd(), 'node_modules', 'playwright-core'), path.join(os.homedir(), 'Documents', 'acervos-design', 'node_modules', 'playwright-core'), '/opt/node-tools/node_modules/playwright-core'].filter(Boolean);
   for (const c of cands) { try { return createRequire(path.join(path.resolve(c), 'package.json'))(path.resolve(c)); } catch { /* próxima */ } }
   throw new Error('playwright-core não encontrado. Rode "npm i -D playwright-core" no projeto ou defina PLAYWRIGHT_CORE.');
 }

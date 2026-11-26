@@ -1,15 +1,16 @@
 # Módulos reutilizáveis (starters/modulos)
 
-Seis peças que se repetem nos nossos sites de galeria, extraídas com os números medidos neles. Código reescrito a partir dos nossos sites (BRUMA, OLEA, POLPA, TAINÁ); nada vem de sites de terceiros.
+Sete peças que se repetem nos nossos sites de galeria, extraídas com os números medidos neles. Código reescrito a partir dos nossos sites (BRUMA, OLEA, POLPA, TAINÁ); nada vem de sites de terceiros.
 
 | Pasta | Módulo | Medido em |
 |---|---|---|
-| `01-giro-3d-quadros` | giro de objeto 3D por quadros, escolhidos pela rolagem | OLEA (48 quadros), BRUMA (voo do hero) |
+| `01-giro-3d-quadros` | giro por quadros, escolhidos pela rolagem. **Não serve como elemento 3D** (use o 07) | OLEA (48 quadros), BRUMA (voo do hero) |
 | `02-trecho-fixo-timeline` | trecho fixo (sticky) com timeline GSAP presa à rolagem | BRUMA (hero 400vh, palco do encanto 896vh) |
 | `03-galeria-horizontal` | trilho horizontal fixado (desktop) e faixa com snap (celular) | POLPA (momentos), BRUMA (notícias) |
 | `04-meio-tom` | foto em barras verticais, usada como máscara CSS | BRUMA (`cena/preparar.py`) |
 | `05-painel-vidro` | painel de vidro (backdrop-filter) | OLEA, GQ Lab, BRUMA, Terminal |
 | `06-cursor-customizado` | ponto + anel que seguem o mouse, com rótulo | BRUMA (etiqueta "arraste"), TAINÁ |
+| `07-elemento-threejs` | base do elemento 3D só em Three.js: material físico, ambiente gerado, textura em código, vistas `?vista=`, pôster, render sob demanda | base do pipeline 3D (`references/pipeline-3d.md`) |
 
 Cada pasta tem: `README.md` (quando usar, parâmetros, armadilhas), `modulo.html`, `modulo.css`, `modulo.js` e `exemplo/` (página mínima que roda).
 
