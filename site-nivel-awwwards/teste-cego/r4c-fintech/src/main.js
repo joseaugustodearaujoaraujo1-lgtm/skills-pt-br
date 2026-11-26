@@ -13,7 +13,7 @@ const topo = $('#topo'); let ultimo = scrollY;
 addEventListener('scroll', () => {
   const y = scrollY;
   topo.classList.toggle('solido', y > innerHeight * .5);
-  topo.classList.toggle('escondido', y > ultimo && y > innerHeight);
+  topo.classList.toggle('compacto', y > innerHeight);
   ultimo = y;
 }, { passive: true });
 
@@ -64,7 +64,8 @@ if (!reduzido) {
 
   // baixar: a maré enche a seção
   const baixar = $('.baixar'); baixar.classList.remove('cheia');
-  gsap.fromTo('.mare-cheia', { clipPath: 'inset(100% 0% 0% 0%)' }, { clipPath: 'inset(0% 0% 0% 0%)', ease: 'none', scrollTrigger: { trigger: '.baixar', start: 'top 85%', end: 'top 25%', scrub: true, onUpdate: s => baixar.classList.toggle('cheia', s.progress > .55) } });
+  const em = $('.baixar em'); ScrollTrigger.create({ trigger: '.baixar', start: 'top 70%', end: 'top 10%', scrub: true, onUpdate: s => em.style.setProperty('--n', (s.progress * 100).toFixed(1) + '%') });
+  gsap.fromTo('.mare-cheia', { clipPath: 'inset(100% 0% 0% 0%)' }, { clipPath: 'inset(0% 0% 0% 0%)', ease: 'none', scrollTrigger: { trigger: '.baixar', start: 'top 85%', end: 'top 40%', scrub: true, onUpdate: s => baixar.classList.toggle('cheia', s.progress > .4) } });
 
   // botão das lojas: leve atração (só mouse)
   if (fino) $$('.loja').forEach(b => {

@@ -20,11 +20,13 @@
 
 <header class="topo" id="topo">
   <a class="marca" href="#inicio" aria-label="Linha Terra Arquitetura, início">Linha Terra</a>
-  <nav aria-label="Principal">
+  <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav-principal">Menu</button>
+  <nav aria-label="Principal" id="nav-principal">
     <ul>
       <li><a href="#materiais">Materiais</a></li>
       <li><a href="#processo">Processo</a></li>
       <li><a href="#obras">Obras</a></li>
+      <li><a href="#contato">Conversa</a></li>
     </ul>
   </nav>
   <a class="topo-cta" href="#contato">Agendar conversa</a>
@@ -34,10 +36,20 @@
   <section class="hero" id="inicio" aria-labelledby="hero-titulo">
     <div class="hero-texto">
       <p class="hero-local">Arquitetura residencial · Curitiba, Paraná</p>
+      <div class="titulo-wrap">
+      <div class="corte-m" aria-hidden="true"><div class="parede">
+      <div class="fiada" style="--h:20;--c:var(--t3);--j:1"></div>
+      <div class="fiada" style="--h:12;--c:var(--t4);--j:2"></div>
+      <div class="fiada" style="--h:17;--c:var(--t2);--j:3"></div>
+      <div class="fiada" style="--h:14;--c:var(--t5);--j:4"></div>
+      <div class="fiada" style="--h:22;--c:var(--t1);--j:5"></div>
+      <div class="fiada" style="--h:15;--c:var(--t5);--j:6"></div>
+      </div><div class="regua"><span class="cota" style="--y:100%">0,90</span><span class="cota" style="--y:50%">0,45</span><span class="cota" style="--y:0%">0,00</span><span class="regua-e">e = 45 cm</span></div></div>
       <h1 id="hero-titulo">
         <span class="linha-mask"><span class="linha" style="--i:0">Casas que</span></span>
         <span class="linha-mask"><span class="linha linha-2" style="--i:1"><em>ficam.</em></span></span>
       </h1>
+      </div>
       <p class="hero-sub">Projetamos casas em taipa, madeira e concreto aparente para famílias e incorporadores que preferem a matéria à pose.</p>
       <div class="hero-acoes">
         <a class="botao" href="#contato">Agendar conversa</a>
@@ -65,6 +77,7 @@
       <li><strong>Taipa de pilão</strong> terra apiloada em fiadas</li>
       <li><strong>Madeira</strong> estrutura e esquadrias à vista</li>
       <li><strong>Concreto aparente</strong> fôrma planejada, sem revestimento</li>
+      <li><strong>14 casas</strong> entregues desde 2011</li>
     </ul>
   </section>
 
@@ -127,17 +140,18 @@
 
   <section class="obras" id="obras" aria-labelledby="obras-titulo">
     <h2 id="obras-titulo">Casas em <em>corte.</em></h2>
+    <p class="obras-prova">14 casas entregues desde 2011. Três delas, aqui.</p>
     <figure class="obra obra-1">
       <div class="ph ph-taipa" role="img" aria-label="Fachada de residência em taipa de pilão" data-imagem="obra-01-fachada-taipa"></div>
-      <figcaption><span>Residência</span> Taipa de pilão · Curitiba</figcaption>
+      <figcaption><strong>Casa Pátio</strong><span>240 m² · taipa de pilão · 2023</span></figcaption>
     </figure>
     <figure class="obra obra-2">
       <div class="ph ph-madeira" role="img" aria-label="Varanda de residência em madeira" data-imagem="obra-02-varanda-madeira"></div>
-      <figcaption><span>Residência</span> Madeira e vidro · Curitiba</figcaption>
+      <figcaption><strong>Casa Varanda</strong><span>180 m² · madeira e vidro · 2021</span></figcaption>
     </figure>
     <figure class="obra obra-3">
       <div class="ph ph-concreto" role="img" aria-label="Interior em concreto aparente" data-imagem="obra-03-interior-concreto"></div>
-      <figcaption><span>Residência</span> Concreto aparente · Curitiba</figcaption>
+      <figcaption><strong>Casa Fôrma</strong><span>320 m² · concreto aparente · 2024</span></figcaption>
     </figure>
   </section>
 

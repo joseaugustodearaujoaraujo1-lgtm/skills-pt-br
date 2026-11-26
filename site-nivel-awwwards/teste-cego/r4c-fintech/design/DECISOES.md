@@ -13,3 +13,5 @@
 - Links das lojas: apontam para as raízes reais (apps.apple.com, play.google.com). A confirmar com o cliente: trocar pelos links do app.
 - A confirmar com o cliente (conteúdo de conceito, não é prova): como o app lê as compras (conexão de cartão/conta), regras de resgate, produtos de renda fixa usados, valor mínimo, texto jurídico de risco. Os valores do extrato (R$ 11,30 etc.) são exemplo ilustrativo, rotulados como tal. Sem avaliações, números de usuários ou prêmios.
 - Juiz subagente: não chamado (instrução do pedido); telas do juiz.mjs conferidas contra o DIRECAO.md.
+- Rodada de correções do juiz (7,10): menu sempre à vista e compacto; micro texto >= 14 px; copo em corte (SVG) no lugar do arco com círculo; tanque com marcas, onda e total na linha d'água; numeral 30vw; copinhos nas perguntas; CTA com "R$ 0,70." 100% cheio.
+- "É seguro?": texto com Tesouro Selic e CDB com FGC até R$ 250 mil por CPF (e por instituição), a pedido do coordenador. A confirmar com o cliente que são esses os produtos. O Tesouro Selic é garantido pelo governo federal, não pelo FGC; o texto separa os dois.

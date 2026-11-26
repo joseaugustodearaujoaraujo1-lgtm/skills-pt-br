@@ -59,8 +59,9 @@
       <h2 id="troco-titulo">Cada compra <em>arredonda</em> para cima.</h2>
       <div class="tanque" role="img" aria-label="Tanque que enche com o troco guardado">
         <div class="tanque-agua"></div>
+        <p class="tanque-total"><b id="total">R$ 2,85</b><span>guardados</span></p>
       </div>
-      <p class="tanque-total"><b id="total">R$ 2,85</b><span>guardados neste exemplo</span></p>
+      <p class="troco-nota">Valores de exemplo, só para mostrar a conta.</p>
     </div>
     <div class="troco-lista">
       <p class="rotulo">Exemplo de uma semana (valores ilustrativos)</p>
@@ -87,7 +88,15 @@
   </section>
 
   <section class="perguntas" id="perguntas" aria-labelledby="perg-titulo">
-    <figure class="foto" aria-hidden="true"><div class="ph" data-imagem="pessoa-padaria"></div></figure>
+    <figure class="foto" aria-hidden="true">
+      <svg class="copo" viewBox="0 0 400 500" data-imagem="copo-em-corte">
+        <defs><clipPath id="cc"><path d="M60 40H340L306 456Q303 482 278 482H122Q97 482 94 456Z"/></clipPath></defs>
+        <path d="M60 40H340L306 456Q303 482 278 482H122Q97 482 94 456Z" fill="#FFFBF3"/>
+        <g clip-path="url(#cc)"><path id="copoAgua" d="M0 210Q50 190 100 210T200 210T300 210T400 210V500H0Z" fill="#08707C"/>
+        <g stroke="#0D2B33" stroke-width="3" opacity=".55"><path d="M290 130h40M300 210h30M310 290h20M318 370h12"/></g></g>
+        <path d="M60 40H340L306 456Q303 482 278 482H122Q97 482 94 456Z" fill="none" stroke="#0D2B33" stroke-width="5" stroke-linejoin="round"/>
+      </svg>
+    </figure>
     <div class="perg-corpo">
       <p class="rotulo">02 · Primeira vez</p>
       <h2 id="perg-titulo">Perguntas de quem <em>nunca investiu.</em></h2>
@@ -95,7 +104,7 @@
         <details open><summary><i aria-hidden="true"></i>Preciso de quanto dinheiro para começar?</summary><p>Do troco. O Maré investe o que sobra do arredondamento das suas compras, então você começa com centavos e vê o valor crescer aos poucos.</p></details>
         <details><summary><i aria-hidden="true"></i>Meu dinheiro fica preso?</summary><p>Depende do produto de renda fixa. O app mostra o prazo e as regras de resgate antes de você aplicar, em linguagem simples.</p></details>
         <details><summary><i aria-hidden="true"></i>E se eu não entender nada de investimento?</summary><p>Você não precisa. Em vez de gráficos de bolsa, você vê quanto guardou e quanto rendeu, e cada termo vem explicado na hora.</p></details>
-        <details><summary><i aria-hidden="true"></i>É seguro?</summary><p>Todo investimento tem riscos, inclusive a renda fixa. Por isso o app explica o risco de cada opção antes de você confirmar, e não promete ganho.</p></details>
+        <details><summary><i aria-hidden="true"></i>É seguro?</summary><p>O troco vai para Tesouro Selic (título do governo federal) e CDB de bancos, que têm cobertura do FGC até R$ 250 mil por CPF e por instituição. Mesmo assim, todo investimento tem riscos: o app explica cada um antes de você confirmar e não promete ganho.</p></details>
         <details><summary><i aria-hidden="true"></i>Como o Maré sabe das minhas compras?</summary><p>Você conecta seu cartão ou sua conta no app e escolhe o que entra no arredondamento.</p></details>
       </div>
     </div>

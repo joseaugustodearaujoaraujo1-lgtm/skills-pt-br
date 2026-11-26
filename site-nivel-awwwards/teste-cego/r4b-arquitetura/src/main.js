@@ -9,13 +9,14 @@ const reduzido = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const fino = matchMedia('(pointer: fine)').matches;
 const $ = (s, c = document) => c.querySelector(s), $$ = (s, c = document) => [...c.querySelectorAll(s)];
 
-const topo = $('#topo'); let ultimo = scrollY;
+const topo = $('#topo'), menuBtn = $('.menu-btn');
 addEventListener('scroll', () => {
   const y = scrollY;
   topo.classList.toggle('solido', y > innerHeight * .5);
-  topo.classList.toggle('escondido', y > ultimo && y > innerHeight);
-  ultimo = y;
+  topo.classList.toggle('compacto', y > innerHeight);
 }, { passive: true });
+menuBtn.addEventListener('click', () => { const a = topo.classList.toggle('menu-aberto'); menuBtn.setAttribute('aria-expanded', String(a)); });
+$$('#nav-principal a').forEach(l => l.addEventListener('click', () => { topo.classList.remove('menu-aberto'); menuBtn.setAttribute('aria-expanded', 'false'); }));
 
 // formulário curto: validação clara e confirmação (sem backend: ver design/DECISOES.md)
 const form = $('#form'), status = $('#form-status');
@@ -43,7 +44,7 @@ if (!reduzido) {
   }));
 
   // hero: as fiadas sobem em ritmos diferentes ao rolar (só para cima)
-  $$('.fiada').forEach((f, i) => gsap.fromTo(f, { yPercent: 0 }, { yPercent: -(4 + i * 5), ease: 'none', immediateRender: false, scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } }));
+  $$('.corte .fiada').forEach((f, i) => gsap.fromTo(f, { yPercent: 0 }, { yPercent: -(4 + i * 5), ease: 'none', immediateRender: false, scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } }));
 
   const quandoPerto = (el, fn, margem) => new IntersectionObserver((es, obs) => { if (es[0].isIntersecting) { obs.disconnect(); fn(el); } }, { rootMargin: margem }).observe(el);
 

@@ -17,7 +17,7 @@ const topo = $('#topo'); let ultimo = scrollY;
 addEventListener('scroll', () => {
   const y = scrollY;
   topo.classList.toggle('solido', y > innerHeight * .5);
-  topo.classList.toggle('escondido', y > ultimo && y > innerHeight);
+  topo.classList.toggle('compacto', y > innerHeight);
   ultimo = y;
 }, { passive: true });
 
@@ -83,6 +83,11 @@ if (!reduzido) {
     b.addEventListener('pointerleave', () => { x(0); y(0); });
   });
 
-  const vMarca = de($('.rodape-marca'), 45, true); if (vMarca) gsap.from('.rodape-marca', { ...vMarca, opacity: 0, duration: 1.4, ease: 'power4.out', scrollTrigger: { trigger: '.rodape', start: 'top 90%', once: true } });
   document.fonts.ready.then(() => requestAnimationFrame(() => ScrollTrigger.refresh()));
+}
+
+// barra fixa do WhatsApp (celular): só depois que o botão do hero sai da tela
+{
+  const alvo = $('.hero-acoes .botao');
+  if (alvo) new IntersectionObserver(es => document.body.classList.toggle('zap-on', !es[0].isIntersecting && es[0].boundingClientRect.top < 0)).observe(alvo);
 }

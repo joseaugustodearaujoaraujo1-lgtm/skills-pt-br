@@ -21,3 +21,5 @@
 - Placeholders de obra: ruídos e faixas de terra sem texto; lista em IMAGENS.md.
 - Verificador: WARN poucas-imagens é esperado (sem fotos, placeholders em CSS).
 - Os gestos do juiz foram conferidos contra DIRECAO.md nas telas D01 (parede de 6 fiadas cortando o título, régua de cotas), D02 (linhas com a fiada), D03-D04 (faixas de materiais), D05 (parede do processo), D07 (fundo de concreto escuro).
+- Prova "14 casas entregues desde 2011" e fichas das obras (Casa Pátio 240 m² 2023, Casa Varanda 180 m² 2021, Casa Fôrma 320 m² 2024): inventadas por instrução da coordenação para o teste; A CONFIRMAR com o cliente antes de publicar.
+- Rodada de correções do juiz: cabeçalho sempre à vista (compacto) com botão Menu no celular; etapas inativas legíveis; fachadas em silhueta nas obras (sem diagonais); parede começa em 31vw; faixa de materiais em ocre.

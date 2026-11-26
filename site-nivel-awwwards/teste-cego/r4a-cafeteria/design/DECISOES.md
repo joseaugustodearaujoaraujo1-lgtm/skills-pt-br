@@ -26,3 +26,8 @@
 - Fontes: o `criar-projeto.mjs` escolheu Instrument Serif + Inter + DM Mono (conferido contra o "não faz": não é Playfair+Inter). Mantidas.
 - Momento-assinatura: na tela "meio" do `juiz.mjs` o nível já está em cerca de 90%; a palavra "devagar." aparece cortada só no topo pela linha. O quadro com a palavra partida ao meio acontece um pouco antes (em ~60% da subida). Ponto fraco registrado.
 - Servidor: `node servir.mjs 4601` na pasta do projeto.
+
+## Rodada de correções do juiz (6,85)
+- A confirmar com o cliente: pesos e preços dos cartões (250 g R$ 52 / 250 g R$ 48 / 250 g R$ 48 / 500 g R$ 89), altitudes das fazendas no rótulo, retirada em Capivari e horário 9h às 18h todos os dias. Tudo é ilustrativo.
+- Barra fixa do WhatsApp (celular): padding-bottom de 84 px no rodapé (não no main) para não aparecer faixa clara sob o fundo café.
+- Círculos dos passos: enchimento estático por CSS (33/66/100%), sem animação, para aparecer em qualquer captura.

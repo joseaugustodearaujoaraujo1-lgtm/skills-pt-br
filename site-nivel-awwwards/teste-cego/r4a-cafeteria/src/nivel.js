@@ -8,6 +8,8 @@ export function iniciarNivel() {
   const prog = () => regua.style.setProperty('--p', Math.min(1, scrollY / Math.max(1, document.documentElement.scrollHeight - innerHeight)).toFixed(4));
   addEventListener('scroll', prog, { passive: true }); prog();
   gsap.from('.agua', { '--n': 0, duration: 1.6, ease: 'power3.out', stagger: .12, scrollTrigger: { trigger: '.colecao', start: 'top 55%', once: true } });
-  gsap.fromTo('.nivel-cafe', { clipPath: 'inset(100% 0 0 0)' }, { clipPath: 'inset(0% 0 0 0)', ease: 'none', scrollTrigger: { trigger: '.nivel', start: 'top top', end: () => '+=' + Math.round(innerHeight * .9), scrub: true } });
-  gsap.utils.toArray('.gole').forEach(g => gsap.from(g, { '--n': 0, duration: 1.4, ease: 'power3.out', scrollTrigger: { trigger: g, start: 'top 85%', once: true } }));
+  const tl = gsap.timeline({ defaults: { ease: 'none' }, scrollTrigger: { trigger: '.nivel', start: 'top top', end: () => '+=' + Math.round(innerHeight * 3), scrub: true } });
+  tl.fromTo('.nivel-cafe', { clipPath: 'inset(100% 0 0 0)' }, { clipPath: 'inset(50% 0 0 0)', duration: 3 })
+    .to('.nivel-cafe', { clipPath: 'inset(50% 0 0 0)', duration: 4 })
+    .to('.nivel-cafe', { clipPath: 'inset(0% 0 0 0)', duration: 3 });
 }
