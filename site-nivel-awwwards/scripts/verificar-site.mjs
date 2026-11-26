@@ -140,7 +140,8 @@ for (const [nome, w, h, movel] of VPS) {
   // loading="lazy" só carrega perto da tela: força o carregamento antes da captura da página inteira (teste cego, rodada 3b)
   await p2.evaluate(async () => { for (const i of document.images) if (i.loading === 'lazy') i.loading = 'eager'; await Promise.all([...document.images].map(i => i.complete ? 0 : new Promise(r => { i.onload = i.onerror = r; setTimeout(r, 3000); }))); }); // content-visibility:auto não pinta o que está fora da tela: força só durante a captura
   await p2.screenshot({ path: path.join(saida, `captura-${nome}.png`), fullPage: true }); // página inteira no estado final (movimento reduzido)
-  d.escondidoComMovimentoReduzido = await p2.evaluate(() => { let n = 0; for (const el of document.querySelectorAll('h1,h2,h3,p,li,a,button')) { const t = el.innerText?.trim(); if (!t) continue; const s = getComputedStyle(el), r = el.getBoundingClientRect(); if (+s.opacity < .1 && r.width > 1) n++; } return n; });
+  d.escondidoLista = await p2.evaluate(() => { const o = []; for (const el of document.querySelectorAll('h1,h2,h3,p,li,a,button,figcaption')) { const t = el.innerText?.trim() || el.textContent?.trim(); if (!t) continue; const s = getComputedStyle(el), r = el.getBoundingClientRect(); if (+s.opacity < .1 && r.width > 1) o.push(`${el.tagName.toLowerCase()}${el.className && typeof el.className === 'string' ? '.' + el.className.trim().split(/\s+/)[0] : ''} "${t.slice(0, 30)}"`); } return o; });
+  d.escondidoComMovimentoReduzido = d.escondidoLista.length;
   await ctx2.close(); await ctx.close();
 
   // ---- regras ----
@@ -160,7 +161,7 @@ for (const [nome, w, h, movel] of VPS) {
   if (d.textosPequenos) reg(nome, 'WARN', 'texto-pequeno', `${d.textosPequenos} texto(s) abaixo de 12px`);
   if (d.corpoPx && d.corpoPx < 16) reg(nome, 'WARN', 'corpo-pequeno', `texto de corpo com ${d.corpoPx}px (mínimo recomendado 16px)`);
   if (nome === '390' && d.alvosPequenos > 0) reg(nome, 'WARN', 'alvo-toque', `${d.alvosPequenos} de ${d.alvos} alvos de toque menores que 44px`);
-  if (d.escondidoComMovimentoReduzido) reg(nome, 'FAIL', 'movimento-reduzido', `${d.escondidoComMovimentoReduzido} texto(s) invisível(is) com prefers-reduced-motion`);
+  if (d.escondidoComMovimentoReduzido) reg(nome, 'FAIL', 'movimento-reduzido', `${d.escondidoComMovimentoReduzido} texto(s) invisível(is) com prefers-reduced-motion: ${d.escondidoLista.slice(0, 3).join('; ')}. Com movimento reduzido o estado final tem de aparecer (opacity 1, sem transform).`);
   if (d.comMovimento < 8) reg(nome, 'WARN', 'pouco-movimento', `só ${d.comMovimento} elementos com movimento (premiados costumam ter 8 ou mais)`);
   if (d.gradienteTexto) reg(nome, 'WARN', 'gradiente-texto', `${d.gradienteTexto} texto(s) com gradiente (clichê de "cara de IA")`);
   if (nome === '1440' && d.composicao?.length >= 3) { // teste cego: nota 8 pede composição própria por seção
@@ -197,7 +198,7 @@ if (args.lighthouse) {
 // ---- relatório ----
 const fails = itens.filter(i => i.nivel === 'FAIL'), warns = itens.filter(i => i.nivel === 'WARN');
 const agrupa = lista => { const m = new Map(); for (const i of lista) { const k = i.id + '|' + i.msg.replace(/\d+/g, '#'); if (!m.has(k)) m.set(k, { ...i, vps: [i.vp] }); else m.get(k).vps.push(i.vp); } return [...m.values()]; };
-const linhas = [`# Verificação — ${url}`, '', `Resultado: **${fails.length ? 'REPROVADO' : 'APROVADO'}** · ${fails.length} FAIL · ${warns.length} WARN · capturas em ${saida}`, ''];
+const linhas = [`# Verificação — ${url}`, '', `Resultado: **${fails.length ? 'REPROVADO' : 'APROVADO'}** · ${new Set(fails.map(f => f.id)).size} tipo(s) de FAIL (${fails.length} ocorrência(s) somando as telas) · ${new Set(warns.map(f => f.id)).size} tipo(s) de WARN · capturas em ${saida}`, ''];
 const d14 = dados['1440']; linhas.push(`Medidas (1440): ${d14.secoes} seções, ${d14.palavras} palavras, ${d14.imgs} imagens, ${d14.videos} vídeos, ${d14.comMovimento} elementos com movimento, fontes: ${d14.familias.join(', ')}.`, '');
 if (fails.length) { linhas.push('## FAIL (corrigir antes de entregar)'); agrupa(fails).forEach(i => linhas.push(`- **${i.id}** [${i.vps.join(', ')}] ${i.msg}`)); linhas.push(''); }
 if (warns.length) { linhas.push('## WARN (verificar e justificar)'); agrupa(warns).forEach(i => linhas.push(`- **${i.id}** [${i.vps.join(', ')}] ${i.msg}`)); linhas.push(''); }

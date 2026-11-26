@@ -131,6 +131,18 @@ Agentes Sonnet limpos, juízes Opus limpos (um por site; nenhum chegou à faixa 
 
 Também apontado pelos juízes e ainda sem regra nova: placeholders que parecem vazios (retângulo creme, arco cinza) seguram o Design em 7,5; o celular que é só o desktop empilhado.
 
+## Rodada 5: site com fotos reais (restaurante mineiro em Tiradentes, 2026-11-26)
+Agente Sonnet limpo; 11 fotos reais do Wikimedia Commons; verificador 0 FAIL e 0 WARN; Lighthouse 99 / 94. **Juiz 1 (Opus): 7,50 / 7,50 / 7,50 / 7,50 → média 7,50, LIBERADO no corte.** O segundo juiz (regra 7: ficar com a menor média) foi interrompido e não rodou, então o resultado ainda não é definitivo.
+
+Com foto real a nota subiu em relação à rodada 4 (6,85 a 7,35), mas parou no corte. O que o juiz apontou: qualidade desigual das fotos (hero mole, tutu turvo, fogão que parece balcão de self-service, pão de queijo mais saturado), menu que não marca a seção atual, formulário com campos nativos e data em formato americano, gestos declarados que não aparecem na foto (abertura do arco do hero) e falta de dados de serviço (endereço, horário em números, faixa de preço).
+
+| # | Falha (fonte) | Correção | Onde |
+|---|---|---|---|
+| 1 | Estilo recomendado foi Claymorphism ("acolhedor" para um restaurante histórico) (agente) | "acolhedor" e "caloroso" saíram do Claymorphism e entraram no Minimalism | `scripts/escolher-estilo.mjs` |
+| 2 | Sem como trocar as fontes do estilo (agente) | `--fontes "Título,Corpo,Detalhe"` | `montar-brief.mjs`, `criar-projeto.mjs` |
+| 3 | Busca de fotos traz lugar errado, marca d'água, baixa resolução; sem receita de conversão (agente, juiz) | Regra 11 | `construcao.md` §4 |
+| 4 | `movimento-reduzido` sem dizer o elemento; cabeçalho "3 FAIL" listando 1 (agente) | Mensagem lista os elementos; o cabeçalho conta tipos e ocorrências | `scripts/verificar-site.mjs` |
+
 ## Pendências (para a sessão E e depois)
 - Sem o acervo local, o bloco 2 (sites de referência) depende de pesquisa ao vivo, e o Awwwards recusou a conexão em 3 das 4 rodadas. O `opcoes.mjs` avisa e segue, mas o resultado é uma referência só.
 - O juiz só vê o plano B (sem GPU). O `?gpu=1` é convenção do site, não do `juiz.mjs`.

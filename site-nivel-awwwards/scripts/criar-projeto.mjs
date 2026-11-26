@@ -2,7 +2,7 @@
 // tokens da paleta escura para a seção de contraste e campos preenchidos. O conteúdo real ([entre colchetes]) é escrito depois.
 // Uso:
 //   node criar-projeto.mjs --stack html|next --nome "Marca" --tema "cafeteria artesanal" --adjetivos "elegante,raro" --publico "..." \
-//        --descricao "frase de até 155 caracteres" --saida ./meu-site [--recursos "tipografia,scroll"] [--cores "fundo=#..,texto=#..,acento=#.."]
+//        --descricao "frase de até 155 caracteres" --saida ./meu-site [--recursos "tipografia,scroll"] [--cores "fundo=#..,texto=#..,acento=#.."] [--fontes "Título,Corpo,Detalhe"]
 //        [--entrada sobe|desce|da-esquerda|da-direita|opacidade|nenhuma] [--porta 3005] [--instalar]
 // Com --instalar roda npm install (e o build, no HTML). Sem ele, só gera os arquivos.
 // --entrada: direção em que títulos, itens e o hero entram (data-entrada no <html>); escolha a que a ideia central pede. Padrão: sobe.
@@ -31,7 +31,7 @@ fs.mkdirSync(saida, { recursive: true });
 const pastaDesign = path.join(saida, 'design');
 console.log(`1/5 Brief e tokens (${stack === 'next' ? 'Next.js + GSAP' : 'HTML + CSS + JS + GSAP'})`);
 if (!fs.existsSync(path.join(pastaDesign, 'brief.json'))) {
-  run('montar-brief.mjs', ['--nome', args.nome, '--tema', args.tema, '--adjetivos', args.adjetivos || '', '--publico', args.publico || '', '--recursos', args.recursos || '', ...(args.ref3d ? ['--ref3d', String(args.ref3d)] : []), ...(args['3d'] ? ['--3d', String(args['3d'])] : []), '--saida', pastaDesign]);
+  run('montar-brief.mjs', ['--nome', args.nome, '--tema', args.tema, '--adjetivos', args.adjetivos || '', '--publico', args.publico || '', '--recursos', args.recursos || '', ...(args.fontes ? ['--fontes', String(args.fontes)] : []), ...(args.ref3d ? ['--ref3d', String(args.ref3d)] : []), ...(args['3d'] ? ['--3d', String(args['3d'])] : []), '--saida', pastaDesign]);
 }
 const brief = JSON.parse(fs.readFileSync(path.join(pastaDesign, 'brief.json'), 'utf8'));
 let tokens = fs.readFileSync(path.join(pastaDesign, 'tokens.css'), 'utf8');

@@ -11,10 +11,10 @@ const norm = s => String(s).toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '
 
 const ESTILOS = {
   'neomorphism': { nome: 'Neomorphism', palavras: ['tatil', 'suave', 'fisico', 'calculadora', 'painel', 'botao', 'relevo', 'casa inteligente', 'controle'] },
-  'minimalism': { nome: 'Minimalism', palavras: ['calmo', 'limpo', 'sereno', 'minimalista', 'respiro', 'delicado', 'discreto', 'natural', 'leve', 'zen', 'organico', 'sobrio', 'preciso', 'atemporal', 'artesanal', 'autentico', 'cuidadoso', 'silencioso', 'equilibrado'] },
+  'minimalism': { nome: 'Minimalism', palavras: ['acolhedor', 'caloroso', 'calmo', 'limpo', 'sereno', 'minimalista', 'respiro', 'delicado', 'discreto', 'natural', 'leve', 'zen', 'organico', 'sobrio', 'preciso', 'atemporal', 'artesanal', 'autentico', 'cuidadoso', 'silencioso', 'equilibrado'] },
   'brutalism': { nome: 'Brutalism', palavras: ['ousado', 'cru', 'irreverente', 'jovem', 'rebelde', 'bruto', 'impactante', 'acido', 'provocativo', 'underground', 'autoral', 'experimental'] },
   'glassmorphism': { nome: 'Glassmorphism', palavras: ['translucido', 'vidro', 'moderno', 'etereo', 'futuro', 'camadas', 'brilho', 'fluido'] },
-  'claymorphism': { nome: 'Claymorphism', palavras: ['ludico', 'amigavel', 'macio', 'divertido', 'fofo', 'infantil', 'simpatico', 'caloroso', 'acolhedor'] },
+  'claymorphism': { nome: 'Claymorphism', palavras: ['ludico', 'amigavel', 'macio', 'divertido', 'fofo', 'infantil', 'simpatico'] },
   'bento-grid': { nome: 'Bento Grid', palavras: ['modular', 'organizado', 'recursos', 'produto', 'mosaico', 'funcional', 'completo', 'vitrine', 'multiplos', 'dashboard'] },
   'pixel-art': { nome: 'Pixel Art', palavras: ['retro', 'nostalgico', '8-bit', '8bit', 'jogo', 'geek', 'arcade', 'pixel', 'minecraft', 'game'] },
   'typography-luxury': { nome: 'Typography Luxury', palavras: ['luxuoso', 'luxo', 'elegante', 'sofisticado', 'classico', 'editorial', 'premium', 'refinado', 'exclusivo', 'raro', 'atemporal', 'nobre'] },

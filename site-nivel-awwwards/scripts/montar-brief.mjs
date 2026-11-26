@@ -13,7 +13,7 @@ import { fileURLToPath } from 'node:url';
 const AQUI = path.dirname(fileURLToPath(import.meta.url));
 const args = {}; const av = process.argv.slice(2);
 for (let i = 0; i < av.length; i++) if (av[i].startsWith('--')) { const p = av[i + 1]; args[av[i].slice(2)] = p && !p.startsWith('--') ? av[++i] : true; }
-if (!args.nome || !args.tema) { console.error('Uso: node montar-brief.mjs --nome "X" --tema "joalheria" [--adjetivos a,b,c] [--publico "..."] [--recursos 3d,scroll] [--saida ./design]'); process.exit(1); }
+if (!args.nome || !args.tema) { console.error('Uso: node montar-brief.mjs --nome "X" --tema "joalheria" [--adjetivos a,b,c] [--publico "..."] [--recursos 3d,scroll] [--fontes "Título,Corpo,Detalhe"] [--saida ./design]'); process.exit(1); }
 const saida = path.resolve(args.saida || './design');
 if (!args.forcar && (fs.existsSync(path.join(saida, 'brief.json')) || fs.existsSync(path.join(saida, 'tokens.css')))) { console.error(`Já existe brief em ${saida}. Use --forcar para sobrescrever.`); process.exit(1); }
 fs.mkdirSync(saida, { recursive: true });
@@ -37,7 +37,10 @@ const FONTES = {
   'bento-grid': ['Manrope', 'Inter', 'JetBrains Mono'], 'pixel-art': ['Press Start 2P', 'VT323', 'Silkscreen'],
   'neomorphism': ['DM Sans', 'Inter', 'DM Mono'], 'cyberpunk': ['Orbitron', 'Rajdhani', 'Share Tech Mono'],
 };
-const [fTitulo, fCorpo, fDetalhe] = FONTES[estilo.principal.id] || FONTES['dark-mode'];
+const padraoFontes = FONTES[estilo.principal.id] || FONTES['dark-mode'];
+// --fontes "Título,Corpo[,Detalhe]" troca as fontes do estilo (teste cego, rodada 5: o estilo trazia fontes que contrariavam o briefing)
+const escolhidas = String(args.fontes || '').split(',').map(x => x.trim()).filter(Boolean);
+const [fTitulo, fCorpo, fDetalhe] = [escolhidas[0] || padraoFontes[0], escolhidas[1] || padraoFontes[1], escolhidas[2] || padraoFontes[2]];
 const quer3d = args['3d'] ? /sim|s|true|1/i.test(args['3d']) : /3d/i.test(args.recursos || '');
 const lenis = /scroll/i.test(args.recursos || '') || true;
 
